@@ -6,6 +6,8 @@ Alpha 6 Designs' MSFS 2024 virtual-airline operations platform. This repository 
 
 ## Windows desktop preview
 
+Latest: **0.9 Active flight tracking** replaces the sample card with a live tracking bar. Use **Set active flight** to save a flight number, aircraft registration, route and planned UTC times; SimConnect then updates actual departure, delay-adjusted ETA, elapsed time, phase, aircraft title and progress.
+
 Latest: **0.8 Reliability** adds automatic managed-crash reports, a 15-second program/SimConnect health heartbeat, unclean-exit detection, and a local SQLite database that catalogs flight journals, exports, and crash reports. Use **Log database** to review the indexed files. Install with `outputs/Alpha6OPS-Setup-0.8.exe`; the portable ZIP must be fully extracted before launch.
 
 Latest: **0.7** restores resizing and maximizing. The main window still opens at 1366×768 physical pixels on each launch; that size is applied once, not enforced afterward. The aircraft database window is also resizable. All 0.6 logging features remain included. Download `outputs/Alpha6OPS-Desktop-0.7-win-x64.zip`.

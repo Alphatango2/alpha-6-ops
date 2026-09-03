@@ -1,0 +1,18 @@
+<Window x:Class="Alpha6Ops.Desktop.ActiveFlightWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Set active flight" Width="560" Height="510" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" Background="#10120F" Foreground="#F0F0EB">
+  <StackPanel Margin="28">
+    <TextBlock Text="Set active flight" FontSize="26" FontWeight="Bold"/>
+    <TextBlock Text="Enter the operational assignment. Times use UTC and the simulator clock." Foreground="#BFC5B4" TextWrapping="Wrap" Margin="0,6,0,18"/>
+    <Grid><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition/></Grid.ColumnDefinitions><Grid.RowDefinitions><RowDefinition/><RowDefinition/><RowDefinition/></Grid.RowDefinitions>
+      <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,10,12"><TextBlock Text="Flight number"/><TextBox x:Name="FlightNumberBox" Padding="8"/></StackPanel>
+      <StackPanel Grid.Row="0" Grid.Column="1" Margin="10,0,0,12"><TextBlock Text="Registration (optional)"/><TextBox x:Name="RegistrationBox" Padding="8"/></StackPanel>
+      <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,0,10,12"><TextBlock Text="Origin ICAO"/><TextBox x:Name="OriginBox" Padding="8" MaxLength="4"/></StackPanel>
+      <StackPanel Grid.Row="1" Grid.Column="1" Margin="10,0,0,12"><TextBlock Text="Destination ICAO"/><TextBox x:Name="DestinationBox" Padding="8" MaxLength="4"/></StackPanel>
+      <StackPanel Grid.Row="2" Grid.Column="0" Margin="0,0,10,12"><TextBlock Text="Planned departure UTC"/><TextBox x:Name="DepartureBox" Padding="8"/></StackPanel>
+      <StackPanel Grid.Row="2" Grid.Column="1" Margin="10,0,0,12"><TextBlock Text="Planned arrival UTC"/><TextBox x:Name="ArrivalBox" Padding="8"/></StackPanel>
+    </Grid>
+    <TextBlock Text="Format: YYYY-MM-DD HH:MM" Foreground="#A9AD9F" FontSize="11"/>
+    <TextBlock x:Name="ErrorText" Foreground="#FF9690" TextWrapping="Wrap" MinHeight="38" Margin="0,12,0,0"/>
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"><Button Content="Cancel" Click="Cancel_Click"/><Button Content="Save active flight" Background="#F9D928" Foreground="#10120F" FontWeight="Bold" Click="Save_Click"/></StackPanel>
+  </StackPanel>
+</Window>

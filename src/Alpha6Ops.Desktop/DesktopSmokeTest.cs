@@ -54,6 +54,13 @@ internal static class DesktopSmokeTest
             fleetEncoder.Frames.Add(BitmapFrame.Create(fleetBitmap));
             using (var image = File.Create(Path.Combine(outputDirectory,"fleet-preview.png"))) fleetEncoder.Save(image);
             fleet.Close();
+            var assignment = new ActiveFlightWindow(null);
+            assignment.Show(); assignment.UpdateLayout();
+            var assignmentBitmap = new RenderTargetBitmap((int)assignment.ActualWidth, (int)assignment.ActualHeight, 96, 96, PixelFormats.Pbgra32);
+            assignmentBitmap.Render(assignment);
+            var assignmentEncoder = new PngBitmapEncoder(); assignmentEncoder.Frames.Add(BitmapFrame.Create(assignmentBitmap));
+            using (var image = File.Create(Path.Combine(outputDirectory, "active-flight-preview.png"))) assignmentEncoder.Save(image);
+            assignment.Close();
             var diagnostics = Path.Combine(outputDirectory, "diagnostic-database-test");
             var testLogs = Path.Combine(diagnostics, "TestLogs");
             var crashes = Path.Combine(diagnostics, "CrashReports");
@@ -73,7 +80,7 @@ internal static class DesktopSmokeTest
             if (window.Projection.Any(leg => leg.DepartureDelayMinutes != 0)) throw new InvalidOperationException("Reset failed.");
             File.WriteAllText(Path.Combine(outputDirectory, "desktop-smoke.json"), JsonSerializer.Serialize(new
             {
-                passed = true, checks = new[] { "WPF startup", "embedded replay", "close-to-tray preserves replay", "downstream delays", "tray restore", "reset", "SQLite fleet counts and N414DZ identity", "case-insensitive fleet search and no-results state", "SQLite diagnostic file index", "crash report serialization" },
+                passed = true, checks = new[] { "WPF startup", "embedded replay", "close-to-tray preserves replay", "downstream delays", "tray restore", "reset", "SQLite fleet counts and N414DZ identity", "case-insensitive fleet search and no-results state", "active-flight assignment window", "SQLite diagnostic file index", "crash report serialization" },
                 runtimeDirectory = RuntimeEnvironment.GetRuntimeDirectory(), legs
             }, new JsonSerializerOptions { WriteIndented = true }));
         }

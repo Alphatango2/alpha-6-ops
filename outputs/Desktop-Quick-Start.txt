@@ -1,17 +1,22 @@
-ALPHA 6 OPS — WINDOWS DESKTOP BUILD 0.8
+ALPHA 6 OPS — WINDOWS DESKTOP BUILD 0.9
 
 The main OPS window opens at 1366 x 768 physical pixels; resizing and maximizing
 are enabled. The fleet window is also resizable. There is no manual Disconnect button. Closing MSFS or using Exit OPS
 ends the connection. The X button still hides OPS in the tray and keeps it running.
 
 INSTALL
-Run Alpha6OPS-Setup-0.8.exe and click Install Alpha 6 OPS.
+Run Alpha6OPS-Setup-0.9.exe and click Install Alpha 6 OPS.
 Open Alpha 6 OPS Preview from the Windows Start menu.
 Installs for your Windows account only; administrator access is not required.
 Uninstall through Windows Settings > Apps > Installed apps.
 Exit OPS from the app or tray menu before uninstalling.
 
 TEST-FLIGHT LOGS
+Before connecting, click Set active flight and enter the flight number,
+registration, route, and planned UTC departure/arrival times. The active-flight
+bar then shows actual departure, delay-adjusted ETA, elapsed time, phase, and
+progress using live SimConnect data.
+
 Logging starts automatically when you click Connect to MSFS 2024.
 Click Export test log during or after a flight, save the .json file, and upload
 that file to this conversation. Exporting does not stop monitoring.
@@ -28,7 +33,7 @@ Offline demo replay does not create a live-flight journal. Logs are not a restor
 flight checkpoint and do not resume an interrupted monitoring session.
 
 PORTABLE OPTION
-Extract the whole Alpha6OPS-Desktop-0.8-win-x64.zip into a folder.
+Extract the whole Alpha6OPS-Desktop-0.9-win-x64.zip into a folder.
 Double-click Alpha6OPS.exe inside that folder.
 Keep the runtime folder and other files alongside it.
 The EXE alone is not a portable single-file application.
@@ -57,7 +62,7 @@ TRY A LIVE CONNECTION
 This test package reads the SDK DLL path from simconnect-sdk-path.txt, configured
 for M:\SimConnect SDK\lib\SimConnect.dll on this development PC. Other PCs need
 their own installed 2024 SDK DLL path. Proprietary SDK binaries are not bundled.
-The sample rotation below does NOT represent your live flight or update from it.
+The active flight tracker uses the assignment entered with Set active flight.
 
 TRY THE OFFLINE REPLAY
 1. Click Run flight replay. It takes about eight seconds.

@@ -32,6 +32,9 @@ public partial class MainWindow : Window
     private TestFlightLog? flightLog;
     private string? lastJournal;
     private readonly ProgramMonitor? programMonitor;
+    private ActiveFlightPlan? activePlan;
+    private DateTimeOffset? actualDeparture;
+    private DateTimeOffset? actualArrival;
     private static string LogDirectory => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Alpha6Designs", "Alpha6OPS", "TestLogs");
     internal bool IsRunning => running;
     internal bool TrayVisible => tray.Visible;
@@ -58,6 +61,7 @@ public partial class MainWindow : Window
         EventsList.ItemsSource = milestones;
         Closing += OnClosing;
         StateChanged += (_, _) => { if (WindowState == WindowState.Minimized) MinimizeToTray(); };
+        activePlan = ActiveFlightPlanStore.Load();
         SetAdvanced(false);
         ResetPreview();
         try { programMonitor = new ProgramMonitor(LogDirectory, status => ProgramHealthText.Text = status); }
@@ -89,9 +93,15 @@ public partial class MainWindow : Window
     {
         var legs = Projection;
         var next = legs.FirstOrDefault(leg => !leg.Completed);
+        TrackerModeText.Text = "REPLAY FLIGHT • SAMPLE DATA";
+        AircraftText.Text = "N600A6 • SAMPLE ASSIGNMENT";
         RouteText.Text = next is null ? "Rotation complete" : $"{next.Origin} → {next.Destination}";
         DepartureText.Text = next is null ? "All assigned legs complete." : $"{next.Id}  •  {next.EstimatedOut.UtcDateTime:HH:mm}Z  •  {(next.DepartureDelayMinutes == 0 ? "On time" : $"{next.DepartureDelayMinutes:+0;-0} min")}";
-        PhaseText.Text = $"REPLAY FLIGHT A601 / {PhaseLabel(session.Phase).ToUpperInvariant()}";
+        PhaseText.Text = PhaseLabel(session.Phase).ToUpperInvariant();
+        var first = legs[0];
+        DepartedValueText.Text = session.Rotation.Legs[0].ActualOut is { } departed ? departed.UtcDateTime.ToString("HH:mm:ss'Z'") : "—";
+        ArrivalValueText.Text = first.EstimatedIn.UtcDateTime.ToString("HH:mm'Z'");
+        ElapsedValueText.Text = session.Rotation.Legs[0].ActualOut is { } start ? FormatDuration(((session.Rotation.Legs[0].ActualIn ?? start) - start)) : "—";
         RotationGrid.ItemsSource = legs.Select(leg => new
         {
             leg.Id, Route = $"{leg.Origin} → {leg.Destination}",
@@ -196,6 +206,15 @@ public partial class MainWindow : Window
     private void Tray_Click(object sender, RoutedEventArgs e) => MinimizeToTray();
     private void Exit_Click(object sender, RoutedEventArgs e) => ExitApplication();
     private void Fleet_Click(object sender, RoutedEventArgs e) => new FleetWindow { Owner = this }.ShowDialog();
+    private void SetFlight_Click(object sender, RoutedEventArgs e)
+    {
+        var dialog = new ActiveFlightWindow(activePlan) { Owner = this };
+        if (dialog.ShowDialog() != true || dialog.Plan is null) return;
+        activePlan = dialog.Plan;
+        ActiveFlightPlanStore.Save(activePlan);
+        actualDeparture = actualArrival = null;
+        RefreshLiveTracker(liveAircraft, liveLast, liveDetector?.Phase, "Assignment ready. Connect to MSFS 2024 to begin tracking.");
+    }
     private void Logs_Click(object sender, RoutedEventArgs e)
     {
         if (programMonitor is null) { MessageBox.Show(this, "The diagnostic database is unavailable. A crash report was saved with the startup error.", "Alpha 6 OPS", MessageBoxButton.OK, MessageBoxImage.Warning); return; }
@@ -208,6 +227,7 @@ public partial class MainWindow : Window
         if (liveCancellation is not null || running) return;
         liveCancellation = CancellationTokenSource.CreateLinkedTokenSource(lifetime.Token);
         liveDetector = null; liveLast = null; liveAircraft = null; liveInvalid = false;
+        actualDeparture = actualArrival = null;
         ConnectButton.IsEnabled = ReplayButton.IsEnabled = ResetButton.IsEnabled = false;
 
         ConnectionText.Text = "Connecting to the local simulator…";
@@ -253,11 +273,11 @@ public partial class MainWindow : Window
             RecordLog("monitor_invalidated", s.At, new { reason = "aircraft_changed_or_clock_reversed", previousSimulatorUtc = liveLast, previousAircraft = liveAircraft });
         }
         liveLast = s.At; liveAircraft = reading.Aircraft;
-        if (liveInvalid) { ConnectionText.Text = "Aircraft or simulator clock changed. Exit OPS and reopen it at the gate to begin a new monitor session."; return; }
+        if (liveInvalid) { ConnectionText.Text = "Aircraft or simulator clock changed. Exit OPS and reopen it at the gate to begin a new monitor session."; RefreshLiveTracker(reading.Aircraft, s.At, liveDetector?.Phase, "Tracking stopped because the aircraft or simulator clock changed."); return; }
         if (liveDetector is null)
         {
             if (!s.OnGround || s.GroundSpeedKnots >= 0.5 || !s.ParkingBrake || s.Paused || s.Slewing)
-            { ConnectionText.Text = "Connected. Waiting for a stationary aircraft with parking brake set and simulation unpaused."; return; }
+            { ConnectionText.Text = "Connected. Waiting for a stationary aircraft with parking brake set and simulation unpaused."; var observed = !s.OnGround ? FlightPhase.Airborne : s.GroundSpeedKnots >= 1 ? FlightPhase.TaxiOut : FlightPhase.AtGate; RefreshLiveTracker(reading.Aircraft, s.At, observed, s.Paused ? "Simulator paused" : s.Slewing ? "Slew mode" : !s.OnGround ? "Airborne • departure time unavailable" : "Taxiing • monitor awaiting a gate state"); return; }
             liveDetector = new PhaseDetector();
             RecordLog("monitor_armed", s.At, new { aircraft = reading.Aircraft });
         }
@@ -265,10 +285,13 @@ public partial class MainWindow : Window
         {
             milestones.Add($"LIVE {milestone.At.UtcDateTime:HH:mm:ss}Z   {PhaseLabel(milestone.Phase)}");
             RecordLog("flight_milestone", milestone.At, new { phase = milestone.Phase.ToString(), label = PhaseLabel(milestone.Phase) });
+            if (milestone.Phase == FlightPhase.TaxiOut) actualDeparture = milestone.At;
+            if (milestone.Phase == FlightPhase.Complete) actualArrival = milestone.At;
             if (milestone.Phase == FlightPhase.Complete) SaveFlightLog();
         }
-        ConnectionText.Text = $"Connected • {PhaseLabel(liveDetector.Phase)}. Sample rotation below is unchanged; live assignment timing is not configured.";
+        ConnectionText.Text = $"Connected • {PhaseLabel(liveDetector.Phase)}. Active flight tracking uses the assignment shown below.";
         tray.Text = "Alpha 6 OPS — Live " + liveDetector.Phase;
+        RefreshLiveTracker(reading.Aircraft, s.At, liveDetector.Phase, $"Live telemetry • {s.GroundSpeedKnots:0.0} kt • Brake {(s.ParkingBrake ? "set" : "released")}");
     }
     private void StartLog()
     {
@@ -277,6 +300,7 @@ public partial class MainWindow : Window
         {
             flightLog = new TestFlightLog(LogDirectory, Assembly.GetExecutingAssembly().GetName().Version?.ToString(3) ?? "unknown", "live_simconnect");
             lastJournal = flightLog.JournalPath;
+            if (activePlan is not null) RecordLog("flight_assignment", null, activePlan);
             LogStatusText.Text = "Recording test log. Export it here after your flight—or any time something looks wrong.";
         }
         catch (Exception e) when (e is IOException or UnauthorizedAccessException) { LogStatusText.Text = "Logging unavailable: " + e.Message; }
@@ -323,4 +347,44 @@ public partial class MainWindow : Window
         ConnectionDot.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString(color));
         ConnectionBadge.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(background));
     }
+
+    private void RefreshLiveTracker(string? simulatorAircraft, DateTimeOffset? simulatorTime, FlightPhase? phase, string status)
+    {
+        TrackerModeText.Text = "ACTIVE FLIGHT • LIVE SIMCONNECT";
+        if (activePlan is null)
+        {
+            AircraftText.Text = simulatorAircraft ?? "AIRCRAFT WAITING";
+            RouteText.Text = "SET AN ACTIVE FLIGHT";
+            DepartureText.Text = "Add the flight number, route and planned UTC times to calculate progress and ETA.";
+            DepartedValueText.Text = ArrivalValueText.Text = ElapsedValueText.Text = "—";
+            PhaseText.Text = phase is null ? "MONITORING" : PhaseLabel(phase.Value).ToUpperInvariant();
+            ReplayProgress.Maximum = 100; ReplayProgress.Value = PhaseProgress(phase, null, null);
+            StatusText.Text = status;
+            return;
+        }
+        var plan = activePlan;
+        AircraftText.Text = string.Join(" • ", new[] { simulatorAircraft, string.IsNullOrWhiteSpace(plan.Registration) ? null : plan.Registration }.Where(x => !string.IsNullOrWhiteSpace(x)));
+        RouteText.Text = $"{plan.Origin} → {plan.Destination}";
+        DepartureText.Text = $"{plan.FlightNumber}  •  PLANNED {plan.PlannedDepartureUtc.UtcDateTime:HH:mm}Z  •  {plan.PlannedDuration.TotalHours:0.#} HR BLOCK";
+        var eta = actualDeparture is { } departed ? departed + plan.PlannedDuration : plan.PlannedArrivalUtc;
+        DepartedValueText.Text = actualDeparture?.UtcDateTime.ToString("HH:mm:ss'Z'") ?? "—";
+        ArrivalValueText.Text = actualArrival?.UtcDateTime.ToString("HH:mm:ss'Z'") ?? eta.UtcDateTime.ToString("HH:mm'Z'");
+        ElapsedValueText.Text = actualDeparture is { } start && simulatorTime is { } now && now >= start ? FormatDuration((actualArrival ?? now) - start) : "—";
+        PhaseText.Text = phase is null ? "MONITORING" : PhaseLabel(phase.Value).ToUpperInvariant();
+        ReplayProgress.Maximum = 100;
+        ReplayProgress.Value = PhaseProgress(phase, simulatorTime, eta);
+        StatusText.Text = status;
+    }
+
+    private double PhaseProgress(FlightPhase? phase, DateTimeOffset? now, DateTimeOffset? eta) => phase switch
+    {
+        FlightPhase.AtGate => 0,
+        FlightPhase.TaxiOut => 8,
+        FlightPhase.Airborne when actualDeparture is { } start && now is { } current && eta > start => Math.Clamp(10 + 82 * (current - start).TotalSeconds / (eta.Value - start).TotalSeconds, 10, 92),
+        FlightPhase.Airborne => 45,
+        FlightPhase.TaxiIn => 95,
+        FlightPhase.Complete => 100,
+        _ => 0
+    };
+    private static string FormatDuration(TimeSpan duration) => $"{Math.Max(0, (int)duration.TotalHours):00}:{Math.Max(0, duration.Minutes):00}";
 }
