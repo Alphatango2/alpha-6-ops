@@ -1,0 +1,16 @@
+work/
+**/bin/
+**/obj/
+**/node_modules/
+**/dist/
+.env
+*.user
+*.log
+*.dmp
+data/
+simconnect-sdk-path.txt
+outputs/Alpha6OPS-Desktop/
+outputs/Alpha6OPS-Setup-*.exe
+outputs/Alpha6OPS-Desktop-*.zip
+__pycache__/
+*.pyc

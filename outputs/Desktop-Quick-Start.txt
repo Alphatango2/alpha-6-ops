@@ -1,0 +1,86 @@
+ALPHA 6 OPS — WINDOWS DESKTOP BUILD 0.7
+
+The main OPS window opens at 1366 x 768 physical pixels; resizing and maximizing
+are enabled. The fleet window is also resizable. There is no manual Disconnect button. Closing MSFS or using Exit OPS
+ends the connection. The X button still hides OPS in the tray and keeps it running.
+
+INSTALL
+Run Alpha6OPS-Setup-0.7.exe and click Install Alpha 6 OPS.
+Open Alpha 6 OPS Preview from the Windows Start menu.
+Installs for your Windows account only; administrator access is not required.
+Uninstall through Windows Settings > Apps > Installed apps.
+Exit OPS from the app or tray menu before uninstalling.
+
+TEST-FLIGHT LOGS
+Logging starts automatically when you click Connect to MSFS 2024.
+Click Export test log during or after a flight, save the .json file, and upload
+that file to this conversation. Exporting does not stop monitoring.
+An automatic JSON report is saved at block-in, on connection loss and on Exit OPS.
+Logs stay in %LOCALAPPDATA%\Alpha6Designs\Alpha6OPS\TestLogs and survive app restarts.
+After restarting OPS, Export test log lets you choose an earlier .jsonl session
+and converts it to an uploadable .json report. No automatic upload takes place.
+Telemetry is flushed to the journal as received; after an unexpected crash, export
+the saved journal. A partial final line is flagged in the report and skipped.
+Logs include simulator UTC and computer receipt UTC separately, aircraft title,
+groundspeed, brake/engine/ground/pause/slew state, milestones and connection errors.
+They do not include flight-position coordinates because this build does not collect them.
+Offline demo replay does not create a live-flight journal. Logs are not a restorable
+flight checkpoint and do not resume an interrupted monitoring session.
+
+PORTABLE OPTION
+Extract the whole Alpha6OPS-Desktop-0.7-win-x64.zip into a folder.
+Double-click Alpha6OPS.exe inside that folder.
+Keep the runtime folder and other files alongside it.
+The EXE alone is not a portable single-file application.
+The portable folder does not create shortcuts or register an uninstall entry.
+Remove a portable copy by deleting its folder after exiting OPS.
+
+AIRCRAFT DATABASE
+Click Aircraft database to browse Delta Air Lines' mainline current fleet.
+Airfleets snapshot observed 2 September 2026: 1,006 aircraft, 999 active, 7 parked.
+Search registration, model or serial; filter by aircraft family or status.
+N414DZ is included: model 330-941N, MSN 1996, Active.
+The catalog works offline. Keep the fleet folder with the application.
+The source-page button opens the selected record's Airfleets fleet page.
+This is reference data, not an assigned virtual fleet; it does not change your
+live flight, aircraft selection, or rotation. Refreshes are manual imports.
+
+TRY A LIVE CONNECTION
+1. Start MSFS 2024 and load a flight at a gate, stationary with parking brake set.
+2. Open this NEW build of Alpha 6 OPS and click Connect to MSFS 2024.
+3. Watch the status badge: gray disconnected, amber connecting, green connected,
+   red connection failed. The green state requires a SimConnect acknowledgement.
+4. Check the aircraft name, UTC time, groundspeed, brake and ground/air status.
+5. Live milestones appear under Advanced. Close/minimize keeps monitoring active.
+6. Use Exit OPS before changing aircraft or simulator date/time, then reopen OPS.
+
+This test package reads the SDK DLL path from simconnect-sdk-path.txt, configured
+for M:\SimConnect SDK\lib\SimConnect.dll on this development PC. Other PCs need
+their own installed 2024 SDK DLL path. Proprietary SDK binaries are not bundled.
+The sample rotation below does NOT represent your live flight or update from it.
+
+TRY THE OFFLINE REPLAY
+1. Click Run flight replay. It takes about eight seconds.
+2. Select Advanced to see the rotation and flight milestones.
+3. Close/minimize the window or click Minimize to tray: replay continues.
+4. Double-click the tray icon to reopen. It may be under Windows' hidden icons.
+5. Click Exit OPS, or right-click the tray icon > Exit Alpha 6 OPS, to stop.
+
+No browser or separate .NET installation is needed. Offline replay needs no MSFS.
+Built for x64 Windows; tested on the current Windows machine only.
+Setup uses the .NET Framework supplied with current Windows installations.
+
+THIS IS A DEVELOPMENT PREVIEW
+The executable and installer are unsigned. Windows may show an unknown-publisher
+warning or block execution depending on your policy. Do not disable protections;
+a signed release installer is needed before general distribution.
+Live connection is implemented but awaits in-simulator verification. Sign-in,
+live assignment timing, saved flight progress, automatic updates and voice dispatch
+are not included. Reset/exit clears the demo. Reconnection starts a new monitor
+session and must begin stationary at the gate; it cannot recover a mid-flight session.
+The app is separate from the optional browser-based OCC dashboard.
+
+Bundled Microsoft .NET runtime: 10.0.11. License and third-party notices are in
+runtime/. Runtime updates require rebuilding and redistributing the package.
+The installer is an early preview tool; install/uninstall on a clean PC is still
+a release acceptance test. Existing previews must be uninstalled before reinstall.

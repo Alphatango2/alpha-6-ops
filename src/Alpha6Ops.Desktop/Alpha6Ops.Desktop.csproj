@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <AssemblyName>Alpha6OPS</AssemblyName>
+    <Version>0.7.0</Version>
+    <Company>Alpha 6 Designs</Company>
+    <Product>Alpha 6 OPS Desktop Preview</Product>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../Alpha6Ops.Core/Alpha6Ops.Core.csproj" />
+    <EmbeddedResource Include="../../samples/delayed-flight.jsonl" LogicalName="delayed-flight.jsonl" />
+    <Content Include="../../assets/fleet/aircraft.sqlite" Link="fleet/aircraft.sqlite" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

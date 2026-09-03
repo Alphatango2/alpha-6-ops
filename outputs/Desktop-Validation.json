@@ -1,0 +1,50 @@
+{
+  "passed": true,
+  "checks": [
+    "WPF startup",
+    "embedded replay",
+    "close-to-tray preserves replay",
+    "downstream delays",
+    "tray restore",
+    "reset"
+  ],
+  "runtimeDirectory": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\installer-check-f4a77a8624404b7e9cdd28a254e1c1bd\\runtime\\shared\\Microsoft.NETCore.App\\10.0.11\\",
+  "legs": [
+    {
+      "Id": "A601",
+      "Origin": "KORD",
+      "Destination": "KDTW",
+      "ScheduledOut": "2026-09-02T10:00:00+00:00",
+      "ScheduledIn": "2026-09-02T11:15:00+00:00",
+      "EstimatedOut": "2026-09-02T10:25:00+00:00",
+      "EstimatedIn": "2026-09-02T11:45:00+00:00",
+      "DepartureDelayMinutes": 25,
+      "ArrivalDelayMinutes": 30,
+      "Completed": true
+    },
+    {
+      "Id": "A602",
+      "Origin": "KDTW",
+      "Destination": "KJFK",
+      "ScheduledOut": "2026-09-02T11:50:00+00:00",
+      "ScheduledIn": "2026-09-02T13:30:00+00:00",
+      "EstimatedOut": "2026-09-02T12:20:00+00:00",
+      "EstimatedIn": "2026-09-02T14:00:00+00:00",
+      "DepartureDelayMinutes": 30,
+      "ArrivalDelayMinutes": 30,
+      "Completed": false
+    },
+    {
+      "Id": "A603",
+      "Origin": "KJFK",
+      "Destination": "KORD",
+      "ScheduledOut": "2026-09-02T14:30:00+00:00",
+      "ScheduledIn": "2026-09-02T17:00:00+00:00",
+      "EstimatedOut": "2026-09-02T14:35:00+00:00",
+      "EstimatedIn": "2026-09-02T17:05:00+00:00",
+      "DepartureDelayMinutes": 5,
+      "ArrivalDelayMinutes": 5,
+      "Completed": false
+    }
+  ]
+}

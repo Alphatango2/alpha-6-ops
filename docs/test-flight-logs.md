@@ -1,0 +1,13 @@
+# Test-flight logging — 0.6
+
+Every live connection attempt starts a new flushed JSONL journal in `%LOCALAPPDATA%/Alpha6Designs/Alpha6OPS/TestLogs`, independent of the installation folder. No log data is uploaded. Files remain until the user removes them. A one-second telemetry stream is typically modest, but there is no retention limit in this preview.
+
+Each entry has a sequential number, kind, real `recordedAtUtc`, nullable `simulatorUtc`, and a detail object. The first entry identifies schema version, app version and live_simconnect mode. Telemetry entries include aircraft TITLE, groundspeed in knots, on-ground, parking-brake, engine-combustion, pause and slew flags. Further entries record connection acknowledgement/errors, monitoring armed, aircraft/clock invalidation, flight milestones (named phase and first qualifying simulator timestamp), and session end. No location or flight-plan data is invented.
+
+The connection's telemetry journal is flushed per entry. At detected block-in it is exported to a readable `.json` report beside the journal; connection teardown and Exit OPS append a session-end event and regenerate that report. X/minimize keeps monitoring and logging active. A new connection creates a new uniquely named journal; previous files are preserved. The diagnostic journal is not an operational checkpoint and cannot restore the phase detector after restarting.
+
+**Export test log** exports the current journal using a save-file dialog without stopping monitoring. With no current session (including after restart), it first prompts for a previously saved JSONL journal in the log folder. Reports contain a schema version, export time, event count, sessionEnded flag and ordered events. In-progress exports correctly lack a session-ended flag. A malformed final journal line caused by interruption is skipped and explicitly flagged by `incompleteLastLine`; malformed earlier lines cause an export error.
+
+Use the exported JSON as an attachment in this conversation to diagnose missed phases, pause/slew behavior, simulator time changes and connection errors. For a missed event, also note what the airplane was doing and approximately when. The report reflects received data, not proof that the simulator supplied every expected sample.
+
+Validation: 27 Core checks pass, including export with an active writer, simulator UTC preservation, in-progress status, idempotent session end and recovery from an interrupted final write. Desktop smoke checks exercise existing window, replay/tray and fleet behavior. The new logger still needs one real user-flown session to validate the full simulator-to-export path. Logging or export I/O errors are shown in the window; connection monitoring can continue if logging is unavailable.
