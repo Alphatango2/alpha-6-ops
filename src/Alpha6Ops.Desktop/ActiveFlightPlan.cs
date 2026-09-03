@@ -5,7 +5,8 @@ using System.Text.Json;
 namespace Alpha6Ops.Desktop;
 
 internal record ActiveFlightPlan(string FlightNumber, string Registration, string Origin, string Destination,
-    DateTimeOffset PlannedDepartureUtc, DateTimeOffset PlannedArrivalUtc)
+    DateTimeOffset PlannedDepartureUtc, DateTimeOffset PlannedArrivalUtc, string? Source = null,
+    string? SimBriefUsername = null, DateTimeOffset? ImportedAtUtc = null)
 {
     internal TimeSpan PlannedDuration => PlannedArrivalUtc - PlannedDepartureUtc;
 }

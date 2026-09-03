@@ -61,6 +61,10 @@ internal static class DesktopSmokeTest
             var assignmentEncoder = new PngBitmapEncoder(); assignmentEncoder.Frames.Add(BitmapFrame.Create(assignmentBitmap));
             using (var image = File.Create(Path.Combine(outputDirectory, "active-flight-preview.png"))) assignmentEncoder.Save(image);
             assignment.Close();
+            const string simBriefFixture = """{"general":{"icao_airline":"JBU","flight_number":"124","route":"DCT TEST","initial_altitude":"35000"},"origin":{"icao_code":"KLAX"},"destination":{"icao_code":"KJFK"},"times":{"sched_out":"1788450000","est_in":"1788470000"},"aircraft":{"icao_code":"A321","reg":"N123JB"},"fuel":{"plan_ramp":"42000"},"params":{"time_generated":"1788449000","units":"lbs"}}""";
+            var imported = SimBriefImporter.Parse(simBriefFixture, "test-pilot", false);
+            if (imported.Plan.FlightNumber != "JBU124" || imported.Plan.Origin != "KLAX" || imported.Plan.Destination != "KJFK" || imported.Plan.Registration != "N123JB" || imported.AircraftType != "A321" || imported.CruiseAltitudeFeet != 35000 || imported.RampFuel != 42000 || imported.FuelUnits != "LBS")
+                throw new InvalidOperationException("SimBrief briefing fields were not mapped into the active flight.");
             var diagnostics = Path.Combine(outputDirectory, "diagnostic-database-test");
             var testLogs = Path.Combine(diagnostics, "TestLogs");
             var crashes = Path.Combine(diagnostics, "CrashReports");
@@ -80,7 +84,7 @@ internal static class DesktopSmokeTest
             if (window.Projection.Any(leg => leg.DepartureDelayMinutes != 0)) throw new InvalidOperationException("Reset failed.");
             File.WriteAllText(Path.Combine(outputDirectory, "desktop-smoke.json"), JsonSerializer.Serialize(new
             {
-                passed = true, checks = new[] { "WPF startup", "embedded replay", "close-to-tray preserves replay", "downstream delays", "tray restore", "reset", "SQLite fleet counts and N414DZ identity", "case-insensitive fleet search and no-results state", "active-flight assignment window", "SQLite diagnostic file index", "crash report serialization" },
+                passed = true, checks = new[] { "WPF startup", "embedded replay", "close-to-tray preserves replay", "downstream delays", "tray restore", "reset", "SQLite fleet counts and N414DZ identity", "case-insensitive fleet search and no-results state", "active-flight assignment window", "SimBrief JSON mapping", "SQLite diagnostic file index", "crash report serialization" },
                 runtimeDirectory = RuntimeEnvironment.GetRuntimeDirectory(), legs
             }, new JsonSerializerOptions { WriteIndented = true }));
         }

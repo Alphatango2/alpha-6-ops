@@ -6,7 +6,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>disable</ImplicitUsings>
     <AssemblyName>Alpha6OPS</AssemblyName>
-    <Version>0.9.0</Version>
+    <Version>0.10.0</Version>
     <Company>Alpha 6 Designs</Company>
     <Product>Alpha 6 OPS Desktop Preview</Product>
     <ApplicationManifest>app.manifest</ApplicationManifest>

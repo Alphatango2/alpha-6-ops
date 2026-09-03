@@ -1,5 +1,8 @@
 using System;
 using System.Globalization;
+using System.IO;
+using System.Net.Http;
+using System.Text.Json;
 using System.Windows;
 
 namespace Alpha6Ops.Desktop;
@@ -17,6 +20,27 @@ public partial class ActiveFlightWindow : Window
         DestinationBox.Text = current?.Destination ?? "";
         DepartureBox.Text = (current?.PlannedDepartureUtc ?? now).UtcDateTime.ToString("yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture);
         ArrivalBox.Text = (current?.PlannedArrivalUtc ?? now.AddHours(2)).UtcDateTime.ToString("yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture);
+        SimBriefUsernameBox.Text = current?.SimBriefUsername ?? SimBriefImporter.LoadUsername();
+    }
+    private async void Import_Click(object sender, RoutedEventArgs e)
+    {
+        ImportButton.IsEnabled = false; ImportStatusText.Text = "Downloading latest SimBrief briefing…";
+        try
+        {
+            var imported = await SimBriefImporter.ImportAsync(SimBriefUsernameBox.Text);
+            var plan = imported.Plan;
+            FlightNumberBox.Text = plan.FlightNumber; RegistrationBox.Text = plan.Registration;
+            OriginBox.Text = plan.Origin; DestinationBox.Text = plan.Destination;
+            DepartureBox.Text = plan.PlannedDepartureUtc.UtcDateTime.ToString("yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture);
+            ArrivalBox.Text = plan.PlannedArrivalUtc.UtcDateTime.ToString("yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture);
+            Plan = plan;
+            var age = DateTimeOffset.UtcNow - imported.GeneratedUtc;
+            var warning = age > TimeSpan.FromHours(24) ? " Warning: this briefing is more than 24 hours old." : "";
+            ImportStatusText.Text = $"{(imported.FromCache ? "Offline cache" : "Imported")} • {imported.AircraftType} • generated {imported.GeneratedUtc.UtcDateTime:dd MMM HH:mm}Z.{warning}";
+        }
+        catch (Exception error) when (error is IOException or HttpRequestException or JsonException or ArgumentException)
+        { ImportStatusText.Text = error.GetBaseException().Message; }
+        finally { ImportButton.IsEnabled = true; }
     }
     private void Save_Click(object sender, RoutedEventArgs e)
     {
@@ -29,7 +53,9 @@ public partial class ActiveFlightWindow : Window
             !DateTimeOffset.TryParseExact(DepartureBox.Text.Trim(), "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture, styles, out var departure) ||
             !DateTimeOffset.TryParseExact(ArrivalBox.Text.Trim(), "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture, styles, out var arrival) || arrival <= departure)
         { ErrorText.Text = "Enter a flight number, different four-letter ICAO airports, and an arrival later than departure using the shown UTC format."; return; }
-        Plan = new(flight, registration, origin, destination, departure, arrival);
+        Plan = Plan is { Source: "SimBrief" } imported && imported.FlightNumber == flight && imported.Origin == origin && imported.Destination == destination
+            ? imported with { Registration = registration, PlannedDepartureUtc = departure, PlannedArrivalUtc = arrival }
+            : new(flight, registration, origin, destination, departure, arrival);
         DialogResult = true;
     }
     private void Cancel_Click(object sender, RoutedEventArgs e) => DialogResult = false;

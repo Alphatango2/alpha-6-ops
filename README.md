@@ -6,6 +6,8 @@ Alpha 6 Designs' MSFS 2024 virtual-airline operations platform. This repository 
 
 ## Windows desktop preview
 
+Latest: **0.10 SimBrief import** adds direct import of the user's latest generated OFP by Navigraph Alias/SimBrief username. The assignment window maps the route, aircraft, registration and operational times, warns when a briefing is old, and retains the latest successful response for offline reuse.
+
 Latest: **0.9 Active flight tracking** replaces the sample card with a live tracking bar. Use **Set active flight** to save a flight number, aircraft registration, route and planned UTC times; SimConnect then updates actual departure, delay-adjusted ETA, elapsed time, phase, aircraft title and progress.
 
 Latest: **0.8 Reliability** adds automatic managed-crash reports, a 15-second program/SimConnect health heartbeat, unclean-exit detection, and a local SQLite database that catalogs flight journals, exports, and crash reports. Use **Log database** to review the indexed files. Install with `outputs/Alpha6OPS-Setup-0.8.exe`; the portable ZIP must be fully extracted before launch.
