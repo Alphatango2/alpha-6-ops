@@ -31,6 +31,7 @@ public partial class MainWindow : Window
     private bool liveInvalid;
     private TestFlightLog? flightLog;
     private string? lastJournal;
+    private readonly ProgramMonitor? programMonitor;
     private static string LogDirectory => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Alpha6Designs", "Alpha6OPS", "TestLogs");
     internal bool IsRunning => running;
     internal bool TrayVisible => tray.Visible;
@@ -59,6 +60,12 @@ public partial class MainWindow : Window
         StateChanged += (_, _) => { if (WindowState == WindowState.Minimized) MinimizeToTray(); };
         SetAdvanced(false);
         ResetPreview();
+        try { programMonitor = new ProgramMonitor(LogDirectory, status => ProgramHealthText.Text = status); }
+        catch (Exception error)
+        {
+            CrashReporter.Write("program_monitor_startup", error);
+            ProgramHealthText.Text = "PROGRAM MONITOR UNAVAILABLE • " + error.GetBaseException().Message;
+        }
     }
 
     internal void SetAdvanced(bool value)
@@ -168,6 +175,7 @@ public partial class MainWindow : Window
         if (exiting) return;
         exiting = true;
         FinishLog("application_exit");
+        programMonitor?.Stop("application_exit");
         lifetime.Cancel();
         liveCancellation?.Cancel();
         tray.Visible = false;
@@ -188,6 +196,12 @@ public partial class MainWindow : Window
     private void Tray_Click(object sender, RoutedEventArgs e) => MinimizeToTray();
     private void Exit_Click(object sender, RoutedEventArgs e) => ExitApplication();
     private void Fleet_Click(object sender, RoutedEventArgs e) => new FleetWindow { Owner = this }.ShowDialog();
+    private void Logs_Click(object sender, RoutedEventArgs e)
+    {
+        if (programMonitor is null) { MessageBox.Show(this, "The diagnostic database is unavailable. A crash report was saved with the startup error.", "Alpha 6 OPS", MessageBoxButton.OK, MessageBoxImage.Warning); return; }
+        programMonitor.WriteHeartbeat();
+        new LogDatabaseWindow(programMonitor.Database) { Owner = this }.ShowDialog();
+    }
 
     private async void Connect_Click(object sender, RoutedEventArgs e)
     {
@@ -197,22 +211,25 @@ public partial class MainWindow : Window
         ConnectButton.IsEnabled = ReplayButton.IsEnabled = ResetButton.IsEnabled = false;
 
         ConnectionText.Text = "Connecting to the local simulator…";
+        programMonitor?.Update("Connecting");
         SetConnectionBadge("CONNECTING TO SIMULATOR", "#FFCA45", "#433817");
         milestones.Clear();
         SetAdvanced(true);
         try
         {
             StartLog();
-            await SimConnectSource.RunAsync(message => Dispatcher.BeginInvoke(new Action(() => { if (exiting) return; RecordLog("connection_opened", null, new { message }); ConnectionText.Text = message; SetConnectionBadge("SIMULATOR CONNECTED", "#65E697", "#173D27"); })),
+            await SimConnectSource.RunAsync(message => Dispatcher.BeginInvoke(new Action(() => { if (exiting) return; RecordLog("connection_opened", null, new { message }); ConnectionText.Text = message; SetConnectionBadge("SIMULATOR CONNECTED", "#65E697", "#173D27"); programMonitor?.Update("Connected"); })),
                 reading => Dispatcher.BeginInvoke(new Action(() => ObserveLive(reading))), liveCancellation.Token);
             ConnectionText.Text = "Disconnected. Live milestones remain visible until the next connection or replay.";
             SetConnectionBadge("SIMULATOR DISCONNECTED", "#A9AD9F", "#30342C");
+            programMonitor?.Update("Disconnected");
         }
         catch (Exception error) when (error is IOException or DllNotFoundException or BadImageFormatException or EntryPointNotFoundException or TypeInitializationException or OperationCanceledException)
         {
             RecordLog("connection_error", liveLast, new { message = error.GetBaseException().Message, type = error.GetType().Name });
             ConnectionText.Text = error is OperationCanceledException ? "Disconnected." : error.GetBaseException().Message;
             SetConnectionBadge(error is OperationCanceledException ? "SIMULATOR DISCONNECTED" : "SIMULATOR CONNECTION FAILED", error is OperationCanceledException ? "#A9AD9F" : "#FF9690", error is OperationCanceledException ? "#30342C" : "#512621");
+            programMonitor?.Update(error is OperationCanceledException ? "Disconnected" : "Connection failed");
         }
         finally
         {
@@ -227,6 +244,7 @@ public partial class MainWindow : Window
     {
         if (liveCancellation is null || liveCancellation.IsCancellationRequested || exiting) return;
         var s = reading.Telemetry;
+        programMonitor?.Update("Connected", reading.Aircraft, s.At, sampleReceived: true);
         RecordLog("telemetry", s.At, new { aircraft = reading.Aircraft, onGround = s.OnGround, groundSpeedKnots = s.GroundSpeedKnots, parkingBrake = s.ParkingBrake, enginesRunning = s.EnginesRunning, paused = s.Paused, slewing = s.Slewing });
         LiveText.Text = $"{reading.Aircraft} • {s.At.UtcDateTime:HH:mm:ss}Z • {s.GroundSpeedKnots:0.0} kt • Brake {(s.ParkingBrake ? "set" : "released")} • {(s.Paused ? "Paused" : s.Slewing ? "Slew" : s.OnGround ? "On ground" : "Airborne")}";
         if (!liveInvalid && ((liveLast is not null && s.At < liveLast) || (liveAircraft is not null && reading.Aircraft != liveAircraft)))

@@ -11,7 +11,7 @@ using Microsoft.Win32;
 
 internal static class PreviewSetup
 {
-    const string Identity = "Alpha6OPS-Desktop-Preview-0.7";
+    const string Identity = "Alpha6OPS-Desktop-Preview-0.8";
     const string RegistryKey = @"Software\Microsoft\Windows\CurrentVersion\Uninstall\Alpha6OPSPreview";
     static readonly string InstallPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Alpha6Designs", "Alpha6OPSPreview");
     static readonly string ShortcutPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Programs), "Alpha 6 OPS Preview.lnk");
@@ -89,7 +89,7 @@ internal static class PreviewSetup
                         using (var key = Registry.CurrentUser.CreateSubKey(RegistryKey))
                         {
                             key.SetValue("DisplayName", "Alpha 6 OPS Desktop Preview");
-                            key.SetValue("DisplayVersion", "0.7.0");
+                            key.SetValue("DisplayVersion", "0.8.0");
                             key.SetValue("Publisher", "Alpha 6 Designs");
                             key.SetValue("InstallLocation", InstallPath);
                             key.SetValue("DisplayIcon", Path.Combine(InstallPath, "Alpha6OPS.exe"));

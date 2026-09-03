@@ -1,4 +1,10 @@
-# Test-flight logging — 0.6
+# Diagnostics and test-flight logging — 0.8
+
+Version 0.8 adds process-wide managed-exception reporting under `%LOCALAPPDATA%/Alpha6Designs/Alpha6OPS/CrashReports`. Reports contain the app/runtime environment, exception type, message and stack trace. They remain local until the user chooses to share them. A prior `program-status.json` left in its running state is recorded as an unclean exit on the next launch, covering terminations that cannot execute managed exception handlers.
+
+The program monitor atomically updates `%LOCALAPPDATA%/Alpha6Designs/Alpha6OPS/program-status.json` every 15 seconds with its process ID, working-set size, connection state, detected aircraft, sample count and last simulator time. The green health strip in the main window shows the latest heartbeat.
+
+`Alpha6OPS-logs.sqlite` is a local file database indexing flight journals, JSON exports and crash reports. It stores file metadata rather than duplicating the high-frequency telemetry stream. **Log database** shows the most recently modified diagnostic files and can open a selected file's folder.
 
 Every live connection attempt starts a new flushed JSONL journal in `%LOCALAPPDATA%/Alpha6Designs/Alpha6OPS/TestLogs`, independent of the installation folder. No log data is uploaded. Files remain until the user removes them. A one-second telemetry stream is typically modest, but there is no retention limit in this preview.
 

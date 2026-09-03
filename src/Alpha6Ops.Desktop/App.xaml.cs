@@ -8,6 +8,7 @@ public partial class App : Application
     protected override async void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
+        CrashReporter.Install(this);
         if (e.Args.Length == 2 && e.Args[0] == "--simconnect-probe")
         {
             await SimConnectProbe.RunAsync(e.Args[1]);

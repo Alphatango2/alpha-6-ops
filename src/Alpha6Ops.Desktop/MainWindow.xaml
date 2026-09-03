@@ -10,7 +10,8 @@
       <StackPanel>
         <TextBlock Text="You fly the airplane." FontSize="32" FontWeight="Bold"/>
         <TextBlock Text="We'll run the airline." FontSize="32" FontWeight="Bold" Foreground="{StaticResource Yellow}" Margin="0,0,0,20"/>
-        <StackPanel Orientation="Horizontal" Margin="0,0,0,14"><Button x:Name="SimpleButton" Content="Simple" Click="Simple_Click"/><Button x:Name="AdvancedButton" Content="Advanced" Click="Advanced_Click"/><Button Content="Aircraft database" Click="Fleet_Click"/><Button Content="Minimize to tray" Click="Tray_Click"/></StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,14"><Button x:Name="SimpleButton" Content="Simple" Click="Simple_Click"/><Button x:Name="AdvancedButton" Content="Advanced" Click="Advanced_Click"/><Button Content="Aircraft database" Click="Fleet_Click"/><Button Content="Log database" Click="Logs_Click"/><Button Content="Minimize to tray" Click="Tray_Click"/></StackPanel>
+        <Border Background="#17291E" BorderBrush="#2F6943" BorderThickness="1" Padding="10,7" Margin="0,0,0,14"><TextBlock x:Name="ProgramHealthText" Text="PROGRAM MONITOR STARTING" Foreground="#65E697" FontWeight="Bold" FontSize="11"/></Border>
         <Border Background="#1B1E17" BorderBrush="#3B4133" BorderThickness="1" Padding="18" Margin="0,0,0,14"><StackPanel>
           <Border x:Name="ConnectionBadge" Background="#30342C" Padding="12,8" HorizontalAlignment="Left" Margin="0,0,0,12"><StackPanel Orientation="Horizontal"><Ellipse x:Name="ConnectionDot" Width="11" Height="11" Fill="#A9AD9F" Margin="0,0,10,0"/><TextBlock x:Name="ConnectionBadgeText" Text="SIMULATOR DISCONNECTED" FontWeight="Bold" Foreground="White" AutomationProperties.LiveSetting="Polite"/></StackPanel></Border>
           <WrapPanel><Button x:Name="ConnectButton" Content="Connect to MSFS 2024" Click="Connect_Click"/><Button Content="Export test log" Click="ExportLog_Click"/></WrapPanel>

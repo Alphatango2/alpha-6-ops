@@ -6,6 +6,8 @@ Alpha 6 Designs' MSFS 2024 virtual-airline operations platform. This repository 
 
 ## Windows desktop preview
 
+Latest: **0.8 Reliability** adds automatic managed-crash reports, a 15-second program/SimConnect health heartbeat, unclean-exit detection, and a local SQLite database that catalogs flight journals, exports, and crash reports. Use **Log database** to review the indexed files. Install with `outputs/Alpha6OPS-Setup-0.8.exe`; the portable ZIP must be fully extracted before launch.
+
 Latest: **0.7** restores resizing and maximizing. The main window still opens at 1366×768 physical pixels on each launch; that size is applied once, not enforced afterward. The aircraft database window is also resizable. All 0.6 logging features remain included. Download `outputs/Alpha6OPS-Desktop-0.7-win-x64.zip`.
 
 Latest: **0.6 Test-flight logs** adds automatically saved live-session journals and an **Export test log** button. Upload the resulting JSON for diagnosis. See [logging behavior](docs/test-flight-logs.md); the portable download is `outputs/Alpha6OPS-Desktop-0.6-win-x64.zip`.

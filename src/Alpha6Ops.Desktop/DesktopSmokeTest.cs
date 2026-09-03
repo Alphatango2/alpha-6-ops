@@ -54,10 +54,26 @@ internal static class DesktopSmokeTest
             fleetEncoder.Frames.Add(BitmapFrame.Create(fleetBitmap));
             using (var image = File.Create(Path.Combine(outputDirectory,"fleet-preview.png"))) fleetEncoder.Save(image);
             fleet.Close();
+            var diagnostics = Path.Combine(outputDirectory, "diagnostic-database-test");
+            var testLogs = Path.Combine(diagnostics, "TestLogs");
+            var crashes = Path.Combine(diagnostics, "CrashReports");
+            Directory.CreateDirectory(testLogs); Directory.CreateDirectory(crashes);
+            File.WriteAllText(Path.Combine(testLogs, "Alpha6OPS-test.jsonl"), "{\"kind\":\"session_started\"}\n");
+            File.WriteAllText(Path.Combine(crashes, "Alpha6OPS-crash-test.json"), "{}");
+            using (var diagnosticDatabase = new LogFileDatabase(diagnostics))
+            {
+                if (diagnosticDatabase.Refresh(testLogs, crashes) != 2 || diagnosticDatabase.ReadRecent().Count != 2)
+                    throw new InvalidOperationException("Diagnostic file database did not index flight and crash logs.");
+            }
+            var crashReport = CrashReporter.Write("smoke_test", new InvalidOperationException("Expected diagnostic test"), directory: outputDirectory);
+            if (crashReport is null || !File.Exists(crashReport)) throw new InvalidOperationException("Crash report was not saved.");
+            using (var crashJson = JsonDocument.Parse(File.ReadAllText(crashReport)))
+                if (crashJson.RootElement.GetProperty("source").GetString() != "smoke_test" || crashJson.RootElement.GetProperty("exception").GetProperty("type").GetString() != typeof(InvalidOperationException).FullName)
+                    throw new InvalidOperationException("Crash report did not preserve the exception details.");
             if (window.Projection.Any(leg => leg.DepartureDelayMinutes != 0)) throw new InvalidOperationException("Reset failed.");
             File.WriteAllText(Path.Combine(outputDirectory, "desktop-smoke.json"), JsonSerializer.Serialize(new
             {
-                passed = true, checks = new[] { "WPF startup", "embedded replay", "close-to-tray preserves replay", "downstream delays", "tray restore", "reset", "SQLite fleet counts and N414DZ identity", "case-insensitive fleet search and no-results state" },
+                passed = true, checks = new[] { "WPF startup", "embedded replay", "close-to-tray preserves replay", "downstream delays", "tray restore", "reset", "SQLite fleet counts and N414DZ identity", "case-insensitive fleet search and no-results state", "SQLite diagnostic file index", "crash report serialization" },
                 runtimeDirectory = RuntimeEnvironment.GetRuntimeDirectory(), legs
             }, new JsonSerializerOptions { WriteIndented = true }));
         }

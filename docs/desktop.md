@@ -1,4 +1,4 @@
-# Windows desktop preview 0.2
+# Windows desktop preview 0.8
 
 The WPF pilot application calls Core directly and embeds the existing JSONL sample as a resource. It makes no HTTP requests, starts no server and uses no browser component. The web app remains available separately for future OCC/management use. Simple and Advanced views show the same deterministic rotation; milestones arrive over roughly eight seconds so the tray behavior can be demonstrated.
 
