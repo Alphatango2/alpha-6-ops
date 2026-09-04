@@ -32,7 +32,13 @@
               <StackPanel Grid.Column="3"><TextBlock Text="CURRENT PHASE" Foreground="#8E9584" FontSize="10"/><TextBlock x:Name="PhaseText" Text="AT GATE" Foreground="{StaticResource Yellow}" FontWeight="Bold" FontSize="15"/></StackPanel>
             </Grid>
             <TextBlock x:Name="StatusText" TextWrapping="Wrap" Foreground="#C0C5B5" MinHeight="38"/>
-            <WrapPanel Margin="0,16,0,0"><Button x:Name="ReplayButton" Content="Run flight replay" Background="{StaticResource Yellow}" Foreground="#10120F" FontWeight="Bold" Click="Replay_Click"/><Button x:Name="ResetButton" Content="Reset preview" Click="Reset_Click"/></WrapPanel>
+            <WrapPanel Margin="0,16,0,0">
+              <ComboBox x:Name="FixtureCombo" Width="170" Padding="8" Margin="0,0,10,0" AutomationProperties.Name="Replay fixture"/>
+              <Button x:Name="ReplayButton" Content="Run flight replay" Background="{StaticResource Yellow}" Foreground="#10120F" FontWeight="Bold" Click="Replay_Click"/>
+              <Button x:Name="ResetButton" Content="Reset preview" Click="Reset_Click"/>
+              <Button Content="Timeline scrubber" Click="Timeline_Click"/>
+              <Button Content="Debrief" Click="Debrief_Click"/>
+            </WrapPanel>
             <TextBlock Text="Sample flight • 02 SEP 2026 • All times UTC • No live simulator connection" Foreground="#ADB1A4" FontSize="11" TextWrapping="Wrap" Margin="0,16,0,0"/>
           </StackPanel>
         </Border>

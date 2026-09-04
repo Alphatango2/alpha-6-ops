@@ -39,6 +39,7 @@ public partial class MainWindow : Window
     internal bool IsRunning => running;
     internal bool TrayVisible => tray.Visible;
     internal IReadOnlyList<LegProjection> Projection => RotationPlanner.Project(session.Rotation);
+    private string SelectedFixture => (string)(FixtureCombo.SelectedItem ?? EmbeddedReplay.Fixtures[0]);
 
     public MainWindow()
     {
@@ -62,6 +63,8 @@ public partial class MainWindow : Window
         Closing += OnClosing;
         StateChanged += (_, _) => { if (WindowState == WindowState.Minimized) MinimizeToTray(); };
         activePlan = ActiveFlightPlanStore.Load();
+        FixtureCombo.ItemsSource = EmbeddedReplay.Fixtures;
+        FixtureCombo.SelectedIndex = 0;
         SetAdvanced(false);
         ResetPreview();
         try { programMonitor = new ProgramMonitor(LogDirectory, status => ProgramHealthText.Text = status); }
@@ -132,13 +135,9 @@ public partial class MainWindow : Window
         StatusText.Text = "Replaying recorded simulator data. You can minimize to the tray; the replay will continue.";
         try
         {
-            using var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("delayed-flight.jsonl")
-                ?? throw new InvalidDataException("The bundled replay is missing.");
-            using var reader = new StreamReader(stream);
             var samples = new List<Telemetry>();
-            while (await reader.ReadLineAsync(lifetime.Token) is { } line)
-                if (!string.IsNullOrWhiteSpace(line)) samples.Add(JsonSerializer.Deserialize<Telemetry>(line,
-                    new JsonSerializerOptions(JsonSerializerDefaults.Web)) ?? throw new InvalidDataException("Invalid replay sample."));
+            await foreach (var sample in new EmbeddedReplay(SelectedFixture).ReadAsync(lifetime.Token))
+                samples.Add(sample);
             ReplayProgress.Maximum = samples.Count;
             foreach (var sample in samples)
             {
@@ -152,8 +151,9 @@ public partial class MainWindow : Window
                 ReplayProgress.Value++;
                 RefreshRotation();
             }
-            StatusText.Text = "Replay complete. A602 inherits 30 minutes of delay; A603 recovers to 5 minutes. Nothing is sent to a server.";
-            if (!IsVisible) tray.ShowBalloonTip(4000, "Alpha 6 OPS — Replay complete", "A602 departure +30 min. A603 departure +5 min.", Forms.ToolTipIcon.Info);
+            var summary = string.Join(" ", Projection.Skip(1).Select(l => $"{l.Id} {(l.DepartureDelayMinutes == 0 ? "on time" : $"{l.DepartureDelayMinutes:+0;-0} min")}."));
+            StatusText.Text = $"Replay complete. {summary} Nothing is sent to a server.";
+            if (!IsVisible) tray.ShowBalloonTip(4000, "Alpha 6 OPS — Replay complete", summary, Forms.ToolTipIcon.Info);
         }
         catch (OperationCanceledException) when (lifetime.IsCancellationRequested) { }
         catch (Exception error) when (error is IOException or JsonException or ArgumentException)
@@ -206,6 +206,19 @@ public partial class MainWindow : Window
     private void Tray_Click(object sender, RoutedEventArgs e) => MinimizeToTray();
     private void Exit_Click(object sender, RoutedEventArgs e) => ExitApplication();
     private void Fleet_Click(object sender, RoutedEventArgs e) => new FleetWindow { Owner = this }.ShowDialog();
+    private async void Timeline_Click(object sender, RoutedEventArgs e)
+    {
+        var timeline = await TimelineBuilder.BuildAsync(new EmbeddedReplay(SelectedFixture));
+        new TimelineWindow(timeline) { Owner = this }.ShowDialog();
+    }
+    private async void Debrief_Click(object sender, RoutedEventArgs e)
+    {
+        var debriefSession = new FlightSession(Demo.Rotation());
+        var events = new List<FlightEvent>();
+        await foreach (var sample in new EmbeddedReplay(SelectedFixture).ReadAsync())
+            if (debriefSession.Observe(sample) is { } ev) events.Add(ev);
+        new DebriefWindow(debriefSession.Phase, events, DebriefSummary.Segments(events), RotationPlanner.Project(debriefSession.Rotation)) { Owner = this }.ShowDialog();
+    }
     private void SetFlight_Click(object sender, RoutedEventArgs e)
     {
         var dialog = new ActiveFlightWindow(activePlan) { Owner = this };
