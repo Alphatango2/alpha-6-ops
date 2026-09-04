@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
+import { useFlightTimeline, FlightTimelineScrubber } from './Timeline';
 import './style.css';
 
 type Leg = { id: string; origin: string; destination: string; estimatedOut: string; estimatedIn: string; departureDelayMinutes: number; arrivalDelayMinutes: number; completed: boolean };
@@ -21,6 +22,7 @@ function App() {
   }
   useEffect(() => { void load(false); }, []);
   const next = data?.legs.find(leg => !leg.completed);
+  const timeline = useFlightTimeline();
   return <main>
     <header><div className="brand">ALPHA 6 <strong>OPS</strong><small>ALPHA 6 DESIGNS</small></div><span className="tag">LOCAL DEMO · 02 SEP 2026</span></header>
     <section className="intro"><p className="eyebrow">YOUR AIRLINE, IN MOTION</p><h1>You fly the airplane.<br/><span>We'll run the airline.</span></h1><p>One aircraft. One connected day. Every minute matters.</p></section>
@@ -33,6 +35,11 @@ function App() {
     </section>
     {view !== 'Simple' && <section className="panel"><h2>{view === 'OCC' ? 'Aircraft rotation board' : 'Today’s rotation'}</h2><div className="table"><table><thead><tr><th>Flight</th><th>Route</th><th>Out UTC</th><th>In UTC</th><th>Dep / arr delay</th><th>Status</th></tr></thead><tbody>{data?.legs.map(l => <tr key={l.id}><td>{l.id}</td><td>{l.origin} → {l.destination}</td><td>{utc(l.estimatedOut)}</td><td>{utc(l.estimatedIn)}</td><td>{l.departureDelayMinutes} / {l.arrivalDelayMinutes} min</td><td>{l.completed ? 'Actual' : 'Projected'}</td></tr>)}</tbody></table></div><p className="muted">35-minute minimum turn · planned block duration · no departures before schedule</p></section>}
     {view === 'OCC' && <aside>OCC foundation: aircraft timing only. Crew legality, passenger connections, maintenance and disruption actions are planned.</aside>}
+    <section className="panel"><div className="row"><div><p className="eyebrow">FLIGHT REPLAY</p><h2>Timeline scrubber</h2></div>
+      {!timeline.timeline && <button className="primary" disabled={timeline.busy} onClick={() => void timeline.load()}>{timeline.busy ? 'Loading…' : 'Load delayed-flight timeline'}</button>}</div>
+      {timeline.error && <p role="alert">{timeline.error}</p>}
+      {timeline.timeline && <FlightTimelineScrubber timeline={timeline.timeline} />}
+    </section>
     <footer>ALPHA 6 OPS / FOUNDATION 0.1 · ALL TIMES UTC</footer>
   </main>;
 }

@@ -20,4 +20,20 @@ app.MapGet("/api/tenants/{tenantId}/replay", async (string tenantId, Cancellatio
     return Results.Ok(new { tenantId, aircraftId = "N600A6", phase = session.Phase.ToString(), events,
         legs = RotationPlanner.Project(session.Rotation) });
 });
+// Read-only: one precomputed timeline per request. Snapshots are for client-side scrubbing,
+// never for re-driving the phase detector — it stays a forward-only, single-pass state machine.
+app.MapGet("/api/tenants/{tenantId}/replay/timeline", async (string tenantId, CancellationToken cancellationToken) =>
+{
+    if (tenantId != "alpha6") return Results.NotFound();
+    var path = Path.GetFullPath(builder.Configuration["ReplayPath"] ?? "../../samples/delayed-flight.jsonl", app.Environment.ContentRootPath);
+    var timeline = await TimelineBuilder.BuildAsync(new JsonReplay(path), cancellationToken);
+    return Results.Ok(new
+    {
+        tenantId,
+        aircraftId = "N600A6",
+        phase = timeline.FinalPhase.ToString(),
+        snapshots = timeline.Snapshots.Select(s => new { s.Index, s.Sample, phase = s.Phase.ToString(), s.EventsFiredCount }),
+        events = timeline.Events.Select(e => new { phase = e.Phase.ToString(), e.At })
+    });
+});
 app.Run();

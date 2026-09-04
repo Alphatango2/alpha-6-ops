@@ -44,6 +44,14 @@ Reject(() => RotationPlanner.Project(rotation with { Legs = [rotation.Legs[0], r
 Reject(() => RotationPlanner.Project(rotation with { Legs = [rotation.Legs[0], rotation.Legs[1] with { ActualOut = rotation.Legs[0].ScheduledIn }] }), "reject impossible actual turnaround");
 var early = RotationPlanner.Project(rotation with { Legs = [rotation.Legs[0] with { ActualOut = rotation.Legs[0].ScheduledOut.AddMinutes(-5), ActualIn = rotation.Legs[0].ScheduledIn.AddMinutes(-10) }, rotation.Legs[1]] });
 Check(early[0].ArrivalDelayMinutes == -10 && early[1].DepartureDelayMinutes == 0, "early arrival does not pull next departure before schedule");
+var timeline = await TimelineBuilder.BuildAsync(new JsonReplay("samples/delayed-flight.jsonl"));
+Check(timeline.Snapshots.Count == 12, "timeline has one snapshot per telemetry sample");
+Check(timeline.Snapshots[^1].Phase == FlightPhase.Complete, "timeline final snapshot matches terminal phase");
+Check(timeline.Events.Select(e => e.Phase).SequenceEqual(new[] { FlightPhase.TaxiOut, FlightPhase.Airborne, FlightPhase.TaxiIn, FlightPhase.Complete }), "timeline events match replay milestones");
+Check(timeline.Snapshots.Select(s => s.EventsFiredCount).SequenceEqual(timeline.Snapshots.Select(s => s.EventsFiredCount).OrderBy(c => c)), "events-fired count is monotonic across the timeline");
+Check(timeline.Snapshots[^1].EventsFiredCount == timeline.Events.Count, "final events-fired count matches total events emitted");
+var reread = new[] { 8, 3, 8 }.Select(i => timeline.Snapshots[i]).ToArray();
+Check(reread[0] == reread[2], "scrubbing to the same index out of order yields an identical snapshot");
 var logDirectory = Path.Combine("work", "log-tests", Guid.NewGuid().ToString("N"));
 using (var journal = new TestFlightLog(logDirectory, "test", "replay"))
 {
