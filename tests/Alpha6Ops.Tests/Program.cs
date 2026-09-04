@@ -59,6 +59,14 @@ Check(timeline.Snapshots.Select(s => s.EventsFiredCount).SequenceEqual(timeline.
 Check(timeline.Snapshots[^1].EventsFiredCount == timeline.Events.Count, "final events-fired count matches total events emitted");
 var reread = new[] { 8, 3, 8 }.Select(i => timeline.Snapshots[i]).ToArray();
 Check(reread[0] == reread[2], "scrubbing to the same index out of order yields an identical snapshot");
+var recorder = new TimelineRecorder(new PhaseDetector());
+var recorderEvents = new List<FlightEvent>();
+await foreach (var sample in new JsonReplay("samples/delayed-flight.jsonl").ReadAsync())
+    if (recorder.Observe(sample) is { } e) recorderEvents.Add(e);
+Check(recorderEvents.SequenceEqual(recorder.Events), "recorder's returned events match its accumulated event list");
+var recorderTimeline = recorder.ToTimeline();
+Check(recorderTimeline.Snapshots.SequenceEqual(timeline.Snapshots) && recorderTimeline.Events.SequenceEqual(timeline.Events) && recorderTimeline.FinalPhase == timeline.FinalPhase,
+    "a live-driven recorder produces the exact same timeline as the batch builder for the same samples");
 var logDirectory = Path.Combine("work", "log-tests", Guid.NewGuid().ToString("N"));
 using (var journal = new TestFlightLog(logDirectory, "test", "replay"))
 {

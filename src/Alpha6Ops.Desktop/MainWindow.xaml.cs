@@ -25,7 +25,7 @@ public partial class MainWindow : Window
     private bool running;
     private bool trayHintShown;
     private CancellationTokenSource? liveCancellation;
-    private PhaseDetector? liveDetector;
+    private TimelineRecorder? liveRecorder;
     private DateTimeOffset? liveLast;
     private string? liveAircraft;
     private bool liveInvalid;
@@ -226,7 +226,27 @@ public partial class MainWindow : Window
         activePlan = dialog.Plan;
         ActiveFlightPlanStore.Save(activePlan);
         actualDeparture = actualArrival = null;
-        RefreshLiveTracker(liveAircraft, liveLast, liveDetector?.Phase, "Assignment ready. Connect to MSFS 2024 to begin tracking.");
+        RefreshLiveTracker(liveAircraft, liveLast, liveRecorder?.Phase, "Assignment ready. Connect to MSFS 2024 to begin tracking.");
+    }
+    private LegProjection? LiveLegProjection()
+    {
+        if (activePlan is null) return null;
+        var plan = activePlan;
+        var estimatedOut = actualDeparture ?? plan.PlannedDepartureUtc;
+        var estimatedIn = actualArrival ?? (actualDeparture is { } departed ? departed + plan.PlannedDuration : plan.PlannedArrivalUtc);
+        return new LegProjection(plan.FlightNumber, plan.Origin, plan.Destination, plan.PlannedDepartureUtc, plan.PlannedArrivalUtc,
+            estimatedOut, estimatedIn, (estimatedOut - plan.PlannedDepartureUtc).TotalMinutes, (estimatedIn - plan.PlannedArrivalUtc).TotalMinutes, actualArrival is not null);
+    }
+    private void LiveTimeline_Click(object sender, RoutedEventArgs e)
+    {
+        if (liveRecorder is null) return;
+        new TimelineWindow(liveRecorder.ToTimeline()) { Owner = this }.ShowDialog();
+    }
+    private void LiveDebrief_Click(object sender, RoutedEventArgs e)
+    {
+        if (liveRecorder is null) return;
+        var legs = LiveLegProjection() is { } leg ? new[] { leg } : [];
+        new DebriefWindow(liveRecorder.Phase, liveRecorder.Events, DebriefSummary.Segments(liveRecorder.Events), legs) { Owner = this }.ShowDialog();
     }
     private void Logs_Click(object sender, RoutedEventArgs e)
     {
@@ -239,8 +259,9 @@ public partial class MainWindow : Window
     {
         if (liveCancellation is not null || running) return;
         liveCancellation = CancellationTokenSource.CreateLinkedTokenSource(lifetime.Token);
-        liveDetector = null; liveLast = null; liveAircraft = null; liveInvalid = false;
+        liveRecorder = null; liveLast = null; liveAircraft = null; liveInvalid = false;
         actualDeparture = actualArrival = null;
+        LiveTimelineButton.IsEnabled = LiveDebriefButton.IsEnabled = false;
         ConnectButton.IsEnabled = ReplayButton.IsEnabled = ResetButton.IsEnabled = false;
 
         ConnectionText.Text = "Connecting to the local simulator…";
@@ -286,15 +307,15 @@ public partial class MainWindow : Window
             RecordLog("monitor_invalidated", s.At, new { reason = "aircraft_changed_or_clock_reversed", previousSimulatorUtc = liveLast, previousAircraft = liveAircraft });
         }
         liveLast = s.At; liveAircraft = reading.Aircraft;
-        if (liveInvalid) { ConnectionText.Text = "Aircraft or simulator clock changed. Exit OPS and reopen it at the gate to begin a new monitor session."; RefreshLiveTracker(reading.Aircraft, s.At, liveDetector?.Phase, "Tracking stopped because the aircraft or simulator clock changed."); return; }
-        if (liveDetector is null)
+        if (liveInvalid) { ConnectionText.Text = "Aircraft or simulator clock changed. Exit OPS and reopen it at the gate to begin a new monitor session."; RefreshLiveTracker(reading.Aircraft, s.At, liveRecorder?.Phase, "Tracking stopped because the aircraft or simulator clock changed."); return; }
+        if (liveRecorder is null)
         {
             if (!s.OnGround || s.GroundSpeedKnots >= 0.5 || !s.ParkingBrake || s.Paused || s.Slewing)
             { ConnectionText.Text = "Connected. Waiting for a stationary aircraft with parking brake set and simulation unpaused."; var observed = !s.OnGround ? FlightPhase.Airborne : s.GroundSpeedKnots >= 1 ? FlightPhase.TaxiOut : FlightPhase.AtGate; RefreshLiveTracker(reading.Aircraft, s.At, observed, s.Paused ? "Simulator paused" : s.Slewing ? "Slew mode" : !s.OnGround ? "Airborne • departure time unavailable" : "Taxiing • monitor awaiting a gate state"); return; }
-            liveDetector = new PhaseDetector();
+            liveRecorder = new TimelineRecorder(new PhaseDetector());
             RecordLog("monitor_armed", s.At, new { aircraft = reading.Aircraft });
         }
-        if (liveDetector.Observe(s) is { } milestone)
+        if (liveRecorder.Observe(s) is { } milestone)
         {
             milestones.Add($"LIVE {milestone.At.UtcDateTime:HH:mm:ss}Z   {PhaseLabel(milestone.Phase)}");
             RecordLog("flight_milestone", milestone.At, new { phase = milestone.Phase.ToString(), label = PhaseLabel(milestone.Phase) });
@@ -302,9 +323,10 @@ public partial class MainWindow : Window
             if (milestone.Phase == FlightPhase.Complete) actualArrival = milestone.At;
             if (milestone.Phase == FlightPhase.Complete) SaveFlightLog();
         }
-        ConnectionText.Text = $"Connected • {PhaseLabel(liveDetector.Phase)}. Active flight tracking uses the assignment shown below.";
-        tray.Text = "Alpha 6 OPS — Live " + liveDetector.Phase;
-        RefreshLiveTracker(reading.Aircraft, s.At, liveDetector.Phase, $"Live telemetry • {s.GroundSpeedKnots:0.0} kt • Brake {(s.ParkingBrake ? "set" : "released")}");
+        LiveTimelineButton.IsEnabled = LiveDebriefButton.IsEnabled = true;
+        ConnectionText.Text = $"Connected • {PhaseLabel(liveRecorder.Phase)}. Active flight tracking uses the assignment shown below.";
+        tray.Text = "Alpha 6 OPS — Live " + liveRecorder.Phase;
+        RefreshLiveTracker(reading.Aircraft, s.At, liveRecorder.Phase, $"Live telemetry • {s.GroundSpeedKnots:0.0} kt • Brake {(s.ParkingBrake ? "set" : "released")}");
     }
     private void StartLog()
     {
