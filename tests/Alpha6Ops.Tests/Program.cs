@@ -11,6 +11,13 @@ var events = new List<FlightEvent>();
 await foreach (var sample in new JsonReplay("samples/delayed-flight.jsonl").ReadAsync())
     if (session.Observe(sample) is { } e) events.Add(e);
 Check(events.Select(e => e.Phase).SequenceEqual(new[] { FlightPhase.TaxiOut, FlightPhase.Airborne, FlightPhase.TaxiIn, FlightPhase.Complete }), "replay milestones");
+var segments = DebriefSummary.Segments(events);
+Check(segments.Select(s => s.Phase).SequenceEqual(new[] { FlightPhase.TaxiOut, FlightPhase.Airborne, FlightPhase.TaxiIn }), "debrief segments cover confirmed phases only");
+Check(segments[0].EndedAt - segments[0].StartedAt == TimeSpan.FromMinutes(15), "taxi-out segment duration");
+Check(segments[1].EndedAt - segments[1].StartedAt == TimeSpan.FromMinutes(50), "airborne segment duration");
+Check(segments[2].EndedAt - segments[2].StartedAt == TimeSpan.FromMinutes(15), "taxi-in segment duration");
+Check(segments[0].StartedAt == events[0].At && segments[^1].EndedAt == events[^1].At, "segments span exactly from first to last event");
+Check(DebriefSummary.Segments(events.Take(1).ToList()).Count == 0, "fewer than two events yields no segments");
 var projected = RotationPlanner.Project(session.Rotation);
 Check(projected[0].DepartureDelayMinutes == 25 && projected[0].ArrivalDelayMinutes == 30, "actual milestone timing");
 Check(projected[1].DepartureDelayMinutes == 30 && projected[2].DepartureDelayMinutes == 5, "delay propagation and slack recovery");

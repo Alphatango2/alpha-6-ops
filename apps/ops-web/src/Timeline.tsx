@@ -6,14 +6,15 @@ type TimelineEvent = { phase: string; at: string };
 type Timeline = { tenantId: string; aircraftId: string; phase: string; snapshots: Snapshot[]; events: TimelineEvent[] };
 const utc = (at: string) => new Date(at).toISOString().slice(11, 19) + 'Z';
 
-export function useFlightTimeline() {
+export function useFlightTimeline(fixture: string) {
   const [timeline, setTimeline] = useState<Timeline | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
+  useEffect(() => { setTimeline(null); setError(''); }, [fixture]);
   async function load() {
     setBusy(true); setError('');
     try {
-      const response = await fetch('/api/tenants/alpha6/replay/timeline');
+      const response = await fetch(`/api/tenants/alpha6/replay/timeline?fixture=${encodeURIComponent(fixture)}`);
       if (!response.ok) throw new Error(`API returned ${response.status}`);
       setTimeline(await response.json());
     } catch { setError('Operations API unavailable. Start the local API, then try again.'); }
