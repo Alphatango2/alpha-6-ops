@@ -50,6 +50,20 @@ public record AircraftRotation(string TenantId, string AircraftId, int MinimumTu
 
 public static class RotationPlanner
 {
+    // The single place a confirmed milestone is allowed to touch a rotation's actuals, so a live
+    // SimConnect flight and a replayed one update the same way and Project never diverges between them.
+    public static AircraftRotation ApplyMilestone(AircraftRotation rotation, FlightEvent milestone)
+    {
+        var legs = rotation.Legs.ToArray();
+        legs[0] = milestone.Phase switch
+        {
+            FlightPhase.TaxiOut => legs[0] with { ActualOut = milestone.At },
+            FlightPhase.Complete => legs[0] with { ActualIn = milestone.At },
+            _ => legs[0]
+        };
+        return rotation with { Legs = legs };
+    }
+
     public static IReadOnlyList<LegProjection> Project(AircraftRotation rotation)
     {
         if (rotation.MinimumTurnMinutes < 0 || string.IsNullOrWhiteSpace(rotation.TenantId))

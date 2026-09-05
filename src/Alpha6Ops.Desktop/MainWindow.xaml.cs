@@ -36,8 +36,10 @@ public partial class MainWindow : Window
     private ActiveFlightPlan? activePlan;
     private readonly UserPreferences? preferences;
     private readonly FlightHistoryDatabase? flightHistory;
-    private DateTimeOffset? actualDeparture;
-    private DateTimeOffset? actualArrival;
+    // Single-leg rotation for the live-tracked assignment. Actuals are applied through the same
+    // RotationPlanner.ApplyMilestone/Project path the fixture-replay session uses, so a live flight
+    // and a replayed one compute delay/ETA identically instead of the tracker hand-rolling its own math.
+    private AircraftRotation? liveRotation;
     private static string LogDirectory => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Alpha6Designs", "Alpha6OPS", "TestLogs");
     internal bool IsRunning => running;
     internal bool TrayVisible => tray.Visible;
@@ -268,17 +270,14 @@ public partial class MainWindow : Window
         if (dialog.ShowDialog() != true || dialog.Plan is null) return;
         activePlan = dialog.Plan;
         ActiveFlightPlanStore.Save(activePlan);
-        actualDeparture = actualArrival = null;
+        liveRotation = null; // rebuilt from the new plan on the next live sample
         RefreshLiveTracker(liveAircraft, liveLast, liveRecorder?.Phase, "Assignment ready. Connect to MSFS 2024 to begin tracking.");
     }
-    private LegProjection? LiveLegProjection()
+    private static AircraftRotation? BuildLiveRotation(ActiveFlightPlan? plan, string? simulatorAircraft)
     {
-        if (activePlan is null) return null;
-        var plan = activePlan;
-        var estimatedOut = actualDeparture ?? plan.PlannedDepartureUtc;
-        var estimatedIn = actualArrival ?? (actualDeparture is { } departed ? departed + plan.PlannedDuration : plan.PlannedArrivalUtc);
-        return new LegProjection(plan.FlightNumber, plan.Origin, plan.Destination, plan.PlannedDepartureUtc, plan.PlannedArrivalUtc,
-            estimatedOut, estimatedIn, (estimatedOut - plan.PlannedDepartureUtc).TotalMinutes, (estimatedIn - plan.PlannedArrivalUtc).TotalMinutes, actualArrival is not null);
+        if (plan is null) return null;
+        var aircraft = string.IsNullOrWhiteSpace(plan.Registration) ? simulatorAircraft ?? "UNKNOWN" : plan.Registration;
+        return new AircraftRotation("alpha6", aircraft, 0, [new(plan.FlightNumber, plan.Origin, plan.Destination, plan.PlannedDepartureUtc, plan.PlannedArrivalUtc)]);
     }
     private void LiveTimeline_Click(object sender, RoutedEventArgs e)
     {
@@ -288,7 +287,7 @@ public partial class MainWindow : Window
     private void LiveDebrief_Click(object sender, RoutedEventArgs e)
     {
         if (liveRecorder is null) return;
-        var legs = LiveLegProjection() is { } leg ? new[] { leg } : [];
+        var legs = liveRotation is not null ? RotationPlanner.Project(liveRotation) : [];
         new DebriefWindow(liveRecorder.Phase, liveRecorder.Events, DebriefSummary.Segments(liveRecorder.Events), legs) { Owner = this }.ShowDialog();
     }
     private void Logs_Click(object sender, RoutedEventArgs e)
@@ -308,7 +307,7 @@ public partial class MainWindow : Window
         if (liveCancellation is not null || running) return;
         liveCancellation = CancellationTokenSource.CreateLinkedTokenSource(lifetime.Token);
         liveRecorder = null; liveLast = null; liveAircraft = null; liveInvalid = false;
-        actualDeparture = actualArrival = null;
+        liveRotation = null;
         LiveTimelineButton.IsEnabled = LiveDebriefButton.IsEnabled = false;
         ConnectButton.IsEnabled = ReplayButton.IsEnabled = ResetButton.IsEnabled = false;
 
@@ -361,14 +360,14 @@ public partial class MainWindow : Window
             if (!s.OnGround || s.GroundSpeedKnots >= 0.5 || !s.ParkingBrake || s.Paused || s.Slewing)
             { ConnectionText.Text = "Connected. Waiting for a stationary aircraft with parking brake set and simulation unpaused."; var observed = !s.OnGround ? FlightPhase.Airborne : s.GroundSpeedKnots >= 1 ? FlightPhase.TaxiOut : FlightPhase.AtGate; RefreshLiveTracker(reading.Aircraft, s.At, observed, s.Paused ? "Simulator paused" : s.Slewing ? "Slew mode" : !s.OnGround ? "Airborne • departure time unavailable" : "Taxiing • monitor awaiting a gate state"); return; }
             liveRecorder = new TimelineRecorder(new PhaseDetector());
+            liveRotation = BuildLiveRotation(activePlan, reading.Aircraft);
             RecordLog("monitor_armed", s.At, new { aircraft = reading.Aircraft });
         }
         if (liveRecorder.Observe(s) is { } milestone)
         {
             milestones.Add($"LIVE {milestone.At.UtcDateTime:HH:mm:ss}Z   {PhaseLabel(milestone.Phase)}");
             RecordLog("flight_milestone", milestone.At, new { phase = milestone.Phase.ToString(), label = PhaseLabel(milestone.Phase) });
-            if (milestone.Phase == FlightPhase.TaxiOut) actualDeparture = milestone.At;
-            if (milestone.Phase == FlightPhase.Complete) actualArrival = milestone.At;
+            if (liveRotation is not null) liveRotation = RotationPlanner.ApplyMilestone(liveRotation, milestone);
             if (milestone.Phase == FlightPhase.Complete) SaveFlightLog();
         }
         LiveTimelineButton.IsEnabled = LiveDebriefButton.IsEnabled = true;
@@ -441,29 +440,30 @@ public partial class MainWindow : Window
             DepartureText.Text = "Add the flight number, route and planned UTC times to calculate progress and ETA.";
             DepartedValueText.Text = ArrivalValueText.Text = ElapsedValueText.Text = "—";
             PhaseText.Text = phase is null ? "MONITORING" : PhaseLabel(phase.Value).ToUpperInvariant();
-            ReplayProgress.Maximum = 100; ReplayProgress.Value = PhaseProgress(phase, null, null);
+            ReplayProgress.Maximum = 100; ReplayProgress.Value = PhaseProgress(phase, null, null, null);
             StatusText.Text = status;
             return;
         }
         var plan = activePlan;
+        var leg = liveRotation?.Legs[0];
+        var projection = liveRotation is not null ? RotationPlanner.Project(liveRotation)[0] : null;
         AircraftText.Text = string.Join(" • ", new[] { simulatorAircraft, string.IsNullOrWhiteSpace(plan.Registration) ? null : plan.Registration }.Where(x => !string.IsNullOrWhiteSpace(x)));
         RouteText.Text = $"{plan.Origin} → {plan.Destination}";
         DepartureText.Text = $"{plan.FlightNumber}  •  PLANNED {plan.PlannedDepartureUtc.UtcDateTime:HH:mm}Z  •  {plan.PlannedDuration.TotalHours:0.#} HR BLOCK";
-        var eta = actualDeparture is { } departed ? departed + plan.PlannedDuration : plan.PlannedArrivalUtc;
-        DepartedValueText.Text = actualDeparture?.UtcDateTime.ToString("HH:mm:ss'Z'") ?? "—";
-        ArrivalValueText.Text = actualArrival?.UtcDateTime.ToString("HH:mm:ss'Z'") ?? eta.UtcDateTime.ToString("HH:mm'Z'");
-        ElapsedValueText.Text = actualDeparture is { } start && simulatorTime is { } now && now >= start ? FormatDuration((actualArrival ?? now) - start) : "—";
+        DepartedValueText.Text = leg?.ActualOut is { } departed ? departed.UtcDateTime.ToString("HH:mm:ss'Z'") : "—";
+        ArrivalValueText.Text = leg?.ActualIn is { } arrived ? arrived.UtcDateTime.ToString("HH:mm:ss'Z'") : (projection?.EstimatedIn ?? plan.PlannedArrivalUtc).UtcDateTime.ToString("HH:mm'Z'");
+        ElapsedValueText.Text = leg?.ActualOut is { } start && simulatorTime is { } now && now >= start ? FormatDuration((leg.ActualIn ?? now) - start) : "—";
         PhaseText.Text = phase is null ? "MONITORING" : PhaseLabel(phase.Value).ToUpperInvariant();
         ReplayProgress.Maximum = 100;
-        ReplayProgress.Value = PhaseProgress(phase, simulatorTime, eta);
+        ReplayProgress.Value = PhaseProgress(phase, simulatorTime, leg?.ActualOut, projection?.EstimatedIn);
         StatusText.Text = status;
     }
 
-    private double PhaseProgress(FlightPhase? phase, DateTimeOffset? now, DateTimeOffset? eta) => phase switch
+    private double PhaseProgress(FlightPhase? phase, DateTimeOffset? now, DateTimeOffset? start, DateTimeOffset? eta) => phase switch
     {
         FlightPhase.AtGate => 0,
         FlightPhase.TaxiOut => 8,
-        FlightPhase.Airborne when actualDeparture is { } start && now is { } current && eta > start => Math.Clamp(10 + 82 * (current - start).TotalSeconds / (eta.Value - start).TotalSeconds, 10, 92),
+        FlightPhase.Airborne when start is { } departed && now is { } current && eta > departed => Math.Clamp(10 + 82 * (current - departed).TotalSeconds / (eta.Value - departed).TotalSeconds, 10, 92),
         FlightPhase.Airborne => 45,
         FlightPhase.TaxiIn => 95,
         FlightPhase.Complete => 100,
