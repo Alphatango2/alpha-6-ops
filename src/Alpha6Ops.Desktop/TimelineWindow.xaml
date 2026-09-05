@@ -1,0 +1,21 @@
+<Window x:Class="Alpha6Ops.Desktop.TimelineWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Alpha 6 OPS — Timeline scrubber" Width="720" Height="640" ResizeMode="CanResize" WindowStartupLocation="CenterOwner" Background="#10120F" Foreground="#F0F0EB">
+  <StackPanel Margin="28">
+    <TextBlock Text="Timeline scrubber" FontSize="26" FontWeight="Bold"/>
+    <TextBlock x:Name="SampleText" Foreground="#BFC5B4" Margin="0,6,0,18"/>
+    <Slider x:Name="ScrubSlider" Minimum="0" Maximum="0" TickFrequency="1" IsSnapToTickEnabled="True" ValueChanged="Scrub_Changed" AutomationProperties.Name="Flight timeline position"/>
+    <Grid Margin="0,20,0,0"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+      <StackPanel><TextBlock Text="PHASE" Foreground="{StaticResource Yellow}" FontSize="11" FontWeight="Bold"/><TextBlock x:Name="PhaseValueText" FontSize="28" FontWeight="Bold"/></StackPanel>
+      <TextBlock x:Name="TimeTagText" Grid.Column="1" VerticalAlignment="Bottom" Foreground="#A9AD9F" FontSize="12"/>
+    </Grid>
+    <Grid Margin="0,20,0,0"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition/><ColumnDefinition/><ColumnDefinition/></Grid.ColumnDefinitions>
+      <StackPanel Grid.Column="0"><TextBlock Text="GROUND SPEED" Foreground="#8E9584" FontSize="10"/><TextBlock x:Name="SpeedText" FontWeight="SemiBold" FontSize="15"/></StackPanel>
+      <StackPanel Grid.Column="1"><TextBlock Text="ON GROUND" Foreground="#8E9584" FontSize="10"/><TextBlock x:Name="GroundText" FontWeight="SemiBold" FontSize="15"/></StackPanel>
+      <StackPanel Grid.Column="2"><TextBlock Text="PARKING BRAKE" Foreground="#8E9584" FontSize="10"/><TextBlock x:Name="BrakeText" FontWeight="SemiBold" FontSize="15"/></StackPanel>
+      <StackPanel Grid.Column="3"><TextBlock Text="ENGINES" Foreground="#8E9584" FontSize="10"/><TextBlock x:Name="EnginesText" FontWeight="SemiBold" FontSize="15"/></StackPanel>
+    </Grid>
+    <TextBlock Text="Events fired so far" FontWeight="SemiBold" FontSize="18" Margin="0,24,0,8"/>
+    <ItemsControl x:Name="EventsList"><ItemsControl.ItemTemplate><DataTemplate><TextBlock Text="{Binding}" Margin="0,4" Foreground="#C0C5B5"/></DataTemplate></ItemsControl.ItemTemplate></ItemsControl>
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,24,0,0"><Button Content="Close" Click="Close_Click"/></StackPanel>
+  </StackPanel>
+</Window>

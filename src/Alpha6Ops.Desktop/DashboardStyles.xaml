@@ -1,0 +1,199 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <SolidColorBrush x:Key="OpsYellow" Color="#FFDA00" />
+  <SolidColorBrush x:Key="OpsMuted" Color="#A3B0BE" />
+  <SolidColorBrush x:Key="OpsLine" Color="#293A46" />
+  <Style x:Key="OpsPanel" TargetType="Border">
+    <Setter Property="Background">
+      <Setter.Value>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+          <GradientStop Color="#0D171F" />
+          <GradientStop Color="#070D11" Offset="1" />
+        </LinearGradientBrush>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="BorderBrush" Value="{StaticResource OpsLine}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="CornerRadius" Value="5" />
+    <Setter Property="SnapsToDevicePixels" Value="True" />
+  </Style>
+  <Style x:Key="OpsTitle" TargetType="TextBlock">
+    <Setter Property="FontFamily" Value="Bahnschrift SemiCondensed" />
+    <Setter Property="FontSize" Value="17" />
+    <Setter Property="Foreground" Value="#F4F6FA" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+  </Style>
+  <Style x:Key="OpsCaption" TargetType="TextBlock">
+    <Setter Property="FontFamily" Value="Bahnschrift SemiCondensed" />
+    <Setter Property="FontSize" Value="11" />
+    <Setter Property="Foreground" Value="{StaticResource OpsMuted}" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+  </Style>
+  <Style x:Key="OpsButton" TargetType="Button">
+    <Setter Property="Background" Value="#15212B" />
+    <Setter Property="Foreground" Value="#EEF2F6" />
+    <Setter Property="BorderBrush" Value="#415362" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="FontFamily" Value="Bahnschrift SemiCondensed" />
+    <Setter Property="FontSize" Value="13" />
+    <Setter Property="Padding" Value="15,10" />
+    <Setter Property="Margin" Value="0" />
+    <Setter Property="Cursor" Value="Hand" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="Button">
+          <Border x:Name="Chrome" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="4" Padding="{TemplateBinding Padding}">
+            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="Center" />
+          </Border>
+          <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+              <Setter TargetName="Chrome" Property="BorderBrush" Value="#FFDA00" />
+            </Trigger>
+            <Trigger Property="IsKeyboardFocused" Value="True">
+              <Setter TargetName="Chrome" Property="BorderBrush" Value="#FFFFFF" />
+              <Setter TargetName="Chrome" Property="BorderThickness" Value="2" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+              <Setter TargetName="Chrome" Property="Opacity" Value="0.75" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+              <Setter TargetName="Chrome" Property="Opacity" Value="0.4" />
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+  <Style x:Key="OpsPrimary" TargetType="Button" BasedOn="{StaticResource OpsButton}">
+    <Setter Property="Background" Value="{StaticResource OpsYellow}" />
+    <Setter Property="Foreground" Value="#090D10" />
+    <Setter Property="BorderBrush" Value="#FFE653" />
+    <Setter Property="FontWeight" Value="SemiBold" />
+  </Style>
+  <Style x:Key="OpsLink" TargetType="Button" BasedOn="{StaticResource OpsButton}">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="Foreground" Value="#42ACFF" />
+    <Setter Property="Padding" Value="6,4" />
+    <Setter Property="FontSize" Value="11" />
+  </Style>
+  <Style x:Key="OpsNav" TargetType="Button" BasedOn="{StaticResource OpsButton}">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="Foreground" Value="#AFBECC" />
+    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+    <Setter Property="Padding" Value="15,12" />
+    <Setter Property="Margin" Value="0,0,0,3" />
+  </Style>
+  <Style x:Key="OpsTile" TargetType="Button" BasedOn="{StaticResource OpsButton}">
+    <Setter Property="Padding" Value="0" />
+    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+    <Setter Property="BorderBrush" Value="#354956" />
+    <Setter Property="Margin" Value="0,0,10,10" />
+  </Style>
+  <Style x:Key="OpsInput" TargetType="TextBox">
+    <Setter Property="Background" Value="#0B141C" />
+    <Setter Property="Foreground" Value="#F4F6FA" />
+    <Setter Property="CaretBrush" Value="#FFDA00" />
+    <Setter Property="BorderBrush" Value="#415362" />
+    <Setter Property="Padding" Value="10,8" />
+    <Setter Property="FontSize" Value="13" />
+  </Style>
+  <Style x:Key="OpsGrid" TargetType="DataGrid">
+    <Setter Property="AutoGenerateColumns" Value="False" />
+    <Setter Property="IsReadOnly" Value="True" />
+    <Setter Property="CanUserAddRows" Value="False" />
+    <Setter Property="CanUserDeleteRows" Value="False" />
+    <Setter Property="CanUserResizeRows" Value="False" />
+    <Setter Property="HeadersVisibility" Value="Column" />
+    <Setter Property="GridLinesVisibility" Value="Horizontal" />
+    <Setter Property="HorizontalGridLinesBrush" Value="#21313C" />
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="Foreground" Value="#E9EFF5" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="RowBackground" Value="#0B141A" />
+    <Setter Property="AlternatingRowBackground" Value="#111D25" />
+    <Setter Property="RowHeight" Value="39" />
+    <Setter Property="ColumnHeaderHeight" Value="32" />
+    <Setter Property="SelectionMode" Value="Single" />
+    <Setter Property="SelectionUnit" Value="FullRow" />
+    <Setter Property="FontFamily" Value="Bahnschrift SemiCondensed" />
+    <Setter Property="FontSize" Value="12" />
+    <Style.Resources>
+      <Style TargetType="DataGridColumnHeader">
+        <Setter Property="Background" Value="#081117" />
+        <Setter Property="Foreground" Value="#9EB0C0" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="FontSize" Value="10" />
+        <Setter Property="Padding" Value="10,7" />
+        <Setter Property="BorderThickness" Value="0" />
+      </Style>
+      <Style TargetType="DataGridCell">
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Padding" Value="10,6" />
+        <Setter Property="Template">
+          <Setter.Value>
+            <ControlTemplate TargetType="DataGridCell">
+              <Border Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}">
+                <ContentPresenter VerticalAlignment="Center" />
+              </Border>
+            </ControlTemplate>
+          </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+          <Trigger Property="IsSelected" Value="True">
+            <Setter Property="Background" Value="#263A46" />
+            <Setter Property="Foreground" Value="White" />
+          </Trigger>
+        </Style.Triggers>
+      </Style>
+    </Style.Resources>
+  </Style>
+  <Style TargetType="ScrollBar">
+    <Setter Property="Width" Value="9" />
+    <Setter Property="Background" Value="#071019" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="ScrollBar">
+          <Grid Background="{TemplateBinding Background}">
+            <Track x:Name="PART_Track" IsDirectionReversed="True" Orientation="{TemplateBinding Orientation}">
+              <Track.DecreaseRepeatButton>
+                <RepeatButton Command="ScrollBar.PageUpCommand" Focusable="False">
+                  <RepeatButton.Template>
+                    <ControlTemplate TargetType="RepeatButton">
+                      <Border Background="Transparent" />
+                    </ControlTemplate>
+                  </RepeatButton.Template>
+                </RepeatButton>
+              </Track.DecreaseRepeatButton>
+              <Track.Thumb>
+                <Thumb MinHeight="28">
+                  <Thumb.Template>
+                    <ControlTemplate TargetType="Thumb">
+                      <Border Background="#344B5C" CornerRadius="4" Margin="2" />
+                    </ControlTemplate>
+                  </Thumb.Template>
+                </Thumb>
+              </Track.Thumb>
+              <Track.IncreaseRepeatButton>
+                <RepeatButton Command="ScrollBar.PageDownCommand" Focusable="False">
+                  <RepeatButton.Template>
+                    <ControlTemplate TargetType="RepeatButton">
+                      <Border Background="Transparent" />
+                    </ControlTemplate>
+                  </RepeatButton.Template>
+                </RepeatButton>
+              </Track.IncreaseRepeatButton>
+            </Track>
+          </Grid>
+          <ControlTemplate.Triggers>
+            <Trigger Property="Orientation" Value="Horizontal">
+              <Setter Property="Width" Value="Auto" />
+              <Setter Property="Height" Value="9" />
+              <Setter TargetName="PART_Track" Property="IsDirectionReversed" Value="False" />
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+</ResourceDictionary>

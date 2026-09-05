@@ -1,0 +1,21 @@
+<Window x:Class="Alpha6Ops.Desktop.DebriefWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Alpha 6 OPS — Debrief" Width="640" Height="700" ResizeMode="CanResize" WindowStartupLocation="CenterOwner" Background="#10120F" Foreground="#F0F0EB">
+  <ScrollViewer VerticalScrollBarVisibility="Auto">
+    <StackPanel Margin="28">
+      <TextBlock Text="Debrief" FontSize="26" FontWeight="Bold"/>
+      <Grid Margin="0,10,0,4"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+        <TextBlock x:Name="ResultText" FontSize="22" FontWeight="Bold" Foreground="{StaticResource Yellow}"/>
+        <TextBlock x:Name="DelayTagText" Grid.Column="1" VerticalAlignment="Center" Foreground="#BFC5B4"/>
+      </Grid>
+      <TextBlock x:Name="BlockTimeText" Foreground="#BFC5B4" Margin="0,0,0,20"/>
+      <TextBlock Text="Phase durations" FontWeight="SemiBold" FontSize="18" Margin="0,0,0,8"/>
+      <DataGrid x:Name="SegmentsGrid" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" CanUserSortColumns="False" HeadersVisibility="Column" GridLinesVisibility="Horizontal" Background="#1B1E17" Foreground="#F0F0EB" BorderBrush="#3B4133" HorizontalGridLinesBrush="#3B4133" RowBackground="#1B1E17" AlternatingRowBackground="#23271D" RowHeight="36" ColumnHeaderHeight="32" SelectionMode="Single">
+        <DataGrid.Resources><Style TargetType="DataGridColumnHeader"><Setter Property="Background" Value="#282D22"/><Setter Property="Foreground" Value="#F9D928"/><Setter Property="Padding" Value="8"/></Style><Style TargetType="DataGridCell"><Setter Property="Padding" Value="8"/><Setter Property="BorderThickness" Value="0"/><Setter Property="Template"><Setter.Value><ControlTemplate TargetType="DataGridCell"><Border Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}"><ContentPresenter VerticalAlignment="Center"/></Border></ControlTemplate></Setter.Value></Setter></Style></DataGrid.Resources>
+        <DataGrid.Columns><DataGridTextColumn Header="Phase" Binding="{Binding Phase}" Width="150"/><DataGridTextColumn Header="Started" Binding="{Binding Started}" Width="100"/><DataGridTextColumn Header="Ended" Binding="{Binding Ended}" Width="100"/><DataGridTextColumn Header="Duration" Binding="{Binding Duration}" Width="90"/></DataGrid.Columns>
+      </DataGrid>
+      <TextBlock Text="Milestones" FontWeight="SemiBold" FontSize="18" Margin="0,24,0,8"/>
+      <ItemsControl x:Name="EventsList"><ItemsControl.ItemTemplate><DataTemplate><TextBlock Text="{Binding}" Margin="0,4" Foreground="#C0C5B5"/></DataTemplate></ItemsControl.ItemTemplate></ItemsControl>
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,24,0,0"><Button Content="Close" Click="Close_Click"/></StackPanel>
+    </StackPanel>
+  </ScrollViewer>
+</Window>

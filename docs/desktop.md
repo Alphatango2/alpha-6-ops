@@ -47,4 +47,6 @@ Not verified: interactive installer shortcut/registry/uninstall round-trip, clea
 
 ## Next integration
 
-The approved A6 mark is embedded at 16, 24, 32, 48, 64, 128 and 256 pixels and is used by the application windows, executable, tray icon, installer and uninstaller. Remaining desktop work includes single-instance activation, preferences, signing, update delivery and clean-PC installation tests.
+The approved A6 mark (`Assets/Alpha6OPS.ico`) is embedded at 16, 24, 32, 48, 64, 128 and 256 pixels and is used by the application windows, executable, tray icon, installer and uninstaller. Single-instance activation and preferences persistence are implemented in `SingleInstance.cs` and `UserPreferences.cs`.
+
+Live SimConnect tracking and rotation projection are implemented, with real-simulator validation still pending. Remaining desktop work includes durable flight checkpoints, offline upload, signing, update delivery and clean-PC installation tests.

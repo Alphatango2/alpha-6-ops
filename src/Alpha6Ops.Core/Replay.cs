@@ -26,14 +26,7 @@ public sealed class FlightSession(AircraftRotation rotation)
     {
         var flightEvent = detector.Observe(sample);
         if (flightEvent is null) return null;
-        var legs = Rotation.Legs.ToArray();
-        legs[0] = flightEvent.Phase switch
-        {
-            FlightPhase.TaxiOut => legs[0] with { ActualOut = flightEvent.At },
-            FlightPhase.Complete => legs[0] with { ActualIn = flightEvent.At },
-            _ => legs[0]
-        };
-        Rotation = Rotation with { Legs = legs };
+        Rotation = RotationPlanner.ApplyMilestone(Rotation, flightEvent);
         return flightEvent;
     }
 }
