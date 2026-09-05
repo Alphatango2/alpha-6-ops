@@ -74,14 +74,15 @@ public partial class MainWindow : Window
         EventsList.ItemsSource = milestones;
         Closing += OnClosing;
         StateChanged += (_, _) => { if (WindowState == WindowState.Minimized) MinimizeToTray(); };
-        activePlan = ActiveFlightPlanStore.Load();
-        preferences = UserPreferencesStore.Load();
+        activePlan = diagnosticDirectory is null ? ActiveFlightPlanStore.Load() : null;
+        preferences = diagnosticDirectory is null ? UserPreferencesStore.Load() : null;
         FixtureCombo.ItemsSource = EmbeddedReplay.Fixtures;
         FixtureCombo.SelectedIndex = Math.Max(0, EmbeddedReplay.Fixtures.ToList().IndexOf(preferences?.Fixture ?? EmbeddedReplay.Fixtures[0]));
         PilotNameBox.Text = preferences?.PilotName ?? "";
         SetAdvanced(preferences?.Advanced ?? false);
         ResetPreview();
-        try { programMonitor = new ProgramMonitor(LogDirectory, status => ProgramHealthText.Text = status); }
+        InitializeDashboard(diagnosticDirectory);
+        try { programMonitor = new ProgramMonitor(diagnosticDirectory is null ? LogDirectory : Path.Combine(diagnosticDirectory, "TestLogs"), status => ProgramHealthText.Text = status, diagnosticDirectory); }
         catch (Exception error)
         {
             CrashReporter.Write("program_monitor_startup", error);
@@ -102,8 +103,8 @@ public partial class MainWindow : Window
     {
         // Set the initial physical size once; subsequent resizing belongs to the user.
         var dpi = VisualTreeHelper.GetDpi(this);
-        Width = (preferences?.Width ?? 1366) / dpi.DpiScaleX;
-        Height = (preferences?.Height ?? 768) / dpi.DpiScaleY;
+        Width = Math.Clamp(preferences?.Width ?? 1536 / dpi.DpiScaleX, MinWidth, Math.Max(MinWidth, SystemParameters.WorkArea.Width));
+        Height = Math.Clamp(preferences?.Height ?? 1024 / dpi.DpiScaleY, MinHeight, Math.Max(MinHeight, SystemParameters.WorkArea.Height));
         if (preferences?.Maximized == true) WindowState = WindowState.Maximized;
     }
 
@@ -127,6 +128,7 @@ public partial class MainWindow : Window
             Delay = $"{leg.DepartureDelayMinutes:0} / {leg.ArrivalDelayMinutes:0} min",
             Status = leg.Completed ? "Actual" : "Projected"
         }).ToArray();
+        RefreshDashboardFlight(false);
     }
 
     internal void ResetPreview()
@@ -227,6 +229,7 @@ public partial class MainWindow : Window
     {
         if (exiting) return;
         exiting = true;
+        dashboardClock.Stop();
         UserPreferencesStore.Save(new UserPreferences(Width, Height, WindowState == WindowState.Maximized, AdvancedPanel.Visibility == Visibility.Visible, SelectedFixture, PilotNameBox.Text), preferencesDirectory);
         FinishLog("application_exit");
         programMonitor?.Stop("application_exit");
@@ -266,6 +269,11 @@ public partial class MainWindow : Window
     }
     private void SetFlight_Click(object sender, RoutedEventArgs e)
     {
+        if (running || liveCancellation is not null)
+        {
+            MessageBox.Show(this, "Finish the replay or disconnect the simulator before changing the active flight.", "Active flight", MessageBoxButton.OK, MessageBoxImage.Information);
+            return;
+        }
         var dialog = new ActiveFlightWindow(activePlan) { Owner = this };
         if (dialog.ShowDialog() != true || dialog.Plan is null) return;
         activePlan = dialog.Plan;
@@ -450,13 +458,15 @@ public partial class MainWindow : Window
     }
     internal void SetConnectionBadge(string label, string color, string background)
     {
-        ConnectionBadgeText.Text = label;
+        ConnectionBadgeText.Text = label.Replace("SIMULATOR ", "");
+        ConnectionBadgeText.ToolTip = label;
         ConnectionDot.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString(color));
         ConnectionBadge.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(background));
     }
 
     private void RefreshLiveTracker(string? simulatorAircraft, DateTimeOffset? simulatorTime, FlightPhase? phase, string status)
     {
+        RefreshDashboardFlight(true);
         TrackerModeText.Text = "ACTIVE FLIGHT • LIVE SIMCONNECT";
         if (activePlan is null)
         {

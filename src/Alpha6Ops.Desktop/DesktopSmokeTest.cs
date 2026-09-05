@@ -21,6 +21,7 @@ internal static class DesktopSmokeTest
         try
         {
             window.Show();
+            await DashboardSmokeTest.RunAsync(window, outputDirectory);
             window.SetAdvanced(true);
             window.FixtureCombo.SelectedIndex = 0; // ignore any saved preference so the fixture-dependent assertions below stay deterministic
             var replay = window.RunReplayAsync(20);

@@ -19,5 +19,6 @@
     <Content Include="../../assets/fleet/aircraft.sqlite" Link="fleet/aircraft.sqlite" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
     <Content Include="Assets/alpha6.ico" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
     <Resource Include="Assets/alpha6-mark.png" />
+    <Resource Include="Assets/Dashboard/*.png" />
   </ItemGroup>
 </Project>

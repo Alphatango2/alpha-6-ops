@@ -13,6 +13,7 @@ internal sealed class ProgramMonitor : IDisposable
     private readonly Action<string> statusChanged;
     private readonly string statusPath;
     private readonly string testLogDirectory;
+    private readonly string crashDirectory;
     private readonly LogFileDatabase database;
     private string connection = "Disconnected";
     private string? aircraft;
@@ -20,11 +21,12 @@ internal sealed class ProgramMonitor : IDisposable
     private long samples;
     private bool stopped;
 
-    internal ProgramMonitor(string testLogDirectory, Action<string> statusChanged)
+    internal ProgramMonitor(string testLogDirectory, Action<string> statusChanged, string? rootDirectory = null)
     {
         this.testLogDirectory = testLogDirectory;
         this.statusChanged = statusChanged;
-        var root = CrashReporter.RootDirectory;
+        var root = rootDirectory ?? CrashReporter.RootDirectory;
+        crashDirectory = Path.Combine(root, "CrashReports");
         Directory.CreateDirectory(root);
         statusPath = Path.Combine(root, "program-status.json");
         DetectUncleanExit();
@@ -49,7 +51,7 @@ internal sealed class ProgramMonitor : IDisposable
         try
         {
             var process = Process.GetCurrentProcess();
-            var fileCount = database.Refresh(testLogDirectory, CrashReporter.CrashDirectory);
+            var fileCount = database.Refresh(testLogDirectory, crashDirectory);
             WriteStatus(new { schemaVersion = 1, running = true, heartbeatUtc = DateTimeOffset.UtcNow,
                 appVersion = Assembly.GetExecutingAssembly().GetName().Version?.ToString(3) ?? "unknown",
                 processId = Environment.ProcessId, processStartUtc = process.StartTime.ToUniversalTime(), workingSetBytes = process.WorkingSet64,
@@ -70,9 +72,9 @@ internal sealed class ProgramMonitor : IDisposable
             if (!File.Exists(statusPath)) return;
             using var json = JsonDocument.Parse(File.ReadAllText(statusPath));
             if (json.RootElement.TryGetProperty("running", out var running) && running.GetBoolean())
-                CrashReporter.Write("previous_unclean_exit", null, new { previousStatusPath = statusPath, previousStatus = json.RootElement.Clone() });
+                CrashReporter.Write("previous_unclean_exit", null, new { previousStatusPath = statusPath, previousStatus = json.RootElement.Clone() }, directory: crashDirectory);
         }
-        catch (Exception error) { CrashReporter.Write("status_recovery", error); }
+        catch (Exception error) { CrashReporter.Write("status_recovery", error, directory: crashDirectory); }
     }
 
     private void WriteStatus(object value)

@@ -1,5 +1,9 @@
 # Alpha 6 OPS
 
+## Desktop dashboard update
+
+The Windows application now follows Dan's operations-dashboard mockup, with supplied branding, aviation photography, a next-flight hero, module desks, alerts, network map, operations table and fleet chart. Flight details, personal preflight checks, watchlists, replay/live controls and local history are connected. Weather, crew, maintenance and passenger desks are clearly labeled demonstration scenarios. See the [dashboard walkthrough, data sources and verification](docs/dashboard.md). Historical preview notes below describe earlier versions and may no longer reflect the current desktop UI.
+
 **You fly the airplane. We'll run the airline.**
 
 Alpha 6 Designs' MSFS 2024 virtual-airline operations platform. This repository is the initial foundation, not a completed live simulator client. Black/yellow textual branding is intentional; no original logo has been supplied.
