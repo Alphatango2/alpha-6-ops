@@ -1,5 +1,5 @@
 <Window x:Class="Alpha6Ops.Desktop.ActiveFlightWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Set active flight" Width="560" Height="600" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" Background="#10120F" Foreground="#F0F0EB">
+        Title="Set active flight" Icon="Assets/Alpha6OPS.ico" Width="560" Height="600" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" Background="#10120F" Foreground="#F0F0EB">
   <StackPanel Margin="28">
     <TextBlock Text="Set active flight" FontSize="26" FontWeight="Bold"/>
     <TextBlock Text="Enter the operational assignment. Times use UTC and the simulator clock." Foreground="#BFC5B4" TextWrapping="Wrap" Margin="0,6,0,18"/>

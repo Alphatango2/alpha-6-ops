@@ -1,5 +1,5 @@
 <Window x:Class="Alpha6Ops.Desktop.LogDatabaseWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Alpha 6 OPS — Diagnostic files" Width="1050" Height="620" ResizeMode="CanResize" WindowStartupLocation="CenterOwner" Background="#10120F" Foreground="#F0F0EB">
+        Title="Alpha 6 OPS — Diagnostic files" Icon="Assets/Alpha6OPS.ico" Width="1050" Height="620" ResizeMode="CanResize" WindowStartupLocation="CenterOwner" Background="#10120F" Foreground="#F0F0EB">
   <DockPanel Margin="24">
     <StackPanel DockPanel.Dock="Top" Margin="0,0,0,16"><TextBlock Text="Diagnostic file database" FontSize="26" FontWeight="Bold"/><TextBlock x:Name="DatabaseText" Foreground="#BFC5B4" TextWrapping="Wrap" Margin="0,6,0,0"/></StackPanel>
     <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Margin="0,16,0,0"><Button Content="Refresh" Click="Refresh_Click"/><Button Content="Open selected file location" Click="Open_Click"/><Button Content="Close" Click="Close_Click"/></StackPanel>

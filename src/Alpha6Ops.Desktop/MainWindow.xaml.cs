@@ -10,7 +10,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using Alpha6Ops.Core;
 using Forms = System.Windows.Forms;
 
@@ -19,6 +18,7 @@ namespace Alpha6Ops.Desktop;
 public partial class MainWindow : Window
 {
     private readonly Forms.NotifyIcon tray;
+    private readonly System.Drawing.Icon trayIcon;
     private readonly ObservableCollection<string> milestones = new();
     private readonly CancellationTokenSource lifetime = new();
     private FlightSession session = new(Demo.Rotation());
@@ -57,12 +57,10 @@ public partial class MainWindow : Window
         VersionText.Text = $"ALPHA 6 OPS v{version} • DESKTOP PREVIEW";
         Title = $"Alpha 6 OPS v{version} — Desktop Preview";
         SourceInitialized += (_, _) => ApplyInitialWindowSize();
-        var iconPath = Path.Combine(AppContext.BaseDirectory, "Assets", "alpha6.ico");
-        var hasAppIcon = File.Exists(iconPath);
-        if (hasAppIcon) Icon = new BitmapImage(new Uri(iconPath));
+        trayIcon = System.Drawing.Icon.ExtractAssociatedIcon(Environment.ProcessPath ?? "") ?? (System.Drawing.Icon)System.Drawing.SystemIcons.Application.Clone();
         tray = new Forms.NotifyIcon
         {
-            Icon = hasAppIcon ? new System.Drawing.Icon(iconPath) : System.Drawing.SystemIcons.Application,
+            Icon = trayIcon,
             Text = "Alpha 6 OPS — Replay preview",
             Visible = true
         };
@@ -239,6 +237,7 @@ public partial class MainWindow : Window
         tray.Visible = false;
         tray.ContextMenuStrip?.Dispose();
         tray.Dispose();
+        trayIcon.Dispose();
         Application.Current.Shutdown();
     }
     private static string PhaseLabel(FlightPhase phase) => phase switch

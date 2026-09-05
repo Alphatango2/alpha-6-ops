@@ -6,13 +6,14 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>disable</ImplicitUsings>
     <AssemblyName>Alpha6OPS</AssemblyName>
-    <Version>0.10.0</Version>
+    <Version>0.10.2</Version>
+    <ApplicationIcon>Assets\Alpha6OPS.ico</ApplicationIcon>
     <Company>Alpha 6 Designs</Company>
     <Product>Alpha 6 OPS Desktop Preview</Product>
     <ApplicationManifest>app.manifest</ApplicationManifest>
-    <ApplicationIcon>Assets\alpha6.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Resource Include="Assets\Alpha6OPS.ico" />
     <ProjectReference Include="../Alpha6Ops.Core/Alpha6Ops.Core.csproj" />
     <EmbeddedResource Include="../../samples/delayed-flight.jsonl" LogicalName="delayed-flight.jsonl" />
     <EmbeddedResource Include="../../samples/on-time-flight.jsonl" LogicalName="on-time-flight.jsonl" />

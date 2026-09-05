@@ -1,4 +1,4 @@
-<Window x:Class="Alpha6Ops.Desktop.FleetWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="Alpha 6 OPS — Aircraft database" Width="1120" Height="760" ResizeMode="CanResize" Background="#10120F" Foreground="#F0F0EB" WindowStartupLocation="CenterOwner">
+<Window x:Class="Alpha6Ops.Desktop.FleetWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="Alpha 6 OPS — Aircraft database" Icon="Assets/Alpha6OPS.ico" Width="1120" Height="760" ResizeMode="CanResize" Background="#10120F" Foreground="#F0F0EB" WindowStartupLocation="CenterOwner">
   <DockPanel Margin="28">
     <StackPanel DockPanel.Dock="Top">
       <TextBlock Text="DELTA AIR LINES / AIRCRAFT DATABASE" FontSize="24" FontWeight="Bold" Foreground="{StaticResource Yellow}"/>

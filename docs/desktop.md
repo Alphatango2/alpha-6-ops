@@ -25,9 +25,9 @@ This is a framework-dependent publish with a private runtime, not the SDK's sing
 
 ## Installation behavior
 
-The unsigned preview setup extracts for the current Windows user under `%LOCALAPPDATA%/Alpha6Designs/Alpha6OPSPreview`, adds a Start menu shortcut and an uninstall registration under the current-user registry hive. It does not request administrator elevation, configure startup at login, install a service, or open firewall ports. Existing previews must be uninstalled first. The setup uses .NET Framework already supplied by current Windows installations.
+The unsigned preview setup extracts for the current Windows user under `%LOCALAPPDATA%/Alpha6Designs/Alpha6OPSPreview`, adds a Start menu shortcut and an uninstall registration under the current-user registry hive. It does not request administrator elevation, configure startup at login, install a service, or open firewall ports. Version 0.10.1 and later automatically upgrade a verified earlier preview after the running application has exited. The setup uses .NET Framework already supplied by current Windows installations.
 
-Extraction validates archive destinations and uses a staging directory before moving into the fixed install location. The uninstaller requires the product marker, asks the user to confirm, refuses a running installed app, and refuses directory junctions before removing the product folder. It runs a small temporary copy to avoid the Windows executable lock; that temporary helper remains in the Windows temp folder. There is no update/repair workflow, release signing or publisher reputation. Move to a maintained, signed installer toolchain and validate upgrades before distributing publicly.
+Extraction validates archive destinations and uses a staging directory. An upgrade validates the ownership marker, moves the prior installation to a temporary backup, activates the new files, and restores the backup if activation fails. Logs, diagnostics, active-flight settings and SimBrief cache are stored outside the program folder and remain intact. The uninstaller asks the user to confirm, refuses a running installed app, and refuses directory junctions before removing the product folder. It runs a small temporary copy to avoid the Windows executable lock; that temporary helper remains in the Windows temp folder. There is no release signing or publisher reputation. Move to a maintained, signed installer toolchain before distributing publicly.
 
 The portable ZIP skips registry and shortcut changes. Its included Uninstall.exe is for installed copies only; remove a portable copy by exiting and deleting the folder. Uninstall.exe refuses deletion without the installed product marker.
 
@@ -47,6 +47,6 @@ Not verified: interactive installer shortcut/registry/uninstall round-trip, clea
 
 ## Next integration
 
-Implement the SimConnect provider and aircraft/assignment checks behind `ISimulatorTelemetry`; replace the embedded replay with an explicit source selector. Add durable flight checkpoints and offline upload before calling this a live flight client. Signing, updates and clean-PC installation tests are subsequent desktop work.
+The approved A6 mark (`Assets/Alpha6OPS.ico`) is embedded at 16, 24, 32, 48, 64, 128 and 256 pixels and is used by the application windows, executable, tray icon, installer and uninstaller. Single-instance activation and preferences persistence are implemented in `SingleInstance.cs` and `UserPreferences.cs`.
 
-Single-instance activation, preferences persistence, and a real Alpha 6 icon/tray mark are done (`SingleInstance.cs`, `UserPreferences.cs`, `Assets/alpha6.ico` and `Assets/alpha6-mark.png`, both cropped from the logo Dan supplied).
+Live SimConnect tracking and rotation projection are implemented, with real-simulator validation still pending. Remaining desktop work includes durable flight checkpoints, offline upload, signing, update delivery and clean-PC installation tests.

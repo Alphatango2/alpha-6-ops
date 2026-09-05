@@ -11,7 +11,8 @@ using Microsoft.Win32;
 
 internal static class PreviewSetup
 {
-    const string Identity = "Alpha6OPS-Desktop-Preview-0.10";
+    const string Identity = "Alpha6OPS-Desktop-Preview-0.10.2";
+    const string IdentityPrefix = "Alpha6OPS-Desktop-Preview-";
     const string RegistryKey = @"Software\Microsoft\Windows\CurrentVersion\Uninstall\Alpha6OPSPreview";
     static readonly string InstallPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Alpha6Designs", "Alpha6OPSPreview");
     static readonly string ShortcutPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Programs), "Alpha 6 OPS Preview.lnk");
@@ -29,6 +30,11 @@ internal static class PreviewSetup
             if (args.Length == 2 && args[0] == "--extract-test")
             {
                 Extract(args[1]); // Diagnostic: no registry writes or shortcuts.
+                return 0;
+            }
+            if (args.Length == 2 && args[0] == "--upgrade-test")
+            {
+                ReplaceInstallation(args[1], false);
                 return 0;
             }
             if (args.Length == 1 && args[0] == "--uninstall")
@@ -60,10 +66,11 @@ internal static class PreviewSetup
                 title.SetBounds(28, 25, 500, 45);
                 title.Font = new Font("Segoe UI", 24, FontStyle.Bold);
                 title.ForeColor = Color.FromArgb(249, 217, 40);
-                details.Text = "Install the Windows desktop connection test for your account.\r\n\r\nIncludes a private .NET runtime and Start menu shortcut.\r\nLive monitoring requires your installed MSFS 2024 SDK.\r\nAn offline flight replay is also included.\r\n\r\nLocation: " + InstallPath;
+                var upgrading = Directory.Exists(InstallPath);
+                details.Text = (upgrading ? "Upgrade the existing Alpha 6 OPS installation for your account." : "Install the Windows desktop connection test for your account.") + "\r\n\r\nIncludes a private .NET runtime and Start menu shortcut.\r\nExisting logs, settings and SimBrief data are preserved.\r\nClose Alpha 6 OPS before continuing.\r\n\r\nLocation: " + InstallPath;
                 details.SetBounds(30, 86, 500, 145);
                 details.Font = new Font("Segoe UI", 10);
-                install.Text = "Install Alpha 6 OPS";
+                install.Text = upgrading ? "Upgrade Alpha 6 OPS" : "Install Alpha 6 OPS";
                 install.SetBounds(30, 250, 225, 38);
                 install.BackColor = Color.FromArgb(249, 217, 40);
                 install.ForeColor = Color.Black;
@@ -73,23 +80,12 @@ internal static class PreviewSetup
                     form.UseWaitCursor = true;
                     try
                     {
-                        if (Directory.Exists(InstallPath)) throw new IOException("A preview is already installed. Uninstall it through Windows Installed apps before installing this build.");
-                        var staging = InstallPath + ".staging-" + Guid.NewGuid().ToString("N");
-                        try
-                        {
-                            Extract(staging);
-                            File.WriteAllText(Path.Combine(staging, ".alpha6-preview"), Identity);
-                            Directory.Move(staging, InstallPath);
-                        }
-                        finally
-                        {
-                            if (Directory.Exists(staging)) { CheckTree(staging); Directory.Delete(staging, true); }
-                        }
+                        ReplaceInstallation(InstallPath, true);
                         CreateShortcut();
                         using (var key = Registry.CurrentUser.CreateSubKey(RegistryKey))
                         {
                             key.SetValue("DisplayName", "Alpha 6 OPS Desktop Preview");
-                            key.SetValue("DisplayVersion", "0.10.0");
+                            key.SetValue("DisplayVersion", "0.10.2");
                             key.SetValue("Publisher", "Alpha 6 Designs");
                             key.SetValue("InstallLocation", InstallPath);
                             key.SetValue("DisplayIcon", Path.Combine(InstallPath, "Alpha6OPS.exe"));
@@ -97,7 +93,7 @@ internal static class PreviewSetup
                             key.SetValue("NoModify", 1, RegistryValueKind.DWord);
                             key.SetValue("NoRepair", 1, RegistryValueKind.DWord);
                         }
-                        MessageBox.Show(form, "Installed. Open Alpha 6 OPS Preview from the Start menu.\r\n\r\nClose or minimize to keep it in the tray. Use Exit OPS to stop.", "Alpha 6 OPS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show(form, (upgrading ? "Upgrade complete." : "Installed.") + " Open Alpha 6 OPS Preview from the Start menu.\r\n\r\nYour existing logs and settings were preserved.", "Alpha 6 OPS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         form.Close();
                     }
                     catch (Exception error)
@@ -115,7 +111,11 @@ internal static class PreviewSetup
         }
         catch (Exception error)
         {
-            if (args.Length > 0 && args[0] == "--extract-test") return 1;
+            if (args.Length > 0 && (args[0] == "--extract-test" || args[0] == "--upgrade-test"))
+            {
+                if (args.Length == 2) File.WriteAllText(args[1] + ".setup-error.txt", error.ToString());
+                return 1;
+            }
             MessageBox.Show(error.Message, "Alpha 6 OPS Setup", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return 1;
         }
@@ -160,19 +160,65 @@ internal static class PreviewSetup
         type.InvokeMember("Save", BindingFlags.InvokeMethod, null, shortcut, null);
     }
 
-    static int Uninstall()
+    static void ReplaceInstallation(string destination, bool checkRunning)
     {
-        var marker = Path.Combine(InstallPath, ".alpha6-preview");
-        if (!File.Exists(marker) || File.ReadAllText(marker) != Identity) throw new IOException("The installation marker is missing or invalid. No files were removed.");
-        if (MessageBox.Show("Remove Alpha 6 OPS Desktop Preview and its bundled runtime?\r\n\r\nClose Alpha 6 OPS using Exit OPS before continuing.\r\n\r\n" + InstallPath, "Uninstall Alpha 6 OPS", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes) return 0;
+        destination = Path.GetFullPath(destination).TrimEnd(Path.DirectorySeparatorChar);
+        var staging = destination + ".staging-" + Guid.NewGuid().ToString("N");
+        var backup = destination + ".backup-" + Guid.NewGuid().ToString("N");
+        var hadPrevious = Directory.Exists(destination);
+        if (hadPrevious)
+        {
+            VerifyOwnedInstallation(destination);
+            CheckTree(destination);
+            if (checkRunning) EnsureNotRunning(destination);
+        }
+        try
+        {
+            Extract(staging);
+            File.WriteAllText(Path.Combine(staging, ".alpha6-preview"), Identity);
+            if (hadPrevious) Directory.Move(destination, backup);
+            try { Directory.Move(staging, destination); }
+            catch
+            {
+                if (hadPrevious && Directory.Exists(backup) && !Directory.Exists(destination)) Directory.Move(backup, destination);
+                throw;
+            }
+            if (Directory.Exists(backup))
+            {
+                try { CheckTree(backup); Directory.Delete(backup, true); }
+                catch { /* The new installation is active; a stale verified backup is safe to remove later. */ }
+            }
+        }
+        finally
+        {
+            if (Directory.Exists(staging)) { CheckTree(staging); Directory.Delete(staging, true); }
+        }
+    }
+
+    static void VerifyOwnedInstallation(string directory)
+    {
+        var marker = Path.Combine(directory, ".alpha6-preview");
+        if (!File.Exists(marker) || !File.ReadAllText(marker).StartsWith(IdentityPrefix, StringComparison.Ordinal))
+            throw new IOException("The existing folder is not a verified Alpha 6 OPS installation. No files were replaced.");
+    }
+
+    static void EnsureNotRunning(string directory)
+    {
         foreach (var process in Process.GetProcessesByName("Alpha6OPS"))
         {
             using (process)
             {
-                if (!process.HasExited && string.Equals(process.MainModule.FileName, Path.Combine(InstallPath, "Alpha6OPS.exe"), StringComparison.OrdinalIgnoreCase))
-                    throw new IOException("Alpha 6 OPS is still running. Exit it from the tray menu first.");
+                if (!process.HasExited && string.Equals(process.MainModule.FileName, Path.Combine(directory, "Alpha6OPS.exe"), StringComparison.OrdinalIgnoreCase))
+                    throw new IOException("Alpha 6 OPS is still running. Use Exit OPS, then run the upgrade again.");
             }
         }
+    }
+
+    static int Uninstall()
+    {
+        VerifyOwnedInstallation(InstallPath);
+        if (MessageBox.Show("Remove Alpha 6 OPS Desktop Preview and its bundled runtime?\r\n\r\nClose Alpha 6 OPS using Exit OPS before continuing.\r\n\r\n" + InstallPath, "Uninstall Alpha 6 OPS", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes) return 0;
+        EnsureNotRunning(InstallPath);
         // The target is a fixed, product-owned path; refuse junctions/symlinks anywhere inside it.
         CheckTree(InstallPath);
         Directory.Delete(InstallPath, true);
