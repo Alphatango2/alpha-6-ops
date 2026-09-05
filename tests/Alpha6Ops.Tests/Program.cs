@@ -29,6 +29,13 @@ var arrivedLeg = RotationPlanner.ApplyMilestone(departedLeg, new(FlightPhase.Com
 var liveProjection = RotationPlanner.Project(arrivedLeg);
 Check(liveProjection[0].DepartureDelayMinutes == 12 && liveProjection[0].ArrivalDelayMinutes == 20 && liveProjection[0].Completed, "live rotation projection matches applied milestones");
 Check(RotationPlanner.ApplyMilestone(singleLeg, new(FlightPhase.Airborne, DateTimeOffset.Parse("2026-09-02T10:05:00Z"))).Legs[0] == singleLeg.Legs[0], "non-terminal milestones do not touch actuals");
+var baseline = DateTimeOffset.Parse("2026-09-02T10:00:00Z");
+Check(TelemetryContinuity.IsContinuous(null, null, baseline, "N600A6"), "first sample is always continuous");
+Check(TelemetryContinuity.IsContinuous(baseline, "N600A6", baseline.AddSeconds(1), "N600A6"), "same aircraft moving forward a second is continuous");
+Check(TelemetryContinuity.IsContinuous(baseline, "N600A6", baseline + TelemetryContinuity.MaxPlausibleForwardJump, "N600A6"), "a jump exactly at the threshold is still continuous");
+Check(!TelemetryContinuity.IsContinuous(baseline, "N600A6", baseline - TimeSpan.FromSeconds(1), "N600A6"), "clock reversal is not continuous");
+Check(!TelemetryContinuity.IsContinuous(baseline, "N600A6", baseline, "N321AB"), "an aircraft change is not continuous");
+Check(!TelemetryContinuity.IsContinuous(baseline, "N600A6", baseline + TelemetryContinuity.MaxPlausibleForwardJump + TimeSpan.FromSeconds(1), "N600A6"), "a jump beyond the threshold is not continuous");
 var t = DateTimeOffset.Parse("2026-09-02T23:59:58Z");
 var detector = new PhaseDetector();
 Telemetry S(int seconds, bool ground = true, double speed = 3, bool brake = false, bool engines = true) => new(t.AddSeconds(seconds), ground, speed, brake, engines);

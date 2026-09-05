@@ -302,6 +302,11 @@ public partial class MainWindow : Window
         new FlightHistoryWindow(flightHistory) { Owner = this }.ShowDialog();
     }
 
+    // Capped so a flaky connection settles into a slow, unobtrusive retry rather than a tight loop
+    // or an ever-growing wait; retried indefinitely until Disconnect is clicked, since MSFS being
+    // closed for a while (or not open yet when Connect was clicked) is not a reason to give up.
+    private static readonly TimeSpan[] ReconnectBackoff = [TimeSpan.FromSeconds(3), TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(10), TimeSpan.FromSeconds(20), TimeSpan.FromSeconds(30)];
+
     private async void Connect_Click(object sender, RoutedEventArgs e)
     {
         if (liveCancellation is not null || running) return;
@@ -310,17 +315,35 @@ public partial class MainWindow : Window
         liveRotation = null;
         LiveTimelineButton.IsEnabled = LiveDebriefButton.IsEnabled = false;
         ConnectButton.IsEnabled = ReplayButton.IsEnabled = ResetButton.IsEnabled = false;
-
-        ConnectionText.Text = "Connecting to the local simulator…";
-        programMonitor?.Update("Connecting");
-        SetConnectionBadge("CONNECTING TO SIMULATOR", "#FFCA45", "#433817");
+        DisconnectButton.IsEnabled = true;
         milestones.Clear();
         SetAdvanced(true);
+        StartLog();
+        var attempt = 0;
         try
         {
-            StartLog();
-            await SimConnectSource.RunAsync(message => Dispatcher.BeginInvoke(new Action(() => { if (exiting) return; RecordLog("connection_opened", null, new { message }); ConnectionText.Text = message; SetConnectionBadge("SIMULATOR CONNECTED", "#65E697", "#173D27"); programMonitor?.Update("Connected"); })),
-                reading => Dispatcher.BeginInvoke(new Action(() => ObserveLive(reading))), liveCancellation.Token);
+            while (true)
+            {
+                attempt++;
+                ConnectionText.Text = attempt == 1 ? "Connecting to the local simulator…" : $"Reconnecting to the local simulator (attempt {attempt})…";
+                programMonitor?.Update("Connecting");
+                SetConnectionBadge("CONNECTING TO SIMULATOR", "#FFCA45", "#433817");
+                try
+                {
+                    await SimConnectSource.RunAsync(message => Dispatcher.BeginInvoke(new Action(() => { if (exiting) return; RecordLog("connection_opened", null, new { message }); ConnectionText.Text = message; SetConnectionBadge("SIMULATOR CONNECTED", "#65E697", "#173D27"); programMonitor?.Update("Connected"); })),
+                        reading => Dispatcher.BeginInvoke(new Action(() => ObserveLive(reading))), liveCancellation.Token);
+                    break; // RunAsync only returns normally once its cooperative cancellation check trips
+                }
+                catch (IOException error)
+                {
+                    RecordLog("connection_error", liveLast, new { message = error.GetBaseException().Message, type = error.GetType().Name, attempt });
+                    var delay = ReconnectBackoff[Math.Min(attempt - 1, ReconnectBackoff.Length - 1)];
+                    ConnectionText.Text = $"{error.GetBaseException().Message} Retrying in {delay.TotalSeconds:0}s… Click Disconnect to stop.";
+                    SetConnectionBadge("SIMULATOR CONNECTION LOST — RETRYING", "#FFCA45", "#433817");
+                    programMonitor?.Update("Reconnecting");
+                    await Task.Delay(delay, liveCancellation.Token);
+                }
+            }
             ConnectionText.Text = "Disconnected. Live milestones remain visible until the next connection or replay.";
             SetConnectionBadge("SIMULATOR DISCONNECTED", "#A9AD9F", "#30342C");
             programMonitor?.Update("Disconnected");
@@ -337,9 +360,10 @@ public partial class MainWindow : Window
             FinishLog("connection_closed");
             liveCancellation.Dispose(); liveCancellation = null;
             ConnectButton.IsEnabled = ReplayButton.IsEnabled = ResetButton.IsEnabled = true;
-
+            DisconnectButton.IsEnabled = false;
         }
     }
+    private void Disconnect_Click(object sender, RoutedEventArgs e) => liveCancellation?.Cancel();
 
     private void ObserveLive(LiveReading reading)
     {
@@ -348,13 +372,13 @@ public partial class MainWindow : Window
         programMonitor?.Update("Connected", reading.Aircraft, s.At, sampleReceived: true);
         RecordLog("telemetry", s.At, new { aircraft = reading.Aircraft, onGround = s.OnGround, groundSpeedKnots = s.GroundSpeedKnots, parkingBrake = s.ParkingBrake, enginesRunning = s.EnginesRunning, paused = s.Paused, slewing = s.Slewing });
         LiveText.Text = $"{reading.Aircraft} • {s.At.UtcDateTime:HH:mm:ss}Z • {s.GroundSpeedKnots:0.0} kt • Brake {(s.ParkingBrake ? "set" : "released")} • {(s.Paused ? "Paused" : s.Slewing ? "Slew" : s.OnGround ? "On ground" : "Airborne")}";
-        if (!liveInvalid && ((liveLast is not null && s.At < liveLast) || (liveAircraft is not null && reading.Aircraft != liveAircraft)))
+        if (!liveInvalid && !TelemetryContinuity.IsContinuous(liveLast, liveAircraft, s.At, reading.Aircraft))
         {
             liveInvalid = true;
-            RecordLog("monitor_invalidated", s.At, new { reason = "aircraft_changed_or_clock_reversed", previousSimulatorUtc = liveLast, previousAircraft = liveAircraft });
+            RecordLog("monitor_invalidated", s.At, new { reason = "discontinuous_telemetry", previousSimulatorUtc = liveLast, previousAircraft = liveAircraft });
         }
         liveLast = s.At; liveAircraft = reading.Aircraft;
-        if (liveInvalid) { ConnectionText.Text = "Aircraft or simulator clock changed. Exit OPS and reopen it at the gate to begin a new monitor session."; RefreshLiveTracker(reading.Aircraft, s.At, liveRecorder?.Phase, "Tracking stopped because the aircraft or simulator clock changed."); return; }
+        if (liveInvalid) { ConnectionText.Text = "Aircraft changed or the simulator clock jumped. Click Disconnect, then Connect to begin a new monitor session."; RefreshLiveTracker(reading.Aircraft, s.At, liveRecorder?.Phase, "Tracking stopped because the aircraft or simulator clock changed."); return; }
         if (liveRecorder is null)
         {
             if (!s.OnGround || s.GroundSpeedKnots >= 0.5 || !s.ParkingBrake || s.Paused || s.Slewing)

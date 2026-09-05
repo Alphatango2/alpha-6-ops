@@ -6,6 +6,24 @@ public record Telemetry(DateTimeOffset At, bool OnGround, double GroundSpeedKnot
     bool ParkingBrake, bool EnginesRunning, bool Paused = false, bool Slewing = false);
 public record FlightEvent(FlightPhase Phase, DateTimeOffset At);
 
+// Whether consecutive live samples still describe the same flight. A reversed clock or a changed
+// aircraft can never be the same session. A forward jump this large cannot be time compression
+// either - even an extreme compression setting over a roughly one-second poll interval lands
+// nowhere near this - so it means the flight was reloaded or repositioned in time.
+public static class TelemetryContinuity
+{
+    public static readonly TimeSpan MaxPlausibleForwardJump = TimeSpan.FromMinutes(5);
+
+    public static bool IsContinuous(DateTimeOffset? previousAt, string? previousAircraft, DateTimeOffset at, string aircraft)
+    {
+        if (previousAt is null) return true;
+        if (previousAircraft is not null && aircraft != previousAircraft) return false;
+        if (at < previousAt) return false;
+        if (at - previousAt.Value > MaxPlausibleForwardJump) return false;
+        return true;
+    }
+}
+
 // A flight-scoped state machine. Timestamps are simulator UTC, never wall-clock time.
 public sealed class PhaseDetector
 {

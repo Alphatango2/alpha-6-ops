@@ -40,7 +40,7 @@
 
           <ProgressBar x:Name="ReplayProgress" Height="6" Maximum="100" Value="0" Foreground="{StaticResource Yellow}" Background="#3B4133" BorderThickness="0" Margin="0,16,0,16"/>
 
-          <WrapPanel Margin="0,0,0,10"><Button x:Name="ConnectButton" Content="Connect to MSFS 2024" Click="Connect_Click"/><Button Content="Export test log" Click="ExportLog_Click"/><Button x:Name="LiveTimelineButton" Content="View flight timeline" IsEnabled="False" Click="LiveTimeline_Click"/><Button x:Name="LiveDebriefButton" Content="View flight debrief" IsEnabled="False" Click="LiveDebrief_Click"/></WrapPanel>
+          <WrapPanel Margin="0,0,0,10"><Button x:Name="ConnectButton" Content="Connect to MSFS 2024" Click="Connect_Click"/><Button x:Name="DisconnectButton" Content="Disconnect" IsEnabled="False" Click="Disconnect_Click"/><Button Content="Export test log" Click="ExportLog_Click"/><Button x:Name="LiveTimelineButton" Content="View flight timeline" IsEnabled="False" Click="LiveTimeline_Click"/><Button x:Name="LiveDebriefButton" Content="View flight debrief" IsEnabled="False" Click="LiveDebrief_Click"/></WrapPanel>
           <TextBlock x:Name="ConnectionText" Text="Live monitor disconnected. Start MSFS 2024 and load an aircraft at a gate." TextWrapping="Wrap"/>
           <TextBlock x:Name="LiveText" Text="Live telemetry will update the active flight tracker above." Foreground="{StaticResource Yellow}" TextWrapping="Wrap" Margin="0,8,0,0"/>
           <TextBlock x:Name="LogStatusText" Text="Test logs are saved automatically when you connect." Foreground="#BFC5B4" FontSize="12" TextWrapping="Wrap" Margin="0,8,0,0"/>
