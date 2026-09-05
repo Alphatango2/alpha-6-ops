@@ -71,7 +71,7 @@ public partial class MainWindow : Window
         tray.DoubleClick += (_, _) => Dispatcher.Invoke(RestoreWindow);
         EventsList.ItemsSource = milestones;
         Closing += OnClosing;
-        StateChanged += (_, _) => { if (WindowState == WindowState.Minimized) MinimizeToTray(); };
+        StateChanged += (_, _) => OnWindowStateChanged();
         activePlan = diagnosticDirectory is null ? ActiveFlightPlanStore.Load() : null;
         preferences = diagnosticDirectory is null ? UserPreferencesStore.Load() : null;
         FixtureCombo.ItemsSource = EmbeddedReplay.Fixtures;
@@ -221,6 +221,18 @@ public partial class MainWindow : Window
     }
 
     internal void RestoreWindow() { Show(); WindowState = WindowState.Normal; Activate(); }
+    private void OnWindowStateChanged()
+    {
+        MaximizeGlyph.Text = WindowState == WindowState.Maximized ? "\uE923" : "\uE922";
+        if (WindowState == WindowState.Minimized) MinimizeToTray();
+    }
+    private void MinimizeWindow_Click(object sender, RoutedEventArgs e) => SystemCommands.MinimizeWindow(this);
+    private void ToggleMaximizeWindow_Click(object sender, RoutedEventArgs e)
+    {
+        if (WindowState == WindowState.Maximized) SystemCommands.RestoreWindow(this);
+        else SystemCommands.MaximizeWindow(this);
+    }
+    private void CloseWindow_Click(object sender, RoutedEventArgs e) => Close();
     private void OnClosing(object? sender, CancelEventArgs e) { if (!exiting) { e.Cancel = true; MinimizeToTray(); } }
     internal void ExitApplication() => ExitApplication(null);
     internal void ExitApplication(string? preferencesDirectory)

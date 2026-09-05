@@ -1,5 +1,45 @@
-<Window x:Class="Alpha6Ops.Desktop.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:Alpha6Ops.Desktop" Title="Alpha 6 OPS — Desktop Preview" Icon="Assets/Alpha6OPS.ico" Width="1536" Height="1024" MinWidth="1100" MinHeight="700" ResizeMode="CanResize" WindowStartupLocation="CenterScreen" Background="#04090D" Foreground="#F1F4F7" UseLayoutRounding="True" TextOptions.TextFormattingMode="Display">
+<Window x:Class="Alpha6Ops.Desktop.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:Alpha6Ops.Desktop" xmlns:shell="clr-namespace:System.Windows.Shell;assembly=PresentationFramework" Title="Alpha 6 OPS — Desktop Preview" Icon="Assets/Alpha6OPS.ico" Width="1536" Height="1024" MinWidth="1100" MinHeight="700" ResizeMode="CanResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Background="#04090D" Foreground="#F1F4F7" UseLayoutRounding="True" TextOptions.TextFormattingMode="Display">
+  <shell:WindowChrome.WindowChrome>
+    <shell:WindowChrome CaptionHeight="38" ResizeBorderThickness="7" GlassFrameThickness="0" CornerRadius="0" UseAeroCaptionButtons="False" />
+  </shell:WindowChrome.WindowChrome>
   <Window.Resources>
+    <Style x:Key="OpsCaptionButton" TargetType="Button">
+      <Setter Property="Width" Value="46" />
+      <Setter Property="Height" Value="38" />
+      <Setter Property="Padding" Value="0" />
+      <Setter Property="Margin" Value="0" />
+      <Setter Property="Background" Value="Transparent" />
+      <Setter Property="Foreground" Value="#C7D2DA" />
+      <Setter Property="BorderThickness" Value="0" />
+      <Setter Property="FontFamily" Value="Segoe MDL2 Assets" />
+      <Setter Property="FontSize" Value="10" />
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Border Background="{TemplateBinding Background}">
+              <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Border>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+      <Style.Triggers>
+        <Trigger Property="IsMouseOver" Value="True">
+          <Setter Property="Background" Value="#25323B" />
+          <Setter Property="Foreground" Value="White" />
+        </Trigger>
+        <Trigger Property="IsPressed" Value="True">
+          <Setter Property="Opacity" Value="0.7" />
+        </Trigger>
+      </Style.Triggers>
+    </Style>
+    <Style x:Key="OpsCloseCaptionButton" TargetType="Button" BasedOn="{StaticResource OpsCaptionButton}">
+      <Style.Triggers>
+        <Trigger Property="IsMouseOver" Value="True">
+          <Setter Property="Background" Value="#C42B1C" />
+          <Setter Property="Foreground" Value="White" />
+        </Trigger>
+      </Style.Triggers>
+    </Style>
     <DataTemplate x:Key="AlertTemplate">
       <Button Style="{StaticResource OpsLink}" Padding="13,10" HorizontalContentAlignment="Stretch" Tag="{Binding}" Click="Alert_Click">
         <Grid>
@@ -40,7 +80,31 @@
       </Button>
     </DataTemplate>
   </Window.Resources>
-  <Grid Margin="16,10,16,0">
+  <Grid Background="#04090D">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="38" />
+      <RowDefinition />
+    </Grid.RowDefinitions>
+    <Border Grid.Row="0" Background="#04090D" BorderBrush="#172630" BorderThickness="0,0,0,1">
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition />
+          <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Horizontal" Margin="13,0,0,0" VerticalAlignment="Center">
+          <Image Source="Assets/Alpha6OPS.ico" Width="18" Height="18" Margin="0,0,9,0" />
+          <TextBlock Text="ALPHA 6 OPS" Foreground="#E8EDF1" FontFamily="Bahnschrift SemiCondensed" FontSize="12" VerticalAlignment="Center" />
+        </StackPanel>
+        <StackPanel Grid.Column="1" Orientation="Horizontal" shell:WindowChrome.IsHitTestVisibleInChrome="True">
+          <Button Style="{StaticResource OpsCaptionButton}" Content="&#xE921;" Click="MinimizeWindow_Click" AutomationProperties.Name="Minimize Alpha 6 OPS" />
+          <Button Style="{StaticResource OpsCaptionButton}" Click="ToggleMaximizeWindow_Click" AutomationProperties.Name="Maximize or restore Alpha 6 OPS">
+            <TextBlock x:Name="MaximizeGlyph" Text="&#xE922;" FontFamily="Segoe MDL2 Assets" />
+          </Button>
+          <Button Style="{StaticResource OpsCloseCaptionButton}" Content="&#xE8BB;" Click="CloseWindow_Click" AutomationProperties.Name="Close Alpha 6 OPS" />
+        </StackPanel>
+      </Grid>
+    </Border>
+    <Grid Grid.Row="1" Margin="16,10,16,0">
     <Grid.RowDefinitions>
       <RowDefinition Height="70" />
       <RowDefinition />
@@ -623,6 +687,7 @@
           </ScrollViewer>
         </DockPanel>
       </Border>
+    </Grid>
     </Grid>
   </Grid>
 </Window>
