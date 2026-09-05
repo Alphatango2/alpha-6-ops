@@ -10,6 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using Alpha6Ops.Core;
 using Forms = System.Windows.Forms;
 
@@ -33,24 +34,33 @@ public partial class MainWindow : Window
     private string? lastJournal;
     private readonly ProgramMonitor? programMonitor;
     private ActiveFlightPlan? activePlan;
+    private readonly UserPreferences? preferences;
+    private readonly FlightHistoryDatabase? flightHistory;
     private DateTimeOffset? actualDeparture;
     private DateTimeOffset? actualArrival;
     private static string LogDirectory => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Alpha6Designs", "Alpha6OPS", "TestLogs");
     internal bool IsRunning => running;
     internal bool TrayVisible => tray.Visible;
     internal IReadOnlyList<LegProjection> Projection => RotationPlanner.Project(session.Rotation);
+    internal FlightHistoryDatabase? FlightHistory => flightHistory;
     private string SelectedFixture => (string)(FixtureCombo.SelectedItem ?? EmbeddedReplay.Fixtures[0]);
+    private string PilotName => string.IsNullOrWhiteSpace(PilotNameBox.Text) ? "Unspecified" : PilotNameBox.Text.Trim();
 
-    public MainWindow()
+    public MainWindow(string? diagnosticDirectory = null)
     {
         InitializeComponent();
+        try { flightHistory = new FlightHistoryDatabase(diagnosticDirectory ?? CrashReporter.RootDirectory); }
+        catch (Exception error) { CrashReporter.Write("flight_history_startup", error); }
         var version = Assembly.GetExecutingAssembly().GetName().Version?.ToString(3) ?? "unknown";
         VersionText.Text = $"ALPHA 6 OPS v{version} • DESKTOP PREVIEW";
         Title = $"Alpha 6 OPS v{version} — Desktop Preview";
         SourceInitialized += (_, _) => ApplyInitialWindowSize();
+        var iconPath = Path.Combine(AppContext.BaseDirectory, "Assets", "alpha6.ico");
+        var hasAppIcon = File.Exists(iconPath);
+        if (hasAppIcon) Icon = new BitmapImage(new Uri(iconPath));
         tray = new Forms.NotifyIcon
         {
-            Icon = System.Drawing.SystemIcons.Application,
+            Icon = hasAppIcon ? new System.Drawing.Icon(iconPath) : System.Drawing.SystemIcons.Application,
             Text = "Alpha 6 OPS — Replay preview",
             Visible = true
         };
@@ -63,9 +73,11 @@ public partial class MainWindow : Window
         Closing += OnClosing;
         StateChanged += (_, _) => { if (WindowState == WindowState.Minimized) MinimizeToTray(); };
         activePlan = ActiveFlightPlanStore.Load();
+        preferences = UserPreferencesStore.Load();
         FixtureCombo.ItemsSource = EmbeddedReplay.Fixtures;
-        FixtureCombo.SelectedIndex = 0;
-        SetAdvanced(false);
+        FixtureCombo.SelectedIndex = Math.Max(0, EmbeddedReplay.Fixtures.ToList().IndexOf(preferences?.Fixture ?? EmbeddedReplay.Fixtures[0]));
+        PilotNameBox.Text = preferences?.PilotName ?? "";
+        SetAdvanced(preferences?.Advanced ?? false);
         ResetPreview();
         try { programMonitor = new ProgramMonitor(LogDirectory, status => ProgramHealthText.Text = status); }
         catch (Exception error)
@@ -88,8 +100,9 @@ public partial class MainWindow : Window
     {
         // Set the initial physical size once; subsequent resizing belongs to the user.
         var dpi = VisualTreeHelper.GetDpi(this);
-        Width = 1366 / dpi.DpiScaleX;
-        Height = 768 / dpi.DpiScaleY;
+        Width = (preferences?.Width ?? 1366) / dpi.DpiScaleX;
+        Height = (preferences?.Height ?? 768) / dpi.DpiScaleY;
+        if (preferences?.Maximized == true) WindowState = WindowState.Maximized;
     }
 
     private void RefreshRotation()
@@ -133,6 +146,8 @@ public partial class MainWindow : Window
         ConnectButton.IsEnabled = false;
         ReplayButton.IsEnabled = ResetButton.IsEnabled = false;
         StatusText.Text = "Replaying recorded simulator data. You can minimize to the tray; the replay will continue.";
+        var firstLeg = session.Rotation.Legs[0];
+        var flightId = BeginFlightHistory("replay", SelectedFixture, session.Rotation.AircraftId, firstLeg.Origin, firstLeg.Destination, firstLeg.Id);
         try
         {
             var samples = new List<Telemetry>();
@@ -147,18 +162,24 @@ public partial class MainWindow : Window
                 {
                     milestones.Add($"{milestone.At.UtcDateTime:HH:mm:ss}Z   {PhaseLabel(milestone.Phase)}");
                     tray.Text = $"Alpha 6 OPS — {PhaseLabel(milestone.Phase)}";
+                    RecordFlightEvent(flightId, "phase", milestone.At, new { phase = milestone.Phase.ToString(), label = PhaseLabel(milestone.Phase) });
                 }
                 ReplayProgress.Value++;
                 RefreshRotation();
             }
             var summary = string.Join(" ", Projection.Skip(1).Select(l => $"{l.Id} {(l.DepartureDelayMinutes == 0 ? "on time" : $"{l.DepartureDelayMinutes:+0;-0} min")}."));
             StatusText.Text = $"Replay complete. {summary} Nothing is sent to a server.";
+            EndFlightHistory(flightId, session.Phase.ToString());
             if (!IsVisible) tray.ShowBalloonTip(4000, "Alpha 6 OPS — Replay complete", summary, Forms.ToolTipIcon.Info);
         }
-        catch (OperationCanceledException) when (lifetime.IsCancellationRequested) { }
+        catch (OperationCanceledException) when (lifetime.IsCancellationRequested)
+        {
+            EndFlightHistory(flightId, "Cancelled");
+        }
         catch (Exception error) when (error is IOException or JsonException or ArgumentException)
         {
             StatusText.Text = $"Replay could not finish: {error.Message} Use Reset preview to try again.";
+            EndFlightHistory(flightId, "Error");
         }
         finally
         {
@@ -166,6 +187,25 @@ public partial class MainWindow : Window
             ConnectButton.IsEnabled = true;
             ReplayButton.IsEnabled = ResetButton.IsEnabled = true;
         }
+    }
+
+    private string? BeginFlightHistory(string source, string? sourceDetail, string aircraft, string? origin, string? destination, string? flightNumber)
+    {
+        if (flightHistory is null) return null;
+        try { return flightHistory.BeginFlight(PilotName, source, sourceDetail, aircraft, origin, destination, flightNumber, Assembly.GetExecutingAssembly().GetName().Version?.ToString(3) ?? "unknown"); }
+        catch (Exception error) when (error is IOException or UnauthorizedAccessException) { CrashReporter.Write("flight_history_begin", error); return null; }
+    }
+    private void RecordFlightEvent(string? flightId, string kind, DateTimeOffset? at, object detail)
+    {
+        if (flightId is null || flightHistory is null) return;
+        try { flightHistory.RecordEvent(flightId, kind, at, detail); }
+        catch (Exception error) when (error is IOException or UnauthorizedAccessException) { CrashReporter.Write("flight_history_record", error); }
+    }
+    private void EndFlightHistory(string? flightId, string finalPhase)
+    {
+        if (flightId is null || flightHistory is null) return;
+        try { flightHistory.EndFlight(flightId, finalPhase); }
+        catch (Exception error) when (error is IOException or UnauthorizedAccessException) { CrashReporter.Write("flight_history_end", error); }
     }
 
     internal void MinimizeToTray()
@@ -180,12 +220,15 @@ public partial class MainWindow : Window
 
     internal void RestoreWindow() { Show(); WindowState = WindowState.Normal; Activate(); }
     private void OnClosing(object? sender, CancelEventArgs e) { if (!exiting) { e.Cancel = true; MinimizeToTray(); } }
-    internal void ExitApplication()
+    internal void ExitApplication() => ExitApplication(null);
+    internal void ExitApplication(string? preferencesDirectory)
     {
         if (exiting) return;
         exiting = true;
+        UserPreferencesStore.Save(new UserPreferences(Width, Height, WindowState == WindowState.Maximized, AdvancedPanel.Visibility == Visibility.Visible, SelectedFixture, PilotNameBox.Text), preferencesDirectory);
         FinishLog("application_exit");
         programMonitor?.Stop("application_exit");
+        flightHistory?.Dispose();
         lifetime.Cancel();
         liveCancellation?.Cancel();
         tray.Visible = false;
@@ -253,6 +296,11 @@ public partial class MainWindow : Window
         if (programMonitor is null) { MessageBox.Show(this, "The diagnostic database is unavailable. A crash report was saved with the startup error.", "Alpha 6 OPS", MessageBoxButton.OK, MessageBoxImage.Warning); return; }
         programMonitor.WriteHeartbeat();
         new LogDatabaseWindow(programMonitor.Database) { Owner = this }.ShowDialog();
+    }
+    private void FlightHistory_Click(object sender, RoutedEventArgs e)
+    {
+        if (flightHistory is null) { MessageBox.Show(this, "The flight history database is unavailable. A crash report was saved with the startup error.", "Alpha 6 OPS", MessageBoxButton.OK, MessageBoxImage.Warning); return; }
+        new FlightHistoryWindow(flightHistory) { Owner = this }.ShowDialog();
     }
 
     private async void Connect_Click(object sender, RoutedEventArgs e)

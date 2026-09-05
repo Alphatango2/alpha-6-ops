@@ -22,6 +22,7 @@ internal static class DesktopSmokeTest
         {
             window.Show();
             window.SetAdvanced(true);
+            window.FixtureCombo.SelectedIndex = 0; // ignore any saved preference so the fixture-dependent assertions below stay deterministic
             var replay = window.RunReplayAsync(20);
             window.Close(); // normal close must hide, not dispose the window or end replay
             if (window.IsVisible || !window.TrayVisible || !window.IsRunning)
@@ -30,6 +31,10 @@ internal static class DesktopSmokeTest
             var legs = window.Projection;
             if (legs[1].DepartureDelayMinutes != 30 || legs[2].DepartureDelayMinutes != 5 || !legs[0].Completed)
                 throw new InvalidOperationException("Desktop replay results differ from the domain contract.");
+            if (window.FlightHistory is null) throw new InvalidOperationException("Flight history database did not initialize.");
+            var flights = window.FlightHistory.ReadRecentFlights();
+            if (flights.Count != 1 || flights[0].Source != "replay" || flights[0].Aircraft != "N600A6" || flights[0].EventCount != 4 || flights[0].FinalPhase != "Complete")
+                throw new InvalidOperationException("Flight history did not record the replay run correctly.");
             window.RestoreWindow();
             if (!window.IsVisible) throw new InvalidOperationException("Tray restore failed.");
             window.UpdateLayout();
@@ -123,7 +128,7 @@ internal static class DesktopSmokeTest
             if (window.Projection.Any(leg => leg.DepartureDelayMinutes != 0)) throw new InvalidOperationException("Reset failed.");
             File.WriteAllText(Path.Combine(outputDirectory, "desktop-smoke.json"), JsonSerializer.Serialize(new
             {
-                passed = true, checks = new[] { "WPF startup", "embedded replay", "close-to-tray preserves replay", "downstream delays", "tray restore", "reset", "SQLite fleet counts and N414DZ identity", "case-insensitive fleet search and no-results state", "active-flight assignment window", "timeline scrubber window and snapshot contract", "debrief window and segment/delay contract", "live-tracking recorder feeds the same timeline/debrief windows", "SimBrief JSON mapping", "SQLite diagnostic file index", "crash report serialization" },
+                passed = true, checks = new[] { "WPF startup", "embedded replay", "close-to-tray preserves replay", "downstream delays", "tray restore", "reset", "SQLite fleet counts and N414DZ identity", "case-insensitive fleet search and no-results state", "active-flight assignment window", "timeline scrubber window and snapshot contract", "debrief window and segment/delay contract", "live-tracking recorder feeds the same timeline/debrief windows", "SimBrief JSON mapping", "SQLite diagnostic file index", "crash report serialization", "flight history records a replay run" },
                 runtimeDirectory = RuntimeEnvironment.GetRuntimeDirectory(), legs
             }, new JsonSerializerOptions { WriteIndented = true }));
         }
@@ -132,6 +137,6 @@ internal static class DesktopSmokeTest
             File.WriteAllText(Path.Combine(outputDirectory, "desktop-smoke-error.txt"), error.ToString());
             Environment.ExitCode = 1;
         }
-        finally { window.ExitApplication(); }
+        finally { window.ExitApplication(outputDirectory); } // redirect the exit-time preferences write away from the real profile, matching CrashReporter's own directory override
     }
 }

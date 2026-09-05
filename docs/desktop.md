@@ -47,4 +47,6 @@ Not verified: interactive installer shortcut/registry/uninstall round-trip, clea
 
 ## Next integration
 
-Implement the SimConnect provider and aircraft/assignment checks behind `ISimulatorTelemetry`; replace the embedded replay with an explicit source selector. Add durable flight checkpoints and offline upload before calling this a live flight client. Single-instance activation, preferences, custom approved icon assets, signing, updates and clean-PC installation tests are subsequent desktop work. The tray currently uses the standard Windows application icon because no original Alpha 6 logo asset was supplied.
+Implement the SimConnect provider and aircraft/assignment checks behind `ISimulatorTelemetry`; replace the embedded replay with an explicit source selector. Add durable flight checkpoints and offline upload before calling this a live flight client. Signing, updates and clean-PC installation tests are subsequent desktop work.
+
+Single-instance activation, preferences persistence, and a real Alpha 6 icon/tray mark are done (`SingleInstance.cs`, `UserPreferences.cs`, `Assets/alpha6.ico` and `Assets/alpha6-mark.png`, both cropped from the logo Dan supplied).

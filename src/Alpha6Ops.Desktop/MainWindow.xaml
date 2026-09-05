@@ -2,7 +2,7 @@
         Title="Alpha 6 OPS — Desktop Preview" Width="1366" Height="768" ResizeMode="CanResize" WindowStartupLocation="CenterScreen" Background="#10120F" Foreground="#F0F0EB">
   <DockPanel Margin="32">
     <Grid DockPanel.Dock="Top" Margin="0,0,0,25"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
-      <StackPanel><StackPanel Orientation="Horizontal"><TextBlock Text="ALPHA 6" FontWeight="Bold" FontSize="25" VerticalAlignment="Center" Margin="0,0,10,0"/><Border Background="{StaticResource Yellow}" Padding="9,4"><TextBlock Text="OPS" Foreground="#10120F" FontWeight="Black" FontSize="25"/></Border></StackPanel><TextBlock Text="ALPHA 6 DESIGNS" Foreground="#A9AD9F" FontSize="10" Margin="0,8,0,0"/></StackPanel>
+      <StackPanel><StackPanel Orientation="Horizontal"><Image Source="Assets/alpha6-mark.png" Height="34" Margin="0,0,12,0" VerticalAlignment="Center"/><TextBlock Text="ALPHA 6" FontWeight="Bold" FontSize="25" VerticalAlignment="Center" Margin="0,0,10,0"/><Border Background="{StaticResource Yellow}" Padding="9,4" CornerRadius="3"><TextBlock Text="OPS" Foreground="#10120F" FontWeight="Black" FontSize="25"/></Border></StackPanel><TextBlock Text="ALPHA 6 DESIGNS" Foreground="#A9AD9F" FontSize="10" Margin="0,8,0,0"/></StackPanel>
       <TextBlock x:Name="VersionText" Grid.Column="1" Foreground="{StaticResource Yellow}" VerticalAlignment="Center" FontSize="11"/>
     </Grid>
     <Grid DockPanel.Dock="Bottom" Margin="0,16,0,0"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="Closing or minimizing keeps OPS in the tray. Use Exit to stop." Foreground="#ADB1A4" FontSize="11" VerticalAlignment="Center" TextWrapping="Wrap"/><Button Grid.Column="1" Content="Exit OPS" Click="Exit_Click" Margin="12,0,0,0" Padding="14,7"/></Grid>
@@ -10,47 +10,83 @@
       <StackPanel>
         <TextBlock Text="You fly the airplane." FontSize="32" FontWeight="Bold"/>
         <TextBlock Text="We'll run the airline." FontSize="32" FontWeight="Bold" Foreground="{StaticResource Yellow}" Margin="0,0,0,20"/>
-        <StackPanel Orientation="Horizontal" Margin="0,0,0,14"><Button x:Name="SimpleButton" Content="Simple" Click="Simple_Click"/><Button x:Name="AdvancedButton" Content="Advanced" Click="Advanced_Click"/><Button Content="Aircraft database" Click="Fleet_Click"/><Button Content="Log database" Click="Logs_Click"/><Button Content="Minimize to tray" Click="Tray_Click"/></StackPanel>
-        <Border Background="#17291E" BorderBrush="#2F6943" BorderThickness="1" Padding="10,7" Margin="0,0,0,14"><TextBlock x:Name="ProgramHealthText" Text="PROGRAM MONITOR STARTING" Foreground="#65E697" FontWeight="Bold" FontSize="11"/></Border>
-        <Border Background="#1B1E17" BorderBrush="#3B4133" BorderThickness="1" Padding="18" Margin="0,0,0,14"><StackPanel>
-          <Border x:Name="ConnectionBadge" Background="#30342C" Padding="12,8" HorizontalAlignment="Left" Margin="0,0,0,12"><StackPanel Orientation="Horizontal"><Ellipse x:Name="ConnectionDot" Width="11" Height="11" Fill="#A9AD9F" Margin="0,0,10,0"/><TextBlock x:Name="ConnectionBadgeText" Text="SIMULATOR DISCONNECTED" FontWeight="Bold" Foreground="White" AutomationProperties.LiveSetting="Polite"/></StackPanel></Border>
-          <WrapPanel><Button x:Name="ConnectButton" Content="Connect to MSFS 2024" Click="Connect_Click"/><Button Content="Export test log" Click="ExportLog_Click"/><Button x:Name="LiveTimelineButton" Content="View flight timeline" IsEnabled="False" Click="LiveTimeline_Click"/><Button x:Name="LiveDebriefButton" Content="View flight debrief" IsEnabled="False" Click="LiveDebrief_Click"/></WrapPanel>
-          <TextBlock x:Name="ConnectionText" Text="Live monitor disconnected. Start MSFS 2024 and load an aircraft at a gate." TextWrapping="Wrap" Margin="0,12,0,0"/>
-          <TextBlock x:Name="LiveText" Text="Live telemetry will update the active flight tracker below." Foreground="{StaticResource Yellow}" TextWrapping="Wrap" Margin="0,8,0,0"/>
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,14"><Button x:Name="SimpleButton" Content="Simple" Click="Simple_Click"/><Button x:Name="AdvancedButton" Content="Advanced" Click="Advanced_Click"/></StackPanel>
+        <Border Background="#17291E" BorderBrush="#2F6943" BorderThickness="1" CornerRadius="4" Padding="10,7" Margin="0,0,0,14"><TextBlock x:Name="ProgramHealthText" Text="PROGRAM MONITOR STARTING" Foreground="#65E697" FontWeight="Bold" FontSize="11"/></Border>
+
+        <!-- Connection & flight plan hero: connecting SimConnect is the unmissable focus. -->
+        <Border BorderBrush="#3B4133" BorderThickness="1" CornerRadius="7" Padding="22" Margin="0,0,0,14">
+          <Border.Background><LinearGradientBrush StartPoint="0,0" EndPoint="0,1"><GradientStop Color="#1E211A" Offset="0"/><GradientStop Color="#191C15" Offset="1"/></LinearGradientBrush></Border.Background>
+          <Border.Effect><DropShadowEffect Color="#000000" Opacity="0.35" BlurRadius="22" ShadowDepth="6" Direction="270"/></Border.Effect>
+          <StackPanel>
+          <Grid Margin="0,0,0,16"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+            <Border Grid.Column="0" x:Name="ConnectionBadge" Background="#30342C" CornerRadius="4" Padding="12,8" HorizontalAlignment="Left"><StackPanel Orientation="Horizontal"><Ellipse x:Name="ConnectionDot" Width="11" Height="11" Fill="#A9AD9F" Margin="0,0,10,0"/><TextBlock x:Name="ConnectionBadgeText" Text="SIMULATOR DISCONNECTED" FontWeight="Bold" Foreground="White" AutomationProperties.LiveSetting="Polite"/></StackPanel></Border>
+            <StackPanel Grid.Column="1" Margin="22,0,0,0"><TextBlock Text="DEPARTED" Foreground="#8E9584" FontSize="10"/><TextBlock x:Name="DepartedValueText" Text="—" FontWeight="SemiBold" FontSize="15"/></StackPanel>
+            <StackPanel Grid.Column="2" Margin="22,0,0,0"><TextBlock Text="EST. ARRIVAL" Foreground="#8E9584" FontSize="10"/><TextBlock x:Name="ArrivalValueText" Text="—" FontWeight="SemiBold" FontSize="15"/></StackPanel>
+            <StackPanel Grid.Column="3" Margin="22,0,0,0"><TextBlock Text="ELAPSED" Foreground="#8E9584" FontSize="10"/><TextBlock x:Name="ElapsedValueText" Text="—" FontWeight="SemiBold" FontSize="15"/></StackPanel>
+            <StackPanel Grid.Column="4" Margin="22,0,0,0"><TextBlock Text="CURRENT PHASE" Foreground="#8E9584" FontSize="10"/><TextBlock x:Name="PhaseText" Text="AT GATE" Foreground="{StaticResource Yellow}" FontWeight="Bold" FontSize="15"/></StackPanel>
+          </Grid>
+
+          <Grid><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+            <StackPanel><TextBlock x:Name="TrackerModeText" Text="ACTIVE FLIGHT" Foreground="{StaticResource Yellow}" FontSize="12" FontWeight="Bold"/><TextBlock x:Name="AircraftText" Text="NO AIRCRAFT ASSIGNED" Foreground="#BFC5B4" FontSize="12" Margin="0,4,0,0"/>
+              <TextBlock x:Name="RouteText" FontWeight="Bold" FontSize="28" Margin="0,12,0,2"/>
+              <TextBlock x:Name="DepartureText" FontSize="15" Foreground="#BFC5B4"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" VerticalAlignment="Top">
+              <TextBlock Text="PILOT" Foreground="#8E9584" FontSize="10" Margin="0,0,0,4"/>
+              <TextBox x:Name="PilotNameBox" Width="160" Padding="8" Margin="0,0,0,8" AutomationProperties.Name="Pilot name"/>
+              <Button Content="Set active flight" Click="SetFlight_Click"/>
+            </StackPanel>
+          </Grid>
+
+          <ProgressBar x:Name="ReplayProgress" Height="6" Maximum="100" Value="0" Foreground="{StaticResource Yellow}" Background="#3B4133" BorderThickness="0" Margin="0,16,0,16"/>
+
+          <WrapPanel Margin="0,0,0,10"><Button x:Name="ConnectButton" Content="Connect to MSFS 2024" Click="Connect_Click"/><Button Content="Export test log" Click="ExportLog_Click"/><Button x:Name="LiveTimelineButton" Content="View flight timeline" IsEnabled="False" Click="LiveTimeline_Click"/><Button x:Name="LiveDebriefButton" Content="View flight debrief" IsEnabled="False" Click="LiveDebrief_Click"/></WrapPanel>
+          <TextBlock x:Name="ConnectionText" Text="Live monitor disconnected. Start MSFS 2024 and load an aircraft at a gate." TextWrapping="Wrap"/>
+          <TextBlock x:Name="LiveText" Text="Live telemetry will update the active flight tracker above." Foreground="{StaticResource Yellow}" TextWrapping="Wrap" Margin="0,8,0,0"/>
           <TextBlock x:Name="LogStatusText" Text="Test logs are saved automatically when you connect." Foreground="#BFC5B4" FontSize="12" TextWrapping="Wrap" Margin="0,8,0,0"/>
         </StackPanel></Border>
-        <Border Background="#1B1E17" BorderBrush="#3B4133" BorderThickness="1" Padding="24">
-          <StackPanel>
-            <Grid><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><StackPanel><TextBlock x:Name="TrackerModeText" Text="ACTIVE FLIGHT" Foreground="{StaticResource Yellow}" FontSize="12" FontWeight="Bold"/><TextBlock x:Name="AircraftText" Text="NO AIRCRAFT ASSIGNED" Foreground="#BFC5B4" FontSize="12" Margin="0,4,0,0"/></StackPanel><Button Grid.Column="1" Content="Set active flight" Click="SetFlight_Click"/></Grid>
-            <TextBlock x:Name="RouteText" FontWeight="Bold" FontSize="30" Margin="0,14,0,2"/>
-            <TextBlock x:Name="DepartureText" FontSize="16" Foreground="#BFC5B4"/>
-            <ProgressBar x:Name="ReplayProgress" Height="8" Maximum="100" Value="0" Foreground="{StaticResource Yellow}" Background="#3B4133" BorderThickness="0" Margin="0,18,0,14"/>
-            <Grid Margin="0,0,0,14"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition/><ColumnDefinition/><ColumnDefinition/></Grid.ColumnDefinitions>
-              <StackPanel Grid.Column="0"><TextBlock Text="DEPARTED" Foreground="#8E9584" FontSize="10"/><TextBlock x:Name="DepartedValueText" Text="—" FontWeight="SemiBold" FontSize="15"/></StackPanel>
-              <StackPanel Grid.Column="1"><TextBlock Text="EST. ARRIVAL" Foreground="#8E9584" FontSize="10"/><TextBlock x:Name="ArrivalValueText" Text="—" FontWeight="SemiBold" FontSize="15"/></StackPanel>
-              <StackPanel Grid.Column="2"><TextBlock Text="ELAPSED" Foreground="#8E9584" FontSize="10"/><TextBlock x:Name="ElapsedValueText" Text="—" FontWeight="SemiBold" FontSize="15"/></StackPanel>
-              <StackPanel Grid.Column="3"><TextBlock Text="CURRENT PHASE" Foreground="#8E9584" FontSize="10"/><TextBlock x:Name="PhaseText" Text="AT GATE" Foreground="{StaticResource Yellow}" FontWeight="Bold" FontSize="15"/></StackPanel>
-            </Grid>
-            <TextBlock x:Name="StatusText" TextWrapping="Wrap" Foreground="#C0C5B5" MinHeight="38"/>
-            <WrapPanel Margin="0,16,0,0">
-              <ComboBox x:Name="FixtureCombo" Width="170" Padding="8" Margin="0,0,10,0" AutomationProperties.Name="Replay fixture"/>
-              <Button x:Name="ReplayButton" Content="Run flight replay" Background="{StaticResource Yellow}" Foreground="#10120F" FontWeight="Bold" Click="Replay_Click"/>
-              <Button x:Name="ResetButton" Content="Reset preview" Click="Reset_Click"/>
-              <Button Content="Timeline scrubber" Click="Timeline_Click"/>
-              <Button Content="Debrief" Click="Debrief_Click"/>
+
+        <!-- Card row: everything else, scannable without scrolling. -->
+        <UniformGrid Columns="3" Margin="-6,0,-6,0">
+          <Border Background="#1B1E17" BorderBrush="#3B4133" BorderThickness="1" CornerRadius="6" Padding="18" Margin="6"><StackPanel>
+            <TextBlock Text="LIVE POSITION" Foreground="{StaticResource Yellow}" FontSize="12" FontWeight="Bold" Margin="0,0,0,10"/>
+            <Border Background="#141610" BorderBrush="#2B2E24" BorderThickness="1" CornerRadius="4" Height="110" Margin="0,0,0,10"><TextBlock Text="MAP COMING SOON" Foreground="#5B6052" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center"/></Border>
+            <TextBlock Text="A moving map is planned once the simulator adapter reports the aircraft's position." Foreground="#8E9584" FontSize="11" TextWrapping="Wrap"/>
+          </StackPanel></Border>
+          <Border Background="#1B1E17" BorderBrush="#3B4133" BorderThickness="1" CornerRadius="6" Padding="18" Margin="6"><StackPanel>
+            <TextBlock Text="FIXTURE REPLAY" Foreground="{StaticResource Yellow}" FontSize="12" FontWeight="Bold" Margin="0,0,0,10"/>
+            <WrapPanel>
+              <ComboBox x:Name="FixtureCombo" Width="150" Padding="8" Margin="0,0,8,8" AutomationProperties.Name="Replay fixture"/>
+              <Button x:Name="ReplayButton" Content="Run replay" Background="{StaticResource Yellow}" Foreground="#10120F" FontWeight="Bold" Click="Replay_Click" Margin="0,0,8,8"/>
+              <Button x:Name="ResetButton" Content="Reset" Click="Reset_Click" Margin="0,0,8,8"/>
+              <Button Content="Timeline" Click="Timeline_Click" Margin="0,0,8,8"/>
+              <Button Content="Debrief" Click="Debrief_Click" Margin="0,0,8,8"/>
             </WrapPanel>
-            <TextBlock Text="Sample flight • 02 SEP 2026 • All times UTC • No live simulator connection" Foreground="#ADB1A4" FontSize="11" TextWrapping="Wrap" Margin="0,16,0,0"/>
-          </StackPanel>
-        </Border>
-        <StackPanel x:Name="AdvancedPanel" Visibility="Collapsed" Margin="0,22,0,0">
-          <TextBlock Text="Today's aircraft rotation" FontSize="20" FontWeight="SemiBold" Margin="0,0,0,12"/>
-          <DataGrid x:Name="RotationGrid" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" CanUserSortColumns="False" HeadersVisibility="Column" GridLinesVisibility="Horizontal" Background="#1B1E17" Foreground="#F0F0EB" BorderBrush="#3B4133" HorizontalGridLinesBrush="#3B4133" RowBackground="#1B1E17" AlternatingRowBackground="#23271D" RowHeight="42" ColumnHeaderHeight="36" SelectionMode="Single">
-            <DataGrid.Resources><Style TargetType="DataGridColumnHeader"><Setter Property="Background" Value="#282D22"/><Setter Property="Foreground" Value="#F9D928"/><Setter Property="Padding" Value="8"/></Style><Style TargetType="DataGridCell"><Setter Property="Padding" Value="8"/><Setter Property="BorderThickness" Value="0"/><Setter Property="Template"><Setter.Value><ControlTemplate TargetType="DataGridCell"><Border Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}"><ContentPresenter VerticalAlignment="Center"/></Border></ControlTemplate></Setter.Value></Setter></Style></DataGrid.Resources>
-            <DataGrid.Columns><DataGridTextColumn Header="Flight" Binding="{Binding Id}" Width="70"/><DataGridTextColumn Header="Route" Binding="{Binding Route}" Width="*"/><DataGridTextColumn Header="Out UTC" Binding="{Binding Out}" Width="90"/><DataGridTextColumn Header="In UTC" Binding="{Binding In}" Width="90"/><DataGridTextColumn Header="Dep / arr delay" Binding="{Binding Delay}" Width="130"/><DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="90"/></DataGrid.Columns>
-          </DataGrid>
-          <TextBlock Text="35-minute minimum turn. Schedule slack absorbs delay on later legs." Foreground="#ADB1A4" FontSize="12" Margin="0,10,0,16" TextWrapping="Wrap"/>
-          <TextBlock Text="Flight milestones" FontWeight="SemiBold" FontSize="20" Margin="0,0,0,8"/>
-          <ItemsControl x:Name="EventsList"><ItemsControl.ItemTemplate><DataTemplate><TextBlock Text="{Binding}" Margin="0,4" Foreground="#C0C5B5"/></DataTemplate></ItemsControl.ItemTemplate></ItemsControl>
+            <TextBlock x:Name="StatusText" TextWrapping="Wrap" Foreground="#C0C5B5" FontSize="12" MinHeight="34"/>
+          </StackPanel></Border>
+          <Border Background="#1B1E17" BorderBrush="#3B4133" BorderThickness="1" CornerRadius="6" Padding="18" Margin="6"><StackPanel>
+            <TextBlock Text="AIRCRAFT &amp; LOGS" Foreground="{StaticResource Yellow}" FontSize="12" FontWeight="Bold" Margin="0,0,0,10"/>
+            <WrapPanel>
+              <Button Content="Aircraft database" Click="Fleet_Click" Margin="0,0,8,8"/>
+              <Button Content="Log database" Click="Logs_Click" Margin="0,0,8,8"/>
+              <Button Content="Flight history" Click="FlightHistory_Click" Margin="0,0,8,8"/>
+              <Button Content="Minimize to tray" Click="Tray_Click" Margin="0,0,8,8"/>
+            </WrapPanel>
+            <TextBlock Text="Utilities, kept out of the primary flow." Foreground="#8E9584" FontSize="11" TextWrapping="Wrap"/>
+          </StackPanel></Border>
+        </UniformGrid>
+
+        <StackPanel x:Name="AdvancedPanel" Visibility="Collapsed" Margin="0,14,0,0">
+          <Border Background="#1B1E17" BorderBrush="#3B4133" BorderThickness="1" CornerRadius="6" Padding="22"><StackPanel>
+            <TextBlock Text="TODAY'S ROTATION" Foreground="{StaticResource Yellow}" FontSize="12" FontWeight="Bold" Margin="0,0,0,14"/>
+            <DataGrid x:Name="RotationGrid" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" CanUserSortColumns="False" HeadersVisibility="Column" GridLinesVisibility="Horizontal" Background="#1B1E17" Foreground="#F0F0EB" BorderBrush="#3B4133" HorizontalGridLinesBrush="#3B4133" RowBackground="#1B1E17" AlternatingRowBackground="#23271D" RowHeight="42" ColumnHeaderHeight="36" SelectionMode="Single">
+              <DataGrid.Resources><Style TargetType="DataGridColumnHeader"><Setter Property="Background" Value="#282D22"/><Setter Property="Foreground" Value="#F9D928"/><Setter Property="Padding" Value="8"/></Style><Style TargetType="DataGridCell"><Setter Property="Padding" Value="8"/><Setter Property="BorderThickness" Value="0"/><Setter Property="Template"><Setter.Value><ControlTemplate TargetType="DataGridCell"><Border Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}"><ContentPresenter VerticalAlignment="Center"/></Border></ControlTemplate></Setter.Value></Setter></Style></DataGrid.Resources>
+              <DataGrid.Columns><DataGridTextColumn Header="Flight" Binding="{Binding Id}" Width="70"/><DataGridTextColumn Header="Route" Binding="{Binding Route}" Width="*"/><DataGridTextColumn Header="Out UTC" Binding="{Binding Out}" Width="90"/><DataGridTextColumn Header="In UTC" Binding="{Binding In}" Width="90"/><DataGridTextColumn Header="Dep / arr delay" Binding="{Binding Delay}" Width="130"/><DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="90"/></DataGrid.Columns>
+            </DataGrid>
+            <TextBlock Text="35-minute minimum turn. Schedule slack absorbs delay on later legs." Foreground="#ADB1A4" FontSize="12" Margin="0,10,0,16" TextWrapping="Wrap"/>
+            <TextBlock Text="Flight milestones" FontWeight="SemiBold" FontSize="20" Margin="0,0,0,8"/>
+            <ItemsControl x:Name="EventsList"><ItemsControl.ItemTemplate><DataTemplate><TextBlock Text="{Binding}" Margin="0,4" Foreground="#C0C5B5"/></DataTemplate></ItemsControl.ItemTemplate></ItemsControl>
+          </StackPanel></Border>
         </StackPanel>
       </StackPanel>
     </ScrollViewer>
