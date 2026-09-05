@@ -66,7 +66,7 @@ internal static class PreviewSetup
                 title.SetBounds(28, 25, 500, 45);
                 title.Font = new Font("Segoe UI", 24, FontStyle.Bold);
                 title.ForeColor = Color.FromArgb(249, 217, 40);
-                var upgrading = Directory.Exists(InstallPath);
+                var upgrading = HasContents(InstallPath);
                 details.Text = (upgrading ? "Upgrade the existing Alpha 6 OPS installation for your account." : "Install the Windows desktop connection test for your account.") + "\r\n\r\nIncludes a private .NET runtime and Start menu shortcut.\r\nExisting logs, settings and SimBrief data are preserved.\r\nClose Alpha 6 OPS before continuing.\r\n\r\nLocation: " + InstallPath;
                 details.SetBounds(30, 86, 500, 145);
                 details.Font = new Font("Segoe UI", 10);
@@ -165,7 +165,15 @@ internal static class PreviewSetup
         destination = Path.GetFullPath(destination).TrimEnd(Path.DirectorySeparatorChar);
         var staging = destination + ".staging-" + Guid.NewGuid().ToString("N");
         var backup = destination + ".backup-" + Guid.NewGuid().ToString("N");
-        var hadPrevious = Directory.Exists(destination);
+        var hadPrevious = HasContents(destination);
+        // Old preview uninstallers could leave the fixed product directory empty.
+        // Removing only an empty, non-linked directory is safe and lets setup recover
+        // from the stale uninstall registration as a fresh installation.
+        if (Directory.Exists(destination) && !hadPrevious)
+        {
+            CheckTree(destination);
+            Directory.Delete(destination, false);
+        }
         if (hadPrevious)
         {
             VerifyOwnedInstallation(destination);
@@ -193,6 +201,12 @@ internal static class PreviewSetup
         {
             if (Directory.Exists(staging)) { CheckTree(staging); Directory.Delete(staging, true); }
         }
+    }
+
+    static bool HasContents(string directory)
+    {
+        if (!Directory.Exists(directory)) return false;
+        using (var entries = Directory.EnumerateFileSystemEntries(directory).GetEnumerator()) return entries.MoveNext();
     }
 
     static void VerifyOwnedInstallation(string directory)
