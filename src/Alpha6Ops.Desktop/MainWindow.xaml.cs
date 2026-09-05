@@ -223,7 +223,8 @@ public partial class MainWindow : Window
     internal void RestoreWindow() { Show(); WindowState = WindowState.Normal; Activate(); }
     private void OnWindowStateChanged()
     {
-        MaximizeGlyph.Text = WindowState == WindowState.Maximized ? "\uE923" : "\uE922";
+        MaximizeIcon.Visibility = WindowState == WindowState.Maximized ? Visibility.Collapsed : Visibility.Visible;
+        RestoreIcon.Visibility = WindowState == WindowState.Maximized ? Visibility.Visible : Visibility.Collapsed;
         if (WindowState == WindowState.Minimized) MinimizeToTray();
     }
     private void MinimizeWindow_Click(object sender, RoutedEventArgs e) => SystemCommands.MinimizeWindow(this);
