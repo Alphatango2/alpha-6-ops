@@ -8,9 +8,10 @@ $publish = Join-Path $repo 'outputs/Alpha6OPS-Desktop'
 $dotnet = Join-Path $DotNetRoot 'dotnet.exe'
 $compiler = Join-Path $env:WINDIR 'Microsoft.NET/Framework64/v4.0.30319/csc.exe'
 $setupSource = Join-Path $PSScriptRoot 'PreviewSetup.cs'
+$icon = Join-Path $repo 'src/Alpha6Ops.Desktop/Assets/Alpha6OPS.ico'
 $uninstaller = Join-Path $publish 'Uninstall.exe'
-$installer = Join-Path $repo 'outputs/Alpha6OPS-Setup-0.10.1.exe'
-$archive = Join-Path $repo 'outputs/Alpha6OPS-Desktop-0.10.1-win-x64.zip'
+$installer = Join-Path $repo 'outputs/Alpha6OPS-Setup-0.10.2.exe'
+$archive = Join-Path $repo 'outputs/Alpha6OPS-Desktop-0.10.2-win-x64.zip'
 $previousCliHome = $env:DOTNET_CLI_HOME
 $env:DOTNET_CLI_HOME = Join-Path $repo 'work/dotnet-home'
 Push-Location $repo
@@ -28,11 +29,11 @@ try {
     }
     Copy-Item -LiteralPath (Join-Path $DotNetRoot 'LICENSE.txt'),(Join-Path $DotNetRoot 'ThirdPartyNotices.txt') -Destination (Join-Path $publish 'runtime') -Force
     Copy-Item -LiteralPath 'outputs/Desktop-Quick-Start.txt' -Destination (Join-Path $publish 'Read me.txt') -Force
-    & $compiler /nologo /target:winexe /platform:x64 /define:UNINSTALLER "/out:$uninstaller" /r:System.Windows.Forms.dll /r:System.Drawing.dll /r:System.IO.Compression.dll $setupSource
+    & $compiler /nologo /target:winexe /platform:x64 /define:UNINSTALLER "/win32icon:$icon" "/out:$uninstaller" /r:System.Windows.Forms.dll /r:System.Drawing.dll /r:System.IO.Compression.dll $setupSource
     if ($LASTEXITCODE -ne 0) { throw 'Uninstaller build failed.' }
     # Files copied for portable use do not register anything in Windows.
-    Compress-Archive -Path "$publish/*" -DestinationPath outputs/Alpha6OPS-Desktop-0.10.1-win-x64.zip -Force
-    & $compiler /nologo /target:winexe /platform:x64 "/out:$installer" /r:System.Windows.Forms.dll /r:System.Drawing.dll /r:System.IO.Compression.dll "/resource:$archive,payload.zip" $setupSource
+    Compress-Archive -Path "$publish/*" -DestinationPath outputs/Alpha6OPS-Desktop-0.10.2-win-x64.zip -Force
+    & $compiler /nologo /target:winexe /platform:x64 "/win32icon:$icon" "/out:$installer" /r:System.Windows.Forms.dll /r:System.Drawing.dll /r:System.IO.Compression.dll "/resource:$archive,payload.zip" $setupSource
     if ($LASTEXITCODE -ne 0) { throw 'Setup build failed.' }
-    Get-FileHash outputs/Alpha6OPS-Setup-0.10.1.exe,outputs/Alpha6OPS-Desktop-0.10.1-win-x64.zip | Format-Table -AutoSize
+    Get-FileHash outputs/Alpha6OPS-Setup-0.10.2.exe,outputs/Alpha6OPS-Desktop-0.10.2-win-x64.zip | Format-Table -AutoSize
 } finally { $env:DOTNET_CLI_HOME = $previousCliHome; Pop-Location }

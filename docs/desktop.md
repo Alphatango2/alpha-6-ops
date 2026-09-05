@@ -47,4 +47,4 @@ Not verified: interactive installer shortcut/registry/uninstall round-trip, clea
 
 ## Next integration
 
-Implement the SimConnect provider and aircraft/assignment checks behind `ISimulatorTelemetry`; replace the embedded replay with an explicit source selector. Add durable flight checkpoints and offline upload before calling this a live flight client. Single-instance activation, preferences, custom approved icon assets, signing, updates and clean-PC installation tests are subsequent desktop work. The tray currently uses the standard Windows application icon because no original Alpha 6 logo asset was supplied.
+The approved A6 mark is embedded at 16, 24, 32, 48, 64, 128 and 256 pixels and is used by the application windows, executable, tray icon, installer and uninstaller. Remaining desktop work includes single-instance activation, preferences, signing, update delivery and clean-PC installation tests.

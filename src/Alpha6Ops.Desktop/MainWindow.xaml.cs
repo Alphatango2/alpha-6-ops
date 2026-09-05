@@ -18,6 +18,7 @@ namespace Alpha6Ops.Desktop;
 public partial class MainWindow : Window
 {
     private readonly Forms.NotifyIcon tray;
+    private readonly System.Drawing.Icon trayIcon;
     private readonly ObservableCollection<string> milestones = new();
     private readonly CancellationTokenSource lifetime = new();
     private FlightSession session = new(Demo.Rotation());
@@ -47,9 +48,10 @@ public partial class MainWindow : Window
         VersionText.Text = $"ALPHA 6 OPS v{version} • DESKTOP PREVIEW";
         Title = $"Alpha 6 OPS v{version} — Desktop Preview";
         SourceInitialized += (_, _) => ApplyInitialWindowSize();
+        trayIcon = System.Drawing.Icon.ExtractAssociatedIcon(Environment.ProcessPath ?? "") ?? (System.Drawing.Icon)System.Drawing.SystemIcons.Application.Clone();
         tray = new Forms.NotifyIcon
         {
-            Icon = System.Drawing.SystemIcons.Application,
+            Icon = trayIcon,
             Text = "Alpha 6 OPS — Replay preview",
             Visible = true
         };
@@ -191,6 +193,7 @@ public partial class MainWindow : Window
         tray.Visible = false;
         tray.ContextMenuStrip?.Dispose();
         tray.Dispose();
+        trayIcon.Dispose();
         Application.Current.Shutdown();
     }
     private static string PhaseLabel(FlightPhase phase) => phase switch
