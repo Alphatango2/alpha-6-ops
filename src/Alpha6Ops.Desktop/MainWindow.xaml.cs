@@ -273,11 +273,11 @@ public partial class MainWindow : Window
         liveRotation = null; // rebuilt from the new plan on the next live sample
         RefreshLiveTracker(liveAircraft, liveLast, liveRecorder?.Phase, "Assignment ready. Connect to MSFS 2024 to begin tracking.");
     }
-    private static AircraftRotation? BuildLiveRotation(ActiveFlightPlan? plan, string? simulatorAircraft)
+    private static AircraftRotation? BuildLiveRotation(ActiveFlightPlan? plan, string? simulatorAircraft, AircraftGroundProfile groundProfile)
     {
         if (plan is null) return null;
         var aircraft = string.IsNullOrWhiteSpace(plan.Registration) ? simulatorAircraft ?? "UNKNOWN" : plan.Registration;
-        return new AircraftRotation("alpha6", aircraft, 0, [new(plan.FlightNumber, plan.Origin, plan.Destination, plan.PlannedDepartureUtc, plan.PlannedArrivalUtc)]);
+        return new AircraftRotation("alpha6", aircraft, groundProfile.MinimumTurnMinutes, [new(plan.FlightNumber, plan.Origin, plan.Destination, plan.PlannedDepartureUtc, plan.PlannedArrivalUtc)]);
     }
     private void LiveTimeline_Click(object sender, RoutedEventArgs e)
     {
@@ -383,8 +383,9 @@ public partial class MainWindow : Window
         {
             if (!s.OnGround || s.GroundSpeedKnots >= 0.5 || !s.ParkingBrake || s.Paused || s.Slewing)
             { ConnectionText.Text = "Connected. Waiting for a stationary aircraft with parking brake set and simulation unpaused."; var observed = !s.OnGround ? FlightPhase.Airborne : s.GroundSpeedKnots >= 1 ? FlightPhase.TaxiOut : FlightPhase.AtGate; RefreshLiveTracker(reading.Aircraft, s.At, observed, s.Paused ? "Simulator paused" : s.Slewing ? "Slew mode" : !s.OnGround ? "Airborne • departure time unavailable" : "Taxiing • monitor awaiting a gate state"); return; }
-            liveRecorder = new TimelineRecorder(new PhaseDetector());
-            liveRotation = BuildLiveRotation(activePlan, reading.Aircraft);
+            var groundProfile = AircraftGroundProfiles.ForFamily(reading.Aircraft);
+            liveRecorder = new TimelineRecorder(new PhaseDetector(groundProfile));
+            liveRotation = BuildLiveRotation(activePlan, reading.Aircraft, groundProfile);
             RecordLog("monitor_armed", s.At, new { aircraft = reading.Aircraft });
         }
         if (liveRecorder.Observe(s) is { } milestone)

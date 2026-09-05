@@ -24,9 +24,30 @@ public static class TelemetryContinuity
     }
 }
 
-// A flight-scoped state machine. Timestamps are simulator UTC, never wall-clock time.
-public sealed class PhaseDetector
+// Ground-handling numbers a rotation/phase-detector needs that vary by aircraft type: how long a
+// turn takes, and what "block-in" looks like. Every family currently resolves to Default because no
+// real per-type data has been supplied yet - this exists so a real value can be dropped in later
+// without changing how rotations or the phase detector consume it.
+public sealed record AircraftGroundProfile(int MinimumTurnMinutes, double BlockInMaxGroundSpeedKnots, bool BlockInRequiresParkingBrake, bool BlockInRequiresEnginesOff)
 {
+    public static readonly AircraftGroundProfile Default = new(35, 0.5, true, true);
+}
+
+public static class AircraftGroundProfiles
+{
+    // Keyed by whatever aircraft identifier the caller has (a SimConnect title, a fleet family name).
+    // Empty until real per-type turn times and ground procedures are supplied.
+    private static readonly IReadOnlyDictionary<string, AircraftGroundProfile> ByAircraft =
+        new Dictionary<string, AircraftGroundProfile>(StringComparer.OrdinalIgnoreCase);
+
+    public static AircraftGroundProfile ForFamily(string? aircraft) =>
+        aircraft is not null && ByAircraft.TryGetValue(aircraft, out var profile) ? profile : AircraftGroundProfile.Default;
+}
+
+// A flight-scoped state machine. Timestamps are simulator UTC, never wall-clock time.
+public sealed class PhaseDetector(AircraftGroundProfile? groundProfile = null)
+{
+    private readonly AircraftGroundProfile profile = groundProfile ?? AircraftGroundProfile.Default;
     public FlightPhase Phase { get; private set; } = FlightPhase.AtGate;
     private DateTimeOffset? last;
     private FlightPhase? candidate;
@@ -45,7 +66,9 @@ public sealed class PhaseDetector
             FlightPhase.TaxiOut when !sample.OnGround => FlightPhase.Airborne,
             FlightPhase.Airborne when sample.OnGround => FlightPhase.TaxiIn,
             FlightPhase.TaxiIn when !sample.OnGround => FlightPhase.Airborne, // bounce/go-around
-            FlightPhase.TaxiIn when sample.OnGround && sample.GroundSpeedKnots < 0.5 && sample.ParkingBrake && !sample.EnginesRunning => FlightPhase.Complete,
+            FlightPhase.TaxiIn when sample.OnGround && sample.GroundSpeedKnots < profile.BlockInMaxGroundSpeedKnots
+                && (!profile.BlockInRequiresParkingBrake || sample.ParkingBrake)
+                && (!profile.BlockInRequiresEnginesOff || !sample.EnginesRunning) => FlightPhase.Complete,
             _ => null
         };
         if (next is null) { candidate = null; return null; }
@@ -111,7 +134,7 @@ public static class RotationPlanner
 
 public static class Demo
 {
-    public static AircraftRotation Rotation() => new("alpha6", "N600A6", 35, [
+    public static AircraftRotation Rotation() => new("alpha6", "N600A6", AircraftGroundProfile.Default.MinimumTurnMinutes, [
         new("A601", "KORD", "KDTW", DateTimeOffset.Parse("2026-09-02T10:00:00Z"), DateTimeOffset.Parse("2026-09-02T11:15:00Z")),
         new("A602", "KDTW", "KJFK", DateTimeOffset.Parse("2026-09-02T11:50:00Z"), DateTimeOffset.Parse("2026-09-02T13:30:00Z")),
         new("A603", "KJFK", "KORD", DateTimeOffset.Parse("2026-09-02T14:30:00Z"), DateTimeOffset.Parse("2026-09-02T17:00:00Z"))]);
