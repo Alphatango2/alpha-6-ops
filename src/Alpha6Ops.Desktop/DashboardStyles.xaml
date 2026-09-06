@@ -83,6 +83,13 @@
     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
     <Setter Property="Padding" Value="15,12" />
     <Setter Property="Margin" Value="0,0,0,3" />
+    <Style.Triggers>
+      <Trigger Property="IsMouseOver" Value="True">
+        <Setter Property="Background" Value="{StaticResource OpsYellow}" />
+        <Setter Property="Foreground" Value="#080C0F" />
+        <Setter Property="BorderBrush" Value="#FFE653" />
+      </Trigger>
+    </Style.Triggers>
   </Style>
   <Style x:Key="OpsTile" TargetType="Button" BasedOn="{StaticResource OpsButton}">
     <Setter Property="Padding" Value="0" />

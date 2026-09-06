@@ -207,7 +207,7 @@
       </StackPanel>
       <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel>
-          <Button x:Name="DashboardNavButton" Style="{StaticResource OpsNav}" Background="{StaticResource OpsYellow}" Foreground="#080C0F" Click="Dashboard_Click">
+          <Button x:Name="DashboardNavButton" Style="{StaticResource OpsNav}" Click="Dashboard_Click">
             <StackPanel Orientation="Horizontal">
               <TextBlock Text="" FontFamily="Segoe MDL2 Assets" FontSize="22" Width="43" />
               <TextBlock Text="DASHBOARD" FontWeight="SemiBold" VerticalAlignment="Center" />
@@ -239,7 +239,13 @@
           </Button>
           <Button Style="{StaticResource OpsNav}" Tag="Crews" Click="Module_Click">
             <StackPanel Orientation="Horizontal">
-              <TextBlock Text="" FontFamily="Segoe MDL2 Assets" FontSize="21" Width="43" />
+              <Viewbox Width="24" Height="24" Margin="0,0,19,0">
+                <Canvas Width="24" Height="24">
+                  <Path Data="M 7,6 L 17,6 L 15,3.5 L 9,3.5 Z M 7,7.8 L 17,7.8" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}" StrokeThickness="1.4" StrokeLineJoin="Round" />
+                  <Ellipse Canvas.Left="8.5" Canvas.Top="7" Width="7" Height="7" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}" StrokeThickness="1.4" />
+                  <Path Data="M 4.5,21 C 5,16.3 7.7,14.4 12,14.4 C 16.3,14.4 19,16.3 19.5,21 M 9.3,15.1 L 12,18 L 14.7,15.1" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}" StrokeThickness="1.4" StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round" />
+                </Canvas>
+              </Viewbox>
               <TextBlock Text="CREWS" VerticalAlignment="Center" />
             </StackPanel>
           </Button>
@@ -257,7 +263,13 @@
           </Button>
           <Button Style="{StaticResource OpsNav}" Tag="Weather" Click="Module_Click">
             <StackPanel Orientation="Horizontal">
-              <TextBlock Text="☀" FontFamily="Segoe UI Symbol" FontSize="21" Width="43" />
+              <Viewbox Width="24" Height="24" Margin="0,0,19,0">
+                <Canvas Width="24" Height="24">
+                  <Ellipse Canvas.Left="4.5" Canvas.Top="3.5" Width="7" Height="7" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}" StrokeThickness="1.35" />
+                  <Path Data="M 8,1 L 8,2 M 8,12 L 8,14 M 1,7 L 3,7 M 13,7 L 15,7 M 3,2 L 4.3,3.3 M 11.7,10.7 L 13,12 M 13,2 L 11.7,3.3 M 4.3,10.7 L 3,12" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}" StrokeThickness="1.35" StrokeStartLineCap="Round" StrokeEndLineCap="Round" />
+                  <Path Data="M 5,20 L 18.5,20 C 21,20 22.5,18.4 22.5,16.3 C 22.5,14.2 20.8,12.6 18.7,12.6 C 18.1,12.6 17.5,12.7 17,13 C 16.2,10.7 14.3,9.5 12,9.5 C 9.2,9.5 7,11.5 6.7,14.2 C 6.2,14 5.7,13.9 5.1,13.9 C 3.2,13.9 1.7,15.2 1.7,17 C 1.7,18.7 3.1,20 5,20 Z" Fill="#04090D" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}" StrokeThickness="1.35" StrokeLineJoin="Round" />
+                </Canvas>
+              </Viewbox>
               <TextBlock Text="WEATHER" VerticalAlignment="Center" />
             </StackPanel>
           </Button>
