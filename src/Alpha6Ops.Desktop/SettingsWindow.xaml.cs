@@ -1,0 +1,39 @@
+using System;
+using System.Diagnostics;
+using System.IO;
+using System.Reflection;
+using System.Windows;
+
+namespace Alpha6Ops.Desktop;
+
+public partial class SettingsWindow : Window
+{
+    private readonly Action openFlightTools;
+    private static string DataDirectory => CrashReporter.RootDirectory;
+
+    internal SettingsWindow(string simulatorStatus, string pilotName, Action showFlightTools)
+    {
+        InitializeComponent();
+        openFlightTools = showFlightTools;
+        var simBriefUser = SimBriefImporter.LoadUsername();
+        var version = Assembly.GetExecutingAssembly().GetName().Version?.ToString(3) ?? "unknown";
+        SimulatorStatusText.Text = simulatorStatus.ToUpperInvariant();
+        SimConnectPluginStatusText.Text = simulatorStatus.Contains("CONNECTED", StringComparison.OrdinalIgnoreCase) &&
+                                             !simulatorStatus.Contains("DISCONNECTED", StringComparison.OrdinalIgnoreCase)
+            ? "CONNECTED" : "BUILT IN";
+        PilotSummaryText.Text = string.IsNullOrWhiteSpace(pilotName) ? "No pilot display name is set." : $"Display name: {pilotName.Trim()}";
+        SimBriefStatusText.Text = string.IsNullOrWhiteSpace(simBriefUser) ? "NOT CONFIGURED" : $"CONFIGURED • {simBriefUser}";
+        SimBriefPluginStatusText.Text = string.IsNullOrWhiteSpace(simBriefUser) ? "SETUP NEEDED" : "CONFIGURED";
+        DataPathText.Text = DataDirectory;
+        VersionText.Text = $"ALPHA 6 OPS v{version}";
+    }
+
+    private void OpenFlightTools_Click(object sender, RoutedEventArgs e) { Close(); openFlightTools(); }
+    private void OpenDataFolder_Click(object sender, RoutedEventArgs e) => OpenFolder(DataDirectory);
+    private void OpenCrashReports_Click(object sender, RoutedEventArgs e) => OpenFolder(Path.Combine(DataDirectory, "CrashReports"));
+    private static void OpenFolder(string path)
+    {
+        Directory.CreateDirectory(path);
+        Process.Start(new ProcessStartInfo("explorer.exe", path) { UseShellExecute = true });
+    }
+}

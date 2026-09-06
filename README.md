@@ -10,7 +10,9 @@ Alpha 6 Designs' MSFS 2024 virtual-airline operations platform. This repository 
 
 ## Windows desktop preview
 
-Latest: **0.11.3 Sidebar polish** adds hover highlighting across every navigation tab, removes the permanent Dashboard selection fill, and introduces matching outlined pilot and sun-behind-cloud icons for Crews and Weather. It also includes the integrated dark window controls and all v0.11.2 operations features. Install with `outputs/Alpha6OPS-Setup-0.11.3.exe`, or fully extract `outputs/Alpha6OPS-Desktop-0.11.3-win-x64.zip` for portable use.
+Latest: **0.11.4 Organized settings and plugins** adds a dedicated Settings workspace with General, Simulator, Flight Tracking, SimBrief, Plugins, Logs & Diagnostics, and About tabs. The Plugins page reports the real status of the built-in SimConnect, SimBrief, diagnostics, and flight-history integrations while reserving third-party loading for a future signed extension format. Install with `outputs/Alpha6OPS-Setup-0.11.4.exe`, or fully extract `outputs/Alpha6OPS-Desktop-0.11.4-win-x64.zip` for portable use.
+
+Version **0.11.3** added hover highlighting across every navigation tab, removed the permanent Dashboard selection fill, and introduced matching outlined pilot and sun-behind-cloud icons for Crews and Weather.
 
 Version **0.11.2** combined the A6 application icon, SimBrief import, live flight tracking and reliability tools with the desktop operations dashboard, live SimConnect rotation projection, reconnect and telemetry-clock checks, flight history, timeline replay, post-flight debrief, persisted preferences and single-instance protection.
 

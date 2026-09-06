@@ -187,7 +187,7 @@ public partial class MainWindow
             [new(message.Id,message.Title,"Product briefing","Read",message.Body)])){Owner=this}.ShowDialog();
     }
     private void Dashboard_Click(object sender,RoutedEventArgs e){ToolsOverlay.Visibility=Visibility.Collapsed;DashboardScroll.ScrollToTop();}
-    private void OpenTools(){ToolsOverlay.Visibility=Visibility.Visible;PilotNameBox.Focus();}
+    internal void OpenTools(){ToolsOverlay.Visibility=Visibility.Visible;PilotNameBox.Focus();}
     private void FlightTools_Click(object sender,RoutedEventArgs e)=>OpenTools();
     private void CloseTools_Click(object sender,RoutedEventArgs e)=>ToolsOverlay.Visibility=Visibility.Collapsed;
     internal OpsModule CreateFlightModule() => new("FLIGHTS & ROTATIONS","The aircraft's day, calculated from the current flight session",dashboardShowsLive?"ACTIVE ASSIGNMENT • SIMULATOR UTC":"RECORDED SCENARIO • 02 SEP 2026",
@@ -199,7 +199,7 @@ public partial class MainWindow
         var name=(string)((Button)sender).Tag;
         switch(name)
         {
-            case "Settings": OpenTools();return;
+            case "Settings": new SettingsWindow(ConnectionBadgeText.Text,PilotNameBox.Text,OpenTools){Owner=this}.ShowDialog();return;
             case "Aircraft": Fleet_Click(sender,e);return;
             case "Network": new NetworkWindow{Owner=this}.ShowDialog();return;
             case "Flights":

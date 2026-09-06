@@ -82,6 +82,11 @@ internal static class DashboardSmokeTest
         await flightDesk.Dispatcher.InvokeAsync(()=>{},DispatcherPriority.ApplicationIdle);
         Capture(flightDesk,Path.Combine(outputDirectory,"flight-workspace.png"));flightDesk.Close();
         var network=new NetworkWindow{Owner=window};network.Show();network.UpdateLayout();Capture(network,Path.Combine(outputDirectory,"network-preview.png"));network.Close();
+        var settings=new SettingsWindow("DISCONNECTED","Test Pilot",()=>{}){Owner=window};settings.Show();settings.UpdateLayout();
+        Check(settings.SettingsTabs.Items.Count==7,"Settings workspace organizes all configuration sections");
+        settings.PluginsTab.IsSelected=true;settings.UpdateLayout();
+        Check(settings.SimConnectPluginStatusText.Text=="BUILT IN" && settings.SimBriefPluginStatusText.Text.Length>0,"Plugins tab reports built-in integration status");
+        Capture(settings,Path.Combine(outputDirectory,"settings-plugins-preview.png"));settings.Close();
         window.ToolsOverlay.Visibility=Visibility.Visible;window.UpdateLayout();Capture(window,Path.Combine(outputDirectory,"flight-tools-preview.png"));
         Check(window.ConnectButton.IsEnabled && !window.DisconnectButton.IsEnabled && !window.LiveTimelineButton.IsEnabled,"Flight tools preserves simulator connection guards");
         window.ToolsOverlay.Visibility=Visibility.Collapsed;
