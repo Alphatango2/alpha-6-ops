@@ -20,6 +20,12 @@ public sealed class NetworkMap : UserControl
     private Point? drag;
     internal string SelectedStation { get; private set; } = "ATL";
     internal double ZoomLevel => scale.ScaleX;
+    protected override Size MeasureOverride(Size constraint)
+    {
+        // Inside the scrolling dashboard the map has a compact natural footprint;
+        // its Viewbox expands only after its parent assigns additional space.
+        return base.MeasureOverride(new Size(constraint.Width, double.IsInfinity(constraint.Height) ? 200 : constraint.Height));
+    }
     private static readonly Dictionary<string, Point> Stations = new()
     {
         ["SEA"] = new(51,35), ["LAX"] = new(65,132), ["DEN"] = new(160,99), ["MSP"] = new(236,59),

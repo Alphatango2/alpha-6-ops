@@ -1,6 +1,8 @@
+param([ValidateSet('Debug', 'Release')][string]$Configuration = 'Debug')
+
 $ErrorActionPreference = 'Stop'
 $workspaceRoot = Split-Path -Parent $PSScriptRoot
-$appPath = Join-Path $workspaceRoot 'src\Alpha6Ops.Desktop\bin\Debug\net10.0-windows\Alpha6OPS.exe'
+$appPath = Join-Path $workspaceRoot ("src\Alpha6Ops.Desktop\bin\$Configuration\net10.0-windows\Alpha6OPS.exe")
 if (-not (Test-Path -LiteralPath $appPath)) { throw 'Build Alpha6Ops.slnx before running desktop verification.' }
 $runName = (Get-Date -Format 'yyyyMMdd-HHmmss') + '-' + [Guid]::NewGuid().ToString('N').Substring(0, 8)
 $resultDirectory = Join-Path $workspaceRoot ('work\dashboard-review\' + $runName)

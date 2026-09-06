@@ -18,6 +18,9 @@ internal static class DashboardSmokeTest
     {
         var checks=new List<string>();
         void Check(bool result,string label) {if(!result)throw new InvalidOperationException(label);checks.Add(label);}
+        await HeaderSmokeTest.RunAsync(window, Check);
+        await ResponsiveSmokeTest.RunAsync(window, outputDirectory, Check);
+        await MonitorSmokeTest.RunAsync(window, outputDirectory, Check);
         window.SetAdvanced(false);window.UpdateLayout();
         await window.Dispatcher.InvokeAsync(()=>{},DispatcherPriority.ApplicationIdle);
         Check(window.DashboardFlights.Count==3 && window.HeroFlightText.Text=="A601","Dashboard hero and table use the current rotation");
@@ -31,6 +34,8 @@ internal static class DashboardSmokeTest
         Check(window.HeroFlightText.ActualWidth>0 && window.ViewAlertsButton.ActualWidth>0,"Compact dashboard preserves the hero and alerts");
         Capture(window,Path.Combine(outputDirectory,"dashboard-1366.png"));
         window.Width=1100;window.UpdateLayout();Capture(window,Path.Combine(outputDirectory,"dashboard-1100.png"));
+        Check(window.HeaderLogo.ActualWidth >= 250 && window.HeaderLogo.ActualHeight >= 95,"Complete logo has a larger high-quality rendering area");
+        Check(window.ClockText.ActualWidth >= 140 && window.LocalClockText.ActualWidth >= 140,"Both clocks retain readable space at minimum window width");
         window.DashboardScroll.ScrollToBottom();window.UpdateLayout();
         await window.Dispatcher.InvokeAsync(()=>{},DispatcherPriority.ApplicationIdle);
         Check(window.DashboardFlightsGrid.Columns[1].ActualWidth >= 80,"Compact operations table keeps route text visible");
@@ -90,12 +95,13 @@ internal static class DashboardSmokeTest
         window.ToolsOverlay.Visibility=Visibility.Visible;window.UpdateLayout();Capture(window,Path.Combine(outputDirectory,"flight-tools-preview.png"));
         Check(window.ConnectButton.IsEnabled && !window.DisconnectButton.IsEnabled && !window.LiveTimelineButton.IsEnabled,"Flight tools preserves simulator connection guards");
         window.ToolsOverlay.Visibility=Visibility.Collapsed;
+        window.SetHeaderWeather(null);window.RenderLocalWeather(DateTimeOffset.UtcNow);
         File.WriteAllText(Path.Combine(outputDirectory,"dashboard-smoke.json"),JsonSerializer.Serialize(new{passed=true,count=checks.Count,checks},new JsonSerializerOptions{WriteIndented=true}));
     }
-    internal static void Capture(Window window,string path)
+    internal static void Capture(Window window,string path, double scale = 1)
     {
         window.UpdateLayout();
-        var bitmap=new RenderTargetBitmap((int)window.ActualWidth,(int)window.ActualHeight,96,96,PixelFormats.Pbgra32);bitmap.Render(window);
+        var bitmap=new RenderTargetBitmap((int)Math.Ceiling(window.ActualWidth * scale),(int)Math.Ceiling(window.ActualHeight * scale),96 * scale,96 * scale,PixelFormats.Pbgra32);bitmap.Render(window);
         var encoder=new PngBitmapEncoder();encoder.Frames.Add(BitmapFrame.Create(bitmap));using var file=File.Create(path);encoder.Save(file);
     }
 }

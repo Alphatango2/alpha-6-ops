@@ -36,7 +36,9 @@ public partial class MainWindow
         ModuleTiles.ItemsSource = DashboardData.Tiles;
         RefreshAlerts(); RefreshMessages(); RefreshFleetSummary();
         UpdateClock(); dashboardClock.Tick += (_,_) => UpdateClock(); dashboardClock.Start();
-        SizeChanged += (_,_) => UpdateFlightTabs();
+        InitializeLocalWeather(diagnosticDirectory is not null);
+        SizeChanged += (_,_) => { UpdateResponsiveLayout(); UpdateFlightTabs(); };
+        UpdateResponsiveLayout();
         PreviewKeyDown += (_,e) => { if(e.Key == Key.Escape && ToolsOverlay.Visibility == Visibility.Visible) { ToolsOverlay.Visibility = Visibility.Collapsed; e.Handled=true; } };
         RefreshDashboardFlight(false);
         if (activePlan is not null) RefreshLiveTracker(null,null,null,"Assignment ready. Connect at the gate to begin tracking.");
@@ -44,8 +46,8 @@ public partial class MainWindow
     private void UpdateClock()
     {
         var now=DateTimeOffset.UtcNow;
-        ClockText.Text=now.ToString("HH:mm")+"Z";
-        ClockDateText.Text=now.ToString("ddd, dd MMM yyyy").ToUpperInvariant();
+        RenderClocks(now, TimeZoneInfo.Local);
+        RenderLocalWeather(now);
         ClockText.ToolTip="Current real-world UTC. Replay and flight schedules use their own dated simulator clock.";
     }
     private void SaveDashboard()
@@ -84,7 +86,6 @@ public partial class MainWindow
         var rotation=live ? liveRotation ?? (activePlan is null ? null : BuildLiveRotation(activePlan,liveAircraft,AircraftGroundProfile.Default)) : session.Rotation;
         DashboardFlights=rotation is null ? [] : RotationPlanner.Project(rotation).Select(l=>new DashboardFlightRow(l,rotation.AircraftId)).ToArray();
         var hero=HeroFlight;
-        DataModeText.Text=live?"ACTIVE ASSIGNMENT  /  SIMULATOR UTC":"REPLAY SCENARIO  /  02 SEP 2026";
         if(hero is null)
         {
             HeroFlightText.Text="NO FLIGHT";OriginCodeText.Text=DestinationCodeText.Text="—";OriginCityText.Text="SET AN";DestinationCityText.Text="ASSIGNMENT";

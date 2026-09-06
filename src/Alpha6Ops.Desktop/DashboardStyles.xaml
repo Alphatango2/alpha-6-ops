@@ -28,7 +28,22 @@
     <Setter Property="Foreground" Value="{StaticResource OpsMuted}" />
     <Setter Property="VerticalAlignment" Value="Center" />
   </Style>
+  <!-- WPF shows FocusVisualStyle for keyboard navigation, not persistent mouse focus. -->
+  <Style x:Key="OpsKeyboardFocus" TargetType="Control">
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="Control">
+          <Grid Margin="3" IsHitTestVisible="False">
+            <Rectangle Stroke="#04090D" StrokeThickness="3" RadiusX="2" RadiusY="2" />
+            <Rectangle Stroke="{StaticResource OpsYellow}" StrokeThickness="1" StrokeDashArray="2,2" RadiusX="2" RadiusY="2" />
+          </Grid>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
   <Style x:Key="OpsButton" TargetType="Button">
+    <Setter Property="FocusVisualStyle" Value="{StaticResource OpsKeyboardFocus}" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
     <Setter Property="Background" Value="#15212B" />
     <Setter Property="Foreground" Value="#EEF2F6" />
     <Setter Property="BorderBrush" Value="#415362" />
@@ -42,15 +57,11 @@
       <Setter.Value>
         <ControlTemplate TargetType="Button">
           <Border x:Name="Chrome" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="4" Padding="{TemplateBinding Padding}">
-            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="Center" />
+            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
           </Border>
           <ControlTemplate.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
               <Setter TargetName="Chrome" Property="BorderBrush" Value="#FFDA00" />
-            </Trigger>
-            <Trigger Property="IsKeyboardFocused" Value="True">
-              <Setter TargetName="Chrome" Property="BorderBrush" Value="#FFFFFF" />
-              <Setter TargetName="Chrome" Property="BorderThickness" Value="2" />
             </Trigger>
             <Trigger Property="IsPressed" Value="True">
               <Setter TargetName="Chrome" Property="Opacity" Value="0.75" />

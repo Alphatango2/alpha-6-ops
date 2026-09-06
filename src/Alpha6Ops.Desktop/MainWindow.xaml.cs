@@ -10,6 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using Alpha6Ops.Core;
 using Forms = System.Windows.Forms;
 
@@ -56,7 +57,7 @@ public partial class MainWindow : Window
         var version = Assembly.GetExecutingAssembly().GetName().Version?.ToString(3) ?? "unknown";
         VersionText.Text = $"ALPHA 6 OPS v{version} • DESKTOP PREVIEW";
         Title = $"Alpha 6 OPS v{version} — Desktop Preview";
-        SourceInitialized += (_, _) => ApplyInitialWindowSize();
+        SourceInitialized += (_, _) => { InitializeMonitorTracking(); ApplyInitialWindowSize(); };
         trayIcon = System.Drawing.Icon.ExtractAssociatedIcon(Environment.ProcessPath ?? "") ?? (System.Drawing.Icon)System.Drawing.SystemIcons.Application.Clone();
         tray = new Forms.NotifyIcon
         {
@@ -75,9 +76,7 @@ public partial class MainWindow : Window
         activePlan = diagnosticDirectory is null ? ActiveFlightPlanStore.Load() : null;
         preferences = diagnosticDirectory is null ? UserPreferencesStore.Load() : null;
         FixtureCombo.ItemsSource = EmbeddedReplay.Fixtures;
-        FixtureCombo.SelectedIndex = Math.Max(0, EmbeddedReplay.Fixtures.ToList().IndexOf(preferences?.Fixture ?? EmbeddedReplay.Fixtures[0]));
-        PilotNameBox.Text = preferences?.PilotName ?? "";
-        SetAdvanced(preferences?.Advanced ?? false);
+        RestoreDashboardPreferences(preferences);
         ResetPreview();
         InitializeDashboard(diagnosticDirectory);
         try { programMonitor = new ProgramMonitor(diagnosticDirectory is null ? LogDirectory : Path.Combine(diagnosticDirectory, "TestLogs"), status => ProgramHealthText.Text = status, diagnosticDirectory); }
@@ -86,6 +85,15 @@ public partial class MainWindow : Window
             CrashReporter.Write("program_monitor_startup", error);
             ProgramHealthText.Text = "PROGRAM MONITOR UNAVAILABLE • " + error.GetBaseException().Message;
         }
+    }
+
+    internal void RestoreDashboardPreferences(UserPreferences? saved)
+    {
+        FixtureCombo.SelectedIndex = Math.Max(0, EmbeddedReplay.Fixtures.ToList().IndexOf(saved?.Fixture ?? EmbeddedReplay.Fixtures[0]));
+        PilotNameBox.Text = saved?.PilotName ?? "";
+        // Legacy saved Advanced=true must not reopen the bottom panel on launch.
+        // Rotation details remain available explicitly from Flight tools.
+        SetAdvanced(false);
     }
 
     internal void SetAdvanced(bool value)
@@ -101,8 +109,11 @@ public partial class MainWindow : Window
     {
         // Set the initial physical size once; subsequent resizing belongs to the user.
         var dpi = VisualTreeHelper.GetDpi(this);
-        Width = Math.Clamp(preferences?.Width ?? 1536 / dpi.DpiScaleX, MinWidth, Math.Max(MinWidth, SystemParameters.WorkArea.Width));
-        Height = Math.Clamp(preferences?.Height ?? 1024 / dpi.DpiScaleY, MinHeight, Math.Max(MinHeight, SystemParameters.WorkArea.Height));
+        var work = Forms.Screen.FromHandle(new System.Windows.Interop.WindowInteropHelper(this).Handle).WorkingArea;
+        var available = new Size(work.Width / dpi.DpiScaleX, work.Height / dpi.DpiScaleY);
+        MinWidth = Math.Min(640, available.Width); MinHeight = Math.Min(480, available.Height);
+        var fitted = FitWindowSize(new Size(preferences?.Width ?? 1536 / dpi.DpiScaleX, preferences?.Height ?? 1024 / dpi.DpiScaleY), available);
+        Width = fitted.Width; Height = fitted.Height;
         if (preferences?.Maximized == true) WindowState = WindowState.Maximized;
     }
 
@@ -241,7 +252,8 @@ public partial class MainWindow : Window
         if (exiting) return;
         exiting = true;
         dashboardClock.Stop();
-        UserPreferencesStore.Save(new UserPreferences(Width, Height, WindowState == WindowState.Maximized, AdvancedPanel.Visibility == Visibility.Visible, SelectedFixture, PilotNameBox.Text), preferencesDirectory);
+        var savedBounds = WindowState == WindowState.Normal ? new Rect(Left, Top, Width, Height) : RestoreBounds;
+        UserPreferencesStore.Save(new UserPreferences(savedBounds.Width, savedBounds.Height, WindowState == WindowState.Maximized, AdvancedPanel.Visibility == Visibility.Visible, SelectedFixture, PilotNameBox.Text), preferencesDirectory);
         FinishLog("application_exit");
         programMonitor?.Stop("application_exit");
         flightHistory?.Dispose();
@@ -327,7 +339,19 @@ public partial class MainWindow : Window
     // closed for a while (or not open yet when Connect was clicked) is not a reason to give up.
     private static readonly TimeSpan[] ReconnectBackoff = [TimeSpan.FromSeconds(3), TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(10), TimeSpan.FromSeconds(20), TimeSpan.FromSeconds(30)];
 
-    private async void Connect_Click(object sender, RoutedEventArgs e)
+    internal bool CanQuickConnect => ConnectButton.IsEnabled && liveCancellation is null && !running;
+
+    private async void QuickConnect_Click(object sender, RoutedEventArgs e)
+    {
+        SetAdvanced(false);
+        if (CanQuickConnect) await ConnectSimulatorAsync(showRotationDetails: false);
+        else OpenTools(); // Inspect/cancel an existing session; never disconnect it by accident.
+    }
+
+    private async void Connect_Click(object sender, RoutedEventArgs e) =>
+        await ConnectSimulatorAsync(showRotationDetails: true);
+
+    private async Task ConnectSimulatorAsync(bool showRotationDetails)
     {
         if (liveCancellation is not null || running) return;
         liveCancellation = CancellationTokenSource.CreateLinkedTokenSource(lifetime.Token);
@@ -337,7 +361,7 @@ public partial class MainWindow : Window
         ConnectButton.IsEnabled = ReplayButton.IsEnabled = ResetButton.IsEnabled = false;
         DisconnectButton.IsEnabled = true;
         milestones.Clear();
-        SetAdvanced(true);
+        SetAdvanced(showRotationDetails);
         StartLog();
         var attempt = 0;
         try
@@ -470,10 +494,28 @@ public partial class MainWindow : Window
     }
     internal void SetConnectionBadge(string label, string color, string background)
     {
-        ConnectionBadgeText.Text = label.Replace("SIMULATOR ", "");
+        ConnectionBadgeText.Text = label switch
+        {
+            "CONNECTING TO SIMULATOR" => "CONNECTING",
+            "SIMULATOR CONNECTION LOST — RETRYING" => "RECONNECTING",
+            "SIMULATOR CONNECTION FAILED" => "FAILED",
+            _ => label.Replace("SIMULATOR ", "")
+        };
         ConnectionBadgeText.ToolTip = label;
         ConnectionDot.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString(color));
-        ConnectionBadge.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(background));
+        var failed = label == "SIMULATOR CONNECTION FAILED";
+        var cardColor = (Color)ColorConverter.ConvertFromString(failed ? "#091219" : background);
+        var cardBrush = new SolidColorBrush(cardColor);
+        ConnectionBadge.Background = cardBrush;
+        if (failed)
+        {
+            // One brief flash, then the neutral card with a persistent red dot and retry action.
+            // Animate this state's brush only: a new connection replaces it immediately, so an
+            // old flash can never overwrite a newer connecting/connected state.
+            cardBrush.BeginAnimation(SolidColorBrush.ColorProperty, new ColorAnimation(
+                (Color)ColorConverter.ConvertFromString(background), cardColor, TimeSpan.FromMilliseconds(650))
+            { FillBehavior = FillBehavior.Stop });
+        }
     }
 
     private void RefreshLiveTracker(string? simulatorAircraft, DateTimeOffset? simulatorTime, FlightPhase? phase, string status)
