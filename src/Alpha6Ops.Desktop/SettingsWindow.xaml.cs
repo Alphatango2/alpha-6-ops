@@ -26,8 +26,21 @@ public partial class SettingsWindow : Window
         SimBriefPluginStatusText.Text = string.IsNullOrWhiteSpace(simBriefUser) ? "SETUP NEEDED" : "CONFIGURED";
         DataPathText.Text = DataDirectory;
         VersionText.Text = $"ALPHA 6 OPS v{version}";
+        StateChanged += (_, _) => UpdateWindowStateIcon();
     }
 
+    private void UpdateWindowStateIcon()
+    {
+        MaximizeIcon.Visibility = WindowState == WindowState.Maximized ? Visibility.Collapsed : Visibility.Visible;
+        RestoreIcon.Visibility = WindowState == WindowState.Maximized ? Visibility.Visible : Visibility.Collapsed;
+    }
+    private void MinimizeWindow_Click(object sender, RoutedEventArgs e) => SystemCommands.MinimizeWindow(this);
+    private void ToggleMaximizeWindow_Click(object sender, RoutedEventArgs e)
+    {
+        if (WindowState == WindowState.Maximized) SystemCommands.RestoreWindow(this);
+        else SystemCommands.MaximizeWindow(this);
+    }
+    private void CloseWindow_Click(object sender, RoutedEventArgs e) => Close();
     private void OpenFlightTools_Click(object sender, RoutedEventArgs e) { Close(); openFlightTools(); }
     private void OpenDataFolder_Click(object sender, RoutedEventArgs e) => OpenFolder(DataDirectory);
     private void OpenCrashReports_Click(object sender, RoutedEventArgs e) => OpenFolder(Path.Combine(DataDirectory, "CrashReports"));
