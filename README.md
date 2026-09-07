@@ -14,6 +14,8 @@ Planned for **0.12.0**: Flight Tools is being simplified around the active assig
 
 The 0.12.0 display work also centers the final saved window dimensions in the active monitor's usable work area on every normal launch, including monitors with taskbar offsets and non-primary screen coordinates.
 
+General settings planned for 0.12.0 now include persisted minimize-to-tray behavior, taskbar notification flash, notification sound, weight/altitude/landing-distance units, advanced Flight Deck controls, and Save/Reset Defaults actions. The Alpha 6 operations theme remains the supported appearance; no inactive dark-mode, Discord, remote analytics, or remote crash-upload toggles are shown.
+
 Latest: **0.11.6 Monitor-optimized display** uses a 1920×1080 reference surface that scales proportionally to the active monitor, including 2560×1440 displays. The dashboard and navigation remain stationary, every panel stays visible, and scrollbar, mouse-wheel, and touch-panning movement are disabled. It also detects the monitor work area and DPI, expands undersized saved windows, preserves useful custom sizes, and includes the refreshed A6-themed installer with clearer release information and a centered install/upgrade action. Install with `outputs/Alpha6OPS-Setup-0.11.6.exe`, or fully extract `outputs/Alpha6OPS-Desktop-0.11.6-win-x64.zip` for portable use.
 
 Version **0.11.5** combined the organized Settings and Plugins workspace with the adaptive dashboard layout, local weather presentation, dual clocks, quick SimConnect access, monitor refinements, and expanded header/display/responsive verification from the shared fork.

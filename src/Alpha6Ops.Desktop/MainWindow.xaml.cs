@@ -36,6 +36,7 @@ public partial class MainWindow : Window
     private readonly ProgramMonitor? programMonitor;
     private ActiveFlightPlan? activePlan;
     private readonly UserPreferences? preferences;
+    private GeneralSettings generalSettings = GeneralSettings.Defaults;
     private readonly FlightHistoryDatabase? flightHistory;
     private readonly bool diagnosticMode;
     // Single-leg rotation for the live-tracked assignment. Actuals are applied through the same
@@ -77,10 +78,12 @@ public partial class MainWindow : Window
         StateChanged += (_, _) => OnWindowStateChanged();
         activePlan = diagnosticDirectory is null ? ActiveFlightPlanStore.Load() : null;
         preferences = diagnosticDirectory is null ? UserPreferencesStore.Load() : null;
+        generalSettings = GeneralSettingsStore.Load(diagnosticDirectory);
         FixtureCombo.ItemsSource = EmbeddedReplay.Fixtures;
         RestoreDashboardPreferences(preferences);
         ResetPreview();
         InitializeDashboard(diagnosticDirectory);
+        ApplyGeneralSettings(generalSettings);
         try { programMonitor = new ProgramMonitor(diagnosticDirectory is null ? LogDirectory : Path.Combine(diagnosticDirectory, "TestLogs"), status => ProgramHealthText.Text = status, diagnosticDirectory); }
         catch (Exception error)
         {
@@ -130,6 +133,13 @@ public partial class MainWindow : Window
             SetWindowPos(new System.Windows.Interop.WindowInteropHelper(this).Handle, IntPtr.Zero,
                 position.X, position.Y, 0, 0, 0x0015); // NOSIZE | NOZORDER | NOACTIVATE
         }
+    }
+
+    private void ApplyGeneralSettings(GeneralSettings settings)
+    {
+        generalSettings = settings;
+        AdvancedButton.Visibility = settings.ShowAdvancedControls ? Visibility.Visible : Visibility.Collapsed;
+        if (!settings.ShowAdvancedControls) SetAdvanced(false);
     }
 
     private void RefreshRotation()
@@ -251,7 +261,7 @@ public partial class MainWindow : Window
     {
         MaximizeIcon.Visibility = WindowState == WindowState.Maximized ? Visibility.Collapsed : Visibility.Visible;
         RestoreIcon.Visibility = WindowState == WindowState.Maximized ? Visibility.Visible : Visibility.Collapsed;
-        if (WindowState == WindowState.Minimized) MinimizeToTray();
+        if (WindowState == WindowState.Minimized && generalSettings.MinimizeToTray) MinimizeToTray();
     }
     private void MinimizeWindow_Click(object sender, RoutedEventArgs e) => SystemCommands.MinimizeWindow(this);
     private void ToggleMaximizeWindow_Click(object sender, RoutedEventArgs e)
@@ -259,8 +269,18 @@ public partial class MainWindow : Window
         if (WindowState == WindowState.Maximized) SystemCommands.RestoreWindow(this);
         else SystemCommands.MaximizeWindow(this);
     }
-    private void CloseWindow_Click(object sender, RoutedEventArgs e) => Close();
-    private void OnClosing(object? sender, CancelEventArgs e) { if (!exiting) { e.Cancel = true; MinimizeToTray(); } }
+    private void CloseWindow_Click(object sender, RoutedEventArgs e)
+    {
+        if (generalSettings.MinimizeToTray) Close();
+        else ExitApplication();
+    }
+    private void OnClosing(object? sender, CancelEventArgs e)
+    {
+        if (exiting) return;
+        e.Cancel = true;
+        if (generalSettings.MinimizeToTray) MinimizeToTray();
+        else Dispatcher.BeginInvoke(new Action(() => ExitApplication()));
+    }
     internal void ExitApplication() => ExitApplication(null);
     internal void ExitApplication(string? preferencesDirectory)
     {

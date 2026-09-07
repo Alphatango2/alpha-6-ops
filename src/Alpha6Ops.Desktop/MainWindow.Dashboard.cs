@@ -204,7 +204,7 @@ public partial class MainWindow
                 () => FlightHistory_Click(this, new RoutedEventArgs()),
                 () => Logs_Click(this, new RoutedEventArgs()),
                 () => ExportLog_Click(this, new RoutedEventArgs()), MinimizeToTray,
-                ProgramHealthText.Text, LogStatusText.Text) { Owner = this }.ShowDialog(); return;
+                ProgramHealthText.Text, LogStatusText.Text, generalSettings, ApplyGeneralSettings) { Owner = this }.ShowDialog(); return;
             case "Aircraft": Fleet_Click(sender,e);return;
             case "Network": new NetworkWindow{Owner=this}.ShowDialog();return;
             case "Flights":

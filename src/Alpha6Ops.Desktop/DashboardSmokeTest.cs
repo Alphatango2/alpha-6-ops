@@ -88,8 +88,17 @@ internal static class DashboardSmokeTest
         await flightDesk.Dispatcher.InvokeAsync(()=>{},DispatcherPriority.ApplicationIdle);
         Capture(flightDesk,Path.Combine(outputDirectory,"flight-workspace.png"));flightDesk.Close();
         var network=new NetworkWindow{Owner=window};network.Show();network.UpdateLayout();Capture(network,Path.Combine(outputDirectory,"network-preview.png"));network.Close();
-        var settings=new SettingsWindow("DISCONNECTED","Test Pilot",()=>{}){Owner=window};settings.Show();settings.UpdateLayout();
+        var generalSettings=new GeneralSettings(false,false,false,"KG","M","M",false);
+        GeneralSettingsStore.Save(generalSettings,outputDirectory);
+        Check(GeneralSettingsStore.Load(outputDirectory)==generalSettings,"General settings persist all behavior and unit choices");
+        var settings=new SettingsWindow("DISCONNECTED","Test Pilot",()=>{},currentGeneralSettings:generalSettings){Owner=window};settings.Show();settings.UpdateLayout();
         Check(settings.SettingsTabs.Items.Count==7,"Settings workspace organizes all configuration sections");
+        Check(settings.MinimizeToTrayToggle.IsChecked==false && settings.FlashNotificationToggle.IsChecked==false &&
+            settings.NotificationSoundToggle.IsChecked==false && settings.AdvancedControlsToggle.IsChecked==false,
+            "General settings render the saved behavior choices");
+        Check(settings.GeneralSettingsScroll.VerticalScrollBarVisibility==ScrollBarVisibility.Disabled,
+            "General settings fit without a permanent scroll track");
+        Capture(settings,Path.Combine(outputDirectory,"settings-general-preview.png"));
         settings.PluginsTab.IsSelected=true;settings.UpdateLayout();
         Check(settings.SimConnectPluginStatusText.Text=="BUILT IN" && settings.SimBriefPluginStatusText.Text.Length>0,"Plugins tab reports built-in integration status");
         Capture(settings,Path.Combine(outputDirectory,"settings-plugins-preview.png"));

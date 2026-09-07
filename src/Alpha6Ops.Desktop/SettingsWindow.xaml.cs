@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace Alpha6Ops.Desktop;
 
@@ -13,11 +14,13 @@ public partial class SettingsWindow : Window
     private readonly Action openLogDatabase;
     private readonly Action exportLog;
     private readonly Action minimizeToTray;
+    private readonly Action<GeneralSettings> applyGeneralSettings;
     private static string DataDirectory => CrashReporter.RootDirectory;
 
     internal SettingsWindow(string simulatorStatus, string pilotName, Action showFlightTools,
         Action? showFlightHistory = null, Action? showLogDatabase = null, Action? exportTestLog = null,
-        Action? minimizeOps = null, string? programHealth = null, string? loggingStatus = null)
+        Action? minimizeOps = null, string? programHealth = null, string? loggingStatus = null,
+        GeneralSettings? currentGeneralSettings = null, Action<GeneralSettings>? saveGeneralSettings = null)
     {
         InitializeComponent();
         openFlightTools = showFlightTools;
@@ -25,6 +28,8 @@ public partial class SettingsWindow : Window
         openLogDatabase = showLogDatabase ?? (() => { });
         exportLog = exportTestLog ?? (() => { });
         minimizeToTray = minimizeOps ?? (() => { });
+        applyGeneralSettings = saveGeneralSettings ?? (_ => { });
+        LoadGeneralSettings(currentGeneralSettings ?? GeneralSettingsStore.Load());
         var simBriefUser = SimBriefImporter.LoadUsername();
         var version = Assembly.GetExecutingAssembly().GetName().Version?.ToString(3) ?? "unknown";
         SimulatorStatusText.Text = simulatorStatus.ToUpperInvariant();
@@ -53,6 +58,42 @@ public partial class SettingsWindow : Window
         else SystemCommands.MaximizeWindow(this);
     }
     private void CloseWindow_Click(object sender, RoutedEventArgs e) => Close();
+    private void LoadGeneralSettings(GeneralSettings settings)
+    {
+        MinimizeToTrayToggle.IsChecked = settings.MinimizeToTray;
+        FlashNotificationToggle.IsChecked = settings.FlashOnNotification;
+        NotificationSoundToggle.IsChecked = settings.NotificationSound;
+        AdvancedControlsToggle.IsChecked = settings.ShowAdvancedControls;
+        SelectUnit(WeightUnitBox, settings.WeightUnit);
+        SelectUnit(AltitudeUnitBox, settings.AltitudeUnit);
+        SelectUnit(LandingDistanceUnitBox, settings.LandingDistanceUnit);
+    }
+    private GeneralSettings ReadGeneralSettings() => new(
+        MinimizeToTrayToggle.IsChecked == true,
+        FlashNotificationToggle.IsChecked == true,
+        NotificationSoundToggle.IsChecked == true,
+        SelectedUnit(WeightUnitBox, "LBS"), SelectedUnit(AltitudeUnitBox, "FT"),
+        SelectedUnit(LandingDistanceUnitBox, "FT"), AdvancedControlsToggle.IsChecked == true);
+    private static void SelectUnit(ComboBox box, string value)
+    {
+        foreach (ComboBoxItem item in box.Items)
+            if (string.Equals(item.Content?.ToString(), value, StringComparison.OrdinalIgnoreCase)) { box.SelectedItem = item; return; }
+        box.SelectedIndex = 0;
+    }
+    private static string SelectedUnit(ComboBox box, string fallback) =>
+        (box.SelectedItem as ComboBoxItem)?.Content?.ToString() ?? fallback;
+    private void SaveGeneral_Click(object sender, RoutedEventArgs e)
+    {
+        var settings = ReadGeneralSettings();
+        GeneralSettingsStore.Save(settings);
+        applyGeneralSettings(settings);
+        GeneralStatusText.Text = "SETTINGS SAVED";
+    }
+    private void ResetGeneral_Click(object sender, RoutedEventArgs e)
+    {
+        LoadGeneralSettings(GeneralSettings.Defaults);
+        GeneralStatusText.Text = "DEFAULTS RESTORED — SELECT SAVE SETTINGS TO APPLY";
+    }
     private void OpenFlightTools_Click(object sender, RoutedEventArgs e) { Close(); openFlightTools(); }
     private void OpenFlightHistory_Click(object sender, RoutedEventArgs e) => ContinueInMainWindow(openFlightHistory);
     private void OpenLogDatabase_Click(object sender, RoutedEventArgs e) => ContinueInMainWindow(openLogDatabase);

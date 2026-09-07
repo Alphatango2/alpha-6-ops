@@ -17,6 +17,7 @@ This commit supplies a runnable first slice; the full MVP acceptance target is n
 - Consolidate Flight History, Log Database, JSON test-log export, program health, data folders, and crash reports in a polished Logs & Diagnostics settings workspace.
 - Use the space recovered in Flight Tools for the next flight-tracking controls and status presentation.
 - Add gate-aware SimBrief import. Parse explicit departure and arrival gates from dispatch remarks first; otherwise resolve a suggested gate from a maintained airport, airline, terminal, and aircraft compatibility catalog. Keep the result stable for the same flight/date, record its source and confidence, allow pilot correction, and leave it unassigned when no reliable match exists.
+- Add a functional General settings page with persisted tray behavior, notification attention/sound preferences, weight/altitude/landing-distance units, advanced Flight Deck visibility, and explicit Save and Reset Defaults actions. Keep local reliability reporting enabled and avoid controls for integrations or telemetry that the application does not provide.
 
 ## Two-developer division
 
