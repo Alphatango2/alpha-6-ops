@@ -6,16 +6,25 @@ using System.Drawing;
 using System.IO;
 using System.IO.Compression;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Microsoft.Win32;
 
 internal static class PreviewSetup
 {
+    const int WmNcLButtonDown = 0xA1;
+    const int HtCaption = 0x2;
     const string Identity = "Alpha6OPS-Desktop-Preview-0.11.6";
     const string IdentityPrefix = "Alpha6OPS-Desktop-Preview-";
     const string RegistryKey = @"Software\Microsoft\Windows\CurrentVersion\Uninstall\Alpha6OPSPreview";
     static readonly string InstallPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Alpha6Designs", "Alpha6OPSPreview");
     static readonly string ShortcutPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Programs), "Alpha 6 OPS Preview.lnk");
+
+    [DllImport("user32.dll")]
+    static extern bool ReleaseCapture();
+
+    [DllImport("user32.dll")]
+    static extern IntPtr SendMessage(IntPtr handle, int message, IntPtr parameter, IntPtr data);
 
     [STAThread]
     static int Main(string[] args)
@@ -51,29 +60,75 @@ internal static class PreviewSetup
             return 0;
 #else
             using (var form = new Form())
-            using (var title = new Label())
+            using (var surface = new Panel())
+            using (var header = new Panel())
+            using (var mark = new PictureBox())
+            using (var setupTitle = new Label())
+            using (var version = new Label())
+            using (var close = new Button())
+            using (var separator = new Panel())
             using (var details = new Label())
             using (var install = new Button())
             {
                 form.Text = "Alpha 6 OPS — Desktop Preview Setup";
-                form.ClientSize = new Size(560, 310);
-                form.FormBorderStyle = FormBorderStyle.FixedDialog;
+                form.ClientSize = new Size(640, 440);
+                form.FormBorderStyle = FormBorderStyle.None;
                 form.MaximizeBox = false;
                 form.StartPosition = FormStartPosition.CenterScreen;
-                form.BackColor = Color.FromArgb(16, 18, 15);
-                form.ForeColor = Color.WhiteSmoke;
-                title.Text = "ALPHA 6 OPS";
-                title.SetBounds(28, 25, 500, 45);
-                title.Font = new Font("Segoe UI", 24, FontStyle.Bold);
-                title.ForeColor = Color.FromArgb(249, 217, 40);
+                form.BackColor = Color.FromArgb(255, 215, 0);
+                form.Padding = new Padding(1);
+                form.Icon = Icon.ExtractAssociatedIcon(Assembly.GetExecutingAssembly().Location);
+                surface.Dock = DockStyle.Fill;
+                surface.BackColor = Color.FromArgb(4, 13, 20);
+                header.SetBounds(0, 0, 638, 38);
+                header.BackColor = Color.FromArgb(7, 18, 27);
+                header.MouseDown += delegate(object sender, MouseEventArgs e)
+                {
+                    if (e.Button == MouseButtons.Left) { ReleaseCapture(); SendMessage(form.Handle, WmNcLButtonDown, (IntPtr)HtCaption, IntPtr.Zero); }
+                };
+                setupTitle.Text = "ALPHA 6 OPS  /  SETUP";
+                setupTitle.SetBounds(15, 9, 300, 22);
+                setupTitle.Font = new Font("Segoe UI Semibold", 9, FontStyle.Bold);
+                setupTitle.ForeColor = Color.FromArgb(207, 221, 232);
+                setupTitle.MouseDown += delegate(object sender, MouseEventArgs e)
+                {
+                    if (e.Button == MouseButtons.Left) { ReleaseCapture(); SendMessage(form.Handle, WmNcLButtonDown, (IntPtr)HtCaption, IntPtr.Zero); }
+                };
+                close.Text = "×";
+                close.FlatStyle = FlatStyle.Flat;
+                close.FlatAppearance.BorderSize = 0;
+                close.SetBounds(594, 0, 44, 38);
+                close.BackColor = header.BackColor;
+                close.ForeColor = Color.FromArgb(207, 221, 232);
+                close.Font = new Font("Segoe UI", 14, FontStyle.Regular);
+                close.Click += delegate { form.Close(); };
+                close.MouseEnter += delegate { close.BackColor = Color.FromArgb(177, 28, 45); };
+                close.MouseLeave += delegate { close.BackColor = header.BackColor; };
+                mark.SetBounds(26, 58, 286, 126);
+                mark.SizeMode = PictureBoxSizeMode.Zoom;
+                mark.Image = LoadSetupLogo();
+                version.Text = "WINDOWS DESKTOP PREVIEW\r\nVERSION 0.11.6";
+                version.SetBounds(338, 91, 270, 58);
+                version.Font = new Font("Segoe UI Semibold", 12, FontStyle.Bold);
+                version.ForeColor = Color.WhiteSmoke;
+                version.TextAlign = ContentAlignment.MiddleLeft;
+                separator.SetBounds(28, 202, 582, 1);
+                separator.BackColor = Color.FromArgb(43, 65, 80);
                 var upgrading = HasContents(InstallPath);
-                details.Text = (upgrading ? "Upgrade the existing Alpha 6 OPS installation for your account." : "Install the Windows desktop connection test for your account.") + "\r\n\r\nIncludes a private .NET runtime and Start menu shortcut.\r\nExisting logs, settings and SimBrief data are preserved.\r\nClose Alpha 6 OPS before continuing.\r\n\r\nLocation: " + InstallPath;
-                details.SetBounds(30, 86, 500, 145);
-                details.Font = new Font("Segoe UI", 10);
-                install.Text = upgrading ? "Upgrade Alpha 6 OPS" : "Install Alpha 6 OPS";
-                install.SetBounds(30, 250, 225, 38);
-                install.BackColor = Color.FromArgb(249, 217, 40);
-                install.ForeColor = Color.Black;
+                details.Text = (upgrading ? "READY TO UPGRADE" : "READY TO INSTALL") + "\r\n" +
+                    (upgrading ? "Update the existing Alpha 6 OPS installation for your account." : "Install Alpha 6 OPS for your Windows account.") + "\r\n\r\n" +
+                    "Includes the required .NET runtime and Start menu shortcut.\r\nYour logs, settings, and SimBrief data are preserved. Close Alpha 6 OPS before continuing.\r\n\r\nINSTALL LOCATION  " + InstallPath;
+                details.SetBounds(30, 221, 578, 125);
+                details.Font = new Font("Segoe UI", 9.5f);
+                details.ForeColor = Color.FromArgb(207, 221, 232);
+                details.AutoEllipsis = true;
+                install.Text = upgrading ? "UPGRADE ALPHA 6 OPS" : "INSTALL ALPHA 6 OPS";
+                install.SetBounds(196, 366, 248, 45);
+                install.FlatStyle = FlatStyle.Flat;
+                install.FlatAppearance.BorderSize = 0;
+                install.BackColor = Color.FromArgb(255, 215, 0);
+                install.ForeColor = Color.FromArgb(4, 13, 20);
+                install.Font = new Font("Segoe UI Semibold", 9, FontStyle.Bold);
                 install.Click += delegate
                 {
                     install.Enabled = false;
@@ -103,7 +158,9 @@ internal static class PreviewSetup
                     }
                     finally { form.UseWaitCursor = false; }
                 };
-                form.Controls.AddRange(new Control[] { title, details, install });
+                header.Controls.AddRange(new Control[] { setupTitle, close });
+                surface.Controls.AddRange(new Control[] { header, mark, version, separator, details, install });
+                form.Controls.Add(surface);
                 Application.Run(form);
             }
             return 0;
@@ -118,6 +175,15 @@ internal static class PreviewSetup
             }
             MessageBox.Show(error.Message, "Alpha 6 OPS Setup", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return 1;
+        }
+    }
+
+    static Image LoadSetupLogo()
+    {
+        using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("setup-logo.png"))
+        {
+            if (stream == null) return null;
+            using (var image = Image.FromStream(stream)) return new Bitmap(image);
         }
     }
 
