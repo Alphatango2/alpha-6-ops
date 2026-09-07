@@ -62,7 +62,7 @@
       <TabItem Header="GENERAL">
         <ScrollViewer VerticalScrollBarVisibility="Auto"><StackPanel Margin="24">
           <TextBlock Text="GENERAL" Style="{StaticResource OpsTitle}" FontSize="24" Margin="0,0,0,16" />
-          <Border Style="{StaticResource SettingsSection}"><StackPanel><TextBlock Text="WINDOW BEHAVIOR" Style="{StaticResource OpsTitle}"/><TextBlock Text="The window size and maximized state are remembered. Minimize and Close keep OPS available in the system tray so flight monitoring can continue." Style="{StaticResource OpsCaption}" TextWrapping="Wrap" Margin="0,9,0,0"/></StackPanel></Border>
+          <Border Style="{StaticResource SettingsSection}"><StackPanel><TextBlock Text="WINDOW BEHAVIOR" Style="{StaticResource OpsTitle}"/><TextBlock Text="The window size and maximized state are remembered. Minimize and Close keep OPS available in the system tray so flight monitoring can continue." Style="{StaticResource OpsCaption}" TextWrapping="Wrap" Margin="0,9,0,12"/><Button Content="MINIMIZE OPS TO SYSTEM TRAY" Style="{StaticResource OpsButton}" HorizontalAlignment="Left" Click="MinimizeToTray_Click"/></StackPanel></Border>
           <Border Style="{StaticResource SettingsSection}"><StackPanel><TextBlock Text="PILOT PROFILE" Style="{StaticResource OpsTitle}"/><TextBlock x:Name="PilotSummaryText" Style="{StaticResource OpsCaption}" Margin="0,9,0,12"/><Button Content="EDIT PILOT &amp; FLIGHT TOOLS" Style="{StaticResource OpsButton}" HorizontalAlignment="Left" Click="OpenFlightTools_Click"/></StackPanel></Border>
         </StackPanel></ScrollViewer>
       </TabItem>
@@ -89,10 +89,54 @@
           <Border Style="{StaticResource SettingsSection}" BorderBrush="#594F20"><StackPanel><TextBlock Text="THIRD-PARTY PLUGIN PACKAGES" Style="{StaticResource OpsTitle}"/><TextBlock Text="A signed extension format and plugin catalog are planned. This build does not load arbitrary external code." Style="{StaticResource OpsCaption}" TextWrapping="Wrap" Margin="0,7,0,0"/></StackPanel></Border>
         </StackPanel></ScrollViewer>
       </TabItem>
-      <TabItem Header="LOGS &amp; DIAGNOSTICS">
-        <ScrollViewer VerticalScrollBarVisibility="Auto"><StackPanel Margin="24"><TextBlock Text="LOGS &amp; DIAGNOSTICS" Style="{StaticResource OpsTitle}" FontSize="24" Margin="0,0,0,16"/>
-          <Border Style="{StaticResource SettingsSection}"><StackPanel><TextBlock Text="LOCAL DATA" Style="{StaticResource OpsTitle}"/><TextBlock x:Name="DataPathText" Style="{StaticResource OpsCaption}" TextWrapping="Wrap" Margin="0,9,0,12"/><WrapPanel><Button Content="OPEN DATA FOLDER" Style="{StaticResource OpsButton}" Click="OpenDataFolder_Click"/><Button Content="OPEN CRASH REPORTS" Style="{StaticResource OpsButton}" Click="OpenCrashReports_Click"/></WrapPanel></StackPanel></Border>
-        </StackPanel></ScrollViewer>
+      <TabItem x:Name="LogsDiagnosticsTab" Header="LOGS &amp; DIAGNOSTICS">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+          <StackPanel Margin="24">
+            <TextBlock Text="LOGS &amp; DIAGNOSTICS" Style="{StaticResource OpsTitle}" FontSize="24" />
+            <TextBlock Text="Flight records, health monitoring, exports, and recovery files" Style="{StaticResource OpsCaption}" Margin="0,6,0,18" />
+            <Grid Margin="0,0,0,14">
+              <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="14"/><ColumnDefinition/></Grid.ColumnDefinitions>
+              <Border Style="{StaticResource SettingsSection}" Margin="0">
+                <StackPanel>
+                  <TextBlock Text="PROGRAM MONITOR" Style="{StaticResource OpsTitle}"/>
+                  <TextBlock x:Name="ProgramHealthText" Foreground="#75D96A" TextWrapping="Wrap" Margin="0,9,0,0"/>
+                  <TextBlock Text="Records application health and SimConnect state so interrupted sessions can be diagnosed." Style="{StaticResource OpsCaption}" TextWrapping="Wrap" Margin="0,8,0,0"/>
+                </StackPanel>
+              </Border>
+              <Border Grid.Column="2" Style="{StaticResource SettingsSection}" Margin="0">
+                <StackPanel>
+                  <TextBlock Text="FLIGHT LOGGING" Style="{StaticResource OpsTitle}"/>
+                  <TextBlock x:Name="LoggingStatusText" Foreground="#FFDA00" TextWrapping="Wrap" Margin="0,9,0,0"/>
+                  <TextBlock Text="Live sessions save automatically. Export a readable JSON report when a flight needs review." Style="{StaticResource OpsCaption}" TextWrapping="Wrap" Margin="0,8,0,0"/>
+                </StackPanel>
+              </Border>
+            </Grid>
+            <Border Style="{StaticResource SettingsSection}">
+              <StackPanel>
+                <TextBlock Text="FLIGHT RECORDS &amp; REPORTS" Style="{StaticResource OpsTitle}"/>
+                <TextBlock Text="Review completed sessions, inspect the indexed log catalog, or export the latest test-flight journal." Style="{StaticResource OpsCaption}" TextWrapping="Wrap" Margin="0,8,0,13"/>
+                <WrapPanel>
+                  <Button x:Name="FlightHistoryButton" Content="FLIGHT HISTORY" Style="{StaticResource OpsButton}" Click="OpenFlightHistory_Click" Margin="0,0,8,8"/>
+                  <Button x:Name="LogDatabaseButton" Content="LOG DATABASE" Style="{StaticResource OpsButton}" Click="OpenLogDatabase_Click" Margin="0,0,8,8"/>
+                  <Button x:Name="ExportLogButton" Content="EXPORT TEST LOG" Style="{StaticResource OpsButton}" Click="ExportLog_Click" Margin="0,0,8,8"/>
+                </WrapPanel>
+              </StackPanel>
+            </Border>
+            <Border Style="{StaticResource SettingsSection}">
+              <Grid>
+                <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                <StackPanel Margin="0,0,18,0">
+                  <TextBlock Text="LOCAL DATA &amp; RECOVERY" Style="{StaticResource OpsTitle}"/>
+                  <TextBlock x:Name="DataPathText" Style="{StaticResource OpsCaption}" TextWrapping="Wrap" Margin="0,8,0,0"/>
+                </StackPanel>
+                <WrapPanel Grid.Column="1" VerticalAlignment="Center">
+                  <Button Content="DATA FOLDER" Style="{StaticResource OpsButton}" Click="OpenDataFolder_Click" Margin="0,0,8,8"/>
+                  <Button Content="CRASH REPORTS" Style="{StaticResource OpsButton}" Click="OpenCrashReports_Click" Margin="0,0,0,8"/>
+                </WrapPanel>
+              </Grid>
+            </Border>
+          </StackPanel>
+        </ScrollViewer>
       </TabItem>
       <TabItem Header="ABOUT">
         <ScrollViewer VerticalScrollBarVisibility="Auto"><StackPanel Margin="24"><TextBlock Text="ABOUT ALPHA 6 OPS" Style="{StaticResource OpsTitle}" FontSize="24" Margin="0,0,0,16"/>

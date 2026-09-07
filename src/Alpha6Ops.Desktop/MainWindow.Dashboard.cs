@@ -200,7 +200,11 @@ public partial class MainWindow
         var name=(string)((Button)sender).Tag;
         switch(name)
         {
-            case "Settings": new SettingsWindow(ConnectionBadgeText.Text,PilotNameBox.Text,OpenTools){Owner=this}.ShowDialog();return;
+            case "Settings": new SettingsWindow(ConnectionBadgeText.Text, PilotNameBox.Text, OpenTools,
+                () => FlightHistory_Click(this, new RoutedEventArgs()),
+                () => Logs_Click(this, new RoutedEventArgs()),
+                () => ExportLog_Click(this, new RoutedEventArgs()), MinimizeToTray,
+                ProgramHealthText.Text, LogStatusText.Text) { Owner = this }.ShowDialog(); return;
             case "Aircraft": Fleet_Click(sender,e);return;
             case "Network": new NetworkWindow{Owner=this}.ShowDialog();return;
             case "Flights":

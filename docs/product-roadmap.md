@@ -10,6 +10,13 @@ One signed-in pilot, one tenant, one assigned aircraft, one daily rotation. Wind
 
 This commit supplies a runnable first slice; the full MVP acceptance target is not yet achieved.
 
+## Planned 0.12.0 desktop focus
+
+- Keep Flight Tools focused on the active assignment, simulator connection, live timeline/debrief, and rotation detail.
+- Remove recorded-flight replay controls from the pilot-facing interface while retaining deterministic replay fixtures for automated verification.
+- Consolidate Flight History, Log Database, JSON test-log export, program health, data folders, and crash reports in a polished Logs & Diagnostics settings workspace.
+- Use the space recovered in Flight Tools for the next flight-tracking controls and status presentation.
+
 ## Two-developer division
 
 | Milestone | Developer A: simulator/domain | Developer B: service/product | Shared exit gate |

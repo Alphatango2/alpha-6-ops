@@ -668,7 +668,7 @@
             </Grid.ColumnDefinitions>
             <StackPanel>
               <TextBlock Text="YOUR FLIGHT DECK" Style="{StaticResource OpsTitle}" FontSize="25" />
-              <TextBlock Text="Assignment, simulator connection &amp; replay tools" Style="{StaticResource OpsCaption}" Margin="0,7,0,0" />
+              <TextBlock Text="Assignment, simulator connection &amp; live flight tracking" Style="{StaticResource OpsCaption}" Margin="0,7,0,0" />
             </StackPanel>
             <Button Grid.Column="1" Content="✕" Click="CloseTools_Click" Style="{StaticResource OpsButton}" AutomationProperties.Name="Close flight tools" />
           </Grid>
@@ -706,34 +706,25 @@
                 <Button x:Name="LiveDebriefButton" Content="LIVE DEBRIEF" Style="{StaticResource OpsButton}" IsEnabled="False" Click="LiveDebrief_Click" Margin="0,0,0,8" />
               </WrapPanel>
               <Rectangle Height="1" Fill="#2B3E4B" Margin="0,13,0,20" />
-              <TextBlock Text="REPLAY A RECORDED FLIGHT" Style="{StaticResource OpsTitle}" />
-              <ComboBox x:Name="FixtureCombo" Padding="9" Margin="0,10,0,12" AutomationProperties.Name="Replay fixture" />
-              <WrapPanel>
-                <Button x:Name="ReplayButton" Content="RUN REPLAY" Style="{StaticResource OpsPrimary}" Click="Replay_Click" Margin="0,0,8,8" />
-                <Button x:Name="ResetButton" Content="RESET" Style="{StaticResource OpsButton}" Click="Reset_Click" Margin="0,0,8,8" />
-                <Button Content="TIMELINE" Style="{StaticResource OpsButton}" Click="Timeline_Click" Margin="0,0,8,8" />
-                <Button Content="DEBRIEF" Style="{StaticResource OpsButton}" Click="Debrief_Click" Margin="0,0,0,8" />
-              </WrapPanel>
+              <TextBlock Text="FLIGHT DISPLAY" Style="{StaticResource OpsTitle}" />
               <TextBlock x:Name="StatusText" TextWrapping="Wrap" Foreground="#ADC0CE" FontSize="12" Margin="0,4,0,16" />
               <WrapPanel>
                 <Button x:Name="SimpleButton" Content="DASHBOARD" Style="{StaticResource OpsButton}" Click="Simple_Click" Margin="0,0,8,8" />
                 <Button x:Name="AdvancedButton" Content="SHOW ROTATION DETAIL" Style="{StaticResource OpsButton}" Click="Advanced_Click" Margin="0,0,0,8" />
               </WrapPanel>
-              <Rectangle Height="1" Fill="#2B3E4B" Margin="0,13,0,20" />
-              <TextBlock Text="HISTORY &amp; DIAGNOSTICS" Style="{StaticResource OpsTitle}" />
-              <WrapPanel Margin="0,10,0,5">
-                <Button Content="FLIGHT HISTORY" Style="{StaticResource OpsButton}" Click="FlightHistory_Click" Margin="0,0,8,8" />
-                <Button Content="LOG DATABASE" Style="{StaticResource OpsButton}" Click="Logs_Click" Margin="0,0,8,8" />
-                <Button Content="EXPORT TEST LOG" Style="{StaticResource OpsButton}" Click="ExportLog_Click" Margin="0,0,8,8" />
-                <Button Content="MINIMIZE TO TRAY" Style="{StaticResource OpsButton}" Click="Tray_Click" Margin="0,0,8,8" />
-              </WrapPanel>
-              <TextBlock x:Name="LogStatusText" Text="Test logs save automatically when you connect." Foreground="#93AABB" TextWrapping="Wrap" FontSize="11" />
-              <TextBlock x:Name="ProgramHealthText" Text="PROGRAM MONITOR STARTING" Foreground="#6BCB65" FontSize="10" TextWrapping="Wrap" Margin="0,12,0,12" />
               <Rectangle Height="55" HorizontalAlignment="Left" Width="190" Margin="0,20,0,5">
                 <Rectangle.Fill>
                   <ImageBrush ImageSource="Assets/Dashboard/alpha6-designs-logo.png" Viewbox="0.01,0.12,0.98,0.77" Stretch="Uniform" />
                 </Rectangle.Fill>
               </Rectangle>
+              <!-- Replay remains an internal deterministic test fixture, not a pilot-facing tool. -->
+              <Grid Visibility="Collapsed">
+                <ComboBox x:Name="FixtureCombo" />
+                <Button x:Name="ReplayButton" />
+                <Button x:Name="ResetButton" />
+                <TextBlock x:Name="LogStatusText" Text="Test logs save automatically when you connect." />
+                <TextBlock x:Name="ProgramHealthText" Text="PROGRAM MONITOR STARTING" />
+              </Grid>
             </StackPanel>
           </ScrollViewer>
         </DockPanel>

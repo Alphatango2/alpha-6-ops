@@ -64,7 +64,7 @@ public partial class MainWindow : Window
         tray = new Forms.NotifyIcon
         {
             Icon = trayIcon,
-            Text = "Alpha 6 OPS — Replay preview",
+            Text = "Alpha 6 OPS — Flight monitoring",
             Visible = true
         };
         var menu = new Forms.ContextMenuStrip();
@@ -150,8 +150,8 @@ public partial class MainWindow : Window
         session = new FlightSession(Demo.Rotation());
         milestones.Clear();
         ReplayProgress.Value = 0;
-        StatusText.Text = "Ready. Run a short replay to see one arrival affect the rest of the aircraft's day.";
-        tray.Text = "Alpha 6 OPS — Ready for replay";
+        StatusText.Text = "Assignment ready. Connect at the gate to begin live flight tracking.";
+        tray.Text = "Alpha 6 OPS — Ready for flight";
         RefreshRotation();
     }
 

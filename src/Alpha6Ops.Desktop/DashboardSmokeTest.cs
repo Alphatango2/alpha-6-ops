@@ -92,7 +92,13 @@ internal static class DashboardSmokeTest
         Check(settings.SettingsTabs.Items.Count==7,"Settings workspace organizes all configuration sections");
         settings.PluginsTab.IsSelected=true;settings.UpdateLayout();
         Check(settings.SimConnectPluginStatusText.Text=="BUILT IN" && settings.SimBriefPluginStatusText.Text.Length>0,"Plugins tab reports built-in integration status");
-        Capture(settings,Path.Combine(outputDirectory,"settings-plugins-preview.png"));settings.Close();
+        Capture(settings,Path.Combine(outputDirectory,"settings-plugins-preview.png"));
+        settings.LogsDiagnosticsTab.IsSelected=true;settings.UpdateLayout();
+        Check(settings.FlightHistoryButton.IsVisible && settings.LogDatabaseButton.IsVisible && settings.ExportLogButton.IsVisible,
+            "Logs and diagnostics provides flight history, database, and export actions");
+        Check(settings.ProgramHealthText.Text.Length>0 && settings.LoggingStatusText.Text.Length>0,
+            "Logs and diagnostics presents program-monitor and flight-log status");
+        Capture(settings,Path.Combine(outputDirectory,"settings-logs-preview.png"));settings.Close();
         window.ToolsOverlay.Visibility=Visibility.Visible;window.UpdateLayout();Capture(window,Path.Combine(outputDirectory,"flight-tools-preview.png"));
         Check(window.ConnectButton.IsEnabled && !window.DisconnectButton.IsEnabled && !window.LiveTimelineButton.IsEnabled,"Flight tools preserves simulator connection guards");
         window.ToolsOverlay.Visibility=Visibility.Collapsed;
