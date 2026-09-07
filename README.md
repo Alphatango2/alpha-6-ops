@@ -10,7 +10,7 @@ Alpha 6 Designs' MSFS 2024 virtual-airline operations platform. This repository 
 
 ## Windows desktop preview
 
-Latest: **0.11.6 Monitor-optimized display** detects the active monitor work area and DPI, expands undersized saved windows to the usable screen, preserves already useful custom sizes, and removes permanent dashboard/sidebar scrollbars while retaining mouse-wheel and touch scrolling as a small-display fallback. The refreshed installer now matches the application with the current A6 logo, dark operations theme, cleaner release information, and a centered install/upgrade action. Install with `outputs/Alpha6OPS-Setup-0.11.6.exe`, or fully extract `outputs/Alpha6OPS-Desktop-0.11.6-win-x64.zip` for portable use.
+Latest: **0.11.6 Monitor-optimized display** uses a 1920×1080 reference surface that scales proportionally to the active monitor, including 2560×1440 displays. The dashboard and navigation remain stationary, every panel stays visible, and scrollbar, mouse-wheel, and touch-panning movement are disabled. It also detects the monitor work area and DPI, expands undersized saved windows, preserves useful custom sizes, and includes the refreshed A6-themed installer with clearer release information and a centered install/upgrade action. Install with `outputs/Alpha6OPS-Setup-0.11.6.exe`, or fully extract `outputs/Alpha6OPS-Desktop-0.11.6-win-x64.zip` for portable use.
 
 Version **0.11.5** combined the organized Settings and Plugins workspace with the adaptive dashboard layout, local weather presentation, dual clocks, quick SimConnect access, monitor refinements, and expanded header/display/responsive verification from the shared fork.
 

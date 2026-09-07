@@ -24,10 +24,9 @@ internal static class ResponsiveSmokeTest
             window.UpdateLayout();
             await window.Dispatcher.InvokeAsync(() => { }, DispatcherPriority.ApplicationIdle);
             window.UpdateLayout();
-            check(window.NavigationColumn.ActualWidth == (width < 1250 ? 64 : 204), $"Navigation adapts at {width}x{height}");
-            check(Grid.GetRow(window.AlertsPanel) == (width < 1250 ? 1 : 0), $"Alerts reflow at {width}x{height}");
-            check(Grid.GetRow(window.NetworkPanel) == (width < 1500 ? 1 : 0), $"Network map reflows at {width}x{height}");
-            check(Grid.GetRow(window.MessagesPanel) == (width < 900 ? 2 : width < 1500 ? 1 : 0), $"Summary panels reflow at {width}x{height}");
+            check(window.NavigationColumn.ActualWidth == 204, $"Navigation retains the reference layout at {width}x{height}");
+            check(Grid.GetRow(window.AlertsPanel) == 0 && Grid.GetRow(window.NetworkPanel) == 0 && Grid.GetRow(window.MessagesPanel) == 0,
+                $"Dashboard panels remain stationary at {width}x{height}");
             var weatherBounds = window.LocalWeatherButton.TransformToAncestor(window.DashboardRoot).TransformBounds(new Rect(window.LocalWeatherButton.RenderSize));
             check(weatherBounds.Right <= window.DashboardRoot.ActualWidth && weatherBounds.Left >= 0 && window.WeatherIcon.ActualWidth == 30,
                 $"Weather and vector icon remain inside the header at {width}x{height}");
@@ -38,8 +37,8 @@ internal static class ResponsiveSmokeTest
             var lastCard = window.HeaderClockPanel.TransformToAncestor(window.DashboardRoot).TransformBounds(new Rect(window.HeaderClockPanel.RenderSize));
             check(Math.Abs(firstCard.Left - (window.HeaderLogo.ActualWidth + 22)) <= 1 && Math.Abs(lastCard.Right - window.DashboardRoot.ActualWidth) <= 1,
                 $"Header uses the full width after the logo without an empty spacer at {width}x{height}");
-            check(Grid.GetRow(window.ZuluClockGroup) == (width < 1150 ? 1 : 0) && Grid.GetColumn(window.ZuluClockGroup) == (width < 1150 ? 0 : 2),
-                $"Local and Zulu clocks use the appropriate side-by-side or stacked layout at {width}x{height}");
+            check(Grid.GetRow(window.ZuluClockGroup) == 0 && Grid.GetColumn(window.ZuluClockGroup) == 2,
+                $"Local and Zulu clocks stay side by side at {width}x{height}");
             var exitBounds = window.ExitOpsButton.TransformToAncestor(window).TransformBounds(new Rect(window.ExitOpsButton.RenderSize));
             check(exitBounds.Bottom <= window.ActualHeight && exitBounds.Right <= window.ActualWidth && window.ExitOpsButton.ActualHeight >= 32,
                 $"Exit OPS remains in the window with a usable click target at {width}x{height}");
@@ -48,7 +47,7 @@ internal static class ResponsiveSmokeTest
             check(AutomationProperties.GetName(window.DashboardNavButton) == "DASHBOARD", $"Compact navigation retains accessible names at {width}x{height}");
             var tile = (FrameworkElement)window.ModuleTiles.ItemContainerGenerator.ContainerFromIndex(0);
             check(tile.ActualWidth >= 180, $"Module tiles remain readable at {width}x{height}");
-            check(window.NetworkPanel.ActualHeight >= (width < 1500 ? 270 : 240), $"Network map preserves its minimum height at {width}x{height}");
+            check(window.NetworkPanel.ActualHeight >= 240, $"Network map preserves its reference height at {width}x{height}");
             foreach (var (content, card) in new (FrameworkElement, FrameworkElement)[] {
                 (window.ConnectionCardContent, window.ConnectionBadge), (window.DispatchCardContent, window.HeaderDispatchButton),
                 (window.WeatherCardContent, window.LocalWeatherButton), (window.ClockCardContent, window.HeaderClockPanel) })
@@ -59,25 +58,16 @@ internal static class ResponsiveSmokeTest
             }
             var clippedCaptions = Descendants<TextBlock>(window.ModuleTiles).Where(text => !TextFits(text)).Select(text => text.Text).ToArray();
             check(clippedCaptions.Length == 0, $"Every module label and description fits without text clipping at {width}x{height}: {string.Join(", ", clippedCaptions)}");
-            if (width >= 1920)
-            {
-                var summary = window.SummaryLayout.TransformToAncestor(window.DashboardBody).TransformBounds(new Rect(window.SummaryLayout.RenderSize));
-                check(window.DashboardScroll.ScrollableHeight <= 1 && Math.Abs(summary.Bottom - window.DashboardScroll.ViewportHeight) <= 2,
-                    $"Dashboard fills the viewport down to the footer at {width}x{height}; scroll {window.DashboardScroll.ScrollableHeight}, summary bottom {summary.Bottom}, viewport {window.DashboardScroll.ViewportHeight}, header {window.HeaderRow.ActualHeight}");
-                check(window.HeroPanel.ActualHeight >= 353 && window.OperationsPanel.ActualHeight >= 225 && tile.ActualHeight >= 125,
-                    $"Expanded sections preserve their minimum sizes at {width}x{height}");
-                check(Math.Abs(window.ModuleTiles.ActualHeight - window.NetworkPanel.ActualHeight) <= 1,
-                    $"Module tiles and network map share aligned edges at {width}x{height}");
-            }
+            var summary = window.SummaryLayout.TransformToAncestor(window.DashboardBody).TransformBounds(new Rect(window.SummaryLayout.RenderSize));
+            check(window.DashboardScroll.ScrollableHeight <= 1 && Math.Abs(summary.Bottom - window.DashboardScroll.ViewportHeight) <= 2,
+                $"Dashboard fits without scrolling at {width}x{height}; scroll {window.DashboardScroll.ScrollableHeight}, summary bottom {summary.Bottom}, viewport {window.DashboardScroll.ViewportHeight}");
+            check(window.HeroPanel.ActualHeight >= 353 && window.OperationsPanel.ActualHeight >= 225 && tile.ActualHeight >= 125,
+                $"Reference sections preserve their minimum sizes at {width}x{height}");
+            check(Math.Abs(window.ModuleTiles.ActualHeight - window.NetworkPanel.ActualHeight) <= 1,
+                $"Module tiles and network map share aligned edges at {width}x{height}");
             DashboardSmokeTest.Capture(window, Path.Combine(outputDirectory, $"responsive-{width}x{height}.png"));
-            if (width == 720)
-            {
-                window.DashboardScroll.ScrollToBottom();window.UpdateLayout();
-                await window.Dispatcher.InvokeAsync(() => { }, DispatcherPriority.ApplicationIdle);
-                check(window.DashboardScroll.VerticalOffset > 0 && window.MessagesPanel.ActualHeight >= 225,
-                    "Small windows can scroll through all stacked dashboard sections");
-                DashboardSmokeTest.Capture(window, Path.Combine(outputDirectory, "responsive-720-lower.png"));
-            }
+            window.DashboardScroll.ScrollToBottom(); window.UpdateLayout();
+            check(window.DashboardScroll.VerticalOffset == 0, $"Mouse-wheel movement is disabled at {width}x{height}");
         }
         window.Width = 640; window.Height = 700;
         window.SetHeaderWeather(new LocalWeather("San Luis Obispo", -5, 57, DateTimeOffset.UtcNow));
@@ -95,8 +85,8 @@ internal static class ResponsiveSmokeTest
             check(size.Width <= available.Width && size.Height <= available.Height,
                 $"Saved window fits {pixelsWide}x{pixelsHigh} work area at {scale:P0} scaling");
         }
-        check(window.DashboardScroll.VerticalScrollBarVisibility == ScrollBarVisibility.Hidden,
-            "Dashboard keeps overflow available to wheel and touch without a permanent scrollbar");
+        check(window.DashboardScroll.VerticalScrollBarVisibility == ScrollBarVisibility.Disabled && window.DashboardScroll.PanningMode == PanningMode.None,
+            "Dashboard disables scrollbar, mouse-wheel, and touch-panning movement");
         check(MainWindow.ShouldOptimizeToMonitor(null, new Size(1920, 1040)) &&
               MainWindow.ShouldOptimizeToMonitor(new UserPreferences(1366, 768, false, false, EmbeddedReplay.Fixtures[0]), new Size(1920, 1040)) &&
               !MainWindow.ShouldOptimizeToMonitor(new UserPreferences(1700, 950, false, false, EmbeddedReplay.Fixtures[0]), new Size(1920, 1040)),

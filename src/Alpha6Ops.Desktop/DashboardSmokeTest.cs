@@ -30,16 +30,17 @@ internal static class DashboardSmokeTest
         Capture(window,Path.Combine(outputDirectory,"dashboard-default.png"));
         var width=window.Width;var height=window.Height;
         window.Width=1366;window.Height=768;window.UpdateLayout();
-        Check(window.DashboardScroll.ScrollableHeight>0,"Compact displays can scroll to every dashboard panel");
-        Check(window.HeroFlightText.ActualWidth>0 && window.ViewAlertsButton.ActualWidth>0,"Compact dashboard preserves the hero and alerts");
+        Check(window.DashboardScroll.ScrollableHeight<=1 && window.DashboardScroll.VerticalOffset==0,"1920x1080 and compact displays keep the dashboard stationary");
+        Check(window.HeroFlightText.ActualWidth>0 && window.ViewAlertsButton.ActualWidth>0,"Scaled dashboard preserves the hero and alerts");
         Capture(window,Path.Combine(outputDirectory,"dashboard-1366.png"));
         window.Width=1100;window.UpdateLayout();Capture(window,Path.Combine(outputDirectory,"dashboard-1100.png"));
         Check(window.HeaderLogo.ActualWidth >= 250 && window.HeaderLogo.ActualHeight >= 95,"Complete logo has a larger high-quality rendering area");
         Check(window.ClockText.ActualWidth >= 140 && window.LocalClockText.ActualWidth >= 140,"Both clocks retain readable space at minimum window width");
         window.DashboardScroll.ScrollToBottom();window.UpdateLayout();
         await window.Dispatcher.InvokeAsync(()=>{},DispatcherPriority.ApplicationIdle);
+        Check(window.DashboardScroll.VerticalOffset==0,"Dashboard does not move after a scroll request");
         Check(window.DashboardFlightsGrid.Columns[1].ActualWidth >= 80,"Compact operations table keeps route text visible");
-        Capture(window,Path.Combine(outputDirectory,"dashboard-1100-lower.png"));
+        Capture(window,Path.Combine(outputDirectory,"dashboard-1100-stationary.png"));
         window.DashboardScroll.ScrollToTop();
         window.Width=width;window.Height=height;window.UpdateLayout();
 

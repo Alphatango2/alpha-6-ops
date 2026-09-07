@@ -12,7 +12,10 @@ public partial class MainWindow
     private void UpdateResponsiveLayout()
     {
         if (DashboardRoot is null || ActualWidth <= 0) return;
-        var width = ActualWidth;
+        // DashboardRoot is the 1920x1080 reference surface. The containing Viewbox scales
+        // that complete surface to the monitor, so its internal layout must remain in the
+        // full desktop mode instead of stacking panels and creating vertical overflow.
+        var width = DashboardRoot.Width;
         var mode = (Rail: width < 1250, Header: width < 1150, Hero: width < 1250, Map: width < 1500, Summary: width < 900 ? 2 : width < 1500 ? 1 : 0);
         if (responsiveMode == mode) return;
         responsiveMode = mode;

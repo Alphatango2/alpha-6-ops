@@ -120,7 +120,8 @@
         </StackPanel>
       </Grid>
     </Border>
-    <Grid x:Name="DashboardRoot" Grid.Row="1" Margin="16,10,16,6">
+    <Viewbox x:Name="DashboardViewport" Grid.Row="1" Stretch="Uniform" StretchDirection="Both" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Grid x:Name="DashboardRoot" Width="1888" Height="1026" Margin="16,10,16,6">
     <Grid.RowDefinitions>
       <RowDefinition x:Name="HeaderRow" Height="110" />
       <RowDefinition />
@@ -227,7 +228,7 @@
         <TextBlock Text="YOU FLY&#xA;THE AIRPLANE.&#xA;WE RUN THE AIRLINE." FontFamily="Bahnschrift SemiCondensed" FontSize="12" Foreground="#CBD6E0" LineHeight="18" Margin="15,20,0,0" />
         <Rectangle Fill="{StaticResource OpsYellow}" Height="2" Width="27" HorizontalAlignment="Left" Margin="15,13,0,0" />
       </StackPanel>
-      <ScrollViewer VerticalScrollBarVisibility="Hidden" PanningMode="VerticalOnly">
+      <ScrollViewer VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Disabled" PanningMode="None">
         <StackPanel x:Name="NavigationButtons">
           <Button x:Name="DashboardNavButton" Style="{StaticResource OpsNav}" Click="Dashboard_Click">
             <StackPanel Orientation="Horizontal">
@@ -322,7 +323,7 @@
         </StackPanel>
       </ScrollViewer>
     </DockPanel>
-    <ScrollViewer x:Name="DashboardScroll" Grid.Row="1" Grid.Column="2" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Disabled" PanningMode="VerticalOnly" Padding="0,0,1,8">
+    <ScrollViewer x:Name="DashboardScroll" Grid.Row="1" Grid.Column="2" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Disabled" PanningMode="None" Padding="0,0,1,8">
       <local:DashboardBodyPanel x:Name="DashboardBody" ViewportHeight="{Binding ViewportHeight, ElementName=DashboardScroll}">
         <Grid x:Name="HeroAlertsLayout">
           <Grid.ColumnDefinitions>
@@ -739,5 +740,6 @@
       </Border>
     </Grid>
     </Grid>
+    </Viewbox>
   </Grid>
 </Window>

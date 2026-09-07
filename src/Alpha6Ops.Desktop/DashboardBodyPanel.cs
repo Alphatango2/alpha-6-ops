@@ -4,8 +4,8 @@ using System.Windows.Controls;
 
 namespace Alpha6Ops.Desktop;
 
-// A scrollable dashboard has a natural minimum height, then shares spare viewport
-// space between its three main sections. Text is never scaled down to make it fit.
+// The dashboard has a natural minimum height, then shares spare reference-surface
+// space between its three main sections. Its parent Viewbox performs monitor fitting.
 public sealed class DashboardBodyPanel : Panel
 {
     public static readonly DependencyProperty ViewportHeightProperty = DependencyProperty.Register(nameof(ViewportHeight), typeof(double),
