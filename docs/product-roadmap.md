@@ -20,6 +20,11 @@ This commit supplies a runnable first slice; the full MVP acceptance target is n
 - Add a functional General settings page with persisted tray behavior, notification attention/sound preferences, weight/altitude/landing-distance units, advanced Flight Deck visibility, and explicit Save and Reset Defaults actions. Keep local reliability reporting enabled and avoid controls for integrations or telemetry that the application does not provide.
 - Apply one reusable Alpha 6 navy/yellow window system to every internal secondary window and notice, including consistent borders, logo/title treatment, caption controls, typography, panels, inputs, and data tables. Native Windows open/save pickers continue to follow the operating-system theme.
 
+## Planned 0.12.1 fixes
+
+- Change the active-flight airline logo from the three-letter SimBrief airline ICAO code, with a neutral fallback when the carrier has no bundled logo.
+- Repair and verify minimize, maximize/restore, and close behavior in every internal secondary window using the shared Alpha 6 title bar.
+
 ## Two-developer division
 
 | Milestone | Developer A: simulator/domain | Developer B: service/product | Shared exit gate |
