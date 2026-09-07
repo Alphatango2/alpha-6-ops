@@ -26,6 +26,10 @@ internal static class MonitorSmokeTest
             (new System.Drawing.Rectangle(2560, 0, 1920, 1080), new System.Drawing.Rectangle(2560, 0, 1872, 1080), new System.Drawing.Rectangle(0, 0, 1872, 1080))
         })
             check(MainWindow.MaximizedWorkBounds(monitor, work) == expected, $"Maximized work area handles taskbar offsets and monitor origin {monitor.Location}");
+        check(MainWindow.CenteredWorkPosition(new System.Drawing.Rectangle(0, 0, 1920, 1040), 1739, 982) == new System.Drawing.Point(90, 29),
+            "Saved window centers in a 1920x1080 monitor work area");
+        check(MainWindow.CenteredWorkPosition(new System.Drawing.Rectangle(1920, 0, 2560, 1392), 1880, 1100) == new System.Drawing.Point(2260, 146),
+            "Saved window centers on an offset 2560x1440 monitor work area");
         var monitors = new List<object>();
         try
         {

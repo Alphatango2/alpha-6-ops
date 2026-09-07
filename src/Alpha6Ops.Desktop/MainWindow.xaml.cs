@@ -119,6 +119,17 @@ public partial class MainWindow : Window
         var fitted = FitWindowSize(requested, available);
         Width = fitted.Width; Height = fitted.Height;
         if (optimize) WindowState = WindowState.Maximized;
+        else
+        {
+            // WPF computes CenterScreen from the XAML dimensions before this saved size is
+            // applied. Center the final physical window instead so every launch is balanced.
+            var physicalWidth = (int)Math.Round(fitted.Width * dpi.DpiScaleX);
+            var physicalHeight = (int)Math.Round(fitted.Height * dpi.DpiScaleY);
+            var position = CenteredWorkPosition(work, physicalWidth, physicalHeight);
+            WindowStartupLocation = WindowStartupLocation.Manual;
+            SetWindowPos(new System.Windows.Interop.WindowInteropHelper(this).Handle, IntPtr.Zero,
+                position.X, position.Y, 0, 0, 0x0015); // NOSIZE | NOZORDER | NOACTIVATE
+        }
     }
 
     private void RefreshRotation()

@@ -67,6 +67,10 @@ public partial class MainWindow
     internal static System.Drawing.Rectangle MaximizedWorkBounds(System.Drawing.Rectangle monitor, System.Drawing.Rectangle work) =>
         new(work.Left - monitor.Left, work.Top - monitor.Top, work.Width, work.Height);
 
+    internal static System.Drawing.Point CenteredWorkPosition(System.Drawing.Rectangle work, int windowWidth, int windowHeight) =>
+        new(work.Left + Math.Max(0, (work.Width - windowWidth) / 2),
+            work.Top + Math.Max(0, (work.Height - windowHeight) / 2));
+
     private void DisplaySettingsChanged(object? sender, EventArgs e)
     {
         if (!Dispatcher.HasShutdownStarted) Dispatcher.BeginInvoke(QueueMonitorFit);
