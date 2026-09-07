@@ -56,6 +56,7 @@ internal static class DashboardSmokeTest
 
         var preparation=new FlightPreparationWindow(first,window.LocalDashboardState,()=>store.Save(window.LocalDashboardState),true){Owner=window};
         preparation.Show();preparation.SetCheck(0,true);preparation.SetCheck(1,true);preparation.UpdateLayout();
+        Check(OpsUi.UsesWindowTheme(preparation),"Preflight uses the shared Alpha 6 window theme");
         Check(preparation.CompletedCount==2,"Preflight checklist updates completed count");
         Capture(preparation,Path.Combine(outputDirectory,"preflight-preview.png"));preparation.Close();
         Check(store.Load().PreflightChecks[first.Key].Count==2,"Preflight checklist survives a state reload");
@@ -72,6 +73,7 @@ internal static class DashboardSmokeTest
         foreach(var name in new[]{"Operations","Maintenance","Crews","Passengers","Weather","Dispatch","OCC","Network"})
         {
             var module=DashboardData.Module(name);var desk=new OperationsWorkspaceWindow(module){Owner=window};desk.Show();desk.UpdateLayout();
+            Check(OpsUi.UsesWindowTheme(desk),$"{name} workspace uses the shared Alpha 6 window theme");
             Check(desk.VisibleRowCount==module.Rows.Count,$"{name} workspace renders all records");
             Check(desk.Search("zzzz-no-match")==0,$"{name} workspace supports no-results searches");
             desk.Search("");var state=module.Rows[0].State;
@@ -87,7 +89,8 @@ internal static class DashboardSmokeTest
         Check(flightDesk.Search("KZZZ")==0 && flightDesk.Search("A601")==1,"Flight workspace searches actual rotation records");
         await flightDesk.Dispatcher.InvokeAsync(()=>{},DispatcherPriority.ApplicationIdle);
         Capture(flightDesk,Path.Combine(outputDirectory,"flight-workspace.png"));flightDesk.Close();
-        var network=new NetworkWindow{Owner=window};network.Show();network.UpdateLayout();Capture(network,Path.Combine(outputDirectory,"network-preview.png"));network.Close();
+        var network=new NetworkWindow{Owner=window};network.Show();network.UpdateLayout();Check(OpsUi.UsesWindowTheme(network),"Network window uses the shared Alpha 6 window theme");Capture(network,Path.Combine(outputDirectory,"network-preview.png"));network.Close();
+        var notice=new OpsNoticeWindow(window,"Simulator notice","This is a preview of the shared Alpha 6 notice style.");notice.Show();notice.UpdateLayout();Check(OpsUi.UsesWindowTheme(notice),"Application notices use the shared Alpha 6 window theme");Capture(notice,Path.Combine(outputDirectory,"notice-preview.png"));notice.Close();
         var generalSettings=new GeneralSettings(false,false,false,"KG","M","M",false);
         GeneralSettingsStore.Save(generalSettings,outputDirectory);
         Check(GeneralSettingsStore.Load(outputDirectory)==generalSettings,"General settings persist all behavior and unit choices");

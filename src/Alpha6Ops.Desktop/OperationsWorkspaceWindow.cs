@@ -27,9 +27,33 @@ internal static class OpsUi
     {
         window.Title="Alpha 6 OPS — "+title;window.Width=width;window.Height=height;window.MinWidth=740;window.MinHeight=560;
         window.WindowStartupLocation=WindowStartupLocation.CenterOwner;window.Background=Brush("#071019");window.Foreground=Brush("#F2F6FA");
+        window.Style=(Style)Application.Current.FindResource("OpsWindow");
         window.UseLayoutRounding=true;
         window.PreviewKeyDown+=(_,e)=>{if(e.Key==Key.Escape){window.Close();e.Handled=true;}};
     }
+    internal static bool UsesWindowTheme(Window window) =>
+        window.WindowStyle==WindowStyle.None && ReferenceEquals(window.Style,Application.Current.FindResource("OpsWindow"));
+}
+
+internal sealed class OpsNoticeWindow : Window
+{
+    internal OpsNoticeWindow(Window owner, string title, string message, bool warning=false)
+    {
+        Owner=owner;OpsUi.Configure(this,title,500,260);MinWidth=500;MinHeight=260;ResizeMode=ResizeMode.NoResize;
+        var root=new DockPanel {Margin=new Thickness(26)};
+        var close=OpsUi.Button("OK",Close,true);close.MinWidth=90;
+        var footer=new StackPanel {Orientation=Orientation.Horizontal,HorizontalAlignment=HorizontalAlignment.Right,Margin=new Thickness(0,20,0,0)};
+        footer.Children.Add(close);DockPanel.SetDock(footer,Dock.Bottom);root.Children.Add(footer);
+        var body=new Grid();body.ColumnDefinitions.Add(new ColumnDefinition {Width=new GridLength(42)});body.ColumnDefinitions.Add(new ColumnDefinition());
+        body.Children.Add(new TextBlock {Text=warning?"!":"i",Foreground=OpsUi.Brush(warning?"#FFDA00":"#42ACFF"),FontFamily=new FontFamily("Bahnschrift SemiCondensed"),FontWeight=FontWeights.Bold,FontSize=29,VerticalAlignment=VerticalAlignment.Top});
+        var copy=new StackPanel();copy.Children.Add(new TextBlock {Text=title.ToUpperInvariant(),Foreground=OpsUi.Brush("#FFDA00"),FontFamily=new FontFamily("Bahnschrift SemiCondensed"),FontSize=20,FontWeight=FontWeights.SemiBold});
+        copy.Children.Add(new TextBlock {Text=message,Foreground=OpsUi.Brush("#C7D2DA"),FontFamily=new FontFamily("Bahnschrift SemiCondensed"),FontSize=14,TextWrapping=TextWrapping.Wrap,LineHeight=20,Margin=new Thickness(0,11,0,0)});
+        Grid.SetColumn(copy,1);body.Children.Add(copy);root.Children.Add(body);Content=root;
+        Loaded+=(_,_)=>close.Focus();
+    }
+
+    internal static void Show(Window owner, string title, string message, bool warning=false) =>
+        new OpsNoticeWindow(owner,title,message,warning).ShowDialog();
 }
 
 internal sealed class OperationsWorkspaceWindow : Window

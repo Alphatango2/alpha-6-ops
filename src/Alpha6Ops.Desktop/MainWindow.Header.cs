@@ -91,5 +91,5 @@ public partial class MainWindow
     }
 
     private void LocalWeather_Click(object sender, RoutedEventArgs e) =>
-        MessageBox.Show(this, LocalWeatherButton.ToolTip.ToString(), "Local weather", MessageBoxButton.OK, MessageBoxImage.Information);
+        OpsNoticeWindow.Show(this, "Local weather", LocalWeatherButton.ToolTip.ToString()!);
 }

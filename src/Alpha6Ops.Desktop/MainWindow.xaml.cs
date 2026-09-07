@@ -330,7 +330,7 @@ public partial class MainWindow : Window
     {
         if (running || liveCancellation is not null)
         {
-            MessageBox.Show(this, "Finish the replay or disconnect the simulator before changing the active flight.", "Active flight", MessageBoxButton.OK, MessageBoxImage.Information);
+            OpsNoticeWindow.Show(this, "Active flight", "Finish the replay or disconnect the simulator before changing the active flight.");
             return;
         }
         var dialog = new ActiveFlightWindow(activePlan) { Owner = this };
@@ -359,13 +359,13 @@ public partial class MainWindow : Window
     }
     private void Logs_Click(object sender, RoutedEventArgs e)
     {
-        if (programMonitor is null) { MessageBox.Show(this, "The diagnostic database is unavailable. A crash report was saved with the startup error.", "Alpha 6 OPS", MessageBoxButton.OK, MessageBoxImage.Warning); return; }
+        if (programMonitor is null) { OpsNoticeWindow.Show(this, "Alpha 6 OPS", "The diagnostic database is unavailable. A crash report was saved with the startup error.", true); return; }
         programMonitor.WriteHeartbeat();
         new LogDatabaseWindow(programMonitor.Database) { Owner = this }.ShowDialog();
     }
     private void FlightHistory_Click(object sender, RoutedEventArgs e)
     {
-        if (flightHistory is null) { MessageBox.Show(this, "The flight history database is unavailable. A crash report was saved with the startup error.", "Alpha 6 OPS", MessageBoxButton.OK, MessageBoxImage.Warning); return; }
+        if (flightHistory is null) { OpsNoticeWindow.Show(this, "Alpha 6 OPS", "The flight history database is unavailable. A crash report was saved with the startup error.", true); return; }
         new FlightHistoryWindow(flightHistory) { Owner = this }.ShowDialog();
     }
 

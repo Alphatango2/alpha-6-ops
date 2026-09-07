@@ -54,7 +54,7 @@ public partial class MainWindow
     {
         try { dashboardStore?.Save(dashboardState); }
         catch(Exception error) when(error is IOException or UnauthorizedAccessException)
-        { MessageBox.Show(this,"Could not save dashboard preferences: "+error.Message,"Alpha 6 OPS",MessageBoxButton.OK,MessageBoxImage.Warning); }
+        { OpsNoticeWindow.Show(this,"Alpha 6 OPS","Could not save dashboard preferences: "+error.Message,true); }
     }
     private void PilotName_Changed(object sender, TextChangedEventArgs e)
     {
