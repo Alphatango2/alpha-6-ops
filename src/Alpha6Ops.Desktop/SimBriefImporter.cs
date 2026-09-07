@@ -3,6 +3,7 @@ using System.Globalization;
 using System.IO;
 using System.Net.Http;
 using System.Text.Json;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -72,8 +73,16 @@ internal static class SimBriefImporter
             throw new InvalidDataException("The latest SimBrief briefing has incomplete flight identification or timing data.");
         int? altitude = int.TryParse(Text("general", "initial_altitude"), out var altitudeValue) ? altitudeValue : null;
         double? fuel = double.TryParse(Text("fuel", "plan_ramp"), NumberStyles.Float, CultureInfo.InvariantCulture, out var fuelValue) ? fuelValue : null;
+        var noteParts=new List<string>();CollectNotes(root,noteParts);var gates=GateAssignmentResolver.Resolve(airline,flight,origin,destination,departure,string.Join(" ",noteParts));
         var plan = new ActiveFlightPlan(flight, Text("aircraft", "reg").Trim().ToUpperInvariant(), origin, destination, departure, arrival,
-            "SimBrief", username, generated);
+            "SimBrief", username, generated,gates.DepartureGate,gates.ArrivalGate,gates.Source,gates.Confidence);
         return new(plan, generated, Text("aircraft", "icao_code"), Text("general", "route"), altitude, fuel, Text("params", "units").ToUpperInvariant(), fromCache);
+    }
+
+    private static void CollectNotes(JsonElement element,List<string> notes,string propertyName="")
+    {
+        if(element.ValueKind==JsonValueKind.Object)foreach(var property in element.EnumerateObject())CollectNotes(property.Value,notes,property.Name);
+        else if(element.ValueKind==JsonValueKind.Array)foreach(var item in element.EnumerateArray())CollectNotes(item,notes,propertyName);
+        else if(element.ValueKind==JsonValueKind.String && (propertyName.Contains("remark",StringComparison.OrdinalIgnoreCase)||propertyName.Contains("note",StringComparison.OrdinalIgnoreCase)||propertyName.Contains("dispatch",StringComparison.OrdinalIgnoreCase)))notes.Add(element.GetString()??"");
     }
 }

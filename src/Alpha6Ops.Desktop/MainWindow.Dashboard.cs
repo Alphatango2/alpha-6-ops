@@ -89,13 +89,17 @@ public partial class MainWindow
         if(hero is null)
         {
             HeroFlightText.Text="NO FLIGHT";OriginCodeText.Text=DestinationCodeText.Text="—";OriginCityText.Text="SET AN";DestinationCityText.Text="ASSIGNMENT";
-            HeroDepartureText.Text=HeroArrivalText.Text="—";HeroTimingText.Text="Open Flight tools to enter your flight";HeroStatusText.Text="●  WAITING";HeroAircraftTypeText.Text="NO ASSIGNMENT";
+            HeroDepartureText.Text=HeroArrivalText.Text=HeroDepartureGateText.Text=HeroArrivalGateText.Text="—";HeroTimingText.Text="Open Flight tools to enter your flight";HeroStatusText.Text="●  WAITING";HeroAircraftTypeText.Text="NO ASSIGNMENT";
         }
         else
         {
             HeroFlightText.Text=hero.Id;OriginCodeText.Text=DashboardData.AirportCode(hero.Leg.Origin);DestinationCodeText.Text=DashboardData.AirportCode(hero.Leg.Destination);
             OriginCityText.Text=DashboardData.City(hero.Leg.Origin);DestinationCityText.Text=DashboardData.City(hero.Leg.Destination);
             HeroDepartureText.Text=hero.Out;HeroArrivalText.Text=hero.In;HeroStatusText.Text="●  "+hero.Status;
+            var planMatches=live&&activePlan is not null&&hero.Id.Equals(activePlan.FlightNumber,StringComparison.OrdinalIgnoreCase);
+            HeroDepartureGateText.Text=planMatches?activePlan!.DepartureGate??"—":"—";HeroArrivalGateText.Text=planMatches?activePlan!.ArrivalGate??"—":"—";
+            var gateTip=planMatches?$"{activePlan!.GateAssignmentSource??"Unassigned"} • {activePlan.GateAssignmentConfidence??"None"}":"No gate assignment has been supplied.";
+            HeroDepartureGateText.ToolTip=HeroArrivalGateText.ToolTip=gateTip;
             HeroStatusText.Foreground=OpsUi.Brush(hero.StatusColor);HeroStatusBadge.Background=OpsUi.Brush(hero.StatusBackground);
             HeroTimingText.Text=hero.Leg.Completed?"Flight complete":$"{(hero.Leg.EstimatedIn-hero.Leg.EstimatedOut).TotalMinutes:0} min block  •  {hero.Leg.EstimatedOut:dd MMM}  •  {hero.Out}Z";
             AircraftText.Text=rotation!.AircraftId;

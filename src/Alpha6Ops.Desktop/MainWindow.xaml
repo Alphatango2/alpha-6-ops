@@ -415,7 +415,7 @@
                   </StackPanel>
                   <StackPanel Grid.Column="1">
                     <TextBlock Text="GATE" Style="{StaticResource OpsCaption}" />
-                    <TextBlock Text="—" FontSize="19" Margin="0,3,0,0" ToolTip="No gate assignment has been supplied." />
+                    <TextBlock x:Name="HeroDepartureGateText" Text="—" FontSize="19" Margin="0,3,0,0" ToolTip="No gate assignment has been supplied." />
                   </StackPanel>
                   <StackPanel Grid.Column="2">
                     <TextBlock Text="ARRIVAL" Style="{StaticResource OpsCaption}" />
@@ -424,7 +424,7 @@
                   </StackPanel>
                   <StackPanel Grid.Column="3">
                     <TextBlock Text="GATE" Style="{StaticResource OpsCaption}" />
-                    <TextBlock Text="—" FontSize="19" Margin="0,3,0,0" />
+                    <TextBlock x:Name="HeroArrivalGateText" Text="—" FontSize="19" Margin="0,3,0,0" ToolTip="No gate assignment has been supplied." />
                   </StackPanel>
                   <StackPanel Grid.Column="4">
                     <TextBlock Text="AIRCRAFT" Style="{StaticResource OpsCaption}" />
