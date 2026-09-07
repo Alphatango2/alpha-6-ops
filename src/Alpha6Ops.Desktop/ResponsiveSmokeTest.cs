@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Automation;
@@ -56,9 +57,8 @@ internal static class ResponsiveSmokeTest
                 check(Math.Abs(bounds.Left + bounds.Width / 2 - card.ActualWidth / 2) <= 2 && Math.Abs(bounds.Top + bounds.Height / 2 - card.ActualHeight / 2) <= 2,
                     $"{content.Name} stays centered at {width}x{height}");
             }
-            var captionsFit = true;
-            foreach (var text in Descendants<TextBlock>(window.ModuleTiles)) captionsFit &= TextFits(text);
-            check(captionsFit, $"Every module label and description fits without text clipping at {width}x{height}");
+            var clippedCaptions = Descendants<TextBlock>(window.ModuleTiles).Where(text => !TextFits(text)).Select(text => text.Text).ToArray();
+            check(clippedCaptions.Length == 0, $"Every module label and description fits without text clipping at {width}x{height}: {string.Join(", ", clippedCaptions)}");
             if (width >= 1920)
             {
                 var summary = window.SummaryLayout.TransformToAncestor(window.DashboardBody).TransformBounds(new Rect(window.SummaryLayout.RenderSize));
@@ -95,6 +95,12 @@ internal static class ResponsiveSmokeTest
             check(size.Width <= available.Width && size.Height <= available.Height,
                 $"Saved window fits {pixelsWide}x{pixelsHigh} work area at {scale:P0} scaling");
         }
+        check(window.DashboardScroll.VerticalScrollBarVisibility == ScrollBarVisibility.Hidden,
+            "Dashboard keeps overflow available to wheel and touch without a permanent scrollbar");
+        check(MainWindow.ShouldOptimizeToMonitor(null, new Size(1920, 1040)) &&
+              MainWindow.ShouldOptimizeToMonitor(new UserPreferences(1366, 768, false, false, EmbeddedReplay.Fixtures[0]), new Size(1920, 1040)) &&
+              !MainWindow.ShouldOptimizeToMonitor(new UserPreferences(1700, 950, false, false, EmbeddedReplay.Fixtures[0]), new Size(1920, 1040)),
+            "Launch optimization expands undersized saved windows while preserving an already useful custom size");
         window.Width = 960; window.Height = 700; window.DashboardScroll.ScrollToTop(); window.UpdateLayout();
         await window.Dispatcher.InvokeAsync(() => { }, DispatcherPriority.ApplicationIdle);
         DashboardSmokeTest.Capture(window, Path.Combine(outputDirectory, "responsive-150-percent.png"), 1.5);

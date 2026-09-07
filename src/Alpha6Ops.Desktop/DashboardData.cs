@@ -68,7 +68,7 @@ internal static class DashboardData
         new("Aircraft", "AIRCRAFT", "Registrations, types, fleet", "Assets/Dashboard/aircraft.png"),
         new("Maintenance", "MAINTENANCE", "Discrepancies, MEL, service", "Assets/Dashboard/maintenance.png"),
         new("Crews", "CREWS", "Pairings, schedules, reserve", "Assets/Dashboard/crews.png"),
-        new("Passengers", "PASSENGERS", "Connections, loads, rebooking", "Assets/Dashboard/passengers.png"),
+        new("Passengers", "PASSENGERS", "Connections & rebooking", "Assets/Dashboard/passengers.png"),
         new("Weather", "WEATHER", "Airport conditions & outlook", "Assets/Dashboard/weather.png"),
         new("OCC", "OCC", "Operations control overview", "Assets/Dashboard/occ.png")
     ];

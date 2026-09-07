@@ -19,6 +19,14 @@ public partial class MainWindow
         Math.Clamp(requested.Width, Math.Min(640, available.Width), available.Width),
         Math.Clamp(requested.Height, Math.Min(480, available.Height), available.Height));
 
+    internal static bool ShouldOptimizeToMonitor(UserPreferences? saved, Size available)
+    {
+        if (saved is null || saved.Maximized) return true;
+        var usefulWidth = Math.Min(1600, available.Width);
+        var usefulHeight = Math.Min(900, available.Height);
+        return saved.Width + 1 < usefulWidth || saved.Height + 1 < usefulHeight;
+    }
+
     private void InitializeMonitorTracking()
     {
         var handle = new WindowInteropHelper(this).Handle;

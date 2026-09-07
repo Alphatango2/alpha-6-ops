@@ -37,6 +37,7 @@ public partial class MainWindow : Window
     private ActiveFlightPlan? activePlan;
     private readonly UserPreferences? preferences;
     private readonly FlightHistoryDatabase? flightHistory;
+    private readonly bool diagnosticMode;
     // Single-leg rotation for the live-tracked assignment. Actuals are applied through the same
     // RotationPlanner.ApplyMilestone/Project path the fixture-replay session uses, so a live flight
     // and a replayed one compute delay/ETA identically instead of the tracker hand-rolling its own math.
@@ -51,6 +52,7 @@ public partial class MainWindow : Window
 
     public MainWindow(string? diagnosticDirectory = null)
     {
+        diagnosticMode = diagnosticDirectory is not null;
         InitializeComponent();
         try { flightHistory = new FlightHistoryDatabase(diagnosticDirectory ?? CrashReporter.RootDirectory); }
         catch (Exception error) { CrashReporter.Write("flight_history_startup", error); }
@@ -112,9 +114,11 @@ public partial class MainWindow : Window
         var work = Forms.Screen.FromHandle(new System.Windows.Interop.WindowInteropHelper(this).Handle).WorkingArea;
         var available = new Size(work.Width / dpi.DpiScaleX, work.Height / dpi.DpiScaleY);
         MinWidth = Math.Min(640, available.Width); MinHeight = Math.Min(480, available.Height);
-        var fitted = FitWindowSize(new Size(preferences?.Width ?? 1536 / dpi.DpiScaleX, preferences?.Height ?? 1024 / dpi.DpiScaleY), available);
+        var optimize = !diagnosticMode && ShouldOptimizeToMonitor(preferences, available);
+        var requested = optimize ? available : new Size(preferences?.Width ?? available.Width, preferences?.Height ?? available.Height);
+        var fitted = FitWindowSize(requested, available);
         Width = fitted.Width; Height = fitted.Height;
-        if (preferences?.Maximized == true) WindowState = WindowState.Maximized;
+        if (optimize) WindowState = WindowState.Maximized;
     }
 
     private void RefreshRotation()
