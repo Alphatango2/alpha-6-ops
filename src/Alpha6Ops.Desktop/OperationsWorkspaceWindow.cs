@@ -39,7 +39,7 @@ internal sealed class OpsNoticeWindow : Window
 {
     internal OpsNoticeWindow(Window owner, string title, string message, bool warning=false)
     {
-        Owner=owner;OpsUi.Configure(this,title,500,260);MinWidth=500;MinHeight=260;ResizeMode=ResizeMode.NoResize;
+        Owner=owner;OpsUi.Configure(this,title,500,260);MinWidth=500;MinHeight=260;
         var root=new DockPanel {Margin=new Thickness(26)};
         var close=OpsUi.Button("OK",Close,true);close.MinWidth=90;
         var footer=new StackPanel {Orientation=Orientation.Horizontal,HorizontalAlignment=HorizontalAlignment.Right,Margin=new Thickness(0,20,0,0)};

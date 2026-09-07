@@ -375,8 +375,11 @@
                   <TextBlock x:Name="TrackerModeText" Grid.Column="1" Text="REPLAY • SAMPLE DATA" Style="{StaticResource OpsCaption}" FontSize="9" VerticalAlignment="Top" />
                 </Grid>
                 <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center">
-                  <Path Data="M 0,27 L 17,0 34,27 17,21 Z M 0,31 L 17,24 34,31 17,28 Z" Fill="#E71942" Width="31" Height="33" Stretch="Uniform" Margin="0,0,10,0" />
+                  <Border x:Name="AirlineBrandBadge" Width="42" Height="38" CornerRadius="4" Background="#FFDA00" Margin="0,0,11,0" BorderBrush="#FFFFFF" BorderThickness="1">
+                    <TextBlock x:Name="AirlineBrandMarkText" Text="A6" Foreground="#071019" FontFamily="Bahnschrift SemiCondensed" FontSize="17" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                  </Border>
                   <TextBlock x:Name="HeroFlightText" Text="A601" FontFamily="Bahnschrift SemiCondensed" FontSize="41" FontWeight="Bold" />
+                  <TextBlock x:Name="AirlineBrandNameText" Text="ALPHA 6 OPS" Foreground="#8FA3B2" FontFamily="Bahnschrift SemiCondensed" FontSize="11" Margin="13,0,0,5" VerticalAlignment="Bottom" />
                 </StackPanel>
                 <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center">
                   <StackPanel>

@@ -86,6 +86,7 @@ public partial class MainWindow
         var rotation=live ? liveRotation ?? (activePlan is null ? null : BuildLiveRotation(activePlan,liveAircraft,AircraftGroundProfile.Default)) : session.Rotation;
         DashboardFlights=rotation is null ? [] : RotationPlanner.Project(rotation).Select(l=>new DashboardFlightRow(l,rotation.AircraftId)).ToArray();
         var hero=HeroFlight;
+        ApplyAirlineBrand(live?activePlan?.AirlineIcao:"A6");
         if(hero is null)
         {
             HeroFlightText.Text="NO FLIGHT";OriginCodeText.Text=DestinationCodeText.Text="—";OriginCityText.Text="SET AN";DestinationCityText.Text="ASSIGNMENT";
@@ -113,6 +114,13 @@ public partial class MainWindow
             OperationsFootnote.Text=hero is null?"NO ACTIVE ASSIGNMENT":$"{hero.Leg.ScheduledOut:dd MMM yyyy}  •  ALL TIMES UTC".ToUpperInvariant();
         }
         else OperationsFootnote.Text="02 SEP 2026  •  ALL TIMES UTC";
+    }
+    internal void ApplyAirlineBrand(string? airlineIcao)
+    {
+        var brand=AirlineBranding.For(airlineIcao);
+        AirlineBrandBadge.Background=OpsUi.Brush(brand.Background);AirlineBrandBadge.BorderBrush=OpsUi.Brush(brand.Foreground);
+        AirlineBrandMarkText.Text=brand.Mark;AirlineBrandMarkText.Foreground=OpsUi.Brush(brand.Foreground);AirlineBrandNameText.Text=brand.Name;
+        AirlineBrandBadge.ToolTip=$"{brand.Icao} • {brand.Name}";
     }
     private void RefreshFlightsTable()
     {

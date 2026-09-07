@@ -27,6 +27,11 @@ internal static class DashboardSmokeTest
         Check(window.ModuleTiles.Items.Count==8,"All eight photographic module tiles load");
         Check(window.ConnectionBadgeText.Text.Contains("DISCONNECTED",StringComparison.Ordinal),"Disconnected simulator is never presented as connected");
         Check(window.FleetCountText.Text=="1,006","Fleet chart uses the bundled reference catalog");
+        window.ApplyAirlineBrand("JBU");
+        Check(window.AirlineBrandMarkText.Text=="B6"&&window.AirlineBrandNameText.Text=="JETBLUE","Three-letter airline ICAO selects the matching carrier brand");
+        window.ApplyAirlineBrand("ZZZ");
+        Check(window.AirlineBrandMarkText.Text=="ZZZ"&&window.AirlineBrandNameText.Text=="ZZZ AIRLINE","Unknown airline ICAO uses a neutral labeled fallback");
+        window.ApplyAirlineBrand("A6");
         Capture(window,Path.Combine(outputDirectory,"dashboard-default.png"));
         var width=window.Width;var height=window.Height;
         window.Width=1366;window.Height=768;window.UpdateLayout();
@@ -89,7 +94,12 @@ internal static class DashboardSmokeTest
         Check(flightDesk.Search("KZZZ")==0 && flightDesk.Search("A601")==1,"Flight workspace searches actual rotation records");
         await flightDesk.Dispatcher.InvokeAsync(()=>{},DispatcherPriority.ApplicationIdle);
         Capture(flightDesk,Path.Combine(outputDirectory,"flight-workspace.png"));flightDesk.Close();
-        var network=new NetworkWindow{Owner=window};network.Show();network.UpdateLayout();Check(OpsUi.UsesWindowTheme(network),"Network window uses the shared Alpha 6 window theme");Capture(network,Path.Combine(outputDirectory,"network-preview.png"));network.Close();
+        var network=new NetworkWindow{Owner=window};network.Show();network.UpdateLayout();Check(OpsUi.UsesWindowTheme(network),"Network window uses the shared Alpha 6 window theme");
+        var captions=Descendants<WindowCaptionButton>(network).ToArray();Check(captions.Select(c=>c.Action).Order().SequenceEqual(Enum.GetValues<WindowCaptionAction>()),"Shared title bar exposes all four caption actions");
+        captions.Single(c=>c.Action==WindowCaptionAction.Minimize).ExecuteForTest();Check(network.WindowState==WindowState.Minimized,"Subwindow minimize caption action works");
+        captions.Single(c=>c.Action==WindowCaptionAction.Restore).ExecuteForTest();Check(network.WindowState==WindowState.Normal,"Subwindow restore caption action works");
+        captions.Single(c=>c.Action==WindowCaptionAction.Maximize).ExecuteForTest();Check(network.WindowState==WindowState.Maximized,"Subwindow maximize caption action works");
+        captions.Single(c=>c.Action==WindowCaptionAction.Restore).ExecuteForTest();Capture(network,Path.Combine(outputDirectory,"network-preview.png"));captions.Single(c=>c.Action==WindowCaptionAction.Close).ExecuteForTest();Check(!network.IsVisible,"Subwindow close caption action works");
         var notice=new OpsNoticeWindow(window,"Simulator notice","This is a preview of the shared Alpha 6 notice style.");notice.Show();notice.UpdateLayout();Check(OpsUi.UsesWindowTheme(notice),"Application notices use the shared Alpha 6 window theme");Capture(notice,Path.Combine(outputDirectory,"notice-preview.png"));notice.Close();
         var generalSettings=new GeneralSettings(false,false,false,"KG","M","M",false);
         GeneralSettingsStore.Save(generalSettings,outputDirectory);
@@ -122,5 +132,13 @@ internal static class DashboardSmokeTest
         window.UpdateLayout();
         var bitmap=new RenderTargetBitmap((int)Math.Ceiling(window.ActualWidth * scale),(int)Math.Ceiling(window.ActualHeight * scale),96 * scale,96 * scale,PixelFormats.Pbgra32);bitmap.Render(window);
         var encoder=new PngBitmapEncoder();encoder.Frames.Add(BitmapFrame.Create(bitmap));using var file=File.Create(path);encoder.Save(file);
+    }
+    private static IEnumerable<T> Descendants<T>(DependencyObject parent) where T:DependencyObject
+    {
+        for(var index=0;index<VisualTreeHelper.GetChildrenCount(parent);index++)
+        {
+            var child=VisualTreeHelper.GetChild(parent,index);if(child is T match)yield return match;
+            foreach(var descendant in Descendants<T>(child))yield return descendant;
+        }
     }
 }

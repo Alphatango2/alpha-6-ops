@@ -10,6 +10,8 @@ Alpha 6 Designs' MSFS 2024 virtual-airline operations platform. This repository 
 
 ## Windows desktop preview
 
+Latest: **0.12.1 Carrier branding and window controls** changes the active-flight carrier badge from SimBrief's three-letter airline ICAO code. DAL, JBU, AAL, UAL, SWA, ASA, FFT, and NKS receive distinct bundled treatments; every other valid carrier receives a neutral badge labeled with its ICAO code. The shared secondary-window title bar now uses direct, verified minimize, maximize/restore, and close actions. Install with `outputs/Alpha6OPS-Setup-0.12.1.exe`, or fully extract `outputs/Alpha6OPS-Desktop-0.12.1-win-x64.zip` for portable use.
+
 Latest: **0.12.0 Flight Deck foundation** simplifies Flight Tools around the active assignment, SimConnect session, live timeline/debrief, and rotation detail, leaving room for the expanded flight-tracking experience. Recorded-flight replay controls are no longer pilot-facing. Flight History, Log Database, test-log export, health monitoring, local data, and crash-report access now live together in a redesigned **Settings → Logs & Diagnostics** workspace. SimBrief import assigns departure and arrival gates: explicit gates in dispatch remarks take priority, followed by stable airport/airline catalog suggestions, with an unassigned state when no trustworthy match exists. Pilots can review and correct both gates before saving. Install with `outputs/Alpha6OPS-Setup-0.12.0.exe`, or fully extract `outputs/Alpha6OPS-Desktop-0.12.0-win-x64.zip` for portable use.
 
 The 0.12.0 display work centers the final saved window dimensions in the active monitor's usable work area on every normal launch, including monitors with taskbar offsets and non-primary screen coordinates.

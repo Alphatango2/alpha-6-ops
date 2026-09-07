@@ -7,7 +7,8 @@ namespace Alpha6Ops.Desktop;
 internal record ActiveFlightPlan(string FlightNumber, string Registration, string Origin, string Destination,
     DateTimeOffset PlannedDepartureUtc, DateTimeOffset PlannedArrivalUtc, string? Source = null,
     string? SimBriefUsername = null, DateTimeOffset? ImportedAtUtc = null, string? DepartureGate = null,
-    string? ArrivalGate = null, string? GateAssignmentSource = null, string? GateAssignmentConfidence = null)
+    string? ArrivalGate = null, string? GateAssignmentSource = null, string? GateAssignmentConfidence = null,
+    string? AirlineIcao = null)
 {
     internal TimeSpan PlannedDuration => PlannedArrivalUtc - PlannedDepartureUtc;
 }
