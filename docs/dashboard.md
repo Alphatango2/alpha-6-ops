@@ -2,7 +2,7 @@
 
 The Windows WPF application now follows Dan's dashboard reference: a black/navy shell with yellow accents, supplied Alpha 6 branding, next-flight photography, left navigation, connection status, alerts, eight module tiles, a route map, operations table, fleet ring and company notes.
 
-The September 6 integration uses the shared v0.11.4 base (`0723f17`): the themed window controls, updated navigation icons/hover behavior and seven-section Settings workspace are retained alongside the local weather, clocks and adaptive dashboard. Settings opens its own workspace; Flight tools remains available separately.
+The September 6 integration is released in v0.11.5: the themed window controls, updated navigation icons/hover behavior and seven-section Settings workspace are retained alongside the local weather, clocks and adaptive dashboard. Settings opens its own workspace; Flight tools remains available separately.
 
 The supplied visual target is preserved in [assets/design/dashboard-reference.png](../assets/design/dashboard-reference.png). Local screenshots from each verified build are available in timestamped folders under `work/dashboard-review/`, including `dashboard-default.png` and previews of the flight tools, preflight checklist and module workspaces.
 
