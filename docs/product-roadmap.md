@@ -16,6 +16,7 @@ This commit supplies a runnable first slice; the full MVP acceptance target is n
 - Remove recorded-flight replay controls from the pilot-facing interface while retaining deterministic replay fixtures for automated verification.
 - Consolidate Flight History, Log Database, JSON test-log export, program health, data folders, and crash reports in a polished Logs & Diagnostics settings workspace.
 - Use the space recovered in Flight Tools for the next flight-tracking controls and status presentation.
+- Add gate-aware SimBrief import. Parse explicit departure and arrival gates from dispatch remarks first; otherwise resolve a suggested gate from a maintained airport, airline, terminal, and aircraft compatibility catalog. Keep the result stable for the same flight/date, record its source and confidence, allow pilot correction, and leave it unassigned when no reliable match exists.
 
 ## Two-developer division
 
