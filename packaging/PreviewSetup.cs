@@ -70,7 +70,7 @@ internal static class PreviewSetup
             using (var details = new Label())
             using (var install = new Button())
             {
-                form.Text = "Alpha 6 OPS — Desktop Preview Setup";
+                form.Text = "Alpha 6 OPS Setup";
                 form.ClientSize = new Size(640, 440);
                 form.FormBorderStyle = FormBorderStyle.None;
                 form.MaximizeBox = false;
@@ -107,7 +107,7 @@ internal static class PreviewSetup
                 mark.SetBounds(26, 58, 286, 126);
                 mark.SizeMode = PictureBoxSizeMode.Zoom;
                 mark.Image = LoadSetupLogo();
-                version.Text = "WINDOWS DESKTOP PREVIEW\r\nVERSION 0.12.1";
+                version.Text = "WINDOWS DESKTOP\r\nVERSION 0.12.1";
                 version.SetBounds(338, 91, 270, 58);
                 version.Font = new Font("Segoe UI Semibold", 12, FontStyle.Bold);
                 version.ForeColor = Color.WhiteSmoke;
@@ -139,7 +139,7 @@ internal static class PreviewSetup
                         CreateShortcut();
                         using (var key = Registry.CurrentUser.CreateSubKey(RegistryKey))
                         {
-                            key.SetValue("DisplayName", "Alpha 6 OPS Desktop Preview");
+                            key.SetValue("DisplayName", "Alpha 6 OPS");
                             key.SetValue("DisplayVersion", "0.12.1");
                             key.SetValue("Publisher", "Alpha 6 Designs");
                             key.SetValue("InstallLocation", InstallPath);
@@ -297,7 +297,7 @@ internal static class PreviewSetup
     static int Uninstall()
     {
         VerifyOwnedInstallation(InstallPath);
-        if (MessageBox.Show("Remove Alpha 6 OPS Desktop Preview and its bundled runtime?\r\n\r\nClose Alpha 6 OPS using Exit OPS before continuing.\r\n\r\n" + InstallPath, "Uninstall Alpha 6 OPS", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes) return 0;
+        if (MessageBox.Show("Remove Alpha 6 OPS and its bundled runtime?\r\n\r\nClose Alpha 6 OPS using Exit OPS before continuing.\r\n\r\n" + InstallPath, "Uninstall Alpha 6 OPS", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes) return 0;
         EnsureNotRunning(InstallPath);
         // The target is a fixed, product-owned path; refuse junctions/symlinks anywhere inside it.
         CheckTree(InstallPath);

@@ -58,8 +58,8 @@ public partial class MainWindow : Window
         try { flightHistory = new FlightHistoryDatabase(diagnosticDirectory ?? CrashReporter.RootDirectory); }
         catch (Exception error) { CrashReporter.Write("flight_history_startup", error); }
         var version = Assembly.GetExecutingAssembly().GetName().Version?.ToString(3) ?? "unknown";
-        VersionText.Text = $"ALPHA 6 OPS v{version} • DESKTOP PREVIEW";
-        Title = $"Alpha 6 OPS v{version} — Desktop Preview";
+        VersionText.Text = $"ALPHA 6 OPS  •  v{version}";
+        Title = $"Alpha 6 OPS v{version}";
         SourceInitialized += (_, _) => { InitializeMonitorTracking(); ApplyInitialWindowSize(); };
         trayIcon = System.Drawing.Icon.ExtractAssociatedIcon(Environment.ProcessPath ?? "") ?? (System.Drawing.Icon)System.Drawing.SystemIcons.Application.Clone();
         tray = new Forms.NotifyIcon

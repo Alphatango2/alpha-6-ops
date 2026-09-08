@@ -27,6 +27,8 @@ internal static class DashboardSmokeTest
         Check(window.ModuleTiles.Items.Count==8,"All eight photographic module tiles load");
         Check(window.ConnectionBadgeText.Text.Contains("DISCONNECTED",StringComparison.Ordinal),"Disconnected simulator is never presented as connected");
         Check(window.FleetCountText.Text=="1,006","Fleet chart uses the bundled reference catalog");
+        Check(window.VersionText.Text.StartsWith("ALPHA 6 OPS  •  v",StringComparison.Ordinal)&&!window.VersionText.Text.Contains("PREVIEW",StringComparison.Ordinal),"Footer presents a clean product version without preview wording");
+        Check(window.ExitOpsButton.Style==window.FindResource("OpsButton")&&window.ExitOpsButton.MinWidth>=88&&window.ExitOpsButton.MinHeight>=34,"Exit OPS is a full themed action button");
         var sampleFlight=window.HeroFlightText.Text;
         window.HeroFlightText.Text="DAL742";window.UpdateLayout();
         Check(window.HeroFlightText.FontSize==48,"Combined airline ICAO and flight number use the larger hero treatment");
