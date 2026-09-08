@@ -21,6 +21,10 @@ try {
     if ($LASTEXITCODE -ne 0) { throw 'Desktop restore failed.' }
     & $dotnet publish src/Alpha6Ops.Desktop -c Release --no-restore --no-self-contained -p:AppHostDotNetSearch=AppRelative -p:AppHostRelativeDotNet=runtime -p:DebugType=None -p:DebugSymbols=false -o $publish
     if ($LASTEXITCODE -ne 0) { throw 'Desktop publish failed.' }
+    & $dotnet restore src/Alpha6Ops.FlightLab --configfile NuGet.Config
+    if ($LASTEXITCODE -ne 0) { throw 'Flight Lab restore failed.' }
+    & $dotnet publish src/Alpha6Ops.FlightLab -c Release --no-restore --no-self-contained -p:AppHostDotNetSearch=AppRelative -p:AppHostRelativeDotNet=../runtime -p:DebugType=None -p:DebugSymbols=false -o (Join-Path $publish 'FlightLab')
+    if ($LASTEXITCODE -ne 0) { throw 'Flight Lab publish failed.' }
     foreach ($relative in @("host/fxr/$RuntimeVersion", "shared/Microsoft.NETCore.App/$RuntimeVersion", "shared/Microsoft.WindowsDesktop.App/$RuntimeVersion")) {
         $source = Join-Path $DotNetRoot $relative
         if (!(Test-Path -LiteralPath $source)) { throw "Runtime folder missing: $source" }

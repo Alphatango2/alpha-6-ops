@@ -30,6 +30,7 @@ This commit supplies a runnable first slice; the full MVP acceptance target is n
 - Remove the carrier badge and airline-name lookup after interface review. Present the imported airline ICAO and flight number as one larger flight identifier.
 - Give the next-flight hero and Fly tile separate unbranded aircraft-at-gate photography instead of reusing one airline-livery image.
 - Replace the flat schematic network map with a native offline globe-style view, including shaded oceans, curved graticule, refined land, glowing routes, vector aircraft, cleaner station labels, and themed hub selection.
+- Add the local Alpha 6 Flight Lab companion with manual and automatic virtual flight phases, named-pipe telemetry through the production live-reading boundary, accelerated simulator UTC, and reconnect/continuity fault injection.
 
 ## Two-developer division
 

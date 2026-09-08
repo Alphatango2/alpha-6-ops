@@ -19,6 +19,7 @@ internal static class DashboardSmokeTest
         var checks=new List<string>();
         void Check(bool result,string label) {if(!result)throw new InvalidOperationException(label);checks.Add(label);}
         await HeaderSmokeTest.RunAsync(window, Check);
+        await FlightLabSmokeTest.RunAsync(Check);
         await ResponsiveSmokeTest.RunAsync(window, outputDirectory, Check);
         await MonitorSmokeTest.RunAsync(window, outputDirectory, Check);
         window.SetAdvanced(false);window.UpdateLayout();
@@ -133,7 +134,7 @@ internal static class DashboardSmokeTest
             "Logs and diagnostics presents program-monitor and flight-log status");
         Capture(settings,Path.Combine(outputDirectory,"settings-logs-preview.png"));settings.Close();
         window.ToolsOverlay.Visibility=Visibility.Visible;window.UpdateLayout();Capture(window,Path.Combine(outputDirectory,"flight-tools-preview.png"));
-        Check(window.ConnectButton.IsEnabled && !window.DisconnectButton.IsEnabled && !window.LiveTimelineButton.IsEnabled,"Flight tools preserves simulator connection guards");
+        Check(window.ConnectButton.IsEnabled && window.ConnectFlightLabButton.IsEnabled && !window.DisconnectButton.IsEnabled && !window.LiveTimelineButton.IsEnabled,"Flight tools preserves real and virtual simulator connection guards");
         window.ToolsOverlay.Visibility=Visibility.Collapsed;
         window.SetHeaderWeather(null);window.RenderLocalWeather(DateTimeOffset.UtcNow);
         File.WriteAllText(Path.Combine(outputDirectory,"dashboard-smoke.json"),JsonSerializer.Serialize(new{passed=true,count=checks.Count,checks},new JsonSerializerOptions{WriteIndented=true}));

@@ -30,6 +30,8 @@ public partial class MainWindow : Window
     private TimelineRecorder? liveRecorder;
     private DateTimeOffset? liveLast;
     private string? liveAircraft;
+    private string liveSource = "MSFS 2024";
+    private string? lastScenarioEvent;
     private bool liveInvalid;
     private TestFlightLog? flightLog;
     private string? lastJournal;
@@ -181,7 +183,7 @@ public partial class MainWindow : Window
         if (running) return;
         ResetPreview();
         running = true;
-        ConnectButton.IsEnabled = false;
+        ConnectButton.IsEnabled = ConnectFlightLabButton.IsEnabled = false;
         ReplayButton.IsEnabled = ResetButton.IsEnabled = false;
         StatusText.Text = "Replaying recorded simulator data. You can minimize to the tray; the replay will continue.";
         var firstLeg = session.Rotation.Legs[0];
@@ -222,7 +224,7 @@ public partial class MainWindow : Window
         finally
         {
             running = false;
-            ConnectButton.IsEnabled = true;
+            ConnectButton.IsEnabled = ConnectFlightLabButton.IsEnabled = true;
             ReplayButton.IsEnabled = ResetButton.IsEnabled = true;
         }
     }
@@ -386,31 +388,38 @@ public partial class MainWindow : Window
     private async void Connect_Click(object sender, RoutedEventArgs e) =>
         await ConnectSimulatorAsync(showRotationDetails: true);
 
-    private async Task ConnectSimulatorAsync(bool showRotationDetails)
+    private async void ConnectFlightLab_Click(object sender, RoutedEventArgs e) =>
+        await ConnectSimulatorAsync(showRotationDetails: true, useFlightLab: true);
+
+    private async Task ConnectSimulatorAsync(bool showRotationDetails, bool useFlightLab = false)
     {
         if (liveCancellation is not null || running) return;
         liveCancellation = CancellationTokenSource.CreateLinkedTokenSource(lifetime.Token);
         liveRecorder = null; liveLast = null; liveAircraft = null; liveInvalid = false;
+        liveSource = useFlightLab ? "FLIGHT LAB" : "MSFS 2024"; lastScenarioEvent = null;
         liveRotation = null;
         LiveTimelineButton.IsEnabled = LiveDebriefButton.IsEnabled = false;
-        ConnectButton.IsEnabled = ReplayButton.IsEnabled = ResetButton.IsEnabled = false;
+        ConnectButton.IsEnabled = ConnectFlightLabButton.IsEnabled = ReplayButton.IsEnabled = ResetButton.IsEnabled = false;
         DisconnectButton.IsEnabled = true;
         milestones.Clear();
         SetAdvanced(showRotationDetails);
-        StartLog();
+        StartLog(useFlightLab ? "flight_lab" : "live_simconnect");
         var attempt = 0;
         try
         {
             while (true)
             {
                 attempt++;
-                ConnectionText.Text = attempt == 1 ? "Connecting to the local simulator…" : $"Reconnecting to the local simulator (attempt {attempt})…";
+                var sourceName=useFlightLab?"Alpha 6 Flight Lab":"the local simulator";
+                ConnectionText.Text = attempt == 1 ? $"Connecting to {sourceName}…" : $"Reconnecting to {sourceName} (attempt {attempt})…";
                 programMonitor?.Update("Connecting");
-                SetConnectionBadge("CONNECTING TO SIMULATOR", "#FFCA45", "#433817");
+                SetConnectionBadge(useFlightLab?"CONNECTING TO FLIGHT LAB":"CONNECTING TO SIMULATOR", "#FFCA45", "#433817");
                 try
                 {
-                    await SimConnectSource.RunAsync(message => Dispatcher.BeginInvoke(new Action(() => { if (exiting) return; RecordLog("connection_opened", null, new { message }); ConnectionText.Text = message; SetConnectionBadge("SIMULATOR CONNECTED", "#65E697", "#173D27"); programMonitor?.Update("Connected"); })),
-                        reading => Dispatcher.BeginInvoke(new Action(() => ObserveLive(reading))), liveCancellation.Token);
+                    Action<string> opened=message => Dispatcher.BeginInvoke(new Action(() => { if (exiting) return; RecordLog("connection_opened", null, new { message,source=liveSource }); ConnectionText.Text = message; SetConnectionBadge(useFlightLab?"FLIGHT LAB CONNECTED":"SIMULATOR CONNECTED", "#65E697", "#173D27"); programMonitor?.Update("Connected"); }));
+                    Action<LiveReading> received=reading => Dispatcher.BeginInvoke(new Action(() => ObserveLive(reading)));
+                    if(useFlightLab)await FlightLabSource.RunAsync(opened,received,liveCancellation.Token);
+                    else await SimConnectSource.RunAsync(opened,received,liveCancellation.Token);
                     break; // RunAsync only returns normally once its cooperative cancellation check trips
                 }
                 catch (IOException error)
@@ -424,21 +433,21 @@ public partial class MainWindow : Window
                 }
             }
             ConnectionText.Text = "Disconnected. Live milestones remain visible until the next connection or replay.";
-            SetConnectionBadge("SIMULATOR DISCONNECTED", "#A9AD9F", "#30342C");
+            SetConnectionBadge(useFlightLab?"FLIGHT LAB DISCONNECTED":"SIMULATOR DISCONNECTED", "#A9AD9F", "#30342C");
             programMonitor?.Update("Disconnected");
         }
         catch (Exception error) when (error is IOException or DllNotFoundException or BadImageFormatException or EntryPointNotFoundException or TypeInitializationException or OperationCanceledException)
         {
             RecordLog("connection_error", liveLast, new { message = error.GetBaseException().Message, type = error.GetType().Name });
             ConnectionText.Text = error is OperationCanceledException ? "Disconnected." : error.GetBaseException().Message;
-            SetConnectionBadge(error is OperationCanceledException ? "SIMULATOR DISCONNECTED" : "SIMULATOR CONNECTION FAILED", error is OperationCanceledException ? "#A9AD9F" : "#FF9690", error is OperationCanceledException ? "#30342C" : "#512621");
+            SetConnectionBadge(error is OperationCanceledException ? (useFlightLab?"FLIGHT LAB DISCONNECTED":"SIMULATOR DISCONNECTED") : (useFlightLab?"FLIGHT LAB CONNECTION FAILED":"SIMULATOR CONNECTION FAILED"), error is OperationCanceledException ? "#A9AD9F" : "#FF9690", error is OperationCanceledException ? "#30342C" : "#512621");
             programMonitor?.Update(error is OperationCanceledException ? "Disconnected" : "Connection failed");
         }
         finally
         {
             FinishLog("connection_closed");
             liveCancellation.Dispose(); liveCancellation = null;
-            ConnectButton.IsEnabled = ReplayButton.IsEnabled = ResetButton.IsEnabled = true;
+            ConnectButton.IsEnabled = ConnectFlightLabButton.IsEnabled = ReplayButton.IsEnabled = ResetButton.IsEnabled = true;
             DisconnectButton.IsEnabled = false;
         }
     }
@@ -448,9 +457,11 @@ public partial class MainWindow : Window
     {
         if (liveCancellation is null || liveCancellation.IsCancellationRequested || exiting) return;
         var s = reading.Telemetry;
+        liveSource=reading.Source;
         programMonitor?.Update("Connected", reading.Aircraft, s.At, sampleReceived: true);
         RecordLog("telemetry", s.At, new { aircraft = reading.Aircraft, onGround = s.OnGround, groundSpeedKnots = s.GroundSpeedKnots, parkingBrake = s.ParkingBrake, enginesRunning = s.EnginesRunning, paused = s.Paused, slewing = s.Slewing });
-        LiveText.Text = $"{reading.Aircraft} • {s.At.UtcDateTime:HH:mm:ss}Z • {s.GroundSpeedKnots:0.0} kt • Brake {(s.ParkingBrake ? "set" : "released")} • {(s.Paused ? "Paused" : s.Slewing ? "Slew" : s.OnGround ? "On ground" : "Airborne")}";
+        if(reading.ScenarioEvent is {Length:>0} scenario&&scenario!=lastScenarioEvent){lastScenarioEvent=scenario;RecordLog("flight_lab_event",s.At,new{scenario});}
+        LiveText.Text = $"{reading.Source} • {reading.Aircraft} • {s.At.UtcDateTime:HH:mm:ss}Z • {s.GroundSpeedKnots:0.0} kt • Brake {(s.ParkingBrake ? "set" : "released")} • {(s.Paused ? "Paused" : s.Slewing ? "Slew" : s.OnGround ? "On ground" : "Airborne")}";
         if (!liveInvalid && !TelemetryContinuity.IsContinuous(liveLast, liveAircraft, s.At, reading.Aircraft))
         {
             liveInvalid = true;
@@ -479,12 +490,12 @@ public partial class MainWindow : Window
         tray.Text = "Alpha 6 OPS — Live " + liveRecorder.Phase;
         RefreshLiveTracker(reading.Aircraft, s.At, liveRecorder.Phase, $"Live telemetry • {s.GroundSpeedKnots:0.0} kt • Brake {(s.ParkingBrake ? "set" : "released")}");
     }
-    private void StartLog()
+    private void StartLog(string mode)
     {
         FinishLog("new_connection");
         try
         {
-            flightLog = new TestFlightLog(LogDirectory, Assembly.GetExecutingAssembly().GetName().Version?.ToString(3) ?? "unknown", "live_simconnect");
+            flightLog = new TestFlightLog(LogDirectory, Assembly.GetExecutingAssembly().GetName().Version?.ToString(3) ?? "unknown", mode);
             lastJournal = flightLog.JournalPath;
             if (activePlan is not null) RecordLog("flight_assignment", null, activePlan);
             LogStatusText.Text = "Recording test log. Export it here after your flight—or any time something looks wrong.";
@@ -532,6 +543,10 @@ public partial class MainWindow : Window
         ConnectionBadgeText.Text = label switch
         {
             "CONNECTING TO SIMULATOR" => "CONNECTING",
+            "CONNECTING TO FLIGHT LAB" => "LAB CONNECTING",
+            "FLIGHT LAB CONNECTED" => "LAB CONNECTED",
+            "FLIGHT LAB DISCONNECTED" => "LAB DISCONNECTED",
+            "FLIGHT LAB CONNECTION FAILED" => "LAB FAILED",
             "SIMULATOR CONNECTION LOST — RETRYING" => "RECONNECTING",
             "SIMULATOR CONNECTION FAILED" => "FAILED",
             _ => label.Replace("SIMULATOR ", "")
@@ -556,7 +571,7 @@ public partial class MainWindow : Window
     private void RefreshLiveTracker(string? simulatorAircraft, DateTimeOffset? simulatorTime, FlightPhase? phase, string status)
     {
         RefreshDashboardFlight(true);
-        TrackerModeText.Text = "ACTIVE FLIGHT • LIVE SIMCONNECT";
+        TrackerModeText.Text = liveSource=="FLIGHT LAB"?"ACTIVE FLIGHT • FLIGHT LAB":"ACTIVE FLIGHT • LIVE SIMCONNECT";
         if (activePlan is null)
         {
             AircraftText.Text = simulatorAircraft ?? "AIRCRAFT WAITING";

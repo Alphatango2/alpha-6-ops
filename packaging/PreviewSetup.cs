@@ -19,6 +19,7 @@ internal static class PreviewSetup
     const string RegistryKey = @"Software\Microsoft\Windows\CurrentVersion\Uninstall\Alpha6OPSPreview";
     static readonly string InstallPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Alpha6Designs", "Alpha6OPSPreview");
     static readonly string ShortcutPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Programs), "Alpha 6 OPS Preview.lnk");
+    static readonly string FlightLabShortcutPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Programs), "Alpha 6 Flight Lab.lnk");
 
     [DllImport("user32.dll")]
     static extern bool ReleaseCapture();
@@ -224,6 +225,11 @@ internal static class PreviewSetup
         type.InvokeMember("TargetPath", BindingFlags.SetProperty, null, shortcut, new object[] { Path.Combine(InstallPath, "Alpha6OPS.exe") });
         type.InvokeMember("WorkingDirectory", BindingFlags.SetProperty, null, shortcut, new object[] { InstallPath });
         type.InvokeMember("Save", BindingFlags.InvokeMethod, null, shortcut, null);
+        var lab = shellType.InvokeMember("CreateShortcut", BindingFlags.InvokeMethod, null, shell, new object[] { FlightLabShortcutPath });
+        var labType = lab.GetType();
+        labType.InvokeMember("TargetPath", BindingFlags.SetProperty, null, lab, new object[] { Path.Combine(InstallPath, "FlightLab", "Alpha6FlightLab.exe") });
+        labType.InvokeMember("WorkingDirectory", BindingFlags.SetProperty, null, lab, new object[] { Path.Combine(InstallPath, "FlightLab") });
+        labType.InvokeMember("Save", BindingFlags.InvokeMethod, null, lab, null);
     }
 
     static void ReplaceInstallation(string destination, bool checkRunning)
@@ -292,6 +298,14 @@ internal static class PreviewSetup
                     throw new IOException("Alpha 6 OPS is still running. Use Exit OPS, then run the upgrade again.");
             }
         }
+        foreach (var process in Process.GetProcessesByName("Alpha6FlightLab"))
+        {
+            using (process)
+            {
+                if (!process.HasExited && string.Equals(process.MainModule.FileName, Path.Combine(directory, "FlightLab", "Alpha6FlightLab.exe"), StringComparison.OrdinalIgnoreCase))
+                    throw new IOException("Alpha 6 Flight Lab is still running. Close it, then run the upgrade again.");
+            }
+        }
     }
 
     static int Uninstall()
@@ -303,6 +317,7 @@ internal static class PreviewSetup
         CheckTree(InstallPath);
         Directory.Delete(InstallPath, true);
         if (File.Exists(ShortcutPath)) File.Delete(ShortcutPath);
+        if (File.Exists(FlightLabShortcutPath)) File.Delete(FlightLabShortcutPath);
         Registry.CurrentUser.DeleteSubKeyTree(RegistryKey, false);
         MessageBox.Show("Alpha 6 OPS Preview was removed.", "Alpha 6 OPS");
         return 0;
