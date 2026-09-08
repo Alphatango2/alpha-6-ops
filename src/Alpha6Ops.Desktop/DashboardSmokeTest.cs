@@ -116,6 +116,10 @@ internal static class DashboardSmokeTest
         Check(settings.MinimizeToTrayToggle.IsChecked==false && settings.FlashNotificationToggle.IsChecked==false &&
             settings.NotificationSoundToggle.IsChecked==false && settings.AdvancedControlsToggle.IsChecked==false,
             "General settings render the saved behavior choices");
+        Check(settings.ResetDefaultsButton.Margin.Right==12&&settings.ResetDefaultsButton.Width==128&&settings.SaveSettingsButton.Width==130,
+            "General settings header separates and balances its actions");
+        Check(new[]{settings.WeightUnitBox,settings.AltitudeUnitBox,settings.LandingDistanceUnitBox}.All(box=>box.Foreground.ToString()=="#FFFFFFFF"&&box.Template is not null),
+            "Display-unit selections use readable light text");
         Check(settings.GeneralSettingsScroll.VerticalScrollBarVisibility==ScrollBarVisibility.Disabled,
             "General settings fit without a permanent scroll track");
         Capture(settings,Path.Combine(outputDirectory,"settings-general-preview.png"));
