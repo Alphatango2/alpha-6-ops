@@ -32,6 +32,8 @@ internal static class DashboardSmokeTest
         Check(window.ExitOpsButton.Style==exitStyle&&window.ExitOpsButton.MinWidth>=88&&window.ExitOpsButton.MinHeight>=34,"Exit OPS is a full themed action button");
         Check(window.ExitOpsButton.BorderBrush.ToString()=="#FF415362"&&exitStyle.Triggers.OfType<Trigger>().Any(t=>t.Property==UIElement.IsMouseOverProperty&&Equals(t.Value,true)&&t.Setters.OfType<Setter>().Any(s=>s.Property==Control.BackgroundProperty&&s.Value is SolidColorBrush brush&&brush.Color==Color.FromRgb(255,218,0))),"Exit OPS uses the panel border and yellow navigation hover treatment");
         Check(window.FooterBrand.FontSize==11&&window.FooterBrand.FontWeight==FontWeights.SemiBold,"Left footer branding matches the updated version treatment");
+        Check(window.NavigationTagline.Text=="YOU FLY THE AIRPLANE.\nWE RUN THE AIRLINE."&&window.NavigationTagline.TextWrapping==TextWrapping.NoWrap,"Navigation tagline keeps the pilot phrase on one line");
+        Check(window.NavigationProfile.Margin.Top==23&&window.NavigationProfile.Margin.Bottom==-6,"Pilot identity section sits lower in the navigation rail");
         var sampleFlight=window.HeroFlightText.Text;
         window.HeroFlightText.Text="DAL742";window.UpdateLayout();
         Check(window.HeroFlightText.FontSize==48,"Combined airline ICAO and flight number use the larger hero treatment");

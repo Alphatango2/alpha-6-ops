@@ -210,23 +210,23 @@
       </Border>
     </Grid>
     <DockPanel Grid.Row="1" Margin="0,0,0,8">
-      <StackPanel x:Name="NavigationProfile" DockPanel.Dock="Bottom" Margin="0,15,0,0">
-        <Border Style="{StaticResource OpsPanel}" Padding="12">
+      <StackPanel x:Name="NavigationProfile" DockPanel.Dock="Bottom" Margin="0,23,0,-6">
+        <Border Style="{StaticResource OpsPanel}" Padding="14,13">
           <StackPanel>
             <StackPanel Orientation="Horizontal">
-              <Border Width="36" Height="36" CornerRadius="18" Background="#24313B" BorderBrush="#526574" BorderThickness="1">
+              <Border Width="40" Height="40" CornerRadius="20" Background="#24313B" BorderBrush="#526574" BorderThickness="1">
                 <TextBlock x:Name="PilotInitialsText" Text="A6" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Foreground="{StaticResource OpsYellow}" />
               </Border>
-              <StackPanel Margin="10,0,0,0">
-                <TextBlock x:Name="PilotDisplayText" Text="Your flight deck" FontSize="13" />
-                <TextBlock Text="Alpha 6 Virtual" Style="{StaticResource OpsCaption}" Margin="0,4,0,0" />
+              <StackPanel Margin="11,0,0,0" VerticalAlignment="Center">
+                <TextBlock x:Name="PilotDisplayText" Text="Your flight deck" FontSize="14" FontWeight="SemiBold" />
+                <TextBlock Text="Alpha 6 Virtual" Style="{StaticResource OpsCaption}" FontSize="10" Margin="0,4,0,0" />
               </StackPanel>
             </StackPanel>
-            <TextBlock Text="●  LOCAL SESSION" Foreground="#6BCB65" FontSize="10" Margin="46,7,0,0" />
+            <TextBlock Text="●  LOCAL SESSION" Foreground="#6BCB65" FontSize="10" Margin="51,8,0,0" />
           </StackPanel>
         </Border>
-        <TextBlock Text="YOU FLY&#xA;THE AIRPLANE.&#xA;WE RUN THE AIRLINE." FontFamily="Bahnschrift SemiCondensed" FontSize="12" Foreground="#CBD6E0" LineHeight="18" Margin="15,20,0,0" />
-        <Rectangle Fill="{StaticResource OpsYellow}" Height="2" Width="27" HorizontalAlignment="Left" Margin="15,13,0,0" />
+        <TextBlock x:Name="NavigationTagline" Text="YOU FLY THE AIRPLANE.&#xA;WE RUN THE AIRLINE." FontFamily="Bahnschrift SemiCondensed" FontSize="12" FontWeight="SemiBold" Foreground="#CBD6E0" LineHeight="19" TextWrapping="NoWrap" Margin="15,19,0,0" />
+        <Rectangle Fill="{StaticResource OpsYellow}" Height="2" Width="27" HorizontalAlignment="Left" Margin="15,12,0,0" />
       </StackPanel>
       <ScrollViewer VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Disabled" PanningMode="None">
         <StackPanel x:Name="NavigationButtons">
