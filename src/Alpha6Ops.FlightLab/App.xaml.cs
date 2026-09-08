@@ -23,6 +23,12 @@ public partial class App : Application
                 Directory.CreateDirectory(e.Args[1]);
                 var bitmap=new RenderTargetBitmap((int)window.ActualWidth,(int)window.ActualHeight,96,96,PixelFormats.Pbgra32);bitmap.Render(window);
                 var encoder=new PngBitmapEncoder();encoder.Frames.Add(BitmapFrame.Create(bitmap));using var file=File.Create(Path.Combine(e.Args[1],"flight-lab.png"));encoder.Save(file);
+                window.PlayButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));
+                if(!window.PlaybackStatusText.Text.Contains("PLAYING • 1×",StringComparison.Ordinal))throw new InvalidOperationException("Play control did not start the automatic flight.");
+                window.PauseButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));
+                if(!window.PlaybackStatusText.Text.StartsWith("PAUSED",StringComparison.Ordinal))throw new InvalidOperationException("Pause control did not pause the automatic flight.");
+                window.FastForwardButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));
+                if(!window.PlaybackStatusText.Text.Contains("PLAYING • 4×",StringComparison.Ordinal))throw new InvalidOperationException("Fast-forward control did not enable 4× playback.");
                 File.WriteAllText(Path.Combine(e.Args[1],"flight-lab-smoke.json"),"{\"passed\":true,\"phase\":\"AT GATE\"}");
                 Shutdown(0);
             }

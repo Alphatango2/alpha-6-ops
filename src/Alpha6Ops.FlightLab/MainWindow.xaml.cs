@@ -12,8 +12,8 @@ public partial class MainWindow : Window
     private readonly FlightLabServer server;
     private readonly DispatcherTimer timer=new(){Interval=TimeSpan.FromSeconds(1)};
     private DateTimeOffset simulatorUtc=DateTimeOffset.UtcNow;
-    private int rate=1,automaticIndex=-1,automaticTicks;
-    private bool frozen;
+    private int rate=1,automaticIndex=-1,automaticTicks,playbackRate=1;
+    private bool frozen,automaticPaused;
     private string aircraft="Alpha 6 Test A321",phase="AT GATE";
     private string? scenarioEvent;
     private FlightState state=new(true,0,true,false,false,false);
@@ -34,14 +34,14 @@ public partial class MainWindow : Window
     private void Tick(object? sender,EventArgs e)
     {
         simulatorUtc=simulatorUtc.AddSeconds(rate);
-        if(automaticIndex>=0)
+        if(automaticIndex>=0&&!automaticPaused)
         {
-            automaticTicks++;
+            automaticTicks+=playbackRate;
             if(automaticTicks>=automatic[automaticIndex].Seconds)
             {
                 automaticIndex++;
-                if(automaticIndex>=automatic.Length){automaticIndex=-1;ScenarioText.Text="Automatic flight complete";}
-                else{automaticTicks=0;ApplyPhase(automatic[automaticIndex].Phase);ScenarioText.Text=$"Quick flight running • step {automaticIndex+1}/{automatic.Length}";}
+                if(automaticIndex>=automatic.Length){automaticIndex=-1;playbackRate=1;ScenarioText.Text="Automatic flight complete";UpdatePlaybackStatus();}
+                else{automaticTicks=0;ApplyPhase(automatic[automaticIndex].Phase);ScenarioText.Text=$"Automatic flight running • step {automaticIndex+1}/{automatic.Length}";UpdatePlaybackStatus();}
             }
         }
         Publish();scenarioEvent=null;
@@ -76,9 +76,36 @@ public partial class MainWindow : Window
         PhaseText.Text=phase;Publish();
     }
 
-    private void Phase_Click(object sender,RoutedEventArgs e){automaticIndex=-1;ApplyPhase((string)((Button)sender).Tag);ScenarioText.Text="Manual phase selected";}
-    private void RunAutomatic_Click(object sender,RoutedEventArgs e){automaticIndex=0;automaticTicks=0;ApplyPhase(automatic[0].Phase);scenarioEvent="QUICK_FLIGHT_STARTED";ScenarioText.Text=$"Quick flight running • step 1/{automatic.Length}";}
-    private void StopAutomatic_Click(object sender,RoutedEventArgs e){automaticIndex=-1;ScenarioText.Text="Automatic flight stopped";}
+    private void Phase_Click(object sender,RoutedEventArgs e){automaticIndex=-1;automaticPaused=false;playbackRate=1;ApplyPhase((string)((Button)sender).Tag);ScenarioText.Text="Manual phase selected";UpdatePlaybackStatus();}
+    private void RunAutomatic_Click(object sender,RoutedEventArgs e)=>StartOrResumeAutomatic();
+    private void StopAutomatic_Click(object sender,RoutedEventArgs e){automaticIndex=-1;automaticPaused=false;playbackRate=1;ScenarioText.Text="Automatic flight stopped";UpdatePlaybackStatus();}
+    private void Play_Click(object sender,RoutedEventArgs e)=>StartOrResumeAutomatic();
+    private void Pause_Click(object sender,RoutedEventArgs e)
+    {
+        if(automaticIndex<0){ScenarioText.Text="Start automatic flight before pausing";return;}
+        automaticPaused=true;ScenarioText.Text=$"Automatic flight paused at {phase}";UpdatePlaybackStatus();
+    }
+    private void FastForward_Click(object sender,RoutedEventArgs e)
+    {
+        if(automaticIndex<0)StartAutomatic();
+        automaticPaused=false;playbackRate=playbackRate==4?1:4;
+        ScenarioText.Text=$"Automatic flight running at {playbackRate}× • step {automaticIndex+1}/{automatic.Length}";UpdatePlaybackStatus();
+    }
+    private void StartOrResumeAutomatic()
+    {
+        if(automaticIndex<0)StartAutomatic();
+        else{automaticPaused=false;ScenarioText.Text=$"Automatic flight running • step {automaticIndex+1}/{automatic.Length}";UpdatePlaybackStatus();}
+    }
+    private void StartAutomatic()
+    {
+        automaticIndex=0;automaticTicks=0;automaticPaused=false;ApplyPhase(automatic[0].Phase);scenarioEvent="QUICK_FLIGHT_STARTED";ScenarioText.Text=$"Automatic flight running • step 1/{automatic.Length}";UpdatePlaybackStatus();Publish();
+    }
+    private void UpdatePlaybackStatus()
+    {
+        PlaybackStatusText.Text=automaticIndex<0?"READY • 1× PLAYBACK":automaticPaused?$"PAUSED • STEP {automaticIndex+1}/{automatic.Length}":$"PLAYING • {playbackRate}× • STEP {automaticIndex+1}/{automatic.Length}";
+        FastForwardButton.Background=playbackRate==4?new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(255,218,0)):new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(20,34,44));
+        FastForwardButton.Foreground=playbackRate==4?System.Windows.Media.Brushes.Black:System.Windows.Media.Brushes.White;
+    }
     private void Diversion_Click(object sender,RoutedEventArgs e){scenarioEvent="DIVERSION_DECLARED_"+simulatorUtc.ToUnixTimeSeconds();ScenarioText.Text="Diversion declared • event sent to Alpha 6 OPS journal";Publish();}
     private void Freeze_Click(object sender,RoutedEventArgs e){frozen=!frozen;server.Frozen=frozen;FreezeButton.Content=frozen?"RESUME DATA":"FREEZE DATA";ScenarioText.Text=frozen?"Telemetry frozen":"Telemetry resumed";}
     private void DropLink_Click(object sender,RoutedEventArgs e){server.DropClient();ScenarioText.Text="Local telemetry link dropped • OPS should reconnect";}
@@ -88,5 +115,8 @@ public partial class MainWindow : Window
     private void RestartLink_Click(object sender,RoutedEventArgs e){server.SetOffline(false);ScenarioText.Text="Flight Lab link restarted • OPS may reconnect";}
     private void Aircraft_Changed(object sender,TextChangedEventArgs e){if(AircraftBox is null)return;aircraft=string.IsNullOrWhiteSpace(AircraftBox.Text)?"Alpha 6 Test Aircraft":AircraftBox.Text.Trim();}
     private void Rate_Changed(object sender,SelectionChangedEventArgs e){if(RateBox?.SelectedItem is ComboBoxItem item&&int.TryParse(item.Tag?.ToString(),out var selected))rate=selected;}
+    private void MinimizeWindow_Click(object sender,RoutedEventArgs e)=>WindowState=WindowState.Minimized;
+    private void ToggleMaximizeWindow_Click(object sender,RoutedEventArgs e)=>WindowState=WindowState==WindowState.Maximized?WindowState.Normal:WindowState.Maximized;
+    private void Exit_Click(object sender,RoutedEventArgs e)=>Close();
     private sealed record FlightState(bool OnGround,double Speed,bool Brake,bool Engines,bool Paused,bool Slewing);
 }

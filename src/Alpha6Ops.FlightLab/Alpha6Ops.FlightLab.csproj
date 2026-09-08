@@ -8,10 +8,11 @@
     <Version>0.1.0</Version>
     <Company>Alpha 6 Designs</Company>
     <Product>Alpha 6 Flight Lab</Product>
-    <ApplicationIcon>../Alpha6Ops.Desktop/Assets/Alpha6OPS.ico</ApplicationIcon>
+    <ApplicationIcon>Assets/A6FL.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="../Alpha6Ops.Core/Alpha6Ops.Core.csproj" />
-    <Resource Include="../Alpha6Ops.Desktop/Assets/Alpha6OPS.ico" Link="Assets/Alpha6OPS.ico" />
+    <Resource Include="Assets/A6FL.ico" />
+    <Resource Include="Assets/A6FL.png" />
   </ItemGroup>
 </Project>
