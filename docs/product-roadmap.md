@@ -32,6 +32,16 @@ This commit supplies a runnable first slice; the full MVP acceptance target is n
 - Replace the flat schematic network map with a native offline globe-style view, including shaded oceans, curved graticule, refined land, glowing routes, vector aircraft, cleaner station labels, and themed hub selection.
 - Add the local Alpha 6 Flight Lab companion with manual and automatic virtual flight phases, named-pipe telemetry through the production live-reading boundary, accelerated simulator UTC, and reconnect/continuity fault injection.
 
+## Planned Flight Tracking update
+
+- Expand the next-flight hero with separate scheduled departure/arrival and actual departure/arrival fields. Actual values remain blank until their corresponding confirmed operational milestones occur.
+- Make **View Flight Details** navigate to the full Flight Tracking workspace once that workspace is available.
+- Replace the static on-time badge during an active flight with a signed schedule status derived from the actual departure and current ETA. Show whether the projected arrival is early or late, while retaining the planned block time as the baseline.
+- Remove **Start Preflight** from the hero. Replace it with **View Flight Deck**, which navigates directly to the existing Flight Deck workspace.
+- Turn the hero's bottom route line into a milestone progress track. Show operational event dots and move an aircraft marker between them using confirmed flight phase progress.
+- Add an explicit **Clear Active Flight** action. Clearing removes the saved assignment and returns the hero and tracking workspace to a defined **No Active Flight** state without deleting its completed journal or history record.
+- Include the reliability work exposed by Flight Lab: rearm or explicitly recover after accepted clock/aircraft discontinuities, publish aircraft-name edits atomically, distinguish expected shutdown from connection failure, preserve monotonic journal ordering with separate effective milestone times, report simulated pause state, and coalesce repeated reconnect timeouts.
+
 ## Two-developer division
 
 | Milestone | Developer A: simulator/domain | Developer B: service/product | Shared exit gate |
