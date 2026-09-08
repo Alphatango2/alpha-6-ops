@@ -75,7 +75,7 @@ internal static class SimBriefImporter
         double? fuel = double.TryParse(Text("fuel", "plan_ramp"), NumberStyles.Float, CultureInfo.InvariantCulture, out var fuelValue) ? fuelValue : null;
         var noteParts=new List<string>();CollectNotes(root,noteParts);var gates=GateAssignmentResolver.Resolve(airline,flight,origin,destination,departure,string.Join(" ",noteParts));
         var plan = new ActiveFlightPlan(flight, Text("aircraft", "reg").Trim().ToUpperInvariant(), origin, destination, departure, arrival,
-            "SimBrief", username, generated,gates.DepartureGate,gates.ArrivalGate,gates.Source,gates.Confidence,airline);
+            "SimBrief", username, generated,gates.DepartureGate,gates.ArrivalGate,gates.Source,gates.Confidence);
         return new(plan, generated, Text("aircraft", "icao_code"), Text("general", "route"), altitude, fuel, Text("params", "units").ToUpperInvariant(), fromCache);
     }
 

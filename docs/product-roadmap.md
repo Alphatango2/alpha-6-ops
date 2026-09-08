@@ -25,6 +25,11 @@ This commit supplies a runnable first slice; the full MVP acceptance target is n
 - Change the active-flight airline badge from the three-letter SimBrief airline ICAO code, with a neutral labeled fallback when the carrier has no bundled treatment.
 - Repair and verify minimize, maximize/restore, and close behavior in every internal secondary window using the shared Alpha 6 title bar.
 
+## Post-0.12.1 working changes
+
+- Remove the carrier badge and airline-name lookup after interface review. Present the imported airline ICAO and flight number as one larger flight identifier.
+- Give the next-flight hero and Fly tile separate unbranded aircraft-at-gate photography instead of reusing one airline-livery image.
+
 ## Two-developer division
 
 | Milestone | Developer A: simulator/domain | Developer B: service/product | Shared exit gate |

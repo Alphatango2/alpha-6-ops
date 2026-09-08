@@ -60,7 +60,7 @@ public partial class ActiveFlightWindow : Window
         { ErrorText.Text = "Enter a flight number, different four-letter ICAO airports, and an arrival later than departure using the shown UTC format."; return; }
         Plan = Plan is { Source: "SimBrief" } imported && imported.FlightNumber == flight && imported.Origin == origin && imported.Destination == destination
             ? imported with { Registration = registration, PlannedDepartureUtc = departure, PlannedArrivalUtc = arrival, DepartureGate=departureGate, ArrivalGate=arrivalGate }
-            : new(flight, registration, origin, destination, departure, arrival,DepartureGate:departureGate,ArrivalGate:arrivalGate,GateAssignmentSource:"Pilot entry",GateAssignmentConfidence:"Confirmed",AirlineIcao:AirlineBranding.FromFlightNumber(flight));
+            : new(flight, registration, origin, destination, departure, arrival,DepartureGate:departureGate,ArrivalGate:arrivalGate,GateAssignmentSource:"Pilot entry",GateAssignmentConfidence:"Confirmed");
         DialogResult = true;
     }
     private void Cancel_Click(object sender, RoutedEventArgs e) => DialogResult = false;

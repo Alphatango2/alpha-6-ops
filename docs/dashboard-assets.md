@@ -4,12 +4,17 @@ Generated with the built-in image_gen tool for this desktop project. All selecte
 
 - `alpha6-ops-logo.png`: supplied Alpha 6 OPS logo.
 - `alpha6-designs-logo.png`: supplied Alpha 6 Designs logo.
-- `hero.png`: generated airport-gate photograph; also used for the Fly tile. Illustrative Delta-livery photograph, independent of the selected aircraft registration.
+- `hero-unbranded.png`: generated rainy blue-hour airport-gate photograph used only by the next-flight hero.
+- `flights-unbranded.png`: generated dry sunrise airport-gate photograph used only by the Fly tile.
 - `operations.png`, `aircraft.png`, `maintenance.png`, `crews.png`, `passengers.png`, `weather.png`, `occ.png`: generated module photographs.
 
 ## Final hero prompt
 
-Create a photorealistic wide 16:9 background photograph for a premium flight operations desktop dashboard. An Airbus A321 in Delta Air Lines white/navy/red livery parked at a busy airport gate, nose pointing right, occupying the RIGHT HALF of the photograph. Rain-wet apron reflects warm golden terminal lights, detailed jet bridge and airport control tower behind, dramatic dark blue storm clouds at blue hour. The LEFT HALF is mostly dark open apron and atmospheric sky with subdued detail, reserved for large white UI text added separately. Cinematic aviation editorial photography, extremely realistic airplane anatomy, refined charcoal/navy palette with warm yellow light, crisp aircraft detail. No overlay text, no UI, no borders, no watermark. Make the composition wider than tall, with entire nose visible and aircraft naturally extending behind towards center. Asset name intended: dashboard-hero.png.
+Use case: photorealistic-natural. Asset type: wide desktop application hero background. Primary request: a modern unbranded twin-engine passenger jet parked at an airport gate during blue hour after rain. Scene/backdrop: contemporary terminal, jet bridge, ramp lights, subtle control tower, reflective wet pavement, dramatic deep navy clouds. Subject: generic commercial airliner with completely plain neutral pearl-white fuselage and tail, no airline identity. Composition/framing: cinematic extra-wide landscape, aircraft placed mainly on the right half, nose facing right, generous dark uncluttered negative space across the left half for white interface text, believable airport scale. Lighting/mood: premium aviation photography, cool navy atmosphere with warm ramp-light reflections, crisp but not overly bright. Constraints: no logos, no airline names, no registration, no readable text, no watermark, no people in foreground, no duplicate aircraft as the main subject.
+
+## Fly tile prompt
+
+Use case: photorealistic-natural. Asset type: compact desktop dashboard tile background, distinct from the hero image. Primary request: an unbranded modern twin-engine passenger jet parked at an airport gate in early morning. Scene/backdrop: different terminal and apron, dry pavement, soft sunrise light, ground-service equipment kept subtle. Subject: generic narrow-body commercial airliner in plain neutral silver-white paint with a blank tail, no airline identity. Composition/framing: landscape photograph optimized for a shallow card crop, side/front three-quarter view with the aircraft centered toward the upper-right, enough darker apron at lower-left for a short white label overlay. Lighting/mood: crisp calm dawn, deep blue and muted amber tones that fit a navy/yellow operations dashboard. Constraints: visually distinct from a rainy nighttime hero scene; no logos, no airline names, no registration, no readable text, no watermark.
 
 ## Final tile prompts
 

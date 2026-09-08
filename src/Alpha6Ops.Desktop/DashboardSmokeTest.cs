@@ -27,11 +27,11 @@ internal static class DashboardSmokeTest
         Check(window.ModuleTiles.Items.Count==8,"All eight photographic module tiles load");
         Check(window.ConnectionBadgeText.Text.Contains("DISCONNECTED",StringComparison.Ordinal),"Disconnected simulator is never presented as connected");
         Check(window.FleetCountText.Text=="1,006","Fleet chart uses the bundled reference catalog");
-        window.ApplyAirlineBrand("JBU");
-        Check(window.AirlineBrandMarkText.Text=="B6"&&window.AirlineBrandNameText.Text=="JETBLUE","Three-letter airline ICAO selects the matching carrier brand");
-        window.ApplyAirlineBrand("ZZZ");
-        Check(window.AirlineBrandMarkText.Text=="ZZZ"&&window.AirlineBrandNameText.Text=="ZZZ AIRLINE","Unknown airline ICAO uses a neutral labeled fallback");
-        window.ApplyAirlineBrand("A6");
+        var sampleFlight=window.HeroFlightText.Text;
+        window.HeroFlightText.Text="DAL742";window.UpdateLayout();
+        Check(window.HeroFlightText.FontSize==48,"Combined airline ICAO and flight number use the larger hero treatment");
+        Check(window.HeroFlightText.ActualWidth>0 && window.HeroFlightText.Text=="DAL742","Imported flight identifier fits without a separate airline badge");
+        window.HeroFlightText.Text=sampleFlight;
         Capture(window,Path.Combine(outputDirectory,"dashboard-default.png"));
         var width=window.Width;var height=window.Height;
         window.Width=1366;window.Height=768;window.UpdateLayout();

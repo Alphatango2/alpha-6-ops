@@ -333,7 +333,7 @@
           </Grid.ColumnDefinitions>
           <Border x:Name="HeroPanel" MinHeight="353" Style="{StaticResource OpsPanel}" ClipToBounds="True">
             <Grid>
-              <Grid.Background><ImageBrush ImageSource="Assets/Dashboard/hero.png" Stretch="UniformToFill" /></Grid.Background>
+              <Grid.Background><ImageBrush ImageSource="Assets/Dashboard/hero-unbranded.png" Stretch="UniformToFill" /></Grid.Background>
               <Rectangle>
                 <Rectangle.Fill>
                   <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
@@ -374,13 +374,7 @@
                   <TextBlock Text="YOUR NEXT FLIGHT" Style="{StaticResource OpsTitle}" FontSize="19" />
                   <TextBlock x:Name="TrackerModeText" Grid.Column="1" Text="REPLAY • SAMPLE DATA" Style="{StaticResource OpsCaption}" FontSize="9" VerticalAlignment="Top" />
                 </Grid>
-                <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center">
-                  <Border x:Name="AirlineBrandBadge" Width="42" Height="38" CornerRadius="4" Background="#FFDA00" Margin="0,0,11,0" BorderBrush="#FFFFFF" BorderThickness="1">
-                    <TextBlock x:Name="AirlineBrandMarkText" Text="A6" Foreground="#071019" FontFamily="Bahnschrift SemiCondensed" FontSize="17" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                  </Border>
-                  <TextBlock x:Name="HeroFlightText" Text="A601" FontFamily="Bahnschrift SemiCondensed" FontSize="41" FontWeight="Bold" />
-                  <TextBlock x:Name="AirlineBrandNameText" Text="ALPHA 6 OPS" Foreground="#8FA3B2" FontFamily="Bahnschrift SemiCondensed" FontSize="11" Margin="13,0,0,5" VerticalAlignment="Bottom" />
-                </StackPanel>
+                <TextBlock x:Name="HeroFlightText" Grid.Row="1" Text="A601" FontFamily="Bahnschrift SemiCondensed" FontSize="48" FontWeight="Bold" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" />
                 <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center">
                   <StackPanel>
                     <TextBlock x:Name="OriginCodeText" Text="ORD" FontFamily="Bahnschrift SemiCondensed" FontSize="51" FontWeight="Bold" />
