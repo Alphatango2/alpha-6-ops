@@ -28,7 +28,10 @@ internal static class DashboardSmokeTest
         Check(window.ConnectionBadgeText.Text.Contains("DISCONNECTED",StringComparison.Ordinal),"Disconnected simulator is never presented as connected");
         Check(window.FleetCountText.Text=="1,006","Fleet chart uses the bundled reference catalog");
         Check(window.VersionText.Text.StartsWith("ALPHA 6 OPS  •  v",StringComparison.Ordinal)&&!window.VersionText.Text.Contains("PREVIEW",StringComparison.Ordinal),"Footer presents a clean product version without preview wording");
-        Check(window.ExitOpsButton.Style==window.FindResource("OpsButton")&&window.ExitOpsButton.MinWidth>=88&&window.ExitOpsButton.MinHeight>=34,"Exit OPS is a full themed action button");
+        var exitStyle=(Style)window.FindResource("OpsExit");
+        Check(window.ExitOpsButton.Style==exitStyle&&window.ExitOpsButton.MinWidth>=88&&window.ExitOpsButton.MinHeight>=34,"Exit OPS is a full themed action button");
+        Check(window.ExitOpsButton.BorderBrush.ToString()=="#FF415362"&&exitStyle.Triggers.OfType<Trigger>().Any(t=>t.Property==UIElement.IsMouseOverProperty&&Equals(t.Value,true)&&t.Setters.OfType<Setter>().Any(s=>s.Property==Control.BackgroundProperty&&s.Value is SolidColorBrush brush&&brush.Color==Color.FromRgb(255,218,0))),"Exit OPS uses the panel border and yellow navigation hover treatment");
+        Check(window.FooterBrand.FontSize==11&&window.FooterBrand.FontWeight==FontWeights.SemiBold,"Left footer branding matches the updated version treatment");
         var sampleFlight=window.HeroFlightText.Text;
         window.HeroFlightText.Text="DAL742";window.UpdateLayout();
         Check(window.HeroFlightText.FontSize==48,"Combined airline ICAO and flight number use the larger hero treatment");

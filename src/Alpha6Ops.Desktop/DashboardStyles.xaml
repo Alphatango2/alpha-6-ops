@@ -116,6 +116,19 @@
     <Setter Property="BorderBrush" Value="#FFE653" />
     <Setter Property="FontWeight" Value="SemiBold" />
   </Style>
+  <Style x:Key="OpsExit" TargetType="Button" BasedOn="{StaticResource OpsButton}">
+    <Setter Property="Background" Value="#101B23" />
+    <Setter Property="Foreground" Value="#F4F7F9" />
+    <Setter Property="BorderBrush" Value="#415362" />
+    <Setter Property="FontWeight" Value="SemiBold" />
+    <Style.Triggers>
+      <Trigger Property="IsMouseOver" Value="True">
+        <Setter Property="Background" Value="{StaticResource OpsYellow}" />
+        <Setter Property="Foreground" Value="#080C0F" />
+        <Setter Property="BorderBrush" Value="#FFE653" />
+      </Trigger>
+    </Style.Triggers>
+  </Style>
   <Style x:Key="OpsLink" TargetType="Button" BasedOn="{StaticResource OpsButton}">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderThickness" Value="0" />

@@ -644,13 +644,12 @@
         <ColumnDefinition />
         <ColumnDefinition Width="Auto" />
       </Grid.ColumnDefinitions>
-      <StackPanel x:Name="FooterBrand" Orientation="Horizontal" VerticalAlignment="Center">
-        <TextBlock Text="ALPHA 6" Foreground="{StaticResource OpsYellow}" FontFamily="Bahnschrift SemiCondensed" FontSize="10" />
-        <TextBlock Text=" OPS    |    OPERATIONS CONTROL CENTER" Foreground="#8095A6" FontFamily="Bahnschrift SemiCondensed" FontSize="9" />
-      </StackPanel>
+      <TextBlock x:Name="FooterBrand" FontFamily="Bahnschrift SemiCondensed" FontSize="11" FontWeight="SemiBold" VerticalAlignment="Center">
+        <Run Text="ALPHA 6" Foreground="{StaticResource OpsYellow}" /><Run Text=" OPS  •  OPERATIONS CONTROL CENTER" Foreground="#9DB0BE" />
+      </TextBlock>
       <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
         <TextBlock x:Name="VersionText" FontFamily="Bahnschrift SemiCondensed" FontSize="11" FontWeight="SemiBold" Foreground="#9DB0BE" Margin="0,0,16,0" VerticalAlignment="Center" />
-        <Button x:Name="ExitOpsButton" Content="EXIT OPS" Style="{StaticResource OpsButton}" Foreground="#F4F7F9" Background="#101B23" BorderBrush="{StaticResource OpsYellow}" BorderThickness="1" Padding="16,8" MinWidth="88" MinHeight="34" Click="Exit_Click" AutomationProperties.Name="Exit Alpha 6 OPS" ToolTip="Close Alpha 6 OPS" />
+        <Button x:Name="ExitOpsButton" Content="EXIT OPS" Style="{StaticResource OpsExit}" Padding="16,8" MinWidth="88" MinHeight="34" Click="Exit_Click" AutomationProperties.Name="Exit Alpha 6 OPS" ToolTip="Close Alpha 6 OPS" />
       </StackPanel>
     </Grid>
     <Grid x:Name="ToolsOverlay" Grid.RowSpan="3" Grid.ColumnSpan="3" Visibility="Collapsed" Background="#AC000000" Panel.ZIndex="10">
