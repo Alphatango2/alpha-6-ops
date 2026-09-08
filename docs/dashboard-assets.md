@@ -5,7 +5,7 @@ Generated with the built-in image_gen tool for this desktop project. All selecte
 - `alpha6-ops-logo.png`: supplied Alpha 6 OPS logo.
 - `alpha6-designs-logo.png`: supplied Alpha 6 Designs logo.
 - `hero-unbranded.png`: generated rainy blue-hour airport-gate photograph used only by the next-flight hero.
-- `flights-unbranded.png`: generated dry sunrise airport-gate photograph used only by the Fly tile.
+- `flights-unbranded.png`: generated blue-hour takeoff photograph used only by the Fly tile.
 - `operations.png`, `aircraft.png`, `maintenance.png`, `crews.png`, `passengers.png`, `weather.png`, `occ.png`: generated module photographs.
 
 ## Final hero prompt
@@ -14,7 +14,7 @@ Use case: photorealistic-natural. Asset type: wide desktop application hero back
 
 ## Fly tile prompt
 
-Use case: photorealistic-natural. Asset type: compact desktop dashboard tile background, distinct from the hero image. Primary request: an unbranded modern twin-engine passenger jet parked at an airport gate in early morning. Scene/backdrop: different terminal and apron, dry pavement, soft sunrise light, ground-service equipment kept subtle. Subject: generic narrow-body commercial airliner in plain neutral silver-white paint with a blank tail, no airline identity. Composition/framing: landscape photograph optimized for a shallow card crop, side/front three-quarter view with the aircraft centered toward the upper-right, enough darker apron at lower-left for a short white label overlay. Lighting/mood: crisp calm dawn, deep blue and muted amber tones that fit a navy/yellow operations dashboard. Constraints: visually distinct from a rainy nighttime hero scene; no logos, no airline names, no registration, no readable text, no watermark.
+Use case: photorealistic-natural. Asset type: compact desktop dashboard navigation tile background. Primary request: a modern unbranded twin-engine narrow-body passenger jet actively taking off, main landing gear just leaving the runway and nose pitched upward. Scene/backdrop: airport runway at blue hour shortly before sunrise, runway edge lights and distant terminal softly visible, deep navy sky with a restrained warm horizon glow. Subject: generic commercial airliner with a completely plain pearl-white fuselage and blank tail, no airline identity. Composition/framing: landscape image optimized for a very shallow card crop, entire aircraft visible in a dynamic side/front three-quarter view, moving left-to-right, aircraft positioned mainly across the upper and center-right portions, with a darker uncluttered lower-left area for the white “FLY” interface label added separately. Lighting/mood: premium realistic aviation photography, crisp motion, cool navy and muted amber colors matching a black/navy/yellow operations dashboard. Constraints: clearly airborne rather than parked or taxiing; no logos, no airline names, no registration, no readable text, no watermark, no UI, no border, realistic aircraft anatomy and landing gear.
 
 ## Final tile prompts
 
