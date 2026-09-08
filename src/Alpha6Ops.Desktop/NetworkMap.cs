@@ -6,11 +6,12 @@ using System.Windows.Automation;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Effects;
 using System.Windows.Shapes;
 
 namespace Alpha6Ops.Desktop;
 
-// A deliberately schematic, offline network. No symbol represents a live aircraft position.
+// A native, offline globe-style network. No symbol represents a live aircraft position.
 public sealed class NetworkMap : UserControl
 {
     private readonly Canvas chart = new() { Width = 460, Height = 237, Background = Brushes.Transparent };
@@ -34,7 +35,7 @@ public sealed class NetworkMap : UserControl
     };
     public NetworkMap()
     {
-        var root = new Grid { Background = Brush("#07111A"), ClipToBounds = true };
+        var root = new Grid { Background = Brush("#050D14"), ClipToBounds = true };
         root.RowDefinitions.Add(new RowDefinition()); root.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
         var group = new TransformGroup(); group.Children.Add(scale); group.Children.Add(pan);
         chart.RenderTransform = group; chart.RenderTransformOrigin = new Point(.5,.5);
@@ -46,7 +47,7 @@ public sealed class NetworkMap : UserControl
             var button = new Button { Content = label, Width = 29, Height = 29, Padding = new Thickness(0), Margin = new Thickness(0,0,0,5), Style = (Style)FindResource("OpsButton"), ToolTip = name };
             AutomationProperties.SetName(button,name); button.Click += (_,_)=>action(); controls.Children.Add(button);
         }
-        Control("+","Zoom network map in",()=>Zoom(1.25)); Control("−","Zoom network map out",()=>Zoom(.8)); Control("⌖","Reset network map",ResetView);
+        Control("+","Zoom network globe in",()=>Zoom(1.25)); Control("−","Zoom network globe out",()=>Zoom(.8)); Control("⌖","Reset network globe",ResetView);
         root.Children.Add(controls); Grid.SetRow(caption,1); root.Children.Add(caption);
         Content=root;
         chart.MouseWheel += (_,e)=> { Zoom(e.Delta > 0 ? 1.15 : 1/1.15); e.Handled=true; };
@@ -62,39 +63,72 @@ public sealed class NetworkMap : UserControl
     private void Draw()
     {
         chart.Children.Clear();
-        for(var x=15;x<460;x+=32) chart.Children.Add(new Line { X1=x,Y1=0,X2=x-42,Y2=237,Stroke=Brush("#122633"),StrokeThickness=.6 });
-        for(var y=12;y<237;y+=27) chart.Children.Add(new Line { X1=0,Y1=y,X2=460,Y2=y+13,Stroke=Brush("#122633"),StrokeThickness=.6 });
-        // Hand-drawn continental outline for an illustrative operations overview, not a basemap.
-        var land = new Path { Data=Geometry.Parse("M 33,22 L 63,29 105,35 139,37 198,39 208,31 219,45 242,43 259,52 275,46 291,54 296,68 312,71 322,60 347,62 374,51 389,29 400,24 411,40 406,61 391,76 394,91 380,104 371,122 355,135 343,146 333,161 341,178 354,205 351,217 342,216 326,194 317,170 301,168 290,174 270,170 256,173 246,162 232,171 219,190 207,189 200,177 189,163 166,158 145,157 126,150 97,150 82,141 70,139 62,120 52,110 46,92 38,80 35,63 28,56 Z"),Fill=Brush("#142532"),Stroke=Brush("#385161"),StrokeThickness=1 };
-        chart.Children.Add(land);
-        foreach(var (x,y,h) in new[]{(100,35,109),(138,37,117),(175,39,123),(210,46,120),(245,54,106),(282,77,82),(317,83,66)}) chart.Children.Add(new Line { X1=x,Y1=y,X2=x-5,Y2=y+h,Stroke=Brush("#29404E"),StrokeThickness=.7 });
-        foreach(var (x,y,w) in new[]{(42,75,243),(54,108,260),(71,133,255),(135,154,176)}) chart.Children.Add(new Line{X1=x,Y1=y,X2=x+w,Y2=y+7,Stroke=Brush("#29404E"),StrokeThickness=.7});
+        var globeBounds=new Rect(26,5,408,226);
+        var ocean=new RadialGradientBrush
+        {
+            GradientOrigin=new Point(.36,.28),Center=new Point(.43,.42),RadiusX=.72,RadiusY=.72,
+            GradientStops=new GradientStopCollection
+            {
+                new(Color.FromRgb(27,62,82),0),new(Color.FromRgb(9,29,42),.58),new(Color.FromRgb(3,12,20),1)
+            }
+        };
+        var globe=new Ellipse { Width=globeBounds.Width,Height=globeBounds.Height,Fill=ocean,Stroke=Brush("#4A7187"),StrokeThickness=1.4,
+            Effect=new DropShadowEffect { Color=Color.FromRgb(29,123,170),BlurRadius=18,ShadowDepth=0,Opacity=.28 } };
+        Canvas.SetLeft(globe,globeBounds.Left);Canvas.SetTop(globe,globeBounds.Top);chart.Children.Add(globe);
+
+        var globeLayer=new Canvas { Width=460,Height=237,Clip=new EllipseGeometry(globeBounds) };
+        chart.Children.Add(globeLayer);
+        void Add(UIElement element)=>globeLayer.Children.Add(element);
+
+        // Curved graticule gives the compact native control depth without an online map dependency.
+        foreach(var y in new[]{43d,72d,111d,150d,182d})
+        {
+            var latitude=new Path {Data=Geometry.Parse($"M 28,{y} Q 230,{y+(y<111?24:-24)} 432,{y}"),Stroke=Brush("#285064"),StrokeThickness=.65,Opacity=.55};
+            Add(latitude);
+        }
+        foreach(var offset in new[]{-145d,-75d,0d,75d,145d})
+        {
+            var x=230+offset;
+            var bend=offset*.42;
+            Add(new Path {Data=Geometry.Parse($"M {x},4 C {x-bend},65 {x-bend},171 {x},232"),Stroke=Brush("#285064"),StrokeThickness=.65,Opacity=.5});
+        }
+
+        // Stylized North America silhouette, centered for this release's station network.
+        var landBrush=new LinearGradientBrush(Brush("#244357").Color,Brush("#142B3A").Color,new Point(0,0),new Point(1,1));
+        var land = new Path { Data=Geometry.Parse("M 33,22 L 63,29 105,35 139,37 198,39 208,31 219,45 242,43 259,52 275,46 291,54 296,68 312,71 322,60 347,62 374,51 389,29 400,24 411,40 406,61 391,76 394,91 380,104 371,122 355,135 343,146 333,161 341,178 354,205 351,217 342,216 326,194 317,170 301,168 290,174 270,170 256,173 246,162 232,171 219,190 207,189 200,177 189,163 166,158 145,157 126,150 97,150 82,141 70,139 62,120 52,110 46,92 38,80 35,63 28,56 Z"),Fill=landBrush,Stroke=Brush("#608094"),StrokeThickness=1.15 };
+        Add(land);
+        Add(new Path {Data=Geometry.Parse("M 54,108 Q 170,119 314,115 M 82,141 Q 196,147 317,139 M 208,40 Q 225,100 219,188 M 291,55 Q 275,108 301,168"),Stroke=Brush("#34586B"),StrokeThickness=.55,Opacity=.75});
+
         var hub=Stations[SelectedStation];
         var index=0;
         foreach(var (name,point) in Stations.Where(s=>s.Key!=SelectedStation))
         {
-            var color=index%3==0?"#C9AB25":"#347FAC";
-            var middle=new Point((point.X+hub.X)/2,Math.Min(point.Y,hub.Y)-30);
+            var color=index%3==0?"#FFDA00":"#48A8D8";
+            var middle=new Point((point.X+hub.X)/2,Math.Min(point.Y,hub.Y)-24-Math.Abs(point.X-hub.X)*.05);
             var geometry=new PathGeometry([new PathFigure(point,[new QuadraticBezierSegment(middle,hub,true)],false)]);
-            chart.Children.Add(new Path { Data=geometry,Stroke=Brush(color),StrokeThickness=index%3==0?1.3:.8,Opacity=.85 });
+            Add(new Path { Data=geometry,Stroke=Brush(color),StrokeThickness=4,Opacity=.09 });
+            Add(new Path { Data=geometry,Stroke=Brush(color),StrokeThickness=index%3==0?1.35:.9,Opacity=.9 });
             if(index%2==0)
             {
                 var t=.45;var pos=new Point((1-t)*(1-t)*point.X+2*(1-t)*t*middle.X+t*t*hub.X,(1-t)*(1-t)*point.Y+2*(1-t)*t*middle.Y+t*t*hub.Y);
-                var plane=new TextBlock{Text="✈",FontSize=18,Foreground=Brush(index%3==0?"#FFDC24":"#72C865"),RenderTransform=new RotateTransform(Math.Atan2(hub.Y-point.Y,hub.X-point.X)*180/Math.PI),ToolTip="Illustrative route symbol — not live traffic"};
-                Canvas.SetLeft(plane,pos.X-8);Canvas.SetTop(plane,pos.Y-11);chart.Children.Add(plane);
+                var plane=new Path {Data=Geometry.Parse("M 0,4 L 5,3 8,0 10,0 8,3 13,4 8,5 10,8 8,8 5,5 0,4 Z"),Fill=Brush(index%3==0?"#FFDC24":"#74D68A"),Width=18,Height=12,Stretch=Stretch.Fill,RenderTransformOrigin=new Point(.5,.5),RenderTransform=new RotateTransform(Math.Atan2(hub.Y-point.Y,hub.X-point.X)*180/Math.PI),ToolTip="Illustrative route symbol — not live traffic"};
+                Canvas.SetLeft(plane,pos.X-9);Canvas.SetTop(plane,pos.Y-6);Add(plane);
             }
             index++;
         }
+        var labelOffsets=new Dictionary<string,Point>{{"SEA",new(-8,-12)},{"LAX",new(-7,-7)},{"DEN",new(-6,-8)},{"MSP",new(-5,-10)},{"MKE",new(3,-22)},{"ORD",new(-7,3)},{"DTW",new(2,-7)},{"ATL",new(2,2)},{"JFK",new(3,-8)},{"MIA",new(2,-2)}};
         foreach(var (name,point) in Stations)
         {
             if(name==SelectedStation)
             {
-                foreach(var size in new[]{20d,30d}) { var ring=new Ellipse{Width=size,Height=size,Stroke=Brush("#FF5354"),StrokeThickness=size==20?1.8:1,Opacity=.9};Canvas.SetLeft(ring,point.X-size/2);Canvas.SetTop(ring,point.Y-size/2);chart.Children.Add(ring); }
+                foreach(var size in new[]{18d,28d,38d}) { var ring=new Ellipse{Width=size,Height=size,Stroke=Brush("#FFDA00"),StrokeThickness=size==18?2:1,Opacity=size==38?.22:.7};Canvas.SetLeft(ring,point.X-size/2);Canvas.SetTop(ring,point.Y-size/2);Add(ring); }
             }
-            var button=new Button { Content="● "+name,Foreground=Brush(name==SelectedStation?"#FFDB2F":"#E5F1F8"),FontSize=11,Padding=new Thickness(2),Style=(Style)FindResource("OpsLink"),ToolTip=$"Focus {DashboardData.City(name)} connections",Background=Brush("#A007111A") };
+            var button=new Button { Content="● "+name,Foreground=Brush(name==SelectedStation?"#FFDB2F":"#EDF7FC"),FontSize=10,FontWeight=FontWeights.SemiBold,Padding=new Thickness(3,1,3,1),Style=(Style)FindResource("OpsLink"),ToolTip=$"Focus {DashboardData.City(name)} connections",Background=Brush("#C0061119"),BorderBrush=Brush("#304B5C"),BorderThickness=new Thickness(.6) };
             AutomationProperties.SetName(button,$"Show {name} network connections");button.Click+=(_,e)=>{SelectStation(name);e.Handled=true;};
-            Canvas.SetLeft(button,point.X-5);Canvas.SetTop(button,point.Y+(name=="MKE"?-18:-7));chart.Children.Add(button);
+            var offset=labelOffsets[name];Canvas.SetLeft(button,point.X+offset.X);Canvas.SetTop(button,point.Y+offset.Y);Add(button);
         }
-        caption.Text=$"{SelectedStation} CONNECTIONS  •  SCHEMATIC ROUTES  •  DRAG TO PAN";
+        var rim=new Ellipse {Width=globeBounds.Width,Height=globeBounds.Height,Stroke=Brush("#8FB4C7"),StrokeThickness=.7,Opacity=.45,IsHitTestVisible=false};
+        Canvas.SetLeft(rim,globeBounds.Left);Canvas.SetTop(rim,globeBounds.Top);chart.Children.Add(rim);
+        caption.Text=$"{SelectedStation} NETWORK  •  {Stations.Count-1} CONNECTIONS  •  DRAG TO EXPLORE";
     }
 }
