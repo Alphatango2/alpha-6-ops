@@ -29,6 +29,8 @@ public partial class App : Application
                 if(!window.PlaybackStatusText.Text.StartsWith("PAUSED",StringComparison.Ordinal))throw new InvalidOperationException("Pause control did not pause the automatic flight.");
                 window.FastForwardButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));
                 if(!window.PlaybackStatusText.Text.Contains("PLAYING • 4×",StringComparison.Ordinal))throw new InvalidOperationException("Fast-forward control did not enable 4× playback.");
+                window.StopButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Button.ClickEvent));
+                if(!window.PlaybackStatusText.Text.StartsWith("STOPPED",StringComparison.Ordinal))throw new InvalidOperationException("Stop control did not end the automatic flight.");
                 File.WriteAllText(Path.Combine(e.Args[1],"flight-lab-smoke.json"),"{\"passed\":true,\"phase\":\"AT GATE\"}");
                 Shutdown(0);
             }

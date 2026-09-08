@@ -78,7 +78,7 @@ public partial class MainWindow : Window
 
     private void Phase_Click(object sender,RoutedEventArgs e){automaticIndex=-1;automaticPaused=false;playbackRate=1;ApplyPhase((string)((Button)sender).Tag);ScenarioText.Text="Manual phase selected";UpdatePlaybackStatus();}
     private void RunAutomatic_Click(object sender,RoutedEventArgs e)=>StartOrResumeAutomatic();
-    private void StopAutomatic_Click(object sender,RoutedEventArgs e){automaticIndex=-1;automaticPaused=false;playbackRate=1;ScenarioText.Text="Automatic flight stopped";UpdatePlaybackStatus();}
+    private void StopAutomatic_Click(object sender,RoutedEventArgs e){automaticIndex=-1;automaticPaused=false;playbackRate=1;ScenarioText.Text=$"Automatic flight stopped at {phase}";UpdatePlaybackStatus();PlaybackStatusText.Text=$"STOPPED • {phase}";}
     private void Play_Click(object sender,RoutedEventArgs e)=>StartOrResumeAutomatic();
     private void Pause_Click(object sender,RoutedEventArgs e)
     {
