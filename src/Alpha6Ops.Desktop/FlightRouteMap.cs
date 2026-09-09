@@ -9,6 +9,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Effects;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace Alpha6Ops.Desktop;
@@ -17,6 +18,7 @@ public sealed class FlightRouteMap : UserControl
 {
     private const double CanvasWidth=900,CanvasHeight=520,CenterX=450,CenterY=250,BaseRadius=220;
     private static readonly Lazy<IReadOnlyList<IReadOnlyList<GeoPoint>>> Land=new(LoadLand);
+    private static readonly Lazy<LandTexture> LandMask=new(LoadLandMask);
     private readonly Canvas globe=new(){Width=CanvasWidth,Height=CanvasHeight,ClipToBounds=true,Cursor=Cursors.Hand};
     private readonly TextBlock caption=new(){Foreground=Brush("#89A1B1"),FontSize=10,Margin=new Thickness(15,4,0,9)};
     private IReadOnlyList<FlightRoutePoint> route=[];
@@ -84,8 +86,8 @@ public sealed class FlightRouteMap : UserControl
         Add(new Ellipse{Width=radius*2+14,Height=radius*2+14,Stroke=Brush("#4FA9D2"),StrokeThickness=3,Opacity=.28,Effect=new BlurEffect{Radius=8}},CenterX-radius-7,CenterY-radius-7);
         var ocean=new RadialGradientBrush{GradientOrigin=new Point(.29,.25),Center=new Point(.38,.35),RadiusX=.76,RadiusY=.76,GradientStops=new GradientStopCollection{new(Color.FromRgb(33,83,111),0),new(Color.FromRgb(9,36,54),.53),new(Color.FromRgb(2,12,21),1)}};
         Add(new Ellipse{Width=radius*2,Height=radius*2,Fill=ocean,Stroke=Brush("#8EB5CA"),StrokeThickness=1.4,Effect=new DropShadowEffect{Color=Color.FromRgb(27,123,170),BlurRadius=22,ShadowDepth=0,Opacity=.25}},CenterX-radius,CenterY-radius);
-        DrawGraticule(radius);
-        foreach(var ring in Land.Value)DrawLandRing(ring,radius);
+        DrawLandSurface(radius);DrawGraticule(radius);
+        foreach(var ring in Land.Value)DrawGeoLine(ring,radius,Brush("#7798AA"),1,.96);
         DrawTerminator(radius);DrawRoute(radius);
         Add(new Ellipse{Width=radius*2,Height=radius*2,Stroke=Brush("#B1CDDA"),StrokeThickness=1,Opacity=.58,IsHitTestVisible=false},CenterX-radius,CenterY-radius);
         caption.Text=route.Count>=2?$"SIMBRIEF ROUTE  •  {route[0].Ident} TO {route[^1].Ident}  •  {route.Count} POINTS  •  DRAG GLOBE TO ROTATE":"ROUTE UNAVAILABLE  •  REIMPORT THE LATEST SIMBRIEF PLAN TO LOAD WAYPOINTS";
@@ -97,21 +99,29 @@ public sealed class FlightRouteMap : UserControl
         for(var longitude=-180;longitude<180;longitude+=30)DrawGeoLine(Enumerable.Range(0,73).Select(index=>new GeoPoint(-90+index*2.5,longitude)),radius,Brush("#397087"),.7,.42);
     }
 
-    private void DrawLandRing(IReadOnlyList<GeoPoint> ring,double radius)
+    private void DrawLandSurface(double radius)
     {
-        var projected=ring.Select(point=>(Visible:Project(point,radius,out var screen),Screen:screen)).ToArray();
-        if(projected.All(point=>point.Visible))
+        const int width=(int)CanvasWidth,height=(int)CanvasHeight,stride=width*4;var output=new byte[stride*height];var texture=LandMask.Value;
+        var minimumX=Math.Max(0,(int)(CenterX-radius));var maximumX=Math.Min(width-1,(int)(CenterX+radius));
+        var minimumY=Math.Max(0,(int)(CenterY-radius));var maximumY=Math.Min(height-1,(int)(CenterY+radius));
+        var centerLatitudeRadians=Radians(centerLatitude);var centerLongitudeRadians=Radians(centerLongitude);
+        for(var y=minimumY;y<=maximumY;y++)for(var x=minimumX;x<=maximumX;x++)
         {
-            var points=projected.Select(point=>point.Screen).ToArray();var figure=new PathFigure{StartPoint=points[0],IsClosed=true,IsFilled=true};figure.Segments.Add(new PolyLineSegment(points.Skip(1),true));
-            Add(new Path{Data=new PathGeometry([figure]),Fill=Brush("#24495E"),Stroke=Brush("#7798AA"),StrokeThickness=1,Opacity=.96});
-            return;
+            var normalizedX=(x-CenterX)/radius;var normalizedY=(CenterY-y)/radius;var distance=Math.Sqrt(normalizedX*normalizedX+normalizedY*normalizedY);if(distance>1)continue;
+            var angle=Math.Asin(distance);var sine=Math.Sin(angle);var cosine=Math.Cos(angle);double latitude,longitude;
+            if(distance<.000001){latitude=centerLatitudeRadians;longitude=centerLongitudeRadians;}
+            else
+            {
+                latitude=Math.Asin(cosine*Math.Sin(centerLatitudeRadians)+normalizedY*sine*Math.Cos(centerLatitudeRadians)/distance);
+                longitude=centerLongitudeRadians+Math.Atan2(normalizedX*sine,distance*Math.Cos(centerLatitudeRadians)*cosine-normalizedY*Math.Sin(centerLatitudeRadians)*sine);
+            }
+            var sourceX=(int)Math.Floor((longitude/Math.PI+1)*.5*texture.Width)%texture.Width;if(sourceX<0)sourceX+=texture.Width;
+            var sourceY=Math.Clamp((int)Math.Floor((.5-latitude/Math.PI)*texture.Height),0,texture.Height-1);
+            if(texture.Pixels[(sourceY*texture.Width+sourceX)*4+3]<128)continue;
+            var light=Math.Clamp(.84+(-normalizedX-normalizedY)*.08,.68,1);var offset=y*stride+x*4;
+            output[offset]=(byte)(94*light);output[offset+1]=(byte)(73*light);output[offset+2]=(byte)(36*light);output[offset+3]=242;
         }
-        foreach(var run in VisibleRuns(projected).Where(points=>points.Count>=3))
-        {
-            var start=OnHorizon(run[0],radius);var end=OnHorizon(run[^1],radius);var shape=new List<Point>{start};shape.AddRange(run);shape.Add(end);shape.AddRange(HorizonArc(end,start,radius));
-            var figure=new PathFigure{StartPoint=shape[0],IsClosed=true,IsFilled=true};figure.Segments.Add(new PolyLineSegment(shape.Skip(1),true));
-            Add(new Path{Data=new PathGeometry([figure]),Fill=Brush("#24495E"),Stroke=Brush("#7798AA"),StrokeThickness=1,Opacity=.96});
-        }
+        var bitmap=new WriteableBitmap(width,height,96,96,PixelFormats.Bgra32,null);bitmap.WritePixels(new Int32Rect(0,0,width,height),output,stride,0);bitmap.Freeze();Add(new Image{Source=bitmap,Width=CanvasWidth,Height=CanvasHeight,IsHitTestVisible=false});
     }
 
     private void DrawTerminator(double radius)
@@ -146,27 +156,6 @@ public sealed class FlightRouteMap : UserControl
         var run=new List<Point>();
         void Flush(){if(run.Count>1)Add(new Polyline{Points=new PointCollection(run),Stroke=stroke,StrokeThickness=thickness,Opacity=opacity,StrokeLineJoin=PenLineJoin.Round,Effect=glow?new DropShadowEffect{Color=Colors.Gold,BlurRadius=10,ShadowDepth=0,Opacity=.5}:null});run.Clear();}
         foreach(var geo in points){if(Project(geo,radius,out var point))run.Add(point);else Flush();}Flush();
-    }
-
-    private static List<List<Point>> VisibleRuns(IReadOnlyList<(bool Visible,Point Screen)> points)
-    {
-        var result=new List<List<Point>>();var run=new List<Point>();
-        foreach(var point in points){if(point.Visible)run.Add(point.Screen);else if(run.Count>0){result.Add(run);run=[];}}
-        if(run.Count>0)result.Add(run);return result;
-    }
-
-    private static Point OnHorizon(Point point,double radius)
-    {
-        var x=point.X-CenterX;var y=point.Y-CenterY;var length=Math.Sqrt(x*x+y*y);return length<.001?new Point(CenterX,CenterY-radius):new Point(CenterX+x/length*radius,CenterY+y/length*radius);
-    }
-
-    private static IEnumerable<Point> HorizonArc(Point from,Point to,double radius)
-    {
-        var start=Math.Atan2(from.Y-CenterY,from.X-CenterX);var end=Math.Atan2(to.Y-CenterY,to.X-CenterX);var delta=end-start;
-        while(delta>Math.PI)delta-=Math.PI*2;while(delta< -Math.PI)delta+=Math.PI*2;
-        var steps=Math.Max(3,(int)Math.Ceiling(Math.Abs(delta)*12));
-        for(var index=1;index<steps;index++){var angle=start+delta*index/steps;yield return new Point(CenterX+Math.Cos(angle)*radius,CenterY+Math.Sin(angle)*radius);}
-        yield return to;
     }
 
     private bool Project(GeoPoint geo,double radius,out Point point)
@@ -217,6 +206,12 @@ public sealed class FlightRouteMap : UserControl
         return rings;
     }
 
+    private static LandTexture LoadLandMask()
+    {
+        using var stream=Assembly.GetExecutingAssembly().GetManifestResourceStream("ne_110m_land-mask.png")??throw new System.IO.InvalidDataException("Bundled world land mask is missing.");
+        var decoder=new PngBitmapDecoder(stream,BitmapCreateOptions.PreservePixelFormat,BitmapCacheOption.OnLoad);var source=new FormatConvertedBitmap(decoder.Frames[0],PixelFormats.Bgra32,null,0);var stride=source.PixelWidth*4;var pixels=new byte[stride*source.PixelHeight];source.CopyPixels(pixels,stride,0);return new LandTexture(source.PixelWidth,source.PixelHeight,pixels);
+    }
+
     private static void ReadPolygon(JsonElement polygon,List<IReadOnlyList<GeoPoint>> rings)
     {
         foreach(var ring in polygon.EnumerateArray())rings.Add(ring.EnumerateArray().Select(coordinate=>new GeoPoint(coordinate[1].GetDouble(),coordinate[0].GetDouble())).ToArray());
@@ -224,6 +219,7 @@ public sealed class FlightRouteMap : UserControl
 
     private static SolidColorBrush Brush(string color)=>new((Color)ColorConverter.ConvertFromString(color));
     private readonly record struct GeoPoint(double Latitude,double Longitude);
+    private sealed record LandTexture(int Width,int Height,byte[] Pixels);
     private readonly record struct Vector3(double X,double Y,double Z)
     {
         public static Vector3 operator *(Vector3 value,double factor)=>new(value.X*factor,value.Y*factor,value.Z*factor);
