@@ -1,5 +1,7 @@
 # Alpha 6 OPS
 
+Latest: **0.12.2 Launch and identify** turns the connection card into **Launch & Connect** for the Microsoft Store edition of MSFS 2024. OPS checks live aircraft/position, the active simulator plan and airport references before linking a saved assignment. Unrelated or stale briefings no longer impose airline routes and delays on free flight. See [flight identification, launch behavior and limits](docs/live-flight-identification.md).
+
 ## Desktop dashboard update
 
 The Windows application now follows Dan's operations-dashboard mockup, with supplied branding, aviation photography, a next-flight hero, module desks, alerts, network map, operations table and fleet chart. Flight details, personal preflight checks, watchlists, replay/live controls and local history are connected. Weather, crew, maintenance and passenger desks are clearly labeled demonstration scenarios. See the [dashboard walkthrough, data sources and verification](docs/dashboard.md). Historical preview notes below describe earlier versions and may no longer reflect the current desktop UI.

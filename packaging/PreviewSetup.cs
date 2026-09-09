@@ -14,7 +14,7 @@ internal static class PreviewSetup
 {
     const int WmNcLButtonDown = 0xA1;
     const int HtCaption = 0x2;
-    const string Identity = "Alpha6OPS-Desktop-Preview-0.12.1";
+    const string Identity = "Alpha6OPS-Desktop-Preview-0.12.2";
     const string IdentityPrefix = "Alpha6OPS-Desktop-Preview-";
     const string RegistryKey = @"Software\Microsoft\Windows\CurrentVersion\Uninstall\Alpha6OPSPreview";
     static readonly string InstallPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Alpha6Designs", "Alpha6OPSPreview");
@@ -107,7 +107,7 @@ internal static class PreviewSetup
                 mark.SetBounds(26, 58, 286, 126);
                 mark.SizeMode = PictureBoxSizeMode.Zoom;
                 mark.Image = LoadSetupLogo();
-                version.Text = "WINDOWS DESKTOP PREVIEW\r\nVERSION 0.12.1";
+                version.Text = "WINDOWS DESKTOP PREVIEW\r\nVERSION 0.12.2";
                 version.SetBounds(338, 91, 270, 58);
                 version.Font = new Font("Segoe UI Semibold", 12, FontStyle.Bold);
                 version.ForeColor = Color.WhiteSmoke;
@@ -140,7 +140,7 @@ internal static class PreviewSetup
                         using (var key = Registry.CurrentUser.CreateSubKey(RegistryKey))
                         {
                             key.SetValue("DisplayName", "Alpha 6 OPS Desktop Preview");
-                            key.SetValue("DisplayVersion", "0.12.1");
+                            key.SetValue("DisplayVersion", "0.12.2");
                             key.SetValue("Publisher", "Alpha 6 Designs");
                             key.SetValue("InstallLocation", InstallPath);
                             key.SetValue("DisplayIcon", Path.Combine(InstallPath, "Alpha6OPS.exe"));

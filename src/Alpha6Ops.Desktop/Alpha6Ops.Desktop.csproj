@@ -6,7 +6,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>disable</ImplicitUsings>
     <AssemblyName>Alpha6OPS</AssemblyName>
-    <Version>0.12.1</Version>
+    <Version>0.12.2</Version>
     <ApplicationIcon>Assets\Alpha6OPS.ico</ApplicationIcon>
     <Company>Alpha 6 Designs</Company>
     <Product>Alpha 6 OPS Desktop Preview</Product>
@@ -17,6 +17,7 @@
     <ProjectReference Include="../Alpha6Ops.Core/Alpha6Ops.Core.csproj" />
     <EmbeddedResource Include="../../samples/delayed-flight.jsonl" LogicalName="delayed-flight.jsonl" />
     <EmbeddedResource Include="../../samples/on-time-flight.jsonl" LogicalName="on-time-flight.jsonl" />
+    <EmbeddedResource Include="../../assets/airports/airports.tsv.gz" LogicalName="airports.tsv.gz" />
     <Content Include="../../assets/fleet/aircraft.sqlite" Link="fleet/aircraft.sqlite" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
     <Content Include="Assets/alpha6.ico" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
     <Resource Include="Assets/alpha6-mark.png" />

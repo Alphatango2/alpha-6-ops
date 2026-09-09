@@ -9,14 +9,14 @@ public partial class App : Application
     protected override async void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
-        CrashReporter.Install(this);
-        if (e.Args.Length == 2 && e.Args[0] == "--simconnect-probe")
+        var diagnosticOutput = e.Args.Length == 2 && e.Args[0] == "--smoke-test" ? e.Args[1] : null;
+        CrashReporter.Install(this, diagnosticOutput);
+        if (e.Args.Length == 2 && e.Args[0] is "--simconnect-probe" or "--simulator-launch-probe")
         {
-            await SimConnectProbe.RunAsync(e.Args[1]);
+            await SimConnectProbe.RunAsync(e.Args[1], e.Args[0] == "--simulator-launch-probe");
             Shutdown();
             return;
         }
-        var diagnosticOutput = e.Args.Length == 2 && e.Args[0] == "--smoke-test" ? e.Args[1] : null;
         if (diagnosticOutput is null)
         {
             var title = $"Alpha 6 OPS v{Assembly.GetExecutingAssembly().GetName().Version?.ToString(3) ?? "unknown"} — Desktop Preview";

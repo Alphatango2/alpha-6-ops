@@ -163,7 +163,7 @@
             <TextBlock x:Name="ConnectionActionText" FontSize="10" Foreground="{StaticResource OpsYellow}" TextAlignment="Center" Margin="0,4,0,0">
               <TextBlock.Style>
                 <Style TargetType="TextBlock">
-                  <Setter Property="Text" Value="CLICK TO CONNECT" />
+                  <Setter Property="Text" Value="{Binding SimulatorReadyAction, RelativeSource={RelativeSource AncestorType=Window}}" />
                   <Style.Triggers>
                     <DataTrigger Binding="{Binding IsEnabled, ElementName=ConnectButton}" Value="False">
                       <Setter Property="Text" Value="VIEW CONTROLS" />
@@ -371,7 +371,7 @@
                     <ColumnDefinition />
                     <ColumnDefinition Width="Auto" />
                   </Grid.ColumnDefinitions>
-                  <TextBlock Text="YOUR NEXT FLIGHT" Style="{StaticResource OpsTitle}" FontSize="19" />
+                  <TextBlock x:Name="HeroHeadingText" Text="YOUR NEXT FLIGHT" Style="{StaticResource OpsTitle}" FontSize="19" />
                   <TextBlock x:Name="TrackerModeText" Grid.Column="1" Text="REPLAY • SAMPLE DATA" Style="{StaticResource OpsCaption}" FontSize="9" VerticalAlignment="Top" />
                 </Grid>
                 <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center">
@@ -401,7 +401,7 @@
                   <Border x:Name="HeroStatusBadge" Background="#163F24" BorderBrush="#2C7137" BorderThickness="1" CornerRadius="3" Padding="10,5">
                     <TextBlock x:Name="HeroStatusText" Text="●  ON TIME" Foreground="#7DEA57" FontFamily="Bahnschrift SemiCondensed" FontSize="13" />
                   </Border>
-                  <TextBlock x:Name="HeroTimingText" Text="Scheduled 10:00Z" FontSize="13" Margin="13,0,0,0" VerticalAlignment="Center" />
+                  <TextBlock x:Name="HeroTimingText" Text="Scheduled 10:00Z" FontSize="13" Margin="13,0,0,0" VerticalAlignment="Center" MaxWidth="400" TextTrimming="CharacterEllipsis" />
                 </StackPanel>
                 <Grid Grid.Row="4" VerticalAlignment="Center">
                   <Grid.ColumnDefinitions>

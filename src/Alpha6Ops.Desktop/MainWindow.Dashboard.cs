@@ -48,6 +48,8 @@ public partial class MainWindow
         var now=DateTimeOffset.UtcNow;
         RenderClocks(now, TimeZoneInfo.Local);
         RenderLocalWeather(now);
+        UpdateSimulatorLaunchAction();
+        if (liveDataCurrent && DateTime.UtcNow - liveReceivedAt > TimeSpan.FromSeconds(5)) MarkLiveUnavailable();
         ClockText.ToolTip="Current real-world UTC. Replay and flight schedules use their own dated simulator clock.";
     }
     private void SaveDashboard()
@@ -82,9 +84,21 @@ public partial class MainWindow
     }
     private void RefreshDashboardFlight(bool live)
     {
+        var rotation = DashboardRotation(live);
+        RefreshDashboardFlight(live, rotation, rotation is null ? [] : RotationPlanner.Project(rotation));
+    }
+    private AircraftRotation? DashboardRotation(bool live) => live
+        ? liveCancellation is not null && currentLiveReading is null || currentLiveReading is not null && !CanRenderAssignedFlight ? null
+            : liveRotation ?? (activePlan is null ? null : BuildLiveRotation(activePlan, liveAircraft, AircraftGroundProfile.Default))
+        : session.Rotation;
+
+    // A refresh owns one projection; both tracker and dashboard render that same result.
+    // No cached state or invalidation rules are needed between telemetry samples.
+    private void RefreshDashboardFlight(bool live, AircraftRotation? rotation, IReadOnlyList<LegProjection> projection)
+    {
         dashboardShowsLive=live;
-        var rotation=live ? liveRotation ?? (activePlan is null ? null : BuildLiveRotation(activePlan,liveAircraft,AircraftGroundProfile.Default)) : session.Rotation;
-        DashboardFlights=rotation is null ? [] : RotationPlanner.Project(rotation).Select(l=>new DashboardFlightRow(l,rotation.AircraftId)).ToArray();
+        HeroHeadingText.Text = live && currentLiveReading is not null ? "YOUR CURRENT FLIGHT" : "YOUR NEXT FLIGHT";
+        DashboardFlights=rotation is null ? [] : projection.Select(l=>new DashboardFlightRow(l,rotation.AircraftId)).ToArray();
         var hero=HeroFlight;
         ApplyAirlineBrand(live?activePlan?.AirlineIcao:"A6");
         if(hero is null)
@@ -108,6 +122,7 @@ public partial class MainWindow
             TrackerModeText.Text=live?"ACTIVE FLIGHT • SIMCONNECT":"REPLAY • SAMPLE DATA";
         }
         RefreshFlightsTable();
+        if (live && currentLiveReading is not null && !CanRenderAssignedFlight) RenderObservedFlight();
         if(live)
         {
             RotationGrid.ItemsSource=DashboardFlights.Select(f=>new {f.Id,f.Route,f.Out,f.In,Delay=$"{f.Leg.DepartureDelayMinutes:0} / {f.Leg.ArrivalDelayMinutes:0} min",Status=f.Leg.Completed?"Actual":"Projected"}).ToArray();
@@ -160,7 +175,7 @@ public partial class MainWindow
     }
     private void WatchFlight_Click(object sender,RoutedEventArgs e){if(SelectedDashboardFlight is {} f)ToggleWatch(f);}
     private void FlightRow_DoubleClick(object sender,MouseButtonEventArgs e){if(DashboardFlightsGrid.SelectedItem is DashboardFlightRow f)ShowFlight(f,false);}
-    private void FlightDetails_Click(object sender,RoutedEventArgs e){if(HeroFlight is {} f)ShowFlight(f,false);else OpenTools();}
+    private void FlightDetails_Click(object sender,RoutedEventArgs e){if(currentLiveReading is not null && dashboardShowsLive)ShowObservedFlightDetails();else if(HeroFlight is {} f)ShowFlight(f,false);else OpenTools();}
     private void Preflight_Click(object sender,RoutedEventArgs e){if(HeroFlight is {} f)ShowFlight(f,true);else OpenTools();}
     private void ShowFlight(DashboardFlightRow flight,bool preflight)=>new FlightPreparationWindow(flight,dashboardState,SaveDashboard,preflight,()=>SetFlight_Click(this,new RoutedEventArgs())){Owner=this}.ShowDialog();
     private void RefreshAlerts()

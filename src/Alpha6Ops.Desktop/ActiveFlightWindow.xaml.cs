@@ -54,10 +54,10 @@ public partial class ActiveFlightWindow : Window
         var destination = DestinationBox.Text.Trim().ToUpperInvariant();
         var departureGate=GateAssignmentResolver.Normalize(DepartureGateBox.Text);var arrivalGate=GateAssignmentResolver.Normalize(ArrivalGateBox.Text);
         const DateTimeStyles styles = DateTimeStyles.AssumeUniversal | DateTimeStyles.AdjustToUniversal;
-        if (flight.Length is < 2 or > 10 || origin.Length != 4 || destination.Length != 4 || origin == destination ||
+        if (flight.Length is < 2 or > 10 || !Alpha6Ops.Core.FlightIdentity.IsAirportId(origin) || !Alpha6Ops.Core.FlightIdentity.IsAirportId(destination) ||
             !DateTimeOffset.TryParseExact(DepartureBox.Text.Trim(), "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture, styles, out var departure) ||
             !DateTimeOffset.TryParseExact(ArrivalBox.Text.Trim(), "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture, styles, out var arrival) || arrival <= departure)
-        { ErrorText.Text = "Enter a flight number, different four-letter ICAO airports, and an arrival later than departure using the shown UTC format."; return; }
+        { ErrorText.Text = "Enter a flight number, valid 3–8 character airport identifiers, and an arrival later than departure in UTC. Local round trips may use the same airport."; return; }
         Plan = Plan is { Source: "SimBrief" } imported && imported.FlightNumber == flight && imported.Origin == origin && imported.Destination == destination
             ? imported with { Registration = registration, PlannedDepartureUtc = departure, PlannedArrivalUtc = arrival, DepartureGate=departureGate, ArrivalGate=arrivalGate }
             : new(flight, registration, origin, destination, departure, arrival,DepartureGate:departureGate,ArrivalGate:arrivalGate,GateAssignmentSource:"Pilot entry",GateAssignmentConfidence:"Confirmed",AirlineIcao:AirlineBranding.FromFlightNumber(flight));

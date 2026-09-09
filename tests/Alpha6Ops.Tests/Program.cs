@@ -3,6 +3,7 @@ using Alpha6Ops.Core;
 var count = 0;
 void Check(bool condition, string name) { if (!condition) throw new Exception(name); Console.WriteLine($"PASS {name}"); count++; }
 void Reject(Action action, string name) { try { action(); } catch (ArgumentException) { Check(true, name); return; } throw new Exception(name); }
+FlightIdentityTests.Run(Check);
 var rotation = Demo.Rotation();
 var normal = RotationPlanner.Project(rotation);
 Check(normal.All(x => x.DepartureDelayMinutes == 0), "on-time rotation");

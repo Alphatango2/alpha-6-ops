@@ -13,12 +13,15 @@ namespace Alpha6Ops.Desktop;
 internal static class CrashReporter
 {
     private static int writing;
-    internal static string RootDirectory => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Alpha6Designs", "Alpha6OPS");
+    private static string? diagnosticRoot;
+    internal static string RootDirectory => diagnosticRoot ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Alpha6Designs", "Alpha6OPS");
     internal static string CrashDirectory => Path.Combine(RootDirectory, "CrashReports");
     internal static string? LastReportPath { get; private set; }
 
-    internal static void Install(Application app)
+    internal static void Install(Application app, string? diagnosticDirectory = null)
     {
+        // Set once at process startup, before any window or exception handler can persist data.
+        diagnosticRoot = diagnosticDirectory is null ? null : Path.GetFullPath(diagnosticDirectory);
         Forms.Application.SetUnhandledExceptionMode(Forms.UnhandledExceptionMode.CatchException);
         Forms.Application.ThreadException += (_, e) => Write("windows_forms_thread", e.Exception);
         app.DispatcherUnhandledException += OnDispatcherUnhandledException;

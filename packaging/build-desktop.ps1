@@ -1,6 +1,7 @@
 param(
     [string]$DotNetRoot = (Join-Path $PSScriptRoot '../work/dotnet'),
-    [string]$RuntimeVersion = '10.0.11'
+    [string]$RuntimeVersion = '10.0.11',
+    [string]$SimConnectDll = $env:ALPHA6_SIMCONNECT_DLL
 )
 $ErrorActionPreference = 'Stop'
 $repo = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
@@ -11,8 +12,8 @@ $setupSource = Join-Path $PSScriptRoot 'PreviewSetup.cs'
 $icon = Join-Path $repo 'src/Alpha6Ops.Desktop/Assets/Alpha6OPS.ico'
 $logo = Join-Path $repo 'src/Alpha6Ops.Desktop/Assets/Dashboard/alpha6-ops-logo.png'
 $uninstaller = Join-Path $publish 'Uninstall.exe'
-$installer = Join-Path $repo 'outputs/Alpha6OPS-Setup-0.12.1.exe'
-$archive = Join-Path $repo 'outputs/Alpha6OPS-Desktop-0.12.1-win-x64.zip'
+$installer = Join-Path $repo 'outputs/Alpha6OPS-Setup-0.12.2.exe'
+$archive = Join-Path $repo 'outputs/Alpha6OPS-Desktop-0.12.2-win-x64.zip'
 $previousCliHome = $env:DOTNET_CLI_HOME
 $env:DOTNET_CLI_HOME = Join-Path $repo 'work/dotnet-home'
 Push-Location $repo
@@ -21,6 +22,10 @@ try {
     if ($LASTEXITCODE -ne 0) { throw 'Desktop restore failed.' }
     & $dotnet publish src/Alpha6Ops.Desktop -c Release --no-restore --no-self-contained -p:AppHostDotNetSearch=AppRelative -p:AppHostRelativeDotNet=runtime -p:DebugType=None -p:DebugSymbols=false -o $publish
     if ($LASTEXITCODE -ne 0) { throw 'Desktop publish failed.' }
+    if ($SimConnectDll) {
+        if (-not [IO.Path]::IsPathRooted($SimConnectDll) -or -not (Test-Path -LiteralPath $SimConnectDll -PathType Leaf)) { throw 'SimConnectDll must identify an existing native SDK DLL.' }
+        Set-Content -LiteralPath (Join-Path $publish 'simconnect-sdk-path.txt') -Value $SimConnectDll -Encoding UTF8
+    }
     foreach ($relative in @("host/fxr/$RuntimeVersion", "shared/Microsoft.NETCore.App/$RuntimeVersion", "shared/Microsoft.WindowsDesktop.App/$RuntimeVersion")) {
         $source = Join-Path $DotNetRoot $relative
         if (!(Test-Path -LiteralPath $source)) { throw "Runtime folder missing: $source" }
@@ -33,8 +38,8 @@ try {
     & $compiler /nologo /target:winexe /platform:x64 /define:UNINSTALLER "/win32icon:$icon" "/out:$uninstaller" /r:System.Windows.Forms.dll /r:System.Drawing.dll /r:System.IO.Compression.dll "/resource:$logo,setup-logo.png" $setupSource
     if ($LASTEXITCODE -ne 0) { throw 'Uninstaller build failed.' }
     # Files copied for portable use do not register anything in Windows.
-    Compress-Archive -Path "$publish/*" -DestinationPath outputs/Alpha6OPS-Desktop-0.12.1-win-x64.zip -Force
+    Compress-Archive -Path "$publish/*" -DestinationPath outputs/Alpha6OPS-Desktop-0.12.2-win-x64.zip -Force
     & $compiler /nologo /target:winexe /platform:x64 "/win32icon:$icon" "/out:$installer" /r:System.Windows.Forms.dll /r:System.Drawing.dll /r:System.IO.Compression.dll "/resource:$logo,setup-logo.png" "/resource:$archive,payload.zip" $setupSource
     if ($LASTEXITCODE -ne 0) { throw 'Setup build failed.' }
-    Get-FileHash outputs/Alpha6OPS-Setup-0.12.1.exe,outputs/Alpha6OPS-Desktop-0.12.1-win-x64.zip | Format-Table -AutoSize
+    Get-FileHash outputs/Alpha6OPS-Setup-0.12.2.exe,outputs/Alpha6OPS-Desktop-0.12.2-win-x64.zip | Format-Table -AutoSize
 } finally { $env:DOTNET_CLI_HOME = $previousCliHome; Pop-Location }
