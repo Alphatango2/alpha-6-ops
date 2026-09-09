@@ -31,6 +31,7 @@ public sealed class FlightRouteMap : UserControl
     internal bool CrossesDateLine {get;private set;}
     internal double ZoomLevel=>zoom;
     internal double FittedZoom {get;private set;}=1;
+    internal int VisibleWaypointLabelCount {get;private set;}
 
     public FlightRouteMap()
     {
@@ -63,7 +64,7 @@ public sealed class FlightRouteMap : UserControl
 
     internal void Zoom(double factor)=>SetZoom(zoom*factor);
     internal void ResetView()=>FrameRoute();
-    internal void SetView(double latitude,double longitude,double scale){centerLatitude=Math.Clamp(latitude,-75,75);centerLongitude=NormalizeLongitude(longitude);zoom=Math.Clamp(scale,.8,2.4);Draw();}
+    internal void SetView(double latitude,double longitude,double scale){centerLatitude=Math.Clamp(latitude,-75,75);centerLongitude=NormalizeLongitude(longitude);zoom=Math.Clamp(scale,.8,6.5);Draw();}
 
     private void FrameRoute()
     {
@@ -78,11 +79,11 @@ public sealed class FlightRouteMap : UserControl
         zoom=FittedZoom;Draw();
     }
 
-    private void SetZoom(double value){zoom=Math.Clamp(value,.8,2.4);Draw();}
+    private void SetZoom(double value){zoom=Math.Clamp(value,.8,6.5);Draw();}
 
     private void Draw()
     {
-        globe.Children.Clear();var radius=BaseRadius*zoom;
+        globe.Children.Clear();VisibleWaypointLabelCount=0;var radius=BaseRadius*zoom;
         Add(new Ellipse{Width=radius*2+14,Height=radius*2+14,Stroke=Brush("#4FA9D2"),StrokeThickness=3,Opacity=.28,Effect=new BlurEffect{Radius=8}},CenterX-radius-7,CenterY-radius-7);
         var ocean=new RadialGradientBrush{GradientOrigin=new Point(.29,.25),Center=new Point(.38,.35),RadiusX=.76,RadiusY=.76,GradientStops=new GradientStopCollection{new(Color.FromRgb(33,83,111),0),new(Color.FromRgb(9,36,54),.53),new(Color.FromRgb(2,12,21),1)}};
         Add(new Ellipse{Width=radius*2,Height=radius*2,Fill=ocean,Stroke=Brush("#8EB5CA"),StrokeThickness=1.4,Effect=new DropShadowEffect{Color=Color.FromRgb(27,123,170),BlurRadius=22,ShadowDepth=0,Opacity=.25}},CenterX-radius,CenterY-radius);
@@ -136,12 +137,18 @@ public sealed class FlightRouteMap : UserControl
         if(route.Count<2)return;var routePath=new List<GeoPoint>();
         for(var index=0;index<route.Count-1;index++)routePath.AddRange(GreatCircle(new GeoPoint(route[index].Latitude,route[index].Longitude),new GeoPoint(route[index+1].Latitude,route[index+1].Longitude),32).Skip(index==0?0:1));
         DrawGeoLine(routePath,radius,Brush("#071118"),8,.88);DrawGeoLine(routePath,radius,Brush("#FFDA00"),2.8,1,true);
+        Point? previousWaypointLabel=null;
         for(var index=0;index<route.Count;index++)
         {
             var geo=new GeoPoint(route[index].Latitude,route[index].Longitude);if(!Project(geo,radius,out var point))continue;
             var endpoint=index==0||index==route.Count-1;var dot=new Ellipse{Width=endpoint?14:6,Height=endpoint?14:6,Fill=Brush(index==0?"#72DB83":index==route.Count-1?"#FFDA00":"#D5E4EC"),Stroke=Brush("#031019"),StrokeThickness=2,ToolTip=$"{route[index].Ident} • {route[index].Kind}"};
             Add(dot,point.X-dot.Width/2,point.Y-dot.Height/2);
             if(endpoint){var label=new TextBlock{Text=route[index].Ident,Foreground=Brush(index==0?"#8BE29A":"#FFE34A"),Background=Brush("#E6040C13"),FontWeight=FontWeights.SemiBold,FontSize=13,Padding=new Thickness(6,3,6,3)};Add(label,point.X+(index==0?9:-55),point.Y-29);}
+            else if(zoom>=2.15&&(previousWaypointLabel is null||(point-previousWaypointLabel.Value).Length>=42))
+            {
+                var label=new TextBlock{Text=route[index].Ident,Foreground=Brush("#D9E7EE"),Background=Brush("#E8040C13"),FontSize=10,Padding=new Thickness(4,2,4,2),ToolTip=route[index].Kind};
+                Add(label,point.X+6,point.Y+(VisibleWaypointLabelCount%2==0?-22:7));previousWaypointLabel=point;VisibleWaypointLabelCount++;
+            }
         }
         var departure=new GeoPoint(route[0].Latitude,route[0].Longitude);
         if(Project(departure,radius,out var start))
