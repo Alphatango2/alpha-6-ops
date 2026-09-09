@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
+using System.Reflection;
+using System.Text.Json;
 using System.Windows;
 using System.Windows.Automation;
 using System.Windows.Controls;
@@ -12,135 +13,197 @@ using System.Windows.Shapes;
 
 namespace Alpha6Ops.Desktop;
 
-// Native offline route globe for the planned SimBrief route.
 public sealed class FlightRouteMap : UserControl
 {
-    private const double CanvasWidth=900,CanvasHeight=520,MapLeft=35,MapTop=20,MapWidth=830,MapHeight=470;
-    private readonly Canvas mapLayer=new(){Width=CanvasWidth,Height=CanvasHeight};
-    private readonly ScaleTransform userScale=new(1,1,CanvasWidth/2,CanvasHeight/2);
-    private readonly TranslateTransform userPan=new();
+    private const double CanvasWidth=900,CanvasHeight=520,CenterX=450,CenterY=250,BaseRadius=220;
+    private static readonly Lazy<IReadOnlyList<IReadOnlyList<GeoPoint>>> Land=new(LoadLand);
+    private readonly Canvas globe=new(){Width=CanvasWidth,Height=CanvasHeight,ClipToBounds=true,Cursor=Cursors.Hand};
     private readonly TextBlock caption=new(){Foreground=Brush("#89A1B1"),FontSize=10,Margin=new Thickness(15,4,0,9)};
     private IReadOnlyList<FlightRoutePoint> route=[];
     private Point? drag;
+    private double centerLatitude;
     private double centerLongitude;
-    private double fittedZoom=1;
+    private double zoom=1;
 
     internal int RoutePointCount=>route.Count;
     internal bool CrossesDateLine {get;private set;}
-    internal double ZoomLevel=>userScale.ScaleX;
-    internal double FittedZoom=>fittedZoom;
+    internal double ZoomLevel=>zoom;
+    internal double FittedZoom {get;private set;}=1;
 
     public FlightRouteMap()
     {
-        var root=new Grid{Background=Brush("#040C13"),ClipToBounds=true};root.RowDefinitions.Add(new RowDefinition());root.RowDefinitions.Add(new RowDefinition{Height=GridLength.Auto});
-        var viewport=new Grid{ClipToBounds=true};
-        var group=new TransformGroup();group.Children.Add(userScale);group.Children.Add(userPan);mapLayer.RenderTransform=group;
-        viewport.Children.Add(new Viewbox{Child=mapLayer,Stretch=Stretch.Uniform});root.Children.Add(viewport);
+        var root=new Grid{Background=Brush("#02080E"),ClipToBounds=true};
+        root.RowDefinitions.Add(new RowDefinition());root.RowDefinitions.Add(new RowDefinition{Height=GridLength.Auto});
+        root.Children.Add(new Viewbox{Child=globe,Stretch=Stretch.Uniform});
         var controls=new StackPanel{HorizontalAlignment=HorizontalAlignment.Right,VerticalAlignment=VerticalAlignment.Top,Margin=new Thickness(0,11,13,0)};
-        AddControl(controls,"+","Zoom route globe in",()=>Zoom(1.25));AddControl(controls,"−","Zoom route globe out",()=>Zoom(.8));AddControl(controls,"⌖","Reset route globe",ResetView);
+        AddControl(controls,"+","Zoom route globe in",()=>SetZoom(zoom*1.2));
+        AddControl(controls,"−","Zoom route globe out",()=>SetZoom(zoom/1.2));
+        AddControl(controls,"⌖","Reset and frame route globe",FrameRoute);
         root.Children.Add(controls);Grid.SetRow(caption,1);root.Children.Add(caption);Content=root;
-        mapLayer.MouseWheel+=(_,e)=>{Zoom(e.Delta>0?1.15:1/1.15);e.Handled=true;};
-        mapLayer.MouseLeftButtonDown+=(_,e)=>{drag=e.GetPosition(this);mapLayer.CaptureMouse();};
-        mapLayer.MouseMove+=(_,e)=>{if(drag is not{} previous||e.LeftButton!=MouseButtonState.Pressed)return;var current=e.GetPosition(this);userPan.X=Math.Clamp(userPan.X+current.X-previous.X,-260,260);userPan.Y=Math.Clamp(userPan.Y+current.Y-previous.Y,-150,150);drag=current;};
-        mapLayer.MouseLeftButtonUp+=(_,_)=>{drag=null;mapLayer.ReleaseMouseCapture();};
+        globe.MouseWheel+=(_,e)=>{SetZoom(zoom*(e.Delta>0?1.12:1/1.12));e.Handled=true;};
+        globe.MouseLeftButtonDown+=(_,e)=>{drag=e.GetPosition(globe);globe.CaptureMouse();};
+        globe.MouseMove+=(_,e)=>
+        {
+            if(drag is not{} previous||e.LeftButton!=MouseButtonState.Pressed)return;
+            var current=e.GetPosition(globe);centerLongitude=NormalizeLongitude(centerLongitude-(current.X-previous.X)*.35/zoom);
+            centerLatitude=Math.Clamp(centerLatitude+(current.Y-previous.Y)*.25/zoom,-75,75);drag=current;Draw();
+        };
+        globe.MouseLeftButtonUp+=(_,_)=>{drag=null;globe.ReleaseMouseCapture();};
         Draw();
     }
 
     internal void SetRoute(IReadOnlyList<FlightRoutePoint>? points)
     {
-        route=points?.Where(p=>p.Latitude is>=-90 and<=90&&p.Longitude is>=-180 and<=180).ToArray()??[];
-        CrossesDateLine=route.Zip(route.Skip(1),(a,b)=>Math.Abs(a.Longitude-b.Longitude)>180).Any(value=>value);
-        centerLongitude=RouteCenter(route);
-        fittedZoom=CalculateFittedZoom(route);
-        ResetView();Draw();
+        route=points?.Where(point=>point.Latitude is>=-90 and<=90&&point.Longitude is>=-180 and<=180).ToArray()??[];
+        CrossesDateLine=route.Zip(route.Skip(1),(a,b)=>Math.Abs(a.Longitude-b.Longitude)>180).Any(crosses=>crosses);
+        FrameRoute();
     }
 
-    internal void Zoom(double factor){userScale.ScaleX=userScale.ScaleY=Math.Clamp(userScale.ScaleX*factor,fittedZoom,3);if(userScale.ScaleX==fittedZoom)userPan.X=userPan.Y=0;}
-    internal void ResetView(){userScale.ScaleX=userScale.ScaleY=fittedZoom;userPan.X=userPan.Y=0;}
+    internal void Zoom(double factor)=>SetZoom(zoom*factor);
+    internal void ResetView()=>FrameRoute();
 
-    private void AddControl(Panel panel,string label,string name,Action action)
+    private void FrameRoute()
     {
-        var button=new Button{Content=label,Width=32,Height=32,Padding=new Thickness(0),Margin=new Thickness(0,0,0,6),Style=(Style)FindResource("OpsButton"),ToolTip=name};
-        AutomationProperties.SetName(button,name);button.Click+=(_,_)=>action();panel.Children.Add(button);
+        if(route.Count>0)
+        {
+            var center=MeanPoint(route.Select(point=>new GeoPoint(point.Latitude,point.Longitude)));
+            centerLatitude=center.Latitude;centerLongitude=center.Longitude;
+            var maximum=route.Max(point=>AngularDistance(center,new GeoPoint(point.Latitude,point.Longitude)));
+            FittedZoom=Math.Clamp(.82/Math.Max(.24,Math.Sin(Math.Min(maximum+Radians(10),Math.PI/2))),1,1.65);
+        }
+        else {centerLatitude=18;centerLongitude=0;FittedZoom=1;}
+        zoom=FittedZoom;Draw();
     }
+
+    private void SetZoom(double value){zoom=Math.Clamp(value,.8,2.4);Draw();}
 
     private void Draw()
     {
-        mapLayer.Children.Clear();
-        var globeBounds=new Rect(MapLeft,MapTop,MapWidth,MapHeight);
-        var ocean=new RadialGradientBrush{GradientOrigin=new Point(.35,.28),Center=new Point(.43,.43),RadiusX=.72,RadiusY=.72,GradientStops=new GradientStopCollection{new(Color.FromRgb(25,62,84),0),new(Color.FromRgb(8,28,42),.62),new(Color.FromRgb(2,10,17),1)}};
-        Add(new Ellipse{Width=MapWidth,Height=MapHeight,Fill=ocean,Stroke=Brush("#6D91A5"),StrokeThickness=1.5,Effect=new DropShadowEffect{Color=Color.FromRgb(24,124,174),BlurRadius=22,ShadowDepth=0,Opacity=.25}},MapLeft,MapTop);
-        var clipped=new Canvas{Width=Width,Height=Height,Clip=new EllipseGeometry(globeBounds)};mapLayer.Children.Add(clipped);
-        void Layer(UIElement element)=>clipped.Children.Add(element);
-
-        foreach(var latitude in new[]{-60d,-30d,0d,30d,60d})
-        {
-            var y=Y(latitude);Layer(new Path{Data=Geometry.Parse(FormattableString.Invariant($"M {MapLeft},{y} Q {CanvasWidth/2},{y+(latitude>0?25:-25)} {MapLeft+MapWidth},{y}")),Stroke=Brush("#285267"),StrokeThickness=.8,Opacity=.58});
-        }
-        for(var step=-150;step<=150;step+=30)
-        {
-            var x=X(centerLongitude+step);var bend=(x-CanvasWidth/2)*.18;
-            Layer(new Path{Data=Geometry.Parse(FormattableString.Invariant($"M {x},{MapTop} C {x-bend},{MapTop+140} {x-bend},{MapTop+330} {x},{MapTop+MapHeight}")),Stroke=Brush("#285267"),StrokeThickness=.7,Opacity=.5});
-        }
-
-        var land=Brush("#203E51");var coast=Brush("#6B8B9E");
-        var continents=new[]{
-            new[]{(-168d,70d),(-140d,62d),(-125d,50d),(-105d,50d),(-82d,26d),(-65d,45d),(-52d,58d),(-75d,72d),(-110d,72d)},
-            new[]{(-81d,12d),(-68d,5d),(-54d,-15d),(-60d,-38d),(-72d,-55d),(-78d,-25d)},
-            new[]{(-12d,36d),(5d,58d),(35d,70d),(70d,72d),(105d,60d),(145d,52d),(172d,65d),(160d,38d),(120d,20d),(105d,5d),(78d,8d),(55d,25d),(32d,32d),(15d,42d)},
-            new[]{(-17d,35d),(12d,37d),(35d,22d),(50d,10d),(40d,-20d),(20d,-35d),(2d,-30d),(-12d,5d)},
-            new[]{(112d,-11d),(154d,-10d),(153d,-39d),(132d,-44d),(113d,-28d)},
-            new[]{(-52d,83d),(-20d,76d),(-30d,60d),(-55d,60d)}
-        };
-        foreach(var continent in continents)for(var copy=-1;copy<=1;copy++)
-        {
-            var polygon=new Polygon{Fill=land,Stroke=coast,StrokeThickness=1.1,Opacity=.96};
-            foreach(var (lon,lat) in continent)polygon.Points.Add(new Point(XUnwrapped(lon+copy*360),Y(lat)));
-            Layer(polygon);
-        }
-
-        if(route.Count>=2)
-        {
-            var unwrapped=Unwrap(route.Select(p=>p.Longitude).ToArray());var points=new PointCollection();
-            for(var index=0;index<route.Count;index++)points.Add(new Point(XUnwrapped(unwrapped[index]),Y(route[index].Latitude)));
-            Layer(new Polyline{Points=points,Stroke=Brush("#132A34"),StrokeThickness=8,Opacity=.8,StrokeLineJoin=PenLineJoin.Round});
-            Layer(new Polyline{Points=points,Stroke=Brush("#FFDA00"),StrokeThickness=2.6,StrokeLineJoin=PenLineJoin.Round,Effect=new DropShadowEffect{Color=Color.FromRgb(255,218,0),BlurRadius=10,ShadowDepth=0,Opacity=.5}});
-            for(var index=0;index<points.Count;index++)
-            {
-                var endpoint=index==0||index==points.Count-1;var dot=new Ellipse{Width=endpoint?13:5,Height=endpoint?13:5,Fill=Brush(index==0?"#6ED77B":index==points.Count-1?"#FFDA00":"#BBD2DF"),Stroke=Brush("#061018"),StrokeThickness=endpoint?2:1,ToolTip=$"{route[index].Ident} • {route[index].Kind}"};
-                AddToLayer(clipped,dot,points[index].X-dot.Width/2,points[index].Y-dot.Height/2);
-                if(endpoint){var label=new TextBlock{Text=route[index].Ident,Foreground=Brush(index==0?"#8FE49A":"#FFE34A"),Background=Brush("#DD061018"),FontWeight=FontWeights.SemiBold,FontSize=13,Padding=new Thickness(6,3,6,3)};AddToLayer(clipped,label,points[index].X+8,points[index].Y-25);}
-            }
-            var start=points[0];var plane=new Path{Data=Geometry.Parse("M 0,5 L 7,4 12,0 15,0 12,4 22,5 12,7 15,12 12,12 7,7 0,6 Z"),Fill=Brush("#FFDA00"),Width=25,Height=16,Stretch=Stretch.Fill,ToolTip="Planned departure position • waiting for live aircraft telemetry"};
-            AddToLayer(clipped,plane,start.X-12,start.Y-8);
-            caption.Text=$"PLANNED SIMBRIEF ROUTE  •  {route[0].Ident} TO {route[^1].Ident}  •  {route.Count} POINTS  •  DRAG TO EXPLORE";
-        }
-        else caption.Text="ROUTE UNAVAILABLE  •  REIMPORT THE LATEST SIMBRIEF PLAN TO LOAD WAYPOINTS";
-        Add(new Ellipse{Width=MapWidth,Height=MapHeight,Stroke=Brush("#9EC0D0"),StrokeThickness=.8,Opacity=.5,IsHitTestVisible=false},MapLeft,MapTop);
+        globe.Children.Clear();var radius=BaseRadius*zoom;
+        Add(new Ellipse{Width=radius*2+14,Height=radius*2+14,Stroke=Brush("#4FA9D2"),StrokeThickness=3,Opacity=.28,Effect=new BlurEffect{Radius=8}},CenterX-radius-7,CenterY-radius-7);
+        var ocean=new RadialGradientBrush{GradientOrigin=new Point(.29,.25),Center=new Point(.38,.35),RadiusX=.76,RadiusY=.76,GradientStops=new GradientStopCollection{new(Color.FromRgb(33,83,111),0),new(Color.FromRgb(9,36,54),.53),new(Color.FromRgb(2,12,21),1)}};
+        Add(new Ellipse{Width=radius*2,Height=radius*2,Fill=ocean,Stroke=Brush("#8EB5CA"),StrokeThickness=1.4,Effect=new DropShadowEffect{Color=Color.FromRgb(27,123,170),BlurRadius=22,ShadowDepth=0,Opacity=.25}},CenterX-radius,CenterY-radius);
+        DrawGraticule(radius);
+        foreach(var ring in Land.Value)DrawLandRing(ring,radius);
+        DrawTerminator(radius);DrawRoute(radius);
+        Add(new Ellipse{Width=radius*2,Height=radius*2,Stroke=Brush("#B1CDDA"),StrokeThickness=1,Opacity=.58,IsHitTestVisible=false},CenterX-radius,CenterY-radius);
+        caption.Text=route.Count>=2?$"SIMBRIEF ROUTE  •  {route[0].Ident} TO {route[^1].Ident}  •  {route.Count} POINTS  •  DRAG GLOBE TO ROTATE":"ROUTE UNAVAILABLE  •  REIMPORT THE LATEST SIMBRIEF PLAN TO LOAD WAYPOINTS";
     }
 
-    private static void AddToLayer(Canvas layer,UIElement element,double left,double top){Canvas.SetLeft(element,left);Canvas.SetTop(element,top);layer.Children.Add(element);}
-    private void Add(UIElement element,double left,double top){Canvas.SetLeft(element,left);Canvas.SetTop(element,top);mapLayer.Children.Add(element);}
-    private double X(double longitude)=>XUnwrapped(Near(longitude,centerLongitude));
-    private double XUnwrapped(double longitude)=>MapLeft+(longitude-(centerLongitude-180))/360*MapWidth;
-    private static double Y(double latitude)=>MapTop+(90-latitude)/180*MapHeight;
-    private static double Near(double longitude,double center){while(longitude-center>180)longitude-=360;while(longitude-center< -180)longitude+=360;return longitude;}
-    private static double[] Unwrap(double[] values)
+    private void DrawGraticule(double radius)
     {
-        if(values.Length==0)return values;var result=new double[values.Length];result[0]=values[0];
-        for(var i=1;i<values.Length;i++)result[i]=Near(values[i],result[i-1]);return result;
+        for(var latitude=-60;latitude<=60;latitude+=30)DrawGeoLine(Enumerable.Range(0,145).Select(index=>new GeoPoint(latitude,-180+index*2.5)),radius,Brush("#397087"),.75,.48);
+        for(var longitude=-180;longitude<180;longitude+=30)DrawGeoLine(Enumerable.Range(0,73).Select(index=>new GeoPoint(-90+index*2.5,longitude)),radius,Brush("#397087"),.7,.42);
     }
-    private static double RouteCenter(IReadOnlyList<FlightRoutePoint> points)
+
+    private void DrawLandRing(IReadOnlyList<GeoPoint> ring,double radius)
     {
-        if(points.Count==0)return 0;var values=Unwrap(points.Select(p=>p.Longitude).ToArray());return (values.Min()+values.Max())/2;
+        foreach(var run in VisibleRuns(ring,radius).Where(points=>points.Count>=3))
+        {
+            var figure=new PathFigure{StartPoint=run[0],IsClosed=true,IsFilled=true};figure.Segments.Add(new PolyLineSegment(run.Skip(1),true));
+            Add(new Path{Data=new PathGeometry([figure]),Fill=Brush("#24495E"),Stroke=Brush("#7798AA"),StrokeThickness=1,Opacity=.96});
+        }
     }
-    private static double CalculateFittedZoom(IReadOnlyList<FlightRoutePoint> points)
+
+    private void DrawTerminator(double radius)
     {
-        if(points.Count<2)return 1;
-        var longitudes=Unwrap(points.Select(point=>point.Longitude).ToArray());
-        var projectedWidth=(longitudes.Max()-longitudes.Min())/360*MapWidth;
-        var projectedHeight=(points.Max(point=>point.Latitude)-points.Min(point=>point.Latitude))/180*MapHeight;
-        return Math.Clamp(Math.Min(600/(projectedWidth+120),300/(projectedHeight+100)),1,2.2);
+        var shade=new LinearGradientBrush{StartPoint=new Point(0,0),EndPoint=new Point(1,1),GradientStops=new GradientStopCollection{new(Color.FromArgb(0,0,0,0),.25),new(Color.FromArgb(25,0,0,0),.6),new(Color.FromArgb(125,0,0,0),1)}};
+        Add(new Ellipse{Width=radius*2,Height=radius*2,Fill=shade,IsHitTestVisible=false},CenterX-radius,CenterY-radius);
+        Add(new Ellipse{Width=radius*1.5,Height=radius*.55,Fill=new RadialGradientBrush(Color.FromArgb(26,80,184,225),Colors.Transparent),IsHitTestVisible=false},CenterX-radius*.95,CenterY-radius*.8);
     }
+
+    private void DrawRoute(double radius)
+    {
+        if(route.Count<2)return;var routePath=new List<GeoPoint>();
+        for(var index=0;index<route.Count-1;index++)routePath.AddRange(GreatCircle(new GeoPoint(route[index].Latitude,route[index].Longitude),new GeoPoint(route[index+1].Latitude,route[index+1].Longitude),32).Skip(index==0?0:1));
+        DrawGeoLine(routePath,radius,Brush("#071118"),8,.88);DrawGeoLine(routePath,radius,Brush("#FFDA00"),2.8,1,true);
+        for(var index=0;index<route.Count;index++)
+        {
+            var geo=new GeoPoint(route[index].Latitude,route[index].Longitude);if(!Project(geo,radius,out var point))continue;
+            var endpoint=index==0||index==route.Count-1;var dot=new Ellipse{Width=endpoint?14:6,Height=endpoint?14:6,Fill=Brush(index==0?"#72DB83":index==route.Count-1?"#FFDA00":"#D5E4EC"),Stroke=Brush("#031019"),StrokeThickness=2,ToolTip=$"{route[index].Ident} • {route[index].Kind}"};
+            Add(dot,point.X-dot.Width/2,point.Y-dot.Height/2);
+            if(endpoint){var label=new TextBlock{Text=route[index].Ident,Foreground=Brush(index==0?"#8BE29A":"#FFE34A"),Background=Brush("#E6040C13"),FontWeight=FontWeights.SemiBold,FontSize=13,Padding=new Thickness(6,3,6,3)};Add(label,point.X+(index==0?9:-55),point.Y-29);}
+        }
+        var departure=new GeoPoint(route[0].Latitude,route[0].Longitude);
+        if(Project(departure,radius,out var start))
+        {
+            var angle=0d;if(route.Count>1&&Project(new GeoPoint(route[1].Latitude,route[1].Longitude),radius,out var next))angle=Math.Atan2(next.Y-start.Y,next.X-start.X)*180/Math.PI;
+            var plane=new Path{Data=Geometry.Parse("M 0,5 L 7,4 12,0 15,0 12,4 22,5 12,7 15,12 12,12 7,7 0,6 Z"),Fill=Brush("#FFDA00"),Width=27,Height=18,Stretch=Stretch.Fill,RenderTransform=new RotateTransform(angle,13.5,9),Effect=new DropShadowEffect{Color=Colors.Gold,BlurRadius=9,ShadowDepth=0,Opacity=.65},ToolTip="Planned departure position • waiting for live aircraft telemetry"};Add(plane,start.X-13.5,start.Y-9);
+        }
+    }
+
+    private void DrawGeoLine(IEnumerable<GeoPoint> points,double radius,Brush stroke,double thickness,double opacity,bool glow=false)
+    {
+        var run=new List<Point>();
+        void Flush(){if(run.Count>1)Add(new Polyline{Points=new PointCollection(run),Stroke=stroke,StrokeThickness=thickness,Opacity=opacity,StrokeLineJoin=PenLineJoin.Round,Effect=glow?new DropShadowEffect{Color=Colors.Gold,BlurRadius=10,ShadowDepth=0,Opacity=.5}:null});run.Clear();}
+        foreach(var geo in points){if(Project(geo,radius,out var point))run.Add(point);else Flush();}Flush();
+    }
+
+    private List<List<Point>> VisibleRuns(IReadOnlyList<GeoPoint> points,double radius)
+    {
+        var result=new List<List<Point>>();var run=new List<Point>();
+        foreach(var geo in points){if(Project(geo,radius,out var point))run.Add(point);else if(run.Count>0){result.Add(run);run=[];}}
+        if(run.Count>0)result.Add(run);return result;
+    }
+
+    private bool Project(GeoPoint geo,double radius,out Point point)
+    {
+        var latitude=Radians(geo.Latitude);var longitude=Radians(geo.Longitude-centerLongitude);var center=Radians(centerLatitude);
+        var visibility=Math.Sin(center)*Math.Sin(latitude)+Math.Cos(center)*Math.Cos(latitude)*Math.Cos(longitude);
+        point=new Point(CenterX+radius*Math.Cos(latitude)*Math.Sin(longitude),CenterY-radius*(Math.Cos(center)*Math.Sin(latitude)-Math.Sin(center)*Math.Cos(latitude)*Math.Cos(longitude)));
+        return visibility>=-.012;
+    }
+
+    private void AddControl(Panel panel,string label,string name,Action action)
+    {
+        var button=new Button{Content=label,Width=32,Height=32,Padding=new Thickness(0),Margin=new Thickness(0,0,0,6),Style=(Style)FindResource("OpsButton"),ToolTip=name};AutomationProperties.SetName(button,name);button.Click+=(_,_)=>action();panel.Children.Add(button);
+    }
+
+    private void Add(UIElement element,double left=0,double top=0){Canvas.SetLeft(element,left);Canvas.SetTop(element,top);globe.Children.Add(element);}
+
+    private static IReadOnlyList<GeoPoint> GreatCircle(GeoPoint start,GeoPoint end,int segments)
+    {
+        var a=Vector(start);var b=Vector(end);var angle=Math.Acos(Math.Clamp(a.X*b.X+a.Y*b.Y+a.Z*b.Z,-1,1));var points=new List<GeoPoint>();
+        for(var index=0;index<=segments;index++)
+        {
+            var amount=(double)index/segments;Vector3 value;if(angle<.0001)value=a;else {var denominator=Math.Sin(angle);value=(a*(Math.Sin((1-amount)*angle)/denominator))+(b*(Math.Sin(amount*angle)/denominator));}
+            points.Add(new GeoPoint(Math.Asin(value.Z)*180/Math.PI,Math.Atan2(value.Y,value.X)*180/Math.PI));
+        }
+        return points;
+    }
+
+    private static GeoPoint MeanPoint(IEnumerable<GeoPoint> points)
+    {
+        var source=points.ToArray();var vectors=source.Select(Vector).ToArray();var sum=new Vector3(vectors.Sum(value=>value.X),vectors.Sum(value=>value.Y),vectors.Sum(value=>value.Z));var length=Math.Sqrt(sum.X*sum.X+sum.Y*sum.Y+sum.Z*sum.Z);if(length<.0001)return source[0];sum=sum*(1/length);
+        return new GeoPoint(Math.Asin(sum.Z)*180/Math.PI,Math.Atan2(sum.Y,sum.X)*180/Math.PI);
+    }
+
+    private static double AngularDistance(GeoPoint a,GeoPoint b){var first=Vector(a);var second=Vector(b);return Math.Acos(Math.Clamp(first.X*second.X+first.Y*second.Y+first.Z*second.Z,-1,1));}
+    private static Vector3 Vector(GeoPoint point){var latitude=Radians(point.Latitude);var longitude=Radians(point.Longitude);return new Vector3(Math.Cos(latitude)*Math.Cos(longitude),Math.Cos(latitude)*Math.Sin(longitude),Math.Sin(latitude));}
+    private static double Radians(double degrees)=>degrees*Math.PI/180;
+    private static double NormalizeLongitude(double value){while(value>180)value-=360;while(value< -180)value+=360;return value;}
+
+    private static IReadOnlyList<IReadOnlyList<GeoPoint>> LoadLand()
+    {
+        using var stream=Assembly.GetExecutingAssembly().GetManifestResourceStream("ne_110m_land.geojson")??throw new System.IO.InvalidDataException("Bundled world map is missing.");using var document=JsonDocument.Parse(stream);var rings=new List<IReadOnlyList<GeoPoint>>();
+        foreach(var feature in document.RootElement.GetProperty("features").EnumerateArray())
+        {
+            var geometry=feature.GetProperty("geometry");var coordinates=geometry.GetProperty("coordinates");var type=geometry.GetProperty("type").GetString();
+            if(type=="Polygon")ReadPolygon(coordinates,rings);else if(type=="MultiPolygon")foreach(var polygon in coordinates.EnumerateArray())ReadPolygon(polygon,rings);
+        }
+        return rings;
+    }
+
+    private static void ReadPolygon(JsonElement polygon,List<IReadOnlyList<GeoPoint>> rings)
+    {
+        foreach(var ring in polygon.EnumerateArray())rings.Add(ring.EnumerateArray().Select(coordinate=>new GeoPoint(coordinate[1].GetDouble(),coordinate[0].GetDouble())).ToArray());
+    }
+
     private static SolidColorBrush Brush(string color)=>new((Color)ColorConverter.ConvertFromString(color));
+    private readonly record struct GeoPoint(double Latitude,double Longitude);
+    private readonly record struct Vector3(double X,double Y,double Z)
+    {
+        public static Vector3 operator *(Vector3 value,double factor)=>new(value.X*factor,value.Y*factor,value.Z*factor);
+        public static Vector3 operator +(Vector3 a,Vector3 b)=>new(a.X+b.X,a.Y+b.Y,a.Z+b.Z);
+    }
 }

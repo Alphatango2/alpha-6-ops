@@ -17,6 +17,7 @@
     <ProjectReference Include="../Alpha6Ops.Core/Alpha6Ops.Core.csproj" />
     <EmbeddedResource Include="../../samples/delayed-flight.jsonl" LogicalName="delayed-flight.jsonl" />
     <EmbeddedResource Include="../../samples/on-time-flight.jsonl" LogicalName="on-time-flight.jsonl" />
+    <EmbeddedResource Include="Assets/Map/ne_110m_land.geojson" LogicalName="ne_110m_land.geojson" />
     <Content Include="../../assets/fleet/aircraft.sqlite" Link="fleet/aircraft.sqlite" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
     <Content Include="Assets/alpha6.ico" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
     <Resource Include="Assets/alpha6-mark.png" />
