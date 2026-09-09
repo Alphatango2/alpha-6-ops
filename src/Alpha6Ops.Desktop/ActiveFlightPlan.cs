@@ -1,13 +1,17 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 
 namespace Alpha6Ops.Desktop;
 
+internal record FlightRoutePoint(string Ident,double Latitude,double Longitude,string Kind="Waypoint");
+
 internal record ActiveFlightPlan(string FlightNumber, string Registration, string Origin, string Destination,
     DateTimeOffset PlannedDepartureUtc, DateTimeOffset PlannedArrivalUtc, string? Source = null,
     string? SimBriefUsername = null, DateTimeOffset? ImportedAtUtc = null, string? DepartureGate = null,
-    string? ArrivalGate = null, string? GateAssignmentSource = null, string? GateAssignmentConfidence = null)
+    string? ArrivalGate = null, string? GateAssignmentSource = null, string? GateAssignmentConfidence = null,
+    string? Route = null,IReadOnlyList<FlightRoutePoint>? RoutePoints = null)
 {
     internal TimeSpan PlannedDuration => PlannedArrivalUtc - PlannedDepartureUtc;
 }

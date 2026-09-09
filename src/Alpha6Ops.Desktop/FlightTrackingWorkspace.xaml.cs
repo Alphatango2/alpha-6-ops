@@ -24,12 +24,13 @@ public partial class FlightTrackingWorkspace : UserControl
         AircraftText.Text=string.Join(" • ",new[]{simulatorAircraft,plan.Registration}.Where(value=>!string.IsNullOrWhiteSpace(value)));
         PhaseText.Text=phase;
         StatusText.Text=status;
+        TrackingMap.SetRoute(plan.RoutePoints);
         TrackingSubtitle.Text=connected?"ACTIVE FLIGHT • LIVE TELEMETRY":"ACTIVE ASSIGNMENT • READY FOR SIMULATOR";
         ConnectionText.Text=connected?"LIVE TRACKING":"ASSIGNMENT READY";
         ScheduledOutText.Text=plan.PlannedDepartureUtc.UtcDateTime.ToString("dd MMM • HH:mm'Z'");
         ScheduledInText.Text=plan.PlannedArrivalUtc.UtcDateTime.ToString("dd MMM • HH:mm'Z'");
         ActualOutText.Text=actualOut?.UtcDateTime.ToString("HH:mm:ss'Z'")??"—";
-        ArrivalText.Text=(actualIn??estimatedIn??plan.PlannedArrivalUtc).UtcDateTime.ToString("HH:mm:ss'Z'");
+        ArrivalText.Text=(actualIn??estimatedIn)?.UtcDateTime.ToString("HH:mm:ss'Z'")??"—";
         DepartureGateText.Text=plan.DepartureGate??"—";ArrivalGateText.Text=plan.ArrivalGate??"—";
         ProgressBar.Value=Math.Clamp(progress,0,100);ProgressText.Text=$"{ProgressBar.Value:0}%";
         var rows=events.Reverse().Take(12).ToArray();EventList.ItemsSource=rows;EventEmptyText.Visibility=rows.Length==0?Visibility.Visible:Visibility.Collapsed;

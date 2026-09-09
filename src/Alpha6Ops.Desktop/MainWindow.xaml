@@ -432,7 +432,6 @@
                 <StackPanel Grid.Row="5" Orientation="Horizontal" VerticalAlignment="Center">
                   <Button x:Name="HeroFlightDetailsButton" Content="VIEW FLIGHT DETAILS    →" Style="{StaticResource OpsPrimary}" Click="FlightDetails_Click" Padding="17,9" />
                   <Button x:Name="HeroFlightDeckButton" Content="VIEW FLIGHT DECK" Style="{StaticResource OpsButton}" Click="FlightDeck_Click" Margin="12,0,0,0" Padding="22,9" />
-                  <Button Content="•••" Style="{StaticResource OpsButton}" Click="FlightTools_Click" Margin="12,0,0,0" Padding="12,9" AutomationProperties.Name="Open flight tools" />
                 </StackPanel>
                 <ProgressBar x:Name="ReplayProgress" Grid.Row="6" Maximum="100" Height="3" VerticalAlignment="Bottom" Foreground="{StaticResource OpsYellow}" Background="#35414A" BorderThickness="0" />
               </Grid>

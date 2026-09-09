@@ -4,6 +4,7 @@ using System.IO;
 using System.Net.Http;
 using System.Text.Json;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -74,9 +75,38 @@ internal static class SimBriefImporter
         int? altitude = int.TryParse(Text("general", "initial_altitude"), out var altitudeValue) ? altitudeValue : null;
         double? fuel = double.TryParse(Text("fuel", "plan_ramp"), NumberStyles.Float, CultureInfo.InvariantCulture, out var fuelValue) ? fuelValue : null;
         var noteParts=new List<string>();CollectNotes(root,noteParts);var gates=GateAssignmentResolver.Resolve(airline,flight,origin,destination,departure,string.Join(" ",noteParts));
+        var route=Text("general","route");
+        var routePoints=ReadRoutePoints(root,origin,destination);
         var plan = new ActiveFlightPlan(flight, Text("aircraft", "reg").Trim().ToUpperInvariant(), origin, destination, departure, arrival,
-            "SimBrief", username, generated,gates.DepartureGate,gates.ArrivalGate,gates.Source,gates.Confidence);
-        return new(plan, generated, Text("aircraft", "icao_code"), Text("general", "route"), altitude, fuel, Text("params", "units").ToUpperInvariant(), fromCache);
+            "SimBrief", username, generated,gates.DepartureGate,gates.ArrivalGate,gates.Source,gates.Confidence,route,routePoints);
+        return new(plan, generated, Text("aircraft", "icao_code"), route, altitude, fuel, Text("params", "units").ToUpperInvariant(), fromCache);
+    }
+
+    private static IReadOnlyList<FlightRoutePoint> ReadRoutePoints(JsonElement root,string origin,string destination)
+    {
+        var points=new List<FlightRoutePoint>();
+        static bool Coordinate(JsonElement element,string name,out double value)
+        {
+            value=0;if(!element.TryGetProperty(name,out var property))return false;
+            return property.ValueKind==JsonValueKind.Number?property.TryGetDouble(out value):double.TryParse(property.GetString(),NumberStyles.Float,CultureInfo.InvariantCulture,out value);
+        }
+        static string Value(JsonElement element,string name)
+        {
+            if(!element.TryGetProperty(name,out var value))return "";
+            return value.ValueKind==JsonValueKind.String?value.GetString()??"":value.ToString();
+        }
+        void Add(JsonElement element,string fallback,string kind)
+        {
+            if(!Coordinate(element,"pos_lat",out var latitude)||!Coordinate(element,"pos_long",out var longitude)||latitude is < -90 or > 90||longitude is < -180 or > 180)return;
+            var ident=Value(element,"ident").Trim().ToUpperInvariant();if(ident.Length==0)ident=Value(element,"icao_code").Trim().ToUpperInvariant();if(ident.Length==0)ident=fallback;
+            if(points.LastOrDefault() is { } previous&&Math.Abs(previous.Latitude-latitude)<.0001&&Math.Abs(previous.Longitude-longitude)<.0001)return;
+            points.Add(new FlightRoutePoint(ident,latitude,longitude,kind));
+        }
+        if(root.TryGetProperty("origin",out var originElement))Add(originElement,origin,"Departure");
+        if(root.TryGetProperty("navlog",out var navlog)&&navlog.TryGetProperty("fix",out var fixes)&&fixes.ValueKind==JsonValueKind.Array)
+            foreach(var fix in fixes.EnumerateArray())Add(fix,"FIX",Value(fix,"type").Trim().Length==0?"Waypoint":Value(fix,"type").Trim());
+        if(root.TryGetProperty("destination",out var destinationElement))Add(destinationElement,destination,"Destination");
+        return points;
     }
 
     private static void CollectNotes(JsonElement element,List<string> notes,string propertyName="")

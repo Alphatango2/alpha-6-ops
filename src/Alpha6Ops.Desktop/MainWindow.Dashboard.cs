@@ -211,7 +211,6 @@ public partial class MainWindow
         RefreshFlightTrackingWorkspace(liveLast,liveRecorder?.Phase,StatusText.Text);
     }
     internal void OpenTools(){ToolsOverlay.Visibility=Visibility.Visible;PilotNameBox.Focus();}
-    private void FlightTools_Click(object sender,RoutedEventArgs e)=>OpenTools();
     private void CloseTools_Click(object sender,RoutedEventArgs e)=>ToolsOverlay.Visibility=Visibility.Collapsed;
     internal OpsModule CreateFlightModule() => new("FLIGHTS & ROTATIONS","The aircraft's day, calculated from the current flight session",dashboardShowsLive?"ACTIVE ASSIGNMENT • SIMULATOR UTC":"RECORDED SCENARIO • 02 SEP 2026",
         [new("LEGS",DashboardFlights.Count.ToString(),"Current rotation"),new("COMPLETED",DashboardFlights.Count(f=>f.Leg.Completed).ToString(),"Confirmed block-in"),new("TURNAROUND",(dashboardShowsLive?liveRotation?.MinimumTurnMinutes??35:session.Rotation.MinimumTurnMinutes)+" MIN","Minimum aircraft turn")],

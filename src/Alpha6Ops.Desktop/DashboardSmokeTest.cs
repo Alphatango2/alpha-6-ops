@@ -40,9 +40,14 @@ internal static class DashboardSmokeTest
         window.HeroFlightDetailsButton.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));window.UpdateLayout();
         Check(window.DashboardScroll.Visibility==Visibility.Collapsed&&window.FlightTrackingView.Visibility==Visibility.Visible&&window.FlightTrackingView.EmptyState.Visibility==Visibility.Visible,"Flight Tracking opens inside the main application with a No Active Flight state");
         Capture(window,Path.Combine(outputDirectory,"flight-tracking-empty.png"));
-        var trackingPlan=new ActiveFlightPlan("FJI911","DQ-FAM","NFFN","YSSY",new DateTimeOffset(2026,9,8,21,0,0,TimeSpan.Zero),new DateTimeOffset(2026,9,9,1,52,0,TimeSpan.Zero),"SimBrief",DepartureGate:"A4",ArrivalGate:"B12");
+        var trackingPlan=new ActiveFlightPlan("FJI911","DQ-FAM","NFFN","YSSY",new DateTimeOffset(2026,9,8,21,0,0,TimeSpan.Zero),new DateTimeOffset(2026,9,9,1,52,0,TimeSpan.Zero),"SimBrief",DepartureGate:"A4",ArrivalGate:"B12",Route:"NFFN NOBAR YSSY",RoutePoints:[new("NFFN",-17.7554,177.4434,"Departure"),new("NOBAR",-25.0,170.0),new("YSSY",-33.9399,151.1753,"Destination")]);
         window.FlightTrackingView.Render(trackingPlan,"A350-900 (No Cabin)","AT GATE","Assignment ready",null,null,null,0,["21:00Z  Assignment loaded"],false);window.UpdateLayout();
         Check(window.FlightTrackingView.ActiveState.Visibility==Visibility.Visible&&window.FlightTrackingView.RouteText.Text.Contains("NFFN")&&window.FlightTrackingView.EventList.Items.Count==1,"Flight Tracking renders assignment, route summary, and chronological events");
+        Check(window.FlightTrackingView.ArrivalText.Text=="—","Actual or estimated arrival remains blank before live flight telemetry provides an estimate");
+        Check(window.FlightTrackingView.TrackingMap.RoutePointCount==3&&window.FlightTrackingView.TrackingMap.FittedZoom>1,"Flight Tracking plots and frames the saved SimBrief route");
+        window.FlightTrackingView.TrackingMap.SetRoute([new("KLAX",33.9425,-118.4081,"Departure"),new("DATELINE",5,179),new("DATELINE2",-5,-179),new("YSSY",-33.9399,151.1753,"Destination")]);
+        Check(window.FlightTrackingView.TrackingMap.CrossesDateLine,"Flight route globe unwraps international routes across the date line");
+        window.FlightTrackingView.Render(trackingPlan,"A350-900 (No Cabin)","AT GATE","Assignment ready",null,null,null,0,["21:00Z  Assignment loaded"],false);window.UpdateLayout();
         Capture(window,Path.Combine(outputDirectory,"flight-tracking-foundation.png"));
         var trackingWidth=window.Width;var trackingHeight=window.Height;
         foreach(var size in new[]{new Size(1920,1080),new Size(2560,1392)})
