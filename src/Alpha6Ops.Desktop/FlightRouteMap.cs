@@ -61,6 +61,7 @@ public sealed class FlightRouteMap : UserControl
 
     internal void Zoom(double factor)=>SetZoom(zoom*factor);
     internal void ResetView()=>FrameRoute();
+    internal void SetView(double latitude,double longitude,double scale){centerLatitude=Math.Clamp(latitude,-75,75);centerLongitude=NormalizeLongitude(longitude);zoom=Math.Clamp(scale,.8,2.4);Draw();}
 
     private void FrameRoute()
     {
@@ -98,9 +99,17 @@ public sealed class FlightRouteMap : UserControl
 
     private void DrawLandRing(IReadOnlyList<GeoPoint> ring,double radius)
     {
-        foreach(var run in VisibleRuns(ring,radius).Where(points=>points.Count>=3))
+        var projected=ring.Select(point=>(Visible:Project(point,radius,out var screen),Screen:screen)).ToArray();
+        if(projected.All(point=>point.Visible))
         {
-            var figure=new PathFigure{StartPoint=run[0],IsClosed=true,IsFilled=true};figure.Segments.Add(new PolyLineSegment(run.Skip(1),true));
+            var points=projected.Select(point=>point.Screen).ToArray();var figure=new PathFigure{StartPoint=points[0],IsClosed=true,IsFilled=true};figure.Segments.Add(new PolyLineSegment(points.Skip(1),true));
+            Add(new Path{Data=new PathGeometry([figure]),Fill=Brush("#24495E"),Stroke=Brush("#7798AA"),StrokeThickness=1,Opacity=.96});
+            return;
+        }
+        foreach(var run in VisibleRuns(projected).Where(points=>points.Count>=3))
+        {
+            var start=OnHorizon(run[0],radius);var end=OnHorizon(run[^1],radius);var shape=new List<Point>{start};shape.AddRange(run);shape.Add(end);shape.AddRange(HorizonArc(end,start,radius));
+            var figure=new PathFigure{StartPoint=shape[0],IsClosed=true,IsFilled=true};figure.Segments.Add(new PolyLineSegment(shape.Skip(1),true));
             Add(new Path{Data=new PathGeometry([figure]),Fill=Brush("#24495E"),Stroke=Brush("#7798AA"),StrokeThickness=1,Opacity=.96});
         }
     }
@@ -139,11 +148,25 @@ public sealed class FlightRouteMap : UserControl
         foreach(var geo in points){if(Project(geo,radius,out var point))run.Add(point);else Flush();}Flush();
     }
 
-    private List<List<Point>> VisibleRuns(IReadOnlyList<GeoPoint> points,double radius)
+    private static List<List<Point>> VisibleRuns(IReadOnlyList<(bool Visible,Point Screen)> points)
     {
         var result=new List<List<Point>>();var run=new List<Point>();
-        foreach(var geo in points){if(Project(geo,radius,out var point))run.Add(point);else if(run.Count>0){result.Add(run);run=[];}}
+        foreach(var point in points){if(point.Visible)run.Add(point.Screen);else if(run.Count>0){result.Add(run);run=[];}}
         if(run.Count>0)result.Add(run);return result;
+    }
+
+    private static Point OnHorizon(Point point,double radius)
+    {
+        var x=point.X-CenterX;var y=point.Y-CenterY;var length=Math.Sqrt(x*x+y*y);return length<.001?new Point(CenterX,CenterY-radius):new Point(CenterX+x/length*radius,CenterY+y/length*radius);
+    }
+
+    private static IEnumerable<Point> HorizonArc(Point from,Point to,double radius)
+    {
+        var start=Math.Atan2(from.Y-CenterY,from.X-CenterX);var end=Math.Atan2(to.Y-CenterY,to.X-CenterX);var delta=end-start;
+        while(delta>Math.PI)delta-=Math.PI*2;while(delta< -Math.PI)delta+=Math.PI*2;
+        var steps=Math.Max(3,(int)Math.Ceiling(Math.Abs(delta)*12));
+        for(var index=1;index<steps;index++){var angle=start+delta*index/steps;yield return new Point(CenterX+Math.Cos(angle)*radius,CenterY+Math.Sin(angle)*radius);}
+        yield return to;
     }
 
     private bool Project(GeoPoint geo,double radius,out Point point)
