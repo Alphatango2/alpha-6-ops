@@ -236,10 +236,10 @@
               <TextBlock Text="DASHBOARD" FontWeight="SemiBold" VerticalAlignment="Center" />
             </StackPanel>
           </Button>
-          <Button Style="{StaticResource OpsNav}" Tag="Flights" Click="Module_Click">
+          <Button x:Name="FlightTrackingNavButton" Style="{StaticResource OpsNav}" Tag="FlightTracking" Click="Module_Click" AutomationProperties.Name="FLIGHT TRACKING">
             <StackPanel Orientation="Horizontal">
               <TextBlock Text="" FontFamily="Segoe MDL2 Assets" FontSize="21" Width="43" />
-              <TextBlock Text="FLIGHTS" VerticalAlignment="Center" />
+              <TextBlock Text="FLIGHT TRACKING" VerticalAlignment="Center" />
             </StackPanel>
           </Button>
           <Button Style="{StaticResource OpsNav}" Tag="Operations" Click="Module_Click">
@@ -430,8 +430,8 @@
                   </StackPanel>
                 </Grid>
                 <StackPanel Grid.Row="5" Orientation="Horizontal" VerticalAlignment="Center">
-                  <Button Content="VIEW FLIGHT DETAILS    →" Style="{StaticResource OpsPrimary}" Click="FlightDetails_Click" Padding="17,9" />
-                  <Button Content="START PREFLIGHT" Style="{StaticResource OpsButton}" Click="Preflight_Click" Margin="12,0,0,0" Padding="22,9" />
+                  <Button x:Name="HeroFlightDetailsButton" Content="VIEW FLIGHT DETAILS    →" Style="{StaticResource OpsPrimary}" Click="FlightDetails_Click" Padding="17,9" />
+                  <Button x:Name="HeroFlightDeckButton" Content="VIEW FLIGHT DECK" Style="{StaticResource OpsButton}" Click="FlightDeck_Click" Margin="12,0,0,0" Padding="22,9" />
                   <Button Content="•••" Style="{StaticResource OpsButton}" Click="FlightTools_Click" Margin="12,0,0,0" Padding="12,9" AutomationProperties.Name="Open flight tools" />
                 </StackPanel>
                 <ProgressBar x:Name="ReplayProgress" Grid.Row="6" Maximum="100" Height="3" VerticalAlignment="Bottom" Foreground="{StaticResource OpsYellow}" Background="#35414A" BorderThickness="0" />
@@ -502,7 +502,7 @@
                   <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="NETWORK MAP" Style="{StaticResource OpsTitle}" />
-                <TextBlock Grid.Column="1" Text="●  SCENARIO" Foreground="#E2C84B" FontSize="10" VerticalAlignment="Center" />
+                <Button x:Name="OpenTrackerButton" Grid.Column="1" Content="OPEN TRACKER  →" Style="{StaticResource OpsLink}" Foreground="#FFDA00" FontSize="10" Click="OpenTracker_Click" ToolTip="Open the full Flight Tracking workspace" />
               </Grid>
               <local:NetworkMap x:Name="RouteMap" />
             </DockPanel>
@@ -639,6 +639,7 @@
         </Border>
       </local:DashboardBodyPanel>
     </ScrollViewer>
+    <local:FlightTrackingWorkspace x:Name="FlightTrackingView" Grid.Row="1" Grid.Column="2" Visibility="Collapsed" Margin="0,0,1,8" />
     <Grid x:Name="DashboardFooter" Grid.Row="2" Grid.ColumnSpan="3" Margin="220,0,0,0">
       <Grid.ColumnDefinitions>
         <ColumnDefinition />

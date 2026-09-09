@@ -581,6 +581,7 @@ public partial class MainWindow : Window
             PhaseText.Text = phase is null ? "MONITORING" : PhaseLabel(phase.Value).ToUpperInvariant();
             ReplayProgress.Maximum = 100; ReplayProgress.Value = PhaseProgress(phase, null, null, null);
             StatusText.Text = status;
+            RefreshFlightTrackingWorkspace(simulatorTime,phase,status);
             return;
         }
         var plan = activePlan;
@@ -596,6 +597,17 @@ public partial class MainWindow : Window
         ReplayProgress.Maximum = 100;
         ReplayProgress.Value = PhaseProgress(phase, simulatorTime, leg?.ActualOut, projection?.EstimatedIn);
         StatusText.Text = status;
+        RefreshFlightTrackingWorkspace(simulatorTime,phase,status);
+    }
+
+    private void RefreshFlightTrackingWorkspace(DateTimeOffset? simulatorTime,FlightPhase? phase,string status)
+    {
+        if(FlightTrackingView is null)return;
+        var leg=liveRotation?.Legs.FirstOrDefault();
+        var projection=liveRotation is null?null:RotationPlanner.Project(liveRotation).FirstOrDefault();
+        var phaseLabel=phase is null?(activePlan is null?"NO ACTIVE FLIGHT":"READY"):PhaseLabel(phase.Value).ToUpperInvariant();
+        var progress=PhaseProgress(phase,simulatorTime,leg?.ActualOut,projection?.EstimatedIn);
+        FlightTrackingView.Render(activePlan,liveAircraft,phaseLabel,status,leg?.ActualOut,leg?.ActualIn,projection?.EstimatedIn,progress,milestones,running);
     }
 
     private double PhaseProgress(FlightPhase? phase, DateTimeOffset? now, DateTimeOffset? start, DateTimeOffset? eta) => phase switch

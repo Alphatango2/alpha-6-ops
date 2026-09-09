@@ -39,9 +39,12 @@ public partial class MainWindow
         InitializeLocalWeather(diagnosticDirectory is not null);
         SizeChanged += (_,_) => { UpdateResponsiveLayout(); UpdateFlightTabs(); };
         UpdateResponsiveLayout();
+        FlightTrackingView.FlightDeckRequested += (_,_)=>OpenTools();
         PreviewKeyDown += (_,e) => { if(e.Key == Key.Escape && ToolsOverlay.Visibility == Visibility.Visible) { ToolsOverlay.Visibility = Visibility.Collapsed; e.Handled=true; } };
         RefreshDashboardFlight(false);
         if (activePlan is not null) RefreshLiveTracker(null,null,null,"Assignment ready. Connect at the gate to begin tracking.");
+        else RefreshFlightTrackingWorkspace(null,null,"No active flight");
+        ShowDashboard();
     }
     private void UpdateClock()
     {
@@ -152,8 +155,10 @@ public partial class MainWindow
     }
     private void WatchFlight_Click(object sender,RoutedEventArgs e){if(SelectedDashboardFlight is {} f)ToggleWatch(f);}
     private void FlightRow_DoubleClick(object sender,MouseButtonEventArgs e){if(DashboardFlightsGrid.SelectedItem is DashboardFlightRow f)ShowFlight(f,false);}
-    private void FlightDetails_Click(object sender,RoutedEventArgs e){if(HeroFlight is {} f)ShowFlight(f,false);else OpenTools();}
+    private void FlightDetails_Click(object sender,RoutedEventArgs e)=>ShowFlightTracking();
     private void Preflight_Click(object sender,RoutedEventArgs e){if(HeroFlight is {} f)ShowFlight(f,true);else OpenTools();}
+    private void FlightDeck_Click(object sender,RoutedEventArgs e)=>OpenTools();
+    private void OpenTracker_Click(object sender,RoutedEventArgs e)=>ShowFlightTracking();
     private void ShowFlight(DashboardFlightRow flight,bool preflight)=>new FlightPreparationWindow(flight,dashboardState,SaveDashboard,preflight,()=>SetFlight_Click(this,new RoutedEventArgs())){Owner=this}.ShowDialog();
     private void RefreshAlerts()
     {
@@ -191,7 +196,20 @@ public partial class MainWindow
             [new("SOURCE","ALPHA 6 OPS","Bundled product notes"),new("STATUS","READ","Saved on this computer"),new("DELIVERY","LOCAL","No company messaging service")],
             [new(message.Id,message.Title,"Product briefing","Read",message.Body)])){Owner=this}.ShowDialog();
     }
-    private void Dashboard_Click(object sender,RoutedEventArgs e){ToolsOverlay.Visibility=Visibility.Collapsed;DashboardScroll.ScrollToTop();}
+    private void Dashboard_Click(object sender,RoutedEventArgs e)=>ShowDashboard();
+    internal void ShowDashboard()
+    {
+        ToolsOverlay.Visibility=Visibility.Collapsed;FlightTrackingView.Visibility=Visibility.Collapsed;DashboardScroll.Visibility=Visibility.Visible;DashboardScroll.ScrollToTop();
+        FlightTrackingNavButton.ClearValue(Button.BackgroundProperty);FlightTrackingNavButton.ClearValue(Button.ForegroundProperty);
+        DashboardNavButton.Background=OpsUi.Brush("#FFDA00");DashboardNavButton.Foreground=OpsUi.Brush("#080C0F");
+    }
+    internal void ShowFlightTracking()
+    {
+        ToolsOverlay.Visibility=Visibility.Collapsed;DashboardScroll.Visibility=Visibility.Collapsed;FlightTrackingView.Visibility=Visibility.Visible;
+        DashboardNavButton.ClearValue(Button.BackgroundProperty);DashboardNavButton.ClearValue(Button.ForegroundProperty);
+        FlightTrackingNavButton.Background=OpsUi.Brush("#FFDA00");FlightTrackingNavButton.Foreground=OpsUi.Brush("#080C0F");
+        RefreshFlightTrackingWorkspace(liveLast,liveRecorder?.Phase,StatusText.Text);
+    }
     internal void OpenTools(){ToolsOverlay.Visibility=Visibility.Visible;PilotNameBox.Focus();}
     private void FlightTools_Click(object sender,RoutedEventArgs e)=>OpenTools();
     private void CloseTools_Click(object sender,RoutedEventArgs e)=>ToolsOverlay.Visibility=Visibility.Collapsed;
@@ -211,8 +229,7 @@ public partial class MainWindow
                 ProgramHealthText.Text, LogStatusText.Text, generalSettings, ApplyGeneralSettings) { Owner = this }.ShowDialog(); return;
             case "Aircraft": Fleet_Click(sender,e);return;
             case "Network": new NetworkWindow{Owner=this}.ShowDialog();return;
-            case "Flights":
-                new OperationsWorkspaceWindow(CreateFlightModule(),"FLIGHT DETAILS",r=>{var f=DashboardFlights.First(x=>x.Id==r.Reference);ShowFlight(f,false);}){Owner=this}.ShowDialog();return;
+            case "FlightTracking": ShowFlightTracking();return;
             case "Reports":
                 var flights=flightHistory?.ReadRecentFlights()??[];
                 var report=new OpsModule("FLIGHT REPORTS","Local flight history and recorded session results","LOCAL FLIGHT HISTORY • REPLAY RUNS",

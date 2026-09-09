@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Automation;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -35,6 +36,26 @@ internal static class DashboardSmokeTest
         Check(window.FooterBrand.FontSize==11&&window.FooterBrand.FontWeight==FontWeights.SemiBold,"Left footer branding matches the updated version treatment");
         Check(window.NavigationTagline.Text=="YOU FLY THE AIRPLANE.\nWE RUN THE AIRLINE."&&window.NavigationTagline.TextWrapping==TextWrapping.NoWrap,"Navigation tagline keeps the pilot phrase on one line");
         Check(window.NavigationProfile.Margin.Top==23&&window.NavigationProfile.Margin.Bottom==-6,"Pilot identity section sits lower in the navigation rail");
+        Check(AutomationProperties.GetName(window.FlightTrackingNavButton)=="FLIGHT TRACKING"&&window.HeroFlightDeckButton.Content?.ToString()=="VIEW FLIGHT DECK","Dashboard names the embedded tracker and links to Your Flight Deck");
+        window.HeroFlightDetailsButton.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));window.UpdateLayout();
+        Check(window.DashboardScroll.Visibility==Visibility.Collapsed&&window.FlightTrackingView.Visibility==Visibility.Visible&&window.FlightTrackingView.EmptyState.Visibility==Visibility.Visible,"Flight Tracking opens inside the main application with a No Active Flight state");
+        Capture(window,Path.Combine(outputDirectory,"flight-tracking-empty.png"));
+        var trackingPlan=new ActiveFlightPlan("FJI911","DQ-FAM","NFFN","YSSY",new DateTimeOffset(2026,9,8,21,0,0,TimeSpan.Zero),new DateTimeOffset(2026,9,9,1,52,0,TimeSpan.Zero),"SimBrief",DepartureGate:"A4",ArrivalGate:"B12");
+        window.FlightTrackingView.Render(trackingPlan,"A350-900 (No Cabin)","AT GATE","Assignment ready",null,null,null,0,["21:00Z  Assignment loaded"],false);window.UpdateLayout();
+        Check(window.FlightTrackingView.ActiveState.Visibility==Visibility.Visible&&window.FlightTrackingView.RouteText.Text.Contains("NFFN")&&window.FlightTrackingView.EventList.Items.Count==1,"Flight Tracking renders assignment, route summary, and chronological events");
+        Capture(window,Path.Combine(outputDirectory,"flight-tracking-foundation.png"));
+        var trackingWidth=window.Width;var trackingHeight=window.Height;
+        foreach(var size in new[]{new Size(1920,1080),new Size(2560,1392)})
+        {
+            window.Width=size.Width;window.Height=size.Height;window.UpdateLayout();
+            Check(window.FlightTrackingView.ActualWidth>0&&window.FlightTrackingView.ActualHeight>0&&window.FlightTrackingView.ActiveState.ActualHeight<=window.FlightTrackingView.ActualHeight+1,$"Flight Tracking fits the main workspace at {size.Width:0}x{size.Height:0}");
+            Capture(window,Path.Combine(outputDirectory,$"flight-tracking-{size.Width:0}x{size.Height:0}.png"));
+        }
+        window.Width=trackingWidth;window.Height=trackingHeight;window.UpdateLayout();
+        window.ShowDashboard();window.UpdateLayout();
+        Check(window.DashboardScroll.Visibility==Visibility.Visible&&window.FlightTrackingView.Visibility==Visibility.Collapsed,"Dashboard navigation restores the main dashboard in place");
+        window.OpenTrackerButton.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));Check(window.FlightTrackingView.Visibility==Visibility.Visible,"Compact dashboard globe opens Flight Tracking");window.ShowDashboard();
+        window.HeroFlightDeckButton.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));Check(window.ToolsOverlay.Visibility==Visibility.Visible,"View Flight Deck opens the existing flight deck");window.ToolsOverlay.Visibility=Visibility.Collapsed;
         var sampleFlight=window.HeroFlightText.Text;
         window.HeroFlightText.Text="DAL742";window.UpdateLayout();
         Check(window.HeroFlightText.FontSize==48,"Combined airline ICAO and flight number use the larger hero treatment");

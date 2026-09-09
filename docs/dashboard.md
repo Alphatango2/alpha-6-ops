@@ -46,7 +46,7 @@ A terminal connection failure flashes the card red once, fading back to its norm
 ## Walkthrough
 
 1. The initial replay scenario shows A601 ORD → DTW and its three-leg aircraft rotation. The hero and operations table consume the shared `RotationPlanner`; the background photograph illustrates the visual design and is not aircraft identity evidence.
-2. **View flight details** opens planned/projected times, block duration, delays and a personal preflight checklist. **Start preflight** opens the same preparation view. Checks are saved per aircraft, flight number and scheduled date.
+2. **View flight details** opens the embedded Flight Tracking workspace. **View Flight Deck** opens assignment and simulator controls. Flight-row preparation details remain available from the operations table.
 3. Select a row and choose **Watch selected**. The Watchlist tab filters to saved flights; Assigned shows incomplete legs. Double-click a flight to open its details.
 4. **Flight tools** (footer, hero ellipsis, or Settings) opens the drawer containing pilot name, active-flight/SimBrief entry, simulator connection, replay fixtures, timeline/debrief, history, diagnostics and tray controls.
 5. Run the delayed fixture. A601 completes; the hero advances to A602. The operations table shows A602 +30 minutes and A603 +5 minutes. Original replay/timeline/debrief tools remain available.

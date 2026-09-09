@@ -34,6 +34,8 @@ This commit supplies a runnable first slice; the full MVP acceptance target is n
 
 ## Planned Flight Tracking update
 
+Checkpoint 1 is implemented locally: **Flights** is now **Flight Tracking**, its native workspace and No Active Flight state live inside the main shell, dashboard details and compact network-map actions navigate into it, and the former preflight hero action opens Your Flight Deck. The map, route, telemetry, progress, ETA, persistence, and recovery behaviors remain staged for their later checkpoints.
+
 - Expand the next-flight hero with separate scheduled departure/arrival and actual departure/arrival fields. Actual values remain blank until their corresponding confirmed operational milestones occur.
 - Make **View Flight Details** navigate to the full Flight Tracking workspace once that workspace is available.
 - Replace the static on-time badge during an active flight with a signed schedule status derived from the actual departure and current ETA. Show whether the projected arrival is early or late, while retaining the planned block time as the baseline.

@@ -1,0 +1,64 @@
+<UserControl x:Class="Alpha6Ops.Desktop.FlightTrackingWorkspace" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:Alpha6Ops.Desktop" Background="Transparent" Foreground="#F1F4F7" Focusable="False">
+  <Grid>
+    <Grid x:Name="EmptyState">
+      <Border Style="{StaticResource OpsPanel}" Padding="42">
+        <StackPanel Width="560" HorizontalAlignment="Center" VerticalAlignment="Center">
+          <Border Width="82" Height="82" CornerRadius="41" Background="#111F29" BorderBrush="#3B5362" BorderThickness="1" HorizontalAlignment="Center">
+            <Viewbox Width="42" Height="42"><Path Data="M 1,11 L 17,8 L 25,1 L 29,1 L 25,8 L 43,11 L 25,14 L 29,22 L 25,22 L 17,15 L 1,12 Z" Fill="#FFDA00"/></Viewbox>
+          </Border>
+          <TextBlock Text="NO ACTIVE FLIGHT" FontFamily="Bahnschrift SemiCondensed" FontSize="34" FontWeight="SemiBold" TextAlignment="Center" Margin="0,24,0,0"/>
+          <TextBlock Text="Import a SimBrief plan or create an assignment in Your Flight Deck to prepare live flight tracking." Foreground="#A8B8C5" FontSize="15" LineHeight="23" TextWrapping="Wrap" TextAlignment="Center" Margin="0,10,0,0"/>
+          <Button Content="OPEN YOUR FLIGHT DECK" Style="{StaticResource OpsPrimary}" Click="FlightDeck_Click" HorizontalAlignment="Center" Padding="24,11" Margin="0,25,0,0"/>
+        </StackPanel>
+      </Border>
+    </Grid>
+    <Grid x:Name="ActiveState" Visibility="Collapsed">
+      <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="12"/><RowDefinition Height="*"/><RowDefinition Height="12"/><RowDefinition Height="145"/></Grid.RowDefinitions>
+      <Grid>
+        <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+        <StackPanel><TextBlock Text="FLIGHT TRACKING" FontFamily="Bahnschrift SemiCondensed" FontSize="29" FontWeight="SemiBold"/><TextBlock x:Name="TrackingSubtitle" Text="ACTIVE ASSIGNMENT • READY FOR SIMULATOR" Style="{StaticResource OpsCaption}" FontSize="11" Margin="0,5,0,0"/></StackPanel>
+        <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center"><Border x:Name="ConnectionBadge" Background="#102019" BorderBrush="#356443" BorderThickness="1" CornerRadius="3" Padding="13,8"><TextBlock x:Name="ConnectionText" Text="ASSIGNMENT READY" Foreground="#75D88A" FontSize="11"/></Border><Button Content="VIEW FLIGHT DECK" Style="{StaticResource OpsButton}" Click="FlightDeck_Click" Margin="10,0,0,0" Padding="16,9"/></StackPanel>
+      </Grid>
+      <Grid Grid.Row="2">
+        <Grid.ColumnDefinitions><ColumnDefinition Width="2.6*"/><ColumnDefinition Width="12"/><ColumnDefinition Width="1*"/></Grid.ColumnDefinitions>
+        <Border Style="{StaticResource OpsPanel}" ClipToBounds="True">
+          <Grid><Grid.RowDefinitions><RowDefinition Height="70"/><RowDefinition/></Grid.RowDefinitions>
+            <Grid Margin="18,10"><Grid.ColumnDefinitions><ColumnDefinition Width="1.2*"/><ColumnDefinition/><ColumnDefinition/><ColumnDefinition/></Grid.ColumnDefinitions>
+              <StackPanel><TextBlock x:Name="FlightNumberText" Text="A6 000" Foreground="#FFDA00" FontSize="24" FontWeight="SemiBold"/><TextBlock x:Name="RouteText" Text="— → —" FontSize="16" Margin="0,3,0,0"/></StackPanel>
+              <StackPanel Grid.Column="1"><TextBlock Text="AIRCRAFT" Style="{StaticResource OpsCaption}"/><TextBlock x:Name="AircraftText" Text="—" FontSize="15" Margin="0,8,0,0" TextTrimming="CharacterEllipsis"/></StackPanel>
+              <StackPanel Grid.Column="2"><TextBlock Text="CURRENT PHASE" Style="{StaticResource OpsCaption}"/><TextBlock x:Name="PhaseText" Text="READY" Foreground="#FFDA00" FontSize="15" Margin="0,8,0,0"/></StackPanel>
+              <StackPanel Grid.Column="3"><TextBlock Text="TRACKING STATUS" Style="{StaticResource OpsCaption}"/><TextBlock x:Name="StatusText" Text="WAITING TO CONNECT" Foreground="#AABAC7" FontSize="12" Margin="0,8,0,0" TextWrapping="Wrap"/></StackPanel>
+            </Grid>
+            <Grid Grid.Row="1" Background="#061018">
+              <local:NetworkMap x:Name="TrackingMap" Margin="8"/>
+              <Border HorizontalAlignment="Left" VerticalAlignment="Top" Background="#DD071019" BorderBrush="#304655" BorderThickness="1" CornerRadius="3" Padding="12,8" Margin="18"><StackPanel><TextBlock Text="ROUTE PREVIEW" Foreground="#FFDA00" FontSize="11"/><TextBlock Text="SimBrief waypoints will populate this map." Foreground="#9FB1BE" FontSize="10" Margin="0,3,0,0"/></StackPanel></Border>
+            </Grid>
+          </Grid>
+        </Border>
+        <Border Grid.Column="2" Style="{StaticResource OpsPanel}" Padding="16">
+          <Grid><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+            <StackPanel><TextBlock Text="FLIGHT EVENT LOG" Style="{StaticResource OpsTitle}" FontSize="18"/><TextBlock Text="Chronological operational milestones" Style="{StaticResource OpsCaption}" Margin="0,5,0,12"/></StackPanel>
+            <ListBox x:Name="EventList" Grid.Row="1" Background="Transparent" BorderThickness="0" Foreground="#DCE6ED" IsHitTestVisible="False"><ListBox.ItemTemplate><DataTemplate><Border BorderBrush="#233744" BorderThickness="0,0,0,1" Padding="0,9"><Grid><Grid.ColumnDefinitions><ColumnDefinition Width="17"/><ColumnDefinition/></Grid.ColumnDefinitions><Ellipse Width="7" Height="7" Fill="#FFDA00" VerticalAlignment="Top" Margin="0,4,0,0"/><TextBlock Grid.Column="1" Text="{Binding}" TextWrapping="Wrap" FontSize="11" LineHeight="16"/></Grid></Border></DataTemplate></ListBox.ItemTemplate></ListBox>
+            <TextBlock x:Name="EventEmptyText" Grid.Row="1" Text="Connect to MSFS or Flight Lab to begin recording flight events." Foreground="#8195A4" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" Margin="20"/>
+            <TextBlock Grid.Row="2" Text="EVENTS ARE SAVED IN LOGS &amp; DIAGNOSTICS" Style="{StaticResource OpsCaption}" FontSize="9" Margin="0,12,0,0"/>
+          </Grid>
+        </Border>
+      </Grid>
+      <Border Grid.Row="4" Style="{StaticResource OpsPanel}" Padding="18,13">
+        <Grid><Grid.RowDefinitions><RowDefinition/><RowDefinition Height="45"/></Grid.RowDefinitions>
+          <UniformGrid Columns="8">
+            <StackPanel><TextBlock Text="SCHEDULED OUT" Style="{StaticResource OpsCaption}"/><TextBlock x:Name="ScheduledOutText" Text="—" FontSize="15" Margin="0,7,0,0"/></StackPanel>
+            <StackPanel><TextBlock Text="ACTUAL OUT" Style="{StaticResource OpsCaption}"/><TextBlock x:Name="ActualOutText" Text="—" FontSize="15" Margin="0,7,0,0"/></StackPanel>
+            <StackPanel><TextBlock Text="SCHEDULED IN" Style="{StaticResource OpsCaption}"/><TextBlock x:Name="ScheduledInText" Text="—" FontSize="15" Margin="0,7,0,0"/></StackPanel>
+            <StackPanel><TextBlock Text="ACTUAL / EST. IN" Style="{StaticResource OpsCaption}"/><TextBlock x:Name="ArrivalText" Text="—" FontSize="15" Margin="0,7,0,0"/></StackPanel>
+            <StackPanel><TextBlock Text="DEPARTURE GATE" Style="{StaticResource OpsCaption}"/><TextBlock x:Name="DepartureGateText" Text="—" FontSize="15" Margin="0,7,0,0"/></StackPanel>
+            <StackPanel><TextBlock Text="ARRIVAL GATE" Style="{StaticResource OpsCaption}"/><TextBlock x:Name="ArrivalGateText" Text="—" FontSize="15" Margin="0,7,0,0"/></StackPanel>
+            <StackPanel><TextBlock Text="DISTANCE REMAINING" Style="{StaticResource OpsCaption}"/><TextBlock Text="— NM" FontSize="15" Margin="0,7,0,0"/></StackPanel>
+            <StackPanel><TextBlock Text="PROGRESS" Style="{StaticResource OpsCaption}"/><TextBlock x:Name="ProgressText" Text="0%" Foreground="#FFDA00" FontSize="15" Margin="0,7,0,0"/></StackPanel>
+          </UniformGrid>
+          <Grid Grid.Row="1" Margin="0,10,0,0"><ProgressBar x:Name="ProgressBar" Minimum="0" Maximum="100" Value="0" Height="5" VerticalAlignment="Center"/><TextBlock Text="✈" Foreground="#FFDA00" FontSize="22" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,-2,0,0"/></Grid>
+        </Grid>
+      </Border>
+    </Grid>
+  </Grid>
+</UserControl>
