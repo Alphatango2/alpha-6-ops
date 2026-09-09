@@ -52,6 +52,9 @@ internal static class DashboardSmokeTest
         window.FlightTrackingView.TrackingMap.Zoom(2);window.UpdateLayout();
         Check(window.FlightTrackingView.TrackingMap.ZoomLevel>3&&window.FlightTrackingView.TrackingMap.VisibleWaypointLabelCount>0,"Close route zoom reveals spaced SimBrief waypoint names");
         Capture(window,Path.Combine(outputDirectory,"flight-tracking-waypoint-labels.png"));
+        window.FlightTrackingView.TrackingMap.Zoom(3);window.UpdateLayout();
+        Check(window.FlightTrackingView.TrackingMap.ZoomLevel>9&&window.FlightTrackingView.TrackingMap.VisibleWaypointLabelCount>0,"Deep route zoom retains readable waypoint names");
+        Capture(window,Path.Combine(outputDirectory,"flight-tracking-deep-zoom.png"));
         window.FlightTrackingView.TrackingMap.SetView(65,-110,1.1);window.UpdateLayout();
         Capture(window,Path.Combine(outputDirectory,"flight-tracking-horizon-clipping.png"));
         window.FlightTrackingView.Render(trackingPlan,"A350-900 (No Cabin)","AT GATE","Assignment ready",null,null,null,0,["21:00Z  Assignment loaded"],false);window.UpdateLayout();

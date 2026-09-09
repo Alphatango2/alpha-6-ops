@@ -39,7 +39,7 @@ public sealed class FlightRouteMap : UserControl
         root.RowDefinitions.Add(new RowDefinition());root.RowDefinitions.Add(new RowDefinition{Height=GridLength.Auto});
         root.Children.Add(new Viewbox{Child=globe,Stretch=Stretch.Uniform});
         var controls=new StackPanel{HorizontalAlignment=HorizontalAlignment.Right,VerticalAlignment=VerticalAlignment.Top,Margin=new Thickness(0,11,13,0)};
-        AddControl(controls,"+","Zoom route globe in",()=>SetZoom(zoom*1.2));
+        AddControl(controls,"+","Zoom route globe in",()=>SetZoom(zoom*1.3));
         AddControl(controls,"−","Zoom route globe out",()=>SetZoom(zoom/1.2));
         AddControl(controls,"⌖","Reset and frame route globe",FrameRoute);
         root.Children.Add(controls);Grid.SetRow(caption,1);root.Children.Add(caption);Content=root;
@@ -64,7 +64,7 @@ public sealed class FlightRouteMap : UserControl
 
     internal void Zoom(double factor)=>SetZoom(zoom*factor);
     internal void ResetView()=>FrameRoute();
-    internal void SetView(double latitude,double longitude,double scale){centerLatitude=Math.Clamp(latitude,-75,75);centerLongitude=NormalizeLongitude(longitude);zoom=Math.Clamp(scale,.8,6.5);Draw();}
+    internal void SetView(double latitude,double longitude,double scale){centerLatitude=Math.Clamp(latitude,-75,75);centerLongitude=NormalizeLongitude(longitude);zoom=Math.Clamp(scale,.8,12);Draw();}
 
     private void FrameRoute()
     {
@@ -79,7 +79,7 @@ public sealed class FlightRouteMap : UserControl
         zoom=FittedZoom;Draw();
     }
 
-    private void SetZoom(double value){zoom=Math.Clamp(value,.8,6.5);Draw();}
+    private void SetZoom(double value){zoom=Math.Clamp(value,.8,12);Draw();}
 
     private void Draw()
     {
@@ -146,7 +146,7 @@ public sealed class FlightRouteMap : UserControl
             if(endpoint){var label=new TextBlock{Text=route[index].Ident,Foreground=Brush(index==0?"#8BE29A":"#FFE34A"),Background=Brush("#E6040C13"),FontWeight=FontWeights.SemiBold,FontSize=13,Padding=new Thickness(6,3,6,3)};Add(label,point.X+(index==0?9:-55),point.Y-29);}
             else if(zoom>=2.15&&(previousWaypointLabel is null||(point-previousWaypointLabel.Value).Length>=42))
             {
-                var label=new TextBlock{Text=route[index].Ident,Foreground=Brush("#D9E7EE"),Background=Brush("#E8040C13"),FontSize=10,Padding=new Thickness(4,2,4,2),ToolTip=route[index].Kind};
+                var label=new TextBlock{Text=route[index].Ident,Foreground=Brush("#F1F4F7"),Background=Brush("#F0040C13"),FontSize=12,FontWeight=FontWeights.SemiBold,Padding=new Thickness(5,2,5,2),ToolTip=route[index].Kind};
                 Add(label,point.X+6,point.Y+(VisibleWaypointLabelCount%2==0?-22:7));previousWaypointLabel=point;VisibleWaypointLabelCount++;
             }
         }
