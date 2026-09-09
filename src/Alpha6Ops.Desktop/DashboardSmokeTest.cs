@@ -19,6 +19,7 @@ internal static class DashboardSmokeTest
         var checks=new List<string>();
         void Check(bool result,string label) {if(!result)throw new InvalidOperationException(label);checks.Add(label);}
         await HeaderSmokeTest.RunAsync(window, Check);
+        await FlightLabSmokeTest.RunAsync(window, outputDirectory, Check);
         await ResponsiveSmokeTest.RunAsync(window, outputDirectory, Check);
         await MonitorSmokeTest.RunAsync(window, outputDirectory, Check);
         window.SetAdvanced(false);window.UpdateLayout();
@@ -27,11 +28,18 @@ internal static class DashboardSmokeTest
         Check(window.ModuleTiles.Items.Count==8,"All eight photographic module tiles load");
         Check(window.ConnectionBadgeText.Text.Contains("DISCONNECTED",StringComparison.Ordinal),"Disconnected simulator is never presented as connected");
         Check(window.FleetCountText.Text=="1,006","Fleet chart uses the bundled reference catalog");
-        window.ApplyAirlineBrand("JBU");
-        Check(window.AirlineBrandMarkText.Text=="B6"&&window.AirlineBrandNameText.Text=="JETBLUE","Three-letter airline ICAO selects the matching carrier brand");
-        window.ApplyAirlineBrand("ZZZ");
-        Check(window.AirlineBrandMarkText.Text=="ZZZ"&&window.AirlineBrandNameText.Text=="ZZZ AIRLINE","Unknown airline ICAO uses a neutral labeled fallback");
-        window.ApplyAirlineBrand("A6");
+        Check(window.VersionText.Text.StartsWith("ALPHA 6 OPS  •  v",StringComparison.Ordinal)&&!window.VersionText.Text.Contains("PREVIEW",StringComparison.Ordinal),"Footer presents a clean product version without preview wording");
+        var exitStyle=(Style)window.FindResource("OpsExit");
+        Check(window.ExitOpsButton.Style==exitStyle&&window.ExitOpsButton.MinWidth>=88&&window.ExitOpsButton.MinHeight>=34,"Exit OPS is a full themed action button");
+        Check(window.ExitOpsButton.BorderBrush.ToString()=="#FF415362"&&exitStyle.Triggers.OfType<Trigger>().Any(t=>t.Property==UIElement.IsMouseOverProperty&&Equals(t.Value,true)&&t.Setters.OfType<Setter>().Any(s=>s.Property==Control.BackgroundProperty&&s.Value is SolidColorBrush brush&&brush.Color==Color.FromRgb(255,218,0))),"Exit OPS uses the panel border and yellow navigation hover treatment");
+        Check(window.FooterBrand.FontSize==11&&window.FooterBrand.FontWeight==FontWeights.SemiBold,"Left footer branding matches the updated version treatment");
+        Check(window.NavigationTagline.Text=="YOU FLY THE AIRPLANE.\nWE RUN THE AIRLINE."&&window.NavigationTagline.TextWrapping==TextWrapping.NoWrap,"Navigation tagline keeps the pilot phrase on one line");
+        Check(window.NavigationProfile.Margin.Top==23&&window.NavigationProfile.Margin.Bottom==-6,"Pilot identity section sits lower in the navigation rail");
+        var sampleFlight=window.HeroFlightText.Text;
+        window.HeroFlightText.Text="DAL742";window.UpdateLayout();
+        Check(window.HeroFlightText.FontSize==48,"Combined airline ICAO and flight number use the larger hero treatment");
+        Check(window.HeroFlightText.ActualWidth>0 && window.HeroFlightText.Text=="DAL742","Imported flight identifier fits without a separate airline badge");
+        window.HeroFlightText.Text=sampleFlight;
         Capture(window,Path.Combine(outputDirectory,"dashboard-default.png"));
         var width=window.Width;var height=window.Height;
         window.Width=1366;window.Height=768;window.UpdateLayout();
@@ -109,6 +117,10 @@ internal static class DashboardSmokeTest
         Check(settings.MinimizeToTrayToggle.IsChecked==false && settings.FlashNotificationToggle.IsChecked==false &&
             settings.NotificationSoundToggle.IsChecked==false && settings.AdvancedControlsToggle.IsChecked==false,
             "General settings render the saved behavior choices");
+        Check(settings.ResetDefaultsButton.Margin.Right==12&&settings.ResetDefaultsButton.Width==128&&settings.SaveSettingsButton.Width==130,
+            "General settings header separates and balances its actions");
+        Check(new[]{settings.WeightUnitBox,settings.AltitudeUnitBox,settings.LandingDistanceUnitBox}.All(box=>box.Foreground.ToString()=="#FFFFFFFF"&&box.Template is not null),
+            "Display-unit selections use readable light text");
         Check(settings.GeneralSettingsScroll.VerticalScrollBarVisibility==ScrollBarVisibility.Disabled,
             "General settings fit without a permanent scroll track");
         Capture(settings,Path.Combine(outputDirectory,"settings-general-preview.png"));
@@ -122,7 +134,7 @@ internal static class DashboardSmokeTest
             "Logs and diagnostics presents program-monitor and flight-log status");
         Capture(settings,Path.Combine(outputDirectory,"settings-logs-preview.png"));settings.Close();
         window.ToolsOverlay.Visibility=Visibility.Visible;window.UpdateLayout();Capture(window,Path.Combine(outputDirectory,"flight-tools-preview.png"));
-        Check(window.ConnectButton.IsEnabled && !window.DisconnectButton.IsEnabled && !window.LiveTimelineButton.IsEnabled,"Flight tools preserves simulator connection guards");
+        Check(window.ConnectButton.IsEnabled && window.ConnectFlightLabButton.IsEnabled && !window.DisconnectButton.IsEnabled && !window.LiveTimelineButton.IsEnabled,"Flight tools preserves real and virtual simulator connection guards");
         window.ToolsOverlay.Visibility=Visibility.Collapsed;
         window.SetHeaderWeather(null);window.RenderLocalWeather(DateTimeOffset.UtcNow);
         File.WriteAllText(Path.Combine(outputDirectory,"dashboard-smoke.json"),JsonSerializer.Serialize(new{passed=true,count=checks.Count,checks},new JsonSerializerOptions{WriteIndented=true}));

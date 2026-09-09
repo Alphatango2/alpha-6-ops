@@ -26,6 +26,10 @@ try {
         if (-not [IO.Path]::IsPathRooted($SimConnectDll) -or -not (Test-Path -LiteralPath $SimConnectDll -PathType Leaf)) { throw 'SimConnectDll must identify an existing native SDK DLL.' }
         Set-Content -LiteralPath (Join-Path $publish 'simconnect-sdk-path.txt') -Value $SimConnectDll -Encoding UTF8
     }
+    & $dotnet restore src/Alpha6Ops.FlightLab --configfile NuGet.Config
+    if ($LASTEXITCODE -ne 0) { throw 'Flight Lab restore failed.' }
+    & $dotnet publish src/Alpha6Ops.FlightLab -c Release --no-restore --no-self-contained -p:AppHostDotNetSearch=AppRelative -p:AppHostRelativeDotNet=../runtime -p:DebugType=None -p:DebugSymbols=false -o (Join-Path $publish 'FlightLab')
+    if ($LASTEXITCODE -ne 0) { throw 'Flight Lab publish failed.' }
     foreach ($relative in @("host/fxr/$RuntimeVersion", "shared/Microsoft.NETCore.App/$RuntimeVersion", "shared/Microsoft.WindowsDesktop.App/$RuntimeVersion")) {
         $source = Join-Path $DotNetRoot $relative
         if (!(Test-Path -LiteralPath $source)) { throw "Runtime folder missing: $source" }

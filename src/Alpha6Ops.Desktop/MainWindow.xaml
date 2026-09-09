@@ -1,4 +1,4 @@
-<Window x:Class="Alpha6Ops.Desktop.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:Alpha6Ops.Desktop" xmlns:shell="clr-namespace:System.Windows.Shell;assembly=PresentationFramework" Title="Alpha 6 OPS — Desktop Preview" Icon="Assets/Alpha6OPS.ico" Width="1536" Height="1024" MinWidth="640" MinHeight="480" ResizeMode="CanResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Background="#04090D" Foreground="#F1F4F7" UseLayoutRounding="True" TextOptions.TextFormattingMode="Display">
+<Window x:Class="Alpha6Ops.Desktop.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:Alpha6Ops.Desktop" xmlns:shell="clr-namespace:System.Windows.Shell;assembly=PresentationFramework" Title="Alpha 6 OPS" Icon="Assets/Alpha6OPS.ico" Width="1536" Height="1024" MinWidth="640" MinHeight="480" ResizeMode="CanResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Background="#04090D" Foreground="#F1F4F7" UseLayoutRounding="True" TextOptions.TextFormattingMode="Display">
   <shell:WindowChrome.WindowChrome>
     <shell:WindowChrome CaptionHeight="38" ResizeBorderThickness="7" GlassFrameThickness="0" CornerRadius="0" UseAeroCaptionButtons="False" />
   </shell:WindowChrome.WindowChrome>
@@ -159,7 +159,7 @@
           <Ellipse x:Name="ConnectionDot" Width="13" Height="13" Fill="#80919D" />
           <StackPanel Grid.Column="1" VerticalAlignment="Center">
             <TextBlock x:Name="ConnectionBadgeText" Text="DISCONNECTED" FontFamily="Bahnschrift SemiCondensed" FontSize="14" MaxWidth="110" TextWrapping="Wrap" TextAlignment="Center" AutomationProperties.LiveSetting="Polite" />
-            <TextBlock Text="MSFS 2024" Style="{StaticResource OpsCaption}" FontSize="12" TextAlignment="Center" Margin="0,4,0,0" />
+            <TextBlock x:Name="ConnectionSourceText" Text="MSFS 2024" Style="{StaticResource OpsCaption}" FontSize="12" TextAlignment="Center" Margin="0,4,0,0" />
             <TextBlock x:Name="ConnectionActionText" FontSize="10" Foreground="{StaticResource OpsYellow}" TextAlignment="Center" Margin="0,4,0,0">
               <TextBlock.Style>
                 <Style TargetType="TextBlock">
@@ -210,23 +210,23 @@
       </Border>
     </Grid>
     <DockPanel Grid.Row="1" Margin="0,0,0,8">
-      <StackPanel x:Name="NavigationProfile" DockPanel.Dock="Bottom" Margin="0,15,0,0">
-        <Border Style="{StaticResource OpsPanel}" Padding="12">
+      <StackPanel x:Name="NavigationProfile" DockPanel.Dock="Bottom" Margin="0,23,0,-6">
+        <Border Style="{StaticResource OpsPanel}" Padding="14,13">
           <StackPanel>
             <StackPanel Orientation="Horizontal">
-              <Border Width="36" Height="36" CornerRadius="18" Background="#24313B" BorderBrush="#526574" BorderThickness="1">
+              <Border Width="40" Height="40" CornerRadius="20" Background="#24313B" BorderBrush="#526574" BorderThickness="1">
                 <TextBlock x:Name="PilotInitialsText" Text="A6" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Foreground="{StaticResource OpsYellow}" />
               </Border>
-              <StackPanel Margin="10,0,0,0">
-                <TextBlock x:Name="PilotDisplayText" Text="Your flight deck" FontSize="13" />
-                <TextBlock Text="Alpha 6 Virtual" Style="{StaticResource OpsCaption}" Margin="0,4,0,0" />
+              <StackPanel Margin="11,0,0,0" VerticalAlignment="Center">
+                <TextBlock x:Name="PilotDisplayText" Text="Your flight deck" FontSize="14" FontWeight="SemiBold" />
+                <TextBlock Text="Alpha 6 Virtual" Style="{StaticResource OpsCaption}" FontSize="10" Margin="0,4,0,0" />
               </StackPanel>
             </StackPanel>
-            <TextBlock Text="●  LOCAL SESSION" Foreground="#6BCB65" FontSize="10" Margin="46,7,0,0" />
+            <TextBlock Text="●  LOCAL SESSION" Foreground="#6BCB65" FontSize="10" Margin="51,8,0,0" />
           </StackPanel>
         </Border>
-        <TextBlock Text="YOU FLY&#xA;THE AIRPLANE.&#xA;WE RUN THE AIRLINE." FontFamily="Bahnschrift SemiCondensed" FontSize="12" Foreground="#CBD6E0" LineHeight="18" Margin="15,20,0,0" />
-        <Rectangle Fill="{StaticResource OpsYellow}" Height="2" Width="27" HorizontalAlignment="Left" Margin="15,13,0,0" />
+        <TextBlock x:Name="NavigationTagline" Text="YOU FLY THE AIRPLANE.&#xA;WE RUN THE AIRLINE." FontFamily="Bahnschrift SemiCondensed" FontSize="12" FontWeight="SemiBold" Foreground="#CBD6E0" LineHeight="19" TextWrapping="NoWrap" Margin="15,19,0,0" />
+        <Rectangle Fill="{StaticResource OpsYellow}" Height="2" Width="27" HorizontalAlignment="Left" Margin="15,12,0,0" />
       </StackPanel>
       <ScrollViewer VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Disabled" PanningMode="None">
         <StackPanel x:Name="NavigationButtons">
@@ -333,7 +333,7 @@
           </Grid.ColumnDefinitions>
           <Border x:Name="HeroPanel" MinHeight="353" Style="{StaticResource OpsPanel}" ClipToBounds="True">
             <Grid>
-              <Grid.Background><ImageBrush ImageSource="Assets/Dashboard/hero.png" Stretch="UniformToFill" /></Grid.Background>
+              <Grid.Background><ImageBrush ImageSource="Assets/Dashboard/hero-unbranded.png" Stretch="UniformToFill" /></Grid.Background>
               <Rectangle>
                 <Rectangle.Fill>
                   <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
@@ -374,13 +374,7 @@
                   <TextBlock x:Name="HeroHeadingText" Text="YOUR NEXT FLIGHT" Style="{StaticResource OpsTitle}" FontSize="19" />
                   <TextBlock x:Name="TrackerModeText" Grid.Column="1" Text="REPLAY • SAMPLE DATA" Style="{StaticResource OpsCaption}" FontSize="9" VerticalAlignment="Top" />
                 </Grid>
-                <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center">
-                  <Border x:Name="AirlineBrandBadge" Width="42" Height="38" CornerRadius="4" Background="#FFDA00" Margin="0,0,11,0" BorderBrush="#FFFFFF" BorderThickness="1">
-                    <TextBlock x:Name="AirlineBrandMarkText" Text="A6" Foreground="#071019" FontFamily="Bahnschrift SemiCondensed" FontSize="17" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                  </Border>
-                  <TextBlock x:Name="HeroFlightText" Text="A601" FontFamily="Bahnschrift SemiCondensed" FontSize="41" FontWeight="Bold" />
-                  <TextBlock x:Name="AirlineBrandNameText" Text="ALPHA 6 OPS" Foreground="#8FA3B2" FontFamily="Bahnschrift SemiCondensed" FontSize="11" Margin="13,0,0,5" VerticalAlignment="Bottom" />
-                </StackPanel>
+                <TextBlock x:Name="HeroFlightText" Grid.Row="1" Text="A601" FontFamily="Bahnschrift SemiCondensed" FontSize="48" FontWeight="Bold" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" />
                 <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center">
                   <StackPanel>
                     <TextBlock x:Name="OriginCodeText" Text="ORD" FontFamily="Bahnschrift SemiCondensed" FontSize="51" FontWeight="Bold" />
@@ -650,15 +644,12 @@
         <ColumnDefinition />
         <ColumnDefinition Width="Auto" />
       </Grid.ColumnDefinitions>
-      <StackPanel x:Name="FooterBrand" Orientation="Horizontal" VerticalAlignment="Center">
-        <TextBlock Text="ALPHA 6" Foreground="{StaticResource OpsYellow}" FontFamily="Bahnschrift SemiCondensed" FontSize="10" />
-        <TextBlock Text=" OPS    |    OPERATIONS CONTROL CENTER" Foreground="#8095A6" FontFamily="Bahnschrift SemiCondensed" FontSize="9" />
-      </StackPanel>
+      <TextBlock x:Name="FooterBrand" FontFamily="Bahnschrift SemiCondensed" FontSize="11" FontWeight="SemiBold" VerticalAlignment="Center">
+        <Run Text="ALPHA 6" Foreground="{StaticResource OpsYellow}" /><Run Text=" OPS  •  OPERATIONS CONTROL CENTER" Foreground="#9DB0BE" />
+      </TextBlock>
       <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
-        <TextBlock x:Name="VersionText" FontSize="9" Foreground="#7D93A5" />
-        <TextBlock Text="    |    " Foreground="#4B5E6D" />
-        <Button Content="FLIGHT TOOLS" Style="{StaticResource OpsLink}" Foreground="{StaticResource OpsYellow}" Click="FlightTools_Click" />
-        <Button x:Name="ExitOpsButton" Content="EXIT OPS" Style="{StaticResource OpsLink}" Foreground="#93A7B8" Padding="12,8" MinHeight="32" Click="Exit_Click" AutomationProperties.Name="Exit Alpha 6 OPS" />
+        <TextBlock x:Name="VersionText" FontFamily="Bahnschrift SemiCondensed" FontSize="11" FontWeight="SemiBold" Foreground="#9DB0BE" Margin="0,0,16,0" VerticalAlignment="Center" />
+        <Button x:Name="ExitOpsButton" Content="EXIT OPS" Style="{StaticResource OpsExit}" Padding="16,8" MinWidth="88" MinHeight="34" Click="Exit_Click" AutomationProperties.Name="Exit Alpha 6 OPS" ToolTip="Close Alpha 6 OPS" />
       </StackPanel>
     </Grid>
     <Grid x:Name="ToolsOverlay" Grid.RowSpan="3" Grid.ColumnSpan="3" Visibility="Collapsed" Background="#AC000000" Panel.ZIndex="10">
@@ -699,10 +690,11 @@
               </UniformGrid>
               <TextBlock Text="SIMULATOR" Style="{StaticResource OpsTitle}" />
               <WrapPanel Margin="0,10,0,8">
-                <Button x:Name="ConnectButton" Content="CONNECT TO MSFS 2024" Style="{StaticResource OpsPrimary}" Click="Connect_Click" Margin="0,0,10,8" />
+                <Button x:Name="ConnectButton" Content="LAUNCH / CONNECT TO MSFS 2024" Style="{StaticResource OpsPrimary}" Click="Connect_Click" Margin="0,0,10,8" />
+                <Button x:Name="ConnectFlightLabButton" Content="CONNECT TO FLIGHT LAB" Style="{StaticResource OpsButton}" Click="ConnectFlightLab_Click" Margin="0,0,10,8" ToolTip="Connect to the local Alpha 6 Flight Lab test program" />
                 <Button x:Name="DisconnectButton" Content="DISCONNECT" Style="{StaticResource OpsButton}" IsEnabled="False" Click="Disconnect_Click" Margin="0,0,0,8" />
               </WrapPanel>
-              <TextBlock x:Name="ConnectionText" Text="Start MSFS 2024 and load an aircraft at a gate." TextWrapping="Wrap" Foreground="#B6C8D6" FontSize="12" />
+              <TextBlock x:Name="ConnectionText" Text="Launch or connect to MSFS 2024 here, then load a flight. For a virtual test, open Flight Lab and connect to it separately." TextWrapping="Wrap" Foreground="#B6C8D6" FontSize="12" />
               <TextBlock x:Name="LiveText" Text="Live telemetry appears after connecting." Foreground="#D9C956" TextWrapping="Wrap" FontSize="11" Margin="0,7,0,10" />
               <WrapPanel>
                 <Button x:Name="LiveTimelineButton" Content="LIVE TIMELINE" Style="{StaticResource OpsButton}" IsEnabled="False" Click="LiveTimeline_Click" Margin="0,0,8,8" />

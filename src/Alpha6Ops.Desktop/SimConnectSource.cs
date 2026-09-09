@@ -7,7 +7,8 @@ using Alpha6Ops.Core;
 
 namespace Alpha6Ops.Desktop;
 
-public record LiveReading(string Aircraft, Telemetry Telemetry, FlightEvidence? Evidence = null);
+public record LiveReading(string Aircraft, Telemetry Telemetry, FlightEvidence? Evidence = null,
+    string Source = "MSFS 2024", string? ScenarioEvent = null);
 
 // Native ABI taken from MSFS 2024 SDK 1.7.3 SimConnect.h (packed receive records).
 // All calls and dispatch reads stay on one dedicated worker. No simulator writes.

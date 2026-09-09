@@ -25,6 +25,13 @@ This commit supplies a runnable first slice; the full MVP acceptance target is n
 - Change the active-flight airline badge from the three-letter SimBrief airline ICAO code, with a neutral labeled fallback when the carrier has no bundled treatment.
 - Repair and verify minimize, maximize/restore, and close behavior in every internal secondary window using the shared Alpha 6 title bar.
 
+## Post-0.12.1 working changes
+
+- Remove the carrier badge and airline-name lookup after interface review. Present the imported airline ICAO and flight number as one larger flight identifier.
+- Give the next-flight hero and Fly tile separate unbranded aircraft-at-gate photography instead of reusing one airline-livery image.
+- Replace the flat schematic network map with a native offline globe-style view, including shaded oceans, curved graticule, refined land, glowing routes, vector aircraft, cleaner station labels, and themed hub selection.
+- Add the local Alpha 6 Flight Lab companion with manual and automatic virtual flight phases, named-pipe telemetry through the production live-reading boundary, accelerated simulator UTC, and reconnect/continuity fault injection.
+
 ## Two-developer division
 
 | Milestone | Developer A: simulator/domain | Developer B: service/product | Shared exit gate |

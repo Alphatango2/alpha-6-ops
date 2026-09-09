@@ -37,7 +37,6 @@ internal static class RefreshSmokeTest
             arrival = window.ArrivalValueText.Text, departed = window.DepartedValueText.Text,
             elapsed = window.ElapsedValueText.Text, progress = window.ReplayProgress.Value,
             gate = window.HeroDepartureGateText.Text, provenance = window.HeroDepartureGateText.ToolTip,
-            brand = window.AirlineBrandMarkText.Text,
             selected = (window.DashboardFlightsGrid.SelectedItem as DashboardFlightRow)?.Key
         };
         var timings = new List<object>();
@@ -84,7 +83,7 @@ internal static class RefreshSmokeTest
                 var first = Demo.Rotation().Legs[0];
                 var plan = new ActiveFlightPlan("JBU124", "N123JB", first.Origin, first.Destination,
                     first.ScheduledOut, first.ScheduledIn, DepartureGate: "52A", ArrivalGate: "12",
-                    GateAssignmentSource: "SimBrief dispatch notes", GateAssignmentConfidence: "High", AirlineIcao: "JBU");
+                    GateAssignmentSource: "SimBrief dispatch notes", GateAssignmentConfidence: "High");
                 Set("activePlan", plan); Set("liveRotation", null);
                 tracker(null, null, null, "Assignment ready");
                 Check(window.HeroFlightText.Text == plan.FlightNumber && window.HeroDepartureGateText.Text == "52A", "unarmed assignment keeps gates and identity");
@@ -121,7 +120,7 @@ internal static class RefreshSmokeTest
                 }
                 var recorder = Get<TimelineRecorder>("liveRecorder");
                 Check(recorder.Snapshots.SequenceEqual(expected.Snapshots) && recorder.Events.SequenceEqual(expected.Events), fixture + " live records every sample in order");
-                Check(window.DashboardIsLive && window.AirlineBrandMarkText.Text == "B6" && window.HeroDepartureGateText.Text == "52A", fixture + " live branding and gates");
+                Check(window.DashboardIsLive && window.HeroFlightText.Text == "JBU124" && window.HeroDepartureGateText.Text == "52A", fixture + " live flight identity and gates");
                 Check(window.ElapsedValueText.Text != "—" && window.ReplayProgress.Value == 100, fixture + " elapsed and completion progress");
                 DashboardSmokeTest.Capture(window, Path.Combine(directory, fixture + "-live.png"));
                 Set("liveCancellation", null);

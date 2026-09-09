@@ -19,7 +19,7 @@ public partial class App : Application
         }
         if (diagnosticOutput is null)
         {
-            var title = $"Alpha 6 OPS v{Assembly.GetExecutingAssembly().GetName().Version?.ToString(3) ?? "unknown"} — Desktop Preview";
+            var title = $"Alpha 6 OPS v{Assembly.GetExecutingAssembly().GetName().Version?.ToString(3) ?? "unknown"}";
             if (!SingleInstance.TryAcquire(title)) { Shutdown(); return; }
         }
         var window = diagnosticOutput is not null ? new MainWindow(diagnosticOutput) : new MainWindow();

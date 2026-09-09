@@ -49,7 +49,8 @@ public partial class MainWindow
     private void ReconcileLiveReading(LiveReading reading)
     {
         var evidence = reading.Evidence ?? new();
-        if (observedSessionStart is null && evidence.SimulationRunning == true && evidence.Position is { IsValid: true })
+        if (observedSessionStart is null && evidence.SimulationRunning == true &&
+            (evidence.Position is { IsValid: true } || reading.Source == "FLIGHT LAB"))
         {
             observedSessionStart = reading.Telemetry.At;
             observedStartPosition = evidence.Position;
@@ -57,8 +58,12 @@ public partial class MainWindow
         }
         var plan = activePlan is null ? null : new FlightAssignment(activePlan.FlightNumber, activePlan.Registration,
             activePlan.Origin, activePlan.Destination, activePlan.PlannedDepartureUtc, activePlan.PlannedArrivalUtc);
-        var association = FlightIdentity.Reconcile(plan, evidence with { Position = evidence.Position is null ? null : observedStartPosition },
-            observedSessionStart ?? reading.Telemetry.At, observedStartOnGround, AirportCatalog.Find(activePlan?.Origin), liveAssociation.Accepted);
+        // Lab v1 supplies phase telemetry, not route evidence. Keep its timeline usable without
+        // attaching a saved real-world assignment or manufacturing a geographic position.
+        var association = reading.Source == "FLIGHT LAB"
+            ? new FlightAssociation(false, "FLIGHT LAB", [])
+            : FlightIdentity.Reconcile(plan, evidence with { Position = evidence.Position is null ? null : observedStartPosition },
+                observedSessionStart ?? reading.Telemetry.At, observedStartOnGround, AirportCatalog.Find(activePlan?.Origin), liveAssociation.Accepted);
         if (association.Accepted != liveAssociation.Accepted || association.Explanation != liveAssociation.Explanation)
             RecordLog("flight_identification", reading.Telemetry.At, new { association.Mode, association.Accepted, association.Issues,
                 evidence.Registration, evidence.Route, position = evidence.Position, nearby = evidence.Nearby, evidence.PlanStatus });
@@ -72,6 +77,7 @@ public partial class MainWindow
         var evidence = currentLiveReading?.Evidence;
         if (!liveDataCurrent) return "Telemetry unavailable — showing last observation";
         if (evidence?.SimulationRunning != true) return "Waiting for an active flight";
+        if (currentLiveReading?.Source == "FLIGHT LAB") return "Virtual flight · geographic route unavailable";
         if (arrivalMismatch is not null) return arrivalMismatch;
         if (liveAssociation.Issues.Count > 0) return liveAssociation.Accepted ? "Flight context needs review" : "Saved assignment needs review";
         if (evidence?.Position is null) return "Position unavailable";
@@ -88,9 +94,8 @@ public partial class MainWindow
         var evidence = reading.Evidence ?? new();
         var route = evidence.Route;
         var nearby = evidence.Nearby;
-        ApplyAirlineBrand(null);
-        AirlineBrandNameText.Text = "LIVE AIRCRAFT";
-        HeroFlightText.Text = route is null ? "FREE FLIGHT" : "MSFS FLIGHT";
+        var isLab = reading.Source == "FLIGHT LAB";
+        HeroFlightText.Text = isLab ? "LAB FLIGHT" : route is null ? "FREE FLIGHT" : "MSFS FLIGHT";
         OriginCodeText.Text = route?.Origin ?? nearby?.Airport.Ident ?? "—";
         OriginCityText.Text = route is not null ? AirportCatalog.Find(route.Origin)?.City.ToUpperInvariant() ?? "PLANNED DEPARTURE"
             : nearby is not null ? "NEAR " + (string.IsNullOrWhiteSpace(nearby.Airport.City) ? nearby.Airport.Ident : nearby.Airport.City).ToUpperInvariant() : "LOCATION UNKNOWN";
@@ -106,10 +111,11 @@ public partial class MainWindow
         HeroTimingText.Text = LiveContextSummary();
         HeroTimingText.ToolTip = string.Join(" ", new[] { liveAssociation.Explanation, evidence.PlanStatus, evidence.Warning, arrivalMismatch }.Where(s => !string.IsNullOrWhiteSpace(s)));
         AircraftText.Text = string.Join(" · ", new[] { reading.Aircraft, evidence.Registration }.Where(s => !string.IsNullOrWhiteSpace(s)));
-        HeroAircraftTypeText.Text = liveDataCurrent ? "OBSERVED IN MSFS" : "LAST OBSERVED IN MSFS";
+        HeroAircraftTypeText.Text = (liveDataCurrent ? "OBSERVED IN " : "LAST OBSERVED IN ") + reading.Source;
         TrackerModeText.Text = liveDataCurrent ? "LIVE FLIGHT · " + liveAssociation.Mode : "LAST OBSERVATION · TELEMETRY UNAVAILABLE";
         OperationsFootnote.Text = "NO VERIFIED SCHEDULE · LIVE SESSION RECORDED IN DIAGNOSTICS";
-        EmptyFlightsText.Text = activePlan is null ? "Free flight is being observed. No airline schedule is assigned." : "Saved assignment is not linked to this flight. Open flight details to review the differences.";
+        EmptyFlightsText.Text = isLab ? "Flight Lab is recording virtual telemetry. Saved assignments are not linked without route evidence."
+            : activePlan is null ? "Free flight is being observed. No airline schedule is assigned." : "Saved assignment is not linked to this flight. Open flight details to review the differences.";
     }
     private void ShowObservedFlightDetails()
     {
@@ -117,9 +123,9 @@ public partial class MainWindow
         var evidence = reading.Evidence ?? new();
         var rows = new System.Collections.Generic.List<OpsRow>
         {
-            new("AIRCRAFT", reading.Aircraft, evidence.Registration ?? "Registration unavailable", "MSFS", "Live aircraft identity; saved registration is never substituted."),
-            new("POSITION", evidence.Position is { } p ? $"{p.Latitude:0.00000}, {p.Longitude:0.00000}" : "Unavailable", evidence.Nearby?.Airport.Name ?? "Airport unknown", evidence.Nearby?.Airport.Source ?? "MSFS", "Nearby airport is an approximation, not proof of departure or intended destination."),
-            new("SIM PLAN", evidence.Route is { } route ? $"{route.Origin} → {route.Destination}" : "No readable route", evidence.PlanStatus, "MSFS active plan", "Some aircraft and activities do not publish a readable simulator flight plan; destination remains unknown."),
+            new("AIRCRAFT", reading.Aircraft, evidence.Registration ?? "Registration unavailable", reading.Source, "Observed aircraft identity; saved registration is never substituted."),
+            new("POSITION", evidence.Position is { } p ? $"{p.Latitude:0.00000}, {p.Longitude:0.00000}" : "Unavailable", evidence.Nearby?.Airport.Name ?? "Airport unknown", evidence.Nearby?.Airport.Source ?? reading.Source, "Nearby airport is an approximation, not proof of departure or intended destination."),
+            new("SIM PLAN", evidence.Route is { } route ? $"{route.Origin} → {route.Destination}" : "No readable route", evidence.PlanStatus, reading.Source, "Some sources, aircraft and activities do not publish a readable flight plan; destination remains unknown."),
             new("ASSIGNMENT", activePlan is null ? "None" : $"{activePlan.FlightNumber} · {activePlan.Origin} → {activePlan.Destination}", liveAssociation.Accepted ? "Verified" : "Not linked", activePlan?.Source ?? "Pilot entry", liveAssociation.Explanation),
             new("SESSION", LiveContextSummary(), reading.Telemetry.At.ToString("u"), liveDataCurrent ? "Receiving data" : "Last observation", arrivalMismatch ?? evidence.Warning ?? "Aircraft swaps, position jumps and simulator time changes start a new observed session.")
         };

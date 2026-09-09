@@ -9,7 +9,7 @@
     <Version>0.12.2</Version>
     <ApplicationIcon>Assets\Alpha6OPS.ico</ApplicationIcon>
     <Company>Alpha 6 Designs</Company>
-    <Product>Alpha 6 OPS Desktop Preview</Product>
+    <Product>Alpha 6 OPS</Product>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>

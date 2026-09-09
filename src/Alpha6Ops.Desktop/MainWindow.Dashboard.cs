@@ -100,7 +100,6 @@ public partial class MainWindow
         HeroHeadingText.Text = live && currentLiveReading is not null ? "YOUR CURRENT FLIGHT" : "YOUR NEXT FLIGHT";
         DashboardFlights=rotation is null ? [] : projection.Select(l=>new DashboardFlightRow(l,rotation.AircraftId)).ToArray();
         var hero=HeroFlight;
-        ApplyAirlineBrand(live?activePlan?.AirlineIcao:"A6");
         if(hero is null)
         {
             HeroFlightText.Text="NO FLIGHT";OriginCodeText.Text=DestinationCodeText.Text="—";OriginCityText.Text="SET AN";DestinationCityText.Text="ASSIGNMENT";
@@ -129,13 +128,6 @@ public partial class MainWindow
             OperationsFootnote.Text=hero is null?"NO ACTIVE ASSIGNMENT":$"{hero.Leg.ScheduledOut:dd MMM yyyy}  •  ALL TIMES UTC".ToUpperInvariant();
         }
         else OperationsFootnote.Text="02 SEP 2026  •  ALL TIMES UTC";
-    }
-    internal void ApplyAirlineBrand(string? airlineIcao)
-    {
-        var brand=AirlineBranding.For(airlineIcao);
-        AirlineBrandBadge.Background=OpsUi.Brush(brand.Background);AirlineBrandBadge.BorderBrush=OpsUi.Brush(brand.Foreground);
-        AirlineBrandMarkText.Text=brand.Mark;AirlineBrandMarkText.Foreground=OpsUi.Brush(brand.Foreground);AirlineBrandNameText.Text=brand.Name;
-        AirlineBrandBadge.ToolTip=$"{brand.Icao} • {brand.Name}";
     }
     private void RefreshFlightsTable()
     {
@@ -221,7 +213,7 @@ public partial class MainWindow
     internal OpsModule CreateFlightModule() => new("FLIGHTS & ROTATIONS","The aircraft's day, calculated from the current flight session",dashboardShowsLive?"ACTIVE ASSIGNMENT • SIMULATOR UTC":"RECORDED SCENARIO • 02 SEP 2026",
         [new("LEGS",DashboardFlights.Count.ToString(),"Current rotation"),new("COMPLETED",DashboardFlights.Count(f=>f.Leg.Completed).ToString(),"Confirmed block-in"),new("TURNAROUND",(dashboardShowsLive?liveRotation?.MinimumTurnMinutes??35:session.Rotation.MinimumTurnMinutes)+" MIN","Minimum aircraft turn")],
         DashboardFlights.Select(f=>new OpsRow(f.Id,$"{f.Route} / {f.Aircraft}",$"{f.Out} – {f.In} UTC",f.Status,
-            $"Scheduled: {f.Leg.ScheduledOut:HH:mm}Z to {f.Leg.ScheduledIn:HH:mm}Z. Projected/actual: {f.Out}Z to {f.In}Z. Departure delay {f.Leg.DepartureDelayMinutes:0} min; arrival delay {f.Leg.ArrivalDelayMinutes:0} min. "+(f.Leg.Completed?"Confirmed completion recorded.":"This leg is projected from the current actuals and minimum turnaround."))).ToArray(),"hero");
+            $"Scheduled: {f.Leg.ScheduledOut:HH:mm}Z to {f.Leg.ScheduledIn:HH:mm}Z. Projected/actual: {f.Out}Z to {f.In}Z. Departure delay {f.Leg.DepartureDelayMinutes:0} min; arrival delay {f.Leg.ArrivalDelayMinutes:0} min. "+(f.Leg.Completed?"Confirmed completion recorded.":"This leg is projected from the current actuals and minimum turnaround."))).ToArray(),"flights-unbranded");
     private void Module_Click(object sender,RoutedEventArgs e)
     {
         var name=(string)((Button)sender).Tag;

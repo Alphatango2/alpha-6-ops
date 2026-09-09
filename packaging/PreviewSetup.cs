@@ -18,7 +18,9 @@ internal static class PreviewSetup
     const string IdentityPrefix = "Alpha6OPS-Desktop-Preview-";
     const string RegistryKey = @"Software\Microsoft\Windows\CurrentVersion\Uninstall\Alpha6OPSPreview";
     static readonly string InstallPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Alpha6Designs", "Alpha6OPSPreview");
-    static readonly string ShortcutPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Programs), "Alpha 6 OPS Preview.lnk");
+    static readonly string ShortcutPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Programs), "Alpha 6 OPS.lnk");
+    static readonly string LegacyShortcutPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Programs), "Alpha 6 OPS Preview.lnk");
+    static readonly string FlightLabShortcutPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Programs), "Alpha 6 Flight Lab.lnk");
 
     [DllImport("user32.dll")]
     static extern bool ReleaseCapture();
@@ -70,7 +72,7 @@ internal static class PreviewSetup
             using (var details = new Label())
             using (var install = new Button())
             {
-                form.Text = "Alpha 6 OPS — Desktop Preview Setup";
+                form.Text = "Alpha 6 OPS Setup";
                 form.ClientSize = new Size(640, 440);
                 form.FormBorderStyle = FormBorderStyle.None;
                 form.MaximizeBox = false;
@@ -107,7 +109,7 @@ internal static class PreviewSetup
                 mark.SetBounds(26, 58, 286, 126);
                 mark.SizeMode = PictureBoxSizeMode.Zoom;
                 mark.Image = LoadSetupLogo();
-                version.Text = "WINDOWS DESKTOP PREVIEW\r\nVERSION 0.12.2";
+                version.Text = "WINDOWS DESKTOP\r\nVERSION 0.12.2";
                 version.SetBounds(338, 91, 270, 58);
                 version.Font = new Font("Segoe UI Semibold", 12, FontStyle.Bold);
                 version.ForeColor = Color.WhiteSmoke;
@@ -139,7 +141,7 @@ internal static class PreviewSetup
                         CreateShortcut();
                         using (var key = Registry.CurrentUser.CreateSubKey(RegistryKey))
                         {
-                            key.SetValue("DisplayName", "Alpha 6 OPS Desktop Preview");
+                            key.SetValue("DisplayName", "Alpha 6 OPS");
                             key.SetValue("DisplayVersion", "0.12.2");
                             key.SetValue("Publisher", "Alpha 6 Designs");
                             key.SetValue("InstallLocation", InstallPath);
@@ -148,7 +150,7 @@ internal static class PreviewSetup
                             key.SetValue("NoModify", 1, RegistryValueKind.DWord);
                             key.SetValue("NoRepair", 1, RegistryValueKind.DWord);
                         }
-                        MessageBox.Show(form, (upgrading ? "Upgrade complete." : "Installed.") + " Open Alpha 6 OPS Preview from the Start menu.\r\n\r\nYour existing logs and settings were preserved.", "Alpha 6 OPS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show(form, (upgrading ? "Upgrade complete." : "Installed.") + " Open Alpha 6 OPS or Alpha 6 Flight Lab from the Start menu.\r\n\r\nYour existing logs and settings were preserved.", "Alpha 6 OPS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         form.Close();
                     }
                     catch (Exception error)
@@ -224,6 +226,12 @@ internal static class PreviewSetup
         type.InvokeMember("TargetPath", BindingFlags.SetProperty, null, shortcut, new object[] { Path.Combine(InstallPath, "Alpha6OPS.exe") });
         type.InvokeMember("WorkingDirectory", BindingFlags.SetProperty, null, shortcut, new object[] { InstallPath });
         type.InvokeMember("Save", BindingFlags.InvokeMethod, null, shortcut, null);
+        if (File.Exists(LegacyShortcutPath)) File.Delete(LegacyShortcutPath);
+        var lab = shellType.InvokeMember("CreateShortcut", BindingFlags.InvokeMethod, null, shell, new object[] { FlightLabShortcutPath });
+        var labType = lab.GetType();
+        labType.InvokeMember("TargetPath", BindingFlags.SetProperty, null, lab, new object[] { Path.Combine(InstallPath, "FlightLab", "Alpha6FlightLab.exe") });
+        labType.InvokeMember("WorkingDirectory", BindingFlags.SetProperty, null, lab, new object[] { Path.Combine(InstallPath, "FlightLab") });
+        labType.InvokeMember("Save", BindingFlags.InvokeMethod, null, lab, null);
     }
 
     static void ReplaceInstallation(string destination, bool checkRunning)
@@ -292,17 +300,27 @@ internal static class PreviewSetup
                     throw new IOException("Alpha 6 OPS is still running. Use Exit OPS, then run the upgrade again.");
             }
         }
+        foreach (var process in Process.GetProcessesByName("Alpha6FlightLab"))
+        {
+            using (process)
+            {
+                if (!process.HasExited && string.Equals(process.MainModule.FileName, Path.Combine(directory, "FlightLab", "Alpha6FlightLab.exe"), StringComparison.OrdinalIgnoreCase))
+                    throw new IOException("Alpha 6 Flight Lab is still running. Close it, then run the upgrade again.");
+            }
+        }
     }
 
     static int Uninstall()
     {
         VerifyOwnedInstallation(InstallPath);
-        if (MessageBox.Show("Remove Alpha 6 OPS Desktop Preview and its bundled runtime?\r\n\r\nClose Alpha 6 OPS using Exit OPS before continuing.\r\n\r\n" + InstallPath, "Uninstall Alpha 6 OPS", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes) return 0;
+        if (MessageBox.Show("Remove Alpha 6 OPS and its bundled runtime?\r\n\r\nClose Alpha 6 OPS using Exit OPS before continuing.\r\n\r\n" + InstallPath, "Uninstall Alpha 6 OPS", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes) return 0;
         EnsureNotRunning(InstallPath);
         // The target is a fixed, product-owned path; refuse junctions/symlinks anywhere inside it.
         CheckTree(InstallPath);
         Directory.Delete(InstallPath, true);
         if (File.Exists(ShortcutPath)) File.Delete(ShortcutPath);
+        if (File.Exists(LegacyShortcutPath)) File.Delete(LegacyShortcutPath);
+        if (File.Exists(FlightLabShortcutPath)) File.Delete(FlightLabShortcutPath);
         Registry.CurrentUser.DeleteSubKeyTree(RegistryKey, false);
         MessageBox.Show("Alpha 6 OPS Preview was removed.", "Alpha 6 OPS");
         return 0;

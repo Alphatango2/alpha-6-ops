@@ -2,6 +2,8 @@
 
 Latest: **0.12.2 Launch and identify** turns the connection card into **Launch & Connect** for the Microsoft Store edition of MSFS 2024. OPS checks live aircraft/position, the active simulator plan and airport references before linking a saved assignment. Unrelated or stale briefings no longer impose airline routes and delays on free flight. See [flight identification, launch behavior and limits](docs/live-flight-identification.md).
 
+This build integrates Dan's work through `6208a4f542663e9a2e7a1b27b0964297e2c91799`, including Flight Lab, the offline globe, unbranded aircraft artwork, and settings/navigation refinements. Flight Lab uses the same phase recorder while remaining explicitly labeled and separate from real simulator assignments. Build the combined installer with [the desktop packaging script](packaging/build-desktop.ps1); generated installers and archives stay local.
+
 ## Desktop dashboard update
 
 The Windows application now follows Dan's operations-dashboard mockup, with supplied branding, aviation photography, a next-flight hero, module desks, alerts, network map, operations table and fleet chart. Flight details, personal preflight checks, watchlists, replay/live controls and local history are connected. Weather, crew, maintenance and passenger desks are clearly labeled demonstration scenarios. See the [dashboard walkthrough, data sources and verification](docs/dashboard.md). Historical preview notes below describe earlier versions and may no longer reflect the current desktop UI.
@@ -12,7 +14,9 @@ Alpha 6 Designs' MSFS 2024 virtual-airline operations platform. This repository 
 
 ## Windows desktop preview
 
-Latest: **0.12.1 Carrier branding and window controls** changes the active-flight carrier badge from SimBrief's three-letter airline ICAO code. DAL, JBU, AAL, UAL, SWA, ASA, FFT, and NKS receive distinct bundled treatments; every other valid carrier receives a neutral badge labeled with its ICAO code. The shared secondary-window title bar now uses direct, verified minimize, maximize/restore, and close actions. Install with `outputs/Alpha6OPS-Setup-0.12.1.exe`, or fully extract `outputs/Alpha6OPS-Desktop-0.12.1-win-x64.zip` for portable use.
+Published release **0.12.1 Window controls** added direct, verified minimize, maximize/restore, and close actions to the shared secondary-window title bar. Current source removes the short-lived carrier badge experiment: SimBrief's combined airline ICAO and flight number, such as `DAL742`, now appears as one larger identifier. The hero and Fly tile use separate unbranded aircraft-at-gate photographs. Install the published build with `outputs/Alpha6OPS-Setup-0.12.1.exe`, or fully extract `outputs/Alpha6OPS-Desktop-0.12.1-win-x64.zip` for portable use.
+
+Current local builds also include **Alpha 6 Flight Lab**, a separate desktop companion that sends virtual flight phases and failure scenarios through the same Alpha 6 OPS live-telemetry boundary. See [Flight Lab usage and limits](docs/flight-lab.md).
 
 Latest: **0.12.0 Flight Deck foundation** simplifies Flight Tools around the active assignment, SimConnect session, live timeline/debrief, and rotation detail, leaving room for the expanded flight-tracking experience. Recorded-flight replay controls are no longer pilot-facing. Flight History, Log Database, test-log export, health monitoring, local data, and crash-report access now live together in a redesigned **Settings → Logs & Diagnostics** workspace. SimBrief import assigns departure and arrival gates: explicit gates in dispatch remarks take priority, followed by stable airport/airline catalog suggestions, with an unassigned state when no trustworthy match exists. Pilots can review and correct both gates before saving. Install with `outputs/Alpha6OPS-Setup-0.12.0.exe`, or fully extract `outputs/Alpha6OPS-Desktop-0.12.0-win-x64.zip` for portable use.
 
