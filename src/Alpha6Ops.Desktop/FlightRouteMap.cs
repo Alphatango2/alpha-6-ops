@@ -177,7 +177,7 @@ public sealed class FlightRouteMap : UserControl
         var aircraft=livePosition??new GeoPoint(route[0].Latitude,route[0].Longitude);
         if(Project(aircraft,radius,out var start))
         {
-            var angle=0d;var look=DestinationPoint(aircraft,double.IsFinite(liveHeading)?liveHeading:RouteHeading(completedFraction),2/Math.Max(1d,zoom));if(Project(look,radius,out var next))angle=Math.Atan2(next.Y-start.Y,next.X-start.X)*180/Math.PI;
+            var angle=180d;var look=DestinationPoint(aircraft,double.IsFinite(liveHeading)?liveHeading:RouteHeading(completedFraction),2/Math.Max(1d,zoom));if(Project(look,radius,out var next))angle=Math.Atan2(next.Y-start.Y,next.X-start.X)*180/Math.PI+180;
             var plane=new Path{Data=Geometry.Parse("M 0,7 L 10,7 L 17,1 L 21,1 L 18,7 L 34,8 L 18,10 L 21,16 L 17,16 L 10,10 L 0,10 Z"),Fill=Brush("#FFDA00"),Width=34,Height=17,Stretch=Stretch.Fill,RenderTransform=new RotateTransform(angle,17,8.5),Effect=new DropShadowEffect{Color=Colors.Gold,BlurRadius=10,ShadowDepth=0,Opacity=.72},ToolTip=livePosition is null?"Planned departure position • waiting for live aircraft telemetry":$"Live aircraft • {completedFraction:P0} complete"};Add(plane,start.X-17,start.Y-8.5);
         }
     }

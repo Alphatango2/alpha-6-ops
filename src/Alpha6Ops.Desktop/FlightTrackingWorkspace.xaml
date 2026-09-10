@@ -55,7 +55,7 @@
             <StackPanel><TextBlock Text="DISTANCE REMAINING" Style="{StaticResource OpsCaption}"/><TextBlock Text="— NM" FontSize="15" Margin="0,7,0,0"/></StackPanel>
             <StackPanel><TextBlock Text="PROGRESS" Style="{StaticResource OpsCaption}"/><TextBlock x:Name="ProgressText" Text="0%" Foreground="#FFDA00" FontSize="15" Margin="0,7,0,0"/></StackPanel>
           </UniformGrid>
-          <Grid x:Name="ProgressTrack" Grid.Row="1" Margin="0,10,0,0" SizeChanged="ProgressTrack_SizeChanged"><ProgressBar x:Name="ProgressBar" Minimum="0" Maximum="100" Value="0" Height="5" VerticalAlignment="Center"/><Path x:Name="ProgressAircraftIcon" Data="M 0,7 L 10,7 L 17,1 L 21,1 L 18,7 L 34,8 L 18,10 L 21,16 L 17,16 L 10,10 L 0,10 Z" Fill="#FFDA00" Width="34" Height="17" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Center"><Path.RenderTransform><TranslateTransform x:Name="ProgressAircraftTranslate"/></Path.RenderTransform></Path></Grid>
+          <Grid x:Name="ProgressTrack" Grid.Row="1" Margin="0,10,0,0" SizeChanged="ProgressTrack_SizeChanged"><ProgressBar x:Name="ProgressBar" Minimum="0" Maximum="100" Value="0" Height="5" VerticalAlignment="Center"/><Path x:Name="ProgressAircraftIcon" Data="M 0,7 L 10,7 L 17,1 L 21,1 L 18,7 L 34,8 L 18,10 L 21,16 L 17,16 L 10,10 L 0,10 Z" Fill="#FFDA00" Width="34" Height="17" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5"><Path.RenderTransform><TransformGroup><RotateTransform Angle="180"/><TranslateTransform x:Name="ProgressAircraftTranslate"/></TransformGroup></Path.RenderTransform></Path></Grid>
         </Grid>
       </Border>
     </Grid>
