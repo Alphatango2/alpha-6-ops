@@ -176,7 +176,7 @@ public partial class MainWindow : Window
         if (running) return;
         session = new FlightSession(Demo.Rotation());
         milestones.Clear();
-        ReplayProgress.Value = 0;
+        UpdateHeroProgress(0,false);
         StatusText.Text = "Assignment ready. Connect at the gate to begin live flight tracking.";
         tray.Text = "Alpha 6 OPS — Ready for flight";
         RefreshRotation();
@@ -208,7 +208,7 @@ public partial class MainWindow : Window
                     tray.Text = $"Alpha 6 OPS — {PhaseLabel(milestone.Phase)}";
                     RecordFlightEvent(flightId, "phase", milestone.At, new { phase = milestone.Phase.ToString(), label = PhaseLabel(milestone.Phase) });
                 }
-                ReplayProgress.Value++;
+                UpdateHeroProgress(ReplayProgress.Value+1);
                 RefreshRotation();
             }
             var summary = string.Join(" ", Projection.Skip(1).Select(l => $"{l.Id} {(l.DepartureDelayMinutes == 0 ? "on time" : $"{l.DepartureDelayMinutes:+0;-0} min")}."));
@@ -596,7 +596,7 @@ public partial class MainWindow : Window
             DepartureText.Text = "Add the flight number, route and planned UTC times to calculate progress and ETA.";
             DepartedValueText.Text = ArrivalValueText.Text = ElapsedValueText.Text = "—";
             PhaseText.Text = phase is null ? "MONITORING" : PhaseLabel(phase.Value).ToUpperInvariant();
-            ReplayProgress.Maximum = 100; ReplayProgress.Value = PhaseProgress(phase, null, null, null);
+            ReplayProgress.Maximum = 100; UpdateHeroProgress(PhaseProgress(phase, null, null, null));
             StatusText.Text = status;
             RefreshFlightTrackingWorkspace(simulatorTime,phase,status);
             return;
@@ -612,7 +612,9 @@ public partial class MainWindow : Window
         ElapsedValueText.Text = leg?.ActualOut is { } start && simulatorTime is { } now && now >= start ? FormatDuration((leg.ActualIn ?? now) - start) : "—";
         PhaseText.Text = phase is null ? "MONITORING" : PhaseLabel(phase.Value).ToUpperInvariant();
         ReplayProgress.Maximum = 100;
-        ReplayProgress.Value = PhaseProgress(phase, simulatorTime, leg?.ActualOut, projection?.EstimatedIn);
+        var phaseProgress=PhaseProgress(phase, simulatorTime, leg?.ActualOut, projection?.EstimatedIn);
+        var continuousProgress=liveRouteProgress is { } routeFraction?routeFraction*100:liveTelemetry?.HasPosition==true&&FlightTrackingView is not null?FlightTrackingView.TrackingMap.CompletedFraction*100:phaseProgress;
+        UpdateHeroProgress(continuousProgress);
         StatusText.Text = status;
         RefreshFlightTrackingWorkspace(simulatorTime,phase,status);
     }
