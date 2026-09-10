@@ -110,6 +110,23 @@ internal static class DesktopSmokeTest
             var imported = SimBriefImporter.Parse(simBriefFixture, "test-pilot", false);
             if (imported.Plan.FlightNumber != "JBU124" || imported.Plan.Origin != "KLAX" || imported.Plan.Destination != "KJFK" || imported.Plan.Registration != "N123JB" || imported.AircraftType != "A321-200" || imported.Plan.AircraftType != "A321-200" || imported.Plan.PlannedTripFuel != 31000 || imported.Plan.FuelUnits != "LBS" || imported.CruiseAltitudeFeet != 35000 || imported.RampFuel != 42000 || imported.FuelUnits != "LBS" || imported.Plan.DepartureGate != "52A" || imported.Plan.ArrivalGate != "12" || imported.Plan.GateAssignmentConfidence != "High" || imported.Plan.Route != "DCT TEST" || imported.Plan.RoutePoints?.Count != 4 || imported.Plan.RoutePoints[0].Ident != "KLAX" || imported.Plan.RoutePoints[^1].Ident != "KJFK")
                 throw new InvalidOperationException("SimBrief briefing fields were not mapped into the active flight.");
+            var recoveryDirectory=Path.Combine(outputDirectory,"flight-recovery-test");
+            ActiveFlightPlanStore.Save(imported.Plan,recoveryDirectory);
+            var recoveryEvent=new TrackingEventEntry(DateTimeOffset.Parse("2026-09-09T10:15:00Z"),"Takeoff / airborne","Liftoff confirmed","Liftoff confirmed • IAS 150 KT");
+            var recoveryState=new FlightRecoveryState(imported.Plan.FlightNumber,imported.Plan.PlannedDepartureUtc,"FLIGHT LAB","A321 TEST",FlightPhase.Airborne,
+                DateTimeOffset.Parse("2026-09-09T10:16:00Z"),new Telemetry(DateTimeOffset.Parse("2026-09-09T10:16:00Z"),false,155,false,true,AltitudeFeet:double.NaN),.18,
+                DateTimeOffset.Parse("2026-09-09T10:00:00Z"),null,[new FlightEvent(FlightPhase.TaxiOut,DateTimeOffset.Parse("2026-09-09T10:00:00Z")),new FlightEvent(FlightPhase.Airborne,DateTimeOffset.Parse("2026-09-09T10:15:00Z"))],[recoveryEvent],new FlightTrackingEventMonitor().CaptureState(),DateTimeOffset.UtcNow);
+            FlightRecoveryStore.Save(recoveryState,recoveryDirectory);
+            var restoredPlan=ActiveFlightPlanStore.Load(recoveryDirectory);var restoredState=restoredPlan is null?null:FlightRecoveryStore.Load(restoredPlan,recoveryDirectory);
+            if(restoredPlan?.FlightNumber!="JBU124"||restoredState?.Phase!=FlightPhase.Airborne||restoredState.PhaseEvents.Count!=2||restoredState.TrackingEvents.Single().Title!="Takeoff / airborne"||!double.IsNaN(restoredState.LastTelemetry!.AltitudeFeet))
+                throw new InvalidOperationException("Active flight recovery did not round-trip its assignment, phase, events, and telemetry.");
+            var restartedWindow=new MainWindow(recoveryDirectory);restartedWindow.Show();restartedWindow.UpdateLayout();
+            if(restartedWindow.ActivePlanForTest?.FlightNumber!="JBU124"||restartedWindow.RecoveredFlightPhase!=FlightPhase.Airborne||restartedWindow.RecoveredTrackingEventCount!=1||restartedWindow.RecoveredRouteProgress!=.18)
+                throw new InvalidOperationException("A restarted desktop did not restore the active flight workspace and progress.");
+            restartedWindow.Hide();
+            ActiveFlightPlanStore.Delete(recoveryDirectory);FlightRecoveryStore.Delete(recoveryDirectory);
+            if(ActiveFlightPlanStore.Load(recoveryDirectory) is not null||FlightRecoveryStore.Load(imported.Plan,recoveryDirectory) is not null)
+                throw new InvalidOperationException("Clear active flight did not remove assignment and recovery state.");
             var suggestedGates=GateAssignmentResolver.Resolve("DAL","DAL742","KJFK","KLAX",DateTimeOffset.Parse("2026-09-07T12:00:00Z"),"");
             var repeatedGates=GateAssignmentResolver.Resolve("DAL","DAL742","KJFK","KLAX",DateTimeOffset.Parse("2026-09-07T12:00:00Z"),"");
             if(suggestedGates.DepartureGate is null||suggestedGates.ArrivalGate is null||suggestedGates!=repeatedGates||suggestedGates.Confidence!="Suggested")
@@ -133,7 +150,7 @@ internal static class DesktopSmokeTest
             if (window.Projection.Any(leg => leg.DepartureDelayMinutes != 0)) throw new InvalidOperationException("Reset failed.");
             File.WriteAllText(Path.Combine(outputDirectory, "desktop-smoke.json"), JsonSerializer.Serialize(new
             {
-                passed = true, checks = new[] { "WPF startup", "embedded replay", "close-to-tray preserves replay", "downstream delays", "tray restore", "reset", "SQLite fleet counts and N414DZ identity", "case-insensitive fleet search and no-results state", "active-flight assignment window", "timeline scrubber window and snapshot contract", "debrief window and segment/delay contract", "live-tracking recorder feeds the same timeline/debrief windows", "SimBrief JSON mapping", "SQLite diagnostic file index", "crash report serialization", "flight history records a replay run" },
+                passed = true, checks = new[] { "WPF startup", "embedded replay", "close-to-tray preserves replay", "downstream delays", "tray restore", "reset", "SQLite fleet counts and N414DZ identity", "case-insensitive fleet search and no-results state", "active-flight assignment window", "timeline scrubber window and snapshot contract", "debrief window and segment/delay contract", "live-tracking recorder feeds the same timeline/debrief windows", "SimBrief JSON mapping", "active flight recovery round-trip and clear", "SQLite diagnostic file index", "crash report serialization", "flight history records a replay run" },
                 runtimeDirectory = RuntimeEnvironment.GetRuntimeDirectory(), legs
             }, new JsonSerializerOptions { WriteIndented = true }));
         }

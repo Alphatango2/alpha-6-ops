@@ -674,7 +674,10 @@
               <TextBlock Text="FLIGHT ASSIGNMENT" Style="{StaticResource OpsTitle}" />
               <TextBlock x:Name="RouteText" FontSize="23" Margin="0,8,0,4" />
               <TextBlock x:Name="DepartureText" Foreground="#A9BDCC" TextWrapping="Wrap" />
-              <Button Content="SET ACTIVE FLIGHT / IMPORT SIMBRIEF" Style="{StaticResource OpsButton}" Click="SetFlight_Click" Margin="0,12,0,20" />
+              <WrapPanel Margin="0,12,0,20">
+                <Button Content="SET ACTIVE FLIGHT / IMPORT SIMBRIEF" Style="{StaticResource OpsButton}" Click="SetFlight_Click" Margin="0,0,10,0" />
+                <Button x:Name="ClearFlightButton" Content="CLEAR ACTIVE FLIGHT" Style="{StaticResource OpsButton}" Click="ClearFlight_Click" IsEnabled="False" />
+              </WrapPanel>
               <UniformGrid Columns="3" Margin="0,0,0,18">
                 <StackPanel>
                   <TextBlock Text="DEPARTED" Style="{StaticResource OpsCaption}" />

@@ -37,6 +37,7 @@ public partial class MainWindow : Window
     private double? liveRouteProgress;
     private FlightTrackingEventMonitor? trackingEventMonitor;
     private bool liveInvalid;
+    private bool liveNeedsBaseline;
     private TestFlightLog? flightLog;
     private string? lastJournal;
     private readonly ProgramMonitor? programMonitor;
@@ -45,6 +46,7 @@ public partial class MainWindow : Window
     private GeneralSettings generalSettings = GeneralSettings.Defaults;
     private readonly FlightHistoryDatabase? flightHistory;
     private readonly bool diagnosticMode;
+    private readonly string stateDirectory;
     // Single-leg rotation for the live-tracked assignment. Actuals are applied through the same
     // RotationPlanner.ApplyMilestone/Project path the fixture-replay session uses, so a live flight
     // and a replayed one compute delay/ETA identically instead of the tracker hand-rolling its own math.
@@ -54,12 +56,17 @@ public partial class MainWindow : Window
     internal bool TrayVisible => tray.Visible;
     internal IReadOnlyList<LegProjection> Projection => RotationPlanner.Project(session.Rotation);
     internal FlightHistoryDatabase? FlightHistory => flightHistory;
+    internal FlightPhase? RecoveredFlightPhase=>liveRecorder?.Phase;
+    internal int RecoveredTrackingEventCount=>trackingEvents.Count;
+    internal double? RecoveredRouteProgress=>liveRouteProgress;
+    internal ActiveFlightPlan? ActivePlanForTest=>activePlan;
     private string SelectedFixture => (string)(FixtureCombo.SelectedItem ?? EmbeddedReplay.Fixtures[0]);
     private string PilotName => string.IsNullOrWhiteSpace(PilotNameBox.Text) ? "Unspecified" : PilotNameBox.Text.Trim();
 
     public MainWindow(string? diagnosticDirectory = null)
     {
         diagnosticMode = diagnosticDirectory is not null;
+        stateDirectory=diagnosticDirectory??CrashReporter.RootDirectory;
         InitializeComponent();
         try { flightHistory = new FlightHistoryDatabase(diagnosticDirectory ?? CrashReporter.RootDirectory); }
         catch (Exception error) { CrashReporter.Write("flight_history_startup", error); }
@@ -82,7 +89,8 @@ public partial class MainWindow : Window
         EventsList.ItemsSource = milestones;
         Closing += OnClosing;
         StateChanged += (_, _) => OnWindowStateChanged();
-        activePlan = diagnosticDirectory is null ? ActiveFlightPlanStore.Load() : null;
+        activePlan = ActiveFlightPlanStore.Load(stateDirectory);
+        if(activePlan is not null)RestoreFlightRecovery(FlightRecoveryStore.Load(activePlan,stateDirectory));
         preferences = diagnosticDirectory is null ? UserPreferencesStore.Load() : null;
         generalSettings = GeneralSettingsStore.Load(diagnosticDirectory);
         FixtureCombo.ItemsSource = EmbeddedReplay.Fixtures;
@@ -342,9 +350,38 @@ public partial class MainWindow : Window
         var dialog = new ActiveFlightWindow(activePlan) { Owner = this };
         if (dialog.ShowDialog() != true || dialog.Plan is null) return;
         activePlan = dialog.Plan;
-        ActiveFlightPlanStore.Save(activePlan);
-        liveRotation = null; // rebuilt from the new plan on the next live sample
+        ActiveFlightPlanStore.Save(activePlan,stateDirectory);
+        FlightRecoveryStore.Delete(stateDirectory);ResetLiveTrackingState();
         RefreshLiveTracker(liveAircraft, liveLast, liveRecorder?.Phase, "Assignment ready. Connect to MSFS 2024 to begin tracking.");
+    }
+    private void ClearFlight_Click(object sender,RoutedEventArgs e)
+    {
+        if(running||liveCancellation is not null){OpsNoticeWindow.Show(this,"Active flight","Finish the replay or disconnect the simulator before clearing the active flight.");return;}
+        ActiveFlightPlanStore.Delete(stateDirectory);FlightRecoveryStore.Delete(stateDirectory);activePlan=null;ResetLiveTrackingState();
+        RefreshLiveTracker(null,null,null,"No active flight");ShowDashboard();
+    }
+    private void ResetLiveTrackingState()
+    {
+        liveRecorder=null;liveLast=null;liveAircraft=null;liveTelemetry=null;liveRouteProgress=null;liveRotation=null;liveInvalid=false;liveNeedsBaseline=false;
+        trackingEventMonitor=null;trackingEvents.Clear();milestones.Clear();LiveTimelineButton.IsEnabled=LiveDebriefButton.IsEnabled=false;
+    }
+    private void RestoreFlightRecovery(FlightRecoveryState? state)
+    {
+        if(state is null||activePlan is null)return;
+        liveLast=state.LastSimulatorUtc;liveAircraft=state.Aircraft;liveTelemetry=state.LastTelemetry;liveRouteProgress=state.RouteProgress;liveSource=state.Source;
+        var profile=AircraftGroundProfiles.ForFamily(state.Aircraft);liveRecorder=new TimelineRecorder(new PhaseDetector(profile,state.Phase,state.LastSimulatorUtc),state.PhaseEvents);
+        var baseRotation=BuildLiveRotation(activePlan,state.Aircraft,profile);
+        if(baseRotation is not null)liveRotation=baseRotation with{Legs=[baseRotation.Legs[0] with{ActualOut=state.ActualOut,ActualIn=state.ActualIn}]};
+        trackingEventMonitor=new FlightTrackingEventMonitor(state.MonitorState);foreach(var entry in state.TrackingEvents)trackingEvents.Add(entry);
+        foreach(var flightEvent in state.PhaseEvents)milestones.Add($"RECOVERED {flightEvent.At.UtcDateTime:HH:mm:ss}Z   {PhaseLabel(flightEvent.Phase)}");
+        liveNeedsBaseline=true;
+    }
+    private void SaveFlightRecovery()
+    {
+        if(activePlan is null||liveRecorder is null||liveAircraft is null)return;
+        var leg=liveRotation?.Legs[0];
+        try{FlightRecoveryStore.Save(new(activePlan.FlightNumber,activePlan.PlannedDepartureUtc,liveSource,liveAircraft,liveRecorder.Phase,liveLast,liveTelemetry,liveRouteProgress,leg?.ActualOut,leg?.ActualIn,liveRecorder.Events.ToArray(),trackingEvents.ToArray(),trackingEventMonitor?.CaptureState(),DateTimeOffset.UtcNow),stateDirectory);}
+        catch(Exception error) when(error is IOException or UnauthorizedAccessException){CrashReporter.Write("flight_recovery_save",error);}
     }
     private static AircraftRotation? BuildLiveRotation(ActiveFlightPlan? plan, string? simulatorAircraft, AircraftGroundProfile groundProfile)
     {
@@ -399,13 +436,10 @@ public partial class MainWindow : Window
     {
         if (liveCancellation is not null || running) return;
         liveCancellation = CancellationTokenSource.CreateLinkedTokenSource(lifetime.Token);
-        liveRecorder = null; liveLast = null; liveAircraft = null; liveInvalid = false;liveTelemetry=null;liveRouteProgress=null;
-        liveSource = useFlightLab ? "FLIGHT LAB" : "MSFS 2024"; lastScenarioEvent = null;trackingEventMonitor=new();trackingEvents.Clear();
-        liveRotation = null;
-        LiveTimelineButton.IsEnabled = LiveDebriefButton.IsEnabled = false;
+        liveInvalid=false;liveNeedsBaseline=liveRecorder is not null;liveSource = useFlightLab ? "FLIGHT LAB" : "MSFS 2024"; lastScenarioEvent = null;
+        if(liveRecorder is null){liveLast=null;liveAircraft=null;liveTelemetry=null;liveRouteProgress=null;trackingEventMonitor=new();trackingEvents.Clear();liveRotation=null;LiveTimelineButton.IsEnabled=LiveDebriefButton.IsEnabled=false;milestones.Clear();}
         ConnectButton.IsEnabled = ConnectFlightLabButton.IsEnabled = ReplayButton.IsEnabled = ResetButton.IsEnabled = false;
         DisconnectButton.IsEnabled = true;
-        milestones.Clear();
         SetAdvanced(showRotationDetails);
         StartLog(useFlightLab ? "flight_lab" : "live_simconnect");
         var attempt = 0;
@@ -469,7 +503,9 @@ public partial class MainWindow : Window
         RecordLog("telemetry", s.At, new { aircraft = reading.Aircraft, onGround = s.OnGround, groundSpeedKnots = s.GroundSpeedKnots, indicatedAirspeedKnots=double.IsFinite(s.IndicatedAirspeedKnots)?(double?)s.IndicatedAirspeedKnots:null, verticalSpeedFeetPerMinute=double.IsFinite(s.VerticalSpeedFeetPerMinute)?(double?)s.VerticalSpeedFeetPerMinute:null, gearExtendedRatio=double.IsFinite(s.GearExtendedRatio)?(double?)s.GearExtendedRatio:null, flapsExtendedRatio=double.IsFinite(s.FlapsExtendedRatio)?(double?)s.FlapsExtendedRatio:null, pitchDegrees=double.IsFinite(s.PitchDegrees)?(double?)s.PitchDegrees:null, bankDegrees=double.IsFinite(s.BankDegrees)?(double?)s.BankDegrees:null, fuelTotalWeightPounds=double.IsFinite(s.FuelTotalWeightPounds)?(double?)s.FuelTotalWeightPounds:null, runningEngineCount=s.RunningEngineCount>=0?(int?)s.RunningEngineCount:null, runningEngineMask=s.RunningEngineMask>=0?(int?)s.RunningEngineMask:null, parkingBrake = s.ParkingBrake, enginesRunning = s.EnginesRunning, paused = s.Paused, slewing = s.Slewing, latitude = s.HasPosition?(double?)s.LatitudeDegrees:null, longitude = s.HasPosition?(double?)s.LongitudeDegrees:null, altitudeFeet = double.IsFinite(s.AltitudeFeet)?(double?)s.AltitudeFeet:null, altitudeAboveGroundFeet=double.IsFinite(s.AltitudeAboveGroundFeet)?(double?)s.AltitudeAboveGroundFeet:null, headingDegrees = double.IsFinite(s.HeadingDegrees)?(double?)s.HeadingDegrees:null, routeProgress=reading.RouteProgress });
         if(reading.ScenarioEvent is {Length:>0} scenario&&scenario!=lastScenarioEvent){lastScenarioEvent=scenario;RecordLog("flight_lab_event",s.At,new{scenario});}
         LiveText.Text = $"{reading.Source} • {reading.Aircraft} • {s.At.UtcDateTime:HH:mm:ss}Z • {s.GroundSpeedKnots:0.0} kt • Brake {(s.ParkingBrake ? "set" : "released")} • {(s.Paused ? "Paused" : s.Slewing ? "Slew" : s.OnGround ? "On ground" : "Airborne")}";
-        if (!liveInvalid && !TelemetryContinuity.IsContinuous(liveLast, liveAircraft, s.At, reading.Aircraft))
+        var continuous=liveNeedsBaseline?(liveAircraft is null||reading.Aircraft==liveAircraft):TelemetryContinuity.IsContinuous(liveLast,liveAircraft,s.At,reading.Aircraft);
+        liveNeedsBaseline=false;
+        if (!liveInvalid && !continuous)
         {
             liveInvalid = true;
             RecordLog("monitor_invalidated", s.At, new { reason = "discontinuous_telemetry", previousSimulatorUtc = liveLast, previousAircraft = liveAircraft });
@@ -506,6 +542,7 @@ public partial class MainWindow : Window
         tray.Text = "Alpha 6 OPS — Live " + liveRecorder.Phase;
         var altitude=double.IsFinite(s.AltitudeFeet)?$" • {s.AltitudeFeet:0} ft":"";var heading=double.IsFinite(s.HeadingDegrees)?$" • {((s.HeadingDegrees%360)+360)%360:000}°":"";
         RefreshLiveTracker(reading.Aircraft, s.At, liveRecorder.Phase, $"Live telemetry • {s.GroundSpeedKnots:0.0} kt{altitude}{heading} • Brake {(s.ParkingBrake ? "set" : "released")}");
+        SaveFlightRecovery();
     }
     private void StartLog(string mode)
     {
@@ -587,6 +624,7 @@ public partial class MainWindow : Window
 
     private void RefreshLiveTracker(string? simulatorAircraft, DateTimeOffset? simulatorTime, FlightPhase? phase, string status)
     {
+        ClearFlightButton.IsEnabled=activePlan is not null&&liveCancellation is null&&!running;
         RefreshDashboardFlight(true);
         TrackerModeText.Text = liveSource=="FLIGHT LAB"?"ACTIVE FLIGHT • FLIGHT LAB":"ACTIVE FLIGHT • LIVE SIMCONNECT";
         if (activePlan is null)
@@ -632,7 +670,9 @@ public partial class MainWindow : Window
 
     private void AddTrackingEvent(TrackingEventEntry? entry)
     {
-        if(entry is null)return;trackingEvents.Add(entry);RecordLog("tracking_event",entry.At,new{entry.Title,entry.Summary,entry.Detail,entry.Kind});
+        if(entry is null)return;
+        if(entry.Title=="Simulator connection lost"&&trackingEvents.LastOrDefault() is {} previous&&previous.Title==entry.Title&&previous.Summary==entry.Summary)return;
+        trackingEvents.Add(entry);RecordLog("tracking_event",entry.At,new{entry.Title,entry.Summary,entry.Detail,entry.Kind});SaveFlightRecovery();
     }
 
     private double PhaseProgress(FlightPhase? phase, DateTimeOffset? now, DateTimeOffset? start, DateTimeOffset? eta) => phase switch

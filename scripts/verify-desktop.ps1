@@ -22,4 +22,10 @@ if (-not (Test-Path -LiteralPath $desktopPath) -or -not (Test-Path -LiteralPath 
 $desktop = Get-Content -LiteralPath $desktopPath -Raw | ConvertFrom-Json
 $dashboard = Get-Content -LiteralPath $dashboardPath -Raw | ConvertFrom-Json
 if (-not $desktop.passed -or -not $dashboard.passed) { throw 'Desktop verification failed.' }
-[pscustomobject]@{ passed = $true; desktopChecks = $desktop.checks.Count; dashboardChecks = $dashboard.count; outputDirectory = $resultDirectory } | ConvertTo-Json
+$activationProcess = Start-Process -FilePath $appPath -ArgumentList @('--activation-smoke', ('"' + $resultDirectory + '"')) -WindowStyle Hidden -PassThru
+if (-not $activationProcess.WaitForExit(15000)) { Stop-Process -Id $activationProcess.Id; throw 'Single-instance activation verification timed out.' }
+$activationPath = Join-Path $resultDirectory 'activation-smoke.json'
+if (-not (Test-Path -LiteralPath $activationPath)) { throw 'Single-instance activation verification did not produce a report.' }
+$activation = Get-Content -LiteralPath $activationPath -Raw | ConvertFrom-Json
+if (-not $activation.passed) { throw 'A second launch did not restore the tray-hidden primary window.' }
+[pscustomobject]@{ passed = $true; desktopChecks = $desktop.checks.Count; dashboardChecks = $dashboard.count; singleInstanceActivation = $activation.passed; outputDirectory = $resultDirectory } | ConvertTo-Json

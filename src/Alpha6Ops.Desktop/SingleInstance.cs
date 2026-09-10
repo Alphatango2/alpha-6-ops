@@ -1,37 +1,37 @@
 using System;
-using System.Runtime.InteropServices;
 using System.Threading;
 
 namespace Alpha6Ops.Desktop;
 
-// Refuses a second launch and brings the running window forward instead, since the app is
-// designed to live in the tray rather than exit and two copies would fight over the same
-// log files, active-flight assignment and SimConnect connection.
+// A named event reaches the primary process even while its WPF window has no visible HWND in the
+// taskbar. The primary process owns the mutex and listens for explicit restore requests.
 internal static class SingleInstance
 {
-    private const int SW_RESTORE = 9;
+    private const string MutexName="Local\\Alpha6Designs.Alpha6OPS.SingleInstance";
+    private const string ActivationName="Local\\Alpha6Designs.Alpha6OPS.Activate";
     private static Mutex? mutex;
+    private static EventWaitHandle? activation;
+    private static RegisteredWaitHandle? listener;
 
-    internal static bool TryAcquire(string mainWindowTitle)
+    internal static bool TryAcquire()
     {
-        mutex = new Mutex(true, "Alpha6Designs.Alpha6OPS.SingleInstance", out var createdNew);
-        if (createdNew) return true;
-        var existing = FindWindow(null, mainWindowTitle);
-        if (existing != IntPtr.Zero) { ShowWindow(existing, SW_RESTORE); SetForegroundWindow(existing); }
-        mutex.Dispose();
-        mutex = null;
+        mutex=new Mutex(true,MutexName,out var createdNew);
+        if(createdNew){activation=new EventWaitHandle(false,EventResetMode.AutoReset,ActivationName);return true;}
+        mutex.Dispose();mutex=null;
+        try{using var signal=EventWaitHandle.OpenExisting(ActivationName);signal.Set();}catch(WaitHandleCannotBeOpenedException){}
         return false;
+    }
+
+    internal static void Listen(Action restore)
+    {
+        if(activation is null)return;
+        listener=ThreadPool.RegisterWaitForSingleObject(activation,(_,_)=>restore(),null,Timeout.Infinite,true);
     }
 
     internal static void Release()
     {
-        mutex?.ReleaseMutex();
-        mutex?.Dispose();
-        mutex = null;
+        listener?.Unregister(null);listener=null;activation?.Dispose();activation=null;
+        try{mutex?.ReleaseMutex();}catch(ApplicationException){}
+        mutex?.Dispose();mutex=null;
     }
-
-    [DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
-    private static extern IntPtr FindWindow(string? lpClassName, string lpWindowName);
-    [DllImport("user32.dll")] private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
-    [DllImport("user32.dll")] private static extern bool SetForegroundWindow(IntPtr hWnd);
 }

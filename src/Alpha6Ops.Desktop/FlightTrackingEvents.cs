@@ -10,6 +10,10 @@ internal sealed record TrackingEventEntry(DateTimeOffset At,string Title,string 
     public string Time => At.UtcDateTime.ToString("HH:mm:ss'Z'");
 }
 
+internal sealed record FlightTrackingMonitorState(IReadOnlyList<string> Fired,double? PreviousAltitude,double? InitialFuelPounds,
+    bool WasPaused,bool WasSlewing,bool PreviousEngines,bool PreviousBrake,bool HasSample,bool HasTouchedDown,
+    int PreviousEngineMask,int ReportedFlaps,double PreviousGear,string? AssignedDestination,int ReportedCruiseLevel);
+
 internal sealed class FlightTrackingEventMonitor
 {
     private readonly HashSet<string> fired=new(StringComparer.Ordinal);
@@ -21,6 +25,18 @@ internal sealed class FlightTrackingEventMonitor
     private int reportedCruiseLevel;
     private double previousGear=double.NaN;
     private string? assignedDestination;
+
+    internal FlightTrackingEventMonitor(FlightTrackingMonitorState? restored=null)
+    {
+        if(restored is null)return;
+        fired.UnionWith(restored.Fired);previousAltitude=restored.PreviousAltitude;initialFuelPounds=restored.InitialFuelPounds;
+        wasPaused=restored.WasPaused;wasSlewing=restored.WasSlewing;previousEngines=restored.PreviousEngines;previousBrake=restored.PreviousBrake;
+        hasSample=restored.HasSample;hasTouchedDown=restored.HasTouchedDown;previousEngineMask=restored.PreviousEngineMask;
+        reportedFlaps=restored.ReportedFlaps;previousGear=restored.PreviousGear;assignedDestination=restored.AssignedDestination;reportedCruiseLevel=restored.ReportedCruiseLevel;
+    }
+
+    internal FlightTrackingMonitorState CaptureState()=>new(fired.ToArray(),previousAltitude,initialFuelPounds,wasPaused,wasSlewing,
+        previousEngines,previousBrake,hasSample,hasTouchedDown,previousEngineMask,reportedFlaps,previousGear,assignedDestination,reportedCruiseLevel);
 
     internal IReadOnlyList<TrackingEventEntry> Observe(Telemetry sample,FlightPhase phase,FlightEvent? milestone,double progress,ActiveFlightPlan? plan,string? scenarioEvent)
     {

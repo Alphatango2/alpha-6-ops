@@ -55,13 +55,19 @@ public static class AircraftGroundProfiles
 }
 
 // A flight-scoped state machine. Timestamps are simulator UTC, never wall-clock time.
-public sealed class PhaseDetector(AircraftGroundProfile? groundProfile = null)
+public sealed class PhaseDetector
 {
-    private readonly AircraftGroundProfile profile = groundProfile ?? AircraftGroundProfile.Default;
-    public FlightPhase Phase { get; private set; } = FlightPhase.AtGate;
+    private readonly AircraftGroundProfile profile;
+    public FlightPhase Phase { get; private set; }
     private DateTimeOffset? last;
     private FlightPhase? candidate;
     private DateTimeOffset candidateSince;
+    public PhaseDetector(AircraftGroundProfile? groundProfile = null, FlightPhase initialPhase = FlightPhase.AtGate, DateTimeOffset? lastObserved = null)
+    {
+        profile = groundProfile ?? AircraftGroundProfile.Default;
+        Phase = initialPhase;
+        last = lastObserved;
+    }
     public FlightEvent? Observe(Telemetry sample)
     {
         if (!double.IsFinite(sample.GroundSpeedKnots) || sample.GroundSpeedKnots < 0)

@@ -7,10 +7,16 @@ public sealed record FlightTimeline(IReadOnlyList<TimelineSnapshot> Snapshots, I
 // the single place that turns detector output into a scrubbable/debriefable timeline, whether
 // samples arrive all at once (a replayed fixture) or one at a time as they're observed live —
 // either way the detector is driven forward exactly once per sample, never re-run.
-public sealed class TimelineRecorder(PhaseDetector detector)
+public sealed class TimelineRecorder
 {
     private readonly List<TimelineSnapshot> snapshots = [];
     private readonly List<FlightEvent> events = [];
+    private readonly PhaseDetector detector;
+    public TimelineRecorder(PhaseDetector detector, IEnumerable<FlightEvent>? restoredEvents = null)
+    {
+        this.detector = detector;
+        if (restoredEvents is not null) events.AddRange(restoredEvents);
+    }
     public FlightPhase Phase => detector.Phase;
     public IReadOnlyList<TimelineSnapshot> Snapshots => snapshots;
     public IReadOnlyList<FlightEvent> Events => events;

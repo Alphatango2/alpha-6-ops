@@ -23,6 +23,9 @@ Check(DebriefSummary.Segments(events.Take(1).ToList()).Count == 0, "fewer than t
 var projected = RotationPlanner.Project(session.Rotation);
 Check(projected[0].DepartureDelayMinutes == 25 && projected[0].ArrivalDelayMinutes == 30, "actual milestone timing");
 Check(projected[1].DepartureDelayMinutes == 30 && projected[2].DepartureDelayMinutes == 5, "delay propagation and slack recovery");
+var restoredDetector=new PhaseDetector(initialPhase:FlightPhase.Airborne,lastObserved:DateTimeOffset.Parse("2026-09-09T12:00:00Z"));
+var restoredRecorder=new TimelineRecorder(restoredDetector,[new FlightEvent(FlightPhase.TaxiOut,DateTimeOffset.Parse("2026-09-09T10:00:00Z")),new FlightEvent(FlightPhase.Airborne,DateTimeOffset.Parse("2026-09-09T10:15:00Z"))]);
+Check(restoredRecorder.Phase==FlightPhase.Airborne&&restoredRecorder.Events.Count==2,"live recorder restores phase and milestone history");
 Check(projected[0].Completed && !projected[1].Completed, "actual versus projected completion");
 var singleLeg = new AircraftRotation("alpha6", "N123AB", 0, [new("LIVE1", "KDTW", "KJFK", DateTimeOffset.Parse("2026-09-02T10:00:00Z"), DateTimeOffset.Parse("2026-09-02T12:00:00Z"))]);
 var departedLeg = RotationPlanner.ApplyMilestone(singleLeg, new(FlightPhase.TaxiOut, DateTimeOffset.Parse("2026-09-02T10:12:00Z")));

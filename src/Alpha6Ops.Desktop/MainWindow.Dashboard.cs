@@ -54,7 +54,7 @@ public partial class MainWindow
         PreviewKeyDown += (_,e) => { if(e.Key == Key.Escape && ToolsOverlay.Visibility == Visibility.Visible) { ToolsOverlay.Visibility = Visibility.Collapsed; e.Handled=true; } };
         RefreshDashboardFlight(false);
         if (activePlan is not null) RefreshLiveTracker(null,null,null,"Assignment ready. Connect at the gate to begin tracking.");
-        else RefreshFlightTrackingWorkspace(null,null,"No active flight");
+        else{if(!diagnosticMode)RefreshDashboardFlight(true);RefreshFlightTrackingWorkspace(null,null,"No active flight");}
         ShowDashboard();
     }
     private void UpdateClock()
@@ -102,7 +102,7 @@ public partial class MainWindow
         var hero=HeroFlight;
         if(hero is null)
         {
-            HeroFlightText.Text="NO FLIGHT";OriginCodeText.Text=DestinationCodeText.Text="—";OriginCityText.Text="SET AN";DestinationCityText.Text="ASSIGNMENT";
+            HeroFlightText.Text="NO ACTIVE FLIGHT";OriginCodeText.Text=DestinationCodeText.Text="—";OriginCityText.Text="SET AN";DestinationCityText.Text="ASSIGNMENT";
             HeroDepartureText.Text=HeroArrivalText.Text=HeroDepartureGateText.Text=HeroArrivalGateText.Text="—";HeroTimingText.Text="Open Flight tools to enter your flight";HeroStatusText.Text="●  WAITING";HeroAircraftTypeText.Text="NO ASSIGNMENT";
         }
         else

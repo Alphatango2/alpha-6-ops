@@ -19,17 +19,18 @@ internal record ActiveFlightPlan(string FlightNumber, string Registration, strin
 
 internal static class ActiveFlightPlanStore
 {
-    private static string PathName => Path.Combine(CrashReporter.RootDirectory, "active-flight.json");
-    internal static ActiveFlightPlan? Load()
+    private static string PathName(string? root = null) => Path.Combine(root ?? CrashReporter.RootDirectory, "active-flight.json");
+    internal static ActiveFlightPlan? Load(string? root = null)
     {
-        try { return File.Exists(PathName) ? JsonSerializer.Deserialize<ActiveFlightPlan>(File.ReadAllText(PathName)) : null; }
+        try { return File.Exists(PathName(root)) ? JsonSerializer.Deserialize<ActiveFlightPlan>(File.ReadAllText(PathName(root))) : null; }
         catch (Exception error) when (error is IOException or JsonException) { CrashReporter.Write("active_flight_load", error); return null; }
     }
-    internal static void Save(ActiveFlightPlan plan)
+    internal static void Save(ActiveFlightPlan plan,string? root = null)
     {
-        Directory.CreateDirectory(CrashReporter.RootDirectory);
-        var temporary = PathName + ".tmp";
+        var directory=root ?? CrashReporter.RootDirectory;Directory.CreateDirectory(directory);
+        var path=PathName(root);var temporary = path + ".tmp";
         File.WriteAllText(temporary, JsonSerializer.Serialize(plan, new JsonSerializerOptions { WriteIndented = true }));
-        File.Move(temporary, PathName, true);
+        File.Move(temporary, path, true);
     }
+    internal static void Delete(string? root=null){var path=PathName(root);if(File.Exists(path))File.Delete(path);var temporary=path+".tmp";if(File.Exists(temporary))File.Delete(temporary);}
 }
