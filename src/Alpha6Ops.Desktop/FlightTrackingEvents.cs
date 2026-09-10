@@ -81,27 +81,32 @@ internal sealed class FlightTrackingEventMonitor
 
     private static TrackingEventEntry Create(DateTimeOffset at,string title,string summary,Telemetry sample,double progress,ActiveFlightPlan? plan,string kind)
     {
-        var parts=new List<string>{summary};
-        if(sample.HasPosition)parts.Add($"Position {sample.LatitudeDegrees:0.0000}, {sample.LongitudeDegrees:0.0000}");
-        if(double.IsFinite(sample.AltitudeFeet))parts.Add($"Altitude {sample.AltitudeFeet:0} ft");
-        parts.Add($"Groundspeed {sample.GroundSpeedKnots:0} kt");
-        if(double.IsFinite(sample.IndicatedAirspeedKnots))parts.Add($"IAS {sample.IndicatedAirspeedKnots:0} kt");
-        if(double.IsFinite(sample.VerticalSpeedFeetPerMinute))parts.Add($"Vertical speed {sample.VerticalSpeedFeetPerMinute:+0;-0;0} ft/min");
-        if(double.IsFinite(sample.HeadingDegrees))parts.Add($"Heading {Normalize(sample.HeadingDegrees):000}°");
-        parts.Add($"Route progress {Math.Clamp(progress,0,1):P0}");
-        var remaining=FlightMetrics.RemainingDistanceNm(plan?.RoutePoints,progress);
-        if(double.IsFinite(remaining))
+        var parts=new List<string>();
+        if(sample.OnGround)
         {
-            parts.Add($"Distance remaining {remaining:0} NM");
-            if(!sample.OnGround&&sample.GroundSpeedKnots>=60&&plan is not null)
-            {
-                var eta=sample.At.AddHours(remaining/Math.Max(sample.GroundSpeedKnots,100));var variance=(int)Math.Round((eta-plan.PlannedArrivalUtc).TotalMinutes);
-                parts.Add($"ETA {eta.UtcDateTime:HH:mm:ss}Z ({(variance==0?"on time":$"{Math.Abs(variance)} min {(variance<0?"early":"late")}")})");
-            }
+            parts.Add($"GS {sample.GroundSpeedKnots:0} KT");
+            parts.Add(sample.ParkingBrake?"BRAKE SET":"BRAKE RELEASED");
+            parts.Add(sample.EnginesRunning?"ENGINES RUNNING":"ENGINES OFF");
+        }
+        else
+        {
+            if(double.IsFinite(sample.AltitudeFeet))parts.Add($"ALT {sample.AltitudeFeet:0} FT");
+            if(double.IsFinite(sample.AltitudeAboveGroundFeet)&&sample.AltitudeAboveGroundFeet<10000)parts.Add($"AGL {sample.AltitudeAboveGroundFeet:0} FT");
+            if(double.IsFinite(sample.IndicatedAirspeedKnots))parts.Add($"IAS {sample.IndicatedAirspeedKnots:0} KT");
+            if(double.IsFinite(sample.VerticalSpeedFeetPerMinute))parts.Add($"VS {sample.VerticalSpeedFeetPerMinute:+0;-0;0} FPM");
+            if(double.IsFinite(sample.HeadingDegrees))parts.Add($"HDG {Normalize(sample.HeadingDegrees):000}°");
+        }
+        if(sample.HasPosition&&title.Contains("Route",StringComparison.OrdinalIgnoreCase))parts.Add($"POS {sample.LatitudeDegrees:0.0000}, {sample.LongitudeDegrees:0.0000}");
+        var remaining=FlightMetrics.RemainingDistanceNm(plan?.RoutePoints,progress);
+        if(double.IsFinite(remaining)&&!sample.OnGround&&sample.GroundSpeedKnots>=60&&plan is not null&&
+           (title.Contains("cruise",StringComparison.OrdinalIgnoreCase)||title.Contains("descent",StringComparison.OrdinalIgnoreCase)||title.Contains("approach",StringComparison.OrdinalIgnoreCase)))
+        {
+            var eta=sample.At.AddHours(remaining/Math.Max(sample.GroundSpeedKnots,100));var variance=(int)Math.Round((eta-plan.PlannedArrivalUtc).TotalMinutes);
+            parts.Add($"ETA {eta.UtcDateTime:HH:mm}Z • {(variance==0?"ON TIME":$"{Math.Abs(variance)} MIN {(variance<0?"EARLY":"LATE")}")}");
         }
         var nearby=FlightMetrics.NearestWaypoint(plan?.RoutePoints,sample);
-        if(nearby is not null)parts.Add($"Nearest SimBrief fix {nearby}");
-        return new(at,title,summary,string.Join(" • ",parts),kind);
+        if(nearby is not null)parts.Add($"NEAR {nearby}");
+        return new(at,title,summary,parts.Count==0?summary:$"{summary}\n{string.Join("  •  ",parts)}",kind);
     }
 
     private static double Speed(Telemetry sample)=>double.IsFinite(sample.IndicatedAirspeedKnots)&&sample.IndicatedAirspeedKnots>0?sample.IndicatedAirspeedKnots:sample.GroundSpeedKnots;

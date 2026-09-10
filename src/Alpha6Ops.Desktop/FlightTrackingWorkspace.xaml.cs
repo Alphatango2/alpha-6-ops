@@ -47,7 +47,7 @@ public partial class FlightTrackingWorkspace : UserControl
         else if(liveEta is not null)ScheduleVarianceText.Text=Variance(liveEta.Value-plan.PlannedArrivalUtc,"ESTIMATE");
         else ScheduleVarianceText.Text="WAITING FOR AIRBORNE DATA";
         UpdateProgress(continuousProgress,true);
-        var rows=events.Reverse().Take(12).ToArray();EventList.ItemsSource=rows;EventEmptyText.Visibility=rows.Length==0?Visibility.Visible:Visibility.Collapsed;
+        var rows=events.Reverse().ToArray();EventList.ItemsSource=rows;EventEmptyText.Visibility=rows.Length==0?Visibility.Visible:Visibility.Collapsed;
     }
 
     private void FlightDeck_Click(object sender,RoutedEventArgs e)=>FlightDeckRequested?.Invoke(this,EventArgs.Empty);
