@@ -17,7 +17,7 @@ public partial class MainWindow : Window
     private bool frozen,automaticPaused;
     private string aircraft="Alpha 6 Test A321",phase="AT GATE";
     private string? scenarioEvent;
-    private FlightState state=new(true,0,true,false,false,false);
+    private FlightState state=new(true,0,true,false,false,false,0,0,0,1);
     private readonly (string Phase,int Seconds,double Progress)[] automatic=
     [
         ("AtGate",5,0),("EngineStart",4,.005),("Pushback",5,.01),("TaxiOut",8,.03),("Takeoff",5,.06),("Climb",8,.20),
@@ -54,7 +54,7 @@ public partial class MainWindow : Window
         var progress=routeProgress;
         if(automaticIndex>=0&&automaticIndex<automatic.Length-1)progress=Math.Clamp(automatic[automaticIndex].Progress+(automatic[automaticIndex+1].Progress-automatic[automaticIndex].Progress)*automaticTicks/automatic[automaticIndex].Seconds,0,1);
         TelemetryText.Text=$"{state.Speed:0} kt • Route {progress:P0} • Brake {(state.Brake?"set":"released")} • Engines {(state.Engines?"running":"off")} • {(state.OnGround?"on ground":"airborne")}";
-        server.Update(new FlightLabFrame(FlightLabProtocol.SchemaVersion,aircraft,simulatorUtc,state.OnGround,state.Speed,state.Brake,state.Engines,state.Paused,state.Slewing,phase,scenarioEvent,progress));
+        server.Update(new FlightLabFrame(FlightLabProtocol.SchemaVersion,aircraft,simulatorUtc,state.OnGround,state.Speed,state.Brake,state.Engines,state.Paused,state.Slewing,phase,scenarioEvent,progress,state.Altitude,state.IndicatedSpeed,state.VerticalSpeed,state.Gear,state.Altitude));
     }
 
     private void ApplyPhase(string value)
@@ -62,19 +62,19 @@ public partial class MainWindow : Window
         routeProgress=value switch{"AtGate"=>0,"EngineStart"=>.005,"Pushback"=>.01,"TaxiOut"=>.03,"Takeoff"=>.06,"Climb"=>.20,"Cruise"=>.58,"Descend"=>.82,"Approach"=>.92,"Land"=>.97,"TaxiIn"=>.99,"Complete"=>1,"GoAround"=>.88,_=>routeProgress};
         (phase,state)=value switch
         {
-            "AtGate"=>("AT GATE",new(true,0,true,false,false,false)),
-            "EngineStart"=>("ENGINE START",new(true,0,true,true,false,false)),
-            "Pushback"=>("PUSHBACK",new(true,4,false,true,false,false)),
-            "TaxiOut"=>("TAXI OUT",new(true,18,false,true,false,false)),
-            "Takeoff"=>("TAKEOFF",new(false,175,false,true,false,false)),
-            "Climb"=>("CLIMB",new(false,285,false,true,false,false)),
-            "Cruise"=>("CRUISE",new(false,450,false,true,false,false)),
-            "Descend"=>("DESCENT",new(false,300,false,true,false,false)),
-            "Approach"=>("APPROACH",new(false,165,false,true,false,false)),
-            "Land"=>("LANDING",new(true,128,false,true,false,false)),
-            "TaxiIn"=>("TAXI TO GATE",new(true,14,false,true,false,false)),
-            "Complete"=>("PARKED",new(true,0,true,false,false,false)),
-            "GoAround"=>("GO-AROUND",new(false,175,false,true,false,false)),
+            "AtGate"=>("AT GATE",new(true,0,true,false,false,false,0,0,0,1)),
+            "EngineStart"=>("ENGINE START",new(true,0,true,true,false,false,0,0,0,1)),
+            "Pushback"=>("PUSHBACK",new(true,4,false,true,false,false,0,4,0,1)),
+            "TaxiOut"=>("TAXI OUT",new(true,18,false,true,false,false,0,18,0,1)),
+            "Takeoff"=>("TAKEOFF",new(false,175,false,true,false,false,400,180,1800,1)),
+            "Climb"=>("CLIMB",new(false,285,false,true,false,false,12000,290,2200,0)),
+            "Cruise"=>("CRUISE",new(false,450,false,true,false,false,35000,290,0,0)),
+            "Descend"=>("DESCENT",new(false,300,false,true,false,false,18000,280,-1800,0)),
+            "Approach"=>("APPROACH",new(false,165,false,true,false,false,2500,165,-700,1)),
+            "Land"=>("LANDING",new(true,128,false,true,false,false,0,125,-300,1)),
+            "TaxiIn"=>("TAXI TO GATE",new(true,14,false,true,false,false,0,14,0,1)),
+            "Complete"=>("PARKED",new(true,0,true,false,false,false,0,0,0,1)),
+            "GoAround"=>("GO-AROUND",new(false,175,false,true,false,false,1800,175,1800,1)),
             _=>(phase,state)
         };
         PhaseText.Text=phase;Publish();
@@ -122,5 +122,5 @@ public partial class MainWindow : Window
     private void MinimizeWindow_Click(object sender,RoutedEventArgs e)=>WindowState=WindowState.Minimized;
     private void ToggleMaximizeWindow_Click(object sender,RoutedEventArgs e)=>WindowState=WindowState==WindowState.Maximized?WindowState.Normal:WindowState.Maximized;
     private void Exit_Click(object sender,RoutedEventArgs e)=>Close();
-    private sealed record FlightState(bool OnGround,double Speed,bool Brake,bool Engines,bool Paused,bool Slewing);
+    private sealed record FlightState(bool OnGround,double Speed,bool Brake,bool Engines,bool Paused,bool Slewing,double Altitude,double IndicatedSpeed,double VerticalSpeed,double Gear);
 }

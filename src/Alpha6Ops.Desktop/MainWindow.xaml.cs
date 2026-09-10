@@ -21,6 +21,7 @@ public partial class MainWindow : Window
     private readonly Forms.NotifyIcon tray;
     private readonly System.Drawing.Icon trayIcon;
     private readonly ObservableCollection<string> milestones = new();
+    private readonly ObservableCollection<TrackingEventEntry> trackingEvents = new();
     private readonly CancellationTokenSource lifetime = new();
     private FlightSession session = new(Demo.Rotation());
     private bool exiting;
@@ -34,6 +35,7 @@ public partial class MainWindow : Window
     private string? lastScenarioEvent;
     private Telemetry? liveTelemetry;
     private double? liveRouteProgress;
+    private FlightTrackingEventMonitor? trackingEventMonitor;
     private bool liveInvalid;
     private TestFlightLog? flightLog;
     private string? lastJournal;
@@ -398,7 +400,7 @@ public partial class MainWindow : Window
         if (liveCancellation is not null || running) return;
         liveCancellation = CancellationTokenSource.CreateLinkedTokenSource(lifetime.Token);
         liveRecorder = null; liveLast = null; liveAircraft = null; liveInvalid = false;liveTelemetry=null;liveRouteProgress=null;
-        liveSource = useFlightLab ? "FLIGHT LAB" : "MSFS 2024"; lastScenarioEvent = null;
+        liveSource = useFlightLab ? "FLIGHT LAB" : "MSFS 2024"; lastScenarioEvent = null;trackingEventMonitor=new();trackingEvents.Clear();
         liveRotation = null;
         LiveTimelineButton.IsEnabled = LiveDebriefButton.IsEnabled = false;
         ConnectButton.IsEnabled = ConnectFlightLabButton.IsEnabled = ReplayButton.IsEnabled = ResetButton.IsEnabled = false;
@@ -418,7 +420,8 @@ public partial class MainWindow : Window
                 SetConnectionBadge(useFlightLab?"CONNECTING TO FLIGHT LAB":"CONNECTING TO SIMULATOR", "#FFCA45", "#433817");
                 try
                 {
-                    Action<string> opened=message => Dispatcher.BeginInvoke(new Action(() => { if (exiting) return; RecordLog("connection_opened", null, new { message,source=liveSource }); ConnectionText.Text = message; SetConnectionBadge(useFlightLab?"FLIGHT LAB CONNECTED":"SIMULATOR CONNECTED", "#65E697", "#173D27"); programMonitor?.Update("Connected"); }));
+                    var currentAttempt=attempt;
+                    Action<string> opened=message => Dispatcher.BeginInvoke(new Action(() => { if (exiting) return; RecordLog("connection_opened", null, new { message,source=liveSource });AddTrackingEvent(trackingEventMonitor?.SystemEvent(DateTimeOffset.UtcNow,useFlightLab?(currentAttempt>1?"Flight Lab reconnected":"Flight Lab connected"):(currentAttempt>1?"SimConnect reconnected":"SimConnect connected"),message)); ConnectionText.Text = message; SetConnectionBadge(useFlightLab?"FLIGHT LAB CONNECTED":"SIMULATOR CONNECTED", "#65E697", "#173D27"); programMonitor?.Update("Connected"); }));
                     Action<LiveReading> received=reading => Dispatcher.BeginInvoke(new Action(() => ObserveLive(reading)));
                     if(useFlightLab)await FlightLabSource.RunAsync(opened,received,liveCancellation.Token);
                     else await SimConnectSource.RunAsync(opened,received,liveCancellation.Token);
@@ -427,6 +430,7 @@ public partial class MainWindow : Window
                 catch (IOException error)
                 {
                     RecordLog("connection_error", liveLast, new { message = error.GetBaseException().Message, type = error.GetType().Name, attempt });
+                    AddTrackingEvent(trackingEventMonitor?.SystemEvent(liveLast??DateTimeOffset.UtcNow,"Simulator connection lost",error.GetBaseException().Message,"alert"));
                     var delay = ReconnectBackoff[Math.Min(attempt - 1, ReconnectBackoff.Length - 1)];
                     ConnectionText.Text = $"{error.GetBaseException().Message} Retrying in {delay.TotalSeconds:0}s… Click Disconnect to stop.";
                     SetConnectionBadge("SIMULATOR CONNECTION LOST — RETRYING", "#FFCA45", "#433817");
@@ -462,13 +466,14 @@ public partial class MainWindow : Window
         liveTelemetry=s;liveRouteProgress=reading.RouteProgress;
         liveSource=reading.Source;
         programMonitor?.Update("Connected", reading.Aircraft, s.At, sampleReceived: true);
-        RecordLog("telemetry", s.At, new { aircraft = reading.Aircraft, onGround = s.OnGround, groundSpeedKnots = s.GroundSpeedKnots, parkingBrake = s.ParkingBrake, enginesRunning = s.EnginesRunning, paused = s.Paused, slewing = s.Slewing, latitude = s.HasPosition?(double?)s.LatitudeDegrees:null, longitude = s.HasPosition?(double?)s.LongitudeDegrees:null, altitudeFeet = double.IsFinite(s.AltitudeFeet)?(double?)s.AltitudeFeet:null, headingDegrees = double.IsFinite(s.HeadingDegrees)?(double?)s.HeadingDegrees:null, routeProgress=reading.RouteProgress });
+        RecordLog("telemetry", s.At, new { aircraft = reading.Aircraft, onGround = s.OnGround, groundSpeedKnots = s.GroundSpeedKnots, indicatedAirspeedKnots=double.IsFinite(s.IndicatedAirspeedKnots)?(double?)s.IndicatedAirspeedKnots:null, verticalSpeedFeetPerMinute=double.IsFinite(s.VerticalSpeedFeetPerMinute)?(double?)s.VerticalSpeedFeetPerMinute:null, gearExtendedRatio=double.IsFinite(s.GearExtendedRatio)?(double?)s.GearExtendedRatio:null, parkingBrake = s.ParkingBrake, enginesRunning = s.EnginesRunning, paused = s.Paused, slewing = s.Slewing, latitude = s.HasPosition?(double?)s.LatitudeDegrees:null, longitude = s.HasPosition?(double?)s.LongitudeDegrees:null, altitudeFeet = double.IsFinite(s.AltitudeFeet)?(double?)s.AltitudeFeet:null, altitudeAboveGroundFeet=double.IsFinite(s.AltitudeAboveGroundFeet)?(double?)s.AltitudeAboveGroundFeet:null, headingDegrees = double.IsFinite(s.HeadingDegrees)?(double?)s.HeadingDegrees:null, routeProgress=reading.RouteProgress });
         if(reading.ScenarioEvent is {Length:>0} scenario&&scenario!=lastScenarioEvent){lastScenarioEvent=scenario;RecordLog("flight_lab_event",s.At,new{scenario});}
         LiveText.Text = $"{reading.Source} • {reading.Aircraft} • {s.At.UtcDateTime:HH:mm:ss}Z • {s.GroundSpeedKnots:0.0} kt • Brake {(s.ParkingBrake ? "set" : "released")} • {(s.Paused ? "Paused" : s.Slewing ? "Slew" : s.OnGround ? "On ground" : "Airborne")}";
         if (!liveInvalid && !TelemetryContinuity.IsContinuous(liveLast, liveAircraft, s.At, reading.Aircraft))
         {
             liveInvalid = true;
             RecordLog("monitor_invalidated", s.At, new { reason = "discontinuous_telemetry", previousSimulatorUtc = liveLast, previousAircraft = liveAircraft });
+            AddTrackingEvent(trackingEventMonitor?.SystemEvent(s.At,reading.Aircraft!=liveAircraft?"Aircraft changed":"Simulator clock discontinuity","Tracking stopped to protect the flight record.","alert"));
         }
         liveLast = s.At; liveAircraft = reading.Aircraft;
         if (liveInvalid) { ConnectionText.Text = "Aircraft changed or the simulator clock jumped. Click Disconnect, then Connect to begin a new monitor session."; RefreshLiveTracker(reading.Aircraft, s.At, liveRecorder?.Phase, "Tracking stopped because the aircraft or simulator clock changed."); return; }
@@ -480,14 +485,19 @@ public partial class MainWindow : Window
             liveRecorder = new TimelineRecorder(new PhaseDetector(groundProfile));
             liveRotation = BuildLiveRotation(activePlan, reading.Aircraft, groundProfile);
             RecordLog("monitor_armed", s.At, new { aircraft = reading.Aircraft });
+            if(activePlan is not null)AddTrackingEvent(trackingEventMonitor?.SystemEvent(s.At,"Assignment loaded",$"{activePlan.FlightNumber} • {activePlan.Origin} to {activePlan.Destination}"));
+            AddTrackingEvent(trackingEventMonitor?.SystemEvent(s.At,"Flight monitoring armed",$"{reading.Aircraft} • stationary at gate"));
         }
-        if (liveRecorder.Observe(s) is { } milestone)
+        var milestone=liveRecorder.Observe(s);
+        if (milestone is not null)
         {
             milestones.Add($"LIVE {milestone.At.UtcDateTime:HH:mm:ss}Z   {PhaseLabel(milestone.Phase)}");
             RecordLog("flight_milestone", milestone.At, new { phase = milestone.Phase.ToString(), label = PhaseLabel(milestone.Phase) });
             if (liveRotation is not null) liveRotation = RotationPlanner.ApplyMilestone(liveRotation, milestone);
             if (milestone.Phase == FlightPhase.Complete) SaveFlightLog();
         }
+        var eventProgress=reading.RouteProgress??FlightTrackingView?.TrackingMap.CompletedFraction??PhaseProgress(liveRecorder.Phase,s.At,liveRotation?.Legs[0].ActualOut,liveRotation is null?null:RotationPlanner.Project(liveRotation)[0].EstimatedIn)/100;
+        foreach(var entry in trackingEventMonitor?.Observe(s,liveRecorder.Phase,milestone,eventProgress,activePlan,reading.ScenarioEvent)??[])AddTrackingEvent(entry);
         LiveTimelineButton.IsEnabled = LiveDebriefButton.IsEnabled = true;
         ConnectionText.Text = $"Connected • {PhaseLabel(liveRecorder.Phase)}. Active flight tracking uses the assignment shown below.";
         tray.Text = "Alpha 6 OPS — Live " + liveRecorder.Phase;
@@ -612,7 +622,12 @@ public partial class MainWindow : Window
         var phaseLabel=phase is null?(activePlan is null?"NO ACTIVE FLIGHT":"READY"):PhaseLabel(phase.Value).ToUpperInvariant();
         var progress=PhaseProgress(phase,simulatorTime,leg?.ActualOut,projection?.EstimatedIn);
         var connected=liveCancellation is not null&&!liveCancellation.IsCancellationRequested;
-        FlightTrackingView.Render(activePlan,liveAircraft,phaseLabel,status,leg?.ActualOut,leg?.ActualIn,projection?.EstimatedIn,progress,milestones,connected,liveTelemetry,liveRouteProgress);
+        FlightTrackingView.Render(activePlan,liveAircraft,phaseLabel,status,leg?.ActualOut,leg?.ActualIn,projection?.EstimatedIn,progress,trackingEvents,connected,liveTelemetry,liveRouteProgress);
+    }
+
+    private void AddTrackingEvent(TrackingEventEntry? entry)
+    {
+        if(entry is null)return;trackingEvents.Add(entry);RecordLog("tracking_event",entry.At,new{entry.Title,entry.Summary,entry.Detail,entry.Kind});
     }
 
     private double PhaseProgress(FlightPhase? phase, DateTimeOffset? now, DateTimeOffset? start, DateTimeOffset? eta) => phase switch

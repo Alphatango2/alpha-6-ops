@@ -10,6 +10,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
+using Alpha6Ops.Core;
 
 namespace Alpha6Ops.Desktop;
 
@@ -41,17 +42,22 @@ internal static class DashboardSmokeTest
         Check(window.DashboardScroll.Visibility==Visibility.Collapsed&&window.FlightTrackingView.Visibility==Visibility.Visible&&window.FlightTrackingView.EmptyState.Visibility==Visibility.Visible,"Flight Tracking opens inside the main application with a No Active Flight state");
         Capture(window,Path.Combine(outputDirectory,"flight-tracking-empty.png"));
         var trackingPlan=new ActiveFlightPlan("FJI911","DQ-FAM","NFFN","YSSY",new DateTimeOffset(2026,9,8,21,0,0,TimeSpan.Zero),new DateTimeOffset(2026,9,9,1,52,0,TimeSpan.Zero),"SimBrief",DepartureGate:"A4",ArrivalGate:"B12",Route:"NFFN NOBAR YSSY",RoutePoints:[new("NFFN",-17.7554,177.4434,"Departure"),new("NOBAR",-25.0,170.0),new("YSSY",-33.9399,151.1753,"Destination")],AircraftType:"A359");
-        window.FlightTrackingView.Render(trackingPlan,"A350-900 (No Cabin)","AT GATE","Assignment ready",null,null,null,0,["21:00Z  Assignment loaded"],false);window.UpdateLayout();
+        var trackingEvents=new[]{new TrackingEventEntry(new DateTimeOffset(2026,9,8,21,0,0,TimeSpan.Zero),"Assignment loaded","NFFN to YSSY","SimBrief route loaded")};
+        window.FlightTrackingView.Render(trackingPlan,"A350-900 (No Cabin)","AT GATE","Assignment ready",null,null,null,0,trackingEvents,false);window.UpdateLayout();
         Check(window.FlightTrackingView.ActiveState.Visibility==Visibility.Visible&&window.FlightTrackingView.RouteText.Text.Contains("NFFN")&&window.FlightTrackingView.AircraftText.Text=="A359"&&window.FlightTrackingView.EventList.Items.Count==1,"Flight Tracking renders the SimBrief aircraft type, route summary, and chronological events");
         Check(window.FlightTrackingView.ArrivalText.Text=="—","Actual or estimated arrival remains blank before live flight telemetry provides an estimate");
         Check(window.FlightTrackingView.TrackingMap.RoutePointCount==3&&window.FlightTrackingView.TrackingMap.FittedZoom>1,"Flight Tracking plots and frames the saved SimBrief route");
-        window.FlightTrackingView.Render(trackingPlan,"Alpha 6 Test A321","CRUISE","Live Flight Lab telemetry",null,null,null,58,["21:00Z  Assignment loaded"],true,new(new DateTimeOffset(2026,9,8,23,0,0,TimeSpan.Zero),false,450,false,true),.58);window.UpdateLayout();
+        window.FlightTrackingView.Render(trackingPlan,"Alpha 6 Test A321","CRUISE","Live Flight Lab telemetry",null,null,null,58,trackingEvents,true,new(new DateTimeOffset(2026,9,8,23,0,0,TimeSpan.Zero),false,450,false,true,AltitudeFeet:35000,IndicatedAirspeedKnots:285,VerticalSpeedFeetPerMinute:0,GearExtendedRatio:0),.58);window.UpdateLayout();
         Check(window.FlightTrackingView.TrackingMap.HasLiveAircraft&&window.FlightTrackingView.TrackingMap.CompletedFraction==.58&&window.FlightTrackingView.TrackingMap.TrackPointCount==1,"Live telemetry moves the filled aircraft and splits completed from remaining route");
         Check(window.FlightTrackingView.ProgressAircraftTranslate.X>window.FlightTrackingView.ProgressTrack.ActualWidth*.5,"Filled progress aircraft advances across the operational progress track");
+        Check(window.FlightTrackingView.DistanceRemainingText.Text.EndsWith(" NM")&&window.FlightTrackingView.DistanceRemainingText.Text!="— NM"&&window.FlightTrackingView.ArrivalText.Text!="—"&&window.FlightTrackingView.ScheduleVarianceText.Text.StartsWith("ESTIMATE"),"Airborne route progress supplies distance remaining, live ETA, and schedule variance");
+        var eventMonitor=new FlightTrackingEventMonitor();var eventTime=new DateTimeOffset(2026,9,8,22,0,0,TimeSpan.Zero);
+        var detected=new List<TrackingEventEntry>();for(var second=0;second<3;second++)detected.AddRange(eventMonitor.Observe(new(eventTime.AddSeconds(second),false,285,false,true,AltitudeFeet:12000+second*500,IndicatedAirspeedKnots:290,VerticalSpeedFeetPerMinute:1800,GearExtendedRatio:0),FlightPhase.Airborne,second==0?new(FlightPhase.Airborne,eventTime):null,.2,trackingPlan,null));
+        Check(detected.Any(entry=>entry.Title=="Liftoff")&&detected.Any(entry=>entry.Title=="Initial climb")&&detected.All(entry=>entry.Detail.Contains("Route progress")),"Checkpoint 4 events carry operational milestones and expandable telemetry details");
         Capture(window,Path.Combine(outputDirectory,"flight-tracking-live-aircraft.png"));
         window.FlightTrackingView.TrackingMap.SetRoute([new("KLAX",33.9425,-118.4081,"Departure"),new("DATELINE",5,179),new("DATELINE2",-5,-179),new("YSSY",-33.9399,151.1753,"Destination")]);
         Check(window.FlightTrackingView.TrackingMap.CrossesDateLine,"Flight route globe unwraps international routes across the date line");
-        window.FlightTrackingView.Render(trackingPlan,"A350-900 (No Cabin)","AT GATE","Assignment ready",null,null,null,0,["21:00Z  Assignment loaded"],false);window.UpdateLayout();
+        window.FlightTrackingView.Render(trackingPlan,"A350-900 (No Cabin)","AT GATE","Assignment ready",null,null,null,0,trackingEvents,false);window.UpdateLayout();
         Capture(window,Path.Combine(outputDirectory,"flight-tracking-foundation.png"));
         window.FlightTrackingView.TrackingMap.Zoom(2);window.UpdateLayout();
         Check(window.FlightTrackingView.TrackingMap.ZoomLevel>3&&window.FlightTrackingView.TrackingMap.VisibleWaypointLabelCount>0,"Close route zoom reveals spaced SimBrief waypoint names");
@@ -61,7 +67,7 @@ internal static class DashboardSmokeTest
         Capture(window,Path.Combine(outputDirectory,"flight-tracking-deep-zoom.png"));
         window.FlightTrackingView.TrackingMap.SetView(65,-110,1.1);window.UpdateLayout();
         Capture(window,Path.Combine(outputDirectory,"flight-tracking-horizon-clipping.png"));
-        window.FlightTrackingView.Render(trackingPlan,"A350-900 (No Cabin)","AT GATE","Assignment ready",null,null,null,0,["21:00Z  Assignment loaded"],false);window.UpdateLayout();
+        window.FlightTrackingView.Render(trackingPlan,"A350-900 (No Cabin)","AT GATE","Assignment ready",null,null,null,0,trackingEvents,false);window.UpdateLayout();
         var trackingWidth=window.Width;var trackingHeight=window.Height;
         foreach(var size in new[]{new Size(1920,1080),new Size(2560,1392)})
         {

@@ -2,8 +2,8 @@ namespace Alpha6Ops.Core;
 
 public static class FlightLabProtocol
 {
-    public const string PipeName = "Alpha6OPS.FlightLab.v2";
-    public const int SchemaVersion = 2;
+    public const string PipeName = "Alpha6OPS.FlightLab.v3";
+    public const int SchemaVersion = 3;
 }
 
 public sealed record FlightLabFrame(
@@ -18,4 +18,9 @@ public sealed record FlightLabFrame(
     bool Slewing,
     string Phase,
     string? ScenarioEvent = null,
-    double? RouteProgress = null);
+    double? RouteProgress = null,
+    double AltitudeFeet = 0,
+    double IndicatedAirspeedKnots = 0,
+    double VerticalSpeedFeetPerMinute = 0,
+    double GearExtendedRatio = 1,
+    double AltitudeAboveGroundFeet = 0);

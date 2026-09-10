@@ -14,7 +14,7 @@ internal static class FlightLabSmokeTest
     {
         var pipeName=FlightLabProtocol.PipeName+"."+Guid.NewGuid().ToString("N");
         var at=new DateTimeOffset(2026,9,8,15,0,0,TimeSpan.Zero);
-        var frame=new FlightLabFrame(FlightLabProtocol.SchemaVersion,"Alpha 6 Test A321",at,true,18,false,true,false,false,"TAXI OUT","SMOKE_TEST",.25);
+        var frame=new FlightLabFrame(FlightLabProtocol.SchemaVersion,"Alpha 6 Test A321",at,true,18,false,true,false,false,"TAXI OUT","SMOKE_TEST",.25,1200,145,-600,1);
         using var timeout=new CancellationTokenSource(TimeSpan.FromSeconds(5));
         var server=Task.Run(async()=>
         {
@@ -29,6 +29,6 @@ internal static class FlightLabSmokeTest
         catch(OperationCanceledException)when(received is not null){}
         try{await server;}catch(OperationCanceledException)when(received is not null){}
         check(statuses.Exists(s=>s.Contains("Connected to Alpha 6 Flight Lab",StringComparison.Ordinal)),"Flight Lab named-pipe source reports a connection");
-        check(received is {Source:"FLIGHT LAB",Aircraft:"Alpha 6 Test A321",ScenarioEvent:"SMOKE_TEST",RouteProgress:.25}&&received.Telemetry.OnGround&&received.Telemetry.GroundSpeedKnots==18,"Flight Lab telemetry and route progress enter the live-reading boundary unchanged");
+        check(received is {Source:"FLIGHT LAB",Aircraft:"Alpha 6 Test A321",ScenarioEvent:"SMOKE_TEST",RouteProgress:.25}&&received.Telemetry is {OnGround:true,GroundSpeedKnots:18,AltitudeFeet:1200,IndicatedAirspeedKnots:145,VerticalSpeedFeetPerMinute:-600,GearExtendedRatio:1},"Flight Lab route, speed, altitude, vertical-speed, and gear telemetry enter the live-reading boundary unchanged");
     }
 }

@@ -17,7 +17,7 @@ public partial class FlightTrackingWorkspace : UserControl
 
     internal void Render(ActiveFlightPlan? plan, string? simulatorAircraft, string phase, string status,
         DateTimeOffset? actualOut, DateTimeOffset? actualIn, DateTimeOffset? estimatedIn, double progress,
-        IEnumerable<string> events, bool connected,Telemetry? telemetry=null,double? routeProgress=null)
+        IEnumerable<TrackingEventEntry> events, bool connected,Telemetry? telemetry=null,double? routeProgress=null)
     {
         EmptyState.Visibility=plan is null?Visibility.Visible:Visibility.Collapsed;
         ActiveState.Visibility=plan is null?Visibility.Collapsed:Visibility.Visible;
@@ -34,9 +34,18 @@ public partial class FlightTrackingWorkspace : UserControl
         ScheduledOutText.Text=plan.PlannedDepartureUtc.UtcDateTime.ToString("dd MMM • HH:mm'Z'");
         ScheduledInText.Text=plan.PlannedArrivalUtc.UtcDateTime.ToString("dd MMM • HH:mm'Z'");
         ActualOutText.Text=actualOut?.UtcDateTime.ToString("HH:mm:ss'Z'")??"—";
-        ArrivalText.Text=(actualIn??estimatedIn)?.UtcDateTime.ToString("HH:mm:ss'Z'")??"—";
         DepartureGateText.Text=plan.DepartureGate??"—";ArrivalGateText.Text=plan.ArrivalGate??"—";
         var continuousProgress=TrackingMap.HasLiveAircraft?TrackingMap.CompletedFraction*100:progress;
+        var fraction=continuousProgress/100;
+        var remaining=FlightMetrics.RemainingDistanceNm(plan.RoutePoints,fraction);
+        DistanceRemainingText.Text=double.IsFinite(remaining)?$"{remaining:0} NM":"— NM";
+        DateTimeOffset? liveEta=null;
+        if(telemetry is {OnGround:false,GroundSpeedKnots:>=60}&&double.IsFinite(remaining))liveEta=telemetry.At.AddHours(remaining/Math.Max(telemetry.GroundSpeedKnots,100));
+        var arrival=actualIn??liveEta;
+        ArrivalText.Text=arrival?.UtcDateTime.ToString("HH:mm:ss'Z'")??"—";
+        if(actualIn is not null)ScheduleVarianceText.Text=Variance(actualIn.Value-plan.PlannedArrivalUtc,"ACTUAL");
+        else if(liveEta is not null)ScheduleVarianceText.Text=Variance(liveEta.Value-plan.PlannedArrivalUtc,"ESTIMATE");
+        else ScheduleVarianceText.Text="WAITING FOR AIRBORNE DATA";
         UpdateProgress(continuousProgress,true);
         var rows=events.Reverse().Take(12).ToArray();EventList.ItemsSource=rows;EventEmptyText.Visibility=rows.Length==0?Visibility.Visible:Visibility.Collapsed;
     }
@@ -71,4 +80,8 @@ public partial class FlightTrackingWorkspace : UserControl
     }
 
     private double MarkerPosition(double value)=>Math.Max(0,ProgressTrack.ActualWidth-ProgressAircraftIcon.Width)*Math.Clamp(value,0,100)/100;
+    private static string Variance(TimeSpan difference,string prefix)
+    {
+        var minutes=(int)Math.Round(difference.TotalMinutes);return minutes==0?$"{prefix} • ON TIME":$"{prefix} • {Math.Abs(minutes)} MIN {(minutes<0?"EARLY":"LATE")}";
+    }
 }

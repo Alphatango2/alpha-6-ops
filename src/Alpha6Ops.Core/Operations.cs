@@ -5,7 +5,9 @@ public enum TenantRole { Pilot, Dispatcher, Administrator }
 public record Telemetry(DateTimeOffset At, bool OnGround, double GroundSpeedKnots,
     bool ParkingBrake, bool EnginesRunning, bool Paused = false, bool Slewing = false,
     double LatitudeDegrees = double.NaN, double LongitudeDegrees = double.NaN,
-    double AltitudeFeet = double.NaN, double HeadingDegrees = double.NaN)
+    double AltitudeFeet = double.NaN, double HeadingDegrees = double.NaN,
+    double IndicatedAirspeedKnots = double.NaN, double VerticalSpeedFeetPerMinute = double.NaN,
+    double GearExtendedRatio = double.NaN, double AltitudeAboveGroundFeet = double.NaN)
 {
     public bool HasPosition => double.IsFinite(LatitudeDegrees)&&LatitudeDegrees is>=-90 and<=90&&double.IsFinite(LongitudeDegrees)&&LongitudeDegrees is>=-180 and<=180;
 }

@@ -39,7 +39,9 @@ internal static class SimConnectSource
                 ("GENERAL ENG COMBUSTION:2", "Bool"), ("GENERAL ENG COMBUSTION:3", "Bool"),
                 ("GENERAL ENG COMBUSTION:4", "Bool"), ("IS SLEW ACTIVE", "Bool"),
                 ("PLANE LATITUDE", "degrees"), ("PLANE LONGITUDE", "degrees"),
-                ("PLANE ALTITUDE", "feet"), ("PLANE HEADING DEGREES TRUE", "degrees") };
+                ("PLANE ALTITUDE", "feet"), ("PLANE HEADING DEGREES TRUE", "degrees"),
+                ("AIRSPEED INDICATED", "knots"), ("VERTICAL SPEED", "feet per minute"),
+                ("GEAR TOTAL PCT EXTENDED", "Percent Over 100"), ("PLANE ALT ABOVE GROUND", "feet") };
             foreach (var field in fields) Check(AddDefinition(handle, 1, field.Name, field.Unit, 4, 0, uint.MaxValue), field.Name);
             Check(AddDefinition(handle, 1, "TITLE", null, 9, 0, uint.MaxValue), "Aircraft title");
             Check(Subscribe(handle, 10, "Pause_EX1"), "Pause subscription");
@@ -63,17 +65,17 @@ internal static class SimConnectSource
                     else if (id == 3) throw new IOException("Simulator closed. Reconnect after loading your flight.");
                     else if (id == 1 && length >= 24) throw new IOException($"SimConnect exception {Marshal.ReadInt32(data, 12)}, request {Marshal.ReadInt32(data, 16)}, parameter {Marshal.ReadInt32(data, 20)}.");
                     else if (id == 4 && length >= 24 && Marshal.ReadInt32(data, 16) == 10) paused = Marshal.ReadInt32(data, 20) != 0;
-                    else if (id == 8 && length >= 400 && Marshal.ReadInt32(data, 12) == 1 && Marshal.ReadInt32(data, 20) == 1 && Marshal.ReadInt32(data, 36) == 14)
+                    else if (id == 8 && length >= 432 && Marshal.ReadInt32(data, 12) == 1 && Marshal.ReadInt32(data, 20) == 1 && Marshal.ReadInt32(data, 36) == 18)
                     {
-                        var values = new double[13];
-                        Marshal.Copy(IntPtr.Add(data, 40), values, 0, 13);
+                        var values = new double[17];
+                        Marshal.Copy(IntPtr.Add(data, 40), values, 0, 17);
                         if (!double.IsFinite(values[0]) || values[0] <= 0 || values[0] > 315537897599d) throw new InvalidDataException("Invalid simulator UTC time.");
                         var at = DateTimeOffset.MinValue.AddSeconds(values[0]);
-                        var title = Marshal.PtrToStringAnsi(IntPtr.Add(data, 144), 256)?.TrimEnd('\0') ?? "Unknown aircraft";
+                        var title = Marshal.PtrToStringAnsi(IntPtr.Add(data, 176), 256)?.TrimEnd('\0') ?? "Unknown aircraft";
                         var sample = new Telemetry(at, values[1] != 0, values[2], values[3] != 0,
                             values[4] != 0 || values[5] != 0 || values[6] != 0 || values[7] != 0, paused, values[8] != 0,
-                            values[9],values[10],values[11],values[12]);
-                        if (!double.IsFinite(sample.GroundSpeedKnots) || sample.GroundSpeedKnots < 0 || !sample.HasPosition || !double.IsFinite(sample.AltitudeFeet) || !double.IsFinite(sample.HeadingDegrees)) throw new InvalidDataException("Invalid simulator aircraft telemetry.");
+                            values[9],values[10],values[11],values[12],values[13],values[14],values[15],values[16]);
+                        if (!double.IsFinite(sample.GroundSpeedKnots) || sample.GroundSpeedKnots < 0 || !sample.HasPosition || !double.IsFinite(sample.AltitudeFeet) || !double.IsFinite(sample.HeadingDegrees) || !double.IsFinite(sample.IndicatedAirspeedKnots) || sample.IndicatedAirspeedKnots<0 || !double.IsFinite(sample.VerticalSpeedFeetPerMinute) || !double.IsFinite(sample.GearExtendedRatio) || sample.GearExtendedRatio is <0 or >1.1 || !double.IsFinite(sample.AltitudeAboveGroundFeet)) throw new InvalidDataException("Invalid simulator aircraft telemetry.");
                         lastPacket = DateTime.UtcNow;
                         received(new(title, sample));
                     }
