@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
 using Alpha6Ops.Core;
 
 namespace Alpha6Ops.Desktop;
@@ -34,12 +36,39 @@ public partial class FlightTrackingWorkspace : UserControl
         ActualOutText.Text=actualOut?.UtcDateTime.ToString("HH:mm:ss'Z'")??"—";
         ArrivalText.Text=(actualIn??estimatedIn)?.UtcDateTime.ToString("HH:mm:ss'Z'")??"—";
         DepartureGateText.Text=plan.DepartureGate??"—";ArrivalGateText.Text=plan.ArrivalGate??"—";
-        ProgressBar.Value=Math.Clamp(progress,0,100);ProgressText.Text=$"{ProgressBar.Value:0}%";
-        UpdateProgressMarker();
+        var continuousProgress=TrackingMap.HasLiveAircraft?TrackingMap.CompletedFraction*100:progress;
+        UpdateProgress(continuousProgress,true);
         var rows=events.Reverse().Take(12).ToArray();EventList.ItemsSource=rows;EventEmptyText.Visibility=rows.Length==0?Visibility.Visible:Visibility.Collapsed;
     }
 
     private void FlightDeck_Click(object sender,RoutedEventArgs e)=>FlightDeckRequested?.Invoke(this,EventArgs.Empty);
-    private void ProgressTrack_SizeChanged(object sender,SizeChangedEventArgs e)=>UpdateProgressMarker();
-    private void UpdateProgressMarker()=>ProgressAircraftTranslate.X=Math.Max(0,ProgressTrack.ActualWidth-ProgressAircraftIcon.Width)*ProgressBar.Value/100;
+    private void ProgressTrack_SizeChanged(object sender,SizeChangedEventArgs e)=>PositionProgressMarker(ProgressBar.Value);
+
+    private void UpdateProgress(double value,bool animate)
+    {
+        var target=Math.Clamp(value,0,100);
+        var current=ProgressBar.Value;
+        var currentX=ProgressAircraftTranslate.X;
+        var targetX=MarkerPosition(target);
+
+        ProgressBar.BeginAnimation(System.Windows.Controls.Primitives.RangeBase.ValueProperty,null);
+        ProgressAircraftTranslate.BeginAnimation(TranslateTransform.XProperty,null);
+        ProgressBar.Value=target;
+        ProgressAircraftTranslate.X=targetX;
+        ProgressText.Text=$"{target:0}%";
+
+        if(!animate||Math.Abs(target-current)<.01)return;
+        var duration=TimeSpan.FromMilliseconds(850);
+        var easing=new QuadraticEase{EasingMode=EasingMode.EaseOut};
+        ProgressBar.BeginAnimation(System.Windows.Controls.Primitives.RangeBase.ValueProperty,new DoubleAnimation(current,target,duration){EasingFunction=easing,FillBehavior=FillBehavior.Stop});
+        ProgressAircraftTranslate.BeginAnimation(TranslateTransform.XProperty,new DoubleAnimation(currentX,targetX,duration){EasingFunction=easing,FillBehavior=FillBehavior.Stop});
+    }
+
+    private void PositionProgressMarker(double value)
+    {
+        ProgressAircraftTranslate.BeginAnimation(TranslateTransform.XProperty,null);
+        ProgressAircraftTranslate.X=MarkerPosition(value);
+    }
+
+    private double MarkerPosition(double value)=>Math.Max(0,ProgressTrack.ActualWidth-ProgressAircraftIcon.Width)*Math.Clamp(value,0,100)/100;
 }
