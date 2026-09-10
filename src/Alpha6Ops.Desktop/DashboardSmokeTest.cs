@@ -192,6 +192,10 @@ internal static class DashboardSmokeTest
         window.ToolsOverlay.Visibility=Visibility.Visible;window.UpdateLayout();Capture(window,Path.Combine(outputDirectory,"flight-tools-preview.png"));
         Check(window.ConnectButton.IsEnabled && window.ConnectFlightLabButton.IsEnabled && !window.DisconnectButton.IsEnabled && !window.LiveTimelineButton.IsEnabled,"Flight tools preserves real and virtual simulator connection guards");
         window.ToolsOverlay.Visibility=Visibility.Collapsed;
+        Check(DashboardData.Tiles[0] is {Name:"PilotLogbook",Label:"PILOT LOGBOOK",Image:"Assets/Dashboard/pilot-logbook.png"},"Dashboard replaces Fly with the Pilot Logbook tile and image");
+        window.ShowPilotLogbook();window.UpdateLayout();
+        Check(window.PilotLogbookView.Visibility==Visibility.Visible&&window.PilotLogbookView.VisibleFlightCount==0,"Pilot Logbook opens inside the main shell with an empty state");
+        Capture(window,Path.Combine(outputDirectory,"pilot-logbook-empty.png"));window.ShowDashboard();
         window.SetHeaderWeather(null);window.RenderLocalWeather(DateTimeOffset.UtcNow);
         File.WriteAllText(Path.Combine(outputDirectory,"dashboard-smoke.json"),JsonSerializer.Serialize(new{passed=true,count=checks.Count,checks},new JsonSerializerOptions{WriteIndented=true}));
     }

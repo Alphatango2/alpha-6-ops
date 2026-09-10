@@ -6,7 +6,7 @@ using System.Text.Json;
 
 namespace Alpha6Ops.Desktop;
 
-internal sealed record FlightHistoryEntry(string Pilot, string Source, string Aircraft, string Route, string StartedUtc, string? EndedUtc, string? FinalPhase, int EventCount);
+internal sealed record FlightHistoryEntry(string Id,string Pilot,string Source,string Aircraft,string? Origin,string? Destination,string? FlightNumber,string Route,string StartedUtc,string? EndedUtc,string? FinalPhase,int EventCount);
 
 // Structured flight history: one row per flight run (replay or live), with its phase/milestone
 // events attached. Distinct from LogFileDatabase, which only indexes exported diagnostic files.
@@ -99,7 +99,7 @@ internal sealed class FlightHistoryDatabase : IDisposable
             try
             {
                 var sql = $"""
-                    SELECT f.pilot, f.source, f.aircraft,
+                    SELECT f.id,f.pilot, f.source, f.aircraft,f.origin,f.destination,f.flight_number,
                            COALESCE(f.origin,'') || CASE WHEN f.destination IS NULL THEN '' ELSE ' -> ' || f.destination END,
                            f.started_utc, f.ended_utc, f.final_phase, (SELECT COUNT(*) FROM flight_event e WHERE e.flight_id = f.id)
                     FROM flight f ORDER BY f.started_utc DESC LIMIT {Math.Clamp(limit, 1, 1000)};
@@ -114,11 +114,11 @@ internal sealed class FlightHistoryDatabase : IDisposable
 
     private static int ReadRow(IntPtr context, int columns, IntPtr values, IntPtr names)
     {
-        if (columns < 8) return 0;
+        if (columns < 12) return 0;
         string? Cell(int index) { var value = Marshal.ReadIntPtr(values, index * IntPtr.Size); return value == IntPtr.Zero ? null : Marshal.PtrToStringUTF8(value); }
         ((List<FlightHistoryEntry>)GCHandle.FromIntPtr(context).Target!).Add(new(
-            Cell(0) ?? "", Cell(1) ?? "", Cell(2) ?? "", Cell(3) ?? "", Cell(4) ?? "", Cell(5), Cell(6),
-            int.TryParse(Cell(7), out var count) ? count : 0));
+            Cell(0)??"",Cell(1)??"",Cell(2)??"",Cell(3)??"",Cell(4),Cell(5),Cell(6),Cell(7)??"",Cell(8)??"",Cell(9),Cell(10),
+            int.TryParse(Cell(11),out var count)?count:0));
         return 0;
     }
 

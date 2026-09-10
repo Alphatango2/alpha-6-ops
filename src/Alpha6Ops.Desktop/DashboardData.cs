@@ -63,7 +63,7 @@ internal static class DashboardData
     };
     internal static readonly DashboardTile[] Tiles =
     [
-        new("FlightTracking", "FLY", "Open live flight tracking", "Assets/Dashboard/flights-unbranded.png"),
+        new("PilotLogbook", "PILOT LOGBOOK", "Your recorded flights", "Assets/Dashboard/pilot-logbook.png"),
         new("Operations", "OPERATIONS", "Network, IRROPS, diversions", "Assets/Dashboard/operations.png"),
         new("Aircraft", "AIRCRAFT", "Registrations, types, fleet", "Assets/Dashboard/aircraft.png"),
         new("Maintenance", "MAINTENANCE", "Discrepancies, MEL, service", "Assets/Dashboard/maintenance.png"),

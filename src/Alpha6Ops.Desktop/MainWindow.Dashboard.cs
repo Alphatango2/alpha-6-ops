@@ -51,6 +51,7 @@ public partial class MainWindow
         SizeChanged += (_,_) => { UpdateResponsiveLayout(); UpdateFlightTabs(); };
         UpdateResponsiveLayout();
         FlightTrackingView.FlightDeckRequested += (_,_)=>OpenTools();
+        PilotLogbookView.DashboardRequested+=(_,_)=>ShowDashboard();
         PreviewKeyDown += (_,e) => { if(e.Key == Key.Escape && ToolsOverlay.Visibility == Visibility.Visible) { ToolsOverlay.Visibility = Visibility.Collapsed; e.Handled=true; } };
         RefreshDashboardFlight(false);
         if (activePlan is not null) RefreshLiveTracker(null,null,null,"Assignment ready. Connect at the gate to begin tracking.");
@@ -210,16 +211,22 @@ public partial class MainWindow
     private void Dashboard_Click(object sender,RoutedEventArgs e)=>ShowDashboard();
     internal void ShowDashboard()
     {
-        ToolsOverlay.Visibility=Visibility.Collapsed;FlightTrackingView.Visibility=Visibility.Collapsed;DashboardScroll.Visibility=Visibility.Visible;DashboardScroll.ScrollToTop();
+        ToolsOverlay.Visibility=Visibility.Collapsed;FlightTrackingView.Visibility=PilotLogbookView.Visibility=Visibility.Collapsed;DashboardScroll.Visibility=Visibility.Visible;DashboardScroll.ScrollToTop();
         FlightTrackingNavButton.ClearValue(Button.BackgroundProperty);FlightTrackingNavButton.ClearValue(Button.ForegroundProperty);
         DashboardNavButton.Background=OpsUi.Brush("#FFDA00");DashboardNavButton.Foreground=OpsUi.Brush("#080C0F");
     }
     internal void ShowFlightTracking()
     {
-        ToolsOverlay.Visibility=Visibility.Collapsed;DashboardScroll.Visibility=Visibility.Collapsed;FlightTrackingView.Visibility=Visibility.Visible;
+        ToolsOverlay.Visibility=Visibility.Collapsed;DashboardScroll.Visibility=PilotLogbookView.Visibility=Visibility.Collapsed;FlightTrackingView.Visibility=Visibility.Visible;
         DashboardNavButton.ClearValue(Button.BackgroundProperty);DashboardNavButton.ClearValue(Button.ForegroundProperty);
         FlightTrackingNavButton.Background=OpsUi.Brush("#FFDA00");FlightTrackingNavButton.Foreground=OpsUi.Brush("#080C0F");
         RefreshFlightTrackingWorkspace(liveLast,liveRecorder?.Phase,StatusText.Text);
+    }
+    internal void ShowPilotLogbook()
+    {
+        ToolsOverlay.Visibility=Visibility.Collapsed;DashboardScroll.Visibility=FlightTrackingView.Visibility=Visibility.Collapsed;PilotLogbookView.Visibility=Visibility.Visible;
+        DashboardNavButton.ClearValue(Button.BackgroundProperty);DashboardNavButton.ClearValue(Button.ForegroundProperty);FlightTrackingNavButton.ClearValue(Button.BackgroundProperty);FlightTrackingNavButton.ClearValue(Button.ForegroundProperty);
+        PilotLogbookView.Render(flightHistory);
     }
     internal void OpenTools(){ToolsOverlay.Visibility=Visibility.Visible;PilotNameBox.Focus();}
     private void CloseTools_Click(object sender,RoutedEventArgs e)=>ToolsOverlay.Visibility=Visibility.Collapsed;
@@ -240,6 +247,7 @@ public partial class MainWindow
             case "Aircraft": Fleet_Click(sender,e);return;
             case "Network": new NetworkWindow{Owner=this}.ShowDialog();return;
             case "FlightTracking": ShowFlightTracking();return;
+            case "PilotLogbook":ShowPilotLogbook();return;
             case "Reports":
                 var flights=flightHistory?.ReadRecentFlights()??[];
                 var report=new OpsModule("FLIGHT REPORTS","Local flight history and recorded session results","LOCAL FLIGHT HISTORY • REPLAY RUNS",

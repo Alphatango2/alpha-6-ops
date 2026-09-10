@@ -640,6 +640,7 @@
       </local:DashboardBodyPanel>
     </ScrollViewer>
     <local:FlightTrackingWorkspace x:Name="FlightTrackingView" Grid.Row="1" Grid.Column="2" Visibility="Collapsed" Margin="0,0,1,8" />
+    <local:PilotLogbookWorkspace x:Name="PilotLogbookView" Grid.Row="1" Grid.Column="2" Visibility="Collapsed" Margin="0,0,1,8" />
     <Grid x:Name="DashboardFooter" Grid.Row="2" Grid.ColumnSpan="3" Margin="220,0,0,0">
       <Grid.ColumnDefinitions>
         <ColumnDefinition />
