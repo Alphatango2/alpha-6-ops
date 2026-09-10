@@ -105,7 +105,7 @@ public partial class MainWindow
             HeroDepartureGateText.ToolTip=HeroArrivalGateText.ToolTip=gateTip;
             HeroStatusText.Foreground=OpsUi.Brush(hero.StatusColor);HeroStatusBadge.Background=OpsUi.Brush(hero.StatusBackground);
             HeroTimingText.Text=hero.Leg.Completed?"Flight complete":$"{(hero.Leg.EstimatedIn-hero.Leg.EstimatedOut).TotalMinutes:0} min block  •  {hero.Leg.EstimatedOut:dd MMM}  •  {hero.Out}Z";
-            AircraftText.Text=rotation!.AircraftId;
+            AircraftText.Text=planMatches&&!string.IsNullOrWhiteSpace(activePlan!.AircraftType)?activePlan.AircraftType:rotation!.AircraftId;
             HeroAircraftTypeText.Text=live?"ACTIVE ASSIGNMENT":"SAMPLE ASSIGNMENT";
             TrackerModeText.Text=live?"ACTIVE FLIGHT • SIMCONNECT":"REPLAY • SAMPLE DATA";
         }

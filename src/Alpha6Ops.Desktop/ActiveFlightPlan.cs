@@ -11,7 +11,7 @@ internal record ActiveFlightPlan(string FlightNumber, string Registration, strin
     DateTimeOffset PlannedDepartureUtc, DateTimeOffset PlannedArrivalUtc, string? Source = null,
     string? SimBriefUsername = null, DateTimeOffset? ImportedAtUtc = null, string? DepartureGate = null,
     string? ArrivalGate = null, string? GateAssignmentSource = null, string? GateAssignmentConfidence = null,
-    string? Route = null,IReadOnlyList<FlightRoutePoint>? RoutePoints = null)
+    string? Route = null,IReadOnlyList<FlightRoutePoint>? RoutePoints = null,string? AircraftType = null)
 {
     internal TimeSpan PlannedDuration => PlannedArrivalUtc - PlannedDepartureUtc;
 }

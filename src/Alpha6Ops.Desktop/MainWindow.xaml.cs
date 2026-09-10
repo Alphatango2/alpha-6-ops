@@ -591,7 +591,7 @@ public partial class MainWindow : Window
         var plan = activePlan;
         var leg = liveRotation?.Legs[0];
         var projection = liveRotation is not null ? RotationPlanner.Project(liveRotation)[0] : null;
-        AircraftText.Text = string.Join(" • ", new[] { simulatorAircraft, string.IsNullOrWhiteSpace(plan.Registration) ? null : plan.Registration }.Where(x => !string.IsNullOrWhiteSpace(x)));
+        AircraftText.Text = !string.IsNullOrWhiteSpace(plan.AircraftType) ? plan.AircraftType : simulatorAircraft ?? "AIRCRAFT WAITING";
         RouteText.Text = $"{plan.Origin} → {plan.Destination}";
         DepartureText.Text = $"{plan.FlightNumber}  •  PLANNED {plan.PlannedDepartureUtc.UtcDateTime:HH:mm}Z  •  {plan.PlannedDuration.TotalHours:0.#} HR BLOCK";
         DepartedValueText.Text = leg?.ActualOut is { } departed ? departed.UtcDateTime.ToString("HH:mm:ss'Z'") : "—";

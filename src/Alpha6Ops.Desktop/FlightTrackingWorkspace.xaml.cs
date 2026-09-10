@@ -24,7 +24,7 @@ public partial class FlightTrackingWorkspace : UserControl
         if(plan is null)return;
         FlightNumberText.Text=plan.FlightNumber;
         RouteText.Text=$"{plan.Origin}  →  {plan.Destination}";
-        AircraftText.Text=string.Join(" • ",new[]{simulatorAircraft,plan.Registration}.Where(value=>!string.IsNullOrWhiteSpace(value)));
+        AircraftText.Text=!string.IsNullOrWhiteSpace(plan.AircraftType)?plan.AircraftType:simulatorAircraft??"—";
         PhaseText.Text=phase;
         StatusText.Text=status;
         TrackingMap.SetRoute(plan.RoutePoints);
