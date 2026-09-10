@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Alpha6Ops.Core;
 
 namespace Alpha6Ops.Desktop;
 
@@ -26,12 +27,19 @@ public sealed class FlightRouteMap : UserControl
     private double centerLatitude;
     private double centerLongitude;
     private double zoom=1;
+    private GeoPoint? livePosition;
+    private double liveHeading=double.NaN;
+    private double completedFraction;
+    private readonly List<GeoPoint> actualTrack=[];
 
     internal int RoutePointCount=>route.Count;
     internal bool CrossesDateLine {get;private set;}
     internal double ZoomLevel=>zoom;
     internal double FittedZoom {get;private set;}=1;
     internal int VisibleWaypointLabelCount {get;private set;}
+    internal bool HasLiveAircraft=>livePosition is not null;
+    internal double CompletedFraction=>completedFraction;
+    internal int TrackPointCount=>actualTrack.Count;
 
     public FlightRouteMap()
     {
@@ -57,9 +65,23 @@ public sealed class FlightRouteMap : UserControl
 
     internal void SetRoute(IReadOnlyList<FlightRoutePoint>? points)
     {
-        route=points?.Where(point=>point.Latitude is>=-90 and<=90&&point.Longitude is>=-180 and<=180).ToArray()??[];
+        var next=points?.Where(point=>point.Latitude is>=-90 and<=90&&point.Longitude is>=-180 and<=180).ToArray()??[];
+        if(route.SequenceEqual(next))return;
+        route=next;livePosition=null;liveHeading=double.NaN;completedFraction=0;actualTrack.Clear();
         CrossesDateLine=route.Zip(route.Skip(1),(a,b)=>Math.Abs(a.Longitude-b.Longitude)>180).Any(crosses=>crosses);
         FrameRoute();
+    }
+
+    internal void SetTelemetry(Telemetry? telemetry,double? routeProgress)
+    {
+        GeoPoint? position=null;
+        if(telemetry?.HasPosition==true)position=new GeoPoint(telemetry.LatitudeDegrees,telemetry.LongitudeDegrees);
+        else if(routeProgress is>=0 and<=1&&route.Count>=2)position=PositionAtProgress(routeProgress.Value);
+        if(position is null)return;
+        livePosition=position;liveHeading=telemetry is not null&&double.IsFinite(telemetry.HeadingDegrees)?telemetry.HeadingDegrees:RouteHeading(Math.Clamp(routeProgress??completedFraction,0,1));
+        completedFraction=Math.Clamp(routeProgress??NearestRouteProgress(position.Value),0,1);
+        if(actualTrack.Count==0||AngularDistance(actualTrack[^1],position.Value)>Radians(.015))actualTrack.Add(position.Value);
+        Draw();
     }
 
     internal void Zoom(double factor)=>SetZoom(zoom*factor);
@@ -134,9 +156,11 @@ public sealed class FlightRouteMap : UserControl
 
     private void DrawRoute(double radius)
     {
-        if(route.Count<2)return;var routePath=new List<GeoPoint>();
-        for(var index=0;index<route.Count-1;index++)routePath.AddRange(GreatCircle(new GeoPoint(route[index].Latitude,route[index].Longitude),new GeoPoint(route[index+1].Latitude,route[index+1].Longitude),32).Skip(index==0?0:1));
-        DrawGeoLine(routePath,radius,Brush("#071118"),8,.88);DrawGeoLine(routePath,radius,Brush("#FFDA00"),2.8,1,true);
+        if(route.Count<2)return;var routePath=BuildRoutePath();var split=Math.Clamp((int)Math.Round(completedFraction*(routePath.Count-1)),0,routePath.Count-1);
+        DrawGeoLine(routePath,radius,Brush("#071118"),8,.88);
+        if(split>0)DrawGeoLine(routePath.Take(split+1),radius,Brush("#42C8F5"),3.2,1,true);
+        DrawGeoLine(routePath.Skip(split),radius,Brush("#FFDA00"),2.8,1,true);
+        if(actualTrack.Count>1)DrawGeoLine(actualTrack,radius,Brush("#8BE8FF"),1.6,.95,true);
         Point? previousWaypointLabel=null;
         for(var index=0;index<route.Count;index++)
         {
@@ -150,12 +174,38 @@ public sealed class FlightRouteMap : UserControl
                 Add(label,point.X+6,point.Y+(VisibleWaypointLabelCount%2==0?-22:7));previousWaypointLabel=point;VisibleWaypointLabelCount++;
             }
         }
-        var departure=new GeoPoint(route[0].Latitude,route[0].Longitude);
-        if(Project(departure,radius,out var start))
+        var aircraft=livePosition??new GeoPoint(route[0].Latitude,route[0].Longitude);
+        if(Project(aircraft,radius,out var start))
         {
-            var angle=0d;if(route.Count>1&&Project(new GeoPoint(route[1].Latitude,route[1].Longitude),radius,out var next))angle=Math.Atan2(next.Y-start.Y,next.X-start.X)*180/Math.PI;
-            var plane=new Path{Data=Geometry.Parse("M 0,5 L 7,4 12,0 15,0 12,4 22,5 12,7 15,12 12,12 7,7 0,6 Z"),Fill=Brush("#FFDA00"),Width=27,Height=18,Stretch=Stretch.Fill,RenderTransform=new RotateTransform(angle,13.5,9),Effect=new DropShadowEffect{Color=Colors.Gold,BlurRadius=9,ShadowDepth=0,Opacity=.65},ToolTip="Planned departure position • waiting for live aircraft telemetry"};Add(plane,start.X-13.5,start.Y-9);
+            var angle=0d;var look=DestinationPoint(aircraft,double.IsFinite(liveHeading)?liveHeading:RouteHeading(completedFraction),2/Math.Max(1d,zoom));if(Project(look,radius,out var next))angle=Math.Atan2(next.Y-start.Y,next.X-start.X)*180/Math.PI;
+            var plane=new Path{Data=Geometry.Parse("M 0,7 L 10,7 L 17,1 L 21,1 L 18,7 L 34,8 L 18,10 L 21,16 L 17,16 L 10,10 L 0,10 Z"),Fill=Brush("#FFDA00"),Width=34,Height=17,Stretch=Stretch.Fill,RenderTransform=new RotateTransform(angle,17,8.5),Effect=new DropShadowEffect{Color=Colors.Gold,BlurRadius=10,ShadowDepth=0,Opacity=.72},ToolTip=livePosition is null?"Planned departure position • waiting for live aircraft telemetry":$"Live aircraft • {completedFraction:P0} complete"};Add(plane,start.X-17,start.Y-8.5);
         }
+    }
+
+    private List<GeoPoint> BuildRoutePath()
+    {
+        var path=new List<GeoPoint>();
+        for(var index=0;index<route.Count-1;index++)
+        {
+            var start=new GeoPoint(route[index].Latitude,route[index].Longitude);var end=new GeoPoint(route[index+1].Latitude,route[index+1].Longitude);var samples=Math.Clamp((int)Math.Ceiling(AngularDistance(start,end)*180/Math.PI*2),4,240);
+            path.AddRange(GreatCircle(start,end,samples).Skip(index==0?0:1));
+        }
+        return path;
+    }
+
+    private GeoPoint PositionAtProgress(double progress)
+    {
+        var path=BuildRoutePath();var position=Math.Clamp(progress,0,1)*(path.Count-1);var index=Math.Min((int)position,path.Count-2);return GreatCircle(path[index],path[index+1],100)[Math.Clamp((int)Math.Round((position-index)*100),0,100)];
+    }
+
+    private double NearestRouteProgress(GeoPoint position)
+    {
+        var path=BuildRoutePath();var nearest=0;var distance=double.MaxValue;for(var index=0;index<path.Count;index++){var candidate=AngularDistance(path[index],position);if(candidate<distance){distance=candidate;nearest=index;}}return path.Count<=1?0:(double)nearest/(path.Count-1);
+    }
+
+    private double RouteHeading(double progress)
+    {
+        var path=BuildRoutePath();var index=Math.Clamp((int)(Math.Clamp(progress,0,1)*(path.Count-1)),0,path.Count-2);return Bearing(path[index],path[index+1]);
     }
 
     private void DrawGeoLine(IEnumerable<GeoPoint> points,double radius,Brush stroke,double thickness,double opacity,bool glow=false)
@@ -198,6 +248,16 @@ public sealed class FlightRouteMap : UserControl
     }
 
     private static double AngularDistance(GeoPoint a,GeoPoint b){var first=Vector(a);var second=Vector(b);return Math.Acos(Math.Clamp(first.X*second.X+first.Y*second.Y+first.Z*second.Z,-1,1));}
+    private static double Bearing(GeoPoint from,GeoPoint to)
+    {
+        var first=Radians(from.Latitude);var second=Radians(to.Latitude);var delta=Radians(to.Longitude-from.Longitude);return (Math.Atan2(Math.Sin(delta)*Math.Cos(second),Math.Cos(first)*Math.Sin(second)-Math.Sin(first)*Math.Cos(second)*Math.Cos(delta))*180/Math.PI+360)%360;
+    }
+    private static GeoPoint DestinationPoint(GeoPoint from,double bearing,double angularDegrees)
+    {
+        var latitude=Radians(from.Latitude);var longitude=Radians(from.Longitude);var course=Radians(bearing);var distance=Radians(angularDegrees);
+        var nextLatitude=Math.Asin(Math.Sin(latitude)*Math.Cos(distance)+Math.Cos(latitude)*Math.Sin(distance)*Math.Cos(course));var nextLongitude=longitude+Math.Atan2(Math.Sin(course)*Math.Sin(distance)*Math.Cos(latitude),Math.Cos(distance)-Math.Sin(latitude)*Math.Sin(nextLatitude));
+        return new GeoPoint(nextLatitude*180/Math.PI,NormalizeLongitude(nextLongitude*180/Math.PI));
+    }
     private static Vector3 Vector(GeoPoint point){var latitude=Radians(point.Latitude);var longitude=Radians(point.Longitude);return new Vector3(Math.Cos(latitude)*Math.Cos(longitude),Math.Cos(latitude)*Math.Sin(longitude),Math.Sin(latitude));}
     private static double Radians(double degrees)=>degrees*Math.PI/180;
     private static double NormalizeLongitude(double value){while(value>180)value-=360;while(value< -180)value+=360;return value;}

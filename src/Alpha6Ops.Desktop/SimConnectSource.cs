@@ -7,7 +7,7 @@ using Alpha6Ops.Core;
 
 namespace Alpha6Ops.Desktop;
 
-public record LiveReading(string Aircraft, Telemetry Telemetry, string Source = "MSFS 2024", string? ScenarioEvent = null);
+public record LiveReading(string Aircraft, Telemetry Telemetry, string Source = "MSFS 2024", string? ScenarioEvent = null, double? RouteProgress = null);
 
 // Native ABI taken from MSFS 2024 SDK 1.7.3 SimConnect.h (packed receive records).
 // All calls and dispatch reads stay on one dedicated worker. No simulator writes.
@@ -37,7 +37,9 @@ internal static class SimConnectSource
                 ("ABSOLUTE TIME", "seconds"), ("SIM ON GROUND", "Bool"), ("GROUND VELOCITY", "knots"),
                 ("BRAKE PARKING POSITION", "Bool"), ("GENERAL ENG COMBUSTION:1", "Bool"),
                 ("GENERAL ENG COMBUSTION:2", "Bool"), ("GENERAL ENG COMBUSTION:3", "Bool"),
-                ("GENERAL ENG COMBUSTION:4", "Bool"), ("IS SLEW ACTIVE", "Bool") };
+                ("GENERAL ENG COMBUSTION:4", "Bool"), ("IS SLEW ACTIVE", "Bool"),
+                ("PLANE LATITUDE", "degrees"), ("PLANE LONGITUDE", "degrees"),
+                ("PLANE ALTITUDE", "feet"), ("PLANE HEADING DEGREES TRUE", "degrees") };
             foreach (var field in fields) Check(AddDefinition(handle, 1, field.Name, field.Unit, 4, 0, uint.MaxValue), field.Name);
             Check(AddDefinition(handle, 1, "TITLE", null, 9, 0, uint.MaxValue), "Aircraft title");
             Check(Subscribe(handle, 10, "Pause_EX1"), "Pause subscription");
@@ -61,16 +63,17 @@ internal static class SimConnectSource
                     else if (id == 3) throw new IOException("Simulator closed. Reconnect after loading your flight.");
                     else if (id == 1 && length >= 24) throw new IOException($"SimConnect exception {Marshal.ReadInt32(data, 12)}, request {Marshal.ReadInt32(data, 16)}, parameter {Marshal.ReadInt32(data, 20)}.");
                     else if (id == 4 && length >= 24 && Marshal.ReadInt32(data, 16) == 10) paused = Marshal.ReadInt32(data, 20) != 0;
-                    else if (id == 8 && length >= 368 && Marshal.ReadInt32(data, 12) == 1 && Marshal.ReadInt32(data, 20) == 1 && Marshal.ReadInt32(data, 36) == 10)
+                    else if (id == 8 && length >= 400 && Marshal.ReadInt32(data, 12) == 1 && Marshal.ReadInt32(data, 20) == 1 && Marshal.ReadInt32(data, 36) == 14)
                     {
-                        var values = new double[9];
-                        Marshal.Copy(IntPtr.Add(data, 40), values, 0, 9);
+                        var values = new double[13];
+                        Marshal.Copy(IntPtr.Add(data, 40), values, 0, 13);
                         if (!double.IsFinite(values[0]) || values[0] <= 0 || values[0] > 315537897599d) throw new InvalidDataException("Invalid simulator UTC time.");
                         var at = DateTimeOffset.MinValue.AddSeconds(values[0]);
-                        var title = Marshal.PtrToStringAnsi(IntPtr.Add(data, 112), 256)?.TrimEnd('\0') ?? "Unknown aircraft";
+                        var title = Marshal.PtrToStringAnsi(IntPtr.Add(data, 144), 256)?.TrimEnd('\0') ?? "Unknown aircraft";
                         var sample = new Telemetry(at, values[1] != 0, values[2], values[3] != 0,
-                            values[4] != 0 || values[5] != 0 || values[6] != 0 || values[7] != 0, paused, values[8] != 0);
-                        if (!double.IsFinite(sample.GroundSpeedKnots) || sample.GroundSpeedKnots < 0) throw new InvalidDataException("Invalid simulator groundspeed.");
+                            values[4] != 0 || values[5] != 0 || values[6] != 0 || values[7] != 0, paused, values[8] != 0,
+                            values[9],values[10],values[11],values[12]);
+                        if (!double.IsFinite(sample.GroundSpeedKnots) || sample.GroundSpeedKnots < 0 || !sample.HasPosition || !double.IsFinite(sample.AltitudeFeet) || !double.IsFinite(sample.HeadingDegrees)) throw new InvalidDataException("Invalid simulator aircraft telemetry.");
                         lastPacket = DateTime.UtcNow;
                         received(new(title, sample));
                     }

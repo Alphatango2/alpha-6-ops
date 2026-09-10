@@ -32,6 +32,8 @@ public partial class MainWindow : Window
     private string? liveAircraft;
     private string liveSource = "MSFS 2024";
     private string? lastScenarioEvent;
+    private Telemetry? liveTelemetry;
+    private double? liveRouteProgress;
     private bool liveInvalid;
     private TestFlightLog? flightLog;
     private string? lastJournal;
@@ -395,7 +397,7 @@ public partial class MainWindow : Window
     {
         if (liveCancellation is not null || running) return;
         liveCancellation = CancellationTokenSource.CreateLinkedTokenSource(lifetime.Token);
-        liveRecorder = null; liveLast = null; liveAircraft = null; liveInvalid = false;
+        liveRecorder = null; liveLast = null; liveAircraft = null; liveInvalid = false;liveTelemetry=null;liveRouteProgress=null;
         liveSource = useFlightLab ? "FLIGHT LAB" : "MSFS 2024"; lastScenarioEvent = null;
         liveRotation = null;
         LiveTimelineButton.IsEnabled = LiveDebriefButton.IsEnabled = false;
@@ -457,9 +459,10 @@ public partial class MainWindow : Window
     {
         if (liveCancellation is null || liveCancellation.IsCancellationRequested || exiting) return;
         var s = reading.Telemetry;
+        liveTelemetry=s;liveRouteProgress=reading.RouteProgress;
         liveSource=reading.Source;
         programMonitor?.Update("Connected", reading.Aircraft, s.At, sampleReceived: true);
-        RecordLog("telemetry", s.At, new { aircraft = reading.Aircraft, onGround = s.OnGround, groundSpeedKnots = s.GroundSpeedKnots, parkingBrake = s.ParkingBrake, enginesRunning = s.EnginesRunning, paused = s.Paused, slewing = s.Slewing });
+        RecordLog("telemetry", s.At, new { aircraft = reading.Aircraft, onGround = s.OnGround, groundSpeedKnots = s.GroundSpeedKnots, parkingBrake = s.ParkingBrake, enginesRunning = s.EnginesRunning, paused = s.Paused, slewing = s.Slewing, latitude = s.HasPosition?(double?)s.LatitudeDegrees:null, longitude = s.HasPosition?(double?)s.LongitudeDegrees:null, altitudeFeet = double.IsFinite(s.AltitudeFeet)?(double?)s.AltitudeFeet:null, headingDegrees = double.IsFinite(s.HeadingDegrees)?(double?)s.HeadingDegrees:null, routeProgress=reading.RouteProgress });
         if(reading.ScenarioEvent is {Length:>0} scenario&&scenario!=lastScenarioEvent){lastScenarioEvent=scenario;RecordLog("flight_lab_event",s.At,new{scenario});}
         LiveText.Text = $"{reading.Source} • {reading.Aircraft} • {s.At.UtcDateTime:HH:mm:ss}Z • {s.GroundSpeedKnots:0.0} kt • Brake {(s.ParkingBrake ? "set" : "released")} • {(s.Paused ? "Paused" : s.Slewing ? "Slew" : s.OnGround ? "On ground" : "Airborne")}";
         if (!liveInvalid && !TelemetryContinuity.IsContinuous(liveLast, liveAircraft, s.At, reading.Aircraft))
@@ -488,7 +491,8 @@ public partial class MainWindow : Window
         LiveTimelineButton.IsEnabled = LiveDebriefButton.IsEnabled = true;
         ConnectionText.Text = $"Connected • {PhaseLabel(liveRecorder.Phase)}. Active flight tracking uses the assignment shown below.";
         tray.Text = "Alpha 6 OPS — Live " + liveRecorder.Phase;
-        RefreshLiveTracker(reading.Aircraft, s.At, liveRecorder.Phase, $"Live telemetry • {s.GroundSpeedKnots:0.0} kt • Brake {(s.ParkingBrake ? "set" : "released")}");
+        var altitude=double.IsFinite(s.AltitudeFeet)?$" • {s.AltitudeFeet:0} ft":"";var heading=double.IsFinite(s.HeadingDegrees)?$" • {((s.HeadingDegrees%360)+360)%360:000}°":"";
+        RefreshLiveTracker(reading.Aircraft, s.At, liveRecorder.Phase, $"Live telemetry • {s.GroundSpeedKnots:0.0} kt{altitude}{heading} • Brake {(s.ParkingBrake ? "set" : "released")}");
     }
     private void StartLog(string mode)
     {
@@ -607,7 +611,8 @@ public partial class MainWindow : Window
         var projection=liveRotation is null?null:RotationPlanner.Project(liveRotation).FirstOrDefault();
         var phaseLabel=phase is null?(activePlan is null?"NO ACTIVE FLIGHT":"READY"):PhaseLabel(phase.Value).ToUpperInvariant();
         var progress=PhaseProgress(phase,simulatorTime,leg?.ActualOut,projection?.EstimatedIn);
-        FlightTrackingView.Render(activePlan,liveAircraft,phaseLabel,status,leg?.ActualOut,leg?.ActualIn,projection?.EstimatedIn,progress,milestones,running);
+        var connected=liveCancellation is not null&&!liveCancellation.IsCancellationRequested;
+        FlightTrackingView.Render(activePlan,liveAircraft,phaseLabel,status,leg?.ActualOut,leg?.ActualIn,projection?.EstimatedIn,progress,milestones,connected,liveTelemetry,liveRouteProgress);
     }
 
     private double PhaseProgress(FlightPhase? phase, DateTimeOffset? now, DateTimeOffset? start, DateTimeOffset? eta) => phase switch

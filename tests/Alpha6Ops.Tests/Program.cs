@@ -4,6 +4,8 @@ var count = 0;
 void Check(bool condition, string name) { if (!condition) throw new Exception(name); Console.WriteLine($"PASS {name}"); count++; }
 void Reject(Action action, string name) { try { action(); } catch (ArgumentException) { Check(true, name); return; } throw new Exception(name); }
 var rotation = Demo.Rotation();
+var positionedTelemetry=new Telemetry(DateTimeOffset.Parse("2026-09-10T12:00:00Z"),false,430,false,true,LatitudeDegrees:35.2,LongitudeDegrees:-120.4,AltitudeFeet:35000,HeadingDegrees:92);
+Check(positionedTelemetry.HasPosition&&positionedTelemetry.AltitudeFeet==35000&&positionedTelemetry.HeadingDegrees==92,"positioned telemetry validates live map coordinates");
 var normal = RotationPlanner.Project(rotation);
 Check(normal.All(x => x.DepartureDelayMinutes == 0), "on-time rotation");
 var session = new FlightSession(rotation);

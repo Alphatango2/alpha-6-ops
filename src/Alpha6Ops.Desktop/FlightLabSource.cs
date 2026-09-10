@@ -31,9 +31,9 @@ internal static class FlightLabSource
     internal static LiveReading ParseFrame(FlightLabFrame frame)
     {
         if (frame.SchemaVersion != FlightLabProtocol.SchemaVersion) throw new InvalidDataException("Unsupported Flight Lab protocol version.");
-        if (string.IsNullOrWhiteSpace(frame.Aircraft) || !double.IsFinite(frame.GroundSpeedKnots) || frame.GroundSpeedKnots < 0)
+        if (string.IsNullOrWhiteSpace(frame.Aircraft) || !double.IsFinite(frame.GroundSpeedKnots) || frame.GroundSpeedKnots < 0 || frame.RouteProgress is <0 or >1)
             throw new InvalidDataException("Invalid Flight Lab aircraft or groundspeed.");
         return new LiveReading(frame.Aircraft.Trim(),new Telemetry(frame.SimulatorUtc,frame.OnGround,frame.GroundSpeedKnots,
-            frame.ParkingBrake,frame.EnginesRunning,frame.Paused,frame.Slewing),"FLIGHT LAB",frame.ScenarioEvent);
+            frame.ParkingBrake,frame.EnginesRunning,frame.Paused,frame.Slewing),"FLIGHT LAB",frame.ScenarioEvent,frame.RouteProgress);
     }
 }

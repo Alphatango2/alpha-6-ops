@@ -3,7 +3,12 @@ namespace Alpha6Ops.Core;
 public enum FlightPhase { AtGate, TaxiOut, Airborne, TaxiIn, Complete }
 public enum TenantRole { Pilot, Dispatcher, Administrator }
 public record Telemetry(DateTimeOffset At, bool OnGround, double GroundSpeedKnots,
-    bool ParkingBrake, bool EnginesRunning, bool Paused = false, bool Slewing = false);
+    bool ParkingBrake, bool EnginesRunning, bool Paused = false, bool Slewing = false,
+    double LatitudeDegrees = double.NaN, double LongitudeDegrees = double.NaN,
+    double AltitudeFeet = double.NaN, double HeadingDegrees = double.NaN)
+{
+    public bool HasPosition => double.IsFinite(LatitudeDegrees)&&LatitudeDegrees is>=-90 and<=90&&double.IsFinite(LongitudeDegrees)&&LongitudeDegrees is>=-180 and<=180;
+}
 public record FlightEvent(FlightPhase Phase, DateTimeOffset At);
 
 // Whether consecutive live samples still describe the same flight. A reversed clock or a changed

@@ -45,6 +45,10 @@ internal static class DashboardSmokeTest
         Check(window.FlightTrackingView.ActiveState.Visibility==Visibility.Visible&&window.FlightTrackingView.RouteText.Text.Contains("NFFN")&&window.FlightTrackingView.EventList.Items.Count==1,"Flight Tracking renders assignment, route summary, and chronological events");
         Check(window.FlightTrackingView.ArrivalText.Text=="—","Actual or estimated arrival remains blank before live flight telemetry provides an estimate");
         Check(window.FlightTrackingView.TrackingMap.RoutePointCount==3&&window.FlightTrackingView.TrackingMap.FittedZoom>1,"Flight Tracking plots and frames the saved SimBrief route");
+        window.FlightTrackingView.Render(trackingPlan,"Alpha 6 Test A321","CRUISE","Live Flight Lab telemetry",null,null,null,58,["21:00Z  Assignment loaded"],true,new(new DateTimeOffset(2026,9,8,23,0,0,TimeSpan.Zero),false,450,false,true),.58);window.UpdateLayout();
+        Check(window.FlightTrackingView.TrackingMap.HasLiveAircraft&&window.FlightTrackingView.TrackingMap.CompletedFraction==.58&&window.FlightTrackingView.TrackingMap.TrackPointCount==1,"Live telemetry moves the filled aircraft and splits completed from remaining route");
+        Check(window.FlightTrackingView.ProgressAircraftTranslate.X>window.FlightTrackingView.ProgressTrack.ActualWidth*.5,"Filled progress aircraft advances across the operational progress track");
+        Capture(window,Path.Combine(outputDirectory,"flight-tracking-live-aircraft.png"));
         window.FlightTrackingView.TrackingMap.SetRoute([new("KLAX",33.9425,-118.4081,"Departure"),new("DATELINE",5,179),new("DATELINE2",-5,-179),new("YSSY",-33.9399,151.1753,"Destination")]);
         Check(window.FlightTrackingView.TrackingMap.CrossesDateLine,"Flight route globe unwraps international routes across the date line");
         window.FlightTrackingView.Render(trackingPlan,"A350-900 (No Cabin)","AT GATE","Assignment ready",null,null,null,0,["21:00Z  Assignment loaded"],false);window.UpdateLayout();

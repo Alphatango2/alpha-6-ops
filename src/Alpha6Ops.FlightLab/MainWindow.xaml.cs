@@ -13,14 +13,15 @@ public partial class MainWindow : Window
     private readonly DispatcherTimer timer=new(){Interval=TimeSpan.FromSeconds(1)};
     private DateTimeOffset simulatorUtc=DateTimeOffset.UtcNow;
     private int rate=1,automaticIndex=-1,automaticTicks,playbackRate=1;
+    private double routeProgress;
     private bool frozen,automaticPaused;
     private string aircraft="Alpha 6 Test A321",phase="AT GATE";
     private string? scenarioEvent;
     private FlightState state=new(true,0,true,false,false,false);
-    private readonly (string Phase,int Seconds)[] automatic=
+    private readonly (string Phase,int Seconds,double Progress)[] automatic=
     [
-        ("AtGate",5),("EngineStart",4),("Pushback",5),("TaxiOut",8),("Takeoff",5),("Climb",8),
-        ("Cruise",15),("Descend",8),("Approach",6),("Land",5),("TaxiIn",8),("Complete",5)
+        ("AtGate",5,0),("EngineStart",4,.005),("Pushback",5,.01),("TaxiOut",8,.03),("Takeoff",5,.06),("Climb",8,.20),
+        ("Cruise",15,.58),("Descend",8,.82),("Approach",6,.92),("Land",5,.97),("TaxiIn",8,.99),("Complete",5,1)
     ];
 
     public MainWindow()
@@ -50,12 +51,15 @@ public partial class MainWindow : Window
     private void Publish()
     {
         SimulatorTimeText.Text=simulatorUtc.UtcDateTime.ToString("HH:mm:ss'Z'");
-        TelemetryText.Text=$"{state.Speed:0} kt • Brake {(state.Brake?"set":"released")} • Engines {(state.Engines?"running":"off")} • {(state.OnGround?"on ground":"airborne")}";
-        server.Update(new FlightLabFrame(FlightLabProtocol.SchemaVersion,aircraft,simulatorUtc,state.OnGround,state.Speed,state.Brake,state.Engines,state.Paused,state.Slewing,phase,scenarioEvent));
+        var progress=routeProgress;
+        if(automaticIndex>=0&&automaticIndex<automatic.Length-1)progress=Math.Clamp(automatic[automaticIndex].Progress+(automatic[automaticIndex+1].Progress-automatic[automaticIndex].Progress)*automaticTicks/automatic[automaticIndex].Seconds,0,1);
+        TelemetryText.Text=$"{state.Speed:0} kt • Route {progress:P0} • Brake {(state.Brake?"set":"released")} • Engines {(state.Engines?"running":"off")} • {(state.OnGround?"on ground":"airborne")}";
+        server.Update(new FlightLabFrame(FlightLabProtocol.SchemaVersion,aircraft,simulatorUtc,state.OnGround,state.Speed,state.Brake,state.Engines,state.Paused,state.Slewing,phase,scenarioEvent,progress));
     }
 
     private void ApplyPhase(string value)
     {
+        routeProgress=value switch{"AtGate"=>0,"EngineStart"=>.005,"Pushback"=>.01,"TaxiOut"=>.03,"Takeoff"=>.06,"Climb"=>.20,"Cruise"=>.58,"Descend"=>.82,"Approach"=>.92,"Land"=>.97,"TaxiIn"=>.99,"Complete"=>1,"GoAround"=>.88,_=>routeProgress};
         (phase,state)=value switch
         {
             "AtGate"=>("AT GATE",new(true,0,true,false,false,false)),
