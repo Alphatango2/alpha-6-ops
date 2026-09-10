@@ -36,6 +36,8 @@ internal static class FlightLabSource
         return new LiveReading(frame.Aircraft.Trim(),new Telemetry(frame.SimulatorUtc,frame.OnGround,frame.GroundSpeedKnots,
             frame.ParkingBrake,frame.EnginesRunning,frame.Paused,frame.Slewing,AltitudeFeet:frame.AltitudeFeet,
             IndicatedAirspeedKnots:frame.IndicatedAirspeedKnots,VerticalSpeedFeetPerMinute:frame.VerticalSpeedFeetPerMinute,
-            GearExtendedRatio:frame.GearExtendedRatio,AltitudeAboveGroundFeet:frame.AltitudeAboveGroundFeet),"FLIGHT LAB",frame.ScenarioEvent,frame.RouteProgress);
+            GearExtendedRatio:frame.GearExtendedRatio,AltitudeAboveGroundFeet:frame.AltitudeAboveGroundFeet,
+            FlapsExtendedRatio:frame.FlapsExtendedRatio,PitchDegrees:frame.PitchDegrees,BankDegrees:frame.BankDegrees,
+            FuelTotalWeightPounds:frame.FuelTotalWeightPounds,RunningEngineCount:frame.RunningEngineCount,RunningEngineMask:frame.RunningEngineMask),"FLIGHT LAB",frame.ScenarioEvent,frame.RouteProgress);
     }
 }

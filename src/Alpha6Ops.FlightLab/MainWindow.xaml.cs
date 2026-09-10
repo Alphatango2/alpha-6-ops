@@ -54,7 +54,11 @@ public partial class MainWindow : Window
         var progress=routeProgress;
         if(automaticIndex>=0&&automaticIndex<automatic.Length-1)progress=Math.Clamp(automatic[automaticIndex].Progress+(automatic[automaticIndex+1].Progress-automatic[automaticIndex].Progress)*automaticTicks/automatic[automaticIndex].Seconds,0,1);
         TelemetryText.Text=$"{state.Speed:0} kt • Route {progress:P0} • Brake {(state.Brake?"set":"released")} • Engines {(state.Engines?"running":"off")} • {(state.OnGround?"on ground":"airborne")}";
-        server.Update(new FlightLabFrame(FlightLabProtocol.SchemaVersion,aircraft,simulatorUtc,state.OnGround,state.Speed,state.Brake,state.Engines,state.Paused,state.Slewing,phase,scenarioEvent,progress,state.Altitude,state.IndicatedSpeed,state.VerticalSpeed,state.Gear,state.Altitude));
+        var flaps=phase switch{"TAKEOFF"=>.25,"APPROACH"=>.5,"LANDING"=>1,"TAXI TO GATE"=>1,_=>0};
+        var pitch=phase switch{"TAKEOFF"=>10,"CLIMB"=>6,"DESCENT"=>-3,"APPROACH"=>-2,"LANDING"=>-1,_=>0};
+        var bank=phase is "CLIMB" or "DESCENT"?2:0;
+        var fuel=Math.Max(0,34000-9000*progress);
+        server.Update(new FlightLabFrame(FlightLabProtocol.SchemaVersion,aircraft,simulatorUtc,state.OnGround,state.Speed,state.Brake,state.Engines,state.Paused,state.Slewing,phase,scenarioEvent,progress,state.Altitude,state.IndicatedSpeed,state.VerticalSpeed,state.Gear,state.Altitude,flaps,pitch,bank,fuel,state.Engines?2:0,state.Engines?3:0));
     }
 
     private void ApplyPhase(string value)

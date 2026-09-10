@@ -23,4 +23,10 @@ public sealed record FlightLabFrame(
     double IndicatedAirspeedKnots = 0,
     double VerticalSpeedFeetPerMinute = 0,
     double GearExtendedRatio = 1,
-    double AltitudeAboveGroundFeet = 0);
+    double AltitudeAboveGroundFeet = 0,
+    double FlapsExtendedRatio = 0,
+    double PitchDegrees = 0,
+    double BankDegrees = 0,
+    double FuelTotalWeightPounds = 30000,
+    int RunningEngineCount = 0,
+    int RunningEngineMask = 0);

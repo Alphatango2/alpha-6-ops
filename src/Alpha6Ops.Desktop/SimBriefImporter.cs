@@ -74,13 +74,15 @@ internal static class SimBriefImporter
             throw new InvalidDataException("The latest SimBrief briefing has incomplete flight identification or timing data.");
         int? altitude = int.TryParse(Text("general", "initial_altitude"), out var altitudeValue) ? altitudeValue : null;
         double? fuel = double.TryParse(Text("fuel", "plan_ramp"), NumberStyles.Float, CultureInfo.InvariantCulture, out var fuelValue) ? fuelValue : null;
+        double? tripFuel=double.TryParse(Text("fuel","plan_trip"),NumberStyles.Float,CultureInfo.InvariantCulture,out var tripFuelValue)?tripFuelValue:null;
+        var fuelUnits=Text("params", "units").Trim().ToUpperInvariant();
         var noteParts=new List<string>();CollectNotes(root,noteParts);var gates=GateAssignmentResolver.Resolve(airline,flight,origin,destination,departure,string.Join(" ",noteParts));
         var route=Text("general","route");
         var routePoints=ReadRoutePoints(root,origin,destination);
         var aircraftType=Text("aircraft", "icao_code").Trim().ToUpperInvariant();
         var plan = new ActiveFlightPlan(flight, Text("aircraft", "reg").Trim().ToUpperInvariant(), origin, destination, departure, arrival,
-            "SimBrief", username, generated,gates.DepartureGate,gates.ArrivalGate,gates.Source,gates.Confidence,route,routePoints,aircraftType);
-        return new(plan, generated, aircraftType, route, altitude, fuel, Text("params", "units").ToUpperInvariant(), fromCache);
+            "SimBrief", username, generated,gates.DepartureGate,gates.ArrivalGate,gates.Source,gates.Confidence,route,routePoints,aircraftType,tripFuel,fuelUnits);
+        return new(plan, generated, aircraftType, route, altitude, fuel, fuelUnits, fromCache);
     }
 
     private static IReadOnlyList<FlightRoutePoint> ReadRoutePoints(JsonElement root,string origin,string destination)

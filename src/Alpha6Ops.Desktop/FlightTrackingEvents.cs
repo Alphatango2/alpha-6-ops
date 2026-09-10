@@ -15,7 +15,11 @@ internal sealed class FlightTrackingEventMonitor
     private readonly HashSet<string> fired=new(StringComparer.Ordinal);
     private readonly Dictionary<string,int> candidates=new(StringComparer.Ordinal);
     private double? previousAltitude;
+    private double? initialFuelPounds;
     private bool wasPaused,wasSlewing,previousEngines,previousBrake,hasSample,hasTouchedDown;
+    private int previousEngineMask=-1,reportedFlaps=-1,flapCandidate=-1,flapCandidateSamples;
+    private int reportedCruiseLevel;
+    private double previousGear=double.NaN;
     private string? assignedDestination;
 
     internal IReadOnlyList<TrackingEventEntry> Observe(Telemetry sample,FlightPhase phase,FlightEvent? milestone,double progress,ActiveFlightPlan? plan,string? scenarioEvent)
@@ -33,19 +37,50 @@ internal sealed class FlightTrackingEventMonitor
             if(candidates[key]>=samples){candidates.Remove(key);AddOnce(key,title,summary);}
         }
 
-        AddStable("engine-start",sample.EnginesRunning,"Engines running","Engine start detected",2);
+        if(sample.RunningEngineCount<0)AddStable("engine-start",sample.EnginesRunning,"Engines running","Engine start detected",2);
         AddStable("pushback",sample.OnGround&&!sample.ParkingBrake&&sample.GroundSpeedKnots is >=.5 and <10,"Pushback / initial movement",$"Ground movement began at {sample.GroundSpeedKnots:0} kt");
         AddStable("taxi",sample.OnGround&&sample.GroundSpeedKnots>=10,"Taxi started",$"Groundspeed {sample.GroundSpeedKnots:0} kt");
         AddStable("takeoff-roll",sample.OnGround&&phase==FlightPhase.TaxiOut&&sample.GroundSpeedKnots>=60,"Takeoff roll",$"Acceleration through {sample.GroundSpeedKnots:0} kt",2);
         AddStable("initial-climb",!sample.OnGround&&sample.VerticalSpeedFeetPerMinute>=500,"Initial climb",$"Climbing at {sample.VerticalSpeedFeetPerMinute:0} ft/min");
         if(previousAltitude is <10000&&sample.AltitudeFeet>=10000)AddOnce("ten-up","10,000 feet crossed","Climbing through 10,000 ft");
         AddStable("cruise",!sample.OnGround&&sample.AltitudeFeet>=18000&&Math.Abs(sample.VerticalSpeedFeetPerMinute)<300,"Top of climb / cruise established",$"Level at {sample.AltitudeFeet:0} ft");
+        if(fired.Contains("cruise")&&!sample.OnGround&&sample.AltitudeFeet>=18000&&Math.Abs(sample.VerticalSpeedFeetPerMinute)<300)
+        {
+            var level=(int)Math.Round(sample.AltitudeFeet/1000)*1000;
+            if(reportedCruiseLevel==0)reportedCruiseLevel=level;
+            else if(Math.Abs(level-reportedCruiseLevel)>=1000){reportedCruiseLevel=level;AddOnce($"cruise-level-{level}","Cruise altitude changed",$"Level at {level:0} ft");}
+        }
+        AddStable("step-climb",fired.Contains("cruise")&&!sample.OnGround&&sample.VerticalSpeedFeetPerMinute>=500,"Step climb started",$"Climbing through {sample.AltitudeFeet:0} ft at {Speed(sample):0} kt");
         AddStable("descent",!sample.OnGround&&sample.VerticalSpeedFeetPerMinute<=-500,"Top of descent",$"Descending at {sample.VerticalSpeedFeetPerMinute:0} ft/min");
         if(previousAltitude is >10000&&sample.AltitudeFeet<=10000&&sample.VerticalSpeedFeetPerMinute<0)AddOnce("ten-down","10,000 feet crossed","Descending through 10,000 ft");
         var agl=double.IsFinite(sample.AltitudeAboveGroundFeet)?sample.AltitudeAboveGroundFeet:sample.AltitudeFeet;
         AddStable("approach",!sample.OnGround&&agl is >0 and <=6000&&sample.VerticalSpeedFeetPerMinute<0,"Approach started",$"Descending through {agl:0} ft AGL");
         AddStable("gear-down",!sample.OnGround&&sample.GearExtendedRatio>=.9,"Landing gear extended","Gear indicates down",2);
         AddStable("final",!sample.OnGround&&agl is >0 and <=2500&&sample.VerticalSpeedFeetPerMinute<0,"Final approach",$"{agl:0} ft AGL • {Speed(sample):0} kt");
+
+        if(sample.RunningEngineMask>=0)
+        {
+            if(previousEngineMask>=0&&sample.RunningEngineMask!=previousEngineMask)
+            {
+                for(var engine=1;engine<=4;engine++)
+                {
+                    var bit=1<<(engine-1);var wasOn=(previousEngineMask&bit)!=0;var isOn=(sample.RunningEngineMask&bit)!=0;
+                    if(wasOn!=isOn)AddOnce($"engine-{engine}-{(isOn?"on":"off")}",$"Engine {engine} {(isOn?"on":"off")}",$"Engine {engine} combustion {(isOn?"detected":"stopped")}");
+                }
+            }
+            previousEngineMask=sample.RunningEngineMask;
+        }
+        if(double.IsFinite(sample.FlapsExtendedRatio))
+        {
+            var setting=(int)Math.Clamp(Math.Round(sample.FlapsExtendedRatio*4)*25,0,100);
+            if(setting==flapCandidate)flapCandidateSamples++;else{flapCandidate=setting;flapCandidateSamples=1;}
+            if(reportedFlaps<0)reportedFlaps=setting;
+            else if(setting!=reportedFlaps&&flapCandidateSamples>=2){reportedFlaps=setting;AddOnce($"flaps-{setting}-{atKey(sample.At)}","Flaps changed",$"Flaps set to {setting}%");}
+        }
+        if(double.IsFinite(sample.GearExtendedRatio)&&double.IsFinite(previousGear))
+        {
+            if(previousGear>.5&&sample.GearExtendedRatio<.1)AddOnce("gear-up","Landing gear retracted","Gear indicates up");
+        }
 
         if(milestone is not null)
         {
@@ -54,7 +89,17 @@ internal sealed class FlightTrackingEventMonitor
                 case FlightPhase.TaxiOut:AddOnce("block-out","Block-out / taxi out","Parking brake released and sustained ground movement confirmed");break;
                 case FlightPhase.Airborne when hasTouchedDown:AddOnce("go-around","Go-around",$"Airborne again at {Speed(sample):0} kt","alert");break;
                 case FlightPhase.Airborne:AddOnce("liftoff","Liftoff",$"Airborne at {Speed(sample):0} kt");break;
-                case FlightPhase.TaxiIn:hasTouchedDown=true;AddOnce("touchdown","Touchdown",$"Landing speed {Speed(sample):0} kt");break;
+                case FlightPhase.TaxiIn:
+                    hasTouchedDown=true;
+                    var landing=$"Touchdown at {Speed(sample):0} kt";
+                    if(double.IsFinite(sample.VerticalSpeedFeetPerMinute))landing+=$" • {sample.VerticalSpeedFeetPerMinute:0} ft/min";
+                    if(plan is not null){var variance=(int)Math.Round((milestone.At-plan.PlannedArrivalUtc).TotalMinutes);landing+=variance==0?" • on schedule":$" • {Math.Abs(variance)} min {(variance<0?"early":"late")}";}
+                    if(initialFuelPounds is not null&&double.IsFinite(sample.FuelTotalWeightPounds)&&plan?.PlannedTripFuel is { } plannedFuel)
+                    {
+                        var plannedPounds=plan.FuelUnits?.StartsWith("KG",StringComparison.OrdinalIgnoreCase)==true?plannedFuel*2.2046226218:plannedFuel;var difference=initialFuelPounds.Value-sample.FuelTotalWeightPounds-plannedPounds;
+                        landing+=$" • fuel burn {Math.Abs(difference):0} lb {(difference<0?"below":"above")} plan";
+                    }
+                    AddOnce("touchdown","Touchdown",landing);break;
                 case FlightPhase.Complete:AddOnce("block-in","Block-in / flight complete","Stopped at gate with parking brake set and engines shut down");break;
             }
         }
@@ -72,7 +117,8 @@ internal sealed class FlightTrackingEventMonitor
         if(sample.Slewing&&!wasSlewing)AddOnce("slew","Slew mode detected","Operational event detection suspended","alert");
         if(!sample.Slewing&&wasSlewing)AddOnce("slew-ended","Slew mode ended","Operational event detection resumed","system");
         if(!string.IsNullOrWhiteSpace(scenarioEvent))AddOnce("scenario-"+scenarioEvent,ScenarioTitle(scenarioEvent),scenarioEvent.Replace('_',' '),scenarioEvent.Contains("DIVERSION",StringComparison.OrdinalIgnoreCase)?"alert":"system");
-        wasPaused=sample.Paused;wasSlewing=sample.Slewing;previousEngines=sample.EnginesRunning;previousBrake=sample.ParkingBrake;hasSample=true;
+        if(initialFuelPounds is null&&double.IsFinite(sample.FuelTotalWeightPounds))initialFuelPounds=sample.FuelTotalWeightPounds;
+        wasPaused=sample.Paused;wasSlewing=sample.Slewing;previousEngines=sample.EnginesRunning;previousBrake=sample.ParkingBrake;previousGear=sample.GearExtendedRatio;hasSample=true;
         if(double.IsFinite(sample.AltitudeFeet))previousAltitude=sample.AltitudeFeet;
         return events;
     }
@@ -95,9 +141,13 @@ internal sealed class FlightTrackingEventMonitor
             if(double.IsFinite(sample.IndicatedAirspeedKnots))parts.Add($"IAS {sample.IndicatedAirspeedKnots:0} KT");
             if(double.IsFinite(sample.VerticalSpeedFeetPerMinute))parts.Add($"VS {sample.VerticalSpeedFeetPerMinute:+0;-0;0} FPM");
             if(double.IsFinite(sample.HeadingDegrees))parts.Add($"HDG {Normalize(sample.HeadingDegrees):000}°");
+            if(double.IsFinite(sample.PitchDegrees))parts.Add($"PITCH {sample.PitchDegrees:0}°");
+            if(double.IsFinite(sample.BankDegrees))parts.Add($"BANK {sample.BankDegrees:0}°");
         }
         if(sample.HasPosition&&title.Contains("Route",StringComparison.OrdinalIgnoreCase))parts.Add($"POS {sample.LatitudeDegrees:0.0000}, {sample.LongitudeDegrees:0.0000}");
         var remaining=FlightMetrics.RemainingDistanceNm(plan?.RoutePoints,progress);
+        if(double.IsFinite(remaining)&&(title.Contains("approach",StringComparison.OrdinalIgnoreCase)||title.Contains("final",StringComparison.OrdinalIgnoreCase)))parts.Add($"{remaining:0} NM TO GO");
+        if(double.IsFinite(sample.FuelTotalWeightPounds)&&(sample.OnGround||title.Contains("Touchdown",StringComparison.OrdinalIgnoreCase)))parts.Add($"FUEL {sample.FuelTotalWeightPounds:0} LB");
         if(double.IsFinite(remaining)&&!sample.OnGround&&sample.GroundSpeedKnots>=60&&plan is not null&&
            (title.Contains("cruise",StringComparison.OrdinalIgnoreCase)||title.Contains("descent",StringComparison.OrdinalIgnoreCase)||title.Contains("approach",StringComparison.OrdinalIgnoreCase)))
         {
@@ -111,6 +161,7 @@ internal sealed class FlightTrackingEventMonitor
 
     private static double Speed(Telemetry sample)=>double.IsFinite(sample.IndicatedAirspeedKnots)&&sample.IndicatedAirspeedKnots>0?sample.IndicatedAirspeedKnots:sample.GroundSpeedKnots;
     private static double Normalize(double heading)=>(heading%360+360)%360;
+    private static long atKey(DateTimeOffset at)=>at.ToUnixTimeSeconds();
     private static string ScenarioTitle(string value)=>value.Contains("DIVERSION",StringComparison.OrdinalIgnoreCase)?"Diversion declared":value.Contains("CLOCK",StringComparison.OrdinalIgnoreCase)?"Simulator clock changed":value.Contains("AIRCRAFT",StringComparison.OrdinalIgnoreCase)?"Aircraft changed":"Flight Lab event";
 }
 
