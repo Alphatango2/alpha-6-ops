@@ -28,20 +28,15 @@ public partial class MainWindow
     private DashboardFlightRow? HeroFlight => DashboardFlights.FirstOrDefault(f => !f.Leg.Completed) ?? DashboardFlights.LastOrDefault();
     private DashboardFlightRow? SelectedDashboardFlight => DashboardFlightsGrid.SelectedItem as DashboardFlightRow ?? HeroFlight;
 
-    private void HeroProgressTrack_SizeChanged(object sender,SizeChangedEventArgs e)=>PositionHeroProgressAircraft(ReplayProgress.Value);
-
     internal void UpdateHeroProgress(double value,bool animate=true)
     {
-        var target=Math.Clamp(value,ReplayProgress.Minimum,ReplayProgress.Maximum);var current=ReplayProgress.Value;var currentX=HeroProgressAircraftTranslate.X;var targetX=HeroProgressPosition(target);
-        ReplayProgress.BeginAnimation(System.Windows.Controls.Primitives.RangeBase.ValueProperty,null);HeroProgressAircraftTranslate.BeginAnimation(TranslateTransform.XProperty,null);
-        ReplayProgress.Value=target;HeroProgressAircraftTranslate.X=targetX;
+        var target=Math.Clamp(value,ReplayProgress.Minimum,ReplayProgress.Maximum);var current=ReplayProgress.Value;
+        ReplayProgress.BeginAnimation(System.Windows.Controls.Primitives.RangeBase.ValueProperty,null);
+        ReplayProgress.Value=target;
         if(!animate||Math.Abs(target-current)<.001)return;
         var duration=TimeSpan.FromMilliseconds(850);var easing=new QuadraticEase{EasingMode=EasingMode.EaseOut};
         ReplayProgress.BeginAnimation(System.Windows.Controls.Primitives.RangeBase.ValueProperty,new DoubleAnimation(current,target,duration){EasingFunction=easing,FillBehavior=FillBehavior.Stop});
-        HeroProgressAircraftTranslate.BeginAnimation(TranslateTransform.XProperty,new DoubleAnimation(currentX,targetX,duration){EasingFunction=easing,FillBehavior=FillBehavior.Stop});
     }
-    private void PositionHeroProgressAircraft(double value){HeroProgressAircraftTranslate.BeginAnimation(TranslateTransform.XProperty,null);HeroProgressAircraftTranslate.X=HeroProgressPosition(value);}
-    private double HeroProgressPosition(double value)=>Math.Max(0,HeroProgressTrack.ActualWidth-HeroProgressAircraftIcon.Width)*(ReplayProgress.Maximum<=ReplayProgress.Minimum?0:(value-ReplayProgress.Minimum)/(ReplayProgress.Maximum-ReplayProgress.Minimum));
 
     private void InitializeDashboard(string? diagnosticDirectory)
     {

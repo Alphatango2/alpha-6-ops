@@ -30,7 +30,6 @@ public partial class FlightTrackingWorkspace : UserControl
         TrackingMap.SetRoute(plan.RoutePoints);
         TrackingMap.SetTelemetry(telemetry,routeProgress);
         TrackingSubtitle.Text=connected?"ACTIVE FLIGHT • LIVE TELEMETRY":"ACTIVE ASSIGNMENT • READY FOR SIMULATOR";
-        ConnectionText.Text=connected?"LIVE TRACKING":"ASSIGNMENT READY";
         ScheduledOutText.Text=plan.PlannedDepartureUtc.UtcDateTime.ToString("dd MMM • HH:mm'Z'");
         ScheduledInText.Text=plan.PlannedArrivalUtc.UtcDateTime.ToString("dd MMM • HH:mm'Z'");
         ActualOutText.Text=actualOut?.UtcDateTime.ToString("HH:mm:ss'Z'")??"—";

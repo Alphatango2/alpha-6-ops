@@ -17,7 +17,7 @@
       <Grid>
         <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
         <StackPanel><TextBlock Text="FLIGHT TRACKING" FontFamily="Bahnschrift SemiCondensed" FontSize="29" FontWeight="SemiBold"/><TextBlock x:Name="TrackingSubtitle" Text="ACTIVE ASSIGNMENT • READY FOR SIMULATOR" Style="{StaticResource OpsCaption}" FontSize="11" Margin="0,5,0,0"/></StackPanel>
-        <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center"><Border x:Name="ConnectionBadge" Background="#102019" BorderBrush="#356443" BorderThickness="1" CornerRadius="3" Padding="13,8"><TextBlock x:Name="ConnectionText" Text="ASSIGNMENT READY" Foreground="#75D88A" FontSize="11"/></Border><Button Content="VIEW FLIGHT DECK" Style="{StaticResource OpsButton}" Click="FlightDeck_Click" Margin="10,0,0,0" Padding="16,9"/></StackPanel>
+        <Button Grid.Column="1" Content="VIEW FLIGHT DECK" Style="{StaticResource OpsExit}" Click="FlightDeck_Click" VerticalAlignment="Center" Padding="16,9"/>
       </Grid>
       <Grid Grid.Row="2">
         <Grid.ColumnDefinitions><ColumnDefinition Width="2.6*"/><ColumnDefinition Width="12"/><ColumnDefinition Width="1*"/></Grid.ColumnDefinitions>
@@ -55,7 +55,7 @@
             <StackPanel><TextBlock Text="DISTANCE REMAINING" Style="{StaticResource OpsCaption}"/><TextBlock x:Name="DistanceRemainingText" Text="— NM" FontSize="15" Margin="0,7,0,0"/></StackPanel>
             <StackPanel><TextBlock Text="PROGRESS" Style="{StaticResource OpsCaption}"/><TextBlock x:Name="ProgressText" Text="0%" Foreground="#FFDA00" FontSize="15" Margin="0,7,0,0"/></StackPanel>
           </UniformGrid>
-          <Grid x:Name="ProgressTrack" Grid.Row="1" Margin="0,10,0,0" SizeChanged="ProgressTrack_SizeChanged"><ProgressBar x:Name="ProgressBar" Minimum="0" Maximum="100" Value="0" Height="5" VerticalAlignment="Center"/><Path x:Name="ProgressAircraftIcon" Data="M 40,10 C 38,8.7 35.5,8 32,8 L 23,8 L 14,1 L 10,1 L 16,8 L 6,8 L 2,5 L 0,5 L 3,10 L 0,15 L 2,15 L 6,12 L 16,12 L 10,19 L 14,19 L 23,12 L 32,12 C 35.5,12 38,11.3 40,10 Z" Fill="#FFDA00" Width="40" Height="20" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Center"><Path.RenderTransform><TranslateTransform x:Name="ProgressAircraftTranslate"/></Path.RenderTransform></Path></Grid>
+          <Grid x:Name="ProgressTrack" Grid.Row="1" Margin="0,10,0,0" SizeChanged="ProgressTrack_SizeChanged"><ProgressBar x:Name="ProgressBar" Minimum="0" Maximum="100" Value="0" Height="5" VerticalAlignment="Center" Foreground="{StaticResource OpsYellow}" Background="#35414A" BorderThickness="0"/><Path x:Name="ProgressAircraftIcon" Data="M 40,10 C 38,8.7 35.5,8 32,8 L 23,8 L 14,1 L 10,1 L 16,8 L 6,8 L 2,5 L 0,5 L 3,10 L 0,15 L 2,15 L 6,12 L 16,12 L 10,19 L 14,19 L 23,12 L 32,12 C 35.5,12 38,11.3 40,10 Z" Fill="#FFDA00" Width="40" Height="20" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Center"><Path.RenderTransform><TranslateTransform x:Name="ProgressAircraftTranslate"/></Path.RenderTransform></Path></Grid>
         </Grid>
       </Border>
     </Grid>

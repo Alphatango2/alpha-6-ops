@@ -430,11 +430,10 @@
                 </Grid>
                 <StackPanel Grid.Row="5" Orientation="Horizontal" VerticalAlignment="Center">
                   <Button x:Name="HeroFlightDetailsButton" Content="VIEW FLIGHT DETAILS    →" Style="{StaticResource OpsPrimary}" Click="FlightDetails_Click" Padding="17,9" />
-                  <Button x:Name="HeroFlightDeckButton" Content="VIEW FLIGHT DECK" Style="{StaticResource OpsButton}" Click="FlightDeck_Click" Margin="12,0,0,0" Padding="22,9" />
+                  <Button x:Name="HeroFlightDeckButton" Content="VIEW FLIGHT DECK" Style="{StaticResource OpsExit}" Click="FlightDeck_Click" Margin="12,0,0,0" Padding="22,9" />
                 </StackPanel>
-                <Grid x:Name="HeroProgressTrack" Grid.Row="6" Height="24" VerticalAlignment="Bottom" SizeChanged="HeroProgressTrack_SizeChanged">
+                <Grid x:Name="HeroProgressTrack" Grid.Row="6" Height="24" VerticalAlignment="Bottom">
                   <ProgressBar x:Name="ReplayProgress" Maximum="100" Height="3" VerticalAlignment="Center" Foreground="{StaticResource OpsYellow}" Background="#35414A" BorderThickness="0" />
-                  <Path x:Name="HeroProgressAircraftIcon" Data="M 40,10 C 38,8.7 35.5,8 32,8 L 23,8 L 14,1 L 10,1 L 16,8 L 6,8 L 2,5 L 0,5 L 3,10 L 0,15 L 2,15 L 6,12 L 16,12 L 10,19 L 14,19 L 23,12 L 32,12 C 35.5,12 38,11.3 40,10 Z" Fill="#FFDA00" Width="40" Height="20" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Center"><Path.RenderTransform><TranslateTransform x:Name="HeroProgressAircraftTranslate"/></Path.RenderTransform></Path>
                 </Grid>
               </Grid>
             </Grid>

@@ -79,10 +79,18 @@ internal static class SimBriefImporter
         var noteParts=new List<string>();CollectNotes(root,noteParts);var gates=GateAssignmentResolver.Resolve(airline,flight,origin,destination,departure,string.Join(" ",noteParts));
         var route=Text("general","route");
         var routePoints=ReadRoutePoints(root,origin,destination);
-        var aircraftType=Text("aircraft", "icao_code").Trim().ToUpperInvariant();
+        var aircraftType=AircraftDisplayName(Text("aircraft","name"),Text("aircraft", "icao_code"));
         var plan = new ActiveFlightPlan(flight, Text("aircraft", "reg").Trim().ToUpperInvariant(), origin, destination, departure, arrival,
             "SimBrief", username, generated,gates.DepartureGate,gates.ArrivalGate,gates.Source,gates.Confidence,route,routePoints,aircraftType,tripFuel,fuelUnits);
         return new(plan, generated, aircraftType, route, altitude, fuel, fuelUnits, fromCache);
+    }
+
+    private static string AircraftDisplayName(string name,string icao)
+    {
+        var display=name.Trim();
+        foreach(var manufacturer in new[]{"Airbus ","Boeing ","Embraer ","Bombardier ","McDonnell Douglas "})
+            if(display.StartsWith(manufacturer,StringComparison.OrdinalIgnoreCase)){display=display[manufacturer.Length..];break;}
+        return (display.Length==0?icao.Trim():display).ToUpperInvariant();
     }
 
     private static IReadOnlyList<FlightRoutePoint> ReadRoutePoints(JsonElement root,string origin,string destination)
