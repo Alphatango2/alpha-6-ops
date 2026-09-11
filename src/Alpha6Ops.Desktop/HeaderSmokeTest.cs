@@ -68,7 +68,7 @@ internal static class HeaderSmokeTest
             window.SetConnectionBadge("SIMULATOR CONNECTION FAILED", "#FF9690", "#512621");
             window.ConnectButton.IsEnabled = true;
             await window.Dispatcher.InvokeAsync(() => { }, DispatcherPriority.ApplicationIdle);
-            check(window.CanQuickConnect && window.ConnectionActionText.Text == "CLICK TO CONNECT" && window.ConnectionBadgeText.Text == "FAILED",
+                check(window.CanQuickConnect && window.ConnectionActionText.Text == window.SimulatorReadyAction && window.ConnectionBadgeText.Text == "FAILED",
                 "Failed connection offers quick retry and retains the full error status in its tooltip");
             var failureBrush = (SolidColorBrush)window.ConnectionBadge.Background;
             var neutral = (Color)ColorConverter.ConvertFromString("#091219");

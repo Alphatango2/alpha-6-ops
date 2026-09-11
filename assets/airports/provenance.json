@@ -1,0 +1,8 @@
+﻿{
+    "source":  "https://ourairports.com/data/",
+    "downloadedUtc":  "2026-09-08T22:08:23.7966564Z",
+    "license":  "Public domain",
+    "records":  72487,
+    "inputSha256":  "CA72A3404144B9478F51FF145910F2533C18B02A2C77C4A59E8F2274674A26C0",
+    "purpose":  "Offline approximate airport proximity; not navigation or proof of departure/destination."
+}

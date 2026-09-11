@@ -159,11 +159,11 @@
           <Ellipse x:Name="ConnectionDot" Width="13" Height="13" Fill="#80919D" />
           <StackPanel Grid.Column="1" VerticalAlignment="Center">
             <TextBlock x:Name="ConnectionBadgeText" Text="DISCONNECTED" FontFamily="Bahnschrift SemiCondensed" FontSize="14" MaxWidth="110" TextWrapping="Wrap" TextAlignment="Center" AutomationProperties.LiveSetting="Polite" />
-            <TextBlock Text="MSFS 2024" Style="{StaticResource OpsCaption}" FontSize="12" TextAlignment="Center" Margin="0,4,0,0" />
+            <TextBlock x:Name="ConnectionSourceText" Text="MSFS 2024" Style="{StaticResource OpsCaption}" FontSize="12" TextAlignment="Center" Margin="0,4,0,0" />
             <TextBlock x:Name="ConnectionActionText" FontSize="10" Foreground="{StaticResource OpsYellow}" TextAlignment="Center" Margin="0,4,0,0">
               <TextBlock.Style>
                 <Style TargetType="TextBlock">
-                  <Setter Property="Text" Value="CLICK TO CONNECT" />
+                  <Setter Property="Text" Value="{Binding SimulatorReadyAction, RelativeSource={RelativeSource AncestorType=Window}}" />
                   <Style.Triggers>
                     <DataTrigger Binding="{Binding IsEnabled, ElementName=ConnectButton}" Value="False">
                       <Setter Property="Text" Value="VIEW CONTROLS" />
@@ -371,7 +371,7 @@
                     <ColumnDefinition />
                     <ColumnDefinition Width="Auto" />
                   </Grid.ColumnDefinitions>
-                  <TextBlock Text="YOUR NEXT FLIGHT" Style="{StaticResource OpsTitle}" FontSize="19" />
+                  <TextBlock x:Name="HeroHeadingText" Text="YOUR NEXT FLIGHT" Style="{StaticResource OpsTitle}" FontSize="19" />
                   <TextBlock x:Name="TrackerModeText" Grid.Column="1" Text="REPLAY • SAMPLE DATA" Style="{StaticResource OpsCaption}" FontSize="9" VerticalAlignment="Top" />
                 </Grid>
                 <TextBlock x:Name="HeroFlightText" Grid.Row="1" Text="A601" FontFamily="Bahnschrift SemiCondensed" FontSize="48" FontWeight="Bold" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" />
@@ -394,7 +394,7 @@
                   <Border x:Name="HeroStatusBadge" Background="#163F24" BorderBrush="#2C7137" BorderThickness="1" CornerRadius="3" Padding="10,5">
                     <TextBlock x:Name="HeroStatusText" Text="●  ON TIME" Foreground="#7DEA57" FontFamily="Bahnschrift SemiCondensed" FontSize="13" />
                   </Border>
-                  <TextBlock x:Name="HeroTimingText" Text="Scheduled 10:00Z" FontSize="13" Margin="13,0,0,0" VerticalAlignment="Center" />
+                  <TextBlock x:Name="HeroTimingText" Text="Scheduled 10:00Z" FontSize="13" Margin="13,0,0,0" VerticalAlignment="Center" MaxWidth="400" TextTrimming="CharacterEllipsis" />
                 </StackPanel>
                 <Grid Grid.Row="4" VerticalAlignment="Center">
                   <Grid.ColumnDefinitions>
@@ -695,11 +695,11 @@
               </UniformGrid>
               <TextBlock Text="SIMULATOR" Style="{StaticResource OpsTitle}" />
               <WrapPanel Margin="0,10,0,8">
-                <Button x:Name="ConnectButton" Content="CONNECT TO MSFS 2024" Style="{StaticResource OpsPrimary}" Click="Connect_Click" Margin="0,0,10,8" />
+                <Button x:Name="ConnectButton" Content="LAUNCH / CONNECT TO MSFS 2024" Style="{StaticResource OpsPrimary}" Click="Connect_Click" Margin="0,0,10,8" />
                 <Button x:Name="ConnectFlightLabButton" Content="CONNECT TO FLIGHT LAB" Style="{StaticResource OpsButton}" Click="ConnectFlightLab_Click" Margin="0,0,10,8" ToolTip="Connect to the local Alpha 6 Flight Lab test program" />
                 <Button x:Name="DisconnectButton" Content="DISCONNECT" Style="{StaticResource OpsButton}" IsEnabled="False" Click="Disconnect_Click" Margin="0,0,0,8" />
               </WrapPanel>
-              <TextBlock x:Name="ConnectionText" Text="Start MSFS 2024 and load an aircraft at a gate." TextWrapping="Wrap" Foreground="#B6C8D6" FontSize="12" />
+              <TextBlock x:Name="ConnectionText" Text="Launch or connect to MSFS 2024 here, then load a flight. For a virtual test, open Flight Lab and connect to it separately." TextWrapping="Wrap" Foreground="#B6C8D6" FontSize="12" />
               <TextBlock x:Name="LiveText" Text="Live telemetry appears after connecting." Foreground="#D9C956" TextWrapping="Wrap" FontSize="11" Margin="0,7,0,10" />
               <WrapPanel>
                 <Button x:Name="LiveTimelineButton" Content="LIVE TIMELINE" Style="{StaticResource OpsButton}" IsEnabled="False" Click="LiveTimeline_Click" Margin="0,0,8,8" />

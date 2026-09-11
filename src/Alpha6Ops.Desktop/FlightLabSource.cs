@@ -38,6 +38,8 @@ internal static class FlightLabSource
             IndicatedAirspeedKnots:frame.IndicatedAirspeedKnots,VerticalSpeedFeetPerMinute:frame.VerticalSpeedFeetPerMinute,
             GearExtendedRatio:frame.GearExtendedRatio,AltitudeAboveGroundFeet:frame.AltitudeAboveGroundFeet,
             FlapsExtendedRatio:frame.FlapsExtendedRatio,PitchDegrees:frame.PitchDegrees,BankDegrees:frame.BankDegrees,
-            FuelTotalWeightPounds:frame.FuelTotalWeightPounds,RunningEngineCount:frame.RunningEngineCount,RunningEngineMask:frame.RunningEngineMask),"FLIGHT LAB",frame.ScenarioEvent,frame.RouteProgress);
+            FuelTotalWeightPounds:frame.FuelTotalWeightPounds,RunningEngineCount:frame.RunningEngineCount,RunningEngineMask:frame.RunningEngineMask),
+            new FlightEvidence(SimulationRunning:true,PlanStatus:"Flight Lab route progress is synthetic."),
+            Source:"FLIGHT LAB",ScenarioEvent:frame.ScenarioEvent,RouteProgress:frame.RouteProgress);
     }
 }

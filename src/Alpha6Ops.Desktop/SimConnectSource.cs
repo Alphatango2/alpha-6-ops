@@ -8,7 +8,8 @@ using Alpha6Ops.Core;
 
 namespace Alpha6Ops.Desktop;
 
-public record LiveReading(string Aircraft, Telemetry Telemetry, string Source = "MSFS 2024", string? ScenarioEvent = null, double? RouteProgress = null);
+public record LiveReading(string Aircraft, Telemetry Telemetry, FlightEvidence? Evidence = null,
+    string Source = "MSFS 2024", string? ScenarioEvent = null,double? RouteProgress=null);
 
 // Native ABI taken from MSFS 2024 SDK 1.7.3 SimConnect.h (packed receive records).
 // All calls and dispatch reads stay on one dedicated worker. No simulator writes.
@@ -49,18 +50,22 @@ internal static class SimConnectSource
             Check(AddDefinition(handle, 1, "TITLE", null, 9, 0, uint.MaxValue), "Aircraft title");
             Check(Subscribe(handle, 10, "Pause_EX1"), "Pause subscription");
             Check(Request(handle, 1, 1, 0, 4, 0, 0, 0, 0), "Telemetry request");
+            var context = new SimConnectContext(handle);
             bool paused = true; // fail closed until initial Pause_EX1 state arrives
             bool opened = false;
             var lastPacket = DateTime.UtcNow;
             while (!token.IsCancellationRequested)
             {
+                context.Poll();
                 var processed = 0;
                 while (processed++ < 100 && Next(handle, out var data, out var length) >= 0)
                 {
                     if (length < 12) throw new InvalidDataException("Truncated SimConnect packet.");
                     var id = Marshal.ReadInt32(data, 8);
+                    if (context.Dispatch(id, data, length)) continue;
                     if (id == 2)
                     {
+                        if (length < 268) throw new InvalidDataException("Truncated SimConnect connection acknowledgement.");
                         var server = Marshal.PtrToStringAnsi(IntPtr.Add(data, 12), 256)?.TrimEnd('\0') ?? "Simulator";
                         opened = true;
                         status("Connected to " + server + ". Waiting for aircraft data.");
@@ -82,7 +87,7 @@ internal static class SimConnectSource
                             (values[4]!=0?1:0)|(values[5]!=0?2:0)|(values[6]!=0?4:0)|(values[7]!=0?8:0));
                         if (!double.IsFinite(sample.GroundSpeedKnots) || sample.GroundSpeedKnots < 0 || !sample.HasPosition || !double.IsFinite(sample.AltitudeFeet) || !double.IsFinite(sample.HeadingDegrees) || !double.IsFinite(sample.IndicatedAirspeedKnots) || sample.IndicatedAirspeedKnots<0 || !double.IsFinite(sample.VerticalSpeedFeetPerMinute) || !double.IsFinite(sample.GearExtendedRatio) || sample.GearExtendedRatio is <0 or >1.1 || !double.IsFinite(sample.AltitudeAboveGroundFeet) || !double.IsFinite(sample.FlapsExtendedRatio) || sample.FlapsExtendedRatio is <0 or >1.1 || !double.IsFinite(sample.PitchDegrees) || !double.IsFinite(sample.BankDegrees) || !double.IsFinite(sample.FuelTotalWeightPounds) || sample.FuelTotalWeightPounds<0) throw new InvalidDataException("Invalid simulator aircraft telemetry.");
                         lastPacket = DateTime.UtcNow;
-                        received(new(title, sample));
+                        received(new(title, sample, context.Evidence()));
                     }
                 }
                 if (DateTime.UtcNow - lastPacket > TimeSpan.FromSeconds(30))

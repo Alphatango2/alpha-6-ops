@@ -12,7 +12,8 @@ public partial class App : Application
     protected override async void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
-        CrashReporter.Install(this);
+        var diagnosticOutput = e.Args.Length == 2 && e.Args[0] == "--smoke-test" ? e.Args[1] : null;
+        CrashReporter.Install(this,diagnosticOutput);
         if(e.Args.Length==2&&e.Args[0]=="--activation-smoke")
         {
             var output=e.Args[1];Directory.CreateDirectory(output);
@@ -26,13 +27,12 @@ public partial class App : Application
             File.WriteAllText(Path.Combine(output,"activation-smoke.json"),JsonSerializer.Serialize(new{passed,restored=smokeWindow.IsVisible,childExited=child?.HasExited??false}));
             smokeWindow.ExitApplication(output);return;
         }
-        if (e.Args.Length == 2 && e.Args[0] == "--simconnect-probe")
+        if (e.Args.Length == 2 && e.Args[0] is "--simconnect-probe" or "--simulator-launch-probe")
         {
-            await SimConnectProbe.RunAsync(e.Args[1]);
+            await SimConnectProbe.RunAsync(e.Args[1], e.Args[0] == "--simulator-launch-probe");
             Shutdown();
             return;
         }
-        var diagnosticOutput = e.Args.Length == 2 && e.Args[0] == "--smoke-test" ? e.Args[1] : null;
         if (diagnosticOutput is null)
         {
             if (!SingleInstance.TryAcquire()) { Shutdown(); return; }

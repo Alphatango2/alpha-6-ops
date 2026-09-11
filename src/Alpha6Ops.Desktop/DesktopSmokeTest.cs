@@ -151,6 +151,10 @@ internal static class DesktopSmokeTest
                 if (crashJson.RootElement.GetProperty("source").GetString() != "smoke_test" || crashJson.RootElement.GetProperty("exception").GetProperty("type").GetString() != typeof(InvalidOperationException).FullName)
                     throw new InvalidOperationException("Crash report did not preserve the exception details.");
             if (window.Projection.Any(leg => leg.DepartureDelayMinutes != 0)) throw new InvalidOperationException("Reset failed.");
+            await RefreshSmokeTest.RunAsync(window, outputDirectory);
+            LiveIdentitySmokeTest.Run(window, outputDirectory);
+            await DiagnosticIndexSmokeTest.RunAsync(outputDirectory);
+            await ProgramMonitorSmokeTest.RunAsync(window, outputDirectory);
             File.WriteAllText(Path.Combine(outputDirectory, "desktop-smoke.json"), JsonSerializer.Serialize(new
             {
                 passed = true, checks = new[] { "WPF startup", "embedded replay", "close-to-tray preserves replay", "downstream delays", "tray restore", "reset", "SQLite fleet counts and N414DZ identity", "case-insensitive fleet search and no-results state", "active-flight assignment window", "timeline scrubber window and snapshot contract", "debrief window and segment/delay contract", "live-tracking recorder feeds the same timeline/debrief windows", "SimBrief JSON mapping", "active flight recovery round-trip and clear", "SQLite diagnostic file index", "crash report serialization", "flight history records a replay run", "Pilot Logbook renders a completed record" },

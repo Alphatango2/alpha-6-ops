@@ -19,6 +19,7 @@
     <EmbeddedResource Include="../../samples/on-time-flight.jsonl" LogicalName="on-time-flight.jsonl" />
     <EmbeddedResource Include="Assets/Map/ne_110m_land.geojson" LogicalName="ne_110m_land.geojson" />
     <EmbeddedResource Include="Assets/Map/ne_110m_land-mask.png" LogicalName="ne_110m_land-mask.png" />
+    <EmbeddedResource Include="../../assets/airports/airports.tsv.gz" LogicalName="airports.tsv.gz" />
     <Content Include="../../assets/fleet/aircraft.sqlite" Link="fleet/aircraft.sqlite" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
     <Content Include="Assets/alpha6.ico" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
     <Resource Include="Assets/alpha6-mark.png" />
