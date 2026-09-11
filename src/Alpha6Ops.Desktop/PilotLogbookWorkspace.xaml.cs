@@ -15,7 +15,7 @@ public partial class PilotLogbookWorkspace:UserControl
         ErrorText.Visibility=Visibility.Collapsed;
         try
         {
-            var flights=database?.ReadRecentFlights()??[];
+            var flights=database?.ReadRecentFlights(1000)??[];
             var rows=flights.Select(f=>new PilotLogbookRow(f.FlightNumber??"—",f.Origin??"—",f.Destination??"—",f.Aircraft,
                 FormatDate(f.StartedUtc),f.Source,Status(f.FinalPhase),StatusColor(f.FinalPhase),StatusBackground(f.FinalPhase),StatusBorder(f.FinalPhase))).ToArray();
             FlightsGrid.ItemsSource=rows;FlightsGrid.Visibility=rows.Length==0?Visibility.Collapsed:Visibility.Visible;EmptyState.Visibility=rows.Length==0?Visibility.Visible:Visibility.Collapsed;
