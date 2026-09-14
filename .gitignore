@@ -12,5 +12,6 @@ simconnect-sdk-path.txt
 outputs/Alpha6OPS-Desktop/
 outputs/Alpha6OPS-Setup-*.exe
 outputs/Alpha6OPS-Desktop-*.zip
+outputs/Alpha6OPS-*-SHA256.txt
 __pycache__/
 *.pyc
