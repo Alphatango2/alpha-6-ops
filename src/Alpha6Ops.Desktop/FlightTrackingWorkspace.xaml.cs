@@ -6,12 +6,16 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using Alpha6Ops.Core;
+using System.Threading.Tasks;
 
 namespace Alpha6Ops.Desktop;
 
 public partial class FlightTrackingWorkspace : UserControl
 {
     internal event EventHandler? FlightDeckRequested;
+    internal event EventHandler? DispatchRequested;
+    internal Func<bool>? PirepSubmissionRequested;
+    internal event EventHandler? PirepCloseoutCompleted;
 
     public FlightTrackingWorkspace() => InitializeComponent();
 
@@ -27,6 +31,7 @@ public partial class FlightTrackingWorkspace : UserControl
         AircraftText.Text=!string.IsNullOrWhiteSpace(plan.AircraftType)?plan.AircraftType:simulatorAircraft??"—";
         PhaseText.Text=phase;
         StatusText.Text=status;
+        var complete=phase.Contains("COMPLETE",StringComparison.OrdinalIgnoreCase);
         TrackingMap.SetRoute(plan.RoutePoints);
         TrackingMap.SetTelemetry(telemetry,routeProgress);
         TrackingSubtitle.Text=connected?"ACTIVE FLIGHT • LIVE TELEMETRY":"ACTIVE ASSIGNMENT • READY FOR SIMULATOR";
@@ -34,7 +39,7 @@ public partial class FlightTrackingWorkspace : UserControl
         ScheduledInText.Text=plan.PlannedArrivalUtc.UtcDateTime.ToString("dd MMM • HH:mm'Z'");
         ActualOutText.Text=actualOut?.UtcDateTime.ToString("HH:mm:ss'Z'")??"—";
         DepartureGateText.Text=plan.DepartureGate??"—";ArrivalGateText.Text=plan.ArrivalGate??"—";
-        var continuousProgress=TrackingMap.HasLiveAircraft?TrackingMap.CompletedFraction*100:progress;
+        var continuousProgress=complete?100:TrackingMap.HasLiveAircraft?TrackingMap.CompletedFraction*100:progress;
         var fraction=continuousProgress/100;
         var remaining=FlightMetrics.RemainingDistanceNm(plan.RoutePoints,fraction);
         DistanceRemainingText.Text=double.IsFinite(remaining)?$"{remaining:0} NM":"— NM";
@@ -46,10 +51,19 @@ public partial class FlightTrackingWorkspace : UserControl
         else if(liveEta is not null)ScheduleVarianceText.Text=Variance(liveEta.Value-plan.PlannedArrivalUtc,"ESTIMATE");
         else ScheduleVarianceText.Text="WAITING FOR AIRBORNE DATA";
         UpdateProgress(continuousProgress,true);
+        ProgressAircraftIcon.Visibility=complete?Visibility.Collapsed:Visibility.Visible;SubmitPirepButton.Visibility=complete?Visibility.Visible:Visibility.Collapsed;ProgressBar.Foreground=complete?OpsUi.Brush("#55D66B"):(Brush)FindResource("OpsYellow");ProgressText.Foreground=complete?OpsUi.Brush("#55D66B"):(Brush)FindResource("OpsYellow");ProgressBar.Margin=complete?new Thickness(0,0,175,0):new Thickness(0);
         var rows=events.Reverse().ToArray();EventList.ItemsSource=rows;EventEmptyText.Visibility=rows.Length==0?Visibility.Visible:Visibility.Collapsed;
     }
 
     private void FlightDeck_Click(object sender,RoutedEventArgs e)=>FlightDeckRequested?.Invoke(this,EventArgs.Empty);
+    private void Dispatch_Click(object sender,RoutedEventArgs e)=>DispatchRequested?.Invoke(this,EventArgs.Empty);
+    private async void SubmitPirep_Click(object sender,RoutedEventArgs e)
+    {
+        SubmitPirepButton.IsEnabled=false;
+        for(var frame=0;frame<7;frame++){SubmitPirepButton.Content="TRANSMITTING"+new string('.',frame%4);await Task.Delay(220);}
+        if(PirepSubmissionRequested?.Invoke()!=true){SubmitPirepButton.Content="SUBMISSION FAILED • TRY AGAIN";SubmitPirepButton.IsEnabled=true;return;}
+        SubmitPirepButton.Content="PIREP COMPLETE";ProgressText.Text="COMPLETE";await Task.Delay(1100);PirepCloseoutCompleted?.Invoke(this,EventArgs.Empty);
+    }
     private void ProgressTrack_SizeChanged(object sender,SizeChangedEventArgs e)=>PositionProgressMarker(ProgressBar.Value);
 
     private void UpdateProgress(double value,bool animate)

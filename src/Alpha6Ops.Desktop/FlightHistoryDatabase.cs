@@ -6,7 +6,8 @@ using System.Text.Json;
 
 namespace Alpha6Ops.Desktop;
 
-internal sealed record FlightHistoryEntry(string Id,string Pilot,string Source,string Aircraft,string? Origin,string? Destination,string? FlightNumber,string Route,string StartedUtc,string? EndedUtc,string? FinalPhase,int EventCount);
+internal sealed record FlightHistoryEntry(string Id,string Pilot,string Source,string? SourceDetail,string Aircraft,string? Origin,string? Destination,string? FlightNumber,string Route,string StartedUtc,string? EndedUtc,string? FinalPhase,int EventCount);
+internal sealed record FlightHistoryEventEntry(int Sequence,string Kind,string RecordedUtc,string? SimulatorUtc,string DetailJson);
 
 // Structured flight history: one row per flight run (replay or live), with its phase/milestone
 // events attached. Distinct from LogFileDatabase, which only indexes exported diagnostic files.
@@ -99,7 +100,7 @@ internal sealed class FlightHistoryDatabase : IDisposable
             try
             {
                 var sql = $"""
-                    SELECT f.id,f.pilot, f.source, f.aircraft,f.origin,f.destination,f.flight_number,
+                    SELECT f.id,f.pilot,f.source,f.source_detail,f.aircraft,f.origin,f.destination,f.flight_number,
                            COALESCE(f.origin,'') || CASE WHEN f.destination IS NULL THEN '' ELSE ' -> ' || f.destination END,
                            f.started_utc, f.ended_utc, f.final_phase, (SELECT COUNT(*) FROM flight_event e WHERE e.flight_id = f.id)
                     FROM flight f ORDER BY f.started_utc DESC LIMIT {Math.Clamp(limit, 1, 1000)};
@@ -112,13 +113,36 @@ internal sealed class FlightHistoryDatabase : IDisposable
         }
     }
 
+    internal bool SubmitPirep(string flightId, object detail)
+    {
+        lock(gate)
+        {
+            using var flight=Prepare("SELECT final_phase FROM flight WHERE id=?;");flight.BindText(1,flightId);if(!flight.StepRow()||!string.Equals(flight.ReadText(0),"Complete",StringComparison.OrdinalIgnoreCase))return false;
+            using var duplicate=Prepare("SELECT COUNT(*) FROM flight_event WHERE flight_id=? AND kind='pirep_submitted';");duplicate.BindText(1,flightId);if(duplicate.StepRow()&&duplicate.ReadInt32(0)>0)return true;
+            using var sequenceQuery=Prepare("SELECT COALESCE(MAX(sequence),0)+1 FROM flight_event WHERE flight_id=?;");sequenceQuery.BindText(1,flightId);if(!sequenceQuery.StepRow())return false;var sequence=sequenceQuery.ReadInt32(0);
+            using var statement=Prepare("INSERT INTO flight_event(flight_id,sequence,kind,recorded_utc,simulator_utc,detail_json) VALUES(?,?,'pirep_submitted',?,NULL,?);");statement.BindText(1,flightId);statement.BindInt64Value(2,sequence);statement.BindText(3,DateTimeOffset.UtcNow.ToString("O"));statement.BindText(4,JsonSerializer.Serialize(detail));statement.ExecuteNonQuery();return true;
+        }
+    }
+
+    internal IReadOnlyList<FlightHistoryEventEntry> ReadFlightEvents(string flightId)
+    {
+        lock(gate)
+        {
+            var rows=new List<FlightHistoryEventEntry>();
+            using var statement=Prepare("SELECT sequence,kind,recorded_utc,simulator_utc,detail_json FROM flight_event WHERE flight_id=? ORDER BY sequence;");
+            statement.BindText(1,flightId);
+            while(statement.StepRow())rows.Add(new(statement.ReadInt32(0),statement.ReadText(1)??"event",statement.ReadText(2)??"",statement.ReadText(3),statement.ReadText(4)??"{}"));
+            return rows;
+        }
+    }
+
     private static int ReadRow(IntPtr context, int columns, IntPtr values, IntPtr names)
     {
-        if (columns < 12) return 0;
+        if (columns < 13) return 0;
         string? Cell(int index) { var value = Marshal.ReadIntPtr(values, index * IntPtr.Size); return value == IntPtr.Zero ? null : Marshal.PtrToStringUTF8(value); }
         ((List<FlightHistoryEntry>)GCHandle.FromIntPtr(context).Target!).Add(new(
-            Cell(0)??"",Cell(1)??"",Cell(2)??"",Cell(3)??"",Cell(4),Cell(5),Cell(6),Cell(7)??"",Cell(8)??"",Cell(9),Cell(10),
-            int.TryParse(Cell(11),out var count)?count:0));
+            Cell(0)??"",Cell(1)??"",Cell(2)??"",Cell(3),Cell(4)??"",Cell(5),Cell(6),Cell(7),Cell(8)??"",Cell(9)??"",Cell(10),Cell(11),
+            int.TryParse(Cell(12),out var count)?count:0));
         return 0;
     }
 
@@ -152,6 +176,9 @@ internal sealed class FlightHistoryDatabase : IDisposable
         internal void BindText(int index, string value) => FlightHistoryDatabase.BindText(handle, index, value, -1, Transient);
         internal void BindTextOrNull(int index, string? value) { if (value is null) FlightHistoryDatabase.BindNull(handle, index); else BindText(index, value); }
         internal void BindInt64Value(int index, long value) => FlightHistoryDatabase.BindInt64(handle, index, value);
+        internal bool StepRow(){var result=FlightHistoryDatabase.Step(handle);if(result==100)return true;if(result==101)return false;throw new IOException($"Flight history read failed (0x{result:X}).");}
+        internal string? ReadText(int index){var value=FlightHistoryDatabase.ColumnText(handle,index);return value==IntPtr.Zero?null:Marshal.PtrToStringUTF8(value);}
+        internal int ReadInt32(int index)=>FlightHistoryDatabase.ColumnInt(handle,index);
         internal void ExecuteNonQuery() { var result = FlightHistoryDatabase.Step(handle); if (result != 101 /* SQLITE_DONE */) throw new IOException($"Flight history write failed (0x{result:X})."); }
         public void Dispose() => FlightHistoryDatabase.FinalizeStatement(handle);
     }
@@ -165,5 +192,7 @@ internal sealed class FlightHistoryDatabase : IDisposable
     [DllImport("winsqlite3.dll", EntryPoint = "sqlite3_bind_int64", CallingConvention = CallingConvention.Cdecl)] private static extern int BindInt64(IntPtr stmt, int index, long value);
     [DllImport("winsqlite3.dll", EntryPoint = "sqlite3_bind_null", CallingConvention = CallingConvention.Cdecl)] private static extern int BindNull(IntPtr stmt, int index);
     [DllImport("winsqlite3.dll", EntryPoint = "sqlite3_step", CallingConvention = CallingConvention.Cdecl)] private static extern int Step(IntPtr stmt);
+    [DllImport("winsqlite3.dll", EntryPoint = "sqlite3_column_text", CallingConvention = CallingConvention.Cdecl)] private static extern IntPtr ColumnText(IntPtr stmt,int index);
+    [DllImport("winsqlite3.dll", EntryPoint = "sqlite3_column_int", CallingConvention = CallingConvention.Cdecl)] private static extern int ColumnInt(IntPtr stmt,int index);
     [DllImport("winsqlite3.dll", EntryPoint = "sqlite3_finalize", CallingConvention = CallingConvention.Cdecl)] private static extern int FinalizeStatement(IntPtr stmt);
 }

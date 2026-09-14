@@ -7,8 +7,8 @@
             <Viewbox Width="42" Height="42"><Path Data="M 1,11 L 17,8 L 25,1 L 29,1 L 25,8 L 43,11 L 25,14 L 29,22 L 25,22 L 17,15 L 1,12 Z" Fill="#FFDA00"/></Viewbox>
           </Border>
           <TextBlock Text="NO ACTIVE FLIGHT" FontFamily="Bahnschrift SemiCondensed" FontSize="34" FontWeight="SemiBold" TextAlignment="Center" Margin="0,24,0,0"/>
-          <TextBlock Text="Import a SimBrief plan or create an assignment in Your Flight Deck to prepare live flight tracking." Foreground="#A8B8C5" FontSize="15" LineHeight="23" TextWrapping="Wrap" TextAlignment="Center" Margin="0,10,0,0"/>
-          <Button Content="OPEN YOUR FLIGHT DECK" Style="{StaticResource OpsPrimary}" Click="FlightDeck_Click" HorizontalAlignment="Center" Padding="24,11" Margin="0,25,0,0"/>
+          <TextBlock Text="Import a SimBrief plan or create an assignment in Dispatch to prepare live flight tracking." Foreground="#A8B8C5" FontSize="15" LineHeight="23" TextWrapping="Wrap" TextAlignment="Center" Margin="0,10,0,0"/>
+          <Button Content="OPEN DISPATCH" Style="{StaticResource OpsPrimary}" Click="Dispatch_Click" HorizontalAlignment="Center" Padding="24,11" Margin="0,25,0,0"/>
         </StackPanel>
       </Border>
     </Grid>
@@ -55,7 +55,7 @@
             <StackPanel><TextBlock Text="DISTANCE REMAINING" Style="{StaticResource OpsCaption}"/><TextBlock x:Name="DistanceRemainingText" Text="— NM" FontSize="15" Margin="0,7,0,0"/></StackPanel>
             <StackPanel><TextBlock Text="PROGRESS" Style="{StaticResource OpsCaption}"/><TextBlock x:Name="ProgressText" Text="0%" Foreground="#FFDA00" FontSize="15" Margin="0,7,0,0"/></StackPanel>
           </UniformGrid>
-          <Grid x:Name="ProgressTrack" Grid.Row="1" Margin="0,10,0,0" SizeChanged="ProgressTrack_SizeChanged"><ProgressBar x:Name="ProgressBar" Minimum="0" Maximum="100" Value="0" Height="5" VerticalAlignment="Center" Foreground="{StaticResource OpsYellow}" Background="#35414A" BorderThickness="0"/><Path x:Name="ProgressAircraftIcon" Data="M 40,10 C 38,8.7 35.5,8 32,8 L 23,8 L 14,1 L 10,1 L 16,8 L 6,8 L 2,5 L 0,5 L 3,10 L 0,15 L 2,15 L 6,12 L 16,12 L 10,19 L 14,19 L 23,12 L 32,12 C 35.5,12 38,11.3 40,10 Z" Fill="#FFDA00" Width="40" Height="20" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Center"><Path.RenderTransform><TranslateTransform x:Name="ProgressAircraftTranslate"/></Path.RenderTransform></Path></Grid>
+          <Grid x:Name="ProgressTrack" Grid.Row="1" Margin="0,10,0,0" SizeChanged="ProgressTrack_SizeChanged"><ProgressBar x:Name="ProgressBar" Minimum="0" Maximum="100" Value="0" Height="5" VerticalAlignment="Center" Foreground="{StaticResource OpsYellow}" Background="#35414A" BorderThickness="0"/><Path x:Name="ProgressAircraftIcon" Data="M 40,10 C 38,8.7 35.5,8 32,8 L 23,8 L 14,1 L 10,1 L 16,8 L 6,8 L 2,5 L 0,5 L 3,10 L 0,15 L 2,15 L 6,12 L 16,12 L 10,19 L 14,19 L 23,12 L 32,12 C 35.5,12 38,11.3 40,10 Z" Fill="#FFDA00" Width="40" Height="20" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Center"><Path.RenderTransform><TranslateTransform x:Name="ProgressAircraftTranslate"/></Path.RenderTransform></Path><Button x:Name="SubmitPirepButton" Visibility="Collapsed" Content="SUBMIT PIREP" Style="{StaticResource OpsPrimary}" HorizontalAlignment="Right" VerticalAlignment="Center" MinWidth="155" Padding="18,8" Click="SubmitPirep_Click" AutomationProperties.Name="Submit completed flight PIREP"/></Grid>
         </Grid>
       </Border>
     </Grid>

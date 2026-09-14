@@ -51,7 +51,14 @@ public partial class MainWindow
         SizeChanged += (_,_) => { UpdateResponsiveLayout(); UpdateFlightTabs(); };
         UpdateResponsiveLayout();
         FlightTrackingView.FlightDeckRequested += (_,_)=>OpenTools();
+        FlightTrackingView.DispatchRequested += (_,_)=>ShowDispatch();
+        FlightTrackingView.PirepSubmissionRequested=SubmitCompletedPirep;
+        FlightTrackingView.PirepCloseoutCompleted+=(_,_)=>CompletePirepCloseout();
         PilotLogbookView.DashboardRequested+=(_,_)=>ShowDashboard();
+        DispatchView.DashboardRequested+=(_,_)=>ShowDashboard();
+        DispatchView.ManualRequested+=(_,_)=>{SetFlight_Click(this,new RoutedEventArgs());UpdateDispatchState();};
+        DispatchView.FlightAccepted+=(_,plan)=>AcceptDispatchFlight(plan);
+        DispatchView.TrackingRequested+=(_,_)=>ShowFlightTracking();
         PreviewKeyDown += (_,e) => { if(e.Key == Key.Escape && ToolsOverlay.Visibility == Visibility.Visible) { ToolsOverlay.Visibility = Visibility.Collapsed; e.Handled=true; } };
         RefreshDashboardFlight(false);
         if (activePlan is not null) RefreshLiveTracker(null,null,null,"Assignment ready. Connect at the gate to begin tracking.");
@@ -122,6 +129,7 @@ public partial class MainWindow
             TrackerModeText.Text=live?"ACTIVE FLIGHT • SIMCONNECT":"REPLAY • SAMPLE DATA";
         }
         RefreshFlightsTable();
+        UpdateDispatchState();
         if(live)
         {
             RotationGrid.ItemsSource=DashboardFlights.Select(f=>new {f.Id,f.Route,f.Out,f.In,Delay=$"{f.Leg.DepartureDelayMinutes:0} / {f.Leg.ArrivalDelayMinutes:0} min",Status=f.Leg.Completed?"Actual":"Projected"}).ToArray();
@@ -167,7 +175,7 @@ public partial class MainWindow
     }
     private void WatchFlight_Click(object sender,RoutedEventArgs e){if(SelectedDashboardFlight is {} f)ToggleWatch(f);}
     private void FlightRow_DoubleClick(object sender,MouseButtonEventArgs e){if(DashboardFlightsGrid.SelectedItem is DashboardFlightRow f)ShowFlight(f,false);}
-    private void FlightDetails_Click(object sender,RoutedEventArgs e)=>ShowFlightTracking();
+    private void FlightDetails_Click(object sender,RoutedEventArgs e){if(activePlan is null)ShowDispatch();else ShowFlightTracking();}
     private void Preflight_Click(object sender,RoutedEventArgs e){if(HeroFlight is {} f)ShowFlight(f,true);else OpenTools();}
     private void FlightDeck_Click(object sender,RoutedEventArgs e)=>OpenTools();
     private void OpenTracker_Click(object sender,RoutedEventArgs e)=>ShowFlightTracking();
@@ -211,22 +219,54 @@ public partial class MainWindow
     private void Dashboard_Click(object sender,RoutedEventArgs e)=>ShowDashboard();
     internal void ShowDashboard()
     {
-        ToolsOverlay.Visibility=Visibility.Collapsed;FlightTrackingView.Visibility=PilotLogbookView.Visibility=Visibility.Collapsed;DashboardScroll.Visibility=Visibility.Visible;DashboardScroll.ScrollToTop();
-        FlightTrackingNavButton.ClearValue(Button.BackgroundProperty);FlightTrackingNavButton.ClearValue(Button.ForegroundProperty);
+        ToolsOverlay.Visibility=Visibility.Collapsed;FlightTrackingView.Visibility=PilotLogbookView.Visibility=DispatchView.Visibility=Visibility.Collapsed;DashboardScroll.Visibility=Visibility.Visible;DashboardScroll.ScrollToTop();
+        FlightTrackingNavButton.ClearValue(Button.BackgroundProperty);FlightTrackingNavButton.ClearValue(Button.ForegroundProperty);ClearDispatchSelection();
         DashboardNavButton.Background=OpsUi.Brush("#FFDA00");DashboardNavButton.Foreground=OpsUi.Brush("#080C0F");
     }
     internal void ShowFlightTracking()
     {
-        ToolsOverlay.Visibility=Visibility.Collapsed;DashboardScroll.Visibility=PilotLogbookView.Visibility=Visibility.Collapsed;FlightTrackingView.Visibility=Visibility.Visible;
+        ToolsOverlay.Visibility=Visibility.Collapsed;DashboardScroll.Visibility=PilotLogbookView.Visibility=DispatchView.Visibility=Visibility.Collapsed;FlightTrackingView.Visibility=Visibility.Visible;
         DashboardNavButton.ClearValue(Button.BackgroundProperty);DashboardNavButton.ClearValue(Button.ForegroundProperty);
+        ClearDispatchSelection();
         FlightTrackingNavButton.Background=OpsUi.Brush("#FFDA00");FlightTrackingNavButton.Foreground=OpsUi.Brush("#080C0F");
         RefreshFlightTrackingWorkspace(liveLast,liveRecorder?.Phase,StatusText.Text);
     }
     internal void ShowPilotLogbook()
     {
-        ToolsOverlay.Visibility=Visibility.Collapsed;DashboardScroll.Visibility=FlightTrackingView.Visibility=Visibility.Collapsed;PilotLogbookView.Visibility=Visibility.Visible;
+        ToolsOverlay.Visibility=Visibility.Collapsed;DashboardScroll.Visibility=FlightTrackingView.Visibility=DispatchView.Visibility=Visibility.Collapsed;PilotLogbookView.Visibility=Visibility.Visible;
         DashboardNavButton.ClearValue(Button.BackgroundProperty);DashboardNavButton.ClearValue(Button.ForegroundProperty);FlightTrackingNavButton.ClearValue(Button.BackgroundProperty);FlightTrackingNavButton.ClearValue(Button.ForegroundProperty);
+        ClearDispatchSelection();
         PilotLogbookView.Render(flightHistory);
+    }
+    internal void ShowDispatch()
+    {
+        ToolsOverlay.Visibility=Visibility.Collapsed;DashboardScroll.Visibility=FlightTrackingView.Visibility=PilotLogbookView.Visibility=Visibility.Collapsed;DispatchView.Visibility=Visibility.Visible;
+        DashboardNavButton.ClearValue(Button.BackgroundProperty);DashboardNavButton.ClearValue(Button.ForegroundProperty);FlightTrackingNavButton.ClearValue(Button.BackgroundProperty);FlightTrackingNavButton.ClearValue(Button.ForegroundProperty);
+        DispatchNavButton.Background=OpsUi.Brush("#FFDA00");DispatchNavButton.Foreground=OpsUi.Brush("#080C0F");HeaderDispatchButton.BorderBrush=OpsUi.Brush("#FFDA00");UpdateDispatchState();
+    }
+    private void ClearDispatchSelection(){DispatchNavButton.ClearValue(Button.BackgroundProperty);DispatchNavButton.ClearValue(Button.ForegroundProperty);DispatchNavButton.ClearValue(Button.BorderBrushProperty);HeaderDispatchButton.ClearValue(Button.BackgroundProperty);HeaderDispatchButton.ClearValue(Button.ForegroundProperty);HeaderDispatchButton.ClearValue(Button.BorderBrushProperty);}
+    private void AcceptDispatchFlight(ActiveFlightPlan plan)
+    {
+        if(running||liveCancellation is not null){OpsNoticeWindow.Show(this,"Active flight","Finish the replay or disconnect the simulator before accepting a different flight.");return;}
+        activePlan=plan;ActiveFlightPlanStore.Save(activePlan,stateDirectory);FlightRecoveryStore.Delete(stateDirectory);ResetLiveTrackingState();ResetLiveIdentity();
+        RecordLog("flight_assignment_changed",null,activePlan);RefreshLiveTracker(null,null,null,"Flight accepted by Dispatch. Select View Flight Tracking when ready.");UpdateDispatchState();
+    }
+    private bool SubmitCompletedPirep()
+    {
+        if(activePlan is null||flightHistory is null||liveRecorder?.Phase!=FlightPhase.Complete)return false;
+        var flightId=completedFlightHistoryId??flightHistory.ReadRecentFlights(100).FirstOrDefault(f=>string.Equals(f.FinalPhase,"Complete",StringComparison.OrdinalIgnoreCase)&&string.Equals(f.FlightNumber,activePlan.FlightNumber,StringComparison.OrdinalIgnoreCase))?.Id;
+        if(flightId is null)return false;
+        try{return flightHistory.SubmitPirep(flightId,new{activePlan.FlightNumber,activePlan.Origin,activePlan.Destination,activePlan.AircraftType,activePlan.Route,submittedUtc=DateTimeOffset.UtcNow,status="Completed",eventCount=trackingEvents.Count});}
+        catch(Exception error)when(error is IOException or UnauthorizedAccessException){CrashReporter.Write("pirep_submit",error);return false;}
+    }
+    private void CompletePirepCloseout()
+    {
+        if(activePlan is null)return;RecordLog("pirep_closeout_complete",null,new{activePlan.FlightNumber});ActiveFlightPlanStore.Delete(stateDirectory);FlightRecoveryStore.Delete(stateDirectory);activePlan=null;completedFlightHistoryId=null;ResetLiveTrackingState();ResetLiveIdentity();RefreshLiveTracker(null,null,null,"PIREP complete • active flight cleared");ShowDashboard();
+    }
+    private void UpdateDispatchState()
+    {
+        var state=activePlan is null?"IMPORT FLIGHT":liveRecorder?.Phase==FlightPhase.Complete?"FLIGHT CLOSEOUT":"VIEW RELEASE";
+        DispatchSubtitleText.Text="FLIGHT DESK";HeroFlightDetailsButton.Content=activePlan is null?"OPEN DISPATCH    →":"VIEW FLIGHT TRACKING    →";DispatchView.Render(activePlan,state);
     }
     internal void OpenTools(){ToolsOverlay.Visibility=Visibility.Visible;PilotNameBox.Focus();}
     private void CloseTools_Click(object sender,RoutedEventArgs e)=>ToolsOverlay.Visibility=Visibility.Collapsed;
@@ -248,6 +288,7 @@ public partial class MainWindow
             case "Network": new NetworkWindow{Owner=this}.ShowDialog();return;
             case "FlightTracking": ShowFlightTracking();return;
             case "PilotLogbook":ShowPilotLogbook();return;
+            case "Dispatch":ShowDispatch();return;
             case "Reports":
                 var flights=flightHistory?.ReadRecentFlights()??[];
                 var report=new OpsModule("FLIGHT REPORTS","Local flight history and recorded session results","LOCAL FLIGHT HISTORY • REPLAY RUNS",

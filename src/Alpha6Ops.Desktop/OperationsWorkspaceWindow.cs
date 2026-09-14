@@ -56,6 +56,19 @@ internal sealed class OpsNoticeWindow : Window
         new OpsNoticeWindow(owner,title,message,warning).ShowDialog();
 }
 
+internal sealed class OpsConfirmWindow:Window
+{
+    internal bool Confirmed{get;private set;}
+    internal OpsConfirmWindow(Window owner,string title,string message)
+    {
+        Owner=owner;OpsUi.Configure(this,title,540,290);MinWidth=540;MinHeight=290;
+        var root=new DockPanel{Margin=new Thickness(26)};var footer=new StackPanel{Orientation=Orientation.Horizontal,HorizontalAlignment=HorizontalAlignment.Right,Margin=new Thickness(0,22,0,0)};
+        var cancel=OpsUi.Button("KEEP CURRENT FLIGHT",Close);var accept=OpsUi.Button("REPLACE AND ACCEPT",()=>{Confirmed=true;Close();},true);footer.Children.Add(cancel);footer.Children.Add(accept);DockPanel.SetDock(footer,Dock.Bottom);root.Children.Add(footer);
+        var body=new StackPanel();body.Children.Add(OpsUi.Text(title.ToUpperInvariant(),21,"#FFDA00"));body.Children.Add(new TextBlock{Text=message,Foreground=OpsUi.Brush("#C7D2DA"),FontFamily=new FontFamily("Bahnschrift SemiCondensed"),FontSize=14,TextWrapping=TextWrapping.Wrap,LineHeight=21,Margin=new Thickness(0,13,0,0)});root.Children.Add(body);Content=root;Loaded+=(_,_)=>cancel.Focus();
+    }
+    internal static bool Ask(Window owner,string title,string message){var dialog=new OpsConfirmWindow(owner,title,message);dialog.ShowDialog();return dialog.Confirmed;}
+}
+
 internal sealed class OperationsWorkspaceWindow : Window
 {
     private readonly OpsModule module;

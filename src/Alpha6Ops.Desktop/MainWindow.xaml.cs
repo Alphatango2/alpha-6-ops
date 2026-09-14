@@ -39,6 +39,8 @@ public partial class MainWindow : Window
     private bool liveNeedsBaseline;
     private TestFlightLog? flightLog;
     private string? lastJournal;
+    private string? liveFlightHistoryId;
+    private string? completedFlightHistoryId;
     private bool openingLogs;
     private readonly ProgramMonitor? programMonitor;
     private ActiveFlightPlan? activePlan;
@@ -363,7 +365,7 @@ public partial class MainWindow : Window
     }
     private void ResetLiveTrackingState()
     {
-        liveRecorder=null;liveLast=null;liveAircraft=null;liveTelemetry=null;liveRouteProgress=null;liveRotation=null;liveNeedsBaseline=false;
+        liveRecorder=null;liveLast=null;liveAircraft=null;liveTelemetry=null;liveRouteProgress=null;liveRotation=null;liveNeedsBaseline=false;completedFlightHistoryId=null;
         trackingEventMonitor=null;trackingEvents.Clear();milestones.Clear();LiveTimelineButton.IsEnabled=LiveDebriefButton.IsEnabled=false;
     }
     private void RestoreFlightRecovery(FlightRecoveryState? state)
@@ -507,6 +509,7 @@ public partial class MainWindow : Window
         {
             MarkLiveUnavailable();
             FinishLog("connection_closed");
+            if(liveFlightHistoryId is not null){EndFlightHistory(liveFlightHistoryId,"Interrupted");liveFlightHistoryId=null;}
             liveCancellation.Dispose(); liveCancellation = null;
             ConnectButton.IsEnabled = ConnectFlightLabButton.IsEnabled = ReplayButton.IsEnabled = ResetButton.IsEnabled = true;
             DisconnectButton.IsEnabled = false;
@@ -552,6 +555,7 @@ public partial class MainWindow : Window
             var initialPhase = !s.OnGround ? FlightPhase.Airborne : s.GroundSpeedKnots >= 1 ? FlightPhase.TaxiOut : FlightPhase.AtGate;
             liveRecorder = new TimelineRecorder(new PhaseDetector(groundProfile, initialPhase));
             liveRotation = CanRenderAssignedFlight ? BuildLiveRotation(activePlan, reading.Aircraft, groundProfile) : null;
+            if(initialPhase!=FlightPhase.AtGate)StartLiveFlightHistory(reading.Aircraft);
             RecordLog("monitor_armed", s.At, new { aircraft = reading.Aircraft, initialPhase, departureObserved = initialPhase == FlightPhase.AtGate });
             if(CanRenderAssignedFlight&&activePlan is not null)AddTrackingEvent(trackingEventMonitor?.SystemEvent(s.At,"Assignment loaded",$"{activePlan.FlightNumber} • {activePlan.Origin} to {activePlan.Destination}"));
             AddTrackingEvent(trackingEventMonitor?.SystemEvent(s.At,"Aircraft identified",$"{activePlan?.AircraftType??"TYPE UNKNOWN"} • {reading.Aircraft}{(string.IsNullOrWhiteSpace(activePlan?.Registration)?"":$" • {activePlan.Registration}")}"));
@@ -578,6 +582,7 @@ public partial class MainWindow : Window
         }
         var eventProgress=reading.RouteProgress??FlightTrackingView?.TrackingMap.CompletedFraction??PhaseProgress(liveRecorder.Phase,s.At,liveRotation?.Legs[0].ActualOut,liveRotation is null?null:RotationPlanner.Project(liveRotation)[0].EstimatedIn)/100;
         foreach(var entry in trackingEventMonitor?.Observe(s,liveRecorder.Phase,milestone,eventProgress,activePlan,reading.ScenarioEvent)??[])AddTrackingEvent(entry);
+        if(milestone?.Phase==FlightPhase.Complete&&liveFlightHistoryId is not null){completedFlightHistoryId=liveFlightHistoryId;EndFlightHistory(liveFlightHistoryId,"Complete");liveFlightHistoryId=null;}
         LiveTimelineButton.IsEnabled = LiveDebriefButton.IsEnabled = true;
         ConnectionText.Text = $"Connected • {PhaseLabel(liveRecorder.Phase)}. Active flight tracking uses the assignment shown below.";
         tray.Text = "Alpha 6 OPS — Live " + liveRecorder.Phase;
@@ -743,7 +748,19 @@ public partial class MainWindow : Window
     {
         if(entry is null)return;
         if(entry.Title=="Simulator connection lost"&&trackingEvents.LastOrDefault() is {} previous&&previous.Title==entry.Title&&previous.Summary==entry.Summary)return;
-        trackingEvents.Add(entry);RecordLog("tracking_event",entry.At,new{entry.Title,entry.Summary,entry.Detail,entry.Kind});SaveFlightRecovery();
+        trackingEvents.Add(entry);RecordLog("tracking_event",entry.At,new{entry.Title,entry.Summary,entry.Detail,entry.Kind});
+        if(liveFlightHistoryId is null&&(entry.Title.Contains("Block-out",StringComparison.OrdinalIgnoreCase)||entry.Title.Contains("Liftoff",StringComparison.OrdinalIgnoreCase)))StartLiveFlightHistory(liveAircraft??activePlan?.AircraftType??"UNKNOWN");
+        else if(liveFlightHistoryId is not null)RecordFlightEvent(liveFlightHistoryId,"tracking_event",entry.At,new{entry.Title,entry.Summary,entry.Detail,entry.Kind});
+        SaveFlightRecovery();
+    }
+
+    private void StartLiveFlightHistory(string aircraft)
+    {
+        if(liveFlightHistoryId is not null)return;
+        var detail=JsonSerializer.Serialize(new{journalPath=lastJournal,jsonPath=lastJournal is null?null:Path.ChangeExtension(lastJournal,".json")});
+        liveFlightHistoryId=BeginFlightHistory(liveSource=="FLIGHT LAB"?"flight_lab":"live",detail,activePlan?.AircraftType??aircraft,activePlan?.Origin,activePlan?.Destination,activePlan?.FlightNumber);
+        if(liveFlightHistoryId is null)return;
+        foreach(var recorded in trackingEvents)RecordFlightEvent(liveFlightHistoryId,"tracking_event",recorded.At,new{recorded.Title,recorded.Summary,recorded.Detail,recorded.Kind});
     }
 
     private double PhaseProgress(FlightPhase? phase, DateTimeOffset? now, DateTimeOffset? start, DateTimeOffset? eta) => phase switch

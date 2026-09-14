@@ -43,6 +43,7 @@ public partial class MainWindow
     private void ResetObservedSession(string reason)
     {
         RecordLog("observed_session_reset", liveLast, new { reason });
+        if(liveFlightHistoryId is not null){RecordFlightEvent(liveFlightHistoryId,"invalidated",liveLast,new{reason});EndFlightHistory(liveFlightHistoryId,"Invalid");liveFlightHistoryId=null;}
         liveRecorder = null; liveRotation = null; liveLast = null; liveAircraft = null;
         milestones.Clear(); LiveTimelineButton.IsEnabled = LiveDebriefButton.IsEnabled = false;
         ResetLiveIdentity();

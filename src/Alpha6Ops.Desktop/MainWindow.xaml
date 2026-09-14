@@ -3,6 +3,9 @@
     <shell:WindowChrome CaptionHeight="38" ResizeBorderThickness="7" GlassFrameThickness="0" CornerRadius="0" UseAeroCaptionButtons="False" />
   </shell:WindowChrome.WindowChrome>
   <Window.Resources>
+    <Style x:Key="DispatchHeaderCard" TargetType="Button" BasedOn="{StaticResource OpsExit}">
+      <Setter Property="Background" Value="#091219"/><Setter Property="BorderBrush" Value="#293A46"/>
+    </Style>
     <Style x:Key="OpsCaptionButton" TargetType="Button">
       <Setter Property="Width" Value="46" />
       <Setter Property="Height" Value="38" />
@@ -175,12 +178,12 @@
           </StackPanel>
         </Grid>
       </Button>
-      <Button x:Name="HeaderDispatchButton" Grid.Column="1" Style="{StaticResource OpsButton}" Background="#091219" BorderBrush="#22333F" Tag="Dispatch" Click="Module_Click" Margin="0,0,10,0" Padding="10,8" ToolTip="Open the dispatch desk">
+      <Button x:Name="HeaderDispatchButton" Grid.Column="1" Style="{StaticResource DispatchHeaderCard}" Tag="Dispatch" Click="Module_Click" Margin="0,0,10,0" Padding="10,8" ToolTip="Open Dispatch">
         <StackPanel x:Name="DispatchCardContent" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-          <TextBlock Text="" FontFamily="Segoe MDL2 Assets" Foreground="{StaticResource OpsYellow}" FontSize="26" Margin="0,0,12,0" />
+          <TextBlock Text="" FontFamily="Segoe MDL2 Assets" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}" FontSize="26" Margin="0,0,12,0" />
           <StackPanel>
             <TextBlock Text="DISPATCH" FontSize="14" TextAlignment="Center" />
-            <TextBlock Text="LOCAL DESK" Foreground="#A5B3BE" FontSize="12" TextAlignment="Center" Margin="0,5,0,0" />
+            <TextBlock x:Name="DispatchSubtitleText" Text="FLIGHT DESK" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}" Opacity="0.72" FontSize="12" TextAlignment="Center" Margin="0,5,0,0" />
           </StackPanel>
         </StackPanel>
       </Button>
@@ -296,7 +299,7 @@
               <TextBlock Text="WEATHER" VerticalAlignment="Center" />
             </StackPanel>
           </Button>
-          <Button Style="{StaticResource OpsNav}" Tag="Dispatch" Click="Module_Click">
+          <Button x:Name="DispatchNavButton" Style="{StaticResource OpsNav}" Tag="Dispatch" Click="Module_Click">
             <StackPanel Orientation="Horizontal">
               <TextBlock Text="" FontFamily="Segoe MDL2 Assets" FontSize="21" Width="43" />
               <TextBlock Text="DISPATCH" VerticalAlignment="Center" />
@@ -429,8 +432,7 @@
                   </StackPanel>
                 </Grid>
                 <StackPanel Grid.Row="5" Orientation="Horizontal" VerticalAlignment="Center">
-                  <Button x:Name="HeroFlightDetailsButton" Content="VIEW FLIGHT DETAILS    →" Style="{StaticResource OpsPrimary}" Click="FlightDetails_Click" Padding="17,9" />
-                  <Button x:Name="HeroFlightDeckButton" Content="VIEW FLIGHT DECK" Style="{StaticResource OpsExit}" Click="FlightDeck_Click" Margin="12,0,0,0" Padding="22,9" />
+                  <Button x:Name="HeroFlightDetailsButton" Content="OPEN DISPATCH    →" Style="{StaticResource OpsPrimary}" Click="FlightDetails_Click" Padding="17,9" />
                 </StackPanel>
                 <Grid x:Name="HeroProgressTrack" Grid.Row="6" Height="24" VerticalAlignment="Bottom">
                   <ProgressBar x:Name="ReplayProgress" Maximum="100" Height="3" VerticalAlignment="Center" Foreground="{StaticResource OpsYellow}" Background="#35414A" BorderThickness="0" />
@@ -641,6 +643,7 @@
     </ScrollViewer>
     <local:FlightTrackingWorkspace x:Name="FlightTrackingView" Grid.Row="1" Grid.Column="2" Visibility="Collapsed" Margin="0,0,1,8" />
     <local:PilotLogbookWorkspace x:Name="PilotLogbookView" Grid.Row="1" Grid.Column="2" Visibility="Collapsed" Margin="0,0,1,8" />
+    <local:DispatchWorkspace x:Name="DispatchView" Grid.Row="1" Grid.Column="2" Visibility="Collapsed" Margin="0,0,1,8" />
     <Grid x:Name="DashboardFooter" Grid.Row="2" Grid.ColumnSpan="3" Margin="220,0,0,0">
       <Grid.ColumnDefinitions>
         <ColumnDefinition />
