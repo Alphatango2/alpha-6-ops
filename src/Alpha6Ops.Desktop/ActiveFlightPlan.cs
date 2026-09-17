@@ -13,7 +13,8 @@ internal record ActiveFlightPlan(string FlightNumber, string Registration, strin
     string? SimBriefUsername = null, DateTimeOffset? ImportedAtUtc = null, string? DepartureGate = null,
     string? ArrivalGate = null, string? GateAssignmentSource = null, string? GateAssignmentConfidence = null,
     string? Route = null,IReadOnlyList<FlightRoutePoint>? RoutePoints = null,string? AircraftType = null,
-    double? PlannedTripFuel = null,string? FuelUnits = null,string? OfpCacheKey = null)
+    double? PlannedTripFuel = null,string? FuelUnits = null,string? OfpCacheKey = null,
+    int? CruiseAltitudeFeet = null,int? DepartureUtcOffsetMinutes=null,int? ArrivalUtcOffsetMinutes=null)
 {
     internal TimeSpan PlannedDuration => PlannedArrivalUtc - PlannedDepartureUtc;
     internal bool IsValid => !string.IsNullOrWhiteSpace(FlightNumber) && FlightIdentity.IsAirportId(Origin)

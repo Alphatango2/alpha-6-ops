@@ -1,0 +1,40 @@
+@page "/Account/Airline/{id:guid}"
+@model Alpha6Ops.Server.Pages.Account.AirlineModel
+@{ ViewData["Title"] = Model.Airline?.Name ?? "Airline management"; }
+<partial name="_AccountError" model="Model" />
+@if (Model.Issued is { } issued) {
+    <section class="notice" role="status"><h2>Invitation created for @issued.Invitation.Email</h2><p>Copy this code now. It is shown once and expires @issued.Invitation.ExpiresAt.ToString("u"). Send your invitee this code and the <a asp-page="Join">join page</a>. Email delivery is not connected yet.</p><code class="break">@issued.Token</code></section>
+}
+@if (Model.Airline is { } airline) {
+<div class="page-heading"><a href="/Account">← Your workspaces</a><div class="eyebrow">@airline.Callsign / @airline.Plan</div><h1>@airline.Name</h1><p class="lead">Manage your crew and invitations.</p></div>
+<section class="card"><h2>Invite a crew member</h2><form method="post" asp-page-handler="Invite" class="stack">
+    <label for="email">Email address</label><input id="email" name="email" type="email" maxlength="254" required />
+    <fieldset><legend>Initial roles</legend>
+        @foreach (var role in new[] { AirlineRole.Pilot, AirlineRole.Dispatcher, AirlineRole.Administrator }) {
+            <label class="check"><input name="roles" type="checkbox" value="@role" checked="@(role == AirlineRole.Pilot)" />@role</label>
+        }
+    </fieldset><button class="button">Create invitation code</button>
+</form></section>
+<section class="card"><h2>Crew roster</h2><div class="table-scroll"><table><thead><tr><th scope="col">Crew member</th><th scope="col">Status</th><th scope="col">Roles</th></tr></thead><tbody>
+@foreach (var member in Model.Members) {
+    <tr><td>@member.DisplayName<br /><span class="muted">@member.Email</span></td><td>@member.Status</td><td>
+    @if (member.Roles.Contains(AirlineRole.Owner)) { <span>Owner · @string.Join(" · ", member.Roles.Where(r => r != AirlineRole.Owner))</span> }
+    else { <form method="post" asp-page-handler="Roles"><input type="hidden" name="membershipId" value="@member.Id" />
+        @foreach (var role in new[] { AirlineRole.Pilot, AirlineRole.Dispatcher, AirlineRole.Administrator }) {
+            <label class="check"><input name="roles" type="checkbox" value="@role" checked="@member.Roles.Contains(role)" />@role</label>
+        }
+        <button class="button secondary small">Save roles</button></form>
+    }</td></tr>
+}
+</tbody></table></div></section>
+<section class="card"><h2>Invitations</h2>@if (Model.Invitations.Length == 0) { <p class="muted">No invitations yet.</p> }
+@foreach (var invitation in Model.Invitations) {
+    <div class="row"><div><strong>@invitation.Email</strong><p class="muted">@string.Join(" · ", invitation.Roles) · @invitation.Status · Expires @invitation.ExpiresAt.ToString("u")</p></div><form method="post" asp-page-handler="Revoke"><input type="hidden" name="invitationId" value="@invitation.Id" /><button class="button secondary small">Revoke</button></form></div>
+}
+</section>
+@if (airline.Capabilities.Contains(Capabilities.OwnershipManage)) {
+<section class="card"><h2>Transfer ownership</h2><p>The selected active member will become the airline's owner. A fresh MFA or passkey check is required.</p><form method="post" asp-page-handler="Transfer" class="stack"><label for="newOwner">New owner</label><select id="newOwner" name="newOwnerUserId" required><option value="">Choose a crew member</option>
+@foreach (var member in Model.Members.Where(m => m.Status == MembershipStatus.Active && !m.Roles.Contains(AirlineRole.Owner))) { <option value="@member.UserId">@member.DisplayName (@member.Email)</option> }
+</select><label class="check"><input type="checkbox" name="confirmTransfer" value="true" required />I understand that I will give ownership to this member.</label><button class="button secondary">Transfer ownership</button></form></section>
+}
+}

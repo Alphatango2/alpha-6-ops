@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup><UserSecretsId>alpha6ops-server-development</UserSecretsId></PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../Alpha6Ops.Accounts/Alpha6Ops.Accounts.csproj" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.12" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="10.0.12" />
+  </ItemGroup>
+</Project>

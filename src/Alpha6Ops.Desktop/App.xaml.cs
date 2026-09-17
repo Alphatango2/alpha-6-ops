@@ -12,6 +12,32 @@ public partial class App : Application
     protected override async void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
+        if (e.Args.Length == 1 && e.Args[0] == "--preview-pilot")
+        {
+            // Explicit preview never loads credentials or another pilot's stored flights.
+            var previewRoot = Path.Combine(AppContext.BaseDirectory, "pilot-preview-data", Guid.NewGuid().ToString("N"));
+            Directory.CreateDirectory(previewRoot);
+            CrashReporter.Install(this, previewRoot);
+            MainWindow = new MainWindow(previewRoot, null, pilotPreview: true);
+            MainWindow.Show();
+            return;
+        }
+        if (e.Args.Length == 1 && e.Args[0] == "--preview-login")
+        {
+            // Start at login every time; optional continuation uses isolated preview data only.
+            ShutdownMode = ShutdownMode.OnMainWindowClose;
+            MainWindow = new AccountWindow(null, preview: true, openPilotPreview: () =>
+            {
+                var previewRoot = Path.Combine(AppContext.BaseDirectory, "pilot-preview-data", Guid.NewGuid().ToString("N"));
+                Directory.CreateDirectory(previewRoot);
+                CrashReporter.Install(this, previewRoot);
+                ShutdownMode = ShutdownMode.OnExplicitShutdown;
+                MainWindow = new MainWindow(previewRoot, null, pilotPreview: true);
+                MainWindow.Show();
+            });
+            MainWindow.Show();
+            return;
+        }
         var diagnosticOutput = e.Args.Length == 2 && e.Args[0] == "--smoke-test" ? e.Args[1] : null;
         CrashReporter.Install(this,diagnosticOutput);
         if(e.Args.Length==2&&e.Args[0]=="--activation-smoke")
@@ -37,9 +63,30 @@ public partial class App : Application
         {
             if (!SingleInstance.TryAcquire()) { Shutdown(); return; }
         }
-        var window = diagnosticOutput is not null ? new MainWindow(diagnosticOutput) : new MainWindow();
+        DesktopAccountSession? account = null;
+        if (diagnosticOutput is null)
+        {
+            ShutdownMode = ShutdownMode.OnExplicitShutdown;
+            try
+            {
+                var configuration = IdentityConfiguration.Load();
+                if (configuration is not null)
+                {
+                    account = new DesktopAccountSession(configuration);
+                    var login = new AccountWindow(account, restore: true);
+                    login.ShowDialog();
+                    if (!login.Accepted) { Shutdown(); return; }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Account configuration could not be loaded. Ask the publisher to check alpha6-identity.json. Sign-in is required for a configured build.", "Alpha 6 OPS", MessageBoxButton.OK, MessageBoxImage.Error);
+                Shutdown(); return;
+            }
+        }
+        var window = diagnosticOutput is not null ? new MainWindow(diagnosticOutput) : new MainWindow(null, account);
         MainWindow = window;
-        if(diagnosticOutput is null)SingleInstance.Listen(()=>window.Dispatcher.BeginInvoke(window.RestoreWindow));
+        if(diagnosticOutput is null)SingleInstance.Listen(()=>Dispatcher.BeginInvoke(new Action(() => (MainWindow as MainWindow)?.RestoreWindow())));
         if (diagnosticOutput is not null)
         {
             await DesktopSmokeTest.RunAsync(window, diagnosticOutput);

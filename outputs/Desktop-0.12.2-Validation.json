@@ -1,0 +1,32 @@
+﻿{
+    "version":  "0.12.2",
+    "branch":  "integration/dan-6208a4f",
+    "commit":  "7505172a8f9e1e2670d37cd195e023f9c2cba51f",
+    "danCommit":  "6208a4f542663e9a2e7a1b27b0964297e2c91799",
+    "localCheckpoint":  "c608a545f335701fb3dfcb14e81cd500861bf0b7",
+    "validatedUtc":  "2026-09-09T05:19:37.4261893Z",
+    "build":  {
+                  "passed":  true,
+                  "warnings":  0,
+                  "errors":  0
+              },
+    "coreChecks":  82,
+    "packagedChecks":  {
+                           "desktop":  16,
+                           "dashboard":  417,
+                           "liveIdentity":  21,
+                           "refresh":  1010,
+                           "diagnosticIndex":  19,
+                           "monitorLifecycle":  22,
+                           "flightLabPlayback":  true
+                       },
+    "resultsDirectory":  "work/integration-6208a4f-verification",
+    "installerSha256":  "D4E4D99760F66DD13B4442EF6511C0CC4F90A9B0D9762BAF6823D8F1127FB953",
+    "archiveSha256":  "4989B096170F58ED9455E4D1E3D2287C5B07FF41755D5133EDFAC9E01FD2C923",
+    "limitations":  [
+                        "No new real MSFS flight flown during merge verification.",
+                        "Lab v1 lacks geographic evidence and does not attach saved assignments.",
+                        "SimConnect native DLL remains an external local SDK dependency."
+                    ],
+    "pushed":  false
+}

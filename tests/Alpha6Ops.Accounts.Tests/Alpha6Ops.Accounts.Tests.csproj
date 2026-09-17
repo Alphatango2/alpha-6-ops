@@ -1,0 +1,4 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>Exe</OutputType></PropertyGroup>
+  <ItemGroup><ProjectReference Include="../../src/Alpha6Ops.Accounts/Alpha6Ops.Accounts.csproj" /></ItemGroup>
+</Project>

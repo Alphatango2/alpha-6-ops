@@ -1,0 +1,14 @@
+@page
+@inject Microsoft.Extensions.Options.IOptions<ReleaseSettings> Release
+@{ ViewData["Title"] = "Download"; var release = Release.Value; }
+<div class="page-heading"><div class="eyebrow">FLIGHT DECK / WINDOWS</div><h1>Bring OPS aboard.</h1><p class="lead">Download the Windows desktop app, then sign in with your Alpha 6 account.</p></div>
+<section class="card">
+@if (release.Available) {
+    <h2>Alpha 6 OPS @release.Version</h2><p>Windows desktop installer</p>
+    <a class="button" href="@release.DownloadUrl" rel="noopener noreferrer">Download for Windows</a>
+    <h3>SHA-256 checksum</h3><code class="break">@release.Sha256</code>
+    <p class="muted">Check the publisher shown by Windows before installing.</p>
+} else {
+    <h2>The public download is being prepared.</h2><p>A verified release has not been published here yet. Your account will work with the desktop app when it is available.</p><a href="/">Return home</a>
+}
+</section>

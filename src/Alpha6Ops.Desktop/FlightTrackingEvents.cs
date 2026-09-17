@@ -12,7 +12,9 @@ internal sealed record TrackingEventEntry(DateTimeOffset At,string Title,string 
 
 internal sealed record FlightTrackingMonitorState(IReadOnlyList<string> Fired,double? PreviousAltitude,double? InitialFuelPounds,
     bool WasPaused,bool WasSlewing,bool PreviousEngines,bool PreviousBrake,bool HasSample,bool HasTouchedDown,
-    int PreviousEngineMask,int ReportedFlaps,double PreviousGear,string? AssignedDestination,int ReportedCruiseLevel);
+    int PreviousEngineMask,int ReportedFlaps,double PreviousGear,string? AssignedDestination,int ReportedCruiseLevel,
+    double LastAirborneVerticalSpeed=double.NaN,double LastAirborneSpeed=double.NaN,
+    IReadOnlyList<int>? EngineStartCounts=null,int PendingEngineMask=-1,int PendingEngineMaskSamples=0);
 
 internal sealed class FlightTrackingEventMonitor
 {
@@ -22,8 +24,11 @@ internal sealed class FlightTrackingEventMonitor
     private double? initialFuelPounds;
     private bool wasPaused,wasSlewing,previousEngines,previousBrake,hasSample,hasTouchedDown;
     private int previousEngineMask=-1,reportedFlaps=-1,flapCandidate=-1,flapCandidateSamples;
+    private int pendingEngineMask=-1,pendingEngineMaskSamples;
+    private readonly int[] engineStartCounts=new int[4];
     private int reportedCruiseLevel;
     private double previousGear=double.NaN;
+    private double lastAirborneVerticalSpeed=double.NaN,lastAirborneSpeed=double.NaN;
     private string? assignedDestination;
 
     internal FlightTrackingEventMonitor(FlightTrackingMonitorState? restored=null)
@@ -33,10 +38,13 @@ internal sealed class FlightTrackingEventMonitor
         wasPaused=restored.WasPaused;wasSlewing=restored.WasSlewing;previousEngines=restored.PreviousEngines;previousBrake=restored.PreviousBrake;
         hasSample=restored.HasSample;hasTouchedDown=restored.HasTouchedDown;previousEngineMask=restored.PreviousEngineMask;
         reportedFlaps=restored.ReportedFlaps;previousGear=restored.PreviousGear;assignedDestination=restored.AssignedDestination;reportedCruiseLevel=restored.ReportedCruiseLevel;
+        lastAirborneVerticalSpeed=restored.LastAirborneVerticalSpeed;lastAirborneSpeed=restored.LastAirborneSpeed;
+        pendingEngineMask=restored.PendingEngineMask;pendingEngineMaskSamples=restored.PendingEngineMaskSamples;
+        if(restored.EngineStartCounts is not null)for(var index=0;index<Math.Min(engineStartCounts.Length,restored.EngineStartCounts.Count);index++)engineStartCounts[index]=restored.EngineStartCounts[index];
     }
 
     internal FlightTrackingMonitorState CaptureState()=>new(fired.ToArray(),previousAltitude,initialFuelPounds,wasPaused,wasSlewing,
-        previousEngines,previousBrake,hasSample,hasTouchedDown,previousEngineMask,reportedFlaps,previousGear,assignedDestination,reportedCruiseLevel);
+        previousEngines,previousBrake,hasSample,hasTouchedDown,previousEngineMask,reportedFlaps,previousGear,assignedDestination,reportedCruiseLevel,lastAirborneVerticalSpeed,lastAirborneSpeed,engineStartCounts.ToArray(),pendingEngineMask,pendingEngineMaskSamples);
 
     internal IReadOnlyList<TrackingEventEntry> Observe(Telemetry sample,FlightPhase phase,FlightEvent? milestone,double progress,ActiveFlightPlan? plan,string? scenarioEvent)
     {
@@ -57,41 +65,56 @@ internal sealed class FlightTrackingEventMonitor
         AddStable("pushback",sample.OnGround&&!sample.ParkingBrake&&sample.GroundSpeedKnots is >=.5 and <10,"Pushback / initial movement",$"Ground movement began at {sample.GroundSpeedKnots:0} kt");
         AddStable("taxi",sample.OnGround&&sample.GroundSpeedKnots>=10,"Taxi started",$"Groundspeed {sample.GroundSpeedKnots:0} kt");
         AddStable("takeoff-roll",sample.OnGround&&phase==FlightPhase.TaxiOut&&sample.GroundSpeedKnots>=60,"Takeoff roll",$"Acceleration through {sample.GroundSpeedKnots:0} kt",2);
-        AddStable("initial-climb",!sample.OnGround&&sample.VerticalSpeedFeetPerMinute>=500,"Initial climb",$"Climbing at {sample.VerticalSpeedFeetPerMinute:0} ft/min");
+        AddStable("initial-climb",fired.Contains("liftoff")&&!sample.OnGround&&sample.VerticalSpeedFeetPerMinute>=500,"Initial climb",$"Climbing at {sample.VerticalSpeedFeetPerMinute:0} ft/min",2);
         if(previousAltitude is <10000&&sample.AltitudeFeet>=10000)AddOnce("ten-up","10,000 feet crossed","Climbing through 10,000 ft");
-        AddStable("cruise",!sample.OnGround&&sample.AltitudeFeet>=18000&&Math.Abs(sample.VerticalSpeedFeetPerMinute)<300,"Top of climb / cruise established",$"Level at {sample.AltitudeFeet:0} ft");
-        if(fired.Contains("cruise")&&!sample.OnGround&&sample.AltitudeFeet>=18000&&Math.Abs(sample.VerticalSpeedFeetPerMinute)<300)
+        var operationalAltitude=double.IsFinite(sample.PressureAltitudeFeet)?sample.PressureAltitudeFeet:sample.AltitudeFeet;
+        var plannedCruise=plan?.CruiseAltitudeFeet;
+        var observedLevel=plannedCruise is{} planned&&Math.Abs(operationalAltitude-planned)<=600?planned:(int)Math.Round(operationalAltitude/1000,MidpointRounding.AwayFromZero)*1000;
+        var cruiseCandidate=!sample.OnGround&&operationalAltitude>=18000&&Math.Abs(sample.VerticalSpeedFeetPerMinute)<300&&
+            (plannedCruise is null||Math.Abs(operationalAltitude-plannedCruise.Value)<=600);
+        AddStable("cruise",cruiseCandidate,"Top of climb / cruise established",$"Established at FL{observedLevel/100:000}",plannedCruise is null?3:30);
+        if(fired.Contains("cruise")&&cruiseCandidate)
         {
-            var level=(int)Math.Round(sample.AltitudeFeet/1000)*1000;
+            var level=observedLevel;
             if(reportedCruiseLevel==0)reportedCruiseLevel=level;
-            else if(Math.Abs(level-reportedCruiseLevel)>=1000){reportedCruiseLevel=level;AddOnce($"cruise-level-{level}","Cruise altitude changed",$"Level at {level:0} ft");}
+            else if(Math.Abs(operationalAltitude-reportedCruiseLevel)>=750){reportedCruiseLevel=level;AddOnce($"cruise-level-{level}","Cruise altitude changed",$"Established at FL{level/100:000}");}
         }
-        AddStable("step-climb",fired.Contains("cruise")&&!sample.OnGround&&sample.VerticalSpeedFeetPerMinute>=500,"Step climb started",$"Climbing through {sample.AltitudeFeet:0} ft at {Speed(sample):0} kt");
-        AddStable("descent",!sample.OnGround&&sample.VerticalSpeedFeetPerMinute<=-500,"Top of descent",$"Descending at {sample.VerticalSpeedFeetPerMinute:0} ft/min");
+        AddStable("step-climb",fired.Contains("cruise")&&reportedCruiseLevel>0&&!sample.OnGround&&operationalAltitude>reportedCruiseLevel+500&&sample.VerticalSpeedFeetPerMinute>=500,"Step climb started",$"Climbing through {operationalAltitude:0} ft at {Speed(sample):0} kt",20);
+        AddStable("descent",fired.Contains("cruise")&&!sample.OnGround&&sample.VerticalSpeedFeetPerMinute<=-500,"Top of descent",$"Descending at {sample.VerticalSpeedFeetPerMinute:0} ft/min",30);
         if(previousAltitude is >10000&&sample.AltitudeFeet<=10000&&sample.VerticalSpeedFeetPerMinute<0)AddOnce("ten-down","10,000 feet crossed","Descending through 10,000 ft");
         var agl=double.IsFinite(sample.AltitudeAboveGroundFeet)?sample.AltitudeAboveGroundFeet:sample.AltitudeFeet;
         AddStable("approach",!sample.OnGround&&agl is >0 and <=6000&&sample.VerticalSpeedFeetPerMinute<0,"Approach started",$"Descending through {agl:0} ft AGL");
-        AddStable("gear-down",!sample.OnGround&&sample.GearExtendedRatio>=.9,"Landing gear extended","Gear indicates down",2);
+        AddStable("gear-down",fired.Contains("gear-up")&&!sample.OnGround&&sample.GearExtendedRatio>=.9,"Landing gear extended","Gear indicates down",2);
         AddStable("final",!sample.OnGround&&agl is >0 and <=2500&&sample.VerticalSpeedFeetPerMinute<0,"Final approach",$"{agl:0} ft AGL • {Speed(sample):0} kt");
 
         if(sample.RunningEngineMask>=0)
         {
-            if(previousEngineMask>=0&&sample.RunningEngineMask!=previousEngineMask)
+            if(previousEngineMask<0){previousEngineMask=sample.RunningEngineMask;pendingEngineMask=-1;pendingEngineMaskSamples=0;}
+            else if(sample.RunningEngineMask==previousEngineMask){pendingEngineMask=-1;pendingEngineMaskSamples=0;}
+            else
             {
-                for(var engine=1;engine<=4;engine++)
+                if(pendingEngineMask==sample.RunningEngineMask)pendingEngineMaskSamples++;else{pendingEngineMask=sample.RunningEngineMask;pendingEngineMaskSamples=1;}
+                if(pendingEngineMaskSamples>=2)
                 {
-                    var bit=1<<(engine-1);var wasOn=(previousEngineMask&bit)!=0;var isOn=(sample.RunningEngineMask&bit)!=0;
-                    if(wasOn!=isOn)AddOnce($"engine-{engine}-{(isOn?"on":"off")}",$"Engine {engine} {(isOn?"on":"off")}",$"Engine {engine} combustion {(isOn?"detected":"stopped")}");
+                    for(var engine=1;engine<=4;engine++)
+                    {
+                        var bit=1<<(engine-1);var wasOn=(previousEngineMask&bit)!=0;var isOn=(pendingEngineMask&bit)!=0;if(wasOn==isOn)continue;
+                        var repeated=isOn&&engineStartCounts[engine-1]>0;
+                        var interrupted=!isOn&&!hasTouchedDown&&phase is FlightPhase.AtGate or FlightPhase.TaxiOut;
+                        var title=isOn?(repeated?$"Engine {engine} restarted":$"Engine {engine} on"):(interrupted?$"Engine {engine} start interrupted":$"Engine {engine} off");
+                        if(isOn)engineStartCounts[engine-1]++;
+                        AddOnce($"engine-{engine}-{(isOn?"on":"off")}-{atKey(sample.At)}",title,$"Engine {engine} combustion {(isOn?"detected":"stopped")}");
+                    }
+                    previousEngineMask=pendingEngineMask;pendingEngineMask=-1;pendingEngineMaskSamples=0;
                 }
             }
-            previousEngineMask=sample.RunningEngineMask;
         }
         if(double.IsFinite(sample.FlapsExtendedRatio))
         {
-            var setting=(int)Math.Clamp(Math.Round(sample.FlapsExtendedRatio*4)*25,0,100);
+            var setting=FlapSetting(sample.FlapsExtendedRatio,plan?.AircraftType);
             if(setting==flapCandidate)flapCandidateSamples++;else{flapCandidate=setting;flapCandidateSamples=1;}
             if(reportedFlaps<0)reportedFlaps=setting;
-            else if(setting!=reportedFlaps&&flapCandidateSamples>=2){reportedFlaps=setting;AddOnce($"flaps-{setting}-{atKey(sample.At)}","Flaps changed",$"Flaps set to {setting}%");}
+            else if(setting!=reportedFlaps&&flapCandidateSamples>=2){reportedFlaps=setting;AddOnce($"flaps-{setting}-{atKey(sample.At)}","Flaps changed",FlapLabel(setting,plan?.AircraftType));}
         }
         if(double.IsFinite(sample.GearExtendedRatio)&&double.IsFinite(previousGear))
         {
@@ -102,14 +125,17 @@ internal sealed class FlightTrackingEventMonitor
         {
             switch(milestone.Phase)
             {
-                case FlightPhase.TaxiOut:AddOnce("block-out","Block-out / taxi out","Parking brake released and sustained ground movement confirmed");break;
+                case FlightPhase.TaxiOut:
+                    if(double.IsFinite(sample.FuelTotalWeightPounds))initialFuelPounds=sample.FuelTotalWeightPounds;
+                    AddOnce("block-out","Block-out / taxi out","Parking brake released and sustained ground movement confirmed");break;
                 case FlightPhase.Airborne when hasTouchedDown:AddOnce("go-around","Go-around",$"Airborne again at {Speed(sample):0} kt","alert");break;
                 case FlightPhase.Airborne:AddOnce("liftoff","Liftoff",$"Airborne at {Speed(sample):0} kt");break;
                 case FlightPhase.TaxiIn:
                     hasTouchedDown=true;
-                    var landing=$"Touchdown at {Speed(sample):0} kt";
-                    if(double.IsFinite(sample.VerticalSpeedFeetPerMinute))landing+=$" • {sample.VerticalSpeedFeetPerMinute:0} ft/min";
-                    if(plan is not null){var variance=(int)Math.Round((milestone.At-plan.PlannedArrivalUtc).TotalMinutes);landing+=variance==0?" • on schedule":$" • {Math.Abs(variance)} min {(variance<0?"early":"late")}";}
+                    var touchdownSpeed=double.IsFinite(lastAirborneSpeed)?lastAirborneSpeed:Speed(sample);var touchdownRate=double.IsFinite(lastAirborneVerticalSpeed)?lastAirborneVerticalSpeed:sample.VerticalSpeedFeetPerMinute;
+                    var landing=$"Touchdown at {touchdownSpeed:0} kt";
+                    if(double.IsFinite(touchdownRate))landing+=$" • {touchdownRate:0} ft/min";
+                    if(plan is not null&&FlightClock.ScheduleIsPlausible(plan,milestone.At)){var variance=(int)Math.Round((milestone.At-plan.PlannedArrivalUtc).TotalMinutes);landing+=variance==0?" • on schedule":$" • {Math.Abs(variance)} min {(variance<0?"early":"late")}";}
                     if(initialFuelPounds is not null&&double.IsFinite(sample.FuelTotalWeightPounds)&&plan?.PlannedTripFuel is { } plannedFuel)
                     {
                         var plannedPounds=plan.FuelUnits?.StartsWith("KG",StringComparison.OrdinalIgnoreCase)==true?plannedFuel*2.2046226218:plannedFuel;var difference=initialFuelPounds.Value-sample.FuelTotalWeightPounds-plannedPounds;
@@ -133,7 +159,7 @@ internal sealed class FlightTrackingEventMonitor
         if(sample.Slewing&&!wasSlewing)AddOnce("slew","Slew mode detected","Operational event detection suspended","alert");
         if(!sample.Slewing&&wasSlewing)AddOnce("slew-ended","Slew mode ended","Operational event detection resumed","system");
         if(!string.IsNullOrWhiteSpace(scenarioEvent))AddOnce("scenario-"+scenarioEvent,ScenarioTitle(scenarioEvent),scenarioEvent.Replace('_',' '),scenarioEvent.Contains("DIVERSION",StringComparison.OrdinalIgnoreCase)?"alert":"system");
-        if(initialFuelPounds is null&&double.IsFinite(sample.FuelTotalWeightPounds))initialFuelPounds=sample.FuelTotalWeightPounds;
+        if(!sample.OnGround&&(double.IsNaN(sample.AltitudeAboveGroundFeet)||sample.AltitudeAboveGroundFeet<=150)){lastAirborneVerticalSpeed=sample.VerticalSpeedFeetPerMinute;lastAirborneSpeed=Speed(sample);}
         wasPaused=sample.Paused;wasSlewing=sample.Slewing;previousEngines=sample.EnginesRunning;previousBrake=sample.ParkingBrake;previousGear=sample.GearExtendedRatio;hasSample=true;
         if(double.IsFinite(sample.AltitudeFeet))previousAltitude=sample.AltitudeFeet;
         return events;
@@ -147,7 +173,7 @@ internal sealed class FlightTrackingEventMonitor
         if(sample.OnGround)
         {
             parts.Add($"GS {sample.GroundSpeedKnots:0} KT");
-            parts.Add(sample.ParkingBrake?"BRAKE SET":"BRAKE RELEASED");
+            if(title.Contains("brake",StringComparison.OrdinalIgnoreCase)||title.Contains("block",StringComparison.OrdinalIgnoreCase)||title.Contains("pushback",StringComparison.OrdinalIgnoreCase)||title.Contains("preflight",StringComparison.OrdinalIgnoreCase))parts.Add(sample.ParkingBrake?"BRAKE SET":"BRAKE RELEASED");
             parts.Add(sample.EnginesRunning?"ENGINES RUNNING":"ENGINES OFF");
         }
         else
@@ -163,17 +189,26 @@ internal sealed class FlightTrackingEventMonitor
         if(sample.HasPosition&&title.Contains("Route",StringComparison.OrdinalIgnoreCase))parts.Add($"POS {sample.LatitudeDegrees:0.0000}, {sample.LongitudeDegrees:0.0000}");
         var remaining=FlightMetrics.RemainingDistanceNm(plan?.RoutePoints,progress);
         if(double.IsFinite(remaining)&&(title.Contains("approach",StringComparison.OrdinalIgnoreCase)||title.Contains("final",StringComparison.OrdinalIgnoreCase)))parts.Add($"{remaining:0} NM TO GO");
-        if(double.IsFinite(sample.FuelTotalWeightPounds)&&(sample.OnGround||title.Contains("Touchdown",StringComparison.OrdinalIgnoreCase)))parts.Add($"FUEL {sample.FuelTotalWeightPounds:0} LB");
-        if(double.IsFinite(remaining)&&!sample.OnGround&&sample.GroundSpeedKnots>=60&&plan is not null&&
+        if(double.IsFinite(sample.FuelTotalWeightPounds)&&(title.Contains("engine",StringComparison.OrdinalIgnoreCase)||title.Contains("preflight",StringComparison.OrdinalIgnoreCase)||title.Contains("block",StringComparison.OrdinalIgnoreCase)||title.Contains("Touchdown",StringComparison.OrdinalIgnoreCase)))parts.Add($"FUEL {sample.FuelTotalWeightPounds:0} LB");
+        if(double.IsFinite(remaining)&&!sample.OnGround&&sample.GroundSpeedKnots>=60&&plan is not null&&FlightClock.ScheduleIsPlausible(plan,sample.At)&&
            (title.Contains("cruise",StringComparison.OrdinalIgnoreCase)||title.Contains("descent",StringComparison.OrdinalIgnoreCase)||title.Contains("approach",StringComparison.OrdinalIgnoreCase)))
         {
             var eta=sample.At.AddHours(remaining/Math.Max(sample.GroundSpeedKnots,100));var variance=(int)Math.Round((eta-plan.PlannedArrivalUtc).TotalMinutes);
             parts.Add($"ETA {eta.UtcDateTime:HH:mm}Z • {(variance==0?"ON TIME":$"{Math.Abs(variance)} MIN {(variance<0?"EARLY":"LATE")}")}");
         }
-        var nearby=FlightMetrics.NearestWaypoint(plan?.RoutePoints,sample);
-        if(nearby is not null)parts.Add($"NEAR {nearby}");
         return new(at,title,summary,parts.Count==0?summary:$"{summary}\n{string.Join("  •  ",parts)}",kind);
     }
+
+    private static bool Airbus(string? aircraft)=>aircraft?.Contains("A3",StringComparison.OrdinalIgnoreCase)==true||aircraft?.Contains("A380",StringComparison.OrdinalIgnoreCase)==true||aircraft?.Contains("AIRBUS",StringComparison.OrdinalIgnoreCase)==true||aircraft?.Contains("FENIX",StringComparison.OrdinalIgnoreCase)==true;
+    private static bool Boeing737(string? aircraft)=>aircraft?.Contains("737",StringComparison.OrdinalIgnoreCase)==true||aircraft?.Contains("B738",StringComparison.OrdinalIgnoreCase)==true;
+    private static readonly int[] Boeing737Detents=[0,1,2,5,10,15,25,30,40];
+    private static int FlapSetting(double ratio,string? aircraft)
+    {
+        if(Airbus(aircraft))return Math.Clamp((int)Math.Round(ratio*5,MidpointRounding.AwayFromZero),0,5);
+        if(Boeing737(aircraft))return Boeing737Detents[Math.Clamp((int)Math.Round(ratio*(Boeing737Detents.Length-1),MidpointRounding.AwayFromZero),0,Boeing737Detents.Length-1)];
+        return (int)Math.Clamp(Math.Round(ratio*100/5)*5,0,100);
+    }
+    private static string FlapLabel(int setting,string? aircraft)=>Airbus(aircraft)?setting switch{0=>"Flaps UP",1=>"Flaps 1",2=>"Flaps 1+F",3=>"Flaps 2",4=>"Flaps 3",_=>"Flaps FULL"}:Boeing737(aircraft)?setting==0?"Flaps UP":$"Flaps {setting}":$"Flaps set to {setting}%";
 
     private static double Speed(Telemetry sample)=>double.IsFinite(sample.IndicatedAirspeedKnots)&&sample.IndicatedAirspeedKnots>0?sample.IndicatedAirspeedKnots:sample.GroundSpeedKnots;
     private static double Normalize(double heading)=>(heading%360+360)%360;

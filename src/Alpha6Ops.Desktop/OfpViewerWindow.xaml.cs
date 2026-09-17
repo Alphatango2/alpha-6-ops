@@ -3,12 +3,14 @@ namespace Alpha6Ops.Desktop;
 internal sealed record OfpBookmark(string Title,FrameworkElement Target);
 public partial class OfpViewerWindow:Window
 {
+ readonly string stateDirectory;
  readonly string content;readonly string? pdfPath;readonly string stateKey;readonly List<TextBlock> sections=[];double zoom=1;bool bookmarksVisible=true;string? activeBookmark;
  internal int BookmarkCount=>BookmarkItems.Items.Count;internal bool IsContinuousDocument=>DocumentContent.Children.Count>0;internal string? ActiveBookmark=>activeBookmark;
- internal OfpViewerWindow(ActiveFlightPlan plan)
+ internal OfpViewerWindow(ActiveFlightPlan plan, string? directory = null)
  {
-  InitializeComponent();stateKey=plan.OfpCacheKey??$"{plan.FlightNumber}-{plan.PlannedDepartureUtc:yyyyMMddHHmm}";ReleaseText.Text=$"{plan.FlightNumber}  •  {plan.Origin} → {plan.Destination}  •  SIMBRIEF RELEASE";pdfPath=SimBriefImporter.OfpPdfPath(plan.OfpCacheKey);OpenPdfButton.IsEnabled=pdfPath is not null;
-  var textPath=SimBriefImporter.OfpTextPath(plan.OfpCacheKey);content=textPath is not null?File.ReadAllText(textPath):"THE IN-APP OFP CONTENT IS NOT AVAILABLE FOR THIS RELEASE.\n\nRefresh the flight from SimBrief in Dispatch. If an original PDF was cached, use Open PDF Externally.";BuildDocument();DocumentStatusText.Text=textPath is null?"OFP CONTENT UNAVAILABLE":pdfPath is null?"CACHED OFP • ORIGINAL PDF UNAVAILABLE":"CACHED OFP • ORIGINAL PDF AVAILABLE";
+  stateDirectory=directory??CrashReporter.RootDirectory;
+  InitializeComponent();stateKey=plan.OfpCacheKey??$"{plan.FlightNumber}-{plan.PlannedDepartureUtc:yyyyMMddHHmm}";ReleaseText.Text=$"{plan.FlightNumber}  •  {plan.Origin} → {plan.Destination}  •  SIMBRIEF RELEASE";pdfPath=SimBriefImporter.OfpPdfPath(plan.OfpCacheKey, stateDirectory);OpenPdfButton.IsEnabled=pdfPath is not null;
+  var textPath=SimBriefImporter.OfpTextPath(plan.OfpCacheKey, stateDirectory);content=textPath is not null?File.ReadAllText(textPath):"THE IN-APP OFP CONTENT IS NOT AVAILABLE FOR THIS RELEASE.\n\nRefresh the flight from SimBrief in Dispatch. If an original PDF was cached, use Open PDF Externally.";BuildDocument();DocumentStatusText.Text=textPath is null?"OFP CONTENT UNAVAILABLE":pdfPath is null?"CACHED OFP • ORIGINAL PDF UNAVAILABLE":"CACHED OFP • ORIGINAL PDF AVAILABLE";
   Loaded+=(_,_)=>RestoreState();Closed+=(_,_)=>SaveState();PreviewKeyDown+=Viewer_KeyDown;
  }
  void BuildDocument()
@@ -31,8 +33,8 @@ public partial class OfpViewerWindow:Window
  void ZoomOut_Click(object s,RoutedEventArgs e){zoom=Math.Max(.7,zoom-.1);ApplyZoom();}void ZoomIn_Click(object s,RoutedEventArgs e){zoom=Math.Min(2,zoom+.1);ApplyZoom();}void Fit_Click(object s,RoutedEventArgs e){zoom=1;ApplyZoom();DocumentScroll.ScrollToTop();}
  void OpenPdf_Click(object s,RoutedEventArgs e){if(pdfPath is not null)Process.Start(new ProcessStartInfo(pdfPath){UseShellExecute=true});}void Close_Click(object s,RoutedEventArgs e)=>Close();void Minimize_Click(object s,RoutedEventArgs e)=>WindowState=WindowState.Minimized;void Maximize_Click(object s,RoutedEventArgs e)=>WindowState=WindowState==WindowState.Maximized?WindowState.Normal:WindowState.Maximized;void TitleBar_MouseLeftButtonDown(object s,MouseButtonEventArgs e){if(e.ClickCount==2)Maximize_Click(s,e);else DragMove();}
  void Viewer_KeyDown(object sender,KeyEventArgs e){if(e.Key==Key.Escape){Close();e.Handled=true;}else if(e.Key==Key.B&&Keyboard.Modifiers.HasFlag(ModifierKeys.Control)){ToggleBookmarks_Click(this,e);e.Handled=true;}else if(e.Key is Key.Add or Key.OemPlus){ZoomIn_Click(this,e);e.Handled=true;}else if(e.Key is Key.Subtract or Key.OemMinus){ZoomOut_Click(this,e);e.Handled=true;}}
- string StatePath=>Path.Combine(CrashReporter.RootDirectory,"ofp-viewer-state.json");
+ string StatePath=>Path.Combine(stateDirectory,"ofp-viewer-state.json");
  void RestoreState(){try{if(!File.Exists(StatePath))return;var all=JsonSerializer.Deserialize<Dictionary<string,ViewerState>>(File.ReadAllText(StatePath));if(all is null||!all.TryGetValue(stateKey,out var state))return;zoom=Math.Clamp(state.Zoom,.7,2);if(state.BookmarksVisible!=bookmarksVisible)ToggleBookmarks_Click(this,new RoutedEventArgs());ApplyZoom();Dispatcher.BeginInvoke(()=>DocumentScroll.ScrollToVerticalOffset(state.Offset));}catch(Exception error)when(error is IOException or JsonException or UnauthorizedAccessException){}}
- void SaveState(){try{Directory.CreateDirectory(CrashReporter.RootDirectory);Dictionary<string,ViewerState> all=[];if(File.Exists(StatePath))all=JsonSerializer.Deserialize<Dictionary<string,ViewerState>>(File.ReadAllText(StatePath))??[];all[stateKey]=new(zoom,DocumentScroll.VerticalOffset,bookmarksVisible);File.WriteAllText(StatePath,JsonSerializer.Serialize(all));}catch(Exception error)when(error is IOException or JsonException or UnauthorizedAccessException){}}
+ void SaveState(){try{Directory.CreateDirectory(stateDirectory);Dictionary<string,ViewerState> all=[];if(File.Exists(StatePath))all=JsonSerializer.Deserialize<Dictionary<string,ViewerState>>(File.ReadAllText(StatePath))??[];all[stateKey]=new(zoom,DocumentScroll.VerticalOffset,bookmarksVisible);File.WriteAllText(StatePath,JsonSerializer.Serialize(all));}catch(Exception error)when(error is IOException or JsonException or UnauthorizedAccessException){}}
  internal sealed record ViewerState(double Zoom,double Offset,bool BookmarksVisible);
 }

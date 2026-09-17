@@ -1,96 +1,60 @@
-ALPHA 6 OPS — WINDOWS DESKTOP BUILD 0.10.2
+ALPHA 6 OPS - WINDOWS DESKTOP BUILD 0.16.0
 
-The main OPS window opens at 1366 x 768 physical pixels; resizing and maximizing
-are enabled. The fleet window is also resizable. There is no manual Disconnect button. Closing MSFS or using Exit OPS
-ends the connection. The X button still hides OPS in the tray and keeps it running.
+START HERE
+Exit an older OPS copy using Exit OPS, then run Alpha6OPS-Setup-0.16.0.exe.
+Open Alpha 6 OPS from Start. Administrator access is not required.
 
-INSTALL
-Exit any running copy of OPS, then run Alpha6OPS-Setup-0.10.2.exe.
-The setup automatically upgrades a verified earlier preview installation.
-Your logs, crash reports, active-flight assignment, and SimBrief cache are preserved.
-Open Alpha 6 OPS Preview from the Windows Start menu.
-Installs for your Windows account only; administrator access is not required.
-Uninstall through Windows Settings > Apps > Installed apps.
-Exit OPS from the app or tray menu before uninstalling.
+CONSOLIDATED BUILD
+Includes Dan's flight tracking checkpoints through 7.11 and Reece's account,
+personal pilot workspace, simulator integration and performance work.
+Open Dispatch to import and review SimBrief, accept a release, or enter a
+flight manually. The OFP viewer and cached releases use the current workspace.
+Account sign-in requires publisher Auth0 configuration; an unconfigured build
+opens Local Preview. Real Auth0 and live MSFS acceptance are separate checks.
 
-TEST-FLIGHT LOGS
-Before connecting, click Set active flight and enter the flight number,
-registration, route, and planned UTC departure/arrival times. The active-flight
-bar then shows actual departure, delay-adjusted ETA, elapsed time, phase, and
-progress using live SimConnect data.
-To import instead, enter your Navigraph Alias/SimBrief username and click Import.
-OPS downloads your latest generated OFP without requesting your password. Review
-the imported route and UTC times, then click Save active flight.
+LAUNCH & CONNECT
+Click the simulator card. If MSFS 2024 is closed, OPS launches the Microsoft
+Store edition through Windows. If MSFS is already running, OPS connects directly.
+Load a flight in MSFS; OPS keeps retrying while it starts and loads.
+Disconnect cancels monitoring/retries without closing the simulator.
+Sign-in, updates and flight selection are handled in the simulator.
 
-Logging starts automatically when you click Connect to MSFS 2024.
-Click Export test log during or after a flight, save the .json file, and upload
-that file to this conversation. Exporting does not stop monitoring.
-An automatic JSON report is saved at block-in, on connection loss and on Exit OPS.
-Logs stay in %LOCALAPPDATA%\Alpha6Designs\Alpha6OPS\TestLogs and survive app restarts.
-After restarting OPS, Export test log lets you choose an earlier .jsonl session
-and converts it to an uploadable .json report. No automatic upload takes place.
-Telemetry is flushed to the journal as received; after an unexpected crash, export
-the saved journal. A partial final line is flagged in the report and skipped.
-Logs include simulator UTC and computer receipt UTC separately, aircraft title,
-groundspeed, brake/engine/ground/pause/slew state, milestones and connection errors.
-They do not include flight-position coordinates because this build does not collect them.
-Offline demo replay does not create a live-flight journal. Logs are not a restorable
-flight checkpoint and do not resume an interrupted monitoring session.
+LIVE FLIGHT IDENTIFICATION
+You can fly without SimBrief. OPS observes the aircraft, registration and position,
+checks the active simulator flight plan, and identifies nearby airports using MSFS
+facilities with an offline airport reference as fallback.
+A nearby airport does not establish a departure or intended destination.
+When no destination is known, it remains unknown instead of using an old briefing.
 
-PORTABLE OPTION
-Extract the whole Alpha6OPS-Desktop-0.10.2-win-x64.zip into a folder.
-Double-click Alpha6OPS.exe inside that folder.
-Keep the runtime folder and other files alongside it.
-The EXE alone is not a portable single-file application.
-The portable folder does not create shortcuts or register an uninstall entry.
-Remove a portable copy by deleting its folder after exiting OPS.
+A saved assignment is checked against live evidence before its route, gates and
+schedule are linked. View Flight Details explains conflicts and lets you review
+and correct the assignment. Airborne connections do not invent a departure time.
+Aircraft swaps, teleports, clock changes and menu returns start a new observed
+session. Landing away from an assigned destination is flagged for review.
 
-AIRCRAFT DATABASE
-Click Aircraft database to browse Delta Air Lines' mainline current fleet.
-Airfleets snapshot observed 2 September 2026: 1,006 aircraft, 999 active, 7 parked.
-Search registration, model or serial; filter by aircraft family or status.
-N414DZ is included: model 330-941N, MSN 1996, Active.
-The catalog works offline. Keep the fleet folder with the application.
-The source-page button opens the selected record's Airfleets fleet page.
-This is reference data, not an assigned virtual fleet; it does not change your
-live flight, aircraft selection, or rotation. Refreshes are manual imports.
+FLIGHT LAB
+The installer also includes Alpha 6 Flight Lab and its Start-menu shortcut.
+Open Flight Lab, then choose Connect to Flight Lab in the OPS Flight Deck.
+It records virtual phases and fault scenarios without launching MSFS.
+Lab flights are clearly labeled and never attach a saved real flight assignment.
+The dashboard also includes Dan's updated artwork, settings and offline globe.
 
-TRY A LIVE CONNECTION
-1. Start MSFS 2024 and load a flight at a gate, stationary with parking brake set.
-2. Open this NEW build of Alpha 6 OPS and click Connect to MSFS 2024.
-3. Watch the status badge: gray disconnected, amber connecting, green connected,
-   red connection failed. The green state requires a SimConnect acknowledgement.
-4. Check the aircraft name, UTC time, groundspeed, brake and ground/air status.
-5. Live milestones appear under Advanced. Close/minimize keeps monitoring active.
-6. Use Exit OPS before changing aircraft or simulator date/time, then reopen OPS.
+SIMCONNECT RUNTIME
+This local build is configured for the SDK SimConnect DLL installed in this
+workspace. Keep that SDK component in place. simconnect-sdk-path.txt beside
+Alpha6OPS.exe contains its full path; ALPHA6_SIMCONNECT_DLL can override it.
+No Microsoft SDK binary is included in the archive or installer.
+The app includes its own .NET runtime.
 
-This test package reads the SDK DLL path from simconnect-sdk-path.txt, configured
-for M:\SimConnect SDK\lib\SimConnect.dll on this development PC. Other PCs need
-their own installed 2024 SDK DLL path. Proprietary SDK binaries are not bundled.
-The active flight tracker uses the assignment entered with Set active flight.
+LOGS AND DIAGNOSTICS
+Settings > Logs & Diagnostics contains local logs, telemetry journals and exports.
+An observation continues while OPS is minimized to the tray.
+Use Exit OPS to quit completely before installing an update.
+Your saved settings, logs and SimBrief cache are preserved by installation.
 
-TRY THE OFFLINE REPLAY
-1. Click Run flight replay. It takes about eight seconds.
-2. Select Advanced to see the rotation and flight milestones.
-3. Close/minimize the window or click Minimize to tray: replay continues.
-4. Double-click the tray icon to reopen. It may be under Windows' hidden icons.
-5. Click Exit OPS, or right-click the tray icon > Exit Alpha 6 OPS, to stop.
-
-No browser or separate .NET installation is needed. Offline replay needs no MSFS.
-Built for x64 Windows; tested on the current Windows machine only.
-Setup uses the .NET Framework supplied with current Windows installations.
-
-THIS IS A DEVELOPMENT PREVIEW
-The executable and installer are unsigned. Windows may show an unknown-publisher
-warning or block execution depending on your policy. Do not disable protections;
-a signed release installer is needed before general distribution.
-Live connection is implemented but awaits in-simulator verification. Sign-in,
-live assignment timing, saved flight progress, automatic updates and voice dispatch
-are not included. Reset/exit clears the demo. Reconnection starts a new monitor
-session and must begin stationary at the gate; it cannot recover a mid-flight session.
-The app is separate from the optional browser-based OCC dashboard.
-
-Bundled Microsoft .NET runtime: 10.0.11. License and third-party notices are in
-runtime/. Runtime updates require rebuilding and redistributing the package.
-The installer is an early preview tool; install/uninstall on a clean PC is still
-a release acceptance test. Existing previews must be uninstalled before reinstall.
+PREVIEW LIMITS
+The airport reference and matching tolerances are approximate. Some aircraft and
+activities do not expose their route through the simulator plan interface.
+Missing data stays unknown; there is no guarantee for every third-party add-on.
+The network map, operational alerts and photograph are illustrative. Header
+weather is for the computer's approximate location, not live aircraft weather.

@@ -10,7 +10,8 @@ public record Telemetry(DateTimeOffset At, bool OnGround, double GroundSpeedKnot
     double GearExtendedRatio = double.NaN, double AltitudeAboveGroundFeet = double.NaN,
     double FlapsExtendedRatio = double.NaN, double PitchDegrees = double.NaN,
     double BankDegrees = double.NaN, double FuelTotalWeightPounds = double.NaN,
-    int RunningEngineCount = -1, int RunningEngineMask = -1)
+    int RunningEngineCount = -1, int RunningEngineMask = -1,
+    double PressureAltitudeFeet = double.NaN)
 {
     public bool HasPosition => double.IsFinite(LatitudeDegrees)&&LatitudeDegrees is>=-90 and<=90&&double.IsFinite(LongitudeDegrees)&&LongitudeDegrees is>=-180 and<=180;
 }

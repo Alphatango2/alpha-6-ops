@@ -54,6 +54,14 @@ internal static class LiveIdentitySmokeTest
             Check(Get<DateTimeOffset?>("observedSessionStart") == at.AddSeconds(3) && Get<TimelineRecorder>("liveRecorder").Events.Count == 0, "aircraft swap resets observed session and milestones");
             observe(Sydney(4) with { Aircraft = "Cessna 172", Evidence = new(lax.Position, "VH-TEST", SimulationRunning: true, Nearby: new(lax, 0)) });
             Check(window.OriginCodeText.Text == "KLAX" && Get<DateTimeOffset?>("observedSessionStart") == at.AddSeconds(4), "teleport updates vicinity and resets session");
+            reset("diagnostic delayed verification");
+            Set("activePlan", new ActiveFlightPlan("JST221", "VH-TEST", "YSSY", "NZQN", at, at.AddHours(3)));
+            observe(new("FenixA320 IAE SL",new(at,true,0,true,false),new(null,"VH-TEST",SimulationRunning:true)));
+            Check(Get<AircraftRotation?>("liveRotation") is null,"assignment waits for the first valid position before creating its rotation");
+            observe(Sydney(1,engines:false) with{Aircraft="FenixA320 IAE SL"});
+            Check(Get<AircraftRotation?>("liveRotation") is not null,"verified assignment creates its live rotation after monitoring has already armed");
+            observe(Sydney(2,speed:3,brake:false,engines:false) with{Aircraft="FenixA320 IAE SL"});observe(Sydney(5,speed:3,brake:false,engines:false) with{Aircraft="FenixA320 IAE SL"});
+            Check(Get<AircraftRotation>("liveRotation").Legs[0].ActualOut is not null,"delayed verification still applies the block-out milestone to actual OUT");
             reset("diagnostic arrival mismatch");
             Set("activePlan", new ActiveFlightPlan("LOCAL1", "VH-TEST", "YSSY", "YMML", at, at.AddHours(1)));
             observe(Sydney(0)); observe(Sydney(1, speed: 5, brake: false)); observe(Sydney(4, speed: 5, brake: false));

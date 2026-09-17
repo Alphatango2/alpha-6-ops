@@ -1,5 +1,15 @@
 # Alpha 6 OPS
 
+## Current consolidated build: 0.16.0
+
+This source combines Dan's checkpoint 7.11 commit `36c5e6a1a14c0d7404bc29d6c9bc288a6656181f`, Reece's replay/export performance fixes, and the account/identity and personal pilot workspace work. Dispatch now includes SimBrief release review and acceptance, the OFP viewer, flight tracking, local PIREP closeout, and the pilot logbook. SimBrief/OFP files and viewer preferences are isolated by account and workspace.
+
+See [consolidation review and branch history](docs/consolidation-2026-09-16.md) for merge decisions, validation, and remaining live-service checks. Build the desktop with `dotnet build Alpha6Ops.slnx --configuration Release` and the account server with `dotnet build Alpha6Ops.Cloud.slnx --configuration Release`. Older release notes below are historical.
+
+## Accounts and virtual airlines (in development)
+
+The first identity foundation adds browser sign-in, a free personal pilot workspace, multiple virtual-airline memberships, PostgreSQL authorization, and an ASP.NET account website. Auth0 tenant configuration and production hosting are still required; live password/MFA/passkey flows have not been verified. See [implementation, setup, and remaining work](docs/identity-foundation.md) and the [server setup guide](src/Alpha6Ops.Server/README.md).
+
 Latest: **0.12.2 Launch and identify** turns the connection card into **Launch & Connect** for the Microsoft Store edition of MSFS 2024. OPS checks live aircraft/position, the active simulator plan and airport references before linking a saved assignment. Unrelated or stale briefings no longer impose airline routes and delays on free flight. See [flight identification, launch behavior and limits](docs/live-flight-identification.md).
 
 This build integrates Dan's work through `6208a4f542663e9a2e7a1b27b0964297e2c91799`, including Flight Lab, the offline globe, unbranded aircraft artwork, and settings/navigation refinements. Flight Lab uses the same phase recorder while remaining explicitly labeled and separate from real simulator assignments. Build the combined installer with [the desktop packaging script](packaging/build-desktop.ps1); generated installers and archives stay local.
@@ -64,7 +74,7 @@ The desktop app provides Simple/Advanced views, an approximately eight-second em
 
 ## Run the foundation
 
-Prerequisites: .NET 10 SDK (not runtime alone), Node 22.12+ or Node 24, and pnpm 11.19.0. Run commands from this repository root unless stated otherwise. The backend has no external NuGet package dependencies.
+Prerequisites: .NET 10 SDK (not runtime alone), Node 22.12+ or Node 24, and pnpm 11.19.0. Run commands from this repository root unless stated otherwise. The original replay/domain backend is package-free; the identity projects use maintained OIDC and PostgreSQL packages from NuGet.org.
 
 ```powershell
 dotnet build Alpha6Ops.slnx

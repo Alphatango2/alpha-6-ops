@@ -1,0 +1,8 @@
+{
+  "Authority": "https://YOUR-TENANT.auth0.com",
+  "ClientId": "YOUR-NATIVE-APPLICATION-CLIENT-ID",
+  "Audience": "https://api.YOUR-DOMAIN",
+  "ApiBaseUrl": "https://YOUR-PORTAL-DOMAIN/",
+  "PortalUrl": "https://YOUR-PORTAL-DOMAIN/",
+  "CallbackPort": 42879
+}

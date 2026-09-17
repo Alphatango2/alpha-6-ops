@@ -40,7 +40,7 @@ public partial class MainWindow
 
     private void InitializeDashboard(string? diagnosticDirectory)
     {
-        dashboardStore = new DashboardStateStore(diagnosticDirectory ?? CrashReporter.RootDirectory);
+        dashboardStore = new DashboardStateStore(stateDirectory);
         try { dashboardState = dashboardStore.Load(); }
         catch (Exception error) when (error is IOException or JsonException or UnauthorizedAccessException)
         { StatusText.Text = "Could not load dashboard preferences: " + error.Message; }
@@ -55,6 +55,7 @@ public partial class MainWindow
         FlightTrackingView.PirepSubmissionRequested=SubmitCompletedPirep;
         FlightTrackingView.PirepCloseoutCompleted+=(_,_)=>CompletePirepCloseout();
         PilotLogbookView.DashboardRequested+=(_,_)=>ShowDashboard();
+        DispatchView.SetDataDirectory(stateDirectory);
         DispatchView.DashboardRequested+=(_,_)=>ShowDashboard();
         DispatchView.ManualRequested+=(_,_)=>{SetFlight_Click(this,new RoutedEventArgs());UpdateDispatchState();};
         DispatchView.FlightAccepted+=(_,plan)=>AcceptDispatchFlight(plan);
@@ -70,6 +71,7 @@ public partial class MainWindow
         var now=DateTimeOffset.UtcNow;
         RenderClocks(now, TimeZoneInfo.Local);
         RenderLocalWeather(now);
+
         ClockText.ToolTip="Current real-world UTC. Replay and flight schedules use their own dated simulator clock.";
     }
     private void SaveDashboard()
@@ -104,6 +106,7 @@ public partial class MainWindow
     }
     private void RefreshDashboardFlight(bool live)
     {
+        if (IsPilotWorkspace && !running) live = true;
         dashboardShowsLive=live;
         var rotation=live ? liveRotation ?? (activePlan is null ? null : BuildLiveRotation(activePlan,liveAircraft,AircraftGroundProfile.Default)) : session.Rotation;
         DashboardFlights=rotation is null ? [] : RotationPlanner.Project(rotation).Select(l=>new DashboardFlightRow(l,rotation.AircraftId)).ToArray();
@@ -116,7 +119,7 @@ public partial class MainWindow
         else
         {
             HeroFlightText.Text=hero.Id;OriginCodeText.Text=DashboardData.AirportCode(hero.Leg.Origin);DestinationCodeText.Text=DashboardData.AirportCode(hero.Leg.Destination);
-            OriginCityText.Text=DashboardData.City(hero.Leg.Origin);DestinationCityText.Text=DashboardData.City(hero.Leg.Destination);
+            OriginCityText.Text=DashboardData.AirportName(hero.Leg.Origin);DestinationCityText.Text=DashboardData.AirportName(hero.Leg.Destination);
             HeroDepartureText.Text=hero.Out;HeroArrivalText.Text=hero.In;HeroStatusText.Text="●  "+hero.Status;
             var planMatches=live&&activePlan is not null&&hero.Id.Equals(activePlan.FlightNumber,StringComparison.OrdinalIgnoreCase);
             HeroDepartureGateText.Text=planMatches?activePlan!.DepartureGate??"—":"—";HeroArrivalGateText.Text=planMatches?activePlan!.ArrivalGate??"—":"—";
@@ -219,12 +222,14 @@ public partial class MainWindow
     private void Dashboard_Click(object sender,RoutedEventArgs e)=>ShowDashboard();
     internal void ShowDashboard()
     {
+        SelectPilotLogbook(false);
         ToolsOverlay.Visibility=Visibility.Collapsed;FlightTrackingView.Visibility=PilotLogbookView.Visibility=DispatchView.Visibility=Visibility.Collapsed;DashboardScroll.Visibility=Visibility.Visible;DashboardScroll.ScrollToTop();
         FlightTrackingNavButton.ClearValue(Button.BackgroundProperty);FlightTrackingNavButton.ClearValue(Button.ForegroundProperty);ClearDispatchSelection();
         DashboardNavButton.Background=OpsUi.Brush("#FFDA00");DashboardNavButton.Foreground=OpsUi.Brush("#080C0F");
     }
     internal void ShowFlightTracking()
     {
+        SelectPilotLogbook(false);
         ToolsOverlay.Visibility=Visibility.Collapsed;DashboardScroll.Visibility=PilotLogbookView.Visibility=DispatchView.Visibility=Visibility.Collapsed;FlightTrackingView.Visibility=Visibility.Visible;
         DashboardNavButton.ClearValue(Button.BackgroundProperty);DashboardNavButton.ClearValue(Button.ForegroundProperty);
         ClearDispatchSelection();
@@ -233,6 +238,7 @@ public partial class MainWindow
     }
     internal void ShowPilotLogbook()
     {
+        SelectPilotLogbook(true);
         ToolsOverlay.Visibility=Visibility.Collapsed;DashboardScroll.Visibility=FlightTrackingView.Visibility=DispatchView.Visibility=Visibility.Collapsed;PilotLogbookView.Visibility=Visibility.Visible;
         DashboardNavButton.ClearValue(Button.BackgroundProperty);DashboardNavButton.ClearValue(Button.ForegroundProperty);FlightTrackingNavButton.ClearValue(Button.BackgroundProperty);FlightTrackingNavButton.ClearValue(Button.ForegroundProperty);
         ClearDispatchSelection();
@@ -240,6 +246,7 @@ public partial class MainWindow
     }
     internal void ShowDispatch()
     {
+        SelectPilotLogbook(false);
         ToolsOverlay.Visibility=Visibility.Collapsed;DashboardScroll.Visibility=FlightTrackingView.Visibility=PilotLogbookView.Visibility=Visibility.Collapsed;DispatchView.Visibility=Visibility.Visible;
         DashboardNavButton.ClearValue(Button.BackgroundProperty);DashboardNavButton.ClearValue(Button.ForegroundProperty);FlightTrackingNavButton.ClearValue(Button.BackgroundProperty);FlightTrackingNavButton.ClearValue(Button.ForegroundProperty);
         DispatchNavButton.Background=OpsUi.Brush("#FFDA00");DispatchNavButton.Foreground=OpsUi.Brush("#080C0F");HeaderDispatchButton.BorderBrush=OpsUi.Brush("#FFDA00");UpdateDispatchState();
@@ -247,8 +254,10 @@ public partial class MainWindow
     private void ClearDispatchSelection(){DispatchNavButton.ClearValue(Button.BackgroundProperty);DispatchNavButton.ClearValue(Button.ForegroundProperty);DispatchNavButton.ClearValue(Button.BorderBrushProperty);HeaderDispatchButton.ClearValue(Button.BackgroundProperty);HeaderDispatchButton.ClearValue(Button.ForegroundProperty);HeaderDispatchButton.ClearValue(Button.BorderBrushProperty);}
     private void AcceptDispatchFlight(ActiveFlightPlan plan)
     {
-        if(running||liveCancellation is not null){OpsNoticeWindow.Show(this,"Active flight","Finish the replay or disconnect the simulator before accepting a different flight.");return;}
-        activePlan=plan;ActiveFlightPlanStore.Save(activePlan,stateDirectory);FlightRecoveryStore.Delete(stateDirectory);ResetLiveTrackingState();ResetLiveIdentity();
+        if(changingAccount||running||liveCancellation is not null)
+            throw new InvalidOperationException("Finish the replay, disconnect the simulator, or finish changing workspace before accepting a different flight.");
+        ActiveFlightPlanStore.Save(plan,stateDirectory);
+        activePlan=plan;suppressObservedFlightAfterCloseout=false;FlightRecoveryStore.Delete(stateDirectory);ResetLiveTrackingState();ResetLiveIdentity();
         RecordLog("flight_assignment_changed",null,activePlan);RefreshLiveTracker(null,null,null,"Flight accepted by Dispatch. Select View Flight Tracking when ready.");UpdateDispatchState();
     }
     private bool SubmitCompletedPirep()
@@ -261,7 +270,7 @@ public partial class MainWindow
     }
     private void CompletePirepCloseout()
     {
-        if(activePlan is null)return;RecordLog("pirep_closeout_complete",null,new{activePlan.FlightNumber});ActiveFlightPlanStore.Delete(stateDirectory);FlightRecoveryStore.Delete(stateDirectory);activePlan=null;completedFlightHistoryId=null;ResetLiveTrackingState();ResetLiveIdentity();RefreshLiveTracker(null,null,null,"PIREP complete • active flight cleared");ShowDashboard();
+        if(activePlan is null)return;RecordLog("pirep_closeout_complete",null,new{activePlan.FlightNumber});FinishLog("pirep_submitted");ActiveFlightPlanStore.Delete(stateDirectory);FlightRecoveryStore.Delete(stateDirectory);activePlan=null;completedFlightHistoryId=null;ResetLiveTrackingState();ResetLiveIdentity();suppressObservedFlightAfterCloseout=true;RefreshLiveTracker(null,null,null,"PIREP complete • active flight cleared");ShowDashboard();
     }
     private void UpdateDispatchState()
     {
@@ -277,13 +286,19 @@ public partial class MainWindow
     private void Module_Click(object sender,RoutedEventArgs e)
     {
         var name=(string)((Button)sender).Tag;
+        if (IsPilotWorkspace)
+        {
+            if (name == "Dispatch") { ShowDispatch(); return; }
+            if (name == "Weather") { LocalWeather_Click(sender, e); return; }
+            if (!PilotFeatureProfile.Allows(name)) return;
+        }
         switch(name)
         {
             case "Settings": new SettingsWindow(ConnectionBadgeText.Text, PilotNameBox.Text, OpenTools,
                 () => FlightHistory_Click(this, new RoutedEventArgs()),
                 () => Logs_Click(this, new RoutedEventArgs()),
                 () => ExportLog_Click(this, new RoutedEventArgs()), MinimizeToTray,
-                ProgramHealthText.Text, LogStatusText.Text, generalSettings, ApplyGeneralSettings) { Owner = this }.ShowDialog(); return;
+                ProgramHealthText.Text, LogStatusText.Text, generalSettings, ApplyGeneralSettings, stateDirectory) { Owner = this }.ShowDialog(); return;
             case "Aircraft": Fleet_Click(sender,e);return;
             case "Network": new NetworkWindow{Owner=this}.ShowDialog();return;
             case "FlightTracking": ShowFlightTracking();return;

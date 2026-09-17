@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="src/Alpha6Ops.Identity/Alpha6Ops.Identity.csproj" />
+  <Project Path="src/Alpha6Ops.Accounts/Alpha6Ops.Accounts.csproj" />
+  <Project Path="src/Alpha6Ops.Server/Alpha6Ops.Server.csproj" />
+  <Project Path="tests/Alpha6Ops.Accounts.Tests/Alpha6Ops.Accounts.Tests.csproj" />
+  <Project Path="tests/Alpha6Ops.Server.Tests/Alpha6Ops.Server.Tests.csproj" />
+</Solution>

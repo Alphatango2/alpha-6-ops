@@ -22,7 +22,7 @@ public sealed class EmbeddedReplay(string resourceName) : ISimulatorTelemetry
         while (await reader.ReadLineAsync(cancellationToken) is { } line)
         {
             if (string.IsNullOrWhiteSpace(line)) continue;
-            yield return JsonSerializer.Deserialize<Telemetry>(line, new JsonSerializerOptions(JsonSerializerDefaults.Web))
+            yield return JsonSerializer.Deserialize<Telemetry>(line, JsonSerializerOptions.Web)
                 ?? throw new InvalidDataException("Empty telemetry sample.");
         }
     }

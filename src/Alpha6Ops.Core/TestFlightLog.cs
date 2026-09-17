@@ -50,11 +50,14 @@ public sealed class TestFlightLog : IDisposable
             }
         }
         var temporary = destination + ".tmp-" + Guid.NewGuid().ToString("N");
-        File.WriteAllText(temporary, JsonSerializer.Serialize(new {
+        var report = new {
             schemaVersion = 1, exportedAtUtc = DateTimeOffset.UtcNow, incompleteLastLine,
             sessionEnded = events.Any(e => e.GetProperty("kind").GetString() == "session_ended"),
             eventCount = events.Count, events
-        }, new JsonSerializerOptions { WriteIndented = true }));
+        };
+        // Write UTF-8 directly so long flights do not allocate a second, full-report string.
+        using (var output = File.Create(temporary))
+            JsonSerializer.Serialize(output, report, new JsonSerializerOptions { WriteIndented = true });
         File.Move(temporary, destination, overwrite: true);
     }
 }

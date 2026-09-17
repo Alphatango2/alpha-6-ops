@@ -80,6 +80,7 @@ public partial class MainWindow
         Place(FleetPanel, mode.Summary == 0 ? 0 : 1, mode.Summary == 0 ? 2 : 0);
         Place(MessagesPanel, mode.Summary == 2 ? 2 : mode.Summary == 1 ? 1 : 0, mode.Summary == 2 ? 0 : mode.Summary == 1 ? 2 : 4);
         FleetPanel.Margin = MessagesPanel.Margin = new Thickness(0, mode.Summary == 0 ? 0 : 12, 0, 0);
+        ApplyPilotDashboardLayout();
     }
 
     private static void SetGrid(Grid grid, double[] columns, int rows)

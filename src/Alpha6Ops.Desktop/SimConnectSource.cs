@@ -45,7 +45,8 @@ internal static class SimConnectSource
                 ("AIRSPEED INDICATED", "knots"), ("VERTICAL SPEED", "feet per minute"),
                 ("GEAR TOTAL PCT EXTENDED", "Percent Over 100"), ("PLANE ALT ABOVE GROUND", "feet"),
                 ("FLAPS HANDLE PERCENT", "Percent Over 100"), ("PLANE PITCH DEGREES", "degrees"),
-                ("PLANE BANK DEGREES", "degrees"), ("FUEL TOTAL QUANTITY WEIGHT", "pounds") };
+                ("PLANE BANK DEGREES", "degrees"), ("FUEL TOTAL QUANTITY WEIGHT", "pounds"),
+                ("INDICATED ALTITUDE", "feet") };
             foreach (var field in fields) Check(AddDefinition(handle, 1, field.Name, field.Unit, 4, 0, uint.MaxValue), field.Name);
             Check(AddDefinition(handle, 1, "TITLE", null, 9, 0, uint.MaxValue), "Aircraft title");
             Check(Subscribe(handle, 10, "Pause_EX1"), "Pause subscription");
@@ -73,18 +74,18 @@ internal static class SimConnectSource
                     else if (id == 3) throw new IOException("Simulator closed. Reconnect after loading your flight.");
                     else if (id == 1 && length >= 24) throw new IOException($"SimConnect exception {Marshal.ReadInt32(data, 12)}, request {Marshal.ReadInt32(data, 16)}, parameter {Marshal.ReadInt32(data, 20)}.");
                     else if (id == 4 && length >= 24 && Marshal.ReadInt32(data, 16) == 10) paused = Marshal.ReadInt32(data, 20) != 0;
-                    else if (id == 8 && length >= 464 && Marshal.ReadInt32(data, 12) == 1 && Marshal.ReadInt32(data, 20) == 1 && Marshal.ReadInt32(data, 36) == 22)
+                    else if (id == 8 && length >= 472 && Marshal.ReadInt32(data, 12) == 1 && Marshal.ReadInt32(data, 20) == 1 && Marshal.ReadInt32(data, 36) == 23)
                     {
-                        var values = new double[21];
-                        Marshal.Copy(IntPtr.Add(data, 40), values, 0, 21);
+                        var values = new double[22];
+                        Marshal.Copy(IntPtr.Add(data, 40), values, 0, 22);
                         if (!double.IsFinite(values[0]) || values[0] <= 0 || values[0] > 315537897599d) throw new InvalidDataException("Invalid simulator UTC time.");
                         var at = DateTimeOffset.MinValue.AddSeconds(values[0]);
-                        var title = Marshal.PtrToStringAnsi(IntPtr.Add(data, 208), 256)?.TrimEnd('\0') ?? "Unknown aircraft";
+                        var title = Marshal.PtrToStringAnsi(IntPtr.Add(data, 216), 256)?.TrimEnd('\0') ?? "Unknown aircraft";
                         var sample = new Telemetry(at, values[1] != 0, values[2], values[3] != 0,
                             values[4] != 0 || values[5] != 0 || values[6] != 0 || values[7] != 0, paused, values[8] != 0,
-                            values[9],values[10],values[11],values[12],values[13],values[14],values[15],values[16],
+                            values[9],values[10],values[11],values[12],values[13],values[14],NormalizeGear(values[15]),values[16],
                             values[17],values[18],values[19],values[20],new[]{values[4],values[5],values[6],values[7]}.Count(value=>value!=0),
-                            (values[4]!=0?1:0)|(values[5]!=0?2:0)|(values[6]!=0?4:0)|(values[7]!=0?8:0));
+                            (values[4]!=0?1:0)|(values[5]!=0?2:0)|(values[6]!=0?4:0)|(values[7]!=0?8:0),values[21]);
                         if (!double.IsFinite(sample.GroundSpeedKnots) || sample.GroundSpeedKnots < 0 || !sample.HasPosition || !double.IsFinite(sample.AltitudeFeet) || !double.IsFinite(sample.HeadingDegrees) || !double.IsFinite(sample.IndicatedAirspeedKnots) || sample.IndicatedAirspeedKnots<0 || !double.IsFinite(sample.VerticalSpeedFeetPerMinute) || !double.IsFinite(sample.GearExtendedRatio) || sample.GearExtendedRatio is <0 or >1.1 || !double.IsFinite(sample.AltitudeAboveGroundFeet) || !double.IsFinite(sample.FlapsExtendedRatio) || sample.FlapsExtendedRatio is <0 or >1.1 || !double.IsFinite(sample.PitchDegrees) || !double.IsFinite(sample.BankDegrees) || !double.IsFinite(sample.FuelTotalWeightPounds) || sample.FuelTotalWeightPounds<0) throw new InvalidDataException("Invalid simulator aircraft telemetry.");
                         lastPacket = DateTime.UtcNow;
                         received(new(title, sample, context.Evidence()));
@@ -97,6 +98,11 @@ internal static class SimConnectSource
         }
         finally { if (handle != IntPtr.Zero) Close(handle); }
     }, token);
+
+    // MSFS 2024 currently reports GEAR TOTAL PCT EXTENDED as 0..0.01 when
+    // requested with Percent Over 100, while other percentage simvars arrive
+    // as 0..1. Normalize that simulator-specific scale at the boundary.
+    internal static double NormalizeGear(double value)=>value is>=0 and<=.011?Math.Clamp(value*100,0,1):value;
 
     private static void Check(int result, string operation)
     {

@@ -15,13 +15,14 @@ public partial class SettingsWindow : Window
     private readonly Action exportLog;
     private readonly Action minimizeToTray;
     private readonly Action<GeneralSettings> applyGeneralSettings;
-    private static string DataDirectory => CrashReporter.RootDirectory;
+    private readonly string DataDirectory;
 
     internal SettingsWindow(string simulatorStatus, string pilotName, Action showFlightTools,
         Action? showFlightHistory = null, Action? showLogDatabase = null, Action? exportTestLog = null,
         Action? minimizeOps = null, string? programHealth = null, string? loggingStatus = null,
-        GeneralSettings? currentGeneralSettings = null, Action<GeneralSettings>? saveGeneralSettings = null)
+        GeneralSettings? currentGeneralSettings = null, Action<GeneralSettings>? saveGeneralSettings = null, string? dataDirectory = null)
     {
+        DataDirectory = dataDirectory ?? CrashReporter.RootDirectory;
         InitializeComponent();
         openFlightTools = showFlightTools;
         openFlightHistory = showFlightHistory ?? (() => { });
@@ -29,8 +30,8 @@ public partial class SettingsWindow : Window
         exportLog = exportTestLog ?? (() => { });
         minimizeToTray = minimizeOps ?? (() => { });
         applyGeneralSettings = saveGeneralSettings ?? (_ => { });
-        LoadGeneralSettings(currentGeneralSettings ?? GeneralSettingsStore.Load());
-        var simBriefUser = SimBriefImporter.LoadUsername();
+        LoadGeneralSettings(currentGeneralSettings ?? GeneralSettingsStore.Load(DataDirectory));
+        var simBriefUser = SimBriefImporter.LoadUsername(DataDirectory);
         var version = Assembly.GetExecutingAssembly().GetName().Version?.ToString(3) ?? "unknown";
         SimulatorStatusText.Text = simulatorStatus.ToUpperInvariant();
         SimConnectPluginStatusText.Text = simulatorStatus.Contains("CONNECTED", StringComparison.OrdinalIgnoreCase) &&
@@ -85,7 +86,7 @@ public partial class SettingsWindow : Window
     private void SaveGeneral_Click(object sender, RoutedEventArgs e)
     {
         var settings = ReadGeneralSettings();
-        GeneralSettingsStore.Save(settings);
+        GeneralSettingsStore.Save(settings, DataDirectory);
         applyGeneralSettings(settings);
         GeneralStatusText.Text = "SETTINGS SAVED";
     }

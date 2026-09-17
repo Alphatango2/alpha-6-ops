@@ -10,9 +10,9 @@ internal static class UserPreferencesStore
 {
     private static string PathName(string? directory) => Path.Combine(directory ?? CrashReporter.RootDirectory, "preferences.json");
 
-    internal static UserPreferences? Load()
+    internal static UserPreferences? Load(string? directory = null)
     {
-        var path = PathName(null);
+        var path = PathName(directory);
         try { return File.Exists(path) ? JsonSerializer.Deserialize<UserPreferences>(File.ReadAllText(path)) : null; }
         catch (Exception error) when (error is IOException or JsonException) { CrashReporter.Write("preferences_load", error); return null; }
     }

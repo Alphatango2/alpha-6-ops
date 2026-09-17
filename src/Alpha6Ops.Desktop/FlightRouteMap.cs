@@ -18,7 +18,8 @@ namespace Alpha6Ops.Desktop;
 public sealed class FlightRouteMap : UserControl
 {
     private const double CanvasWidth=900,CanvasHeight=520,CenterX=450,CenterY=250,BaseRadius=220;
-    private static readonly Lazy<IReadOnlyList<IReadOnlyList<GeoPoint>>> Land=new(LoadLand);
+    private static readonly Lazy<IReadOnlyList<IReadOnlyList<GeoPoint>>> Land=new(()=>LoadLand("ne_110m_land.geojson"));
+    private static readonly Lazy<IReadOnlyList<IReadOnlyList<GeoPoint>>> DetailedLand=new(()=>LoadLand("ne_50m_land.geojson"));
     private static readonly Lazy<LandTexture> LandMask=new(LoadLandMask);
     private readonly Canvas globe=new(){Width=CanvasWidth,Height=CanvasHeight,ClipToBounds=true,Cursor=Cursors.Hand};
     private readonly TextBlock caption=new(){Foreground=Brush("#89A1B1"),FontSize=10,Margin=new Thickness(15,4,0,9)};
@@ -30,6 +31,7 @@ public sealed class FlightRouteMap : UserControl
     private GeoPoint? livePosition;
     private double liveHeading=double.NaN;
     private double completedFraction;
+    private bool progressInitialized;
     private readonly List<GeoPoint> actualTrack=[];
 
     internal int RoutePointCount=>route.Count;
@@ -50,6 +52,7 @@ public sealed class FlightRouteMap : UserControl
         AddControl(controls,"+","Zoom route globe in",()=>SetZoom(zoom*1.3));
         AddControl(controls,"−","Zoom route globe out",()=>SetZoom(zoom/1.2));
         AddControl(controls,"⌖","Reset and frame route globe",FrameRoute);
+        AddControl(controls,"◎","Center map on live aircraft",CenterAircraft);
         root.Children.Add(controls);Grid.SetRow(caption,1);root.Children.Add(caption);Content=root;
         globe.MouseWheel+=(_,e)=>{SetZoom(zoom*(e.Delta>0?1.12:1/1.12));e.Handled=true;};
         globe.MouseLeftButtonDown+=(_,e)=>{drag=e.GetPosition(globe);globe.CaptureMouse();};
@@ -67,7 +70,7 @@ public sealed class FlightRouteMap : UserControl
     {
         var next=points?.Where(point=>point.Latitude is>=-90 and<=90&&point.Longitude is>=-180 and<=180).ToArray()??[];
         if(route.SequenceEqual(next))return;
-        route=next;livePosition=null;liveHeading=double.NaN;completedFraction=0;actualTrack.Clear();
+        route=next;livePosition=null;liveHeading=double.NaN;completedFraction=0;progressInitialized=false;actualTrack.Clear();
         CrossesDateLine=route.Zip(route.Skip(1),(a,b)=>Math.Abs(a.Longitude-b.Longitude)>180).Any(crosses=>crosses);
         FrameRoute();
     }
@@ -79,14 +82,14 @@ public sealed class FlightRouteMap : UserControl
         else if(routeProgress is>=0 and<=1&&route.Count>=2)position=PositionAtProgress(routeProgress.Value);
         if(position is null)return;
         livePosition=position;liveHeading=telemetry is not null&&double.IsFinite(telemetry.HeadingDegrees)?telemetry.HeadingDegrees:RouteHeading(Math.Clamp(routeProgress??completedFraction,0,1));
-        completedFraction=Math.Clamp(routeProgress??NearestRouteProgress(position.Value),0,1);
+        completedFraction=Math.Clamp(routeProgress??NearestRouteProgress(position.Value),0,1);progressInitialized=true;
         if(actualTrack.Count==0||AngularDistance(actualTrack[^1],position.Value)>Radians(.015))actualTrack.Add(position.Value);
         Draw();
     }
 
     internal void Zoom(double factor)=>SetZoom(zoom*factor);
     internal void ResetView()=>FrameRoute();
-    internal void SetView(double latitude,double longitude,double scale){centerLatitude=Math.Clamp(latitude,-75,75);centerLongitude=NormalizeLongitude(longitude);zoom=Math.Clamp(scale,.8,12);Draw();}
+    internal void SetView(double latitude,double longitude,double scale){centerLatitude=Math.Clamp(latitude,-75,75);centerLongitude=NormalizeLongitude(longitude);zoom=Math.Clamp(scale,.8,24);Draw();}
 
     private void FrameRoute()
     {
@@ -101,7 +104,8 @@ public sealed class FlightRouteMap : UserControl
         zoom=FittedZoom;Draw();
     }
 
-    private void SetZoom(double value){zoom=Math.Clamp(value,.8,12);Draw();}
+    private void SetZoom(double value){zoom=Math.Clamp(value,.8,24);Draw();}
+    private void CenterAircraft(){if(livePosition is{} aircraft){centerLatitude=Math.Clamp(aircraft.Latitude,-75,75);centerLongitude=NormalizeLongitude(aircraft.Longitude);zoom=Math.Max(zoom,6);Draw();}else FrameRoute();}
 
     private void Draw()
     {
@@ -110,7 +114,7 @@ public sealed class FlightRouteMap : UserControl
         var ocean=new RadialGradientBrush{GradientOrigin=new Point(.29,.25),Center=new Point(.38,.35),RadiusX=.76,RadiusY=.76,GradientStops=new GradientStopCollection{new(Color.FromRgb(33,83,111),0),new(Color.FromRgb(9,36,54),.53),new(Color.FromRgb(2,12,21),1)}};
         Add(new Ellipse{Width=radius*2,Height=radius*2,Fill=ocean,Stroke=Brush("#8EB5CA"),StrokeThickness=1.4,Effect=new DropShadowEffect{Color=Color.FromRgb(27,123,170),BlurRadius=22,ShadowDepth=0,Opacity=.25}},CenterX-radius,CenterY-radius);
         DrawLandSurface(radius);DrawGraticule(radius);
-        foreach(var ring in Land.Value)DrawGeoLine(ring,radius,Brush("#7798AA"),1,.96);
+        foreach(var ring in (zoom>=2.5?DetailedLand.Value:Land.Value))DrawGeoLine(ring,radius,Brush("#7798AA"),zoom>=2.5?1.15:1,.96);
         DrawTerminator(radius);DrawRoute(radius);
         Add(new Ellipse{Width=radius*2,Height=radius*2,Stroke=Brush("#B1CDDA"),StrokeThickness=1,Opacity=.58,IsHitTestVisible=false},CenterX-radius,CenterY-radius);
         caption.Text=route.Count>=2?$"SIMBRIEF ROUTE  •  {route[0].Ident} TO {route[^1].Ident}  •  {route.Count} POINTS  •  DRAG GLOBE TO ROTATE":"ROUTE UNAVAILABLE  •  REIMPORT THE LATEST SIMBRIEF PLAN TO LOAD WAYPOINTS";
@@ -161,20 +165,32 @@ public sealed class FlightRouteMap : UserControl
         if(split>0)DrawGeoLine(routePath.Take(split+1),radius,Brush("#42C8F5"),3.2,1,true);
         DrawGeoLine(routePath.Skip(split),radius,Brush("#FFDA00"),2.8,1,true);
         if(actualTrack.Count>1)DrawGeoLine(actualTrack,radius,Brush("#8BE8FF"),1.6,.95,true);
-        Point? previousWaypointLabel=null;
+        var occupiedLabels=new List<Rect>();
+        var aircraftPosition=livePosition??new GeoPoint(route[0].Latitude,route[0].Longitude);
+        if(Project(aircraftPosition,radius,out var reservedAircraft))occupiedLabels.Add(new Rect(reservedAircraft.X-24,reservedAircraft.Y-18,48,36));
         for(var index=0;index<route.Count;index++)
         {
             var geo=new GeoPoint(route[index].Latitude,route[index].Longitude);if(!Project(geo,radius,out var point))continue;
             var endpoint=index==0||index==route.Count-1;var dot=new Ellipse{Width=endpoint?14:6,Height=endpoint?14:6,Fill=Brush(index==0?"#72DB83":index==route.Count-1?"#FFDA00":"#D5E4EC"),Stroke=Brush("#031019"),StrokeThickness=2,ToolTip=$"{route[index].Ident} • {route[index].Kind}"};
             Add(dot,point.X-dot.Width/2,point.Y-dot.Height/2);
-            if(endpoint){var label=new TextBlock{Text=route[index].Ident,Foreground=Brush(index==0?"#8BE29A":"#FFE34A"),Background=Brush("#E6040C13"),FontWeight=FontWeights.SemiBold,FontSize=13,Padding=new Thickness(6,3,6,3)};Add(label,point.X+(index==0?9:-55),point.Y-29);}
-            else if(zoom>=2.15&&(previousWaypointLabel is null||(point-previousWaypointLabel.Value).Length>=42))
-            {
-                var label=new TextBlock{Text=route[index].Ident,Foreground=Brush("#F1F4F7"),Background=Brush("#F0040C13"),FontSize=12,FontWeight=FontWeights.SemiBold,Padding=new Thickness(5,2,5,2),ToolTip=route[index].Kind};
-                Add(label,point.X+6,point.Y+(VisibleWaypointLabelCount%2==0?-22:7));previousWaypointLabel=point;VisibleWaypointLabelCount++;
-            }
         }
-        var aircraft=livePosition??new GeoPoint(route[0].Latitude,route[0].Longitude);
+        foreach(var index in new[]{0,route.Count-1}.Distinct())
+        {
+            var geo=new GeoPoint(route[index].Latitude,route[index].Longitude);if(!Project(geo,radius,out var point))continue;
+            var width=Math.Max(48,route[index].Ident.Length*9+14);var left=index==0?point.X+9:point.X-width-9;var top=point.Y-30;var bounds=new Rect(left,top,width,26);
+            var label=new TextBlock{Text=route[index].Ident,Foreground=Brush(index==0?"#8BE29A":"#FFE34A"),Background=Brush("#E6040C13"),FontWeight=FontWeights.SemiBold,FontSize=13,Padding=new Thickness(6,3,6,3)};Add(label,left,top);occupiedLabels.Add(bounds);
+        }
+        if(zoom>=2.15)for(var index=1;index<route.Count-1;index++)
+        {
+            var geo=new GeoPoint(route[index].Latitude,route[index].Longitude);if(!Project(geo,radius,out var point))continue;
+            var width=Math.Max(40,route[index].Ident.Length*8+10);Rect? placement=null;
+            foreach(var offset in new[]{new Vector(7,-24),new Vector(7,8),new Vector(-width-7,-24),new Vector(-width-7,8)})
+            {
+                var candidate=new Rect(point.X+offset.X,point.Y+offset.Y,width,23);if(!occupiedLabels.Any(rect=>rect.IntersectsWith(candidate))){placement=candidate;break;}
+            }
+            if(placement is not{} bounds)continue;var label=new TextBlock{Text=route[index].Ident,Foreground=Brush("#F1F4F7"),Background=Brush("#F0040C13"),FontSize=12,FontWeight=FontWeights.SemiBold,Padding=new Thickness(5,2,5,2),ToolTip=route[index].Kind};Add(label,bounds.X,bounds.Y);occupiedLabels.Add(bounds);VisibleWaypointLabelCount++;
+        }
+        var aircraft=aircraftPosition;
         if(Project(aircraft,radius,out var start))
         {
             var angle=0d;var look=DestinationPoint(aircraft,double.IsFinite(liveHeading)?liveHeading:RouteHeading(completedFraction),2/Math.Max(1d,zoom));if(Project(look,radius,out var next))angle=Math.Atan2(next.Y-start.Y,next.X-start.X)*180/Math.PI;
@@ -200,7 +216,12 @@ public sealed class FlightRouteMap : UserControl
 
     private double NearestRouteProgress(GeoPoint position)
     {
-        var path=BuildRoutePath();var nearest=0;var distance=double.MaxValue;for(var index=0;index<path.Count;index++){var candidate=AngularDistance(path[index],position);if(candidate<distance){distance=candidate;nearest=index;}}return path.Count<=1?0:(double)nearest/(path.Count-1);
+        var path=BuildRoutePath();if(path.Count<=1)return 0;
+        var current=(int)Math.Round(completedFraction*(path.Count-1));
+        var start=progressInitialized?Math.Max(0,current-Math.Max(2,path.Count/100)):0;
+        var end=progressInitialized?Math.Min(path.Count-1,current+Math.Max(4,path.Count/33)):path.Count-1;
+        var nearest=start;var distance=double.MaxValue;for(var index=start;index<=end;index++){var candidate=AngularDistance(path[index],position);if(candidate<distance){distance=candidate;nearest=index;}}
+        var value=(double)nearest/(path.Count-1);return progressInitialized?Math.Max(completedFraction,value):value;
     }
 
     private double RouteHeading(double progress)
@@ -262,9 +283,9 @@ public sealed class FlightRouteMap : UserControl
     private static double Radians(double degrees)=>degrees*Math.PI/180;
     private static double NormalizeLongitude(double value){while(value>180)value-=360;while(value< -180)value+=360;return value;}
 
-    private static IReadOnlyList<IReadOnlyList<GeoPoint>> LoadLand()
+    private static IReadOnlyList<IReadOnlyList<GeoPoint>> LoadLand(string resource)
     {
-        using var stream=Assembly.GetExecutingAssembly().GetManifestResourceStream("ne_110m_land.geojson")??throw new System.IO.InvalidDataException("Bundled world map is missing.");using var document=JsonDocument.Parse(stream);var rings=new List<IReadOnlyList<GeoPoint>>();
+        using var stream=Assembly.GetExecutingAssembly().GetManifestResourceStream(resource)??throw new System.IO.InvalidDataException("Bundled world map is missing.");using var document=JsonDocument.Parse(stream);var rings=new List<IReadOnlyList<GeoPoint>>();
         foreach(var feature in document.RootElement.GetProperty("features").EnumerateArray())
         {
             var geometry=feature.GetProperty("geometry");var coordinates=geometry.GetProperty("coordinates");var type=geometry.GetProperty("type").GetString();

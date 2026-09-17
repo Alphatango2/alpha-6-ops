@@ -1,0 +1,5 @@
+@page
+@model Alpha6Ops.Server.Pages.Account.JoinModel
+@{ ViewData["Title"] = "Join an airline"; }
+<div class="page-heading"><div class="eyebrow">CREW INVITATION</div><h1>A seat is waiting.</h1><p class="lead">Paste the invitation code your airline administrator shared with you. Sign in with the verified email address they invited.</p></div>
+<section class="card narrow"><partial name="_AccountError" model="Model" /><form method="post" class="stack"><label asp-for="Token">Invitation code</label><input asp-for="Token" type="password" autocomplete="off" required maxlength="256" /><button class="button">Accept invitation</button></form></section>

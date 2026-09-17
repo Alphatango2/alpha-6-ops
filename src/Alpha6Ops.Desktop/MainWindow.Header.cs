@@ -90,6 +90,8 @@ public partial class MainWindow
             "A VPN may change the detected city. Local time uses the Windows time zone.";
     }
 
-    private void LocalWeather_Click(object sender, RoutedEventArgs e) =>
+    private void LocalWeather_Click(object sender, RoutedEventArgs e)
+    {
         OpsNoticeWindow.Show(this, "Local weather", LocalWeatherButton.ToolTip.ToString()!);
+    }
 }

@@ -1,0 +1,53 @@
+﻿{
+    "version":  "0.16.0",
+    "verifiedAtUtc":  "2026-09-17T01:29:16.2808994Z",
+    "danCommit":  "36c5e6a1a14c0d7404bc29d6c9bc288a6656181f",
+    "reecePublishedCommit":  "a6ffb72",
+    "reeceLocalSnapshot":  "a041285",
+    "desktopReleaseBuild":  "passed",
+    "cloudReleaseBuild":  "passed",
+    "domainChecks":  85,
+    "desktopIdentityChecks":  27,
+    "accountChecks":  64,
+    "serverIntegration":  "passed with real PostgreSQL; zero failures",
+    "auth0Actions":  "passed",
+    "webProductionBuild":  "passed",
+    "packagedDesktop":  [
+                            {
+                                "report":  "desktop-smoke.json",
+                                "passed":  true,
+                                "checks":  18
+                            },
+                            {
+                                "report":  "dashboard-smoke.json",
+                                "passed":  true,
+                                "checks":  456
+                            },
+                            {
+                                "report":  "identity-ui-smoke.json",
+                                "passed":  true,
+                                "checks":  33
+                            },
+                            {
+                                "report":  "live-identity-smoke.json",
+                                "passed":  true,
+                                "checks":  24
+                            }
+                        ],
+    "singleInstanceActivation":  "passed: second launch restored the tray-hidden primary window and child exited",
+    "artifacts":  [
+                      {
+                          "file":  "Alpha6OPS-Setup-0.16.0.exe",
+                          "sha256":  "86A113333E9B8B47120E9AFDE9E1C45384F6C76EB9C0CE3B1BB2D24697EFC7BF"
+                      },
+                      {
+                          "file":  "Alpha6OPS-Desktop-0.16.0-win-x64.zip",
+                          "sha256":  "B5476FA14B09A1BDEED13D84C0C32CCABCF883BFD0191D05DA44DCA582D79E72"
+                      }
+                  ],
+    "limits":  [
+                   "Live MSFS flight not verified in this consolidation.",
+                   "Real Auth0 tenant login and hosted deployment not verified.",
+                   "Upstream main requires maintainer merge because current account has READ access."
+               ]
+}

@@ -1,0 +1,30 @@
+@page "/Account"
+@model Alpha6Ops.Server.Pages.Account.IndexModel
+@{ ViewData["Title"] = "Your workspaces"; }
+<partial name="_AccountError" model="Model" />
+@if (Model.Account is { } account) {
+<div class="page-heading">
+    <div class="eyebrow">02 / SELECT YOUR WORKSPACE</div>
+    <h1>Where are you flying today?</h1>
+    <p class="lead">Fly independently or connect with your crew. Choose the workspace for your next desktop sign-in.</p>
+    <div class="account-summary"><strong>@account.Account.DisplayName</strong><span>@account.Account.Email</span><span class="badge">Personal @account.PersonalEntitlement.Plan</span></div>
+</div>
+<section class="card personal-workspace @(account.LastWorkspace.AirlineId is null ? "selected" : "")" aria-label="Personal workspace">
+    <div class="workspace-icon" aria-hidden="true">✈</div>
+    <div class="workspace-copy"><div class="workspace-title"><h2>Flying as a Pilot</h2><span class="badge">@account.PersonalEntitlement.Plan</span></div><p>Your flights, your progress. All in your own space.</p><div class="eyebrow">LOGBOOK / DISPATCH / TRACKING / WEATHER</div></div>
+    <form method="post" asp-page-handler="Workspace"><button class="button secondary">@(account.LastWorkspace.AirlineId is null ? "Selected for next launch" : "Use pilot workspace")</button></form>
+</section>
+<div class="workspace-heading"><div class="eyebrow">YOUR VIRTUAL AIRLINES / @account.Airlines.Length.ToString("00")</div><a asp-page="Join">Join with an invitation ↗</a></div>
+<section class="grid two" aria-label="Virtual airline workspaces">
+    @foreach (var airline in account.Airlines) {
+        <article class="card airline-card @(account.LastWorkspace.AirlineId == airline.Id ? "selected" : "")">
+            <div class="airline-heading"><div class="workspace-icon airline" aria-hidden="true">@airline.Callsign</div><div class="eyebrow">@airline.Plan</div></div>
+            <h2>@airline.Name</h2><p>@string.Join(" · ", airline.Roles) @(airline.IsFounder ? "· Founder" : "")</p><p class="muted">Membership: @airline.MembershipStatus</p>
+            <div class="actions"><form method="post" asp-page-handler="Workspace"><input type="hidden" name="airlineId" value="@airline.Id" /><button class="button secondary">@(account.LastWorkspace.AirlineId == airline.Id ? "Selected for next launch" : "Use airline workspace")</button></form>
+            @if (airline.Capabilities.Contains(Capabilities.MembersManage)) { <a asp-page="Airline" asp-route-id="@airline.Id">Manage airline ↗</a> }</div>
+        </article>
+    }
+</section>
+@if (account.Airlines.Length == 0) { <section class="card"><h2>Your crew is out there.</h2><p>Join with an invitation or create a virtual airline of your own.</p></section> }
+<section class="security-strip"><h2>A new crew. A new destination.</h2><div class="actions"><a class="button" asp-page="Create">Create a virtual airline</a><a class="button secondary" asp-page="Join">Join with an invitation</a><a href="/Support">Account security</a></div></section>
+}

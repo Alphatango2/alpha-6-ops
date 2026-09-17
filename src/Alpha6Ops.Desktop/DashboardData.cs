@@ -61,6 +61,10 @@ internal static class DashboardData
         "SEA" => "SEATTLE", "LAX" => "LOS ANGELES", "DEN" => "DENVER", "MIA" => "MIAMI", "MSP" => "MINNEAPOLIS",
         "BOS" => "BOSTON", "SLC" => "SALT LAKE CITY", _ => code
     };
+    internal static string AirportName(string code)
+    {
+        var airport=AirportCatalog.Find(code);return airport is null||string.IsNullOrWhiteSpace(airport.Name)?"AIRPORT NAME UNAVAILABLE":airport.Name.ToUpperInvariant();
+    }
     internal static readonly DashboardTile[] Tiles =
     [
         new("PilotLogbook", "PILOT LOGBOOK", "Your recorded flights", "Assets/Dashboard/pilot-logbook.png"),

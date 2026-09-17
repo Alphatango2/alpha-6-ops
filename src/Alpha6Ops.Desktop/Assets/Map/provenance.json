@@ -1,0 +1,8 @@
+{
+  "source": "Natural Earth",
+  "dataset": "1:50m land polygons",
+  "version": "3.3.0 GeoJSON distribution",
+  "url": "https://www.naturalearthdata.com/downloads/50m-physical-vectors/",
+  "license": "Public domain",
+  "purpose": "Higher-detail offline coastline outlines for close route-map zoom"
+}

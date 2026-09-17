@@ -1,0 +1,11 @@
+@page
+@model Alpha6Ops.Server.Pages.Account.CreateModel
+@{ ViewData["Title"] = "Create an airline"; }
+<div class="page-heading"><div class="eyebrow">COMMUNITY AIRLINE</div><h1>Start your operation.</h1><p class="lead">Create your airline, then invite your first pilots. You can own one Community airline at a time. A verified email and recent MFA or passkey check are required.</p></div>
+<section class="card narrow"><partial name="_AccountError" model="Model" />
+<form method="post" class="stack">
+    <label asp-for="Name">Airline name</label><input asp-for="Name" autocomplete="organization" required maxlength="100" />
+    <label asp-for="Slug">Unique airline identifier</label><input asp-for="Slug" required maxlength="50" placeholder="your-airline" /><small>Lowercase letters, digits, and hyphens.</small>
+    <label asp-for="Callsign">Callsign</label><input asp-for="Callsign" required maxlength="12" />
+    <button class="button">Create Community airline</button>
+</form><p><a href="/auth/step-up">Verify or enroll a security factor</a></p></section>

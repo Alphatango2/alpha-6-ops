@@ -1,0 +1,12 @@
+﻿{
+    "passed":  true,
+    "sourceCommit":  "ce359a390b39c81b1f9a9bb4fc1f6727a7cb1aa9",
+    "includesLocalEdits":  true,
+    "version":  "0.13.0+ce359a390b39c81b1f9a9bb4fc1f6727a7cb1aa9",
+    "installerExtraction":  true,
+    "desktopChecks":  18,
+    "dashboardChecks":  436,
+    "bundledRuntime":  "C:\\Users\\Reece Czarnecki\\dev\\alpha-6-ops\\work\\build-0.13.0-98b9c8ff\\extracted\\runtime\\shared\\Microsoft.NETCore.App\\10.0.11\\",
+    "outputDirectory":  "C:\\Users\\Reece Czarnecki\\dev\\alpha-6-ops\\work\\build-0.13.0-98b9c8ff",
+    "singleInstanceActivation":  "Not run: existing user app is running."
+}

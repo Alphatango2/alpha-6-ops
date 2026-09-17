@@ -1,8 +1,10 @@
 <Solution>
+  <Project Path="src/Alpha6Ops.Identity/Alpha6Ops.Identity.csproj" />
   <Project Path="src/Alpha6Ops.Core/Alpha6Ops.Core.csproj" />
   <Project Path="src/Alpha6Ops.Api/Alpha6Ops.Api.csproj" />
   <Project Path="src/Alpha6Ops.Pilot/Alpha6Ops.Pilot.csproj" />
   <Project Path="src/Alpha6Ops.Desktop/Alpha6Ops.Desktop.csproj" />
   <Project Path="src/Alpha6Ops.FlightLab/Alpha6Ops.FlightLab.csproj" />
   <Project Path="tests/Alpha6Ops.Tests/Alpha6Ops.Tests.csproj" />
+  <Project Path="tests/Alpha6Ops.Desktop.Identity.Tests/Alpha6Ops.Desktop.Identity.Tests.csproj" />
 </Solution>

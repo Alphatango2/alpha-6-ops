@@ -96,6 +96,7 @@
         </Grid.ColumnDefinitions>
         <StackPanel Orientation="Horizontal" Margin="13,0,0,0" VerticalAlignment="Center">
           <Image Source="Assets/Alpha6OPS.ico" Width="18" Height="18" />
+          <Button x:Name="AccountHeaderButton" Content="ACCOUNT · LOCAL PREVIEW" Style="{StaticResource OpsLink}" Click="Account_Click" Margin="16,0,0,0" Padding="10,3" MaxWidth="540" shell:WindowChrome.IsHitTestVisibleInChrome="True" AutomationProperties.Name="Account and workspaces" />
         </StackPanel>
         <StackPanel Grid.Column="1" Orientation="Horizontal" shell:WindowChrome.IsHitTestVisibleInChrome="True">
           <Button Style="{StaticResource OpsCaptionButton}" Click="MinimizeWindow_Click" AutomationProperties.Name="Minimize Alpha 6 OPS">
@@ -222,10 +223,10 @@
               </Border>
               <StackPanel Margin="11,0,0,0" VerticalAlignment="Center">
                 <TextBlock x:Name="PilotDisplayText" Text="Your flight deck" FontSize="14" FontWeight="SemiBold" />
-                <TextBlock Text="Alpha 6 Virtual" Style="{StaticResource OpsCaption}" FontSize="10" Margin="0,4,0,0" />
+                <TextBlock x:Name="AccountWorkspaceText" Text="Alpha 6 Virtual" Style="{StaticResource OpsCaption}" FontSize="10" Margin="0,4,0,0" />
               </StackPanel>
             </StackPanel>
-            <TextBlock Text="●  LOCAL SESSION" Foreground="#6BCB65" FontSize="10" Margin="51,8,0,0" />
+            <TextBlock x:Name="AccountSessionStatusText" Text="●  LOCAL SESSION" Foreground="#6BCB65" FontSize="10" Margin="51,8,0,0" />
           </StackPanel>
         </Border>
         <TextBlock x:Name="NavigationTagline" Text="YOU FLY THE AIRPLANE.&#xA;WE RUN THE AIRLINE." FontFamily="Bahnschrift SemiCondensed" FontSize="12" FontWeight="SemiBold" Foreground="#CBD6E0" LineHeight="19" TextWrapping="NoWrap" Margin="15,19,0,0" />
@@ -381,7 +382,7 @@
                 <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center">
                   <StackPanel>
                     <TextBlock x:Name="OriginCodeText" Text="ORD" FontFamily="Bahnschrift SemiCondensed" FontSize="51" FontWeight="Bold" />
-                    <TextBlock x:Name="OriginCityText" Text="CHICAGO" FontFamily="Bahnschrift SemiCondensed" FontSize="12" />
+                    <TextBlock x:Name="OriginCityText" Text="CHICAGO O'HARE INTERNATIONAL AIRPORT" FontFamily="Bahnschrift SemiCondensed" FontSize="10" TextTrimming="CharacterEllipsis" MaxWidth="250" />
                   </StackPanel>
                   <StackPanel Orientation="Horizontal" Margin="23,0,23,12" VerticalAlignment="Center">
                     <Rectangle Height="2" Width="23" Fill="{StaticResource OpsYellow}" />
@@ -390,7 +391,7 @@
                   </StackPanel>
                   <StackPanel>
                     <TextBlock x:Name="DestinationCodeText" Text="DTW" FontFamily="Bahnschrift SemiCondensed" FontSize="51" FontWeight="Bold" />
-                    <TextBlock x:Name="DestinationCityText" Text="DETROIT" FontFamily="Bahnschrift SemiCondensed" FontSize="12" />
+                    <TextBlock x:Name="DestinationCityText" Text="DETROIT METROPOLITAN WAYNE COUNTY AIRPORT" FontFamily="Bahnschrift SemiCondensed" FontSize="10" TextTrimming="CharacterEllipsis" MaxWidth="250" />
                   </StackPanel>
                 </StackPanel>
                 <StackPanel Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Center">
@@ -525,7 +526,7 @@
                   <ColumnDefinition />
                   <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="TODAY'S OPERATIONS" Style="{StaticResource OpsTitle}" />
+                <TextBlock x:Name="OperationsHeading" Text="TODAY'S OPERATIONS" Style="{StaticResource OpsTitle}" />
                 <StackPanel Grid.Column="1" Orientation="Horizontal">
                   <Button x:Name="MyFlightsTab" Content="MY FLIGHTS" Tag="all" Style="{StaticResource OpsLink}" Foreground="{StaticResource OpsYellow}" Click="FlightsTab_Click" />
                   <Button x:Name="AssignedFlightsTab" Content="ASSIGNED" Tag="assigned" Style="{StaticResource OpsLink}" Foreground="#A7B7C5" Click="FlightsTab_Click" />

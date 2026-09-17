@@ -1,0 +1,32 @@
+@page
+@inject ServerSettings Settings
+@{ ViewData["Title"] = "Welcome to your flight deck"; ViewData["BodyClass"] = "portal-home"; }
+<section class="auth-shell" aria-label="Alpha 6 account portal">
+    <div class="aviation-panel">
+        <div class="brand-line" aria-hidden="true"></div>
+        <div class="eyebrow">ONE ACCOUNT. YOUR ENTIRE WORLD.</div>
+        <h2>Every flight.<br />Connected.</h2>
+        <p>From your first departure to an airline of your own.</p>
+        <div class="flight-caption"><span>PERSONAL FLIGHT / SHARED OPERATIONS</span></div>
+    </div>
+    <div class="signin-panel">
+        <div class="steps">01 ACCOUNT &nbsp; / &nbsp; 02 WORKSPACE</div>
+        <div class="signin-content">
+            <div class="eyebrow">WELCOME TO ALPHA 6 OPS</div>
+            <h1>Your next flight<br />starts here.</h1>
+            <p>Sign in to your flight deck. Your logbook, your airlines, one place.</p>
+            @if (User.Identity?.IsAuthenticated == true) {
+                <a class="button" href="/Account">Go to your workspaces <span aria-hidden="true">→</span></a>
+                <p class="provider-note">You’re signed in. Choose where you want to fly.</p>
+            } else if (Settings.IsConfigured) {
+                <a class="button" href="/auth/login">Sign in securely <span aria-hidden="true">↗</span></a>
+                <p class="provider-note">Use your email, passkey or connected account on the secure sign-in page.</p>
+                <p class="new-account">New to Alpha 6? <a href="/auth/signup">Create an account</a></p>
+            } else {
+                <button class="button" disabled>Sign in securely</button>
+                <p class="notice" role="status">Account registration is not available on this installation yet. You can explore the portal while account services are being connected.</p>
+            }
+        </div>
+        <p class="signin-footnote">Flying as a Pilot is free. Your airlines stay connected to one account.</p>
+    </div>
+</section>

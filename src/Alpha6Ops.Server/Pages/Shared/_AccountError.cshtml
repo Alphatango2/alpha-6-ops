@@ -1,0 +1,7 @@
+@model Alpha6Ops.Server.Pages.Account.AccountPage
+@if (Model.ErrorMessage is not null) {
+    <div role="alert" class="notice"><p>@Model.ErrorMessage</p>
+    @if (Model.NeedsVerification) { <a href="/auth/step-up">Complete a fresh security check</a> }
+    </div>
+}
+<div asp-validation-summary="All" role="alert" class="validation"></div>
