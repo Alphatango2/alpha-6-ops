@@ -381,7 +381,7 @@
                 <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center">
                   <StackPanel>
                     <TextBlock x:Name="OriginCodeText" Text="ORD" FontFamily="Bahnschrift SemiCondensed" FontSize="51" FontWeight="Bold" />
-                    <TextBlock x:Name="OriginCityText" Text="CHICAGO" FontFamily="Bahnschrift SemiCondensed" FontSize="12" />
+                    <TextBlock x:Name="OriginCityText" Text="CHICAGO O'HARE INTERNATIONAL AIRPORT" FontFamily="Bahnschrift SemiCondensed" FontSize="10" TextTrimming="CharacterEllipsis" MaxWidth="250" />
                   </StackPanel>
                   <StackPanel Orientation="Horizontal" Margin="23,0,23,12" VerticalAlignment="Center">
                     <Rectangle Height="2" Width="23" Fill="{StaticResource OpsYellow}" />
@@ -390,7 +390,7 @@
                   </StackPanel>
                   <StackPanel>
                     <TextBlock x:Name="DestinationCodeText" Text="DTW" FontFamily="Bahnschrift SemiCondensed" FontSize="51" FontWeight="Bold" />
-                    <TextBlock x:Name="DestinationCityText" Text="DETROIT" FontFamily="Bahnschrift SemiCondensed" FontSize="12" />
+                    <TextBlock x:Name="DestinationCityText" Text="DETROIT METROPOLITAN WAYNE COUNTY AIRPORT" FontFamily="Bahnschrift SemiCondensed" FontSize="10" TextTrimming="CharacterEllipsis" MaxWidth="250" />
                   </StackPanel>
                 </StackPanel>
                 <StackPanel Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Center">

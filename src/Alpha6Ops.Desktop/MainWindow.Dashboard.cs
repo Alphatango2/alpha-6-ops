@@ -116,7 +116,7 @@ public partial class MainWindow
         else
         {
             HeroFlightText.Text=hero.Id;OriginCodeText.Text=DashboardData.AirportCode(hero.Leg.Origin);DestinationCodeText.Text=DashboardData.AirportCode(hero.Leg.Destination);
-            OriginCityText.Text=DashboardData.City(hero.Leg.Origin);DestinationCityText.Text=DashboardData.City(hero.Leg.Destination);
+            OriginCityText.Text=DashboardData.AirportName(hero.Leg.Origin);DestinationCityText.Text=DashboardData.AirportName(hero.Leg.Destination);
             HeroDepartureText.Text=hero.Out;HeroArrivalText.Text=hero.In;HeroStatusText.Text="●  "+hero.Status;
             var planMatches=live&&activePlan is not null&&hero.Id.Equals(activePlan.FlightNumber,StringComparison.OrdinalIgnoreCase);
             HeroDepartureGateText.Text=planMatches?activePlan!.DepartureGate??"—":"—";HeroArrivalGateText.Text=planMatches?activePlan!.ArrivalGate??"—":"—";
@@ -248,7 +248,7 @@ public partial class MainWindow
     private void AcceptDispatchFlight(ActiveFlightPlan plan)
     {
         if(running||liveCancellation is not null){OpsNoticeWindow.Show(this,"Active flight","Finish the replay or disconnect the simulator before accepting a different flight.");return;}
-        activePlan=plan;ActiveFlightPlanStore.Save(activePlan,stateDirectory);FlightRecoveryStore.Delete(stateDirectory);ResetLiveTrackingState();ResetLiveIdentity();
+        activePlan=plan;suppressObservedFlightAfterCloseout=false;ActiveFlightPlanStore.Save(activePlan,stateDirectory);FlightRecoveryStore.Delete(stateDirectory);ResetLiveTrackingState();ResetLiveIdentity();
         RecordLog("flight_assignment_changed",null,activePlan);RefreshLiveTracker(null,null,null,"Flight accepted by Dispatch. Select View Flight Tracking when ready.");UpdateDispatchState();
     }
     private bool SubmitCompletedPirep()
@@ -261,7 +261,7 @@ public partial class MainWindow
     }
     private void CompletePirepCloseout()
     {
-        if(activePlan is null)return;RecordLog("pirep_closeout_complete",null,new{activePlan.FlightNumber});ActiveFlightPlanStore.Delete(stateDirectory);FlightRecoveryStore.Delete(stateDirectory);activePlan=null;completedFlightHistoryId=null;ResetLiveTrackingState();ResetLiveIdentity();RefreshLiveTracker(null,null,null,"PIREP complete • active flight cleared");ShowDashboard();
+        if(activePlan is null)return;RecordLog("pirep_closeout_complete",null,new{activePlan.FlightNumber});FinishLog("pirep_submitted");ActiveFlightPlanStore.Delete(stateDirectory);FlightRecoveryStore.Delete(stateDirectory);activePlan=null;completedFlightHistoryId=null;ResetLiveTrackingState();ResetLiveIdentity();suppressObservedFlightAfterCloseout=true;RefreshLiveTracker(null,null,null,"PIREP complete • active flight cleared");ShowDashboard();
     }
     private void UpdateDispatchState()
     {
