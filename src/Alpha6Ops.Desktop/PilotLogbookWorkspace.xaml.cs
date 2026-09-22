@@ -132,7 +132,7 @@ public partial class PilotLogbookWorkspace:UserControl
     private static string FormatDuration(double minutes,bool hasEnd){var rounded=(int)Math.Round(minutes);return !hasEnd?"—":$"{rounded/60}H {rounded%60:00}M";}
     private static string FormatTotalHours(double minutes)=>$"{(int)Math.Floor(minutes/60):N0} HOURS";
     private static bool IsComplete(FlightHistoryEntry flight)=>string.Equals(flight.FinalPhase,"Complete",StringComparison.OrdinalIgnoreCase);
-    private static string Source(string? source)=>source?.ToLowerInvariant() switch{"flyvirtual"=>"FLYVIRTUAL IMPORT","live"=>"ALPHA 6 LIVE","replay" or "flight_lab"=>"FLIGHT LAB",null or ""=>"UNKNOWN",_=>source.ToUpperInvariant()};
+    private static string Source(string? source)=>source?.ToLowerInvariant() switch{"flyvirtual"=>"FLYVIRTUAL IMPORT","live"=>"ALPHA 6 LIVE","replay"=>"RECORDED REPLAY","flight_lab"=>"LEGACY TEST FLIGHT",null or ""=>"UNKNOWN",_=>source.ToUpperInvariant()};
     private static string Status(FlightHistoryEntry flight)=>flight.FinalPhase switch{"Complete" when flight.Source.Equals("FlyVirtual",StringComparison.OrdinalIgnoreCase)=>"ACCEPTED","Complete"=>"COMPLETED",null or ""=>"IN PROGRESS","Error" or "Cancelled"=>"INTERRUPTED",_=>flight.FinalPhase.ToUpperInvariant()};
     private static string StatusColor(FlightHistoryEntry flight)=>StatusPalette(Status(flight)).Text;
     private static string StatusBackground(FlightHistoryEntry flight)=>StatusPalette(Status(flight)).Background;

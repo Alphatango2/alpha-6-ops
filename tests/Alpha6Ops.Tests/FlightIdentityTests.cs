@@ -10,12 +10,14 @@ internal static class FlightIdentityTests
         var flight = new FlightAssignment("JBU124", "G-FBIG", "KLAX", "KJFK", at.AddDays(-5), at.AddDays(-5).AddHours(5));
         var observed = new FlightEvidence(sydney.Position, "VH-TEST", SimulationRunning: true, Nearby: new(sydney, 0), PlanStatus: "No simulator flight plan");
         var mismatch = FlightIdentity.Reconcile(flight, observed, at, true, lax);
-        check(!mismatch.Accepted && mismatch.Mode == "FREE FLIGHT" && mismatch.Issues.Count == 3, "Sydney free flight rejects stale JBU assignment, registration and departure airport independently");
+        check(!mismatch.Accepted && mismatch.Mode == "FREE FLIGHT" && mismatch.Issues.Count == 2, "Sydney free flight rejects stale JBU assignment by schedule and departure airport");
         check(!FlightIdentity.Reconcile(flight with { Departure = at, Arrival = at.AddHours(5) }, observed, at, true, lax).Accepted, "current report with wrong airport is not attached");
         check(!FlightIdentity.Reconcile(flight with { Registration = "VH-TEST" }, observed, at, true, lax).Accepted, "matching registration cannot rescue an unrelated route/date");
         check(!FlightIdentity.Reconcile(flight, observed with { Route = new("YSSY", "YSBK") }, at, true, lax).Accepted, "simulator route conflict rejects briefing");
         var local = new FlightAssignment("LOCAL1", "VH TEST", "YSSY", "YSBK", at, at.AddHours(1));
         check(FlightIdentity.Reconcile(local, observed, at, true, sydney).Accepted, "live position and normalized registration verify a local assignment without a simulator plan");
+        var registrationAdvisory=FlightIdentity.Reconcile(local with{Registration="N738PM"},observed,at,true,sydney);
+        check(registrationAdvisory.Accepted&&registrationAdvisory.Mode=="ASSIGNMENT WITH ADVISORY"&&registrationAdvisory.Explanation.Contains("VH-TEST"),"registration mismatch remains attached to the route with a visible advisory");
         check(!FlightIdentity.Reconcile(local, observed with { Registration = null }, at, true, sydney).Accepted, "missing registration does not borrow identity from assignment");
         check(!FlightIdentity.Reconcile(local, observed with { Position = null }, at, true, sydney).Accepted, "missing position leaves new assignment unverified");
         check(!FlightIdentity.Reconcile(local, observed with { SimulationRunning = null }, at, true, sydney).Accepted, "unknown simulation state does not arm assignment");

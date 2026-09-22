@@ -13,11 +13,11 @@
       </Border>
     </Grid>
     <Grid x:Name="ActiveState" Visibility="Collapsed">
-      <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="12"/><RowDefinition Height="*"/><RowDefinition Height="12"/><RowDefinition Height="145"/></Grid.RowDefinitions>
+      <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="12"/><RowDefinition Height="*"/><RowDefinition Height="12"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
       <Grid>
         <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
         <StackPanel><TextBlock Text="FLIGHT TRACKING" FontFamily="Bahnschrift SemiCondensed" FontSize="29" FontWeight="SemiBold"/><TextBlock x:Name="TrackingSubtitle" Text="ACTIVE ASSIGNMENT • READY FOR SIMULATOR" Style="{StaticResource OpsCaption}" FontSize="11" Margin="0,5,0,0"/></StackPanel>
-        <Button Grid.Column="1" Content="VIEW FLIGHT DECK" Style="{StaticResource OpsExit}" Click="FlightDeck_Click" VerticalAlignment="Center" Padding="16,9"/>
+        <StackPanel Grid.Column="1" Orientation="Horizontal"><Button x:Name="ScheduleReviewButton" Content="REVIEW UTC SCHEDULE" Visibility="Collapsed" Style="{StaticResource OpsExit}" Margin="0,0,10,0" Click="Schedule_Click"/><Button x:Name="ConfirmBlockInButton" Content="CONFIRM PARKED" Visibility="Collapsed" Style="{StaticResource OpsExit}" Margin="0,0,10,0" Click="ConfirmBlockIn_Click"/><Button Content="VIEW FLIGHT DECK" Style="{StaticResource OpsExit}" Click="FlightDeck_Click" VerticalAlignment="Center" Padding="16,9"/></StackPanel>
       </Grid>
       <Grid Grid.Row="2">
         <Grid.ColumnDefinitions><ColumnDefinition Width="2.6*"/><ColumnDefinition Width="12"/><ColumnDefinition Width="1*"/></Grid.ColumnDefinitions>
@@ -38,14 +38,15 @@
           <Grid><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
             <StackPanel><TextBlock Text="FLIGHT EVENT LOG" Style="{StaticResource OpsTitle}" FontSize="18"/><TextBlock Text="Chronological operational milestones" Style="{StaticResource OpsCaption}" Margin="0,5,0,12"/></StackPanel>
             <ListBox x:Name="EventList" Grid.Row="1" Background="Transparent" BorderThickness="0" Foreground="#DCE6ED" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto"><ListBox.ItemTemplate><DataTemplate><Border Background="Transparent" BorderBrush="#233744" BorderThickness="0,0,0,1" Padding="0,11"><Grid><Grid.ColumnDefinitions><ColumnDefinition Width="18"/><ColumnDefinition Width="68"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions><Ellipse Width="8" Height="8" Fill="#FFDA00" VerticalAlignment="Top" Margin="0,5,0,0"/><TextBlock Grid.Column="1" Text="{Binding Time}" Foreground="#A6BAC7" FontSize="12"/><StackPanel Grid.Column="2"><TextBlock Text="{Binding Title}" FontWeight="SemiBold" FontSize="15"/><TextBlock Text="{Binding Detail}" Foreground="#B6C6D0" TextWrapping="Wrap" FontSize="12.5" LineHeight="18" Margin="0,4,5,0"/></StackPanel></Grid></Border></DataTemplate></ListBox.ItemTemplate></ListBox>
-            <TextBlock x:Name="EventEmptyText" Grid.Row="1" Text="Connect to MSFS or Flight Lab to begin recording flight events." Foreground="#8195A4" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" Margin="20"/>
+            <TextBlock x:Name="EventEmptyText" Grid.Row="1" Text="Connect to MSFS to begin recording flight events." Foreground="#8195A4" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" Margin="20"/>
             <TextBlock Grid.Row="2" Text="EVENTS ARE SAVED IN LOGS &amp; DIAGNOSTICS" Style="{StaticResource OpsCaption}" FontSize="10" Margin="0,12,0,0"/>
           </Grid>
         </Border>
       </Grid>
       <Border Grid.Row="4" Style="{StaticResource OpsPanel}" Padding="18,13">
         <Grid><Grid.RowDefinitions><RowDefinition/><RowDefinition Height="45"/></Grid.RowDefinitions>
-          <UniformGrid Columns="8">
+          <UniformGrid Columns="4" Rows="2">
+            <UniformGrid.Resources><Style TargetType="StackPanel"><Setter Property="Margin" Value="0,0,18,12"/></Style><Style TargetType="TextBlock"><Setter Property="TextWrapping" Value="Wrap"/></Style></UniformGrid.Resources>
             <StackPanel><TextBlock Text="SCHEDULED OUT" Style="{StaticResource OpsCaption}"/><TextBlock x:Name="ScheduledOutText" Text="—" FontSize="15" Margin="0,7,0,0"/></StackPanel>
             <StackPanel><TextBlock Text="ACTUAL OUT" Style="{StaticResource OpsCaption}"/><TextBlock x:Name="ActualOutText" Text="—" FontSize="15" Margin="0,7,0,0"/></StackPanel>
             <StackPanel><TextBlock Text="SCHEDULED IN" Style="{StaticResource OpsCaption}"/><TextBlock x:Name="ScheduledInText" Text="—" FontSize="15" Margin="0,7,0,0"/></StackPanel>

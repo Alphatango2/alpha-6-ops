@@ -381,7 +381,7 @@
                 <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center">
                   <StackPanel>
                     <TextBlock x:Name="OriginCodeText" Text="ORD" FontFamily="Bahnschrift SemiCondensed" FontSize="51" FontWeight="Bold" />
-                    <TextBlock x:Name="OriginCityText" Text="CHICAGO" FontFamily="Bahnschrift SemiCondensed" FontSize="12" />
+                    <TextBlock x:Name="OriginCityText" Text="CHICAGO O'HARE INTERNATIONAL AIRPORT" FontFamily="Bahnschrift SemiCondensed" FontSize="10" TextTrimming="CharacterEllipsis" MaxWidth="250" />
                   </StackPanel>
                   <StackPanel Orientation="Horizontal" Margin="23,0,23,12" VerticalAlignment="Center">
                     <Rectangle Height="2" Width="23" Fill="{StaticResource OpsYellow}" />
@@ -390,7 +390,7 @@
                   </StackPanel>
                   <StackPanel>
                     <TextBlock x:Name="DestinationCodeText" Text="DTW" FontFamily="Bahnschrift SemiCondensed" FontSize="51" FontWeight="Bold" />
-                    <TextBlock x:Name="DestinationCityText" Text="DETROIT" FontFamily="Bahnschrift SemiCondensed" FontSize="12" />
+                    <TextBlock x:Name="DestinationCityText" Text="DETROIT METROPOLITAN WAYNE COUNTY AIRPORT" FontFamily="Bahnschrift SemiCondensed" FontSize="10" TextTrimming="CharacterEllipsis" MaxWidth="250" />
                   </StackPanel>
                 </StackPanel>
                 <StackPanel Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Center">
@@ -699,10 +699,9 @@
               <TextBlock Text="SIMULATOR" Style="{StaticResource OpsTitle}" />
               <WrapPanel Margin="0,10,0,8">
                 <Button x:Name="ConnectButton" Content="LAUNCH / CONNECT TO MSFS 2024" Style="{StaticResource OpsPrimary}" Click="Connect_Click" Margin="0,0,10,8" />
-                <Button x:Name="ConnectFlightLabButton" Content="CONNECT TO FLIGHT LAB" Style="{StaticResource OpsButton}" Click="ConnectFlightLab_Click" Margin="0,0,10,8" ToolTip="Connect to the local Alpha 6 Flight Lab test program" />
                 <Button x:Name="DisconnectButton" Content="DISCONNECT" Style="{StaticResource OpsButton}" IsEnabled="False" Click="Disconnect_Click" Margin="0,0,0,8" />
               </WrapPanel>
-              <TextBlock x:Name="ConnectionText" Text="Launch or connect to MSFS 2024 here, then load a flight. For a virtual test, open Flight Lab and connect to it separately." TextWrapping="Wrap" Foreground="#B6C8D6" FontSize="12" />
+              <TextBlock x:Name="ConnectionText" Text="Launch or connect to MSFS 2024 here, then load a flight." TextWrapping="Wrap" Foreground="#B6C8D6" FontSize="12" />
               <TextBlock x:Name="LiveText" Text="Live telemetry appears after connecting." Foreground="#D9C956" TextWrapping="Wrap" FontSize="11" Margin="0,7,0,10" />
               <WrapPanel>
                 <Button x:Name="LiveTimelineButton" Content="LIVE TIMELINE" Style="{StaticResource OpsButton}" IsEnabled="False" Click="LiveTimeline_Click" Margin="0,0,8,8" />
