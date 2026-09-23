@@ -36,7 +36,7 @@ internal static class Program
         "PIREP_EVENTUAL_DURABILITY", "TEXT_COMPLETION_INDEPENDENCE", "TEXT_HISTORY_INDEPENDENCE",
         "DATA_ASSIGNMENT", "DATA_RECOVERY", "DATA_GATES", "DATA_HISTORY", "PROFILE_HISTORY_READABLE",
         "PROFILE_GATES_READABLE", "PROFILE_SOURCE_UNCHANGED", "NATIVE_CONNECTION_LIFECYCLE", "NATIVE_RECONNECT", "REPLAY_COVERAGE",
-        "SESSION_WITHOUT_VIEW", "SESSION_REATTACH", "SNAPSHOT_DETACHED", "SNAPSHOT_INPUT_OWNERSHIP", "OBSERVER_FAILURE_ISOLATED"
+        "SESSION_WITHOUT_VIEW", "SESSION_REATTACH", "SESSION_PENDING_REATTACH", "SNAPSHOT_DETACHED", "SNAPSHOT_INPUT_OWNERSHIP", "OBSERVER_FAILURE_ISOLATED"
     ];
 
     [STAThread]
@@ -73,6 +73,7 @@ internal static class Program
     {
         await Section("views", ViewLifecycleAsync);
         await Section("application-owner", ApplicationOwnerAsync);
+        await Section("pending-connection-view", PendingConnectionViewAsync);
         await Section("first-render", () => { FirstRenderPurity(); return Task.CompletedTask; });
         await Section("reconnect", ReconnectAsync);
         await Section("dispatch", DispatchAsync);
@@ -271,6 +272,24 @@ internal static class Program
                 "A broken presentation subscriber cannot abort operational processing or recovery persistence.");
         }
         finally { changed.RemoveEventHandler(owner, brokenView); }
+    }
+
+    private static async Task PendingConnectionViewAsync()
+    {
+        var source = new FakeSimulatorSource();
+        var window = Window("pending-connection-view", source);
+        var owner = FlightSessionDiagnosticAccess.Owner(window);
+        var connecting = owner.ConnectSimulatorAsync();
+        Set(window, "exiting", true); window.Close();
+        var replacement = new MainWindow(owner, Root(window)); Windows.Add(replacement); replacement.Show();
+        await Idle();
+        Check("SESSION_PENDING_REATTACH", owner.Snapshot.Assignment is null && owner.Snapshot.Telemetry is null &&
+            owner.Snapshot.Connection == SimulatorConnectionState.Connecting && source.Runs.Count == 1 &&
+            !replacement.ConnectButton.IsEnabled && replacement.DisconnectButton.IsEnabled &&
+            replacement.ConnectionText.Text == owner.Snapshot.ConnectionMessage,
+            "A replacement view immediately reflects the existing pending connection and exposes Disconnect before any telemetry arrives.");
+        Call(replacement, "Disconnect_Click", replacement.DisconnectButton, new RoutedEventArgs());
+        await connecting;
     }
 
     private static async Task ReconnectAsync()
