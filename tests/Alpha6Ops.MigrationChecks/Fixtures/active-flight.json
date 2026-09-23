@@ -1,0 +1,18 @@
+{
+  "FlightNumber": "BASE718",
+  "Registration": "VH-TEST",
+  "Origin": "YSSY",
+  "Destination": "YMHB",
+  "PlannedDepartureUtc": "2026-09-17T02:05:00+00:00",
+  "PlannedArrivalUtc": "2026-09-17T04:13:00+00:00",
+  "Source": "Pilot entry",
+  "DepartureGate": "24",
+  "ArrivalGate": "A12",
+  "Route": "YSSY DCT YMHB",
+  "RoutePoints": [
+    {"Ident":"YSSY","Latitude":-33.946,"Longitude":151.177111,"Kind":"Airport"},
+    {"Ident":"YMHB","Latitude":-42.836111,"Longitude":147.510278,"Kind":"Airport"}
+  ],
+  "AircraftType": "Airbus A320",
+  "CruiseAltitudeFeet": 32000
+}

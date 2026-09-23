@@ -1,0 +1,4 @@
+[
+  {"Airport":"YSSY","Gate":"24","Airline":"BASE","Aircraft":"Airbus A320","Use":"Departure","LastUsed":"2026-09-17T02:05:00+00:00"},
+  {"Airport":"YMHB","Gate":"A12","Airline":"BASE","Aircraft":"Airbus A320","Use":"Arrival","LastUsed":"2026-09-17T04:13:00+00:00","UseCount":3,"LastFlightKey":"BASE718|YSSY|YMHB|2026-09-17T02:05:00.0000000+00:00"}
+]

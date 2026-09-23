@@ -1,0 +1,16 @@
+{
+  "FlightNumber":"BASE718",
+  "PlannedDepartureUtc":"2026-09-17T02:05:00+00:00",
+  "Source":"MSFS 2024",
+  "Aircraft":"Airbus A320",
+  "Phase":2,
+  "LastSimulatorUtc":"2026-09-17T02:25:00+00:00",
+  "LastTelemetry":{"At":"2026-09-17T02:25:00+00:00","OnGround":false,"GroundSpeedKnots":430,"ParkingBrake":false,"EnginesRunning":true,"AltitudeFeet":"NaN"},
+  "RouteProgress":0.18,
+  "ActualOut":"2026-09-17T02:06:00+00:00",
+  "ActualIn":null,
+  "PhaseEvents":[{"Phase":1,"At":"2026-09-17T02:06:00+00:00"},{"Phase":2,"At":"2026-09-17T02:15:00+00:00"}],
+  "TrackingEvents":[{"At":"2026-09-17T02:15:00+00:00","Title":"Liftoff","Summary":"Airborne","Detail":"IAS 150 KT","Kind":"operation"}],
+  "MonitorState":null,
+  "SavedUtc":"2026-09-17T02:25:01+00:00"
+}
