@@ -603,10 +603,10 @@ public partial class MainWindow : Window
         if(s.HasPosition)liveRouteProgress=routeTracker.Observe(new(s.LatitudeDegrees,s.LongitudeDegrees),s.At,s.Paused||s.Slewing)?.Fraction??reading.RouteProgress;
         if(liveRecorder.Phase==FlightPhase.AtGate)liveRouteProgress=0;
         if(liveRecorder.Phase==FlightPhase.Complete&&arrivalMismatch is null)liveRouteProgress=1;
-        var eventProgress=liveRouteProgress??0;
+        var eventProgress=LiveRouteReliable?liveRouteProgress??0:double.NaN;
         var eventEstimate=LiveEstimatedArrival(s.At,liveRecorder.Phase,ActualFlightOut);
         foreach(var entry in trackingEventMonitor?.Observe(s,liveRecorder.Phase,milestone,eventProgress,activePlan,null,eventEstimate)??[])AddTrackingEvent(entry);
-        RecordLog("tracking_state",s.At,new{progress=liveRouteProgress,remainingNm=routeTracker.Current?.RemainingNm,estimatedIn=eventEstimate,phase=liveRecorder.Phase.ToString()});
+        RecordLog("tracking_state",s.At,new{progress=liveRouteProgress,remainingNm=LiveRemainingDistance,routeReliable=LiveRouteReliable,crossTrackNm=routeTracker.Current?.CrossTrackNm,estimatedIn=eventEstimate,phase=liveRecorder.Phase.ToString()});
         if(milestone?.Phase==FlightPhase.Complete&&liveFlightHistoryId is not null){completedFlightHistoryId=liveFlightHistoryId;EndFlightHistory(liveFlightHistoryId,"Complete");liveFlightHistoryId=null;}
         LiveTimelineButton.IsEnabled = LiveDebriefButton.IsEnabled = true;
         ConnectionText.Text = $"Connected • {PhaseLabel(liveRecorder.Phase)}. Active flight tracking uses the assignment shown below.";
@@ -745,7 +745,7 @@ public partial class MainWindow : Window
         if (currentLiveReading is not null)
         {
             TrackerModeText.Text = liveAssociation.Accepted ? "LIVE FLIGHT • VERIFIED ASSIGNMENT" : "LIVE FLIGHT • ASSIGNMENT REVIEW";
-            if(!liveAssociation.Accepted){HeroStatusText.Text="ASSIGNMENT REVIEW";HeroTimingText.Text=LiveContextSummary();}
+            if(!liveAssociation.Accepted){HeroStatusText.Text="ASSIGNMENT REVIEW";HeroTimingText.Text=LiveContextSummary();HeroStatusText.Foreground=OpsUi.Brush("#FFDA00");HeroStatusBadge.Background=OpsUi.Brush("#433817");}
             if(!liveDataCurrent){TrackerModeText.Text="LAST OBSERVATION • TELEMETRY UNAVAILABLE";HeroStatusText.Text="LAST OBSERVED";}
             HeroTimingText.ToolTip = $"{LiveContextSummary()}. {liveAssociation.Explanation}";
             if (arrivalMismatch is not null)
@@ -767,9 +767,9 @@ public partial class MainWindow : Window
         var phaseLabel=phase is null?(activePlan is null?"NO ACTIVE FLIGHT":"READY"):DisplayPhase(phase.Value).ToUpperInvariant();
         var estimatedIn=LiveEstimatedArrival(simulatorTime,phase,ActualFlightOut);
         var progress=(liveRouteProgress??0)*100;
-        var connected=liveCancellation is not null&&!liveCancellation.IsCancellationRequested;
+        var connected=liveDataCurrent&&liveCancellation is not null&&!liveCancellation.IsCancellationRequested;
         var routeProgress=liveRouteProgress;
-        FlightTrackingView.Render(currentLiveReading is not null&&!CanPresentCandidate?null:activePlan,liveAircraft,phaseLabel,status,ActualFlightOut,ActualFlightIn,estimatedIn,progress,trackingEvents,connected,liveTelemetry,routeProgress,liveAssociation.Accepted);
+        FlightTrackingView.Render(currentLiveReading is not null&&!CanPresentCandidate?null:activePlan,liveAircraft,phaseLabel,status,ActualFlightOut,ActualFlightIn,estimatedIn,progress,trackingEvents,connected,liveTelemetry,routeProgress,liveAssociation.Accepted,LiveRouteReliable);
     }
 
     private string DisplayPhase(FlightPhase phase)
@@ -778,11 +778,21 @@ public partial class MainWindow : Window
         return trackingEventMonitor?.AirbornePhase??"Airborne";
     }
 
+    private bool LiveRouteReliable => liveRecorder?.Phase==FlightPhase.Complete&&arrivalMismatch is null ||
+        liveDataCurrent&&(liveRecorder?.Phase==FlightPhase.AtGate ||
+        routeTracker.Current is{IsReliable:true} current&&liveTelemetry is{} sample&&(current.At==sample.At||sample.Paused||sample.Slewing));
+
+    private double? LiveRemainingDistance => LiveRouteReliable&&activePlan is not null&&liveRouteProgress is{} fraction&&
+        FlightMetrics.RemainingDistanceNm(activePlan.RoutePoints,fraction) is var distance&&double.IsFinite(distance)?distance:null;
+
     private DateTimeOffset? LiveEstimatedArrival(DateTimeOffset? now,FlightPhase? phase,DateTimeOffset? actualOut)
     {
         if(liveTelemetry is not{} sample||activePlan is null||phase is null)return null;
-        var remaining=liveRouteProgress is{} fraction?FlightMetrics.RemainingDistanceNm(activePlan.RoutePoints,fraction):(double?)null;
-        return arrivalEstimator.Observe(sample,phase.Value,remaining,ActualFlightIn,ScheduleTrusted?activePlan.PlannedArrivalUtc:null,ScheduleTrusted?activePlan.PlannedDepartureUtc:null,ActualFlightOut);
+        if(ActualFlightIn is{} actualIn)return actualIn;
+        // Hide stale predictions without resetting the established airborne/taxi
+        // clocks. A short reconnect must not restart the schedule blend.
+        if(!liveDataCurrent||currentLiveReading?.Evidence?.SimulationRunning==false)return null;
+        return arrivalEstimator.Observe(sample,phase.Value,LiveRemainingDistance,ActualFlightIn,ScheduleTrusted?activePlan.DispatchEstimatedArrivalUtc??activePlan.PlannedArrivalUtc:null,ScheduleTrusted?activePlan.PlannedDepartureUtc:null,actualOut);
     }
 
     private void UpdateHeroScheduleStatus(FlightLeg? leg,DateTimeOffset? estimate)

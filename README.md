@@ -1,5 +1,7 @@
 # Alpha 6 OPS
 
+Current release: **0.22.0 / checkpoint 7.17** corrects route recovery after changed departures, withdraws unreliable distance/ETA, accepts independently verified flights when simulator registration is unavailable, and cleans up A220 flap events, engine evidence, scheduled arrival and Dispatch layout. Includes the accumulated local checkpoints 7.13–7.16. See [checkpoint 7.17](docs/checkpoint-7.17.md) for validation and known limits. Build the Windows installer with `packaging/build-desktop.ps1` using the configured .NET 10 SDK/runtime. Generated packages and private flight journals are excluded from source control.
+
 Latest: **0.12.2 Launch and identify** turns the connection card into **Launch & Connect** for the Microsoft Store edition of MSFS 2024. OPS checks live aircraft/position, the active simulator plan and airport references before linking a saved assignment. Unrelated or stale briefings no longer impose airline routes and delays on free flight. See [flight identification, launch behavior and limits](docs/live-flight-identification.md).
 
 The local desktop build is **v0.18.2 (checkpoint 7.13 hotfix)**. It includes the shared route-progress/ETA corrections and removes the retired Flight Lab companion. Build the local installer with [the desktop packaging script](packaging/build-desktop.ps1).

@@ -1,4 +1,4 @@
-# Current local release: v0.21.0
+# Current release: v0.22.0
 
 Flight Lab was retired after checkpoint 7.13. It is no longer built, shipped or connectable from OPS. Recorded-flight replay testing remains. References below describe earlier checkpoints, not current companion availability.
 
@@ -110,7 +110,7 @@ JST760 to production replay coverage before another full flight. See
 [checkpoint-7.16.md](checkpoint-7.16.md). Delivered locally in v0.21.0; no
 GitHub publication.
 
-## Checkpoint 7.17 (planned)
+## Checkpoint 7.17 (v0.22.0)
 
 QLK1274 A220 validation exposes a shared route-progress reacquisition failure
 that freezes airborne progress and corrupts ETA. Prioritize that correction,
@@ -118,7 +118,9 @@ stale-estimate handling, missing-registration association, A220 flap labels and
 surface wording, separate scheduled/estimated arrival fields, and accurate
 engine-evidence wording. Keep the Dispatch visual work below. See
 [QLK1274-flight-review.md](QLK1274-flight-review.md) and
-[checkpoint-7.17.md](checkpoint-7.17.md). These changes are proposed, not built.
+[checkpoint-7.17.md](checkpoint-7.17.md). Implemented with nine recorded-flight
+regressions and native presentation checks. Publication includes the accumulated
+local checkpoints 7.13–7.16. A new live simulator flight remains the next validation.
 
 - Correct the Dispatch route-header hierarchy so each airport name is left-aligned
   with its ICAO code. Preserve the existing departure/arrival role label beneath

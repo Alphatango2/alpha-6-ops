@@ -14,7 +14,7 @@ internal static class TrackingTests
         check(paused==middle,"pause does not advance route progress");
         check(route.Observe(new(0,4),time.AddMinutes(49))==middle,"out-of-order telemetry cannot advance progress");
         var off=route.Observe(new(2,5),time.AddMinutes(51))!;
-        check(off.Fraction==middle.Fraction&&off.CrossTrackNm>25,"off-route excursion preserves last reliable progress");
+        check(off.Fraction==middle.Fraction&&off.CrossTrackNm>25&&!off.IsReliable,"off-route excursion preserves progress but withdraws distance confidence");
         check(route.Observe(new(0,8),time.AddMinutes(60))!.Fraction>.79,"off-route reconnect reacquires geographical position");
         route.SetRoute([new(0,179),new(0,-179)]);
         check(Math.Abs(route.Observe(new(0,180),time)!.Fraction-.5)<.001,"date-line route projects correctly");
@@ -24,9 +24,17 @@ internal static class TrackingTests
         route.SetRoute([new(0,0),new(0,10)]);
         check(Math.Abs(route.Observe(new(0,4),time)!.Fraction-.4)<.001,"late connection initializes from actual position");
         var estimator=new ArrivalEstimator();
+        var shortcut=new RouteProgressTracker();
+        shortcut.SetRoute([new(0,0),new(-.3,0),new(-.3,.3),new(0,.3),new(0,4)]);
+        shortcut.Observe(new(0,0),time);
+        RouteProgress? recovered=null;
+        for(var second=1;second<=700;second++) recovered=shortcut.Observe(new(0,second*.001),time.AddSeconds(second));
+        check(recovered?.Fraction>.25&&recovered.IsReliable,"continuous shortcut past departure legs reacquires the flown en-route segment");
         var sample=new Telemetry(time,false,300,false,true);
         var eta=estimator.Observe(sample,FlightPhase.Airborne,100,null);
         check(eta==DateTimeOffset.Parse("2026-09-18T00:15:00Z"),"gate ETA crosses UTC midnight and includes taxi allowance");
+        check(estimator.Observe(sample,FlightPhase.Airborne,null,null) is null,"invalid route distance immediately withdraws a published ETA even in the same sample");
+        estimator.Reset();eta=estimator.Observe(sample,FlightPhase.Airborne,100,null);
         check(estimator.Observe(sample with{At=time.AddSeconds(1)},FlightPhase.Airborne,100-300d/3600,null)==eta,"ETA remains stable while flying at constant speed");
         var actual=time.AddMinutes(23);
         check(estimator.Observe(sample,FlightPhase.Complete,0,actual)==actual,"actual arrival is frozen at confirmed milestone");

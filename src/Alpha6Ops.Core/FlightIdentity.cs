@@ -49,6 +49,8 @@ public static class FlightIdentity
         var actualReg = Normalize(evidence.Registration);
         if (expectedReg.Length > 0 && actualReg.Length > 0 && expectedReg != actualReg)
             advisories.Add($"Aircraft registration differs: simulator {evidence.Registration}, assignment {plan.Registration}. Tracking the assigned flight with the observed aircraft.");
+        if (expectedReg.Length > 0 && actualReg.Length == 0)
+            advisories.Add("Simulator registration is unavailable; assignment verified using live route or departure location.");
         var routeMatches = evidence.Route is { } route &&
             Normalize(route.Origin) == Normalize(plan.Origin) && Normalize(route.Destination) == Normalize(plan.Destination);
         if (evidence.Route is { } simulatorRoute && !routeMatches)
@@ -61,8 +63,8 @@ public static class FlightIdentity
             return new(true, "VERIFIED ASSIGNMENT", ["Live context temporarily unavailable; schedule display is suspended."]);
         if (evidence.SimulationRunning != true || evidence.Position is not { IsValid: true })
             return new(false, fallback, ["Assignment unverified: waiting for active simulation and a valid live position."]);
-        if (!alreadyAccepted && (!routeMatches && !originMatches || expectedReg.Length > 0 && actualReg.Length == 0))
-            return new(false, fallback, ["Assignment unverified: waiting for matching route/location and aircraft identification."]);
+        if (!alreadyAccepted && !routeMatches && !originMatches)
+            return new(false, fallback, ["Assignment unverified: waiting for matching route or departure location."]);
         return new(true, advisories.Count == 0 ? "VERIFIED ASSIGNMENT" : "ASSIGNMENT WITH ADVISORY", advisories);
     }
 

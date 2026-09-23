@@ -40,7 +40,7 @@ public sealed class EngineEvidenceTracker
             // Missing or contradictory samples must not retain a stale running/off claim.
             if(state==EngineCondition.Unknown)stable[i]=EngineCondition.Unknown;
             if(combustion)seenCombustion[i]=true;
-            var source=combustion?"combustion":state==EngineCondition.Stopping&&spoolDecay?"combustion loss / spool decay":dualSpool?"N1 / N2 spool":oilPressurized&&spinning?"oil pressure / spool":fueled&&spinning?"fuel flow / spool":r.Starter is >0?"starter":"N1 / N2 spool";
+            var source=combustion?"combustion":state==EngineCondition.Stopping&&spoolDecay?(seenCombustion[i]&&r.Combustion is 0?"combustion loss / spool decay":"N1 / N2 spool decay"):dualSpool?"N1 / N2 spool":oilPressurized&&spinning?"oil pressure / spool":fueled&&spinning?"fuel flow / spool":r.Starter is >0?"starter":"N1 / N2 spool";
             result.Add(new(r.Index,stable[i],source));
             previousN1[i]=r.N1Percent;previousN2[i]=r.N2Percent;previousOil[i]=r.OilPressurePsf;
         }

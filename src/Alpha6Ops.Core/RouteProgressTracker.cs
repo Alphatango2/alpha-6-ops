@@ -1,6 +1,6 @@
 namespace Alpha6Ops.Core;
 
-public sealed record RouteProgress(double Fraction, double RemainingNm, double CrossTrackNm);
+public sealed record RouteProgress(double Fraction, double RemainingNm, double CrossTrackNm, bool IsReliable = true, DateTimeOffset? At = null);
 
 /// <summary>Distance-weighted route projection, independent of any view or rendering mesh.</summary>
 public sealed class RouteProgressTracker
@@ -49,7 +49,9 @@ public sealed class RouteProgressTracker
             var cross = projected < 0 ? a.DistanceNm(position) : projected > length ? b.DistanceNm(position)
                 : Math.Abs(Math.Asin(Math.Clamp(Math.Sin(angular) * Math.Sin(bearingDifference), -1, 1))) * 3440.065;
             var candidate = accumulated + segmentAlong;
-            var score = cross + (continuous ? Math.Max(0, Math.Abs(candidate - along) - allowance) * 2 : 0);
+            // Continuity breaks geographic ties at loops; it must not outweigh a
+            // clearly closer segment forever after a different departure or vector.
+            var score = cross + (continuous ? Math.Min(5, Math.Max(0, Math.Abs(candidate - along) - allowance) * 2) : 0);
             if (score < bestScore) { bestScore = score; bestAlong = candidate; bestCross = cross; }
             accumulated += length;
         }
@@ -57,7 +59,8 @@ public sealed class RouteProgressTracker
         // can reacquire a later segment; the aircraft marker always uses actual coordinates.
         if (bestCross <= 25) along = continuous ? Math.Max(along, Math.Min(bestAlong, along + allowance)) : bestAlong;
         previous = position; lastAt = at;
-        Current = new(Math.Clamp(along / total, 0, 1), Math.Max(0, total - along), bestCross);
+        Current = new(Math.Clamp(along / total, 0, 1), Math.Max(0, total - along), bestCross,
+            bestCross <= 25 && Math.Abs(bestAlong - along) <= allowance, at);
         return Current;
     }
 

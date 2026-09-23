@@ -41,13 +41,14 @@ internal static class RecordedFlightReplay
                 detector??=new PhaseDetector(AircraftGroundProfiles.ForFamily(d.GetProperty("aircraft").GetString()),!sample.OnGround?FlightPhase.Airborne:sample.GroundSpeedKnots>=1?FlightPhase.TaxiOut:FlightPhase.AtGate);
                 var milestone=detector.Observe(sample);if(milestone is not null){milestones.Add(milestone);if(milestone.Phase==FlightPhase.Complete)actualIn=milestone.At;}
                 var progress=tracker.Observe(new(sample.LatitudeDegrees,sample.LongitudeDegrees),at,sample.Paused||sample.Slewing);
-                var fraction=detector.Phase==FlightPhase.AtGate?0:progress?.Fraction??0;
-                var remaining=FlightMetrics.RemainingDistanceNm(plan.RoutePoints,fraction);
-                var estimate=estimator.Observe(sample,detector.Phase,remaining,actualIn,plan.PlannedArrivalUtc,plan.PlannedDepartureUtc,milestones.FirstOrDefault(m=>m.Phase==FlightPhase.TaxiOut)?.At);
-                var events=monitor.Observe(sample,detector.Phase,milestone,fraction,plan,null,estimate);entries.AddRange(events);
+                var fraction=detector.Phase==FlightPhase.AtGate?0:detector.Phase==FlightPhase.Complete?1:progress?.Fraction??0;
+                var reliable=detector.Phase is FlightPhase.AtGate or FlightPhase.Complete || progress is{IsReliable:true}&&(progress.At==at||sample.Paused||sample.Slewing);
+                double? remaining=reliable?FlightMetrics.RemainingDistanceNm(plan.RoutePoints,fraction):null;
+                var estimate=estimator.Observe(sample,detector.Phase,remaining,actualIn,plan.DispatchEstimatedArrivalUtc??plan.PlannedArrivalUtc,plan.PlannedDepartureUtc,milestones.FirstOrDefault(m=>m.Phase==FlightPhase.TaxiOut)?.At);
+                var events=monitor.Observe(sample,detector.Phase,milestone,reliable?fraction:double.NaN,plan,null,estimate);entries.AddRange(events);
                 if(samples>0)maximumJump=Math.Max(maximumJump,fraction-prior);prior=fraction;
                 if(!sample.OnGround)maxAirborne=Math.Max(maxAirborne,fraction);
-                if(samples++%60==0||milestone is not null||events.Count>0)snapshots.Add(new{at,phase=detector.Phase.ToString(),fraction,remaining,estimate});
+                if(samples++%60==0||milestone is not null||events.Count>0)snapshots.Add(new{at,phase=detector.Phase.ToString(),fraction,remaining,reliable,estimate});
             }
             if(plan is null||samples==0)throw new InvalidDataException("No flight telemetry: "+file);
             var failures=new List<string>();
@@ -68,9 +69,17 @@ internal static class RecordedFlightReplay
             {
                 if(actualIn?.ToString("yyyy-MM-dd HH:mm:ss")!="2026-09-20 23:06:32")failures.Add("Actual IN differs from JST760 recording.");
                 if(entries.Any(e=>e.Summary.StartsWith("Flap handle ",StringComparison.OrdinalIgnoreCase)))failures.Add("A32x raw flap handle label remained in JST760 replay.");
-                if(!entries.Any(e=>e.Summary=="Flaps 2"&&e.Detail.Contains("FLAP SURFACES CONFIRMED",StringComparison.Ordinal)))failures.Add("JST760 Flaps 2 surface confirmation missing.");
+                if(!entries.Any(e=>e.Title=="Flaps 2 selected"))failures.Add("JST760 Flaps 2 selection missing.");
                 if(!entries.Any(e=>e.Title is "Engine 1 shutdown" or "Engine 2 shutdown"))failures.Add("JST760 shutdown transition missing.");
                 if(entries.Any(e=>e.Title=="Parking brake set"&&e.Summary.Contains("secured",StringComparison.OrdinalIgnoreCase)))failures.Add("Parking brake event claims premature secured state.");
+            }
+            if(plan.FlightNumber=="QLK1274")
+            {
+                if(actualIn?.ToString("yyyy-MM-dd HH:mm:ss")!="2026-09-21 23:22:22")failures.Add("QLK1274 actual IN changed.");
+                var final=entries.FirstOrDefault(e=>e.Title=="Final approach");
+                if(final is null||!final.Detail.Contains("7 NM TO GO")||!final.Detail.Contains("ETA 23:20Z"))failures.Add("QLK1274 final approach distance or ETA did not converge.");
+                if(entries.Any(e=>e.Summary.StartsWith("Flap handle ")||e.Detail.Contains("SURFACE POSITION")||e.Summary.Contains("combustion loss")))failures.Add("QLK1274 unsupported flap or engine claims remain.");
+                if(!entries.Any(e=>e.Title=="Flaps 5 selected")||!entries.Any(e=>e.Title=="Flaps UP selected"))failures.Add("QLK1274 full flap selection cycle missing.");
             }
             var report=new{flight=plan.FlightNumber,samples,passed=failures.Count==0,failures,maximumJump,maxAirborne,actualIn,milestones,events=entries,snapshots};
             File.WriteAllText(Path.Combine(output,plan.FlightNumber+".json"),JsonSerializer.Serialize(report,new JsonSerializerOptions{WriteIndented=true}));

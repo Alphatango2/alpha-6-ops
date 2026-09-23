@@ -95,6 +95,7 @@ internal static class TrackingIntegrationSmokeTest
             Set("pilotConfirmedBlockIn",true);
             for(var i=7215;i<=7220;i++)Sample(i,true,0,true,destination.Latitude,destination.Longitude);
             Check(window.FlightTrackingView.ArrivalText.Text!="—"&&!window.FlightTrackingView.ScheduleVarianceText.Text.Contains("WAITING"),"confirmed block-in exposes actual IN with unavailable engines");
+            Check((double?)typeof(MainWindow).GetProperty("LiveRemainingDistance",flags)!.GetValue(window)==0&&window.FlightTrackingView.DistanceRemainingText.Text=="0 NM","completion publishes zero remaining distance to both journal state and footer");
             var history=new GateHistoryStore(directory);history.Remember(mismatch with{DepartureGate="b7",ArrivalGate="NA"});history.Remember(mismatch with{DepartureGate=" B7 ",ArrivalGate=null});
             Check(history.Load().FindAll(x=>x.Airport=="YSSY"&&x.Gate=="B7").Count==1,"gate history normalizes duplicate entries");
             Check(!history.Load().Exists(x=>x.Gate=="NA"),"placeholder gates are not saved");
@@ -115,6 +116,38 @@ internal static class TrackingIntegrationSmokeTest
             foreach(var width in new[]{1920,1366,1100}){window.Width=width;window.UpdateLayout();await window.Dispatcher.InvokeAsync(()=>{},System.Windows.Threading.DispatcherPriority.ApplicationIdle);DashboardSmokeTest.Capture(window,Path.Combine(directory,$"dispatch-7.15-{width}.png"));}
             window.DispatchView.Render(mismatch,"FLIGHT CLOSEOUT");Set("activePlan",mismatch);typeof(MainWindow).GetMethod("CompletePirepCloseout",flags)!.Invoke(window,null);
             Check(!window.DispatchView.HasActiveRelease,"PIREP closeout immediately clears the rendered Dispatch release");
+            reset();resetIdentity();
+            var bypass=plan with{Registration="C-SYNC",AircraftType="Airbus A220-300",RoutePoints=[new("YSSY",-33.946,151.177111),new("SID1",-34.246,151.177111),new("SID2",-34.246,151.477111),new("JOIN",-33.946,151.477111),new("END",-33.946,155.177111)]};
+            Set("activePlan",bypass);Set("trackingEventMonitor",new FlightTrackingEventMonitor());
+            void BypassSample(int second,double latitude,double longitude,bool ground=false,double groundSpeed=0,bool brake=true)
+            {
+                var position=new GeoPosition(latitude,longitude);
+                observe(new("A220-300",new(at.AddSeconds(second),ground,ground?groundSpeed:450,ground&&brake,!ground,LatitudeDegrees:latitude,LongitudeDegrees:longitude,AltitudeFeet:ground?20:32000,AltitudeAboveGroundFeet:ground?0:30000,VerticalSpeedFeetPerMinute:0),new(position,null,null,true)));
+            }
+            BypassSample(0,-33.946,151.177111,true);
+            Check(window.TrackerModeText.Text.Contains("VERIFIED")&&window.HeroFlightText.Text=="JST721","missing simulator registration retains independently verified departure assignment in the live UI");
+            for(var second=1;second<=4;second++)BypassSample(second,-33.946,151.177111,true,3,false);
+            for(var second=5;second<=750;second+=5)BypassSample(second,-33.946,151.177111+second*.001);
+            window.ShowFlightTracking();
+            var bypassProgress=window.RecoveredRouteProgress??0;
+            Check(bypassProgress>.25&&window.FlightTrackingView.ArrivalText.Text!="—",$"live UI recovers progress and ETA after bypassing departure legs (progress {bypassProgress:0.000}, arrival {window.FlightTrackingView.ArrivalText.Text}, phase {window.FlightTrackingView.PhaseText.Text}, state {window.FlightTrackingView.ScheduleVarianceText.Text})");
+            Check(Math.Abs((double)window.ReplayProgress.GetAnimationBaseValue(RangeBase.ValueProperty)-bypassProgress*100)<.01&&window.FlightTrackingView.ProgressText.Text==$"{bypassProgress*100:0}%","hero and footer agree after continuous route reacquisition");
+            for(var step=1;step<=100;step++)BypassSample(750+step*5,-33.946+step*.01,151.927111);
+            Check(window.FlightTrackingView.ArrivalText.Text=="—"&&window.FlightTrackingView.DistanceRemainingText.Text=="— NM"&&window.FlightTrackingView.ScheduleVarianceText.Text.Contains("ROUTE POSITION REVIEW"),"off-route excursion withdraws stale distance, ETA and delay claims in the live UI");
+            for(var step=1;step<=100;step++)BypassSample(1250+step*5,-32.946-step*.01,151.927111);
+            Check(window.FlightTrackingView.ArrivalText.Text!="—"&&window.FlightTrackingView.DistanceRemainingText.Text!="— NM","continuous route rejoin restores the live estimate");
+            var beforeDisconnectEstimate=window.FlightTrackingView.ArrivalText.Text;
+            typeof(MainWindow).GetMethod("MarkLiveUnavailable",flags)!.Invoke(window,null);
+            window.ShowFlightTracking();
+            Check(window.FlightTrackingView.ArrivalText.Text=="—"&&!window.FlightTrackingView.ScheduleVarianceText.Text.Contains("MIN "),"telemetry loss withdraws an otherwise fresh last-sample estimate and schedule variance");
+            BypassSample(1755,-33.946,151.927111);
+            Check(window.FlightTrackingView.ArrivalText.Text!="—","reconnect restores the live estimate without restarting the flight");
+            var estimateShift=DateTime.ParseExact(window.FlightTrackingView.ArrivalText.Text,"HH:mm'Z'",System.Globalization.CultureInfo.InvariantCulture)-DateTime.ParseExact(beforeDisconnectEstimate,"HH:mm'Z'",System.Globalization.CultureInfo.InvariantCulture);
+            Check(Math.Abs(estimateShift.TotalMinutes)<2,"short reconnect preserves established ETA instead of restarting schedule blending");
+            var pausedSample=((Telemetry)typeof(MainWindow).GetField("liveTelemetry",flags)!.GetValue(window)!) with{At=at.AddSeconds(1760),Paused=true};
+            observe(new("A220-300",pausedSample,new(new(-33.946,151.927111),null,null,true)));
+            typeof(MainWindow).GetMethod("MarkLiveUnavailable",flags)!.Invoke(window,null);
+            Check(window.FlightTrackingView.ArrivalText.Text=="—"&&window.FlightTrackingView.DistanceRemainingText.Text=="— NM","disconnect while paused also withdraws the cached estimate and distance");
             File.WriteAllText(Path.Combine(directory,"tracking-integration.json"),JsonSerializer.Serialize(new{passed=true,checks},new JsonSerializerOptions{WriteIndented=true}));
         }
         finally{Set("liveCancellation",null);reset();resetIdentity();}

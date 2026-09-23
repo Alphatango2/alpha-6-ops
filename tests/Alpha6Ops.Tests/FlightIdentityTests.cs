@@ -18,7 +18,10 @@ internal static class FlightIdentityTests
         check(FlightIdentity.Reconcile(local, observed, at, true, sydney).Accepted, "live position and normalized registration verify a local assignment without a simulator plan");
         var registrationAdvisory=FlightIdentity.Reconcile(local with{Registration="N738PM"},observed,at,true,sydney);
         check(registrationAdvisory.Accepted&&registrationAdvisory.Mode=="ASSIGNMENT WITH ADVISORY"&&registrationAdvisory.Explanation.Contains("VH-TEST"),"registration mismatch remains attached to the route with a visible advisory");
-        check(!FlightIdentity.Reconcile(local, observed with { Registration = null }, at, true, sydney).Accepted, "missing registration does not borrow identity from assignment");
+        var missingRegistration=FlightIdentity.Reconcile(local,observed with{Registration=null},at,true,sydney);
+        check(missingRegistration.Accepted&&missingRegistration.Mode=="ASSIGNMENT WITH ADVISORY"&&missingRegistration.Explanation.Contains("unavailable"),"missing registration is advisory when live departure location identifies assignment");
+        check(!FlightIdentity.Reconcile(local,observed with{Registration=null,Route=new("YSSY","YMML")},at,true,sydney).Accepted,"missing registration does not bypass a conflicting simulator route");
+        check(!FlightIdentity.Reconcile(local,observed with{Registration=null},at,false,sydney).Accepted,"missing registration without matching route or departure evidence remains unverified");
         check(!FlightIdentity.Reconcile(local, observed with { Position = null }, at, true, sydney).Accepted, "missing position leaves new assignment unverified");
         check(!FlightIdentity.Reconcile(local, observed with { SimulationRunning = null }, at, true, sydney).Accepted, "unknown simulation state does not arm assignment");
         check(!FlightIdentity.Reconcile(local, observed with { SimulationRunning = false }, at, true, sydney).Accepted, "menu does not arm assignment");

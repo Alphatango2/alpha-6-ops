@@ -87,7 +87,9 @@ public sealed class DispatchGateEditor : UserControl
     public DispatchGateEditor()
     {
         var panel=new StackPanel{Margin=new Thickness(0,20,0,0)};
-        var heading=new Grid();heading.Children.Add(new TextBlock{Text="GATE ASSIGNMENTS",Foreground=OpsUi.Brush("#9BC8E8"),FontSize=11});heading.Children.Add(new TextBlock{Text="OPTIONAL • LOCAL HISTORY IS NOT LIVE AVAILABILITY",Foreground=OpsUi.Brush("#6F8798"),FontSize=9,HorizontalAlignment=HorizontalAlignment.Right});panel.Children.Add(heading);
+        var heading=new StackPanel();
+        heading.Children.Add(new Border{BorderBrush=OpsUi.Brush("#FFDA00"),BorderThickness=new Thickness(3,0,0,0),Padding=new Thickness(10,0,0,0),Child=new TextBlock{Text="GATE ASSIGNMENTS",Foreground=OpsUi.Brush("#F2F6FA"),FontSize=17,FontWeight=FontWeights.SemiBold}});
+        heading.Children.Add(new TextBlock{Text="OPTIONAL • LOCAL HISTORY IS NOT LIVE AVAILABILITY",Foreground=OpsUi.Brush("#9FB2C0"),FontSize=9,TextWrapping=TextWrapping.Wrap,Margin=new Thickness(13,5,0,0)});panel.Children.Add(heading);
         foreach(var label in new[]{departureLabel,arrivalLabel}){label.Foreground=OpsUi.Brush("#9BC8E8");label.FontSize=11;label.Margin=new Thickness(0,0,0,6);}
         foreach(var label in new[]{departureRecommendation,arrivalRecommendation}){label.Foreground=OpsUi.Brush("#91A4B4");label.FontSize=10;label.Margin=new Thickness(0,6,0,0);label.TextWrapping=TextWrapping.Wrap;}
         FrameworkElement Input(TextBox box){var row=new StackPanel{Orientation=Orientation.Horizontal};var choices=new Button{Content="▼",Width=38,ToolTip="Select a previously used gate",Margin=new Thickness(6,0,0,0)};choices.Click+=(_,_)=>{if(box.ContextMenu is{} menu){menu.PlacementTarget=choices;menu.IsOpen=true;}};row.Children.Add(box);row.Children.Add(choices);return row;}

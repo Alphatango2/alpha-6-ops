@@ -26,7 +26,7 @@ public partial class FlightTrackingWorkspace : UserControl
 
     internal void Render(ActiveFlightPlan? plan, string? simulatorAircraft, string phase, string status,
         DateTimeOffset? actualOut, DateTimeOffset? actualIn, DateTimeOffset? estimatedIn, double progress,
-        IEnumerable<TrackingEventEntry> events, bool connected,Telemetry? telemetry=null,double? routeProgress=null,bool assignmentVerified=true)
+        IEnumerable<TrackingEventEntry> events, bool connected,Telemetry? telemetry=null,double? routeProgress=null,bool assignmentVerified=true,bool routeReliable=true)
     {
         EmptyState.Visibility=plan is null?Visibility.Visible:Visibility.Collapsed;
         ActiveState.Visibility=plan is null?Visibility.Collapsed:Visibility.Visible;
@@ -40,7 +40,7 @@ public partial class FlightTrackingWorkspace : UserControl
         var pirepReady=complete&&actualIn is not null;
         TrackingMap.SetRoute(plan.RoutePoints);
         TrackingMap.SetTelemetry(telemetry,routeProgress);
-        TrackingSubtitle.Text=connected?(assignmentVerified?"ACTIVE FLIGHT • LIVE TELEMETRY":"ASSIGNMENT REVIEW • OBSERVED LIVE TELEMETRY"):"ACTIVE ASSIGNMENT • READY FOR SIMULATOR";
+        TrackingSubtitle.Text=connected?(assignmentVerified?"ACTIVE FLIGHT • LIVE TELEMETRY":"ASSIGNMENT REVIEW • OBSERVED LIVE TELEMETRY"):telemetry is not null?"LAST OBSERVATION • TELEMETRY UNAVAILABLE":"ACTIVE ASSIGNMENT • READY FOR SIMULATOR";
         ScheduledOutText.Text=FlightClock.FormatScheduled(plan.PlannedDepartureUtc,null);
         ScheduledInText.Text=FlightClock.FormatScheduled(plan.PlannedArrivalUtc,null);
         ActualOutText.Text=actualOut?.UtcDateTime.ToString("HH:mm'Z'")??"—";
@@ -48,7 +48,7 @@ public partial class FlightTrackingWorkspace : UserControl
         DepartureGateText.ToolTip=ArrivalGateText.ToolTip=plan.GateAssignmentSource??"Unassigned";
         var continuousProgress=routeProgress is{} fractionValue?fractionValue*100:progress;
         var fraction=continuousProgress/100;
-        var remaining=FlightMetrics.RemainingDistanceNm(plan.RoutePoints,fraction);
+        var remaining=routeReliable?FlightMetrics.RemainingDistanceNm(plan.RoutePoints,fraction):double.NaN;
         DistanceRemainingText.Text=double.IsFinite(remaining)?$"{remaining:0} NM":"— NM";
         var arrival=actualIn??estimatedIn;
         ArrivalText.Text=arrival?.UtcDateTime.ToString("HH:mm'Z'")??"—";
@@ -58,7 +58,7 @@ public partial class FlightTrackingWorkspace : UserControl
         if(!scheduleValid)ScheduleVarianceText.Text="SCHEDULE / SIM CLOCK REVIEW";
         else if(actualIn is not null)ScheduleVarianceText.Text=Variance(actualIn.Value-plan.PlannedArrivalUtc,"ACTUAL");
         else if(estimatedIn is not null)ScheduleVarianceText.Text=Variance(estimatedIn.Value-plan.PlannedArrivalUtc,"ESTIMATE");
-        else ScheduleVarianceText.Text=complete?"ACTUAL IN UNAVAILABLE":phase.Contains("TAXI IN",StringComparison.OrdinalIgnoreCase)?"ARRIVAL ESTIMATE PENDING":"WAITING FOR AIRBORNE DATA";
+        else ScheduleVarianceText.Text=complete?"ACTUAL IN UNAVAILABLE":!connected&&telemetry is not null?"TELEMETRY UNAVAILABLE • ESTIMATE PENDING":!routeReliable?"ROUTE POSITION REVIEW • ESTIMATE PENDING":phase.Contains("TAXI IN",StringComparison.OrdinalIgnoreCase)?"ARRIVAL ESTIMATE PENDING":"WAITING FOR AIRBORNE DATA";
         UpdateProgress(continuousProgress,true);
         ProgressAircraftIcon.Visibility=complete?Visibility.Collapsed:Visibility.Visible;SubmitPirepButton.Visibility=pirepReady?Visibility.Visible:Visibility.Collapsed;ProgressBar.Foreground=complete?OpsUi.Brush("#55D66B"):(Brush)FindResource("OpsYellow");ProgressText.Foreground=complete?OpsUi.Brush("#55D66B"):(Brush)FindResource("OpsYellow");ProgressBar.Margin=pirepReady?new Thickness(0,0,175,0):new Thickness(0);
         var rows=events.Reverse().OrderByDescending(entry=>entry.At).ToArray();EventList.ItemsSource=rows;EventEmptyText.Visibility=rows.Length==0?Visibility.Visible:Visibility.Collapsed;

@@ -1,61 +1,41 @@
-ALPHA 6 OPS — CHECKPOINT 7.16 / VERSION 0.21.0
+ALPHA 6 OPS — CHECKPOINT 7.17 / VERSION 0.22.0
 
-LOCAL UPDATE
+UPDATE
 Exit OPS from its Exit OPS button or tray menu; the window X only hides it.
-Run Alpha6OPS-Setup-0.21.0.exe to update the existing installation.
-The installer preserves your logs, assignment, settings and SimBrief cache.
-Open Alpha 6 OPS from Start and confirm v0.21.0 in the footer.
-The portable ZIP is an alternative: extract it fully before starting Alpha6OPS.exe.
-Flight Lab has been removed. Upgrading removes its installed folder and Start menu shortcut.
-The desktop runtime remains because OPS requires it. No GitHub upload is required.
+Run Alpha6OPS-Setup-0.22.0.exe to update the existing installation.
+Your logs, assignment, settings, gate history and SimBrief cache are preserved.
+Open Alpha 6 OPS from Start and confirm v0.22.0 in the footer.
+Alternatively, fully extract the portable ZIP before starting Alpha6OPS.exe.
 
-TRACKING CHANGES
-Both progress bars now use a shared geographical route-distance calculation.
-Short/duplicate route legs no longer trap the progress calculation at departure.
-Hero arrival and the tracking footer share a published gate-IN estimate.
-The estimate uses current movement and a five-minute taxi-in allowance; it is
-not an ATC prediction and can change with speed, routing or holding.
-Before a usable airborne estimate exists, ETA remains unavailable.
-After block-in, actual IN replaces the estimate. Connecting after departure
-does not invent an actual OUT time.
+CHECKPOINT 7.17
+Changed departure procedures and direct routing can rejoin the planned route
+without leaving progress frozen on an old segment. Both progress bars, distance,
+route styling and the diagnostic journal share the computed progress.
+Unreliable route position or unavailable telemetry suspends live ETA and delay
+claims until usable data returns. Recorded actual IN remains unchanged.
 
-Tracking scheduled times now show UTC only. The footer uses
-two rows so dates and times cannot overlap adjacent fields.
-Map legend: yellow planned route, grey completed planned route, cyan flown trail.
-The flown trail can legitimately differ from the flight plan.
-Approach detection no longer requires a specific progress percentage.
-Gradual gear transitions are recorded, and milestone event times are consistent.
+An unavailable simulator registration is advisory when the live departure
+location or simulator route independently verifies the assignment. Conflicting
+routes, wrong departure locations and implausible dates still require review.
 
-NEXT TEST FLIGHT
+A220 handle indexes 0–5 display UP, 1, 2, 3, 4 and 5. Flap events identify the
+selected configuration; raw surface measurements remain in diagnostic logs.
+Selected does not mean that the moving surfaces have reached that position.
+Engine shutdown wording identifies the evidence actually available.
+
+Scheduled IN now uses SimBrief sched_in. The dispatch est_in is retained
+separately as an initial prediction. Refresh the SimBrief release to obtain both
+values; existing saved releases retain their original imported times.
+Manual schedule corrections clear the older dispatch estimate.
+
+Dispatch airport names align beneath their ICAO codes in draft and active
+releases. Gate Assignments has a larger heading and yellow section accent.
+Gate suggestions use your local confirmed history, not live availability.
+
+NEXT FLIGHT
 Review the SimBrief departure DATE as well as UTC time before accepting.
 Connect at the gate for a complete OUT-to-IN record.
+Check both progress bars during climb and cruise, then ETA near approach.
 Export JSON and JSONL after the flight and capture any remaining visual issues.
-Logs include computed tracking-state snapshots for progress and ETA diagnosis.
-The existing seven test flights were replayed through the tracking components;
-this build still needs validation during a new live simulator flight.
-
-CHECKPOINT 7.15
-Enter departure and arrival gates in the Dispatch release before accepting.
-Saved Gates remembers previous airport/airline/aircraft use; suggestions do not
-indicate live availability. Save Gates in Dispatch can amend an active flight.
-The tracking screen no longer has an Assign Gates button.
-Review UTC Schedule corrects dated OUT/IN without resetting the flight.
-Recorded actual times remain visible when a matching assignment needs review.
-Map Follow is highlighted when enabled. Dragging or route fit disables it.
-Engine readings now include optional fuel flow, spool and starter diagnostics.
-Unknown engine data stays unknown. If automatic block-in cannot be verified,
-Confirm Parked appears after landing and a sustained stopped/braked condition.
-Flap events describe handle selection; optional surface angles are logged.
-Before a long A220 test, verify a short engine-start/flap cycle in the new log.
-No live gate provider or paid subscription is required.
-
-CHECKPOINT 7.16
-A32x handle indexes display UP, 1, 1+F, 2, 3 and FULL. Matching left/right
-flap surfaces confirm physical movement without claiming unavailable slat data.
-Engine shutdown remains visible while confirmed-running engines spool down.
-Submit PIREP appears only after a recorded block-in/actual IN, and closeout
-immediately clears the active Dispatch release.
-Dispatch now displays airport names beneath both ICAO codes. Gate assignment
-fields are compact, use clear saved-gate controls and can recommend gates after
-at least two matching local-history uses for the same airport and airline.
-Recommendations require pilot confirmation and do not indicate live availability.
+Nine prior flights covering A32x, A220 and Boeing 737 were replayed successfully.
+A new live simulator flight is still required to validate this update in use.

@@ -160,14 +160,15 @@ internal sealed class FlightTrackingEventMonitor
         if(double.IsFinite(sample.SelectedFlapRatio))
         {
             var a32x=AirbusA32x(plan?.AircraftType);
+            var a220Indexed=AirbusA220(plan?.AircraftType)&&sample.FlapHandlePositions is 5 or 6;
             var knownPositions=Boeing737(plan?.AircraftType)?9:Airbus(plan?.AircraftType)||AirbusA220(plan?.AircraftType)?6:0;
-            var indexed=sample.FlapHandleIndex>=0&&(a32x?sample.FlapHandleIndex<=5:sample.FlapHandleIndex<sample.FlapHandlePositions);
-            var mapped=indexed&&(a32x||sample.FlapHandlePositions==knownPositions);
+            var indexed=sample.FlapHandleIndex>=0&&(a32x||a220Indexed?sample.FlapHandleIndex<=5:sample.FlapHandleIndex<sample.FlapHandlePositions);
+            var mapped=indexed&&(a32x||a220Indexed||sample.FlapHandlePositions==knownPositions);
             var setting=indexed?(mapped&&Boeing737(plan?.AircraftType)?Boeing737Detents[sample.FlapHandleIndex]:sample.FlapHandleIndex):FlapSetting(sample.SelectedFlapRatio,plan?.AircraftType);
             var label=indexed&&!mapped?$"Flap handle {setting}":FlapLabel(setting,plan?.AircraftType);
             if(setting==flapCandidate)flapCandidateSamples++;else{flapCandidate=setting;flapCandidateSamples=1;}
             if(reportedFlaps<0)reportedFlaps=setting;
-            else if(setting!=reportedFlaps&&flapCandidateSamples>=2){reportedFlaps=setting;AddOnce($"flaps-{setting}-{atKey(sample.At)}","Flaps selected",label);}
+            else if(setting!=reportedFlaps&&flapCandidateSamples>=2){reportedFlaps=setting;AddOnce($"flaps-{setting}-{atKey(sample.At)}",$"{label} selected",label);}
         }
         if(sample.GearExtendedRatio>=.9)gearWasExtended=true;
         AddStable("gear-up",!sample.OnGround&&(gearWasExtended||previousGear>=.9)&&sample.GearExtendedRatio<.1,"Landing gear retracted","Gear indicates up",2);
@@ -223,11 +224,6 @@ internal sealed class FlightTrackingEventMonitor
     private TrackingEventEntry Create(DateTimeOffset at,string title,string summary,Telemetry sample,double progress,ActiveFlightPlan? plan,string kind,DateTimeOffset? estimatedIn)
     {
         var parts=new List<string>();
-        if(title=="Flaps selected")
-        {
-            var surface=FlapSurfaceConfirmation(sample);
-            parts.Add(surface is null?(sample.FlapHandleIndex>=0?"HANDLE SELECTION • SURFACE POSITION NOT CONFIRMED":"INFERRED FROM HANDLE PERCENT • SURFACE POSITION NOT CONFIRMED"):$"HANDLE SELECTION • FLAP SURFACES CONFIRMED {surface:0.#}°");
-        }
         if(sample.OnGround)
         {
             parts.Add($"GS {sample.GroundSpeedKnots:0} KT");
@@ -284,13 +280,6 @@ internal sealed class FlightTrackingEventMonitor
         return (int)Math.Clamp(Math.Round(ratio*100/5)*5,0,100);
     }
     private static string FlapLabel(int setting,string? aircraft)=>AirbusA220(aircraft)?setting==0?"Flaps UP":$"Flaps {setting}":Airbus(aircraft)?setting switch{0=>"Flaps UP",1=>"Flaps 1",2=>"Flaps 1+F",3=>"Flaps 2",4=>"Flaps 3",_=>"Flaps FULL"}:Boeing737(aircraft)?setting==0?"Flaps UP":$"Flaps {setting}":$"Flaps set to {setting}%";
-
-    private static double? FlapSurfaceConfirmation(Telemetry sample)
-    {
-        if(!double.IsFinite(sample.LeftFlapDegrees)||!double.IsFinite(sample.RightFlapDegrees)||sample.LeftFlapDegrees<0||sample.RightFlapDegrees<0)return null;
-        if(Math.Abs(sample.LeftFlapDegrees-sample.RightFlapDegrees)>1.5)return null;
-        return (sample.LeftFlapDegrees+sample.RightFlapDegrees)/2;
-    }
 
     private static double Speed(Telemetry sample)=>double.IsFinite(sample.IndicatedAirspeedKnots)&&sample.IndicatedAirspeedKnots>0?sample.IndicatedAirspeedKnots:sample.GroundSpeedKnots;
     private static double Normalize(double heading)=>(heading%360+360)%360;

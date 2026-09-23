@@ -12,10 +12,16 @@ public sealed class ArrivalEstimator
         if (actualIn is not null) return actualIn;
         if (sample.Paused || sample.Slewing) return published;
         if (phase != FlightPhase.Airborne && phase != FlightPhase.TaxiIn) return null;
+        // Withdraw stale estimates before the duplicate-sample shortcut: route
+        // confidence can change while several views render the same telemetry.
+        if (phase == FlightPhase.Airborne && (remainingNm is null || !double.IsFinite(remainingNm.Value) || remainingNm < 0 || sample.GroundSpeedKnots < 60))
+        {
+            published = null;
+            return null;
+        }
         if (lastSample == sample.At) return published;
         if (lastSample is { } previous && (sample.At < previous || sample.At - previous > TimeSpan.FromMinutes(2))) Reset();
         lastSample = sample.At;
-        if (phase == FlightPhase.Airborne && (remainingNm is null || !double.IsFinite(remainingNm.Value) || sample.GroundSpeedKnots < 60)) return null;
         if (phase == FlightPhase.Airborne) speed = speed is { } prior ? prior * .9 + sample.GroundSpeedKnots * .1 : sample.GroundSpeedKnots;
         DateTimeOffset raw;
         if (phase == FlightPhase.TaxiIn)

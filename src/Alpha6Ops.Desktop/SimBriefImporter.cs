@@ -70,9 +70,10 @@ internal static class SimBriefImporter
         var origin = Text("origin", "icao_code").Trim().ToUpperInvariant();
         var destination = Text("destination", "icao_code").Trim().ToUpperInvariant();
         var departure = DateTimeOffset.FromUnixTimeSeconds(Epoch(Text("times", "sched_out"), "scheduled departure"));
-        var arrivalValue = Text("times", "est_in");
-        if (string.IsNullOrWhiteSpace(arrivalValue)) arrivalValue = Text("times", "sched_in");
-        var arrival = DateTimeOffset.FromUnixTimeSeconds(Epoch(arrivalValue, "estimated arrival"));
+        var arrivalValue = Text("times", "sched_in");
+        if (string.IsNullOrWhiteSpace(arrivalValue)) arrivalValue = Text("times", "est_in");
+        var arrival = DateTimeOffset.FromUnixTimeSeconds(Epoch(arrivalValue, "scheduled arrival"));
+        DateTimeOffset? estimatedArrival=long.TryParse(Text("times","est_in"),out var estimatedEpoch)&&estimatedEpoch>departure.ToUnixTimeSeconds()?DateTimeOffset.FromUnixTimeSeconds(estimatedEpoch):null;
         var generated = DateTimeOffset.FromUnixTimeSeconds(Epoch(Text("params", "time_generated"), "briefing generation time"));
         if (flight.Length < 2 || origin.Length != 4 || destination.Length != 4 || arrival <= departure)
             throw new InvalidDataException("The latest SimBrief briefing has incomplete flight identification or timing data.");
@@ -87,7 +88,7 @@ internal static class SimBriefImporter
         var aircraftType=AircraftDisplayName(Text("aircraft","name"),Text("aircraft", "icao_code"));
         var departureOffset=UtcOffsetMinutes(Text("origin","timezone"));var arrivalOffset=UtcOffsetMinutes(Text("destination","timezone"));
         var plan = new ActiveFlightPlan(flight, Text("aircraft", "reg").Trim().ToUpperInvariant(), origin, destination, departure, arrival,
-            "SimBrief", username, generated,gates.DepartureGate,gates.ArrivalGate,gates.Source,gates.Confidence,route,routePoints,aircraftType,tripFuel,fuelUnits,generated.ToUnixTimeSeconds().ToString(CultureInfo.InvariantCulture),altitude,departureOffset,arrivalOffset);
+            "SimBrief", username, generated,gates.DepartureGate,gates.ArrivalGate,gates.Source,gates.Confidence,route,routePoints,aircraftType,tripFuel,fuelUnits,generated.ToUnixTimeSeconds().ToString(CultureInfo.InvariantCulture),altitude,departureOffset,arrivalOffset,estimatedArrival);
         double? payload=double.TryParse(Text("weights","payload"),NumberStyles.Float,CultureInfo.InvariantCulture,out var payloadValue)?payloadValue:null;
         int? passengers=int.TryParse(Text("weights","pax_count"),NumberStyles.Integer,CultureInfo.InvariantCulture,out var paxValue)?paxValue:null;
         double? distance=double.TryParse(Text("general","route_distance"),NumberStyles.Float,CultureInfo.InvariantCulture,out var distanceValue)?distanceValue:null;

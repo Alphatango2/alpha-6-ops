@@ -25,6 +25,9 @@ internal static class EngineEvidenceTests
         for(var i=4;i<7;i++)a220.Observe([new(1,0,0.0002,18.9,64.5,0)],at.AddSeconds(i));
         var a220Running=a220.Observe([new(1,0,0.0002,18.9,64.5,0)],at.AddSeconds(7))[0];
         check(a220Running.Condition==EngineCondition.Running&&a220Running.Source=="N1 / N2 spool","A220 sustained N1/N2 confirms running without generic fuel flow");
+        EngineAssessment? a220Shutdown=null;
+        for(var i=8;i<12;i++)a220Shutdown=a220.Observe([new(1,0,0.0002,14-(i-8),38-(i-8)*2,0)],at.AddSeconds(i))[0];
+        check(a220Shutdown?.Condition==EngineCondition.Stopping&&!a220Shutdown.Source.Contains("combustion"),"shutdown evidence never claims loss of combustion when combustion was never reported");
         var oil=new EngineEvidenceTracker();
         for(var i=0;i<4;i++)oil.Observe([new(1,0,0,16,20,0,5000)],at.AddSeconds(i));
         check(oil.Observe([new(1,0,0,16,20,0,5000)],at.AddSeconds(4))[0].Condition==EngineCondition.Running,"oil pressure corroborates a single available spool channel");

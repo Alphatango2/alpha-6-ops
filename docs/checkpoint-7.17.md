@@ -1,6 +1,6 @@
 # Checkpoint 7.17 — QLK1274 tracking corrections and Dispatch polish
 
-Status: proposed scope; not implemented or packaged. Evidence is documented in
+Status: implemented and packaged as v0.22.0 on `codex/checkpoint-7.17`. Evidence is documented in
 [QLK1274-flight-review.md](QLK1274-flight-review.md).
 
 ## Required corrections
@@ -45,4 +45,37 @@ Status: proposed scope; not implemented or packaged. Evidence is documented in
   pass. Validate continuous rejoin after skipped departure legs, ambiguous route
   intersections, late connection, reconnection and midnight dates.
 - Inspect Dispatch at normal and narrow widths with long airport names.
-- Package only when implementation is requested and the checks pass.
+- Package after implementation and verification; publish the branch for review.
+
+## Validation and limits
+
+- 122 core checks cover continuous departure shortcuts, route intersections,
+  pause/reconnect, unavailable distance, UTC midnight, identity guards and engine
+  evidence. Nine untouched journals (91,366 telemetry samples) pass production
+  component replay: JST221, QFA124, JST786, QLK1579, JST721, JST724, JST760,
+  QLK1274 and ANG2.
+- QLK1274 airborne progress reaches 99.92% instead of remaining at 0.11%. Its
+  largest sample advance is 0.54 percentage points. Final approach reports 7 NM
+  remaining and ETA 23:20Z; actual IN remains 21 September 23:22:22Z.
+- Native presentation checks exercise hero/footer agreement after a bypassed
+  departure, route excursion/rejoin, missing registration, completion distance,
+  telemetry loss/reconnect and paused disconnect. Dispatch captures at 1920,
+  1366 and 1100 DIP preserve airport alignment and compact gate controls.
+- The source review identified a stale ETA after disconnect; the final confidence
+  gate also checks telemetry availability and preserves confirmed actual IN.
+  Short reconnects preserve the established estimate and taxi/airborne clocks.
+- The packaged executable passes the desktop/integration checks and all nine
+  replays using its bundled .NET 10.0.11 runtime. The portable ZIP's application
+  and core assemblies match the tested directory. Installer and ZIP SHA-256
+  checksums are recorded alongside the local outputs. The installer was built,
+  but was not run against the pilot's active installation.
+- Existing saved plans retain their original imported times. Refresh from
+  SimBrief to acquire distinct scheduled and estimated IN fields. Historical
+  journals are replayed unchanged, so their original schedule baseline remains.
+- Replay and native synthetic checks do not replace a new simulator flight or
+  establish aircraft-specific sensor calibration. Flap events describe selection;
+  raw surface/engine measurements remain in diagnostics. Gate suggestions remain
+  local history, not live airport availability.
+- This publication also includes previously local checkpoints 7.13–7.16 as a
+  separate baseline commit. Private journals and generated installers are not
+  included in the Git source branch.
