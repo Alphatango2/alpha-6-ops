@@ -33,7 +33,8 @@ public partial class MainWindow
     private ProgramMonitor? programMonitor => coordinator.Monitor;
     private string? lastJournal => flightState.LastJournal;
     private string LiveContextSummary()=>flightState.ContextSummary;
-    private SimulatorConnectionState? renderedConnection;
+    // The initial XAML already presents Disconnected; keep its resting palette.
+    private SimulatorConnectionState renderedConnection=SimulatorConnectionState.Disconnected;
     private bool presentationDisposed;
 
     private void RuntimeChanged(object? sender,EventArgs e)
