@@ -12,6 +12,12 @@ public partial class App : Application
     protected override async void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
+        if(e.Args.Length==3&&e.Args[0]=="--replay-journals")
+        {
+            try{RecordedFlightReplay.Run(e.Args[1],e.Args[2]);Shutdown(0);}
+            catch(Exception error){Directory.CreateDirectory(e.Args[2]);File.WriteAllText(Path.Combine(e.Args[2],"error.txt"),error.ToString());Shutdown(1);}
+            return;
+        }
         var diagnosticOutput = e.Args.Length == 2 && e.Args[0] == "--smoke-test" ? e.Args[1] : null;
         CrashReporter.Install(this,diagnosticOutput);
         if(e.Args.Length==2&&e.Args[0]=="--activation-smoke")

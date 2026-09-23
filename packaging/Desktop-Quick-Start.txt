@@ -1,0 +1,41 @@
+ALPHA 6 OPS — CHECKPOINT 7.17 / VERSION 0.22.0
+
+UPDATE
+Exit OPS from its Exit OPS button or tray menu; the window X only hides it.
+Run Alpha6OPS-Setup-0.22.0.exe to update the existing installation.
+Your logs, assignment, settings, gate history and SimBrief cache are preserved.
+Open Alpha 6 OPS from Start and confirm v0.22.0 in the footer.
+Alternatively, fully extract the portable ZIP before starting Alpha6OPS.exe.
+
+CHECKPOINT 7.17
+Changed departure procedures and direct routing can rejoin the planned route
+without leaving progress frozen on an old segment. Both progress bars, distance,
+route styling and the diagnostic journal share the computed progress.
+Unreliable route position or unavailable telemetry suspends live ETA and delay
+claims until usable data returns. Recorded actual IN remains unchanged.
+
+An unavailable simulator registration is advisory when the live departure
+location or simulator route independently verifies the assignment. Conflicting
+routes, wrong departure locations and implausible dates still require review.
+
+A220 handle indexes 0–5 display UP, 1, 2, 3, 4 and 5. Flap events identify the
+selected configuration; raw surface measurements remain in diagnostic logs.
+Selected does not mean that the moving surfaces have reached that position.
+Engine shutdown wording identifies the evidence actually available.
+
+Scheduled IN now uses SimBrief sched_in. The dispatch est_in is retained
+separately as an initial prediction. Refresh the SimBrief release to obtain both
+values; existing saved releases retain their original imported times.
+Manual schedule corrections clear the older dispatch estimate.
+
+Dispatch airport names align beneath their ICAO codes in draft and active
+releases. Gate Assignments has a larger heading and yellow section accent.
+Gate suggestions use your local confirmed history, not live availability.
+
+NEXT FLIGHT
+Review the SimBrief departure DATE as well as UTC time before accepting.
+Connect at the gate for a complete OUT-to-IN record.
+Check both progress bars during climb and cruise, then ETA near approach.
+Export JSON and JSONL after the flight and capture any remaining visual issues.
+Nine prior flights covering A32x, A220 and Boeing 737 were replayed successfully.
+A new live simulator flight is still required to validate this update in use.

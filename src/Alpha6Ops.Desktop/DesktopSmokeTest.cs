@@ -113,12 +113,17 @@ internal static class DesktopSmokeTest
             liveDebriefWindow.Show(); liveDebriefWindow.UpdateLayout(); liveDebriefWindow.Close();
             const string simBriefFixture = """{"general":{"icao_airline":"JBU","flight_number":"124","route":"DCT TEST","initial_speed":"N0470","initial_altitude":"35000","dispatch_remarks":"DEP GATE 52A / ARR GATE 12"},"origin":{"icao_code":"KLAX","plan_rwy":"25R","pos_lat":"33.9425","pos_long":"-118.4081"},"destination":{"icao_code":"KJFK","plan_rwy":"22L","pos_lat":"40.6413","pos_long":"-73.7781"},"navlog":{"fix":[{"ident":"DAG","type":"VOR","pos_lat":"34.8537","pos_long":"-116.787"},{"ident":"TEST","type":"FIX","pos_lat":"39","pos_long":"-95"}]},"times":{"sched_out":"1788450000","est_in":"1788470000"},"aircraft":{"icao_code":"A321","name":"Airbus A321-200","reg":"N123JB"},"fuel":{"plan_ramp":"42000","plan_trip":"31000"},"params":{"time_generated":"1788449000","units":"lbs"}}""";
             var imported = SimBriefImporter.Parse(simBriefFixture, "test-pilot", false);
-            if (imported.Plan.FlightNumber != "JBU124" || imported.Plan.Origin != "KLAX" || imported.Plan.Destination != "KJFK" || imported.Plan.Registration != "N123JB" || imported.AircraftType != "A321-200" || imported.Plan.AircraftType != "A321-200" || imported.Plan.PlannedTripFuel != 31000 || imported.Plan.FuelUnits != "LBS" || imported.CruiseAltitudeFeet != 35000 || imported.RampFuel != 42000 || imported.FuelUnits != "LBS" || imported.Plan.DepartureGate != "52A" || imported.Plan.ArrivalGate != "12" || imported.Plan.GateAssignmentConfidence != "High" || imported.Plan.Route != "KLAX/25R N0470F350 DCT TEST KJFK/22L" || imported.Plan.RoutePoints?.Count != 4 || imported.Plan.RoutePoints[0].Ident != "KLAX" || imported.Plan.RoutePoints[^1].Ident != "KJFK")
+            var scheduled=SimBriefImporter.Parse(simBriefFixture.Replace("\"est_in\":\"1788470000\"","\"est_in\":\"1788470000\",\"sched_in\":\"1788469800\""),"test-pilot",false);
+            if(scheduled.Plan.PlannedArrivalUtc.ToUnixTimeSeconds()!=1788469800)throw new InvalidOperationException("Scheduled IN must use sched_in independently of the dispatch estimate.");
+            if(scheduled.Plan.DispatchEstimatedArrivalUtc?.ToUnixTimeSeconds()!=1788470000||imported.Plan.PlannedArrivalUtc!=imported.Plan.DispatchEstimatedArrivalUtc)throw new InvalidOperationException("SimBrief estimated IN must survive independently, including legacy est_in-only releases.");
+            if (imported.Plan.FlightNumber != "JBU124" || imported.Plan.Origin != "KLAX" || imported.Plan.Destination != "KJFK" || imported.Plan.Registration != "N123JB" || imported.AircraftType != "A321-200" || imported.Plan.AircraftType != "A321-200" || imported.Plan.PlannedTripFuel != 31000 || imported.Plan.FuelUnits != "LBS" || imported.CruiseAltitudeFeet != 35000 || imported.Plan.CruiseAltitudeFeet != 35000 || imported.RampFuel != 42000 || imported.FuelUnits != "LBS" || imported.Plan.DepartureGate != "52A" || imported.Plan.ArrivalGate != "12" || imported.Plan.GateAssignmentConfidence != "High" || imported.Plan.Route != "KLAX/25R N0470F350 DCT TEST KJFK/22L" || imported.Plan.RoutePoints?.Count != 4 || imported.Plan.RoutePoints[0].Ident != "KLAX" || imported.Plan.RoutePoints[^1].Ident != "KJFK")
                 throw new InvalidOperationException("SimBrief briefing fields were not mapped into the active flight.");
+            var currentFuelSchema=SimBriefImporter.Parse(simBriefFixture.Replace("\"plan_trip\":\"31000\"","\"enroute_burn\":\"31000\""),"test-pilot",false);
+            if(currentFuelSchema.Plan.PlannedTripFuel!=31000)throw new InvalidOperationException("Current SimBrief enroute fuel burn was not mapped into the active flight.");
             var recoveryDirectory=Path.Combine(outputDirectory,"flight-recovery-test");
             ActiveFlightPlanStore.Save(imported.Plan,recoveryDirectory);
             var recoveryEvent=new TrackingEventEntry(DateTimeOffset.Parse("2026-09-09T10:15:00Z"),"Takeoff / airborne","Liftoff confirmed","Liftoff confirmed • IAS 150 KT");
-            var recoveryState=new FlightRecoveryState(imported.Plan.FlightNumber,imported.Plan.PlannedDepartureUtc,"FLIGHT LAB","A321 TEST",FlightPhase.Airborne,
+            var recoveryState=new FlightRecoveryState(imported.Plan.FlightNumber,imported.Plan.PlannedDepartureUtc,"MSFS 2024","A321 TEST",FlightPhase.Airborne,
                 DateTimeOffset.Parse("2026-09-09T10:16:00Z"),new Telemetry(DateTimeOffset.Parse("2026-09-09T10:16:00Z"),false,155,false,true,AltitudeFeet:double.NaN),.18,
                 DateTimeOffset.Parse("2026-09-09T10:00:00Z"),null,[new FlightEvent(FlightPhase.TaxiOut,DateTimeOffset.Parse("2026-09-09T10:00:00Z")),new FlightEvent(FlightPhase.Airborne,DateTimeOffset.Parse("2026-09-09T10:15:00Z"))],[recoveryEvent],new FlightTrackingEventMonitor().CaptureState(),DateTimeOffset.UtcNow);
             FlightRecoveryStore.Save(recoveryState,recoveryDirectory);
@@ -134,8 +139,8 @@ internal static class DesktopSmokeTest
                 throw new InvalidOperationException("Clear active flight did not remove assignment and recovery state.");
             var suggestedGates=GateAssignmentResolver.Resolve("DAL","DAL742","KJFK","KLAX",DateTimeOffset.Parse("2026-09-07T12:00:00Z"),"");
             var repeatedGates=GateAssignmentResolver.Resolve("DAL","DAL742","KJFK","KLAX",DateTimeOffset.Parse("2026-09-07T12:00:00Z"),"");
-            if(suggestedGates.DepartureGate is null||suggestedGates.ArrivalGate is null||suggestedGates!=repeatedGates||suggestedGates.Confidence!="Suggested")
-                throw new InvalidOperationException("Gate catalog suggestions were not stable for the same flight and date.");
+            if(suggestedGates.DepartureGate is not null||suggestedGates.ArrivalGate is not null||suggestedGates!=repeatedGates||suggestedGates.Confidence!="None")
+                throw new InvalidOperationException("Unknown gates must remain unassigned.");
             var diagnostics = Path.Combine(outputDirectory, "diagnostic-database-test");
             var testLogs = Path.Combine(diagnostics, "TestLogs");
             var crashes = Path.Combine(diagnostics, "CrashReports");
@@ -157,6 +162,7 @@ internal static class DesktopSmokeTest
             LiveIdentitySmokeTest.Run(window, outputDirectory);
             await DiagnosticIndexSmokeTest.RunAsync(outputDirectory);
             await ProgramMonitorSmokeTest.RunAsync(window, outputDirectory);
+            await TrackingIntegrationSmokeTest.RunAsync(window, outputDirectory);
             File.WriteAllText(Path.Combine(outputDirectory, "desktop-smoke.json"), JsonSerializer.Serialize(new
             {
                 passed = true, checks = new[] { "WPF startup", "embedded replay", "close-to-tray preserves replay", "downstream delays", "tray restore", "reset", "SQLite fleet counts and N414DZ identity", "case-insensitive fleet search and no-results state", "active-flight assignment window", "timeline scrubber window and snapshot contract", "debrief window and segment/delay contract", "live-tracking recorder feeds the same timeline/debrief windows", "SimBrief JSON mapping", "active flight recovery round-trip and clear", "SQLite diagnostic file index", "crash report serialization", "flight history records a replay run", "Pilot Logbook renders a completed record" },

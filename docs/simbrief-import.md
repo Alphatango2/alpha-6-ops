@@ -1,5 +1,12 @@
 # SimBrief import — 0.12
 
+## Current gate behavior — 0.19.0 / checkpoint 7.14
+
+The historical catalog behavior below is retired. Imports now use explicit
+SimBrief gate notes only. Unknown gates remain unassigned. Use **Assign gates**
+in Dispatch or Flight Tracking to enter compact gate identifiers without
+resetting an active flight. Live provider lookup is not configured or included.
+
 The active-flight assignment window can retrieve the latest generated SimBrief OFP using a Navigraph Alias/SimBrief username. It calls the official JSON form of the latest-OFP endpoint documented at https://developers.navigraph.com/docs/simbrief/fetching-ofp-data. OPS does not request or store a Navigraph password.
 
 The importer maps airline and flight number, origin, destination, aircraft type, registration, scheduled-out, estimated-in, route, initial cruise altitude, ramp fuel, fuel units and briefing generation time. The operational tracker uses scheduled-out and estimated-in as its initial timing. Once actual block-out is observed, its existing delay-adjusted ETA rule applies.

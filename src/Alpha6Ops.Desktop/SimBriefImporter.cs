@@ -70,26 +70,35 @@ internal static class SimBriefImporter
         var origin = Text("origin", "icao_code").Trim().ToUpperInvariant();
         var destination = Text("destination", "icao_code").Trim().ToUpperInvariant();
         var departure = DateTimeOffset.FromUnixTimeSeconds(Epoch(Text("times", "sched_out"), "scheduled departure"));
-        var arrivalValue = Text("times", "est_in");
-        if (string.IsNullOrWhiteSpace(arrivalValue)) arrivalValue = Text("times", "sched_in");
-        var arrival = DateTimeOffset.FromUnixTimeSeconds(Epoch(arrivalValue, "estimated arrival"));
+        var arrivalValue = Text("times", "sched_in");
+        if (string.IsNullOrWhiteSpace(arrivalValue)) arrivalValue = Text("times", "est_in");
+        var arrival = DateTimeOffset.FromUnixTimeSeconds(Epoch(arrivalValue, "scheduled arrival"));
+        DateTimeOffset? estimatedArrival=long.TryParse(Text("times","est_in"),out var estimatedEpoch)&&estimatedEpoch>departure.ToUnixTimeSeconds()?DateTimeOffset.FromUnixTimeSeconds(estimatedEpoch):null;
         var generated = DateTimeOffset.FromUnixTimeSeconds(Epoch(Text("params", "time_generated"), "briefing generation time"));
         if (flight.Length < 2 || origin.Length != 4 || destination.Length != 4 || arrival <= departure)
             throw new InvalidDataException("The latest SimBrief briefing has incomplete flight identification or timing data.");
         int? altitude = int.TryParse(Text("general", "initial_altitude"), out var altitudeValue) ? altitudeValue : null;
         double? fuel = double.TryParse(Text("fuel", "plan_ramp"), NumberStyles.Float, CultureInfo.InvariantCulture, out var fuelValue) ? fuelValue : null;
-        double? tripFuel=double.TryParse(Text("fuel","plan_trip"),NumberStyles.Float,CultureInfo.InvariantCulture,out var tripFuelValue)?tripFuelValue:null;
+        var tripFuelText=Text("fuel","plan_trip");if(string.IsNullOrWhiteSpace(tripFuelText))tripFuelText=Text("fuel","enroute_burn");
+        double? tripFuel=double.TryParse(tripFuelText,NumberStyles.Float,CultureInfo.InvariantCulture,out var tripFuelValue)?tripFuelValue:null;
         var fuelUnits=Text("params", "units").Trim().ToUpperInvariant();
         var noteParts=new List<string>();CollectNotes(root,noteParts);var gates=GateAssignmentResolver.Resolve(airline,flight,origin,destination,departure,string.Join(" ",noteParts));
         var route=BuildFiledRoute(Text("general","route_ifps"),Text("general","route"),origin,Text("origin","plan_rwy"),destination,Text("destination","plan_rwy"),Text("general","initial_speed"),Text("general","initial_altitude"));
         var routePoints=ReadRoutePoints(root,origin,destination);
         var aircraftType=AircraftDisplayName(Text("aircraft","name"),Text("aircraft", "icao_code"));
+        var departureOffset=UtcOffsetMinutes(Text("origin","timezone"));var arrivalOffset=UtcOffsetMinutes(Text("destination","timezone"));
         var plan = new ActiveFlightPlan(flight, Text("aircraft", "reg").Trim().ToUpperInvariant(), origin, destination, departure, arrival,
-            "SimBrief", username, generated,gates.DepartureGate,gates.ArrivalGate,gates.Source,gates.Confidence,route,routePoints,aircraftType,tripFuel,fuelUnits,generated.ToUnixTimeSeconds().ToString(CultureInfo.InvariantCulture));
+            "SimBrief", username, generated,gates.DepartureGate,gates.ArrivalGate,gates.Source,gates.Confidence,route,routePoints,aircraftType,tripFuel,fuelUnits,generated.ToUnixTimeSeconds().ToString(CultureInfo.InvariantCulture),altitude,departureOffset,arrivalOffset,estimatedArrival);
         double? payload=double.TryParse(Text("weights","payload"),NumberStyles.Float,CultureInfo.InvariantCulture,out var payloadValue)?payloadValue:null;
         int? passengers=int.TryParse(Text("weights","pax_count"),NumberStyles.Integer,CultureInfo.InvariantCulture,out var paxValue)?paxValue:null;
         double? distance=double.TryParse(Text("general","route_distance"),NumberStyles.Float,CultureInfo.InvariantCulture,out var distanceValue)?distanceValue:null;
         return new(plan, generated, aircraftType, route, altitude, fuel, fuelUnits, fromCache,payload,fuelUnits,passengers,distance);
+    }
+
+    private static int? UtcOffsetMinutes(string value)
+    {
+        if(!double.TryParse(value,NumberStyles.Float,CultureInfo.InvariantCulture,out var hours)||hours is < -14 or > 14)return null;
+        return (int)Math.Round(hours*60,MidpointRounding.AwayFromZero);
     }
 
     private static string BuildFiledRoute(string ifps,string basic,string origin,string departureRunway,string destination,string arrivalRunway,string speed,string altitude)

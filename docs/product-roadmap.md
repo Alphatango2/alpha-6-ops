@@ -1,3 +1,7 @@
+# Current release: v0.22.0
+
+Flight Lab was retired after checkpoint 7.13. It is no longer built, shipped or connectable from OPS. Recorded-flight replay testing remains. References below describe earlier checkpoints, not current companion availability.
+
 # Product brief and delivery plan
 
 Alpha 6 OPS is airline operations for MSFS 2024 under Alpha 6 Designs. The product promise is a persistent airline day: the aircraft you fly has a previous leg and a next leg, and your arrival changes what happens next. ACARS-style telemetry is an input to this experience.
@@ -69,3 +73,60 @@ Agree on telemetry units, UTC clock source, event IDs, assignment scope and API 
 ## After MVP
 
 Extend to aircraft network delay propagation and swaps; passenger connections and reaccommodation; crew duty/legality with explicit rulesets; maintenance/MEL restrictions; diversions and IRROPS actions; richer OCC; white-label tenant customization; versioned API/webhooks; and optional voice company/dispatch. Each new subsystem first needs deterministic state/rules and auditable commands, then conversational presentation. Avoid building these engines before the one-aircraft operational loop is reliable.
+# Checkpoint 7.14 local release
+
+v0.19.0 addresses JST724 ETA, UTC display, chronological events, neutral route
+wording and dispatch gate entry. See [checkpoint-7.14.md](checkpoint-7.14.md).
+Real-world gate API integration remains dependent on provider credentials and
+coverage validation. ANG2 A220 validation is now reviewed in
+[ANG2-flight-review.md](ANG2-flight-review.md).
+
+## Checkpoint 7.15 (local)
+
+Unify observed flight state across the hero, tracker and history; introduce
+schedule correction and trust handling; preserve actual milestones; improve
+engine-data validity and block-in decisions; add persistent map follow; and
+exercise these paths together in regression tests. Include flap-selection versus
+surface-movement handling and compact gate fields in initial Dispatch, feeding
+tracking and a reusable local gate-history database. Remove Assign Gates from
+the tracking header; defer live gate providers. See
+[checkpoint-7.15.md](checkpoint-7.15.md). Delivered locally in v0.20.0; see [release-0.20.0.md](release-0.20.0.md) for validation and remaining live-sensor verification.
+
+## Checkpoint 7.16 (local)
+
+Use the JST760 A321 validation to correct A32x flap labels and surface
+confirmation, preserve a visible engine-shutdown transition during normal spool
+decay, gate PIREP readiness on recorded block-in, refresh Dispatch immediately
+after closeout, and clean up unstable preflight fuel and parking-brake wording.
+Show the resolved departure and arrival airport names beneath their ICAO codes
+in both Dispatch release states, using the same airport catalog and unavailable
+fallback as the dashboard hero. Replace the oversized gate fields with a compact
+two-column Gate Assignments panel, clear saved-gate controls and locally learned
+recommendations ranked by airport, airline ICAO, aircraft family, operation and
+usage history. Recommendations must be identified as local history and require
+pilot confirmation because they do not represent live gate availability. Add
+JST760 to production replay coverage before another full flight. See
+[JST760-flight-review.md](JST760-flight-review.md) and
+[checkpoint-7.16.md](checkpoint-7.16.md). Delivered locally in v0.21.0; no
+GitHub publication.
+
+## Checkpoint 7.17 (v0.22.0)
+
+QLK1274 A220 validation exposes a shared route-progress reacquisition failure
+that freezes airborne progress and corrupts ETA. Prioritize that correction,
+stale-estimate handling, missing-registration association, A220 flap labels and
+surface wording, separate scheduled/estimated arrival fields, and accurate
+engine-evidence wording. Keep the Dispatch visual work below. See
+[QLK1274-flight-review.md](QLK1274-flight-review.md) and
+[checkpoint-7.17.md](checkpoint-7.17.md). Implemented with nine recorded-flight
+regressions and native presentation checks. Publication includes the accumulated
+local checkpoints 7.13–7.16. A new live simulator flight remains the next validation.
+
+- Correct the Dispatch route-header hierarchy so each airport name is left-aligned
+  with its ICAO code. Preserve the existing departure/arrival role label beneath
+  the airport name, consistent spacing on both sides, and clean wrapping for long
+  international airport names.
+- Strengthen the visual hierarchy of the Dispatch **Gate Assignments** heading so
+  it is immediately recognizable as a section title. Increase its prominence with
+  clearer size, weight, color or an understated section accent while retaining the
+  compact gate-entry layout.

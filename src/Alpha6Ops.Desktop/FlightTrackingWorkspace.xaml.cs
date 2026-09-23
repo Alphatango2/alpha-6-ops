@@ -14,6 +14,11 @@ public partial class FlightTrackingWorkspace : UserControl
 {
     internal event EventHandler? FlightDeckRequested;
     internal event EventHandler? DispatchRequested;
+    internal event EventHandler? GatesRequested;
+    internal event EventHandler? ConfirmBlockInRequested;
+    internal event EventHandler? ScheduleRequested;
+    private void ConfirmBlockIn_Click(object sender,RoutedEventArgs e)=>ConfirmBlockInRequested?.Invoke(this,EventArgs.Empty);
+    private void Schedule_Click(object sender,RoutedEventArgs e)=>ScheduleRequested?.Invoke(this,EventArgs.Empty);
     internal Func<bool>? PirepSubmissionRequested;
     internal event EventHandler? PirepCloseoutCompleted;
 
@@ -21,41 +26,46 @@ public partial class FlightTrackingWorkspace : UserControl
 
     internal void Render(ActiveFlightPlan? plan, string? simulatorAircraft, string phase, string status,
         DateTimeOffset? actualOut, DateTimeOffset? actualIn, DateTimeOffset? estimatedIn, double progress,
-        IEnumerable<TrackingEventEntry> events, bool connected,Telemetry? telemetry=null,double? routeProgress=null)
+        IEnumerable<TrackingEventEntry> events, bool connected,Telemetry? telemetry=null,double? routeProgress=null,bool assignmentVerified=true,bool routeReliable=true)
     {
         EmptyState.Visibility=plan is null?Visibility.Visible:Visibility.Collapsed;
         ActiveState.Visibility=plan is null?Visibility.Collapsed:Visibility.Visible;
         if(plan is null)return;
         FlightNumberText.Text=plan.FlightNumber;
         RouteText.Text=$"{plan.Origin}  →  {plan.Destination}";
-        AircraftText.Text=!string.IsNullOrWhiteSpace(plan.AircraftType)?plan.AircraftType:simulatorAircraft??"—";
+        AircraftText.Text=AircraftIdentity.CanonicalType(plan.AircraftType,simulatorAircraft);
         PhaseText.Text=phase;
         StatusText.Text=status;
         var complete=phase.Contains("COMPLETE",StringComparison.OrdinalIgnoreCase);
+        var pirepReady=complete&&actualIn is not null;
         TrackingMap.SetRoute(plan.RoutePoints);
         TrackingMap.SetTelemetry(telemetry,routeProgress);
-        TrackingSubtitle.Text=connected?"ACTIVE FLIGHT • LIVE TELEMETRY":"ACTIVE ASSIGNMENT • READY FOR SIMULATOR";
-        ScheduledOutText.Text=plan.PlannedDepartureUtc.UtcDateTime.ToString("dd MMM • HH:mm'Z'");
-        ScheduledInText.Text=plan.PlannedArrivalUtc.UtcDateTime.ToString("dd MMM • HH:mm'Z'");
-        ActualOutText.Text=actualOut?.UtcDateTime.ToString("HH:mm:ss'Z'")??"—";
+        TrackingSubtitle.Text=connected?(assignmentVerified?"ACTIVE FLIGHT • LIVE TELEMETRY":"ASSIGNMENT REVIEW • OBSERVED LIVE TELEMETRY"):telemetry is not null?"LAST OBSERVATION • TELEMETRY UNAVAILABLE":"ACTIVE ASSIGNMENT • READY FOR SIMULATOR";
+        ScheduledOutText.Text=FlightClock.FormatScheduled(plan.PlannedDepartureUtc,null);
+        ScheduledInText.Text=FlightClock.FormatScheduled(plan.PlannedArrivalUtc,null);
+        ActualOutText.Text=actualOut?.UtcDateTime.ToString("HH:mm'Z'")??"—";
         DepartureGateText.Text=plan.DepartureGate??"—";ArrivalGateText.Text=plan.ArrivalGate??"—";
-        var continuousProgress=complete?100:TrackingMap.HasLiveAircraft?TrackingMap.CompletedFraction*100:progress;
+        DepartureGateText.ToolTip=ArrivalGateText.ToolTip=plan.GateAssignmentSource??"Unassigned";
+        var continuousProgress=routeProgress is{} fractionValue?fractionValue*100:progress;
         var fraction=continuousProgress/100;
-        var remaining=FlightMetrics.RemainingDistanceNm(plan.RoutePoints,fraction);
+        var remaining=routeReliable?FlightMetrics.RemainingDistanceNm(plan.RoutePoints,fraction):double.NaN;
         DistanceRemainingText.Text=double.IsFinite(remaining)?$"{remaining:0} NM":"— NM";
-        DateTimeOffset? liveEta=null;
-        if(telemetry is {OnGround:false,GroundSpeedKnots:>=60}&&double.IsFinite(remaining))liveEta=telemetry.At.AddHours(remaining/Math.Max(telemetry.GroundSpeedKnots,100));
-        var arrival=actualIn??liveEta;
-        ArrivalText.Text=arrival?.UtcDateTime.ToString("HH:mm:ss'Z'")??"—";
-        if(actualIn is not null)ScheduleVarianceText.Text=Variance(actualIn.Value-plan.PlannedArrivalUtc,"ACTUAL");
-        else if(liveEta is not null)ScheduleVarianceText.Text=Variance(liveEta.Value-plan.PlannedArrivalUtc,"ESTIMATE");
-        else ScheduleVarianceText.Text="WAITING FOR AIRBORNE DATA";
+        var arrival=actualIn??estimatedIn;
+        ArrivalText.Text=arrival?.UtcDateTime.ToString("HH:mm'Z'")??"—";
+        var scheduleValid=actualOut is {} outAt?FlightClock.DepartureScheduleIsPlausible(plan,outAt):telemetry is {} t&&FlightClock.ScheduleIsPlausible(plan,t.At);
+        ScheduleReviewButton.Visibility=telemetry is not null&&!scheduleValid?Visibility.Visible:Visibility.Collapsed;
+        ScheduleReviewButton.ToolTip=telemetry is {} clock?$"Simulator {clock.At:dd MMM yyyy HH:mm}Z • Scheduled OUT {plan.PlannedDepartureUtc:dd MMM yyyy HH:mm}Z":null;
+        if(!scheduleValid)ScheduleVarianceText.Text="SCHEDULE / SIM CLOCK REVIEW";
+        else if(actualIn is not null)ScheduleVarianceText.Text=Variance(actualIn.Value-plan.PlannedArrivalUtc,"ACTUAL");
+        else if(estimatedIn is not null)ScheduleVarianceText.Text=Variance(estimatedIn.Value-plan.PlannedArrivalUtc,"ESTIMATE");
+        else ScheduleVarianceText.Text=complete?"ACTUAL IN UNAVAILABLE":!connected&&telemetry is not null?"TELEMETRY UNAVAILABLE • ESTIMATE PENDING":!routeReliable?"ROUTE POSITION REVIEW • ESTIMATE PENDING":phase.Contains("TAXI IN",StringComparison.OrdinalIgnoreCase)?"ARRIVAL ESTIMATE PENDING":"WAITING FOR AIRBORNE DATA";
         UpdateProgress(continuousProgress,true);
-        ProgressAircraftIcon.Visibility=complete?Visibility.Collapsed:Visibility.Visible;SubmitPirepButton.Visibility=complete?Visibility.Visible:Visibility.Collapsed;ProgressBar.Foreground=complete?OpsUi.Brush("#55D66B"):(Brush)FindResource("OpsYellow");ProgressText.Foreground=complete?OpsUi.Brush("#55D66B"):(Brush)FindResource("OpsYellow");ProgressBar.Margin=complete?new Thickness(0,0,175,0):new Thickness(0);
-        var rows=events.Reverse().ToArray();EventList.ItemsSource=rows;EventEmptyText.Visibility=rows.Length==0?Visibility.Visible:Visibility.Collapsed;
+        ProgressAircraftIcon.Visibility=complete?Visibility.Collapsed:Visibility.Visible;SubmitPirepButton.Visibility=pirepReady?Visibility.Visible:Visibility.Collapsed;ProgressBar.Foreground=complete?OpsUi.Brush("#55D66B"):(Brush)FindResource("OpsYellow");ProgressText.Foreground=complete?OpsUi.Brush("#55D66B"):(Brush)FindResource("OpsYellow");ProgressBar.Margin=pirepReady?new Thickness(0,0,175,0):new Thickness(0);
+        var rows=events.Reverse().OrderByDescending(entry=>entry.At).ToArray();EventList.ItemsSource=rows;EventEmptyText.Visibility=rows.Length==0?Visibility.Visible:Visibility.Collapsed;
     }
 
     private void FlightDeck_Click(object sender,RoutedEventArgs e)=>FlightDeckRequested?.Invoke(this,EventArgs.Empty);
+    private void Gates_Click(object sender,RoutedEventArgs e)=>GatesRequested?.Invoke(this,EventArgs.Empty);
     private void Dispatch_Click(object sender,RoutedEventArgs e)=>DispatchRequested?.Invoke(this,EventArgs.Empty);
     private async void SubmitPirep_Click(object sender,RoutedEventArgs e)
     {
