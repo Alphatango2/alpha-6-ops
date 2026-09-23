@@ -87,7 +87,8 @@ public partial class MainWindow : Window
         coordinator.DiagnosticsChanged += DiagnosticsChanged;
         DiagnosticsChanged(this,EventArgs.Empty);
         Closed += (_,_) => DisposePresentation();
-        RuntimeChanged(this,EventArgs.Empty);
+        if(coordinator.Snapshot.Assignment is not null || coordinator.Snapshot.Telemetry is not null) RuntimeChanged(this,EventArgs.Empty);
+        else RenderConnection(coordinator.Snapshot);
     }
 
     internal void RestoreDashboardPreferences(UserPreferences? saved)

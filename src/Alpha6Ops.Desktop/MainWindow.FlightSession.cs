@@ -40,15 +40,23 @@ public partial class MainWindow
     {
         if(presentationDisposed||exiting)return;
         var snapshot=flightState;
-        ConnectionText.Text=snapshot.ConnectionMessage;
+        RenderConnection(snapshot);
         LiveText.Text=snapshot.LiveDescription;
         if(snapshot.LogStatus.Length>0)LogStatusText.Text=snapshot.LogStatus;
-        ConnectButton.IsEnabled=ReplayButton.IsEnabled=ResetButton.IsEnabled=!snapshot.ConnectionActive&&!running;
-        DisconnectButton.IsEnabled=snapshot.ConnectionActive;
         LiveTimelineButton.IsEnabled=LiveDebriefButton.IsEnabled=snapshot.Phase is not null;
         FlightTrackingView.ConfirmBlockInButton.Visibility=snapshot.CanConfirmBlockIn?Visibility.Visible:Visibility.Collapsed;
         if(!milestones.SequenceEqual(snapshot.Milestones)){milestones.Clear();foreach(var item in snapshot.Milestones)milestones.Add(item);}
         if(snapshot.Phase is {} phase)tray.Text="Alpha 6 OPS — Live "+phase;
+        RefreshLiveTracker(snapshot.Aircraft,snapshot.SimulatorUtc,snapshot.Phase,snapshot.TrackingStatus);
+    }
+
+    private void RenderConnection(FlightSessionSnapshot snapshot)
+    {
+        // Initial connection presentation also applies without an active flight;
+        // it must not replace the independent fixture-preview dashboard.
+        ConnectionText.Text=snapshot.ConnectionMessage;
+        ConnectButton.IsEnabled=ReplayButton.IsEnabled=ResetButton.IsEnabled=!snapshot.ConnectionActive&&!running;
+        DisconnectButton.IsEnabled=snapshot.ConnectionActive;
         if(renderedConnection!=snapshot.Connection)
         {
             renderedConnection=snapshot.Connection;
@@ -63,7 +71,6 @@ public partial class MainWindow
             };
             SetConnectionBadge(label,color,background);
         }
-        RefreshLiveTracker(snapshot.Aircraft,snapshot.SimulatorUtc,snapshot.Phase,snapshot.TrackingStatus);
     }
 
     private void DisposePresentation()
