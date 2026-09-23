@@ -17,10 +17,10 @@ internal static class TrackingIntegrationSmokeTest
     internal static async Task RunAsync(MainWindow window,string directory)
     {
         const BindingFlags flags=BindingFlags.Instance|BindingFlags.NonPublic;
-        void Set(string name,object? value)=>typeof(MainWindow).GetField(name,flags)!.SetValue(window,value);
-        var reset=typeof(MainWindow).GetMethod("ResetLiveTrackingState",flags)!.CreateDelegate<Action>(window);
-        var resetIdentity=typeof(MainWindow).GetMethod("ResetLiveIdentity",flags)!.CreateDelegate<Action>(window);
-        var observe=typeof(MainWindow).GetMethod("ObserveLive",flags)!.CreateDelegate<Action<LiveReading>>(window);
+        void Set(string name,object? value)=>FlightSessionDiagnosticAccess.Set(window,name,value);
+        var reset=(Action)(()=>FlightSessionDiagnosticAccess.Invoke(window,"ResetLiveTrackingState"));
+        var resetIdentity=(Action)(()=>FlightSessionDiagnosticAccess.Invoke(window,"ResetLiveIdentity"));
+        var observe=(Action<LiveReading>)(value=>FlightSessionDiagnosticAccess.Invoke(window,"ObserveLive",value));
         var checks=new List<string>();
         void Check(bool value,string label){if(!value)throw new InvalidOperationException(label);checks.Add(label);}
         reset();resetIdentity();
@@ -114,7 +114,7 @@ internal static class TrackingIntegrationSmokeTest
             Check(window.DispatchView.ReviewGates.RecommendedDeparture=="B7"&&window.DispatchView.ReviewGates.Departure=="","local-history recommendation waits for pilot confirmation");
             window.DispatchView.ReviewGates.ConfirmDepartureRecommendation();Check(window.DispatchView.ReviewGates.Departure=="B7","pilot confirmation applies the learned departure gate");
             foreach(var width in new[]{1920,1366,1100}){window.Width=width;window.UpdateLayout();await window.Dispatcher.InvokeAsync(()=>{},System.Windows.Threading.DispatcherPriority.ApplicationIdle);DashboardSmokeTest.Capture(window,Path.Combine(directory,$"dispatch-7.15-{width}.png"));}
-            window.DispatchView.Render(mismatch,"FLIGHT CLOSEOUT");Set("activePlan",mismatch);typeof(MainWindow).GetMethod("CompletePirepCloseout",flags)!.Invoke(window,null);
+            window.DispatchView.Render(mismatch,"FLIGHT CLOSEOUT");Set("activePlan",mismatch);FlightSessionDiagnosticAccess.Invoke(window,"FinalizeFlight");
             Check(!window.DispatchView.HasActiveRelease,"PIREP closeout immediately clears the rendered Dispatch release");
             reset();resetIdentity();
             var bypass=plan with{Registration="C-SYNC",AircraftType="Airbus A220-300",RoutePoints=[new("YSSY",-33.946,151.177111),new("SID1",-34.246,151.177111),new("SID2",-34.246,151.477111),new("JOIN",-33.946,151.477111),new("END",-33.946,155.177111)]};
@@ -137,16 +137,16 @@ internal static class TrackingIntegrationSmokeTest
             for(var step=1;step<=100;step++)BypassSample(1250+step*5,-32.946-step*.01,151.927111);
             Check(window.FlightTrackingView.ArrivalText.Text!="—"&&window.FlightTrackingView.DistanceRemainingText.Text!="— NM","continuous route rejoin restores the live estimate");
             var beforeDisconnectEstimate=window.FlightTrackingView.ArrivalText.Text;
-            typeof(MainWindow).GetMethod("MarkLiveUnavailable",flags)!.Invoke(window,null);
+            FlightSessionDiagnosticAccess.Invoke(window,"MarkLiveUnavailable");
             window.ShowFlightTracking();
             Check(window.FlightTrackingView.ArrivalText.Text=="—"&&!window.FlightTrackingView.ScheduleVarianceText.Text.Contains("MIN "),"telemetry loss withdraws an otherwise fresh last-sample estimate and schedule variance");
             BypassSample(1755,-33.946,151.927111);
             Check(window.FlightTrackingView.ArrivalText.Text!="—","reconnect restores the live estimate without restarting the flight");
             var estimateShift=DateTime.ParseExact(window.FlightTrackingView.ArrivalText.Text,"HH:mm'Z'",System.Globalization.CultureInfo.InvariantCulture)-DateTime.ParseExact(beforeDisconnectEstimate,"HH:mm'Z'",System.Globalization.CultureInfo.InvariantCulture);
             Check(Math.Abs(estimateShift.TotalMinutes)<2,"short reconnect preserves established ETA instead of restarting schedule blending");
-            var pausedSample=((Telemetry)typeof(MainWindow).GetField("liveTelemetry",flags)!.GetValue(window)!) with{At=at.AddSeconds(1760),Paused=true};
+            var pausedSample=((Telemetry)FlightSessionDiagnosticAccess.Get(window,"liveTelemetry")!) with{At=at.AddSeconds(1760),Paused=true};
             observe(new("A220-300",pausedSample,new(new(-33.946,151.927111),null,null,true)));
-            typeof(MainWindow).GetMethod("MarkLiveUnavailable",flags)!.Invoke(window,null);
+            FlightSessionDiagnosticAccess.Invoke(window,"MarkLiveUnavailable");
             Check(window.FlightTrackingView.ArrivalText.Text=="—"&&window.FlightTrackingView.DistanceRemainingText.Text=="— NM","disconnect while paused also withdraws the cached estimate and distance");
             File.WriteAllText(Path.Combine(directory,"tracking-integration.json"),JsonSerializer.Serialize(new{passed=true,checks},new JsonSerializerOptions{WriteIndented=true}));
         }

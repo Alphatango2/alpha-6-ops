@@ -14,12 +14,11 @@ internal static class LiveIdentitySmokeTest
 {
     internal static void Run(MainWindow window, string directory)
     {
-        const BindingFlags flags = BindingFlags.Instance | BindingFlags.NonPublic;
-        void Set(string name, object? value) => typeof(MainWindow).GetField(name, flags)!.SetValue(window, value);
-        T Get<T>(string name) => (T)typeof(MainWindow).GetField(name, flags)!.GetValue(window)!;
-        var observe = typeof(MainWindow).GetMethod("ObserveLive", flags)!.CreateDelegate<Action<LiveReading>>(window);
-        var reset = typeof(MainWindow).GetMethod("ResetObservedSession", flags)!.CreateDelegate<Action<string>>(window);
-        var stale = typeof(MainWindow).GetMethod("MarkLiveUnavailable", flags)!.CreateDelegate<Action>(window);
+        void Set(string name, object? value) => FlightSessionDiagnosticAccess.Set(window,name,value);
+        T Get<T>(string name) => (T)FlightSessionDiagnosticAccess.Get(window,name)!;
+        var observe = (Action<LiveReading>)(value=>FlightSessionDiagnosticAccess.Invoke(window,"ObserveLive",value));
+        var reset = (Action<string>)(value=>FlightSessionDiagnosticAccess.Invoke(window,"ResetObservedSession",value));
+        var stale = (Action)(()=>FlightSessionDiagnosticAccess.Invoke(window,"MarkLiveUnavailable"));
         var checks = new List<string>();
         void Check(bool value, string label) { if (!value) throw new InvalidOperationException(label); checks.Add(label); }
         var originalPlan = Get<ActiveFlightPlan?>("activePlan");

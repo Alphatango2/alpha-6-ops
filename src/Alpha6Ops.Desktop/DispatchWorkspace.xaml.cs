@@ -25,8 +25,9 @@ public partial class DispatchWorkspace:UserControl
   AcceptButton.IsEnabled=DraftOfpButton.IsEnabled=RefreshButton.IsEnabled=CancelReviewButton.IsEnabled=false;
   try
   {
+   FlightAccepted?.Invoke(this,plan);activePlan=plan;acceptedReview=true;
    for(var frame=0;frame<7;frame++){AcceptButton.Content="SENDING TO DISPATCH"+new string('.',frame%4);await System.Threading.Tasks.Task.Delay(220);}
-   FlightAccepted?.Invoke(this,plan);activePlan=plan;acceptedReview=true;ReviewGates.Store?.Remember(plan);ReviewGates.Present(plan,true);ReleaseStateText.Text="FLIGHT ACCEPTED";ReviewNoticeText.Text="FLIGHT ACCEPTED • RELEASE SAVED LOCALLY • READY FOR FLIGHT TRACKING";AcceptButton.Content="VIEW FLIGHT TRACKING";AcceptButton.IsEnabled=true;DraftOfpButton.IsEnabled=RefreshButton.IsEnabled=CancelReviewButton.IsEnabled=true;
+   ReviewGates.Present(plan,true);ReleaseStateText.Text="FLIGHT ACCEPTED";ReviewNoticeText.Text="FLIGHT ACCEPTED • RELEASE SAVED LOCALLY • READY FOR FLIGHT TRACKING";AcceptButton.Content="VIEW FLIGHT TRACKING";AcceptButton.IsEnabled=true;DraftOfpButton.IsEnabled=RefreshButton.IsEnabled=CancelReviewButton.IsEnabled=true;
   }
   catch(Exception error) when(error is IOException or UnauthorizedAccessException or InvalidOperationException){ReviewNoticeText.Text="DISPATCH COULD NOT ACCEPT THE FLIGHT • "+error.GetBaseException().Message;AcceptButton.Content="TRY ACCEPT FLIGHT AGAIN";AcceptButton.IsEnabled=DraftOfpButton.IsEnabled=RefreshButton.IsEnabled=CancelReviewButton.IsEnabled=true;}
  }

@@ -5,8 +5,11 @@ using Alpha6Ops.Core;
 
 namespace Alpha6Ops.Desktop;
 
+internal enum TrackingEventCode { None, BlockOut, Liftoff, ConnectionLost }
+
 internal sealed record TrackingEventEntry(DateTimeOffset At,string Title,string Summary,string Detail,string Kind="operation")
 {
+    public TrackingEventCode Code { get; init; }
     public string Time => At.UtcDateTime.ToString("HH:mm:ss'Z'");
 }
 
@@ -66,7 +69,8 @@ internal sealed class FlightTrackingEventMonitor
         void AddOnce(string key,string title,string summary,string kind="operation")
         {
             var at=key is "block-out" or "liftoff" or "touchdown" or "block-in" or "go-around"?milestone?.At??sample.At:sample.At;
-            if(fired.Add(key))events.Add(Create(at,title,summary,sample,progress,plan,kind,estimatedIn));
+            if(fired.Add(key))events.Add(Create(at,title,summary,sample,progress,plan,kind,estimatedIn) with
+                {Code=key switch{"block-out"=>TrackingEventCode.BlockOut,"liftoff"=>TrackingEventCode.Liftoff,_=>TrackingEventCode.None}});
         }
         void AddStable(string key,bool condition,string title,string summary,int samples=3)
         {

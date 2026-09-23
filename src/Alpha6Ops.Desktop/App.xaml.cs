@@ -9,6 +9,26 @@ namespace Alpha6Ops.Desktop;
 
 public partial class App : Application
 {
+    private FlightSessionCoordinator? flightSession;
+    private readonly System.Collections.Generic.List<FlightSessionCoordinator> diagnosticSessions=[];
+
+    internal static FlightSessionCoordinator GetFlightSession(string? diagnosticDirectory)
+    {
+        var app=(App)Current;
+        if(diagnosticDirectory is null)
+        {
+            if(app.flightSession is null)
+            {
+                app.flightSession=new(CrashReporter.RootDirectory,false,new WpfFlightRuntimeDispatcher(app.Dispatcher));
+                app.flightSession.SetPilotName(UserPreferencesStore.Load()?.PilotName??"");
+            }
+            return app.flightSession;
+        }
+        var diagnostic=new FlightSessionCoordinator(diagnosticDirectory,true,new WpfFlightRuntimeDispatcher(app.Dispatcher));
+        app.diagnosticSessions.Add(diagnostic);
+        return diagnostic;
+    }
+
     protected override async void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
@@ -56,6 +76,8 @@ public partial class App : Application
 
     protected override void OnExit(ExitEventArgs e)
     {
+        flightSession?.Dispose();
+        foreach(var session in diagnosticSessions)session.Dispose();
         SingleInstance.Release();
         base.OnExit(e);
     }

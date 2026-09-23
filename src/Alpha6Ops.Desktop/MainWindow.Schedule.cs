@@ -23,12 +23,6 @@ public partial class MainWindow
     }
     internal void ApplyScheduleCorrection(DateTimeOffset departure,DateTimeOffset arrival)
     {
-        if(activePlan is null||arrival<=departure)throw new ArgumentException("Arrival must follow departure.");
-        var original=activePlan;var updated=activePlan with{PlannedDepartureUtc=departure.ToUniversalTime(),PlannedArrivalUtc=arrival.ToUniversalTime(),DispatchEstimatedArrivalUtc=null};
-        ActiveFlightPlanStore.Save(updated,stateDirectory);activePlan=updated;
-        RecordLog("schedule_corrected",liveLast,new{originalOut=original.PlannedDepartureUtc,originalIn=original.PlannedArrivalUtc,correctedOut=updated.PlannedDepartureUtc,correctedIn=updated.PlannedArrivalUtc,source="Pilot UTC correction"});
-        arrivalEstimator.Reset();if(currentLiveReading is {} reading)ReconcileLiveReading(reading);
-        if(liveRotation is not null){var leg=liveRotation.Legs[0] with{ScheduledOut=departure,ScheduledIn=arrival};liveRotation=liveRotation with{Legs=new[]{leg}};}
-        SaveFlightRecovery();RefreshLiveTracker(liveAircraft,liveLast,liveRecorder?.Phase,"Schedule updated • recorded actuals preserved");UpdateDispatchState();
+        coordinator.CorrectSchedule(departure,arrival);
     }
 }

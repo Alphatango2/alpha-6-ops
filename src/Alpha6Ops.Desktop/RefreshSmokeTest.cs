@@ -19,13 +19,13 @@ internal static class RefreshSmokeTest
     internal static async Task RunAsync(MainWindow window, string directory)
     {
         const BindingFlags flags = BindingFlags.Instance | BindingFlags.NonPublic;
-        void Set(string name, object? value) => typeof(MainWindow).GetField(name, flags)!.SetValue(window, value);
-        T Get<T>(string name) => (T)typeof(MainWindow).GetField(name, flags)!.GetValue(window)!;
+        void Set(string name, object? value) => FlightSessionDiagnosticAccess.Set(window,name,value);
+        T Get<T>(string name) => (T)FlightSessionDiagnosticAccess.Get(window,name)!;
         var refresh = typeof(MainWindow).GetMethod("RefreshRotation", flags)!.CreateDelegate<Action>(window);
-        var observe = typeof(MainWindow).GetMethod("ObserveLive", flags)!.CreateDelegate<Action<LiveReading>>(window);
+        var observe = (Action<LiveReading>)(value=>FlightSessionDiagnosticAccess.Invoke(window,"ObserveLive",value));
         var tracker = typeof(MainWindow).GetMethod("RefreshLiveTracker", flags)!
             .CreateDelegate<Action<string?, DateTimeOffset?, FlightPhase?, string>>(window);
-        var resetIdentity = typeof(MainWindow).GetMethod("ResetLiveIdentity", flags)!.CreateDelegate<Action>(window);
+        var resetIdentity = (Action)(()=>FlightSessionDiagnosticAccess.Invoke(window,"ResetLiveIdentity"));
         var checks = new List<string>();
         void Check(bool value, string label) { if (!value) throw new InvalidOperationException(label); checks.Add(label); }
         var states = new List<object>();

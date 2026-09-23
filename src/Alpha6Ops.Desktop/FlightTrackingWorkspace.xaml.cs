@@ -26,7 +26,7 @@ public partial class FlightTrackingWorkspace : UserControl
 
     internal void Render(ActiveFlightPlan? plan, string? simulatorAircraft, string phase, string status,
         DateTimeOffset? actualOut, DateTimeOffset? actualIn, DateTimeOffset? estimatedIn, double progress,
-        IEnumerable<TrackingEventEntry> events, bool connected,Telemetry? telemetry=null,double? routeProgress=null,bool assignmentVerified=true,bool routeReliable=true)
+        IEnumerable<TrackingEventEntry> events, bool connected,Telemetry? telemetry=null,double? routeProgress=null,bool assignmentVerified=true,bool routeReliable=true,bool complete=false,bool pirepReady=false)
     {
         EmptyState.Visibility=plan is null?Visibility.Visible:Visibility.Collapsed;
         ActiveState.Visibility=plan is null?Visibility.Collapsed:Visibility.Visible;
@@ -36,8 +36,6 @@ public partial class FlightTrackingWorkspace : UserControl
         AircraftText.Text=AircraftIdentity.CanonicalType(plan.AircraftType,simulatorAircraft);
         PhaseText.Text=phase;
         StatusText.Text=status;
-        var complete=phase.Contains("COMPLETE",StringComparison.OrdinalIgnoreCase);
-        var pirepReady=complete&&actualIn is not null;
         TrackingMap.SetRoute(plan.RoutePoints);
         TrackingMap.SetTelemetry(telemetry,routeProgress);
         TrackingSubtitle.Text=connected?(assignmentVerified?"ACTIVE FLIGHT • LIVE TELEMETRY":"ASSIGNMENT REVIEW • OBSERVED LIVE TELEMETRY"):telemetry is not null?"LAST OBSERVATION • TELEMETRY UNAVAILABLE":"ACTIVE ASSIGNMENT • READY FOR SIMULATOR";
@@ -70,8 +68,9 @@ public partial class FlightTrackingWorkspace : UserControl
     private async void SubmitPirep_Click(object sender,RoutedEventArgs e)
     {
         SubmitPirepButton.IsEnabled=false;
-        for(var frame=0;frame<7;frame++){SubmitPirepButton.Content="TRANSMITTING"+new string('.',frame%4);await Task.Delay(220);}
         if(PirepSubmissionRequested?.Invoke()!=true){SubmitPirepButton.Content="SUBMISSION FAILED • TRY AGAIN";SubmitPirepButton.IsEnabled=true;return;}
+        // Persistence and closeout have already finished in the command.
+        for(var frame=0;frame<7;frame++){SubmitPirepButton.Content="TRANSMITTING"+new string('.',frame%4);await Task.Delay(220);}
         SubmitPirepButton.Content="PIREP COMPLETE";ProgressText.Text="COMPLETE";await Task.Delay(1100);PirepCloseoutCompleted?.Invoke(this,EventArgs.Empty);
     }
     private void ProgressTrack_SizeChanged(object sender,SizeChangedEventArgs e)=>PositionProgressMarker(ProgressBar.Value);

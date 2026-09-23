@@ -57,7 +57,7 @@ public partial class MainWindow
         DispatchView.ConfigureGates(stateDirectory??CrashReporter.RootDirectory);
         DispatchView.GateValuesSaved+=(_,p)=>ApplyDispatchGates(p.DepartureGate,p.ArrivalGate);
         DispatchView.ScheduleRequested+=(_,_)=>CorrectSchedule();
-        FlightTrackingView.ConfirmBlockInRequested+=(_,_)=>{if(liveRecorder?.Phase==FlightPhase.TaxiIn&&OpsConfirmWindow.Ask(this,"Confirm parked at gate","Confirm you have reached your parking stand. Automatic engine/destination verification is incomplete.")){pilotConfirmedBlockIn=true;RecordLog("block_in_confirmation",liveLast,new{source="Pilot",destination=activePlan?.Destination});}};
+        FlightTrackingView.ConfirmBlockInRequested+=(_,_)=>{if(flightState.Phase==FlightPhase.TaxiIn&&OpsConfirmWindow.Ask(this,"Confirm parked at gate","Confirm you have reached your parking stand. Automatic engine/destination verification is incomplete.")){coordinator.ConfirmBlockIn();}};
         FlightTrackingView.ScheduleRequested+=(_,_)=>CorrectSchedule();
         FlightTrackingView.PirepSubmissionRequested=SubmitCompletedPirep;
         FlightTrackingView.PirepCloseoutCompleted+=(_,_)=>CompletePirepCloseout();
@@ -91,6 +91,7 @@ public partial class MainWindow
         var name=PilotNameBox.Text.Trim();
         PilotDisplayText.Text=name.Length==0?"Your flight deck":name;
         PilotDisplayText.ToolTip=name;
+        if(!initializingPresentation)coordinator.SetPilotName(name);
         PilotInitialsText.Text=name.Length==0?"A6":string.Concat(name.Split(' ',StringSplitOptions.RemoveEmptyEntries).Take(2).Select(p=>char.ToUpperInvariant(p[0])));
     }
     private void RefreshFleetSummary()
@@ -112,7 +113,7 @@ public partial class MainWindow
     private void RefreshDashboardFlight(bool live)
     {
         dashboardShowsLive=live;
-        var rotation=live ? liveRotation ?? (activePlan is null ? null : BuildLiveRotation(activePlan,liveAircraft,AircraftGroundProfile.Default)) : session.Rotation;
+        var rotation=live ? flightState.Rotation : session.Rotation;
         DashboardFlights=rotation is null ? [] : RotationPlanner.Project(rotation).Select(l=>new DashboardFlightRow(l,rotation.AircraftId)).ToArray();
         var hero=HeroFlight;
         if(hero is null)
@@ -236,7 +237,7 @@ public partial class MainWindow
         DashboardNavButton.ClearValue(Button.BackgroundProperty);DashboardNavButton.ClearValue(Button.ForegroundProperty);
         ClearDispatchSelection();
         FlightTrackingNavButton.Background=OpsUi.Brush("#FFDA00");FlightTrackingNavButton.Foreground=OpsUi.Brush("#080C0F");
-        RefreshFlightTrackingWorkspace(liveLast,liveRecorder?.Phase,StatusText.Text);
+        RefreshFlightTrackingWorkspace(liveLast,flightState.Phase,StatusText.Text);
     }
     internal void ShowPilotLogbook()
     {
@@ -254,25 +255,14 @@ public partial class MainWindow
     private void ClearDispatchSelection(){DispatchNavButton.ClearValue(Button.BackgroundProperty);DispatchNavButton.ClearValue(Button.ForegroundProperty);DispatchNavButton.ClearValue(Button.BorderBrushProperty);HeaderDispatchButton.ClearValue(Button.BackgroundProperty);HeaderDispatchButton.ClearValue(Button.ForegroundProperty);HeaderDispatchButton.ClearValue(Button.BorderBrushProperty);}
     private void AcceptDispatchFlight(ActiveFlightPlan plan)
     {
-        if(running||liveCancellation is not null)throw new InvalidOperationException("Finish the replay or disconnect the simulator before accepting a different flight.");
-        activePlan=plan;suppressObservedFlightAfterCloseout=false;ActiveFlightPlanStore.Save(activePlan,stateDirectory);FlightRecoveryStore.Delete(stateDirectory);ResetLiveTrackingState();ResetLiveIdentity();
-        RecordLog("flight_assignment_changed",null,activePlan);RefreshLiveTracker(null,null,null,"Flight accepted by Dispatch. Select View Flight Tracking when ready.");UpdateDispatchState();
+        if(running)throw new InvalidOperationException("Finish the replay before accepting a different flight.");
+        coordinator.AcceptAssignment(plan);
     }
-    private bool SubmitCompletedPirep()
-    {
-        if(activePlan is null||flightHistory is null||liveRecorder?.Phase!=FlightPhase.Complete||ActualFlightIn is null)return false;
-        var flightId=completedFlightHistoryId??flightHistory.ReadRecentFlights(100).FirstOrDefault(f=>string.Equals(f.FinalPhase,"Complete",StringComparison.OrdinalIgnoreCase)&&string.Equals(f.FlightNumber,activePlan.FlightNumber,StringComparison.OrdinalIgnoreCase))?.Id;
-        if(flightId is null)return false;
-        try{return flightHistory.SubmitPirep(flightId,new{activePlan.FlightNumber,activePlan.Origin,activePlan.Destination,activePlan.AircraftType,activePlan.Route,actualOut=ActualFlightOut,actualOff=liveRecorder.Events.FirstOrDefault(e=>e.Phase==FlightPhase.Airborne)?.At,actualOn=liveRecorder.Events.LastOrDefault(e=>e.Phase==FlightPhase.TaxiIn)?.At,actualIn=ActualFlightIn,actualSource="Observed simulator milestones",pilotConfirmedBlockIn,submittedUtc=DateTimeOffset.UtcNow,status="Completed",eventCount=trackingEvents.Count});}
-        catch(Exception error)when(error is IOException or UnauthorizedAccessException){CrashReporter.Write("pirep_submit",error);return false;}
-    }
-    private void CompletePirepCloseout()
-    {
-        if(activePlan is null)return;RecordLog("pirep_closeout_complete",null,new{activePlan.FlightNumber});FinishLog("pirep_submitted");ActiveFlightPlanStore.Delete(stateDirectory);FlightRecoveryStore.Delete(stateDirectory);activePlan=null;completedFlightHistoryId=null;ResetLiveTrackingState();ResetLiveIdentity();suppressObservedFlightAfterCloseout=true;RefreshLiveTracker(null,null,null,"PIREP complete • active flight cleared");UpdateDispatchState();ShowDashboard();
-    }
+    private bool SubmitCompletedPirep() => coordinator.SubmitPirep();
+    private void CompletePirepCloseout() => ShowDashboard();
     private void UpdateDispatchState()
     {
-        var state=activePlan is null?"IMPORT FLIGHT":liveRecorder?.Phase==FlightPhase.Complete?"FLIGHT CLOSEOUT":"VIEW RELEASE";
+        var state=activePlan is null?"IMPORT FLIGHT":flightState.Phase==FlightPhase.Complete?"FLIGHT CLOSEOUT":"VIEW RELEASE";
         DispatchSubtitleText.Text="FLIGHT DESK";HeroFlightDetailsButton.Content=activePlan is null?"OPEN DISPATCH    →":"VIEW FLIGHT TRACKING    →";DispatchView.Render(activePlan,state);
     }
     internal void OpenTools(){ToolsOverlay.Visibility=Visibility.Visible;PilotNameBox.Focus();}

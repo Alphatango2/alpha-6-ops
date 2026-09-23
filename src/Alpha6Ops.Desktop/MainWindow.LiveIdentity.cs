@@ -20,99 +20,11 @@ public partial class MainWindow
         nextSimulatorProcessCheck = DateTime.UtcNow.AddSeconds(5);
         SimulatorReadyAction = !diagnosticMode && SimulatorLauncher.IsRunning() ? "CLICK TO CONNECT" : "LAUNCH & CONNECT";
     }
-    private LiveReading? currentLiveReading;
-    private FlightAssociation liveAssociation = new(false, "FREE FLIGHT", []);
-    private DateTimeOffset? observedSessionStart;
-    private GeoPosition? observedStartPosition;
-    private bool observedStartOnGround;
-    private bool liveWasInMenu;
-    private bool liveDataCurrent;
-    private DateTime liveReceivedAt;
-    private string? arrivalMismatch;
-    private bool suppressObservedFlightAfterCloseout;
-    private bool CanRenderAssignedFlight => liveAssociation.Accepted && liveDataCurrent &&
-          currentLiveReading?.Evidence is { SimulationRunning: true, Position.IsValid: true };
 
-    private bool CanPresentCandidate
-    {
-        get
-        {
-            if(activePlan is null)return false;
-            if(liveAssociation.Accepted)return true;
-            if(currentLiveReading?.Evidence?.Route is {} route&&route.Origin==activePlan.Origin&&route.Destination==activePlan.Destination)return true;
-            var origin=AirportCatalog.Find(activePlan.Origin)?.Position;
-            if(origin is null&&activePlan.RoutePoints?.FirstOrDefault() is {} point)origin=new(point.Latitude,point.Longitude);
-            return origin is not null&&observedStartPosition is not null&&observedStartOnGround&&observedStartPosition.DistanceNm(origin)<=5;
-        }
-    }
 
-    private void ResetLiveIdentity()
-    {
-        currentLiveReading = null; observedSessionStart = null; observedStartPosition = null;
-        liveWasInMenu = false; liveDataCurrent = false; arrivalMismatch = null;
-        liveAssociation = new(false, "FREE FLIGHT", []);
-    }
-    private void ResetObservedSession(string reason)
-    {
-        routeTracker.Reset();arrivalEstimator.Reset();liveRouteProgress=null;
-        RecordLog("observed_session_reset", liveLast, new { reason });
-        if(liveFlightHistoryId is not null){RecordFlightEvent(liveFlightHistoryId,"invalidated",liveLast,new{reason});EndFlightHistory(liveFlightHistoryId,"Invalid");liveFlightHistoryId=null;}
-        liveRecorder = null; liveRotation = null; liveLast = null; liveAircraft = null;
-        milestones.Clear(); LiveTimelineButton.IsEnabled = LiveDebriefButton.IsEnabled = false;
-        ResetLiveIdentity();
-    }
-    private void ReconcileLiveReading(LiveReading reading)
-    {
-        var evidence = reading.Evidence ?? new();
-        if (liveWasInMenu && evidence.SimulationRunning == true)
-        {
-            observedSessionStart = null;
-            observedStartPosition = null;
-            liveWasInMenu = false;
-        }
-        if (observedSessionStart is null && evidence.SimulationRunning == true &&
-            evidence.Position is { IsValid: true })
-        {
-            observedSessionStart = reading.Telemetry.At;
-            observedStartPosition = evidence.Position;
-            observedStartOnGround = reading.Telemetry.OnGround;
-        }
-        var plan = activePlan is null ? null : new FlightAssignment(activePlan.FlightNumber, activePlan.Registration,
-            activePlan.Origin, activePlan.Destination, activePlan.PlannedDepartureUtc, activePlan.PlannedArrivalUtc);
-        var plannedOrigin=AirportCatalog.Find(activePlan?.Origin);
-        if(plannedOrigin is null&&activePlan?.RoutePoints?.FirstOrDefault() is{} routeOrigin)
-            plannedOrigin=new(activePlan.Origin,"Assigned departure",activePlan.Origin,new(routeOrigin.Latitude,routeOrigin.Longitude),"SimBrief route");
-        var association = FlightIdentity.Reconcile(plan, evidence with { Position = evidence.Position is null ? null : observedStartPosition },
-                observedSessionStart ?? reading.Telemetry.At, observedStartOnGround, plannedOrigin, liveAssociation.Accepted);
-        if (association.Accepted != liveAssociation.Accepted || association.Explanation != liveAssociation.Explanation)
-            RecordLog("flight_identification", reading.Telemetry.At, new { association.Mode, association.Accepted, association.Issues,
-                evidence.Registration, evidence.Route, position = evidence.Position, nearby = evidence.Nearby, evidence.PlanStatus });
-        liveAssociation = association;
-        if (!association.Accepted) liveRotation = null;
-        currentLiveReading = reading;
-        liveReceivedAt = DateTime.UtcNow; liveDataCurrent = true;
-        if (association.Accepted && liveRotation is null && liveRecorder is not null && activePlan is not null)
-        {
-            var rotation = BuildLiveRotation(activePlan, reading.Aircraft, AircraftGroundProfiles.ForFamily(reading.Aircraft));
-            if(rotation is not null)foreach (var milestone in liveRecorder.Events) if(milestone.Phase!=FlightPhase.Complete||rotation.Legs[0].ActualOut is not null)rotation = RotationPlanner.ApplyMilestone(rotation, milestone);
-            liveRotation=rotation;
-        }
-    }
-    private string LiveContextSummary()
-    {
-        var evidence = currentLiveReading?.Evidence;
-        if (!liveDataCurrent) return "Telemetry unavailable — showing last observation";
-        if (evidence?.SimulationRunning != true) return "Waiting for an active flight";
-        if (arrivalMismatch is not null) return arrivalMismatch;
-        if (liveAssociation.Issues.Count > 0) return liveAssociation.Accepted ? "Flight context needs review" : "Saved assignment needs review";
-        if (evidence?.Position is null) return "Position unavailable";
-        return evidence?.Nearby is { } nearby ? $"Near {nearby.Airport.Ident} · {nearby.DistanceNm:0.0} nm" : "Airport vicinity unknown";
-    }
-    private void MarkLiveUnavailable()
-    {
-        liveDataCurrent = false;
-        if (currentLiveReading is not null) RefreshLiveTracker(liveAircraft, liveLast, liveRecorder?.Phase, "Telemetry unavailable. Waiting for reconnection.");
-    }
+
+
+
     private void RenderObservedFlight()
     {
         if(suppressObservedFlightAfterCloseout)
@@ -135,8 +47,8 @@ public partial class MainWindow
         DestinationCodeText.Text = route?.Destination ?? "—";
         DestinationCityText.Text = route is not null ? AirportCatalog.Find(route.Destination)?.Name.ToUpperInvariant() ?? "AIRPORT NAME UNAVAILABLE" : "DESTINATION UNKNOWN";
         OriginCodeText.ToolTip = nearby is null ? evidence.PlanStatus : $"{nearby.Airport.Name} · {nearby.DistanceNm:0.0} nm · {nearby.Airport.Source}. Proximity does not establish the departure airport.";
-        HeroDepartureText.Text = liveRecorder?.Events.FirstOrDefault(e => e.Phase == FlightPhase.TaxiOut)?.At.ToString("HH:mm") ?? "—";
-        HeroArrivalText.Text = liveRecorder?.Events.FirstOrDefault(e => e.Phase == FlightPhase.Complete)?.At.ToString("HH:mm") ?? "—";
+        HeroDepartureText.Text = flightState.PhaseEvents.FirstOrDefault(e => e.Phase == FlightPhase.TaxiOut)?.At.ToString("HH:mm") ?? "—";
+        HeroArrivalText.Text = flightState.PhaseEvents.FirstOrDefault(e => e.Phase == FlightPhase.Complete)?.At.ToString("HH:mm") ?? "—";
         HeroDepartureGateText.Text = HeroArrivalGateText.Text = "—";
         HeroDepartureGateText.ToolTip = HeroArrivalGateText.ToolTip = "No verified gate assignment";
         HeroStatusText.Text = !liveDataCurrent ? "LAST OBSERVED" : evidence.SimulationRunning != true ? "WAITING" : reading.Telemetry.Paused ? "PAUSED" : reading.Telemetry.Slewing ? "SLEW" : reading.Telemetry.OnGround ? "ON GROUND" : "AIRBORNE";

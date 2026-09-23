@@ -35,7 +35,8 @@ internal static class Program
         "ASSIGNMENT_EVENTUAL_PERSISTENCE", "PIREP_SUBMIT_NO_ANIMATION_WAIT", "PIREP_CLOSEOUT_NO_ANIMATION_WAIT",
         "PIREP_EVENTUAL_DURABILITY", "TEXT_COMPLETION_INDEPENDENCE", "TEXT_HISTORY_INDEPENDENCE",
         "DATA_ASSIGNMENT", "DATA_RECOVERY", "DATA_GATES", "DATA_HISTORY", "PROFILE_HISTORY_READABLE",
-        "PROFILE_GATES_READABLE", "PROFILE_SOURCE_UNCHANGED", "NATIVE_CONNECTION_LIFECYCLE", "NATIVE_RECONNECT", "REPLAY_COVERAGE"
+        "PROFILE_GATES_READABLE", "PROFILE_SOURCE_UNCHANGED", "NATIVE_CONNECTION_LIFECYCLE", "NATIVE_RECONNECT", "REPLAY_COVERAGE",
+        "SESSION_WITHOUT_VIEW", "SESSION_REATTACH", "SNAPSHOT_DETACHED", "SNAPSHOT_INPUT_OWNERSHIP", "OBSERVER_FAILURE_ISOLATED"
     ];
 
     [STAThread]
@@ -71,6 +72,7 @@ internal static class Program
     private static async Task RunAsync(string[] args)
     {
         await Section("views", ViewLifecycleAsync);
+        await Section("application-owner", ApplicationOwnerAsync);
         await Section("first-render", () => { FirstRenderPurity(); return Task.CompletedTask; });
         await Section("reconnect", ReconnectAsync);
         await Section("dispatch", DispatchAsync);
@@ -95,19 +97,20 @@ internal static class Program
 
     private static Type Type(string name) => Desktop.GetType("Alpha6Ops.Desktop." + name, true)!;
     private static object New(string name, params object?[] args) => Activator.CreateInstance(Type(name), Members, null, args, null)!;
-    private static object? Call(object target, string method, params object?[] args) => target.GetType().GetMethods(Members | BindingFlags.DeclaredOnly).Single(m => m.Name == method && m.GetParameters().Length == args.Length).Invoke(target, args);
+    private static object? Call(object target, string method, params object?[] args) => target is MainWindow window ? FlightSessionDiagnosticAccess.Invoke(window,method,args) : target.GetType().GetMethods(Members | BindingFlags.DeclaredOnly).Single(m => m.Name == method && m.GetParameters().Length == args.Length).Invoke(target, args);
     private static object? Static(string type, string method, params object?[] args) => Type(type).GetMethods(Statics).Single(m => m.Name == method && m.GetParameters().Length == args.Length).Invoke(null, args);
-    private static object? Field(object target, string name) => target.GetType().GetField(name, Members)!.GetValue(target);
-    private static void Set(object target, string name, object? value) => target.GetType().GetField(name, Members)!.SetValue(target, value);
+    private static object? Field(object target, string name) => target is MainWindow window ? FlightSessionDiagnosticAccess.Get(window,name) : target.GetType().GetField(name, Members)!.GetValue(target);
+    private static void Set(object target, string name, object? value) { if(target is MainWindow window)FlightSessionDiagnosticAccess.Set(window,name,value);else target.GetType().GetField(name, Members)!.SetValue(target,value); }
     private static object? Property(object target, string name) => target.GetType().GetProperty(name, Members)!.GetValue(target);
     private static object Plan() => JsonSerializer.Deserialize(File.ReadAllText(Fixture("active-flight.json")), Type("ActiveFlightPlan"), Json)!;
     private static string Fixture(string name) => Path.Combine(AppContext.BaseDirectory, "Fixtures", name);
     private static void Check(string id, bool passed, string detail) { Results.Add(new(id, passed ? "Passed" : "Failed", detail)); Console.WriteLine($"{(passed ? "PASS" : "FAIL")} {id}: {detail}"); }
     private static void Skip(string id, string detail) { Results.Add(new(id, "Skipped", detail)); Console.WriteLine($"SKIP {id}: {detail}"); }
-    private static MainWindow Window(string name)
+    private static MainWindow Window(string name, ISimulatorConnectionSource? source=null)
     {
         var directory = Path.Combine(output, name); Directory.CreateDirectory(directory);
-        var window = new MainWindow(directory); Windows.Add(window); window.Show(); return window;
+        var owner=new FlightSessionCoordinator(directory,true,new WpfFlightRuntimeDispatcher(Dispatcher.CurrentDispatcher),source);
+        var window = new MainWindow(owner,directory); Windows.Add(window); window.Show(); return window;
     }
     private static string Root(MainWindow window) => (string)Field(window, "stateDirectory")!;
     private static void Accept(MainWindow window) => Call(window, "AcceptDispatchFlight", Plan());
@@ -165,7 +168,7 @@ internal static class Program
         {
             var view = (UserControl)New(name); view.Unloaded += (_, _) => unloads++;
             if (name == "FlightTrackingWorkspace")
-                Call(view, "Render", Field(window, "activePlan"), "Fenix A320", "CLIMB", "Live telemetry", Start.AddSeconds(1), null, null, 2d, Field(window, "trackingEvents"), true, Field(window, "liveTelemetry"), Field(window, "liveRouteProgress"), true, true);
+                Call(view, "Render", Field(window, "activePlan"), "Fenix A320", "CLIMB", "Live telemetry", Start.AddSeconds(1), null, null, 2d, Field(window, "trackingEvents"), true, Field(window, "liveTelemetry"), Field(window, "liveRouteProgress"), true, true, false, false);
             else if (name == "DispatchWorkspace") { Call(view, "ConfigureGates", Root(window)); Call(view, "Render", Field(window, "activePlan"), "VIEW RELEASE"); }
             else Call(view, "Render", Field(window, "flightHistory"));
             var host = new Window { Content = view, Width = 640, Height = 400, ShowInTaskbar = false };
@@ -219,41 +222,92 @@ internal static class Program
         Check("FIRST_RENDER_PURITY", before == Snapshot(window), "A render with an unconsumed estimator must not advance its operational state; settled-sample idempotence is checked separately.");
     }
 
-    private static async Task ReconnectAsync()
+    private static async Task ApplicationOwnerAsync()
     {
-        var window = Window("reconnect"); StartLive(window);
-        var before = ((Telemetry)Field(window, "liveTelemetry")!).At;
-        // Invoke the actual compiler-generated received delegate from production
-        // ConnectSimulatorAsync, without opening a native connection. Replace this
-        // reflective seam with the fake-source port when isolation introduces one.
-        var callback = ProductionReceivedCallback(window);
-        callback((LiveReading)Reading(24));
-        var old = (CancellationTokenSource)Field(window, "liveCancellation")!; old.Cancel(); old.Dispose();
-        Set(window, "liveCancellation", new CancellationTokenSource());
-        await Idle();
-        var after = ((Telemetry)Field(window, "liveTelemetry")!).At;
-        Check("RECONNECT_REJECT_OLD_CALLBACK", after == before, $"Queued old callback: before={before:O}, after={after:O}; current generation must reject it.");
-        ProductionReceivedCallback(window)((LiveReading)Reading(28)); await Idle();
-        Check("RECONNECT_ACCEPT_CURRENT_CALLBACK", ((Telemetry)Field(window, "liveTelemetry")!).At == Start.AddSeconds(28), "A current-generation sample remains processable after reconnection.");
+        var window = Window("application-owner"); StartLive(window);
+        var owner = typeof(MainWindow).GetField("coordinator", Members)?.GetValue(window);
+        if (owner is null)
+        {
+            Check("SESSION_WITHOUT_VIEW", false, "The active session still belongs to MainWindow.");
+            Check("SNAPSHOT_DETACHED", false, "There is no detached application snapshot.");
+            Check("OBSERVER_FAILURE_ISOLATED", false, "There is no independent application publication boundary.");
+            return;
+        }
+        var captured = Property(owner, "Snapshot")!;
+        var serialized = JsonSerializer.Serialize(captured, captured.GetType(), Json);
+        var recorder = Field(owner, "liveRecorder");
+        Call(owner,"SetPilotName","Session pilot");
+        Set(window, "exiting", true); window.Close(); await Idle();
+        Call(owner, "ObserveLive", Reading(24, fraction: .021));
+        using var saved = JsonDocument.Parse(File.ReadAllText(Path.Combine(Root(window), "active-flight-state.json")));
+        Check("SESSION_WITHOUT_VIEW", ReferenceEquals(recorder, Field(owner, "liveRecorder")) &&
+            ((TimelineRecorder)recorder!).Snapshots[^1].Sample.At == Start.AddSeconds(24) &&
+            saved.RootElement.GetProperty("LastSimulatorUtc").GetDateTimeOffset() == Start.AddSeconds(24),
+            "Closing the owning presentation leaves the application session processing and saving telemetry.");
+        Check("SNAPSHOT_DETACHED", JsonSerializer.Serialize(captured, captured.GetType(), Json) == serialized &&
+            !ReferenceEquals(captured, Property(owner, "Snapshot")), "An earlier immutable snapshot remains unchanged after the next sample.");
+        var replacement=new MainWindow((FlightSessionCoordinator)owner,Root(window));Windows.Add(replacement);replacement.Show();await Idle();
+        Check("SESSION_REATTACH", (string?)Field(owner,"PilotName")=="Session pilot" &&
+            ReferenceEquals(recorder,Field(owner,"liveRecorder")) && replacement.RecoveredFlightPhase==FlightPhase.Airborne,
+            "Reattaching a new presentation preserves the session's pilot identity, recorder and phase.");
+        var rawEngines=new List<EngineReading>{new(1,1,1000,30,60,0)};
+        var input=(LiveReading)Reading(26,fraction:.0215);
+        input=input with{Telemetry=input.Telemetry with{EngineReadings=rawEngines}};
+        Call(owner,"ObserveLive",input);
+        var immutable=((FlightSessionCoordinator)owner).Snapshot;
+        rawEngines.Clear();
+        Check("SNAPSHOT_INPUT_OWNERSHIP",immutable.Telemetry?.EngineReadings?.Count==1&&
+            immutable.Reading?.Telemetry.EngineReadings?.Count==1&&((Telemetry)Field(owner,"liveTelemetry")!).EngineReadings?.Count==1,
+            "Mutating a simulator-owned input collection cannot alter runtime or published telemetry.");
+        var changed = owner.GetType().GetEvent("SnapshotChanged", Members)!;
+        EventHandler brokenView = (_, _) => throw new InvalidOperationException("Diagnostic subscriber failure");
+        changed.AddEventHandler(owner, brokenView);
+        try
+        {
+            Call(owner, "ObserveLive", Reading(28, fraction: .022));
+            using var recovery = JsonDocument.Parse(File.ReadAllText(Path.Combine(Root(window), "active-flight-state.json")));
+            Check("OBSERVER_FAILURE_ISOLATED", ((TimelineRecorder)recorder!).Snapshots[^1].Sample.At == Start.AddSeconds(28) &&
+                recovery.RootElement.GetProperty("LastSimulatorUtc").GetDateTimeOffset() == Start.AddSeconds(28),
+                "A broken presentation subscriber cannot abort operational processing or recovery persistence.");
+        }
+        finally { changed.RemoveEventHandler(owner, brokenView); }
     }
 
-    private static Action<LiveReading> ProductionReceivedCallback(MainWindow window)
+    private static async Task ReconnectAsync()
     {
-        var types = new[] { typeof(MainWindow) }.Concat(typeof(MainWindow).GetNestedTypes(BindingFlags.Public | BindingFlags.NonPublic));
-        var method = types.SelectMany(t => t.GetMethods(Members)).Single(m => m.Name.Contains("<ConnectSimulatorAsync>", StringComparison.Ordinal)
-            && m.ReturnType == typeof(void) && m.GetParameters() is { Length: 1 } parameters && parameters[0].ParameterType == typeof(LiveReading));
-        object target = window;
-        if (method.DeclaringType != typeof(MainWindow))
+        var source=new FakeSimulatorSource();
+        var window=Window("reconnect",source);StartLive(window);
+        Set(window,"liveCancellation",null);
+        var owner=FlightSessionDiagnosticAccess.Owner(window);
+        var first=owner.ConnectSimulatorAsync();
+        var before=((Telemetry)Field(window,"liveTelemetry")!).At;
+        source.Runs[0].Received((LiveReading)Reading(24)); // queued while old generation is current
+        owner.DisconnectSimulator();await first;
+        var second=owner.ConnectSimulatorAsync();
+        // Also emulate an old worker reporting after the replacement has started.
+        source.Runs[0].Received((LiveReading)Reading(25));
+        source.Runs[0].Opened("obsolete connection");
+        await Idle();
+        var after=((Telemetry)Field(window,"liveTelemetry")!).At;
+        Check("RECONNECT_REJECT_OLD_CALLBACK",after==before&&owner.Snapshot.ConnectionMessage!="obsolete connection",
+            $"Old queued/delayed telemetry and opened callbacks rejected across replacement: before={before:O}, after={after:O}.");
+        source.Runs[1].Received((LiveReading)Reading(28));await Idle();
+        Check("RECONNECT_ACCEPT_CURRENT_CALLBACK",((Telemetry)Field(window,"liveTelemetry")!).At==Start.AddSeconds(28),
+            "Current-generation sample processed through the production connection loop and injected source.");
+        owner.DisconnectSimulator();await second;
+    }
+
+    private sealed class FakeSimulatorSource : ISimulatorConnectionSource
+    {
+        internal sealed record Run(Action<string> Opened,Action<LiveReading> Received);
+        internal List<Run> Runs { get; }=[];
+        public bool IsRunning()=>true;
+        public void Launch()=>throw new InvalidOperationException("Diagnostics must not launch MSFS.");
+        public async Task RunAsync(Action<string> opened,Action<LiveReading> received,CancellationToken cancellation)
         {
-            target = Activator.CreateInstance(method.DeclaringType!, nonPublic: true)!;
-            foreach (var field in method.DeclaringType!.GetFields(Members))
-            {
-                if (field.FieldType == typeof(MainWindow)) field.SetValue(target, window);
-                else if (field.Name == "currentAttempt" && field.FieldType == typeof(int)) field.SetValue(target, 1);
-                else throw new InvalidOperationException("Production callback capture changed; adapt the test seam explicitly: " + field.Name);
-            }
+            Runs.Add(new(opened,received));
+            await Task.Delay(Timeout.Infinite,cancellation);
         }
-        return method.CreateDelegate<Action<LiveReading>>(target);
     }
 
     private static async Task DispatchAsync()
@@ -266,8 +320,9 @@ internal static class Program
         Call(view, "Accept_Click", Field(view, "AcceptButton"), new RoutedEventArgs());
         var immediate = Field(window, "activePlan") is not null && File.Exists(Path.Combine(Root(window), "active-flight.json"));
         await Until(() => Field(window, "activePlan") is not null);
-        Check("ASSIGNMENT_NO_ANIMATION_WAIT", immediate, $"Assignment persisted before first animation yield={immediate}; observed persistence after {watch.ElapsedMilliseconds} ms. Current handler waits through seven 220 ms frames.");
+        Check("ASSIGNMENT_NO_ANIMATION_WAIT", immediate, $"Assignment persisted before first animation yield={immediate}; observed persistence after {watch.ElapsedMilliseconds} ms.");
         Check("ASSIGNMENT_EVENTUAL_PERSISTENCE", Static("ActiveFlightPlanStore", "Load", Root(window)) is not null, "Accepted assignment is eventually persisted by the real MainWindow handler.");
+        await Until(()=>((Button)Field(view,"AcceptButton")!).Content?.ToString()=="VIEW FLIGHT TRACKING");
     }
 
     private static async Task PirepAsync()
@@ -279,6 +334,8 @@ internal static class Program
         var id = (string)Call(database, "BeginFlight", "Test pilot", "live", null, "Airbus A320", "YSSY", "YMHB", "BASE718", "0.22.0")!;
         Call(database, "EndFlight", id, "Complete"); Set(window, "completedFlightHistoryId", id); Call(window, "SaveFlightRecovery");
         var view = Field(window, "FlightTrackingView")!; var watch = Stopwatch.StartNew();
+        var animationFinished=false;
+        ((FlightTrackingWorkspace)view).PirepCloseoutCompleted+=(_,_)=>animationFinished=true;
         bool Submitted() => ((IEnumerable)Call(database, "ReadFlightEvents", id)!).Cast<object>().Any(e => (string?)Property(e, "Kind") == "pirep_submitted");
         Call(view, "SubmitPirep_Click", Field(view, "SubmitPirepButton"), new RoutedEventArgs());
         var immediate = Submitted();
@@ -287,22 +344,24 @@ internal static class Program
         var closedAtPersistence = Field(window, "activePlan") is null && !File.Exists(Path.Combine(Root(window), "active-flight-state.json"));
         await Until(() => Field(window, "activePlan") is null);
         Check("PIREP_SUBMIT_NO_ANIMATION_WAIT", immediate, $"Durable submission before animation yield={immediate}; persisted after {submittedAt} ms.");
-        Check("PIREP_CLOSEOUT_NO_ANIMATION_WAIT", closedAtPersistence, $"Closeout complete when persistence observed={closedAtPersistence}; closeout at {watch.ElapsedMilliseconds} ms, after the additional 1,100 ms UI delay.");
+        Check("PIREP_CLOSEOUT_NO_ANIMATION_WAIT", closedAtPersistence, $"Closeout complete when persistence observed={closedAtPersistence}; closeout observed at {watch.ElapsedMilliseconds} ms, independently of the remaining animation.");
         Check("PIREP_EVENTUAL_DURABILITY", Submitted() && !File.Exists(Path.Combine(Root(window), "active-flight.json")) && !File.Exists(Path.Combine(Root(window), "active-flight-state.json")), "Real PIREP handler eventually persists submission and clears assignment/recovery.");
+        await Until(()=>animationFinished);
     }
 
     private static void TextIndependence()
     {
         var window = Window("text"); Accept(window); var view = Field(window, "FlightTrackingView")!;
         var entries = Array.CreateInstance(Type("TrackingEventEntry"), 0);
-        void Render(string label) => Call(view, "Render", Field(window, "activePlan"), "Airbus A320", label, "", Start, Start.AddMinutes(128), null, 100d, entries, false, null, 1d, true, true);
+        void Render(string label) => Call(view, "Render", Field(window, "activePlan"), "Airbus A320", label, "", Start, Start.AddMinutes(128), null, 100d, entries, false, null, 1d, true, true, true, true);
         Render("BLOCK-IN / COMPLETE"); var original = ((Button)Field(view, "SubmitPirepButton")!).Visibility;
         Render("Arrived at gate"); var renamed = ((Button)Field(view, "SubmitPirepButton")!).Visibility;
         Check("TEXT_COMPLETION_INDEPENDENCE", original == renamed && renamed == Visibility.Visible, $"Same actual IN and 100% progress: original PIREP visibility={original}; renamed phase={renamed}.");
         var english = Window("text-history-original"); Accept(english);
         var translated = Window("text-history-renamed"); Accept(translated);
-        Call(english, "AddTrackingEvent", New("TrackingEventEntry", Start, "Block-out / taxi out", "Ground movement", "GS 3 KT", "operation"));
-        Call(translated, "AddTrackingEvent", New("TrackingEventEntry", Start, "Gate departure", "Ground movement", "GS 3 KT", "operation"));
+        var originalEvent=new TrackingEventEntry(Start,"Block-out / taxi out","Ground movement","GS 3 KT"){Code=TrackingEventCode.BlockOut};
+        Call(english, "AddTrackingEvent", originalEvent);
+        Call(translated, "AddTrackingEvent", originalEvent with{Title="Gate departure"});
         var a = Field(english, "liveFlightHistoryId") is not null; var b = Field(translated, "liveFlightHistoryId") is not null;
         Check("TEXT_HISTORY_INDEPENDENCE", a && b, $"Semantically identical departure event: original creates history={a}; renamed creates history={b}.");
     }
@@ -389,13 +448,9 @@ internal static class Program
     {
         // MainWindow.ExitApplication shuts down the entire app. Dispose this test
         // instance's owned resources instead, without changing production code.
-        ((DispatcherTimer?)Field(window, "dashboardClock"))?.Stop();
-        ((IDisposable?)Field(window, "programMonitor"))?.Dispose();
-        ((IDisposable?)Field(window, "flightHistory"))?.Dispose();
-        if (Field(window, "liveCancellation") is CancellationTokenSource live) { live.Cancel(); live.Dispose(); }
-        var lifetime = (CancellationTokenSource)Field(window, "lifetime")!; lifetime.Cancel(); lifetime.Dispose();
-        var tray = (System.Windows.Forms.NotifyIcon)Field(window, "tray")!; tray.Visible = false; tray.ContextMenuStrip?.Dispose(); tray.Dispose();
-        ((IDisposable)Field(window, "trayIcon")!).Dispose(); Set(window, "exiting", true); window.Close();
+        Call(window,"DisposePresentation");
+        Set(window, "exiting", true); window.Close();
+        FlightSessionDiagnosticAccess.Owner(window).Dispose();
     }
     private sealed record CheckResult(string Id, string Status, string Detail);
     // Load the actual production styles in a neutral WPF host. Constructing App
