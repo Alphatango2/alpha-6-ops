@@ -1,0 +1,9 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; worker-src 'self' blob:; connect-src 'self' data:; object-src 'none'; base-uri 'none'; frame-src 'none'">
+<title>Sierra 4 Map prototype</title><link rel="stylesheet" href="vendor/maplibre-gl.css"><link rel="stylesheet" href="prototype.css"></head>
+<body><div id="map" aria-label="Synthetic map prototype. Keyboard arrows pan, plus and minus zoom."></div>
+<header><strong>GEOGRAPHIC OPERATIONS</strong><span>MapLibre GL JS · WPF / WebView2 · offline geography</span></header>
+<nav aria-label="Map controls"><button id="world">World</button><button id="focus">Current flight</button><button id="follow">Follow: off</button><button id="routes">Routes: on</button><button id="night">Day / night: off</button><button id="select">Select S4P001</button></nav>
+<aside><span class="eyebrow">SYNTHETIC PROTOTYPE</span><h1>Renderer evaluation</h1><p id="status">Initializing local renderer…</p><div id="selection" role="status" aria-live="polite">Nothing selected</div><p class="muted">Real geography. Test aircraft only.<br>No airline-world simulation or live telemetry.</p><p class="muted">Yellow: selected · Gray: simulated<br>Airport operational status: unknown</p></aside>
+<footer><span>Geography: Natural Earth (public domain) · MapLibre GL JS (BSD-3-Clause)</span><span id="clock">24 SEP 2026 · 12:00Z</span></footer>
+<script type="module" src="prototype.mjs"></script></body></html>
