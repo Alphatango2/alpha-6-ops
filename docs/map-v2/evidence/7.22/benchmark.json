@@ -1,0 +1,422 @@
+[
+  {
+    "aircraft": 1,
+    "seconds": 4.1336594,
+    "offered": 19,
+    "bridge": {
+      "produced": 0,
+      "offered": 19,
+      "coalesced": 7,
+      "acknowledged": 12,
+      "pending": false,
+      "rejected": 0,
+      "lastPayloadBytes": 5004,
+      "readyMs": 640.8621,
+      "projectionQueue": null,
+      "projectionMs": {
+        "count": 0,
+        "mean": 0,
+        "p95": 0,
+        "max": 0
+      },
+      "serializationMs": {
+        "count": 12,
+        "mean": 0.12744166666666668,
+        "p95": 0.1222,
+        "max": 0.4523
+      },
+      "dispatcherQueueMs": {
+        "count": 12,
+        "mean": 281.06583333333333,
+        "p95": 704.5541,
+        "max": 1437.5569
+      },
+      "postMs": {
+        "count": 12,
+        "mean": 0.14413333333333334,
+        "p95": 0.1992,
+        "max": 0.2103
+      },
+      "acknowledgmentMs": {
+        "count": 12,
+        "mean": 283.7607083333333,
+        "p95": 705.1492,
+        "max": 1438.0994
+      }
+    },
+    "process": {
+      "cpuPercentMachine": 4.1089308319966165,
+      "peakSummedWorkingSetMiB": 806.35546875,
+      "logicalProcessors": 16,
+      "workingSetMayDoubleCountSharedPages": true
+    },
+    "renderedCounts": {
+      "aircraft": 1,
+      "airports": 0,
+      "labels": 1,
+      "routes": 2
+    },
+    "renderedSequence": 19,
+    "sourceUpdates": 141
+  },
+  {
+    "aircraft": 25,
+    "seconds": 4.1340944,
+    "offered": 19,
+    "bridge": {
+      "produced": 0,
+      "offered": 19,
+      "coalesced": 8,
+      "acknowledged": 11,
+      "pending": false,
+      "rejected": 0,
+      "lastPayloadBytes": 146603,
+      "readyMs": 661.0091,
+      "projectionQueue": null,
+      "projectionMs": {
+        "count": 0,
+        "mean": 0,
+        "p95": 0,
+        "max": 0
+      },
+      "serializationMs": {
+        "count": 11,
+        "mean": 0.6547363636363636,
+        "p95": 0.7234,
+        "max": 0.7926
+      },
+      "dispatcherQueueMs": {
+        "count": 11,
+        "mean": 239.96152727272727,
+        "p95": 888.0804,
+        "max": 1356.0575
+      },
+      "postMs": {
+        "count": 11,
+        "mean": 2.4212636363636366,
+        "p95": 2.6525,
+        "max": 2.7054
+      },
+      "acknowledgmentMs": {
+        "count": 11,
+        "mean": 247.24422727272724,
+        "p95": 891.6588,
+        "max": 1359.7427
+      }
+    },
+    "process": {
+      "cpuPercentMachine": 4.297361667989903,
+      "peakSummedWorkingSetMiB": 818.0078125,
+      "logicalProcessors": 16,
+      "workingSetMayDoubleCountSharedPages": true
+    },
+    "renderedCounts": {
+      "aircraft": 25,
+      "airports": 0,
+      "labels": 25,
+      "routes": 50
+    },
+    "renderedSequence": 19,
+    "sourceUpdates": 156
+  },
+  {
+    "aircraft": 100,
+    "seconds": 4.1599076,
+    "offered": 19,
+    "bridge": {
+      "produced": 0,
+      "offered": 19,
+      "coalesced": 3,
+      "acknowledged": 16,
+      "pending": false,
+      "rejected": 0,
+      "lastPayloadBytes": 176806,
+      "readyMs": 634.1582,
+      "projectionQueue": null,
+      "projectionMs": {
+        "count": 0,
+        "mean": 0,
+        "p95": 0,
+        "max": 0
+      },
+      "serializationMs": {
+        "count": 16,
+        "mean": 0.74246875,
+        "p95": 0.8713,
+        "max": 1.2102
+      },
+      "dispatcherQueueMs": {
+        "count": 16,
+        "mean": 184.46528124999998,
+        "p95": 536.6328,
+        "max": 618.2893
+      },
+      "postMs": {
+        "count": 16,
+        "mean": 2.9737437499999997,
+        "p95": 3.2008,
+        "max": 3.2266
+      },
+      "acknowledgmentMs": {
+        "count": 16,
+        "mean": 190.96585625,
+        "p95": 540.4147,
+        "max": 622.8934
+      }
+    },
+    "process": {
+      "cpuPercentMachine": 4.717872974880398,
+      "peakSummedWorkingSetMiB": 822.015625,
+      "logicalProcessors": 16,
+      "workingSetMayDoubleCountSharedPages": true
+    },
+    "renderedCounts": {
+      "aircraft": 100,
+      "airports": 0,
+      "labels": 25,
+      "routes": 50
+    },
+    "renderedSequence": 19,
+    "sourceUpdates": 173
+  },
+  {
+    "aircraft": 500,
+    "seconds": 4.1336767,
+    "offered": 19,
+    "bridge": {
+      "produced": 0,
+      "offered": 19,
+      "coalesced": 6,
+      "acknowledged": 13,
+      "pending": false,
+      "rejected": 0,
+      "lastPayloadBytes": 335025,
+      "readyMs": 639.9099,
+      "projectionQueue": null,
+      "projectionMs": {
+        "count": 0,
+        "mean": 0,
+        "p95": 0,
+        "max": 0
+      },
+      "serializationMs": {
+        "count": 13,
+        "mean": 1.4784076923076923,
+        "p95": 1.6313,
+        "max": 1.8435
+      },
+      "dispatcherQueueMs": {
+        "count": 13,
+        "mean": 191.0197076923077,
+        "p95": 715.874,
+        "max": 1201.9301
+      },
+      "postMs": {
+        "count": 13,
+        "mean": 5.551292307692308,
+        "p95": 5.7928,
+        "max": 5.8035
+      },
+      "acknowledgmentMs": {
+        "count": 13,
+        "mean": 201.5817153846154,
+        "p95": 723.687,
+        "max": 1209.8943
+      }
+    },
+    "process": {
+      "cpuPercentMachine": 4.934215749906598,
+      "peakSummedWorkingSetMiB": 887.0859375,
+      "logicalProcessors": 16,
+      "workingSetMayDoubleCountSharedPages": true
+    },
+    "renderedCounts": {
+      "aircraft": 500,
+      "airports": 0,
+      "labels": 25,
+      "routes": 50
+    },
+    "renderedSequence": 19,
+    "sourceUpdates": 146
+  },
+  {
+    "aircraft": 1000,
+    "seconds": 4.2021983,
+    "offered": 19,
+    "bridge": {
+      "produced": 0,
+      "offered": 19,
+      "coalesced": 4,
+      "acknowledged": 15,
+      "pending": false,
+      "rejected": 0,
+      "lastPayloadBytes": 533595,
+      "readyMs": 664.4753,
+      "projectionQueue": null,
+      "projectionMs": {
+        "count": 0,
+        "mean": 0,
+        "p95": 0,
+        "max": 0
+      },
+      "serializationMs": {
+        "count": 15,
+        "mean": 1.848253333333333,
+        "p95": 2.4149,
+        "max": 2.9026
+      },
+      "dispatcherQueueMs": {
+        "count": 15,
+        "mean": 199.27253333333334,
+        "p95": 604.5412,
+        "max": 704.8847
+      },
+      "postMs": {
+        "count": 15,
+        "mean": 9.179720000000001,
+        "p95": 9.6022,
+        "max": 10.4536
+      },
+      "acknowledgmentMs": {
+        "count": 15,
+        "mean": 215.54879999999997,
+        "p95": 616.8583,
+        "max": 716.9026
+      }
+    },
+    "process": {
+      "cpuPercentMachine": 7.188126312770976,
+      "peakSummedWorkingSetMiB": 925.03125,
+      "logicalProcessors": 16,
+      "workingSetMayDoubleCountSharedPages": true
+    },
+    "renderedCounts": {
+      "aircraft": 1000,
+      "airports": 0,
+      "labels": 25,
+      "routes": 50
+    },
+    "renderedSequence": 19,
+    "sourceUpdates": 184
+  },
+  {
+    "aircraft": 2000,
+    "seconds": 4.1625251,
+    "offered": 19,
+    "bridge": {
+      "produced": 0,
+      "offered": 19,
+      "coalesced": 8,
+      "acknowledged": 11,
+      "pending": false,
+      "rejected": 0,
+      "lastPayloadBytes": 931049,
+      "readyMs": 641.4228,
+      "projectionQueue": null,
+      "projectionMs": {
+        "count": 0,
+        "mean": 0,
+        "p95": 0,
+        "max": 0
+      },
+      "serializationMs": {
+        "count": 11,
+        "mean": 2.6886,
+        "p95": 2.797,
+        "max": 3.9484
+      },
+      "dispatcherQueueMs": {
+        "count": 11,
+        "mean": 256.9751,
+        "p95": 1070.103,
+        "max": 1216.52
+      },
+      "postMs": {
+        "count": 11,
+        "mean": 15.458127272727273,
+        "p95": 15.9611,
+        "max": 15.9686
+      },
+      "acknowledgmentMs": {
+        "count": 11,
+        "mean": 282.24525454545454,
+        "p95": 1100.9719,
+        "max": 1239.972
+      }
+    },
+    "process": {
+      "cpuPercentMachine": 7.563885721793444,
+      "peakSummedWorkingSetMiB": 922.21875,
+      "logicalProcessors": 16,
+      "workingSetMayDoubleCountSharedPages": true
+    },
+    "renderedCounts": {
+      "aircraft": 2000,
+      "airports": 0,
+      "labels": 25,
+      "routes": 50
+    },
+    "renderedSequence": 19,
+    "sourceUpdates": 124
+  },
+  {
+    "aircraft": 5000,
+    "seconds": 4.364001,
+    "offered": 19,
+    "bridge": {
+      "produced": 0,
+      "offered": 19,
+      "coalesced": 5,
+      "acknowledged": 14,
+      "pending": false,
+      "rejected": 0,
+      "lastPayloadBytes": 2112568,
+      "readyMs": 634.0703,
+      "projectionQueue": null,
+      "projectionMs": {
+        "count": 0,
+        "mean": 0,
+        "p95": 0,
+        "max": 0
+      },
+      "serializationMs": {
+        "count": 14,
+        "mean": 6.725564285714285,
+        "p95": 8.3217,
+        "max": 8.3548
+      },
+      "dispatcherQueueMs": {
+        "count": 14,
+        "mean": 180.89397857142856,
+        "p95": 654.348,
+        "max": 1242.336
+      },
+      "postMs": {
+        "count": 14,
+        "mean": 37.54237142857143,
+        "p95": 42.3906,
+        "max": 43.0222
+      },
+      "acknowledgmentMs": {
+        "count": 14,
+        "mean": 238.22944285714286,
+        "p95": 700.2316,
+        "max": 1288.331
+      }
+    },
+    "process": {
+      "cpuPercentMachine": 12.811174489492014,
+      "peakSummedWorkingSetMiB": 1061.3046875,
+      "logicalProcessors": 16,
+      "workingSetMayDoubleCountSharedPages": true
+    },
+    "renderedCounts": {
+      "aircraft": 5000,
+      "airports": 0,
+      "labels": 25,
+      "routes": 50
+    },
+    "renderedSequence": 19,
+    "sourceUpdates": 155
+  }
+]

@@ -87,7 +87,7 @@ internal sealed partial class FlightSessionCoordinator : IDisposable
         var rotation=liveRotation??(activePlan is null?null:BuildLiveRotation(activePlan,liveAircraft,AircraftGroundProfile.Default));
         Snapshot=new()
         {
-            Assignment=Freeze(activePlan), Connection=connectionState, ConnectionActive=liveCancellation is not null,
+            Assignment=Freeze(activePlan), Connection=connectionState, ConnectionGeneration=connectionGeneration, ConnectionActive=liveCancellation is not null,
             Connected=liveDataCurrent&&liveCancellation is {IsCancellationRequested:false}, ConnectionMessage=connectionMessage,
             TrackingStatus=trackingStatus, LiveDescription=liveDescription, LogStatus=logStatus, LastJournal=lastJournal,
             Aircraft=liveAircraft, Source=liveSource, Telemetry=Freeze(liveTelemetry), Reading=currentLiveReading is null?null:Freeze(currentLiveReading),

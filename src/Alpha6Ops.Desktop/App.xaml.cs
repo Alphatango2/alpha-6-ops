@@ -32,6 +32,17 @@ public partial class App : Application
     protected override async void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
+        if(e.Args.Length==2&&e.Args[0] is "--map-v2-checks" or "--map-contention-checks")
+        {
+            CrashReporter.Install(this,e.Args[1]);var result=await MapV2.MapV2Checks.RunAsync(e.Args[1],e.Args[0]=="--map-contention-checks");Shutdown(result);return;
+        }
+        if(e.Args.Length==2&&e.Args[0]=="--map-model-checks")
+        {
+            Directory.CreateDirectory(e.Args[1]);var checks=new System.Collections.Generic.List<object>();var failed=0;
+            try { void Record(bool passed,string name){checks.Add(new{passed,name});if(!passed)failed++;} MapV2.MapModelChecks.Run(Record);await MapV2.MapV2Checks.PumpChecks(Record); }
+            catch(Exception error){checks.Add(new{passed=false,name=error.ToString()});failed++;}
+            File.WriteAllText(Path.Combine(e.Args[1],"model.json"),JsonSerializer.Serialize(new{passed=failed==0,failed,checks}));Shutdown(failed==0?0:1);return;
+        }
         if(e.Args.Length==3&&e.Args[0]=="--replay-journals")
         {
             try{RecordedFlightReplay.Run(e.Args[1],e.Args[2]);Shutdown(0);}

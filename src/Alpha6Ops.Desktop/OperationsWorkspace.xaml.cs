@@ -15,6 +15,8 @@ public partial class OperationsWorkspace : UserControl
     public OperationsWorkspace()
     {
         InitializeComponent();SizeChanged+=(_,_)=>Reflow();Loaded+=(_,_)=>Reflow();
+        MapHost.ContextChanged+=text=>MapContextText.Text=text;
+        MapHost.LayoutRequested+=Reflow;
         IsVisibleChanged+=(_,_)=>{if(IsVisible && Overview is {} model)MapHost.Present(model);else if(!IsVisible)MapHost.EndVisibleTrail();};
     }
     internal void Present(OperationsOverview overview)
@@ -41,6 +43,7 @@ public partial class OperationsWorkspace : UserControl
         Grid.SetColumn(SideRail,narrow?0:1);Grid.SetRow(SideRail,narrow?1:0);
         MapPanel.Margin=new Thickness(0,0,narrow?0:14,narrow?14:0);
         MapPanel.Height=width>=1900?620:width>=1400?430:510;
+        if(MapHost.UseV2)MapPanel.Height=Math.Max(MapPanel.Height,550);
         SideRail.Height=narrow?double.NaN:MapPanel.Height;
         SideRail.RowDefinitions[0].Height=narrow?GridLength.Auto:new GridLength(.85,GridUnitType.Star);
         SideRail.RowDefinitions[1].Height=narrow?GridLength.Auto:new GridLength(1.15,GridUnitType.Star);

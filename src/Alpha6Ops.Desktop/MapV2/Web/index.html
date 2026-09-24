@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; worker-src 'self' blob:; connect-src 'self' data:; img-src 'self' data: blob:; font-src 'self'; base-uri 'none'; form-action 'none'; frame-src 'none'">
+  <title>Sierra 4 Operations map</title>
+  <link rel="stylesheet" href="map.css">
+  <script type="module" src="map.mjs"></script>
+</head>
+<body>
+  <main id="map" aria-label="Flight geography. Press Escape to leave the map."></main>
+  <nav class="controls" aria-label="Map controls">
+    <button id="zoom-in" aria-label="Zoom in" title="Zoom in">+</button>
+    <button id="zoom-out" aria-label="Zoom out" title="Zoom out">−</button>
+    <button id="home" title="World view">World</button>
+    <button id="focus" title="Focus selected flight">Focus</button>
+    <button id="follow" aria-pressed="false" title="Follow current aircraft">Follow</button>
+    <button id="layers" aria-expanded="false" aria-controls="layer-panel">Layers</button>
+  </nav>
+  <fieldset id="layer-panel" hidden><legend>Visible layers</legend>
+    <label><input id="night" type="checkbox" data-layer="DayNight" checked> Day / night</label>
+    <label><input type="checkbox" data-layer="Routes" checked> Routes / tracks</label>
+    <label><input type="checkbox" data-layer="Airports" checked> Airports</label>
+    <label><input type="checkbox" data-layer="Aircraft" checked> Aircraft</label>
+    <label><input type="checkbox" data-layer="Labels" checked> Labels</label>
+    <label><input id="reduced-motion" type="checkbox"> Reduced motion</label>
+  </fieldset>
+  <div id="selection" role="status" aria-live="polite">Awaiting current flight geography</div>
+  <div class="attribution">Natural Earth · Sierra 4</div>
+</body>
+</html>

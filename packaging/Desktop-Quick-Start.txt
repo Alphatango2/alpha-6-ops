@@ -1,5 +1,16 @@
 ALPHA 6 OPS — CHECKPOINT 7.17 / VERSION 0.22.0
 
+LOCAL CHECKPOINT 7.22 — SIERRA 4 OPERATIONS MAP PREVIEW
+The Operations map now offers a Use Map V2 button. This is an opt-in preview;
+the classic map remains the default and is available as an immediate fallback.
+Flight Tracking continues to use its existing map.
+Map V2 uses bundled offline geography and needs no account, map key or tiles.
+Microsoft Edge WebView2 Evergreen Runtime must already be installed. If it is
+unavailable or the renderer fails, the classic map remains usable. This package
+does not silently download/install WebView2 and does not include a Fixed runtime.
+Use classic map switches back. The choice is for the current application session.
+The application/profile names and version remain unchanged during UI migration.
+
 UPDATE
 Exit OPS from its Exit OPS button or tray menu; the window X only hides it.
 Run Alpha6OPS-Setup-0.22.0.exe to update the existing installation.

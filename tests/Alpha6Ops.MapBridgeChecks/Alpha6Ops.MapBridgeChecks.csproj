@@ -1,0 +1,4 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>Exe</OutputType></PropertyGroup>
+  <ItemGroup><Compile Include="../../src/Alpha6Ops.Desktop/MapV2/LatestMapMailbox.cs" Link="LatestMapMailbox.cs" /></ItemGroup>
+</Project>

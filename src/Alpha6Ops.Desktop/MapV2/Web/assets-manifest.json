@@ -1,0 +1,32 @@
+{
+  "maplibre": "6.11.2",
+  "archiveSha512": "Xh06pxoipjX/Ad1sUPGhiNh9go9naCNGZZ1IJm3sIeqK1kYGuMaMDSTIGDQ2igOLfVyukJU7kvEOA089VO7Z7g==",
+  "webview2": "1.0.4191.47",
+  "geography": "Natural Earth 50m land",
+  "files": [
+    {
+      "path": "vendor/maplibre-gl.mjs",
+      "sha256": "3F55566295583644617FE17D008A36C580414B8C71DD2E1FCFF1309DE6FDEE5D"
+    },
+    {
+      "path": "vendor/maplibre-gl-shared.mjs",
+      "sha256": "76B5F55BDEE928C65D592684AAFF2B913D50B6B17B0EC6334E88B09B6AA47960"
+    },
+    {
+      "path": "vendor/maplibre-gl-worker.mjs",
+      "sha256": "01AD197AA7F4CEC258A890FEBD71B7515E96309881B036A7095BEFC01A45296E"
+    },
+    {
+      "path": "vendor/LICENSE.maplibre.txt",
+      "sha256": "EE5FC05A0677EAF69601D2C7DB0D9ECD6CC27C3ABC1D0733BC9ED34707CF8EF2"
+    },
+    {
+      "path": "land.geojson",
+      "sha256": "2107631799E2492BB27C0F977C195362A230C7654EA31EBE21589791B4D4C9EE"
+    },
+    {
+      "path": "theme.json",
+      "sha256": "236EF036B18D7580C4D22237F91C10783DCC8D6BD9578E8AD97087C2F995D465"
+    }
+  ]
+}

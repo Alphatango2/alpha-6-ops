@@ -1,0 +1,5 @@
+{
+  "host": "WebView2CompositionControl",
+  "dpiMethod": "WPF LayoutTransform rendering at 150%/200%; no manual OS monitor change",
+  "manualInputOrScreenReaderCertified": false
+}

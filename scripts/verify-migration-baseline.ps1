@@ -105,7 +105,7 @@ try {
     $builds.Add([pscustomobject]@{ name = 'test-only migration harness'; exitCode = $code })
     if ($code -ne 0) { throw 'Migration harness build failed.' }
     $migrationDirectory = Join-Path $run 'migration'
-    $migrationExecutable = Join-Path $repo 'tests/Alpha6Ops.MigrationChecks/bin/Release/net10.0-windows/Alpha6Ops.MigrationChecks.exe'
+    $migrationExecutable = Join-Path $repo 'tests/Alpha6Ops.MigrationChecks/bin/Release/net10.0-windows10.0.17763.0/Alpha6Ops.MigrationChecks.exe'
     $migrationExit = Invoke-App $migrationExecutable @($migrationDirectory, $manifest, $replayDirectory, $ProfileDirectory) 'migration'
     $migration = Read-Report (Join-Path $migrationDirectory 'migration-checks.json')
     if ($migrationExit -notin @(0, 1)) { throw "Migration harness terminated abnormally: $migrationExit" }

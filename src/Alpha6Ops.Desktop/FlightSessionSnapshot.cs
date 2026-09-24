@@ -12,6 +12,7 @@ internal sealed record FlightSessionSnapshot
 {
     public ActiveFlightPlan? Assignment { get; init; }
     public SimulatorConnectionState Connection { get; init; }
+    public long ConnectionGeneration { get; init; }
     public bool ConnectionActive { get; init; }
     public bool Connected { get; init; }
     public string ConnectionMessage { get; init; } = "Disconnected.";

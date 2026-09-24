@@ -1,0 +1,23 @@
+:root { color-scheme: dark; font-family: "Segoe UI", sans-serif; color: #bbc2c8; background: #090c0f; }
+* { box-sizing: border-box; }
+html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; }
+/* Reserve a control strip so resizing cannot put an airport label underneath it. */
+#map { position: absolute; top: 52px; bottom: 0; width: 100%; overflow: hidden; }
+.maplibregl-map { position: relative; overflow: hidden; -webkit-tap-highlight-color: transparent; }
+.maplibregl-canvas-container, .maplibregl-canvas { position: absolute; left: 0; top: 0; }
+.maplibregl-canvas { outline: none; }
+.maplibregl-interactive { cursor: grab; }
+.maplibregl-interactive:active { cursor: grabbing; }
+.maplibregl-control-container { display: none; }
+.controls { position: absolute; right: 12px; top: 6px; display: flex; gap: 4px; padding: 4px; background: #101418ed; border: 1px solid #293138; border-radius: 5px; }
+button { background: #151a1f; color: #bbc2c8; border: 1px solid #293138; border-radius: 3px; min-height: 30px; min-width: 30px; padding: 4px 9px; font: 11px "Segoe UI", sans-serif; cursor: pointer; }
+button:hover { background: #20272d; color: #f2f4f5; }
+button[aria-pressed="true"] { border-color: #f4cf22; color: #f4cf22; background: #252311; }
+button:focus-visible, input:focus-visible, canvas:focus-visible { outline: 2px solid #f4cf22; outline-offset: 2px; }
+#layer-panel { position: absolute; right: 12px; top: 57px; background: #101418f5; border: 1px solid #293138; border-radius: 4px; padding: 9px 12px; margin: 0; font-size: 11px; }
+#layer-panel label { display: block; margin: 4px 0; }
+input { accent-color: #f4cf22; vertical-align: middle; }
+#selection { position: absolute; bottom: 23px; left: 12px; max-width: calc(100% - 24px); background: #101418e8; border-left: 2px solid #f4cf22; padding: 6px 9px; font-size: 11px; white-space: pre-line; pointer-events: none; }
+.attribution { position: absolute; bottom: 5px; right: 10px; font-size: 9px; color: #8e99a2; pointer-events: none; }
+@media (max-height: 260px) { .controls { top: 6px; right: 6px; } button { min-height: 27px; padding: 3px 6px; } #selection { bottom: 19px; font-size: 10px; padding: 4px 7px; } }
+@media (max-width: 420px) { .controls { gap: 2px; } button { padding: 3px 5px; } }

@@ -20,7 +20,11 @@ internal sealed record OperationsOverview(
     IReadOnlyList<OperationsAirport> Airports, IReadOnlyList<OperationsActivity> Activity,
     string WeatherTitle, string WeatherDetail, string MapContext,
     IReadOnlyList<FlightRoutePoint> MapRoute, Telemetry? MapTelemetry, double? MapProgress,
-    string MapSessionKey, string FlightsSource);
+    string MapSessionKey, string FlightsSource)
+{
+    internal FlightSessionSnapshot? MapState { get; init; }
+    internal bool MapDemo { get; init; }
+}
 
 // Read-only presentation query. No persistence, clock acquisition, simulator access or operational commands.
 internal static class OperationsOverviewQuery
@@ -110,7 +114,8 @@ internal static class OperationsOverviewQuery
             state.CanRenderAssignment && state.RouteReliable ? state.RouteProgress : null,
             $"{plan?.FlightNumber}|{plan?.PlannedDepartureUtc:O}|{state.ObservedSessionStart:O}|{demo}|{state.CanRenderAssignment}",
             demo ? "Sample rotation · scheduled UTC" : observed && !state.CanPresentCandidate ? "No verified assignment · observed flight only"
-            : plan is null ? "No assigned rotation" : "Assigned rotation · scheduled UTC · estimates in flight summary");
+            : plan is null ? "No assigned rotation" : "Assigned rotation · scheduled UTC · estimates in flight summary")
+        { MapState=state, MapDemo=demo };
     }
 
     private static OperationsAirport Airport(string code,string role,string? gate)

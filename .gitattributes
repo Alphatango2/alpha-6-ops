@@ -1,0 +1,4 @@
+# Preserve reviewed publisher bytes and hashed offline assets on Windows checkouts.
+src/Alpha6Ops.Desktop/MapV2/Web/vendor/** -text -whitespace
+src/Alpha6Ops.Desktop/MapV2/Web/land.geojson -text
+src/Alpha6Ops.Desktop/MapV2/Web/theme.json -text whitespace=cr-at-eol

@@ -1,0 +1,17 @@
+{
+  "S4.AppBackground": "#090C0F",
+  "S4.SurfacePrimary": "#101418",
+  "S4.SurfaceSecondary": "#151A1F",
+  "S4.SurfaceElevated": "#20272D",
+  "S4.TextPrimary": "#F2F4F5",
+  "S4.TextSecondary": "#BBC2C8",
+  "S4.TextMuted": "#8E99A2",
+  "S4.SierraYellow": "#F4CF22",
+  "S4.Selection": "#252311",
+  "S4.Divider": "#293138",
+  "S4.Success": "#6FD59A",
+  "S4.Warning": "#ECC66B",
+  "S4.Critical": "#F58D8D",
+  "S4.Information": "#86BDE8",
+  "S4.Scrim": "#CB050709"
+}
