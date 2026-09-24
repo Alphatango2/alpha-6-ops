@@ -72,3 +72,19 @@ The 7.18B complete baseline is **1,785 executed / 1,785 passed / 0 failed / 2 na
 - [ ] Identify legacy interiors explicitly; a new shell does not count as a migrated Operations dashboard.
 
 The completed 7.19 gate is **1,834 executed / 1,834 passed / 0 failed / 2 native unavailable**, with nine replays and 91,366 samples. See [checkpoint 7.19](checkpoint-7.19.md) for evidence, changed layout assertions, visual review and limitations. The runner ignores only Windows process entries proven terminated by zero thread and handle counts; a running or uncertain OPS instance still blocks activation/profile checks.
+
+## Operations workspace gates — added in 7.20
+
+- [ ] Operations remains a native workspace outside the legacy minimum-width viewport, with no photographic hero/launcher grid or outer scaling Viewbox.
+- [ ] Empty production state invents no flights, metrics, events or airport observations. Explicit replay selection is labeled and cannot leak live KPI totals.
+- [ ] Active/aircraft counts require current normal observations; stale, paused, slewing and simulator-menu samples suppress them. These remain single-session counts, never fleet/network totals.
+- [ ] Arrival KPI comparisons require trusted dates, accepted assignment and no wrong-airport arrival. Typed review precedence determines active-row status; wording changes cannot affect calculations.
+- [ ] Weather retains city/timestamp/source and stale/error labeling; approximate IP-city forecasts never become airport weather.
+- [ ] Flight dates convert offsets to dated UTC across midnight. Canonical aircraft display leaves registration-based watchlist identity unchanged.
+- [ ] Map refresh is idempotent, does not run hidden, clears stale markers and starts a fresh trail for a new session or visible interval. Hide/show test must retain the same session key, so it proves the interval reset.
+- [ ] Missing position does not become a flown trail; unsupported route-free markers are not claimed visible. Replacing route geometry reapplies the unchanged current sample.
+- [ ] Current-flight Dispatch/Tracking actions, filters, watchlist, preflight, flight details and moved Flight tools remain reachable. Removed demo tiles retain explicit searchable destinations.
+- [ ] Inspect actual 1920/2560 observed-fixture and empty/stale captures plus 1366/compact/150%/200% reflow. Separate diagnostic fixture data and rendering checks from real native simulator/manual OS DPI validation.
+- [ ] Run all prior isolation, persisted-data and nine-flight coverage gates; Operations presentation must not become another owner of flight truth.
+
+The completed 7.20 gate is **1,871 executed / 1,871 passed / 0 failed / 2 native unavailable**, with nine replays and 91,366 samples. See [checkpoint 7.20](checkpoint-7.20.md) for the final evidence, provenance, visual review and remaining map/legacy-workspace debt.

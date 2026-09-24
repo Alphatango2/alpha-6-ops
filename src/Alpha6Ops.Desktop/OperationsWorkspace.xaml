@@ -1,0 +1,148 @@
+<UserControl x:Class="Alpha6Ops.Desktop.OperationsWorkspace"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ xmlns:local="clr-namespace:Alpha6Ops.Desktop" Background="{StaticResource S4.AppBackground}">
+ <UserControl.Resources>
+  <Style TargetType="TextBlock" BasedOn="{StaticResource S4.Body}"/>
+  <Style x:Key="Caption" TargetType="TextBlock" BasedOn="{StaticResource S4.Metadata}"><Setter Property="TextWrapping" Value="Wrap"/></Style>
+  <Style x:Key="Panel" TargetType="Border" BasedOn="{StaticResource S4.DataPanel}"><Setter Property="Padding" Value="18"/><Setter Property="BorderBrush" Value="#20282F"/><Setter Property="BorderThickness" Value="1"/></Style>
+  <Style x:Key="QuietButton" TargetType="Button" BasedOn="{StaticResource S4.Button}"><Setter Property="Background" Value="Transparent"/><Setter Property="BorderThickness" Value="0"/><Setter Property="Foreground" Value="{StaticResource S4.SierraYellow}"/><Setter Property="Padding" Value="10,6"/><Setter Property="ContentTemplate"><Setter.Value><DataTemplate><TextBlock Text="{Binding}" FontFamily="{StaticResource S4.Font}" FontSize="12" Foreground="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Button}}"/></DataTemplate></Setter.Value></Setter></Style>
+ </UserControl.Resources>
+ <ScrollViewer x:Name="Scroller" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" PanningMode="VerticalOnly">
+ <StackPanel x:Name="Page" Margin="18,12,18,20">
+  <Grid Margin="0,0,0,16">
+   <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+   <StackPanel><TextBlock Text="Global operations overview" Style="{StaticResource S4.SectionHeader}"/>
+    <TextBlock x:Name="FreshnessText" Style="{StaticResource S4.Secondary}" Margin="0,4,0,0" TextWrapping="Wrap"/>
+   </StackPanel>
+   <Border x:Name="ScopeBadge" Grid.Column="1" VerticalAlignment="Center" Background="{StaticResource S4.SurfaceSecondary}" CornerRadius="4" Padding="12,8" Margin="12,0,0,0">
+    <TextBlock x:Name="ScopeText" Text="LOCAL OPERATIONS" Style="{StaticResource Caption}" Foreground="{StaticResource S4.TextSecondary}"/>
+   </Border>
+  </Grid>
+  <ItemsControl x:Name="Metrics" Margin="-5,0,-5,14">
+   <ItemsControl.ItemsPanel><ItemsPanelTemplate><UniformGrid x:Name="MetricGrid" Columns="6"/></ItemsPanelTemplate></ItemsControl.ItemsPanel>
+   <ItemsControl.ItemTemplate><DataTemplate><Border Style="{StaticResource Panel}" Margin="5,0,5,8" Padding="16,12">
+    <StackPanel><TextBlock Text="{Binding Label}" Style="{StaticResource Caption}"/>
+     <TextBlock Text="{Binding Value}" Style="{StaticResource S4.Metric}" Margin="0,4,0,4"/>
+     <TextBlock Text="{Binding Note}" Style="{StaticResource Caption}" MinHeight="24"/>
+    </StackPanel>
+   </Border></DataTemplate></ItemsControl.ItemTemplate>
+  </ItemsControl>
+  <Grid x:Name="MainLayout">
+   <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="340"/></Grid.ColumnDefinitions>
+   <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+   <Border x:Name="MapPanel" Style="{StaticResource Panel}" Padding="0" Margin="0,0,14,0">
+    <Grid><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+     <Grid Margin="18,10"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+      <StackPanel Orientation="Horizontal"><Border Background="{StaticResource S4.Selection}" CornerRadius="12" Padding="12,5"><TextBlock Text="●  Flight map" Foreground="{StaticResource S4.SierraYellow}" FontSize="13"/></Border>
+       <TextBlock x:Name="MapContextText" Style="{StaticResource Caption}" VerticalAlignment="Center" Margin="14,0,0,0" MaxWidth="400" ToolTip="The observed trail starts when this workspace opens. Hidden intervals are not joined. Full flight details remain available in Flights."/></StackPanel>
+      <Button x:Name="OpenTrackerButton" Grid.Column="1" Content="Open tracking  ↗" Style="{StaticResource QuietButton}" Click="Tracking_Click"/>
+     </Grid>
+     <local:OperationsMapHost x:Name="MapHost" Grid.Row="1" MinHeight="220"/>
+     <Border x:Name="CurrentFlightPanel" Grid.Row="2" BorderBrush="{StaticResource S4.Divider}" BorderThickness="0,1,0,0" Padding="18,12">
+      <Grid><StackPanel x:Name="CurrentFlightBody">
+       <Grid><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+        <WrapPanel VerticalAlignment="Center">
+         <TextBlock x:Name="HeroFlightText" FontSize="22" FontWeight="SemiBold" Margin="0,0,18,0"/>
+         <TextBlock x:Name="OriginCodeText" FontSize="20" ToolTip="{Binding Text,ElementName=OriginCityText}"/>
+         <TextBlock Text="  →  " Foreground="{StaticResource S4.TextMuted}" FontSize="20"/>
+         <TextBlock x:Name="DestinationCodeText" FontSize="20" ToolTip="{Binding Text,ElementName=DestinationCityText}" Margin="0,0,18,0"/>
+         <Border x:Name="HeroStatusBadge" CornerRadius="4" Padding="8,4" VerticalAlignment="Center"><TextBlock x:Name="HeroStatusText" FontSize="11"/></Border>
+        </WrapPanel>
+        <Button x:Name="HeroFlightDetailsButton" Grid.Column="1" Content="OPEN DISPATCH    →" Style="{StaticResource QuietButton}" Click="CurrentFlight_Click"/>
+       </Grid>
+       <WrapPanel Margin="0,6,0,0">
+        <TextBlock x:Name="OriginCityText" Style="{StaticResource Caption}" MaxWidth="340" Margin="0,0,14,0"/>
+        <TextBlock x:Name="DestinationCityText" Style="{StaticResource Caption}" MaxWidth="340"/>
+       </WrapPanel>
+       <WrapPanel Margin="0,7,0,0">
+        <TextBlock x:Name="AircraftText" FontSize="13" Margin="0,0,18,0"/>
+        <TextBlock Text="OUT " Style="{StaticResource Caption}" VerticalAlignment="Center"/><TextBlock x:Name="HeroDepartureText" FontSize="13"/><TextBlock Text="Z  ·  Gate " Style="{StaticResource Caption}" VerticalAlignment="Center"/><TextBlock x:Name="HeroDepartureGateText" FontSize="13" Margin="0,0,18,0"/>
+        <TextBlock Text="IN / EST " Style="{StaticResource Caption}" VerticalAlignment="Center"/><TextBlock x:Name="HeroArrivalText" FontSize="13"/><TextBlock Text="Z  ·  Gate " Style="{StaticResource Caption}" VerticalAlignment="Center"/><TextBlock x:Name="HeroArrivalGateText" FontSize="13"/>
+       </WrapPanel>
+       <WrapPanel Margin="0,6,0,0"><TextBlock x:Name="HeroTimingText" Style="{StaticResource Caption}" Margin="0,0,12,0"/>
+        <TextBlock x:Name="HeroAircraftTypeText" Style="{StaticResource Caption}" Margin="0,0,12,0"/><TextBlock x:Name="TrackerModeText" Style="{StaticResource Caption}"/>
+       </WrapPanel>
+       <Grid x:Name="HeroProgressTrack" Height="3" Margin="0,10,0,0"><ProgressBar x:Name="ReplayProgress" Maximum="100" Height="3" BorderThickness="0" Background="{StaticResource S4.Divider}" Foreground="{StaticResource S4.SierraYellow}"/></Grid>
+      </StackPanel>
+       <DockPanel x:Name="CurrentFlightEmpty" Visibility="Collapsed">
+        <Button DockPanel.Dock="Right" Content="Open Dispatch  →" Style="{StaticResource QuietButton}" Click="CurrentFlight_Click"/>
+        <StackPanel><TextBlock Text="No active flight" Style="{StaticResource S4.SectionHeader}"/><TextBlock Text="Prepare your next release in Dispatch." Style="{StaticResource S4.Secondary}" Margin="0,5,0,0"/></StackPanel>
+       </DockPanel>
+      </Grid>
+     </Border>
+    </Grid>
+   </Border>
+   <Grid x:Name="SideRail" Grid.Column="1">
+    <Grid.RowDefinitions><RowDefinition Height="0.85*"/><RowDefinition Height="1.15*"/></Grid.RowDefinitions>
+    <Border x:Name="AlertsPanel" Style="{StaticResource Panel}" Margin="0,0,0,14">
+     <ScrollViewer VerticalScrollBarVisibility="Auto"><StackPanel><TextBlock Text="Operational alerts" Style="{StaticResource S4.SectionHeader}"/>
+      <TextBlock Text="Current flight session" Style="{StaticResource Caption}" Margin="0,5,0,14"/>
+      <ItemsControl x:Name="AlertsList"><ItemsControl.ItemTemplate><DataTemplate>
+       <Border BorderBrush="{Binding Color}" BorderThickness="2,0,0,0" Padding="10,0" Margin="0,0,0,14"><StackPanel>
+        <TextBlock Text="{Binding Title}" FontWeight="SemiBold" FontSize="13" TextWrapping="Wrap"/>
+        <TextBlock Text="{Binding Detail}" Style="{StaticResource Caption}" Margin="0,5,0,0"/>
+       </StackPanel></Border>
+      </DataTemplate></ItemsControl.ItemTemplate></ItemsControl>
+      <local:SierraStatePanel x:Name="AlertsEmpty" Style="{StaticResource S4.State}" Kind="Empty" Padding="0,4,0,0" Heading="No current advisories" Message="No detected session issues. Network monitoring unavailable."/>
+     </StackPanel></ScrollViewer>
+    </Border>
+    <Border x:Name="AirportsPanel" Grid.Row="1" Style="{StaticResource Panel}">
+     <ScrollViewer VerticalScrollBarVisibility="Auto"><StackPanel><TextBlock Text="Airports &amp; weather" Style="{StaticResource S4.SectionHeader}"/>
+      <ItemsControl x:Name="AirportsList" Margin="0,14,0,0"><ItemsControl.ItemTemplate><DataTemplate>
+       <StackPanel Margin="0,0,0,14"><Grid><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+        <TextBlock Text="{Binding Code}" FontWeight="SemiBold"/><TextBlock Grid.Column="1" Text="{Binding Gate}" Style="{StaticResource S4.Secondary}"/>
+       </Grid><TextBlock Text="{Binding Name}" Style="{StaticResource Caption}" Margin="0,4,0,0"/><TextBlock Text="{Binding Role}" Style="{StaticResource Caption}"/></StackPanel>
+      </DataTemplate></ItemsControl.ItemTemplate></ItemsControl>
+      <TextBlock x:Name="AirportsEmpty" Text="No assigned airports" Style="{StaticResource S4.Secondary}" Margin="0,14,0,16"/>
+      <Border BorderBrush="{StaticResource S4.Divider}" BorderThickness="0,1,0,0" Padding="0,14,0,0"><StackPanel>
+       <TextBlock x:Name="WeatherTitleText" FontSize="13"/><TextBlock x:Name="WeatherDetailText" Style="{StaticResource Caption}" Margin="0,6,0,0"/>
+      </StackPanel></Border>
+     </StackPanel></ScrollViewer>
+    </Border>
+   </Grid>
+  </Grid>
+  <Grid x:Name="BottomLayout" Margin="0,14,0,0">
+   <Grid.ColumnDefinitions><ColumnDefinition Width="1.9*"/><ColumnDefinition Width="1*"/></Grid.ColumnDefinitions>
+   <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+   <Border x:Name="FlightsPanel" Style="{StaticResource Panel}" Margin="0,0,14,0">
+    <DockPanel>
+     <WrapPanel DockPanel.Dock="Top" Margin="0,0,0,8"><TextBlock Text="Active / upcoming flights" Style="{StaticResource S4.SectionHeader}" VerticalAlignment="Center" Margin="0,0,18,0"/>
+      <Button x:Name="MyFlightsTab" Content="MY FLIGHTS" Tag="all" Style="{StaticResource QuietButton}" Click="Filter_Click"/>
+      <Button x:Name="AssignedFlightsTab" Content="ASSIGNED" Tag="assigned" Style="{StaticResource QuietButton}" Click="Filter_Click"/>
+      <Button x:Name="WatchlistTab" Content="WATCHLIST" Tag="watchlist" Style="{StaticResource QuietButton}" Click="Filter_Click"/>
+     </WrapPanel>
+     <TextBlock x:Name="FlightsSourceText" DockPanel.Dock="Top" Style="{StaticResource Caption}" Margin="0,0,0,8"/>
+     <WrapPanel DockPanel.Dock="Bottom" Margin="0,8,0,0"><TextBlock x:Name="OperationsFootnote" Style="{StaticResource Caption}" VerticalAlignment="Center" Margin="0,0,10,0"/>
+      <Button x:Name="WatchFlightButton" Content="☆  WATCH SELECTED" Style="{StaticResource QuietButton}" Click="Watch_Click"/>
+      <Button Content="Preflight" Style="{StaticResource QuietButton}" Click="Preflight_Click"/>
+     </WrapPanel>
+     <Grid MinHeight="80"><DataGrid x:Name="DashboardFlightsGrid" Style="{StaticResource S4.Table}" ScrollViewer.HorizontalScrollBarVisibility="Auto" SelectionMode="Single" SelectionChanged="Selection_Changed" MouseDoubleClick="Flight_DoubleClick" MaxHeight="170" VerticalAlignment="Top">
+      <DataGrid.Resources><Style TargetType="TextBlock" BasedOn="{StaticResource S4.Body}"><Setter Property="FontSize" Value="13"/></Style></DataGrid.Resources>
+      <DataGrid.Columns>
+       <DataGridTextColumn Header="FLIGHT" Binding="{Binding Id}" Width="90" MinWidth="90"/>
+       <DataGridTextColumn Header="FROM" Binding="{Binding Leg.Origin}" Width="82" MinWidth="82"/>
+       <DataGridTextColumn Header="TO" Binding="{Binding Leg.Destination}" Width="82" MinWidth="82"/>
+       <DataGridTextColumn Header="SCHED OUT" Binding="{Binding ScheduledOut}" Width="140" MinWidth="140"/>
+       <DataGridTextColumn Header="SCHED IN" Binding="{Binding ScheduledIn}" Width="140" MinWidth="140"/>
+       <DataGridTextColumn Header="AIRCRAFT" Binding="{Binding DisplayAircraft}" Width="120" MinWidth="120"/>
+       <DataGridTextColumn Header="STATE" Binding="{Binding Status}" Width="*" MinWidth="120"/>
+      </DataGrid.Columns>
+     </DataGrid><TextBlock x:Name="EmptyFlightsText" Visibility="Collapsed" Text="No flights in this view." Style="{StaticResource S4.Secondary}" TextWrapping="Wrap" Margin="18,52,18,8"/></Grid>
+    </DockPanel>
+   </Border>
+   <Border x:Name="ActivityPanel" Grid.Column="1" Style="{StaticResource Panel}">
+    <StackPanel><TextBlock Text="Activity" Style="{StaticResource S4.SectionHeader}"/>
+     <TextBlock Text="Recorded flight events · newest first" Style="{StaticResource Caption}" Margin="0,5,0,14"/>
+     <ScrollViewer MaxHeight="205" VerticalScrollBarVisibility="Auto"><ItemsControl x:Name="ActivityList"><ItemsControl.ItemTemplate><DataTemplate>
+      <Border BorderBrush="{StaticResource S4.Divider}" BorderThickness="1,0,0,0" Padding="12,0,0,12"><StackPanel>
+       <TextBlock Text="{Binding Time}" Style="{StaticResource Caption}"/><TextBlock Text="{Binding Title}" FontSize="13" Margin="0,4,0,0" TextWrapping="Wrap" ToolTip="{Binding Detail}"/>
+      </StackPanel></Border>
+     </DataTemplate></ItemsControl.ItemTemplate></ItemsControl></ScrollViewer>
+     <local:SierraStatePanel x:Name="ActivityEmpty" Style="{StaticResource S4.State}" Kind="Empty" Padding="0" Heading="Waiting for flight activity" Message="Recorded milestones will appear here as the session progresses. No automated OCC decisions are generated."/>
+    </StackPanel>
+   </Border>
+  </Grid>
+  <TextBlock x:Name="ContextText" Style="{StaticResource Caption}" Margin="0,16,0,0"/>
+ </StackPanel>
+ </ScrollViewer>
+</UserControl>

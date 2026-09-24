@@ -52,13 +52,14 @@ public partial class MainWindow
         ToolsOverlay.Visibility=Visibility.Collapsed;
         Shell.Navigation.SelectContent(section);
         ShellUnavailable.Visibility=section==ShellSection.Airports?Visibility.Visible:Visibility.Collapsed;
-        LegacyViewport.Visibility=section==ShellSection.Airports?Visibility.Collapsed:Visibility.Visible;
-        DashboardScroll.Visibility=section==ShellSection.Operations?Visibility.Visible:Visibility.Collapsed;
+        LegacyViewport.Visibility=section is ShellSection.Airports or ShellSection.Operations?Visibility.Collapsed:Visibility.Visible;
+        OperationsView.Visibility=section==ShellSection.Operations?Visibility.Visible:Visibility.Collapsed;
+        DashboardScroll.Visibility=OperationsView.Visibility;
         FlightTrackingView.Visibility=section==ShellSection.Flights?Visibility.Visible:Visibility.Collapsed;
         DispatchView.Visibility=section==ShellSection.Dispatch?Visibility.Visible:Visibility.Collapsed;
         PilotLogbookView.Visibility=section==ShellSection.Logbook?Visibility.Visible:Visibility.Collapsed;
         LegacyViewport.ScrollToTop();LegacyViewport.ScrollToHorizontalOffset(0);
-        if(section==ShellSection.Operations)DashboardScroll.ScrollToTop();
+        if(section==ShellSection.Operations){RefreshOperations();DashboardScroll.ScrollToTop();}
         if(section==ShellSection.Flights)RefreshFlightTrackingWorkspace(liveLast,flightState.Phase,StatusText.Text);
         if(section==ShellSection.Dispatch)UpdateDispatchState();
         if(section==ShellSection.Logbook)PilotLogbookView.Render(flightHistory);

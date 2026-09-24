@@ -20,20 +20,22 @@ internal static class DashboardSmokeTest
     {
         var checks=new List<string>();
         void Check(bool result,string label) {if(!result)throw new InvalidOperationException(label);checks.Add(label);}
+        Check(typeof(MainWindow).Assembly.GetType("Alpha6Ops.Desktop.OperationsWorkspace") is not null,"Operations has a dedicated Sierra workspace instead of the photographic portal");
         var resolverDirectory=Path.GetFullPath(Path.Combine(outputDirectory,"simconnect-resolver"));Directory.CreateDirectory(resolverDirectory);
         var resolverDll=Path.Combine(resolverDirectory,"SimConnect.dll");File.WriteAllBytes(resolverDll,[0]);
         Check(SimConnectSource.ResolveSimConnectPath(outputDirectory,resolverDll,[])==resolverDll,"SimConnect resolver accepts an explicit installed SDK DLL");
         Check(SimConnectSource.ResolveSimConnectPath(resolverDirectory,null,[])==resolverDll,"SimConnect resolver finds a DLL beside the packaged executable");
         await HeaderSmokeTest.RunAsync(window, Check);
         await SierraShellSmokeTest.RunAsync(window, outputDirectory, Check);
+        await OperationsSmokeTest.RunAsync(window, outputDirectory, Check);
         await ResponsiveSmokeTest.RunAsync(window, outputDirectory, Check);
         await MonitorSmokeTest.RunAsync(window, outputDirectory, Check);
         window.SetAdvanced(false);window.UpdateLayout();
         await window.Dispatcher.InvokeAsync(()=>{},DispatcherPriority.ApplicationIdle);
         Check(window.DashboardFlights.Count==3 && window.HeroFlightText.Text=="A601","Dashboard hero and table use the current rotation");
-        Check(window.ModuleTiles.Items.Count==8,"All eight photographic module tiles load");
+        Check(window.OperationsView.Metrics.Items.Count==6,"Operations replaces launcher tiles with six source-aware KPIs");
         Check(window.ConnectionBadgeText.Text.Contains("DISCONNECTED",StringComparison.Ordinal),"Disconnected simulator is never presented as connected");
-        Check(window.FleetCountText.Text=="1,006","Fleet chart uses the bundled reference catalog");
+        Check(FleetDatabase.Read().Count==1006,"Reference fleet remains accessible without presenting catalog counts as airline availability");
         Check(window.VersionText.Text.StartsWith("SIERRA 4  •  v",StringComparison.Ordinal)&&!window.VersionText.Text.Contains("PREVIEW",StringComparison.Ordinal),"Footer presents a clean product version without preview wording");
         var exitStyle=(Style)window.FindResource("S4.Button");
         var dispatchHeaderStyle=(Style)window.FindResource("DispatchHeaderCard");
@@ -163,14 +165,14 @@ internal static class DashboardSmokeTest
         window.HeaderDispatchButton.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));Check(window.DispatchView.Visibility==Visibility.Visible,"Header Dispatch card opens the native Dispatch workspace");window.ShowDashboard();
         var sampleFlight=window.HeroFlightText.Text;
         window.HeroFlightText.Text="DAL742";window.UpdateLayout();
-        Check(window.HeroFlightText.FontSize==48,"Combined airline ICAO and flight number use the larger hero treatment");
+        Check(window.HeroFlightText.FontSize==22,"Current flight identifier uses a compact native-size treatment");
         Check(window.HeroFlightText.ActualWidth>0 && window.HeroFlightText.Text=="DAL742","Imported flight identifier fits without a separate airline badge");
         window.HeroFlightText.Text=sampleFlight;
         Capture(window,Path.Combine(outputDirectory,"dashboard-default.png"));
         var width=window.Width;var height=window.Height;
         window.Width=1366;window.Height=768;window.UpdateLayout();
-        Check(window.DashboardScroll.ScrollableHeight<=1 && window.DashboardScroll.VerticalOffset==0,"1920x1080 and compact displays keep the dashboard stationary");
-        Check(window.HeroFlightText.ActualWidth>0 && window.ViewAlertsButton.ActualWidth>0,"Scaled dashboard preserves the hero and alerts");
+        Check(window.DashboardScroll.VerticalScrollBarVisibility==ScrollBarVisibility.Auto && window.DashboardScroll.VerticalOffset==0,"Compact Operations can scroll secondary information at native text size");
+        Check(window.HeroFlightText.ActualWidth>0 && window.OperationsView.AlertsPanel.ActualWidth>0,"Native dashboard preserves the current flight and alerts");
         Capture(window,Path.Combine(outputDirectory,"dashboard-1366.png"));
         window.Width=1100;window.UpdateLayout();Capture(window,Path.Combine(outputDirectory,"dashboard-1100.png"));
         Check(window.Shell.BrandMark.ActualWidth>=32&&window.Shell.BrandMark.ActualHeight>=32,"S4 mark retains a sharp native-size rendering area");
@@ -178,8 +180,8 @@ internal static class DashboardSmokeTest
         Check(window.ClockText.ActualWidth >= 140 && window.LocalClockText.ActualWidth >= 140,"Both clocks retain readable space at minimum window width");window.Shell.CloseOverlays();
         window.DashboardScroll.ScrollToBottom();window.UpdateLayout();
         await window.Dispatcher.InvokeAsync(()=>{},DispatcherPriority.ApplicationIdle);
-        Check(window.DashboardScroll.VerticalOffset==0,"Dashboard does not move after a scroll request");
-        Check(window.DashboardFlightsGrid.Columns[1].ActualWidth >= 80,"Compact operations table keeps route text visible");
+        Check(Math.Abs(window.DashboardScroll.VerticalOffset-window.DashboardScroll.ScrollableHeight)<1,"Dashboard scroll reaches secondary information");
+        Check(window.DashboardFlightsGrid.Columns[1].ActualWidth >= 80,$"Compact operations table keeps route text visible (actual {window.DashboardFlightsGrid.Columns[1].ActualWidth}, table {window.DashboardFlightsGrid.ActualWidth})");
         Capture(window,Path.Combine(outputDirectory,"dashboard-1100-stationary.png"));
         window.DashboardScroll.ScrollToTop();
         window.Width=width;window.Height=height;window.UpdateLayout();
@@ -204,11 +206,11 @@ internal static class DashboardSmokeTest
         Check(reopened.CompletedCount==2,"Reopened preflight shows saved checks");reopened.Close();
 
         window.AcknowledgeAlert("atl-wx");
-        Check(window.AlertsItems.Items.Count==4 && store.Load().AcknowledgedAlerts.Contains("atl-wx"),"Acknowledging a demo alert persists and refills the alert panel");
-        window.RouteMap.SelectStation("JFK");window.RouteMap.Zoom(1.25);
-        Check(window.RouteMap.SelectedStation=="JFK" && window.RouteMap.ZoomLevel>1,"Map station selection and zoom change the view");
-        window.RouteMap.ResetView();
-        Check(window.RouteMap.SelectedStation=="ATL" && window.RouteMap.ZoomLevel==1,"Map reset restores its hub and scale");
+        Check(window.OperationsView.AlertsList.Items.Count==0 && store.Load().AcknowledgedAlerts.Contains("atl-wx"),"Demo alert acknowledgment persists without leaking into production Operations alerts");
+        var retainedDemoMap=new NetworkMap();retainedDemoMap.SelectStation("JFK");retainedDemoMap.Zoom(1.25);
+        Check(retainedDemoMap.SelectedStation=="JFK" && retainedDemoMap.ZoomLevel>1,"Retained demo network station selection and zoom work");
+        retainedDemoMap.ResetView();
+        Check(retainedDemoMap.SelectedStation=="ATL" && retainedDemoMap.ZoomLevel==1,"Retained demo network reset restores its hub and scale");
 
         foreach(var name in new[]{"Operations","Maintenance","Crews","Passengers","Weather","Dispatch","OCC","Network"})
         {

@@ -49,6 +49,7 @@ public partial class MainWindow
         if(!milestones.SequenceEqual(snapshot.Milestones)){milestones.Clear();foreach(var item in snapshot.Milestones)milestones.Add(item);}
         if(snapshot.Phase is {} phase)tray.Text="Sierra 4 — Live "+phase;
         RefreshLiveTracker(snapshot.Aircraft,snapshot.SimulatorUtc,snapshot.Phase,snapshot.TrackingStatus);
+        RefreshOperations();
     }
 
     private void RenderConnection(FlightSessionSnapshot snapshot)

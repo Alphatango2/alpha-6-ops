@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Alpha6Ops.Desktop;
 
-internal enum ShellSection { Operations, Flights, Dispatch, Crew, Maintenance, Fleet, Airports, Network, Reports, Logbook, Settings, Help, Messages, Tools, Status, OperationsDemo, Passengers, Weather, Occ }
+internal enum ShellSection { Operations, Flights, Dispatch, Crew, Maintenance, Fleet, Airports, Network, Reports, Logbook, Settings, Help, Messages, Tools, Status, OperationsDemo, Passengers, Weather, Occ, AlertsDemo }
 
 internal sealed class ShellDestination(ShellSection section, string title, string glyph, string detail, bool primary = true) : INotifyPropertyChanged
 {
@@ -23,7 +23,7 @@ internal sealed class ShellDestination(ShellSection section, string title, strin
 internal sealed class ShellNavigation
 {
     public IReadOnlyList<ShellDestination> Destinations { get; } = Array.AsReadOnly(new ShellDestination[] {
-        new(ShellSection.Operations,"Operations","\uE80F","Existing operations dashboard"),
+        new(ShellSection.Operations,"Operations","\uE80F","Current flight operations overview"),
         new(ShellSection.Flights,"Flights","\uE709","Live flight tracking"),
         new(ShellSection.Dispatch,"Dispatch","\uE8F1","Review and accept a flight release"),
         new(ShellSection.Crew,"Crew","\uE716","Existing demonstration workspace · opens separately"),
@@ -37,7 +37,12 @@ internal sealed class ShellNavigation
         new(ShellSection.Help,"Help / About","\uE897","About Sierra 4 and available tools",false),
         new(ShellSection.Messages,"Messages","\uE715","Bundled product notes with local read status",false),
         new(ShellSection.Tools,"Flight tools","\uE115","Simulator controls, profile and diagnostics",false),
-        new(ShellSection.Status,"Status & clocks","\uE823","Simulator, local weather and dated clocks",false)
+        new(ShellSection.Status,"Status & clocks","\uE823","Simulator, local weather and dated clocks",false),
+        new(ShellSection.OperationsDemo,"Operations demo","\uE7BA","Demonstration scenarios and locally acknowledged alerts",false),
+        new(ShellSection.AlertsDemo,"Alerts demo","\uE7BA","Review and acknowledge demonstration alerts",false),
+        new(ShellSection.Passengers,"Passengers demo","\uE716","Existing demonstration passenger desk",false),
+        new(ShellSection.Weather,"Weather demo","\uE753","Existing illustrative airport weather desk",false),
+        new(ShellSection.Occ,"OCC demo","\uE774","Existing operations control demonstration",false)
     });
     public ShellSection Current { get; private set; } = ShellSection.Operations;
     public event Action<ShellSection>? Requested;

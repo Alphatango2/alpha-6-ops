@@ -44,8 +44,8 @@ public partial class MainWindow
         try { dashboardState = dashboardStore.Load(); }
         catch (Exception error) when (error is IOException or JsonException or UnauthorizedAccessException)
         { StatusText.Text = "Could not load dashboard preferences: " + error.Message; }
-        ModuleTiles.ItemsSource = DashboardData.Tiles;
-        RefreshAlerts(); RefreshMessages(); RefreshFleetSummary();
+        InitializeOperations();
+        RefreshMessages();
         UpdateClock(); dashboardClock.Tick += (_,_) => UpdateClock(); dashboardClock.Start();
         InitializeLocalWeather(diagnosticDirectory is not null);
         SizeChanged += (_,_) => { UpdateResponsiveLayout(); UpdateFlightTabs(); };
@@ -77,6 +77,7 @@ public partial class MainWindow
         var now=DateTimeOffset.UtcNow;
         RenderClocks(now, TimeZoneInfo.Local);
         RenderLocalWeather(now);
+        RefreshOperations();
         ClockText.ToolTip="Current real-world UTC. Replay and flight schedules use their own dated simulator clock.";
     }
     private void SaveDashboard()
@@ -92,32 +93,20 @@ public partial class MainWindow
         Shell.PresentProfile(name);
         if(!initializingPresentation)coordinator.SetPilotName(name);
     }
-    private void RefreshFleetSummary()
-    {
-        try
-        {
-            var fleet=FleetDatabase.Read();var active=fleet.Count(f=>f.Status=="Active");var parked=fleet.Count(f=>f.Status=="Parked");
-            FleetCountText.Text=fleet.Count.ToString("N0");FleetActiveText.Text=$"■  ACTIVE       {active:N0}";FleetParkedText.Text=$"■  PARKED          {parked:N0}";
-            FleetFamiliesText.Text=$"{fleet.Select(f=>f.Family).Distinct().Count()} aircraft families";
-            FleetRing.Children.Clear();
-            var ring=new Ellipse { Width=132,Height=132,Stroke=OpsUi.Brush("#63C848"),StrokeThickness=16 };
-            Canvas.SetLeft(ring,9);Canvas.SetTop(ring,9);FleetRing.Children.Add(ring);
-            var fraction=parked/(double)fleet.Count;var end=new Point(75+66*Math.Sin(fraction*2*Math.PI),75-66*Math.Cos(fraction*2*Math.PI));
-            FleetRing.Children.Add(new Path {Data=new PathGeometry([new PathFigure(new Point(75,9),[new ArcSegment(end,new Size(66,66),0,fraction>.5,SweepDirection.Clockwise,true)],false)]),Stroke=OpsUi.Brush("#FFDA00"),StrokeThickness=16});
-        }
-        catch(Exception error) when(error is IOException or DllNotFoundException or EntryPointNotFoundException)
-        {FleetCountText.Text="—";FleetActiveText.Text="Catalog unavailable";FleetParkedText.Text="";FleetFamiliesText.Text=error.Message;}
-    }
     private void RefreshDashboardFlight(bool live)
     {
         dashboardShowsLive=live;
         var rotation=live ? flightState.Rotation : session.Rotation;
-        DashboardFlights=rotation is null ? [] : RotationPlanner.Project(rotation).Select(l=>new DashboardFlightRow(l,rotation.AircraftId)).ToArray();
+        DashboardFlights=rotation is null ? [] : RotationPlanner.Project(rotation).Select(l=>new DashboardFlightRow(l,rotation.AircraftId,
+            ScheduleComparisonAvailable:!live || flightState.ScheduleTrusted && flightState.DataCurrent,
+            AircraftType:live?activePlan?.AircraftType:null,
+            OperationalStatus:live&&l.Id==activePlan?.FlightNumber?OperationsOverviewQuery.FlightStatus(flightState):null)).ToArray();
         var hero=HeroFlight;
         if(hero is null)
         {
             HeroFlightText.Text="NO ACTIVE FLIGHT";OriginCodeText.Text=DestinationCodeText.Text="—";OriginCityText.Text="SET AN";DestinationCityText.Text="ASSIGNMENT";
             HeroDepartureText.Text=HeroArrivalText.Text=HeroDepartureGateText.Text=HeroArrivalGateText.Text="—";HeroTimingText.Text="Open Flight tools to enter your flight";HeroStatusText.Text="●  WAITING";HeroAircraftTypeText.Text="NO ASSIGNMENT";
+            AircraftText.Text="—";TrackerModeText.Text="NO ACTIVE ASSIGNMENT";
         }
         else
         {
@@ -142,6 +131,7 @@ public partial class MainWindow
             OperationsFootnote.Text=hero is null?"NO ACTIVE ASSIGNMENT":$"{hero.Leg.ScheduledOut:dd MMM yyyy}  •  ALL TIMES UTC".ToUpperInvariant();
         }
         else OperationsFootnote.Text="02 SEP 2026  •  ALL TIMES UTC";
+        RefreshOperations();
     }
     private void RefreshFlightsTable()
     {
@@ -186,15 +176,10 @@ public partial class MainWindow
     private void FlightDeck_Click(object sender,RoutedEventArgs e)=>OpenTools();
     private void OpenTracker_Click(object sender,RoutedEventArgs e)=>ShowFlightTracking();
     private void ShowFlight(DashboardFlightRow flight,bool preflight)=>new FlightPreparationWindow(flight,dashboardState,SaveDashboard,preflight,()=>SetFlight_Click(this,new RoutedEventArgs())){Owner=this}.ShowDialog();
-    private void RefreshAlerts()
-    {
-        var active=DashboardData.Alerts.Where(a=>!dashboardState.AcknowledgedAlerts.Contains(a.Id)).ToArray();
-        AlertsItems.ItemsSource=active.Take(4).ToArray();ViewAlertsButton.Content=$"VIEW ALL ({active.Length})";
-    }
     internal void AcknowledgeAlert(string id)
     {
         if(!DashboardData.Alerts.Any(a=>a.Id==id))return;
-        dashboardState.AcknowledgedAlerts.Add(id);SaveDashboard();RefreshAlerts();
+        dashboardState.AcknowledgedAlerts.Add(id);SaveDashboard();
     }
     private void Alert_Click(object sender,RoutedEventArgs e)
     {
@@ -213,7 +198,7 @@ public partial class MainWindow
         OperationsWorkspaceWindow? window=null;
         window=new OperationsWorkspaceWindow(module,"ACKNOWLEDGE",r=>{AcknowledgeAlert(r.Reference);window!.Close();}){Owner=this};window.ShowDialog();
     }
-    private void RefreshMessages(){MessagesItems.ItemsSource=DashboardData.Messages.Select(m=>m with{ReadLabel=dashboardState.ReadMessages.Contains(m.Id)?"READ":"NEW"}).ToArray();Shell.PresentMessages(DashboardData.Messages.Count(m=>!dashboardState.ReadMessages.Contains(m.Id)));}
+    private void RefreshMessages(){Shell.PresentMessages(DashboardData.Messages.Count(m=>!dashboardState.ReadMessages.Contains(m.Id)));}
     private void Message_Click(object sender,RoutedEventArgs e)
     {
         if(((Button)sender).Tag is not DashboardMessage message)return;
@@ -253,6 +238,7 @@ public partial class MainWindow
     {
         switch(name)
         {
+            case "AlertsDemo": AllAlerts_Click(this,new RoutedEventArgs());return;
             case "Settings": new SettingsWindow(ConnectionBadgeText.Text, PilotNameBox.Text, OpenTools,
                 () => FlightHistory_Click(this, new RoutedEventArgs()),
                 () => Logs_Click(this, new RoutedEventArgs()),

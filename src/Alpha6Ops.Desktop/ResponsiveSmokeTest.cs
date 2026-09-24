@@ -34,16 +34,16 @@ internal static class ResponsiveSmokeTest
             check(TextFits(shell.ConnectionLabel)&&TextFits(shell.WorkspaceTitle),$"Header text fits at {width}x{height}");
             check(Descendants<Button>(shell.PrimaryNavigation).All(b=>!string.IsNullOrWhiteSpace(AutomationProperties.GetName(b))&&b.ActualHeight>=40&&b.ActualWidth>=40&&Descendants<TextBlock>(b).Where(t=>t.IsVisible).All(TextFits)),$"Navigation has named usable targets at {width}x{height}");
             check(window.LegacyViewport.HorizontalScrollBarVisibility==ScrollBarVisibility.Auto&&window.LegacyViewport.VerticalScrollBarVisibility==ScrollBarVisibility.Auto,$"Legacy content can scroll instead of shrinking at {width}x{height}");
-            var tile=(FrameworkElement)window.ModuleTiles.ItemContainerGenerator.ContainerFromIndex(0);
-            check(window.HeroPanel.ActualWidth>=490&&window.DashboardFlightsGrid.Columns[1].ActualWidth>=80&&tile.ActualWidth>=180,$"Legacy operational content retains readable width at {width}x{height}");
-            check(Grid.GetRow(window.AlertsPanel)==0&&Grid.GetRow(window.NetworkPanel)==0&&Grid.GetRow(window.MessagesPanel)==0&&window.NetworkPanel.ActualHeight>=240,$"Legacy panel layout is retained at {width}x{height}");
-            check(Descendants<TextBlock>(window.ModuleTiles).All(TextFits),$"Legacy module captions fit at {width}x{height}");
-            check(window.HeroPanel.ActualHeight>=353&&window.OperationsPanel.ActualHeight>=225&&tile.ActualHeight>=125,$"Legacy section minimums hold at {width}x{height}");
-            check(Math.Abs(window.ModuleTiles.ActualHeight-window.NetworkPanel.ActualHeight)<=1,$"Legacy modules and map stay aligned at {width}x{height}");
+            var ops=window.OperationsView;
+            check(ops.ActualWidth<=shell.WorkspacePresenter.ActualWidth+1&&window.LegacyViewport.Visibility==Visibility.Collapsed,$"Operations bypasses the fixed legacy viewport at {width}x{height}");
+            check(ops.MapPanel.ActualWidth>300&&ops.MapHost.ActualHeight>=220,$"Map remains a usable geographic centerpiece at {width}x{height}");
+            check(Grid.GetRow(ops.SideRail)==(ops.ActualWidth-36<1050?1:0),$"Secondary rail reflows at {width}x{height}");
+            check(ops.CurrentFlightPanel.ActualHeight<240&&window.HeroFlightText.FontSize==22,$"Current flight remains compact with native text at {width}x{height}");
+            check(Descendants<Viewbox>(ops).All(v=>IsAncestor(ops.MapHost,v)),$"Only the retained geographic renderer scales at {width}x{height}");
             DashboardSmokeTest.Capture(window,Path.Combine(outputDirectory,$"responsive-{width}x{height}.png"));
-            window.LegacyViewport.ScrollToBottom();window.LegacyViewport.ScrollToHorizontalOffset(window.LegacyViewport.ScrollableWidth);window.UpdateLayout();
-            check(Math.Abs(window.LegacyViewport.VerticalOffset-window.LegacyViewport.ScrollableHeight)<1&&Math.Abs(window.LegacyViewport.HorizontalOffset-window.LegacyViewport.ScrollableWidth)<1,$"Entire legacy workspace is reachable by scrolling at {width}x{height}");
-            window.LegacyViewport.ScrollToTop();window.LegacyViewport.ScrollToHorizontalOffset(0);
+            window.DashboardScroll.ScrollToBottom();window.UpdateLayout();
+            check(Math.Abs(window.DashboardScroll.VerticalOffset-window.DashboardScroll.ScrollableHeight)<1,$"Operations secondary content is reachable by scrolling at {width}x{height}");
+            window.DashboardScroll.ScrollToTop();
             shell.OpenSearch();window.UpdateLayout();
             var searchBounds=shell.SearchPanel.TransformToAncestor(window).TransformBounds(new Rect(shell.SearchPanel.RenderSize));
             check(searchBounds.Bottom<=window.ActualHeight&&shell.WorkspaceSearch.IsKeyboardFocused,$"Search fits and receives keyboard focus at {width}x{height}");
@@ -68,8 +68,8 @@ internal static class ResponsiveSmokeTest
             check(size.Width <= available.Width && size.Height <= available.Height,
                 $"Saved window fits {pixelsWide}x{pixelsHigh} work area at {scale:P0} scaling");
         }
-        check(window.DashboardScroll.VerticalScrollBarVisibility == ScrollBarVisibility.Disabled && window.DashboardScroll.PanningMode == PanningMode.None,
-            "Dashboard disables scrollbar, mouse-wheel, and touch-panning movement");
+        check(window.DashboardScroll.VerticalScrollBarVisibility == ScrollBarVisibility.Auto && window.DashboardScroll.PanningMode == PanningMode.VerticalOnly,
+            "Operations scrolls vertically without shrinking the entire page");
         check(MainWindow.ShouldOptimizeToMonitor(null, new Size(1920, 1040)) &&
               MainWindow.ShouldOptimizeToMonitor(new UserPreferences(1366, 768, false, false, EmbeddedReplay.Fixtures[0]), new Size(1920, 1040)) &&
               !MainWindow.ShouldOptimizeToMonitor(new UserPreferences(1700, 950, false, false, EmbeddedReplay.Fixtures[0]), new Size(1920, 1040)),

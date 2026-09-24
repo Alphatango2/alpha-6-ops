@@ -43,45 +43,6 @@
         </Trigger>
       </Style.Triggers>
     </Style>
-    <DataTemplate x:Key="AlertTemplate">
-      <Button Style="{StaticResource OpsLink}" Padding="13,10" HorizontalContentAlignment="Stretch" Tag="{Binding}" Click="Alert_Click">
-        <Grid>
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="27" />
-            <ColumnDefinition />
-          </Grid.ColumnDefinitions>
-          <TextBlock Text="{Binding Icon}" Foreground="{Binding Color}" FontFamily="Segoe MDL2 Assets" FontSize="19" />
-          <StackPanel Grid.Column="1">
-            <Grid>
-              <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition Width="Auto" />
-              </Grid.ColumnDefinitions>
-              <TextBlock Text="{Binding Title}" Foreground="{Binding Color}" FontFamily="Bahnschrift SemiCondensed" FontSize="13" TextWrapping="Wrap" />
-              <TextBlock Grid.Column="1" Text="{Binding Age}" Style="{StaticResource OpsCaption}" FontSize="9" Margin="6,0,0,0" />
-            </Grid>
-            <TextBlock Text="{Binding Summary}" Foreground="#B2BEC9" FontSize="12" TextWrapping="Wrap" Margin="0,5,0,0" LineHeight="16" />
-          </StackPanel>
-        </Grid>
-      </Button>
-    </DataTemplate>
-    <DataTemplate x:Key="MessageTemplate">
-      <Button Style="{StaticResource OpsLink}" Foreground="#EEF2F5" Padding="12,8" HorizontalContentAlignment="Stretch" Tag="{Binding}" Click="Message_Click">
-        <Grid>
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="26" />
-            <ColumnDefinition />
-            <ColumnDefinition Width="Auto" />
-          </Grid.ColumnDefinitions>
-          <TextBlock Text="{Binding Icon}" FontFamily="Segoe MDL2 Assets" Foreground="{Binding Color}" FontSize="16" />
-          <StackPanel Grid.Column="1">
-            <TextBlock Text="{Binding Title}" FontSize="13" TextWrapping="Wrap" />
-            <TextBlock Text="{Binding Subtitle}" Foreground="#91A4B4" FontSize="11" Margin="0,3,0,0" TextWrapping="Wrap" />
-          </StackPanel>
-          <TextBlock Grid.Column="2" Text="{Binding ReadLabel}" Foreground="#92A2B0" FontSize="9" Margin="6,2,0,0" />
-        </Grid>
-      </Button>
-    </DataTemplate>
   </Window.Resources>
   <Grid Background="{StaticResource S4.AppBackground}">
     <Grid.RowDefinitions>
@@ -204,290 +165,32 @@
           <ScrollViewer x:Name="LegacyViewport" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" CanContentScroll="False">
             <ScrollViewer.Resources><StaticResource x:Key="{x:Static SystemColors.ControlBrushKey}" ResourceKey="S4.AppBackground"/></ScrollViewer.Resources>
             <Grid x:Name="DashboardRoot" MinWidth="{StaticResource S4.LegacyMinimumWidth}" MinHeight="{StaticResource S4.LegacyMinimumHeight}" Width="{Binding ViewportWidth,ElementName=LegacyViewport}" Height="{Binding ViewportHeight,ElementName=LegacyViewport}">
-    <ScrollViewer x:Name="DashboardScroll"  VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Disabled" PanningMode="None" Padding="0,0,1,8">
-      <local:DashboardBodyPanel x:Name="DashboardBody" ViewportHeight="{Binding ViewportHeight, ElementName=DashboardScroll}">
-        <Grid x:Name="HeroAlertsLayout">
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2.7*" />
-            <ColumnDefinition Width="12" />
-            <ColumnDefinition Width="1*" />
-          </Grid.ColumnDefinitions>
-          <Border x:Name="HeroPanel" MinHeight="353" Style="{StaticResource OpsPanel}" ClipToBounds="True">
-            <Grid>
-              <Grid.Background><ImageBrush ImageSource="Assets/Dashboard/hero-unbranded.png" Stretch="UniformToFill" /></Grid.Background>
-              <Rectangle>
-                <Rectangle.Fill>
-                  <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                    <GradientStop Color="#D8050D15" />
-                    <GradientStop Color="#95040A10" Offset=".43" />
-                    <GradientStop Color="#08000000" Offset="1" />
-                  </LinearGradientBrush>
-                </Rectangle.Fill>
-              </Rectangle>
-              <Rectangle>
-                <Rectangle.Fill>
-                  <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                    <GradientStop Color="#25000000" />
-                    <GradientStop Color="#00000000" Offset=".45" />
-                    <GradientStop Color="#F0040A0E" Offset="1" />
-                  </LinearGradientBrush>
-                </Rectangle.Fill>
-              </Rectangle>
-              <StackPanel x:Name="HeroQuote" HorizontalAlignment="Right" Margin="0,45,24,0">
-                <TextBlock Text="“Same skies.&#xA; Higher standards.”" FontStyle="Italic" FontSize="17" />
-                <Rectangle Fill="{StaticResource OpsYellow}" Width="31" Height="2" HorizontalAlignment="Left" Margin="12,15,0,0" />
-              </StackPanel>
-              <Grid Margin="20,15,20,12">
-                <Grid.RowDefinitions>
-                  <RowDefinition Height="28" />
-                  <RowDefinition Height="51" />
-                  <RowDefinition Height="80" />
-                  <RowDefinition Height="36" />
-                  <RowDefinition Height="69" />
-                  <RowDefinition Height="42" />
-                  <RowDefinition />
-                </Grid.RowDefinitions>
-                <Grid>
-                  <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition Width="Auto" />
-                  </Grid.ColumnDefinitions>
-                  <TextBlock x:Name="HeroHeadingText" Text="YOUR NEXT FLIGHT" Style="{StaticResource OpsTitle}" FontSize="19" />
-                  <TextBlock x:Name="TrackerModeText" Grid.Column="1" Text="REPLAY • SAMPLE DATA" Style="{StaticResource OpsCaption}" FontSize="9" VerticalAlignment="Top" />
-                </Grid>
-                <TextBlock x:Name="HeroFlightText" Grid.Row="1" Text="A601" FontFamily="Bahnschrift SemiCondensed" FontSize="48" FontWeight="Bold" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" />
-                <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center">
-                  <StackPanel>
-                    <TextBlock x:Name="OriginCodeText" Text="ORD" FontFamily="Bahnschrift SemiCondensed" FontSize="51" FontWeight="Bold" />
-                    <TextBlock x:Name="OriginCityText" Text="CHICAGO O'HARE INTERNATIONAL AIRPORT" FontFamily="Bahnschrift SemiCondensed" FontSize="10" TextTrimming="CharacterEllipsis" MaxWidth="250" />
-                  </StackPanel>
-                  <StackPanel Orientation="Horizontal" Margin="23,0,23,12" VerticalAlignment="Center">
-                    <Rectangle Height="2" Width="23" Fill="{StaticResource OpsYellow}" />
-                    <Path Data="M 0,18 L 12,16 7,1 13,1 24,15 37,15 Q 48,17 37,20 L 24,20 13,34 7,34 12,21 0,20 Z" Fill="{StaticResource OpsYellow}" Width="44" Height="35" Stretch="Uniform" Margin="2,-4,2,0" />
-                    <Rectangle Height="2" Width="42" Fill="#7F919E" />
-                  </StackPanel>
-                  <StackPanel>
-                    <TextBlock x:Name="DestinationCodeText" Text="DTW" FontFamily="Bahnschrift SemiCondensed" FontSize="51" FontWeight="Bold" />
-                    <TextBlock x:Name="DestinationCityText" Text="DETROIT METROPOLITAN WAYNE COUNTY AIRPORT" FontFamily="Bahnschrift SemiCondensed" FontSize="10" TextTrimming="CharacterEllipsis" MaxWidth="250" />
-                  </StackPanel>
-                </StackPanel>
-                <StackPanel Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Center">
-                  <Border x:Name="HeroStatusBadge" Background="#163F24" BorderBrush="#2C7137" BorderThickness="1" CornerRadius="3" Padding="10,5">
-                    <TextBlock x:Name="HeroStatusText" Text="●  ON TIME" Foreground="#7DEA57" FontFamily="Bahnschrift SemiCondensed" FontSize="13" />
-                  </Border>
-                  <TextBlock x:Name="HeroTimingText" Text="Scheduled 10:00Z" FontSize="13" Margin="13,0,0,0" VerticalAlignment="Center" MaxWidth="400" TextTrimming="CharacterEllipsis" />
-                </StackPanel>
-                <Grid Grid.Row="4" VerticalAlignment="Center">
-                  <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="92" />
-                    <ColumnDefinition Width="60" />
-                    <ColumnDefinition Width="92" />
-                    <ColumnDefinition Width="60" />
-                    <ColumnDefinition Width="*" />
-                  </Grid.ColumnDefinitions>
-                  <StackPanel>
-                    <TextBlock Text="DEPARTURE" Style="{StaticResource OpsCaption}" />
-                    <TextBlock x:Name="HeroDepartureText" FontFamily="Bahnschrift SemiCondensed" FontSize="19" Margin="0,3,0,0" />
-                    <TextBlock Text="UTC" Style="{StaticResource OpsCaption}" FontSize="10" />
-                  </StackPanel>
-                  <StackPanel Grid.Column="1">
-                    <TextBlock Text="GATE" Style="{StaticResource OpsCaption}" />
-                    <TextBlock x:Name="HeroDepartureGateText" Text="—" FontSize="19" Margin="0,3,0,0" ToolTip="No gate assignment has been supplied." />
-                  </StackPanel>
-                  <StackPanel Grid.Column="2">
-                    <TextBlock Text="ARRIVAL" Style="{StaticResource OpsCaption}" />
-                    <TextBlock x:Name="HeroArrivalText" FontFamily="Bahnschrift SemiCondensed" FontSize="19" Margin="0,3,0,0" />
-                    <TextBlock Text="UTC" Style="{StaticResource OpsCaption}" FontSize="10" />
-                  </StackPanel>
-                  <StackPanel Grid.Column="3">
-                    <TextBlock Text="GATE" Style="{StaticResource OpsCaption}" />
-                    <TextBlock x:Name="HeroArrivalGateText" Text="—" FontSize="19" Margin="0,3,0,0" ToolTip="No gate assignment has been supplied." />
-                  </StackPanel>
-                  <StackPanel Grid.Column="4">
-                    <TextBlock Text="AIRCRAFT" Style="{StaticResource OpsCaption}" />
-                    <TextBlock x:Name="AircraftText" FontSize="14" Margin="0,4,0,0" TextTrimming="CharacterEllipsis" />
-                    <TextBlock x:Name="HeroAircraftTypeText" Text="SAMPLE ASSIGNMENT" Style="{StaticResource OpsCaption}" FontSize="10" Margin="0,3,0,0" />
-                  </StackPanel>
-                </Grid>
-                <StackPanel Grid.Row="5" Orientation="Horizontal" VerticalAlignment="Center">
-                  <Button x:Name="HeroFlightDetailsButton" Content="OPEN DISPATCH    →" Style="{StaticResource OpsPrimary}" Click="FlightDetails_Click" Padding="17,9" />
-                </StackPanel>
-                <Grid x:Name="HeroProgressTrack" Grid.Row="6" Height="24" VerticalAlignment="Bottom">
-                  <ProgressBar x:Name="ReplayProgress" Maximum="100" Height="3" VerticalAlignment="Center" Foreground="{StaticResource OpsYellow}" Background="#35414A" BorderThickness="0" />
-                </Grid>
-              </Grid>
+    <local:FlightTrackingWorkspace x:Name="FlightTrackingView"  Visibility="Collapsed" Margin="0,0,1,8" />
+    <local:PilotLogbookWorkspace x:Name="PilotLogbookView"  Visibility="Collapsed" Margin="0,0,1,8" />
+    <local:DispatchWorkspace x:Name="DispatchView"  Visibility="Collapsed" Margin="0,0,1,8" />
             </Grid>
-          </Border>
-          <Border x:Name="AlertsPanel" Grid.Column="2" Style="{StaticResource OpsPanel}">
-            <DockPanel>
-              <Grid DockPanel.Dock="Top" Margin="13,8,10,7">
-                <Grid.ColumnDefinitions>
-                  <ColumnDefinition />
-                  <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <TextBlock Text="ALERTS" Style="{StaticResource OpsTitle}" />
-                <Button x:Name="ViewAlertsButton" Grid.Column="1" Content="VIEW ALL (7)" Style="{StaticResource OpsLink}" Click="AllAlerts_Click" />
-              </Grid>
-              <TextBlock DockPanel.Dock="Bottom" Text="DEMO SCENARIO • NOT LIVE ADVISORIES" FontSize="8" Foreground="#8198AA" Margin="14,3,8,8" />
-              <ItemsControl x:Name="AlertsItems" ItemTemplate="{StaticResource AlertTemplate}" />
-            </DockPanel>
-          </Border>
+          </ScrollViewer>
+          <local:OperationsWorkspace x:Name="OperationsView"/>
+          <local:SierraStatePanel x:Name="ShellUnavailable" Style="{StaticResource S4.State}" Kind="Unavailable" Heading="Airports" Message="An airport workspace is not available yet. Your flight's departure and arrival details remain available in Dispatch and Flights." Visibility="Collapsed" VerticalAlignment="Top"/>
         </Grid>
-        <Grid x:Name="ModulesMapLayout" Margin="0,12,0,12">
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1.85*" />
-            <ColumnDefinition Width="1*" />
-          </Grid.ColumnDefinitions>
-          <ItemsControl x:Name="ModuleTiles">
-            <ItemsControl.ItemsPanel>
-              <ItemsPanelTemplate>
-                <local:DashboardTilePanel />
-              </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemTemplate>
-              <DataTemplate>
-                <Button Style="{StaticResource OpsTile}" Margin="0" VerticalContentAlignment="Stretch" Tag="{Binding Name}" Click="Module_Click" ToolTip="{Binding Description}">
-                  <Grid MinHeight="113" ClipToBounds="True">
-                    <Grid.Background><ImageBrush ImageSource="{Binding Image}" Stretch="UniformToFill" /></Grid.Background>
-                    <Rectangle>
-                      <Rectangle.Fill>
-                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                          <GradientStop Color="#00000000" />
-                          <GradientStop Color="#5A03080C" Offset=".4" />
-                          <GradientStop Color="#FA03080C" Offset=".88" />
-                        </LinearGradientBrush>
-                      </Rectangle.Fill>
-                    </Rectangle>
-                    <Grid VerticalAlignment="Bottom" Margin="12,0,10,10">
-                      <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition Width="Auto" />
-                      </Grid.ColumnDefinitions>
-                      <StackPanel>
-                        <TextBlock Text="{Binding Label}" Style="{StaticResource OpsTitle}" FontSize="15" TextWrapping="Wrap" />
-                        <TextBlock Text="{Binding Description}" Foreground="#B6C5D1" FontSize="11" Margin="0,4,0,0" TextWrapping="Wrap" />
-                      </StackPanel>
-                      <TextBlock Grid.Column="1" Text="→" Foreground="{StaticResource OpsYellow}" FontSize="22" VerticalAlignment="Bottom" />
-                    </Grid>
-                  </Grid>
-                </Button>
-              </DataTemplate>
-            </ItemsControl.ItemTemplate>
-          </ItemsControl>
-          <Border x:Name="NetworkPanel" Grid.Column="1" Style="{StaticResource OpsPanel}">
-            <DockPanel>
-              <Grid DockPanel.Dock="Top" Margin="13,8">
-                <Grid.ColumnDefinitions>
-                  <ColumnDefinition />
-                  <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <TextBlock Text="NETWORK MAP" Style="{StaticResource OpsTitle}" />
-                <Button x:Name="OpenTrackerButton" Grid.Column="1" Content="OPEN TRACKER  →" Style="{StaticResource OpsLink}" Foreground="#FFDA00" FontSize="10" Click="OpenTracker_Click" ToolTip="Open the full Flight Tracking workspace" />
-              </Grid>
-              <local:NetworkMap x:Name="RouteMap" />
-            </DockPanel>
-          </Border>
-        </Grid>
-        <Grid x:Name="SummaryLayout">
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1.65*" />
-            <ColumnDefinition Width="12" />
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="12" />
-            <ColumnDefinition Width="1*" />
-          </Grid.ColumnDefinitions>
-          <Border x:Name="OperationsPanel" MinHeight="225" Style="{StaticResource OpsPanel}">
-            <DockPanel>
-              <Grid DockPanel.Dock="Top" Margin="13,8,9,4">
-                <Grid.ColumnDefinitions>
-                  <ColumnDefinition />
-                  <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <TextBlock Text="TODAY'S OPERATIONS" Style="{StaticResource OpsTitle}" />
-                <StackPanel Grid.Column="1" Orientation="Horizontal">
-                  <Button x:Name="MyFlightsTab" Content="MY FLIGHTS" Tag="all" Style="{StaticResource OpsLink}" Foreground="{StaticResource OpsYellow}" Click="FlightsTab_Click" />
-                  <Button x:Name="AssignedFlightsTab" Content="ASSIGNED" Tag="assigned" Style="{StaticResource OpsLink}" Foreground="#A7B7C5" Click="FlightsTab_Click" />
-                  <Button x:Name="WatchlistTab" Content="WATCHLIST (0)" Tag="watchlist" Style="{StaticResource OpsLink}" Foreground="#A7B7C5" Click="FlightsTab_Click" />
-                </StackPanel>
-              </Grid>
-              <Grid DockPanel.Dock="Bottom" Margin="12,4,9,5">
-                <Grid.ColumnDefinitions>
-                  <ColumnDefinition />
-                  <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <TextBlock x:Name="OperationsFootnote" Text="02 SEP 2026  •  ALL TIMES UTC" Style="{StaticResource OpsCaption}" FontSize="9" />
-                <Button Grid.Column="1" x:Name="WatchFlightButton" Content="☆  WATCH SELECTED" Style="{StaticResource OpsLink}" Foreground="{StaticResource OpsYellow}" Click="WatchFlight_Click" />
-              </Grid>
-              <Grid>
-                <DataGrid x:Name="DashboardFlightsGrid" Style="{StaticResource OpsGrid}" Margin="7,0" MouseDoubleClick="FlightRow_DoubleClick" SelectionChanged="FlightSelection_Changed">
-                  <DataGrid.Columns>
-                    <DataGridTextColumn Header="FLIGHT" Binding="{Binding Id}" Width="62" />
-                    <DataGridTextColumn Header="ROUTE" Binding="{Binding Route}" Width="*" />
-                    <DataGridTextColumn Header="OUT" Binding="{Binding Out}" Width="48" />
-                    <DataGridTextColumn Header="IN" Binding="{Binding In}" Width="48" />
-                    <DataGridTemplateColumn Header="STATUS" Width="80">
-                      <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                          <Border Background="{Binding StatusBackground}" Padding="7,4" CornerRadius="3" HorizontalAlignment="Left">
-                            <TextBlock Text="{Binding Status}" Foreground="{Binding StatusColor}" FontSize="10" />
-                          </Border>
-                        </DataTemplate>
-                      </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                  </DataGrid.Columns>
-                </DataGrid>
-                <TextBlock x:Name="EmptyFlightsText" Visibility="Collapsed" Text="Select a flight in My flights, then add it to your watchlist." TextWrapping="Wrap" Foreground="#A3B5C5" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="22" />
-              </Grid>
-            </DockPanel>
-          </Border>
-          <Border x:Name="FleetPanel" MinHeight="225" Grid.Column="2" Style="{StaticResource OpsPanel}">
-            <DockPanel>
-              <Grid DockPanel.Dock="Top" Margin="13,8,10,0">
-                <Grid.ColumnDefinitions>
-                  <ColumnDefinition />
-                  <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <TextBlock Text="FLEET REFERENCE" Style="{StaticResource OpsTitle}" />
-                <Button Grid.Column="1" Content="VIEW FLEET" Click="Fleet_Click" Style="{StaticResource OpsLink}" />
-              </Grid>
-              <TextBlock DockPanel.Dock="Bottom" Text="AIRFLEETS SNAPSHOT  ·  02 SEP 2026" FontSize="8" Foreground="#7F96A8" Margin="13,0,5,11" />
-              <Grid Margin="9,7,9,5">
-                <Grid.ColumnDefinitions>
-                  <ColumnDefinition />
-                  <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <Viewbox Stretch="Uniform" MaxWidth="147">
-                  <Grid Width="150" Height="150">
-                    <Canvas x:Name="FleetRing" Width="150" Height="150" />
-                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                      <TextBlock x:Name="FleetCountText" Text="1,006" FontFamily="Bahnschrift SemiCondensed" FontSize="29" HorizontalAlignment="Center" />
-                      <TextBlock Text="AIRCRAFT" Style="{StaticResource OpsCaption}" HorizontalAlignment="Center" />
-                    </StackPanel>
-                  </Grid>
-                </Viewbox>
-                <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="8,0,0,0">
-                  <TextBlock x:Name="FleetActiveText" Text="■  ACTIVE        999" Foreground="#71D255" FontFamily="Bahnschrift SemiCondensed" FontSize="12" />
-                  <TextBlock x:Name="FleetParkedText" Text="■  PARKED           7" Foreground="#FFD600" FontFamily="Bahnschrift SemiCondensed" FontSize="12" Margin="0,15,0,0" />
-                  <TextBlock x:Name="FleetFamiliesText" Text="10 aircraft families" Style="{StaticResource OpsCaption}" FontSize="10" Margin="0,20,0,0" />
-                  <TextBlock Text="Reference status only" Style="{StaticResource OpsCaption}" FontSize="9" Margin="0,5,0,0" />
-                </StackPanel>
-              </Grid>
-            </DockPanel>
-          </Border>
-          <Border x:Name="MessagesPanel" MinHeight="225" Grid.Column="4" Style="{StaticResource OpsPanel}">
-            <DockPanel>
-              <Grid DockPanel.Dock="Top" Margin="13,8,10,5">
-                <Grid.ColumnDefinitions>
-                  <ColumnDefinition />
-                  <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <TextBlock Text="COMPANY MESSAGES" Style="{StaticResource OpsTitle}" />
-                <Button Grid.Column="1" Content="VIEW ALL" Style="{StaticResource OpsLink}" Tag="Messages" Click="Module_Click" />
-              </Grid>
-              <ItemsControl x:Name="MessagesItems" ItemTemplate="{StaticResource MessageTemplate}" />
-            </DockPanel>
-          </Border>
-        </Grid>
+
+    </Grid>
+    <Grid x:Name="ToolsOverlay" Grid.Row="1" Visibility="Collapsed" Background="#AC000000" Panel.ZIndex="10">
+      <Border Width="568" MaxWidth="{Binding ActualWidth,RelativeSource={RelativeSource AncestorType=Window}}" HorizontalAlignment="Right" Background="#0A131B" BorderBrush="#3E5262" BorderThickness="1,0,0,0">
+        <DockPanel Margin="24">
+          <Grid DockPanel.Dock="Top" Margin="0,0,0,20">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition />
+              <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <StackPanel>
+              <TextBlock Text="YOUR FLIGHT DECK" Style="{StaticResource OpsTitle}" FontSize="25" />
+              <TextBlock Text="Assignment, simulator connection &amp; live flight tracking" Style="{StaticResource OpsCaption}" Margin="0,7,0,0" />
+            </StackPanel>
+            <Button Grid.Column="1" Content="✕" Click="CloseTools_Click" Style="{StaticResource OpsButton}" AutomationProperties.Name="Close flight tools" />
+          </Grid>
+          <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel>
         <Border x:Name="AdvancedPanel" Style="{StaticResource OpsPanel}" Visibility="Collapsed" Margin="0,12,0,0" Padding="17">
           <StackPanel>
             <Grid>
@@ -517,33 +220,7 @@
             </ItemsControl>
           </StackPanel>
         </Border>
-      </local:DashboardBodyPanel>
-    </ScrollViewer>
-    <local:FlightTrackingWorkspace x:Name="FlightTrackingView"  Visibility="Collapsed" Margin="0,0,1,8" />
-    <local:PilotLogbookWorkspace x:Name="PilotLogbookView"  Visibility="Collapsed" Margin="0,0,1,8" />
-    <local:DispatchWorkspace x:Name="DispatchView"  Visibility="Collapsed" Margin="0,0,1,8" />
-            </Grid>
-          </ScrollViewer>
-          <local:SierraStatePanel x:Name="ShellUnavailable" Style="{StaticResource S4.State}" Kind="Unavailable" Heading="Airports" Message="An airport workspace is not available yet. Your flight's departure and arrival details remain available in Dispatch and Flights." Visibility="Collapsed" VerticalAlignment="Top"/>
-        </Grid>
 
-    </Grid>
-    <Grid x:Name="ToolsOverlay" Grid.Row="1" Visibility="Collapsed" Background="#AC000000" Panel.ZIndex="10">
-      <Border Width="568" MaxWidth="{Binding ActualWidth,RelativeSource={RelativeSource AncestorType=Window}}" HorizontalAlignment="Right" Background="#0A131B" BorderBrush="#3E5262" BorderThickness="1,0,0,0">
-        <DockPanel Margin="24">
-          <Grid DockPanel.Dock="Top" Margin="0,0,0,20">
-            <Grid.ColumnDefinitions>
-              <ColumnDefinition />
-              <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <StackPanel>
-              <TextBlock Text="YOUR FLIGHT DECK" Style="{StaticResource OpsTitle}" FontSize="25" />
-              <TextBlock Text="Assignment, simulator connection &amp; live flight tracking" Style="{StaticResource OpsCaption}" Margin="0,7,0,0" />
-            </StackPanel>
-            <Button Grid.Column="1" Content="✕" Click="CloseTools_Click" Style="{StaticResource OpsButton}" AutomationProperties.Name="Close flight tools" />
-          </Grid>
-          <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <StackPanel>
               <TextBlock Text="PILOT NAME" Style="{StaticResource OpsCaption}" />
               <TextBox x:Name="PilotNameBox" Style="{StaticResource OpsInput}" Margin="0,7,0,17" TextChanged="PilotName_Changed" AutomationProperties.Name="Pilot name" />
               <TextBlock Text="FLIGHT ASSIGNMENT" Style="{StaticResource OpsTitle}" />

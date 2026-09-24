@@ -13,13 +13,16 @@ internal sealed record DashboardMessage(string Id, string Title, string Subtitle
 internal sealed record OpsRow(string Reference, string Item, string Timing, string State, string Detail);
 internal sealed record OpsMetric(string Label, string Value, string Note);
 internal sealed record OpsModule(string Title, string Subtitle, string Source, IReadOnlyList<OpsMetric> Metrics, IReadOnlyList<OpsRow> Rows, string Image = "occ");
-internal sealed record DashboardFlightRow(LegProjection Leg, string Aircraft)
+internal sealed record DashboardFlightRow(LegProjection Leg, string Aircraft, bool ScheduleComparisonAvailable=true, string? AircraftType=null, string? OperationalStatus=null)
 {
     public string Id => Leg.Id;
     public string Route => $"{DashboardData.AirportCode(Leg.Origin)} → {DashboardData.AirportCode(Leg.Destination)}";
     public string Out => Leg.EstimatedOut.UtcDateTime.ToString("HH:mm");
     public string In => Leg.EstimatedIn.UtcDateTime.ToString("HH:mm");
-    public string Status => Leg.Completed ? "COMPLETE" : Leg.DepartureDelayMinutes > 0 ? $"+{Leg.DepartureDelayMinutes:0} MIN" : "ON TIME";
+    public string ScheduledOut => Leg.ScheduledOut.UtcDateTime.ToString("dd MMM HH:mm'Z'");
+    public string ScheduledIn => Leg.ScheduledIn.UtcDateTime.ToString("dd MMM HH:mm'Z'");
+    public string Status => OperationalStatus ?? (Leg.Completed ? "COMPLETE" : !ScheduleComparisonAvailable ? "SCHEDULE UNVERIFIED" : Leg.DepartureDelayMinutes > 0 ? $"+{Leg.DepartureDelayMinutes:0} MIN" : "ON TIME");
+    public string DisplayAircraft => AircraftType is null ? Aircraft : AircraftIdentity.CanonicalType(AircraftType,Aircraft);
     public string StatusColor => Leg.Completed ? "#60B7FF" : Leg.DepartureDelayMinutes > 0 ? "#FFDE36" : "#82DF69";
     public string StatusBackground => Leg.Completed ? "#142D45" : Leg.DepartureDelayMinutes > 0 ? "#3D3510" : "#193821";
     public string Key => $"{Aircraft}|{Leg.ScheduledOut:yyyy-MM-dd}|{Id}";
