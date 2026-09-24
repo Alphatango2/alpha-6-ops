@@ -57,3 +57,18 @@ For UI/map checkpoints also inspect actual display sizes/DPI, long airport names
 See [checkpoint 7.18A](checkpoint-7.18a.md) for the original seven failing contracts and [checkpoint 7.18B](checkpoint-7.18b.md) for their isolation work and verification evidence. All seven are required gates: first-render purity, obsolete callback rejection, immediate assignment acceptance, immediate PIREP persistence, immediate closeout, phase-label independence and event-title independence. Do not weaken a check, rename a failure to a skip, or remove a recorded journal to obtain a green result.
 
 The 7.18B complete baseline is **1,785 executed / 1,785 passed / 0 failed / 2 native unavailable**, with nine replays and 91,366 samples. Its migration harness contains 29 executed assertions, including six additional ownership/reattachment/immutability/subscriber checks. For later UI changes also exercise two successive flights in the same window, including fresh PIREP eligibility and controls after the first closeout animation. A passed isolation suite does not waive those UI interaction checks or the two native release gates.
+
+
+## Sierra 4 shell gates — added in 7.19
+
+- [ ] Load production and external-test applications with both Sierra dictionaries. Detect duplicate resource keys at actual WPF startup, not only compilation.
+- [ ] Preserve the native shell viewport without a fixed outer Viewbox; keep shell fonts at their native type sizes.
+- [ ] Exercise all embedded destinations, search and status overlays against an active session; verify unchanged state, persistence and connection owner.
+- [ ] Check all nine primary entries and retained standalone-module entry points; Airports remains honestly unavailable until implemented.
+- [ ] Ctrl+K, query, Enter and Escape; repeat Ctrl+K and switch overlays. Preserve query and return focus to the original external control.
+- [ ] Verify component resources and loading/empty/unavailable/stale/error states; keep new semantic resources scoped away from legacy pages.
+- [ ] Inspect actual WPF captures at 1920×1080, 2560×1440, 1366×768 and compact 640×480; include existing 150%/200% rendering and monitor-fit scenarios. Native OS DPI/screen-reader testing must be described separately.
+- [ ] Confirm all content remains reachable by scrolling where a legacy page still requires its minimum dimensions. Compact rail icons must fit and retain accessible names, including when its scrollbar appears.
+- [ ] Identify legacy interiors explicitly; a new shell does not count as a migrated Operations dashboard.
+
+The completed 7.19 gate is **1,834 executed / 1,834 passed / 0 failed / 2 native unavailable**, with nine replays and 91,366 samples. See [checkpoint 7.19](checkpoint-7.19.md) for evidence, changed layout assertions, visual review and limitations. The runner ignores only Windows process entries proven terminated by zero thread and handle counts; a running or uncertain OPS instance still blocks activation/profile checks.

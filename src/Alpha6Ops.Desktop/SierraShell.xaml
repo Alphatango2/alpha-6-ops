@@ -1,0 +1,70 @@
+<UserControl x:Class="Alpha6Ops.Desktop.SierraShell" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:Alpha6Ops.Desktop" Background="{StaticResource S4.AppBackground}" Foreground="{StaticResource S4.TextPrimary}" FontFamily="{StaticResource S4.Font}" UseLayoutRounding="True">
+  <UserControl.Resources>
+    <Style TargetType="ToolTip" BasedOn="{StaticResource S4.Tooltip}"/>
+    <DataTemplate x:Key="NavigationTemplate">
+      <Button Style="{StaticResource S4.NavigationItem}" Click="Navigate_Click" Margin="0,2" ToolTip="{Binding Detail}" AutomationProperties.Name="{Binding Title}">
+        <StackPanel Orientation="Horizontal">
+          <TextBlock Text="{Binding Glyph}" FontFamily="Segoe MDL2 Assets" FontSize="18" Width="25" VerticalAlignment="Center" Foreground="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Button}}"/>
+          <TextBlock Text="{Binding Title}" Margin="12,0,0,0" VerticalAlignment="Center" Foreground="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Button}}">
+            <TextBlock.Style><Style TargetType="TextBlock" BasedOn="{StaticResource S4.Body}"><Style.Triggers><DataTrigger Binding="{Binding IsCompact,RelativeSource={RelativeSource AncestorType=local:SierraShell}}" Value="True"><Setter Property="Visibility" Value="Collapsed"/></DataTrigger></Style.Triggers></Style></TextBlock.Style>
+          </TextBlock>
+        </StackPanel>
+      </Button>
+    </DataTemplate>
+  </UserControl.Resources>
+  <Grid x:Name="ShellGrid">
+    <Grid.RowDefinitions><RowDefinition Height="80"/><RowDefinition/><RowDefinition Height="36"/></Grid.RowDefinitions>
+    <Grid.ColumnDefinitions><ColumnDefinition x:Name="RailColumn" Width="208"/><ColumnDefinition/></Grid.ColumnDefinitions>
+    <Border Grid.ColumnSpan="2" BorderBrush="{StaticResource S4.Divider}" BorderThickness="{StaticResource S4.Separator}"/>
+    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="14,0,0,0">
+      <Rectangle x:Name="BrandMark" Width="38" Height="38" RenderOptions.BitmapScalingMode="HighQuality" AutomationProperties.Name="Sierra 4">
+        <Rectangle.Fill><ImageBrush ImageSource="Assets/Sierra4/s4-mark.png" Viewbox="0.065,0.085,0.85,0.8" Stretch="Fill"/></Rectangle.Fill>
+      </Rectangle>
+      <StackPanel x:Name="BrandIdentity" Margin="12,0,0,0" VerticalAlignment="Center"><TextBlock Text="SIERRA 4" Style="{StaticResource S4.ApplicationTitle}"/><TextBlock Text="AIRLINE OPERATIONS" Style="{StaticResource S4.Caption}" FontSize="9" Margin="0,4,0,0"/></StackPanel>
+    </StackPanel>
+    <Grid Grid.Column="1" Margin="22,0,18,0">
+      <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+      <StackPanel VerticalAlignment="Center" Margin="0,0,12,0"><TextBlock x:Name="WorkspaceTitle" Text="Operations" Style="{StaticResource S4.PageTitle}" TextTrimming="CharacterEllipsis"/><TextBlock x:Name="WorkspaceSubtitle" Text="LOCAL FLIGHT OPERATIONS" Style="{StaticResource S4.Caption}" Margin="0,4,0,0"/></StackPanel>
+      <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+        <Button x:Name="SearchButton" Style="{StaticResource S4.SecondaryButton}" Click="Search_Click" Margin="0,0,16,0" AutomationProperties.Name="Find a workspace" ToolTip="Find a workspace (Ctrl+K)"><StackPanel Orientation="Horizontal"><TextBlock Text="&#xE721;" FontFamily="Segoe MDL2 Assets"/><TextBlock x:Name="SearchPrompt" Text="Find a workspace…" Margin="10,0,24,0"/><TextBlock x:Name="SearchShortcut" Text="Ctrl K" Foreground="{StaticResource S4.TextMuted}"/></StackPanel></Button>
+        <Button x:Name="ConnectionButton" Style="{StaticResource S4.SecondaryButton}" Click="Connection_Click" Margin="0,0,12,0" AutomationProperties.Name="Simulator connection" ToolTip="Simulator connection controls"><StackPanel Orientation="Horizontal"><Ellipse x:Name="ConnectionIndicator" Style="{StaticResource S4.StatusIndicator}" Margin="0,0,8,0"/><TextBlock x:Name="ConnectionLabel" Text="Disconnected" Style="{StaticResource S4.Status}"/></StackPanel></Button>
+        <Button x:Name="ClockButton" Style="{StaticResource S4.IconButton}" Width="96" Click="Status_Click" AutomationProperties.Name="Status, weather and clocks" ToolTip="Status, local weather and dated clocks"><TextBlock x:Name="UtcClock" Text="— UTC" Style="{StaticResource S4.Secondary}"/></Button>
+        <Button x:Name="MessagesButton" Style="{StaticResource S4.IconButton}" Click="Messages_Click" AutomationProperties.Name="Local messages"><Grid><TextBlock Text="&#xE715;" FontFamily="Segoe MDL2 Assets" FontSize="18"/><Ellipse x:Name="UnreadDot" Width="5" Height="5" Fill="{StaticResource S4.SierraYellow}" HorizontalAlignment="Right" VerticalAlignment="Top"/></Grid></Button>
+        <Button x:Name="ProfileButton" Style="{StaticResource S4.IconButton}" Click="Profile_Click" AutomationProperties.Name="Pilot profile and flight tools"><Border BorderBrush="{StaticResource S4.Divider}" BorderThickness="1" CornerRadius="16" Width="32" Height="32"><TextBlock x:Name="ProfileInitials" Text="P" Style="{StaticResource S4.Secondary}" HorizontalAlignment="Center" VerticalAlignment="Center"/></Border></Button>
+      </StackPanel>
+    </Grid>
+    <Border Grid.Row="1" Background="{StaticResource S4.SurfacePrimary}" BorderBrush="{StaticResource S4.Divider}" BorderThickness="0,0,1,0">
+      <DockPanel x:Name="NavigationDock" Margin="8,14,8,8">
+        <StackPanel x:Name="RailTagline" DockPanel.Dock="Bottom" Margin="16,30,0,18"><Rectangle Width="30" Height="2" Fill="{StaticResource S4.SierraYellow}" HorizontalAlignment="Left" Margin="0,0,0,14"/><TextBlock Text="A MORE&#xA;CONNECTED&#xA;SKIES" Style="{StaticResource S4.Caption}" LineHeight="21"/></StackPanel>
+        <ScrollViewer x:Name="NavigationScroll" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"><StackPanel>
+          <ItemsControl x:Name="PrimaryNavigation" ItemTemplate="{StaticResource NavigationTemplate}"/>
+          <Border BorderBrush="{StaticResource S4.Divider}" BorderThickness="{StaticResource S4.Separator}" Margin="12,14"/>
+          <ItemsControl x:Name="SecondaryNavigation" ItemTemplate="{StaticResource NavigationTemplate}"/>
+        </StackPanel></ScrollViewer>
+      </DockPanel>
+    </Border>
+    <ContentPresenter x:Name="WorkspacePresenter" Grid.Row="1" Grid.Column="1" Content="{Binding Workspace,RelativeSource={RelativeSource AncestorType=local:SierraShell}}" Margin="{StaticResource S4.Space.Page}"/>
+    <Grid Grid.Row="2" Grid.ColumnSpan="2" Margin="20,0,16,0">
+      <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+      <TextBlock x:Name="FooterBrand" Text="SIERRA 4  /  AIRLINE OPERATIONS PLATFORM" Style="{StaticResource S4.Caption}" VerticalAlignment="Center"/>
+      <StackPanel Grid.Column="1" Orientation="Horizontal"><TextBlock x:Name="VersionText" Style="{StaticResource S4.Caption}" Margin="0,0,14,0" VerticalAlignment="Center"/><Button x:Name="ExitButton" Style="{StaticResource S4.Button}" Content="Exit" MinWidth="64" MinHeight="32" Padding="14,4" Click="Exit_Click" AutomationProperties.Name="Exit Sierra 4"/></StackPanel>
+    </Grid>
+    <Grid x:Name="SearchOverlay" Grid.RowSpan="3" Grid.ColumnSpan="2" Background="{StaticResource S4.Scrim}" Visibility="Collapsed" KeyboardNavigation.TabNavigation="Cycle">
+      <Border x:Name="SearchPanel" Style="{StaticResource S4.DataPanel}" MaxWidth="600" Margin="20,70,20,20" VerticalAlignment="Top" BorderThickness="1" BorderBrush="{StaticResource S4.Divider}"><DockPanel LastChildFill="True">
+        <Grid DockPanel.Dock="Top" Margin="0,0,0,16"><TextBlock Text="Find a workspace" Style="{StaticResource S4.SectionHeader}" VerticalAlignment="Center"/><Button Style="{StaticResource S4.IconButton}" Content="✕" HorizontalAlignment="Right" Click="CloseOverlay_Click" AutomationProperties.Name="Close search"/></Grid>
+        <TextBox x:Name="WorkspaceSearch" DockPanel.Dock="Top" Style="{StaticResource S4.SearchInput}" TextChanged="Search_Changed" KeyDown="Search_KeyDown" AutomationProperties.Name="Workspace search" Margin="0,0,0,12"/>
+        <TextBlock x:Name="SearchEmpty" DockPanel.Dock="Bottom" Text="No matching workspace. Try Flights, Dispatch or Settings." Style="{StaticResource S4.Secondary}" TextWrapping="Wrap" Visibility="Collapsed" Margin="0,12,0,0"/>
+        <ListBox x:Name="SearchResults" Background="{StaticResource S4.SurfacePrimary}" Foreground="{StaticResource S4.TextPrimary}" BorderThickness="0" MaxHeight="320" ScrollViewer.HorizontalScrollBarVisibility="Disabled" KeyDown="Results_KeyDown" MouseDoubleClick="Results_DoubleClick" AutomationProperties.Name="Matching workspaces">
+          <ListBox.ItemContainerStyle><Style TargetType="ListBoxItem"><Setter Property="Padding" Value="12,10"/><Setter Property="HorizontalContentAlignment" Value="Stretch"/><Setter Property="FocusVisualStyle" Value="{StaticResource S4.Focus}"/><Setter Property="Template"><Setter.Value><ControlTemplate TargetType="ListBoxItem"><Border x:Name="Selection" Background="Transparent" Padding="{TemplateBinding Padding}" CornerRadius="4"><ContentPresenter/></Border><ControlTemplate.Triggers><Trigger Property="IsSelected" Value="True"><Setter TargetName="Selection" Property="Background" Value="{StaticResource S4.SurfaceElevated}"/></Trigger></ControlTemplate.Triggers></ControlTemplate></Setter.Value></Setter></Style></ListBox.ItemContainerStyle>
+          <ListBox.ItemTemplate><DataTemplate><StackPanel><TextBlock Text="{Binding Title}" Style="{StaticResource S4.Body}"/><TextBlock Text="{Binding Detail}" Style="{StaticResource S4.Metadata}" TextWrapping="Wrap" Margin="0,3,0,0"/></StackPanel></DataTemplate></ListBox.ItemTemplate>
+        </ListBox>
+      </DockPanel></Border>
+    </Grid>
+    <Grid x:Name="UtilityOverlay" Grid.RowSpan="3" Grid.ColumnSpan="2" Background="{StaticResource S4.Scrim}" Visibility="Collapsed" KeyboardNavigation.TabNavigation="Cycle">
+      <Border Style="{StaticResource S4.DataPanel}" Margin="20,70,20,20" MaxWidth="1100" VerticalAlignment="Top" BorderThickness="1" BorderBrush="{StaticResource S4.Divider}"><DockPanel>
+        <Grid DockPanel.Dock="Top" Margin="0,0,0,16"><TextBlock Text="Status, weather &amp; clocks" Style="{StaticResource S4.SectionHeader}" VerticalAlignment="Center"/><Button x:Name="CloseUtilityButton" Style="{StaticResource S4.IconButton}" Content="✕" HorizontalAlignment="Right" Click="CloseOverlay_Click" AutomationProperties.Name="Close status panel"/></Grid>
+        <ScrollViewer x:Name="UtilityScroll" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" MaxHeight="400"><ContentPresenter Content="{Binding Utilities,RelativeSource={RelativeSource AncestorType=local:SierraShell}}"/></ScrollViewer>
+      </DockPanel></Border>
+    </Grid>
+  </Grid>
+</UserControl>

@@ -11,7 +11,18 @@ $manifest = (Resolve-Path -LiteralPath $ReplayManifest).Path
 $inputs = @(Get-Content -LiteralPath $manifest -Raw | ConvertFrom-Json)
 if ($inputs.Count -ne 9) { throw 'The baseline requires all nine checkpoint 7.17 journals.' }
 foreach ($inputPath in $inputs) { if (-not (Test-Path -LiteralPath $inputPath -PathType Leaf)) { throw "Journal unavailable: $inputPath" } }
-if (Get-Process -Name Alpha6OPS -ErrorAction SilentlyContinue) { throw 'Exit the running OPS application before activation checks and profile-copy validation.' }
+foreach ($existing in @(Get-Process -Name Alpha6OPS -ErrorAction SilentlyContinue)) {
+    # Windows can retain a terminated process entry after a diagnostic crash.
+    # Fail closed unless both independent liveness counts confirm it cannot run.
+    $terminated = $false
+    try {
+        $entry = Get-CimInstance Win32_Process -Filter "ProcessId=$($existing.Id)" -ErrorAction Stop
+        $terminated = $null -ne $entry -and $null -ne $entry.ThreadCount -and $null -ne $entry.HandleCount -and
+            $entry.ThreadCount -eq 0 -and [int]$entry.HandleCount -eq 0
+    } catch { $terminated = $false }
+    if (-not $terminated) { throw 'Exit the running OPS application before activation checks and profile-copy validation.' }
+    Write-Warning "Ignoring terminated OPS process entry $($existing.Id) (zero threads and handles)."
+}
 $run = Join-Path $repo ('work/checkpoint-7.18a/' + (Get-Date -Format 'yyyyMMdd-HHmmss') + '-' + [Guid]::NewGuid().ToString('N').Substring(0, 8))
 New-Item -ItemType Directory -Path $run | Out-Null
 $builds = [Collections.Generic.List[object]]::new()

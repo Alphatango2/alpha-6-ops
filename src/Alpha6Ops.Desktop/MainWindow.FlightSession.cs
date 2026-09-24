@@ -47,12 +47,13 @@ public partial class MainWindow
         LiveTimelineButton.IsEnabled=LiveDebriefButton.IsEnabled=snapshot.Phase is not null;
         FlightTrackingView.ConfirmBlockInButton.Visibility=snapshot.CanConfirmBlockIn?Visibility.Visible:Visibility.Collapsed;
         if(!milestones.SequenceEqual(snapshot.Milestones)){milestones.Clear();foreach(var item in snapshot.Milestones)milestones.Add(item);}
-        if(snapshot.Phase is {} phase)tray.Text="Alpha 6 OPS — Live "+phase;
+        if(snapshot.Phase is {} phase)tray.Text="Sierra 4 — Live "+phase;
         RefreshLiveTracker(snapshot.Aircraft,snapshot.SimulatorUtc,snapshot.Phase,snapshot.TrackingStatus);
     }
 
     private void RenderConnection(FlightSessionSnapshot snapshot)
     {
+        Shell.PresentConnection(snapshot);
         // Initial connection presentation also applies without an active flight;
         // it must not replace the independent fixture-preview dashboard.
         ConnectionText.Text=snapshot.ConnectionMessage;

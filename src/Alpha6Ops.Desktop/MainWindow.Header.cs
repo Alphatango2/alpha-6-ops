@@ -49,6 +49,8 @@ public partial class MainWindow
         var utc = now.ToUniversalTime();
         var local = TimeZoneInfo.ConvertTime(now, zone);
         ClockText.Text = utc.ToString("HH:mm:ss 'Z'", CultureInfo.InvariantCulture);
+        Shell.UtcClock.Text=utc.ToString("HH:mm'Z'",CultureInfo.InvariantCulture);
+        Shell.ClockButton.ToolTip=$"Real-world UTC · {utc:dd MMM yyyy HH:mm:ss}Z\nOpen status, local weather and dated clocks";
         ClockDateText.Text = utc.ToString("dd MMM yyyy '· ZULU'", CultureInfo.InvariantCulture).ToUpperInvariant();
         LocalClockText.Text = local.ToString("HH:mm:ss 'LOCAL'", CultureInfo.InvariantCulture);
         LocalClockDateText.Text = local.ToString("dd MMM yyyy", CultureInfo.InvariantCulture).ToUpperInvariant();

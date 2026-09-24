@@ -55,20 +55,21 @@ public partial class MainWindow : Window
         diagnosticMode = diagnosticDirectory is not null;
         stateDirectory=diagnosticDirectory??CrashReporter.RootDirectory;
         InitializeComponent();
+        InitializeShell();
         var version = Assembly.GetExecutingAssembly().GetName().Version?.ToString(3) ?? "unknown";
-        VersionText.Text = $"ALPHA 6 OPS  •  v{version}";
-        Title = $"Alpha 6 OPS v{version}";
+        VersionText.Text = $"SIERRA 4  •  v{version}";
+        Title = $"Sierra 4 v{version}";
         SourceInitialized += (_, _) => { InitializeMonitorTracking(); ApplyInitialWindowSize(); };
         trayIcon = System.Drawing.Icon.ExtractAssociatedIcon(Environment.ProcessPath ?? "") ?? (System.Drawing.Icon)System.Drawing.SystemIcons.Application.Clone();
         tray = new Forms.NotifyIcon
         {
             Icon = trayIcon,
-            Text = "Alpha 6 OPS — Flight monitoring",
+            Text = "Sierra 4 — Flight monitoring",
             Visible = true
         };
         var menu = new Forms.ContextMenuStrip();
-        menu.Items.Add("Open Alpha 6 OPS", null, (_, _) => Dispatcher.Invoke(RestoreWindow));
-        menu.Items.Add("Exit Alpha 6 OPS", null, (_, _) => Dispatcher.Invoke(ExitApplication));
+        menu.Items.Add("Open Sierra 4", null, (_, _) => Dispatcher.Invoke(RestoreWindow));
+        menu.Items.Add("Exit Sierra 4", null, (_, _) => Dispatcher.Invoke(ExitApplication));
         tray.ContextMenuStrip = menu;
         tray.DoubleClick += (_, _) => Dispatcher.Invoke(RestoreWindow);
         EventsList.ItemsSource = milestones;

@@ -17,59 +17,41 @@ internal static class ResponsiveSmokeTest
     internal static async Task RunAsync(MainWindow window, string outputDirectory, Action<bool, string> check)
     {
         var savedWidth = window.Width; var savedHeight = window.Height;
-        foreach (var (width, height) in new[] { (640, 480), (720, 480), (900, 700), (1024, 768), (1149, 768), (1150, 768), (1366, 768), (1920, 1080), (2560, 1080), (2560, 1392), (900, 1200) })
+        // Native shell dimensions are independent of the preserved legacy page surface.
+        foreach (var (width, height) in new[] { (640, 480), (720, 480), (900, 700), (1024, 768), (1149, 768), (1150, 768), (1366, 768), (1920, 1080), (2560, 1080), (2560, 1440), (900, 1200) })
         {
-            window.Width = width; window.Height = height;
-            window.DashboardScroll.ScrollToTop();
-            window.UpdateLayout();
-            await window.Dispatcher.InvokeAsync(() => { }, DispatcherPriority.ApplicationIdle);
-            window.UpdateLayout();
-            check(window.NavigationColumn.ActualWidth == 204, $"Navigation retains the reference layout at {width}x{height}");
-            check(Grid.GetRow(window.AlertsPanel) == 0 && Grid.GetRow(window.NetworkPanel) == 0 && Grid.GetRow(window.MessagesPanel) == 0,
-                $"Dashboard panels remain stationary at {width}x{height}");
-            var weatherBounds = window.LocalWeatherButton.TransformToAncestor(window.DashboardRoot).TransformBounds(new Rect(window.LocalWeatherButton.RenderSize));
-            check(weatherBounds.Right <= window.DashboardRoot.ActualWidth && weatherBounds.Left >= 0 && window.WeatherIcon.ActualWidth == 30,
-                $"Weather and vector icon remain inside the header at {width}x{height}");
-            var headerFits = true;
-            foreach (var text in Descendants<TextBlock>(window.HeaderStatusGrid)) headerFits &= TextFits(text);
-            check(headerFits, $"Every header label and clock fits at {width}x{height}");
-            var firstCard = window.ConnectionBadge.TransformToAncestor(window.DashboardRoot).TransformBounds(new Rect(window.ConnectionBadge.RenderSize));
-            var lastCard = window.HeaderClockPanel.TransformToAncestor(window.DashboardRoot).TransformBounds(new Rect(window.HeaderClockPanel.RenderSize));
-            check(Math.Abs(firstCard.Left - (window.HeaderLogo.ActualWidth + 22)) <= 1 && Math.Abs(lastCard.Right - window.DashboardRoot.ActualWidth) <= 1,
-                $"Header uses the full width after the logo without an empty spacer at {width}x{height}");
-            check(Grid.GetRow(window.ZuluClockGroup) == 0 && Grid.GetColumn(window.ZuluClockGroup) == 2,
-                $"Local and Zulu clocks stay side by side at {width}x{height}");
-            var exitBounds = window.ExitOpsButton.TransformToAncestor(window).TransformBounds(new Rect(window.ExitOpsButton.RenderSize));
-            check(exitBounds.Bottom <= window.ActualHeight && exitBounds.Right <= window.ActualWidth && window.ExitOpsButton.ActualHeight >= 32,
-                $"Exit OPS remains in the window with a usable click target at {width}x{height}");
-            check(window.HeroPanel.ActualWidth >= 490, $"Flight details retain readable width at {width}x{height}");
-            check(window.DashboardFlightsGrid.Columns[1].ActualWidth >= 80, $"Route column retains readable width at {width}x{height}");
-            check(AutomationProperties.GetName(window.DashboardNavButton) == "DASHBOARD", $"Compact navigation retains accessible names at {width}x{height}");
-            var tile = (FrameworkElement)window.ModuleTiles.ItemContainerGenerator.ContainerFromIndex(0);
-            check(tile.ActualWidth >= 180, $"Module tiles remain readable at {width}x{height}");
-            check(window.NetworkPanel.ActualHeight >= 240, $"Network map preserves its reference height at {width}x{height}");
-            foreach (var (content, card) in new (FrameworkElement, FrameworkElement)[] {
-                (window.ConnectionCardContent, window.ConnectionBadge), (window.DispatchCardContent, window.HeaderDispatchButton),
-                (window.WeatherCardContent, window.LocalWeatherButton), (window.ClockCardContent, window.HeaderClockPanel) })
+            window.Width=width;window.Height=height;window.ShowDashboard();window.UpdateLayout();
+            await window.Dispatcher.InvokeAsync(()=>{},DispatcherPriority.ApplicationIdle);window.UpdateLayout();
+            var shell=window.Shell;
+            check(shell.RailColumn.ActualWidth==(shell.IsCompact?64:208),$"Native rail adapts to {width}x{height}");
+            check(Descendants<Viewbox>(shell).All(v=>!IsAncestor(v,shell.WorkspacePresenter)),$"Workspace has no scaling Viewbox at {width}x{height}");
+            check(shell.WorkspaceTitle.FontSize==22&&shell.ConnectionLabel.FontSize==12,$"Shell text retains native readable sizes at {width}x{height}");
+            foreach(var control in new FrameworkElement[]{shell.BrandMark,shell.SearchButton,shell.ConnectionButton,shell.MessagesButton,shell.ProfileButton,shell.WorkspacePresenter,window.ExitOpsButton})
             {
-                var bounds = content.TransformToAncestor(card).TransformBounds(new Rect(content.RenderSize));
-                check(Math.Abs(bounds.Left + bounds.Width / 2 - card.ActualWidth / 2) <= 2 && Math.Abs(bounds.Top + bounds.Height / 2 - card.ActualHeight / 2) <= 2,
-                    $"{content.Name} stays centered at {width}x{height}");
+                var b=control.TransformToAncestor(window).TransformBounds(new Rect(control.RenderSize));
+                check(b.Left>=0&&b.Right<=window.ActualWidth+1&&b.Top>=0&&b.Bottom<=window.ActualHeight+1&&b.Width>0&&b.Height>0,$"{control.Name} stays reachable at {width}x{height}");
             }
-            var clippedCaptions = Descendants<TextBlock>(window.ModuleTiles).Where(text => !TextFits(text)).Select(text => text.Text).ToArray();
-            check(clippedCaptions.Length == 0, $"Every module label and description fits without text clipping at {width}x{height}: {string.Join(", ", clippedCaptions)}");
-            var summary = window.SummaryLayout.TransformToAncestor(window.DashboardBody).TransformBounds(new Rect(window.SummaryLayout.RenderSize));
-            check(window.DashboardScroll.ScrollableHeight <= 1 && Math.Abs(summary.Bottom - window.DashboardScroll.ViewportHeight) <= 2,
-                $"Dashboard fits without scrolling at {width}x{height}; scroll {window.DashboardScroll.ScrollableHeight}, summary bottom {summary.Bottom}, viewport {window.DashboardScroll.ViewportHeight}");
-            check(window.HeroPanel.ActualHeight >= 353 && window.OperationsPanel.ActualHeight >= 225 && tile.ActualHeight >= 125,
-                $"Reference sections preserve their minimum sizes at {width}x{height}");
-            check(Math.Abs(window.ModuleTiles.ActualHeight - window.NetworkPanel.ActualHeight) <= 1,
-                $"Module tiles and network map share aligned edges at {width}x{height}");
-            DashboardSmokeTest.Capture(window, Path.Combine(outputDirectory, $"responsive-{width}x{height}.png"));
-            window.DashboardScroll.ScrollToBottom(); window.UpdateLayout();
-            check(window.DashboardScroll.VerticalOffset == 0, $"Mouse-wheel movement is disabled at {width}x{height}");
+            check(TextFits(shell.ConnectionLabel)&&TextFits(shell.WorkspaceTitle),$"Header text fits at {width}x{height}");
+            check(Descendants<Button>(shell.PrimaryNavigation).All(b=>!string.IsNullOrWhiteSpace(AutomationProperties.GetName(b))&&b.ActualHeight>=40&&b.ActualWidth>=40&&Descendants<TextBlock>(b).Where(t=>t.IsVisible).All(TextFits)),$"Navigation has named usable targets at {width}x{height}");
+            check(window.LegacyViewport.HorizontalScrollBarVisibility==ScrollBarVisibility.Auto&&window.LegacyViewport.VerticalScrollBarVisibility==ScrollBarVisibility.Auto,$"Legacy content can scroll instead of shrinking at {width}x{height}");
+            var tile=(FrameworkElement)window.ModuleTiles.ItemContainerGenerator.ContainerFromIndex(0);
+            check(window.HeroPanel.ActualWidth>=490&&window.DashboardFlightsGrid.Columns[1].ActualWidth>=80&&tile.ActualWidth>=180,$"Legacy operational content retains readable width at {width}x{height}");
+            check(Grid.GetRow(window.AlertsPanel)==0&&Grid.GetRow(window.NetworkPanel)==0&&Grid.GetRow(window.MessagesPanel)==0&&window.NetworkPanel.ActualHeight>=240,$"Legacy panel layout is retained at {width}x{height}");
+            check(Descendants<TextBlock>(window.ModuleTiles).All(TextFits),$"Legacy module captions fit at {width}x{height}");
+            check(window.HeroPanel.ActualHeight>=353&&window.OperationsPanel.ActualHeight>=225&&tile.ActualHeight>=125,$"Legacy section minimums hold at {width}x{height}");
+            check(Math.Abs(window.ModuleTiles.ActualHeight-window.NetworkPanel.ActualHeight)<=1,$"Legacy modules and map stay aligned at {width}x{height}");
+            DashboardSmokeTest.Capture(window,Path.Combine(outputDirectory,$"responsive-{width}x{height}.png"));
+            window.LegacyViewport.ScrollToBottom();window.LegacyViewport.ScrollToHorizontalOffset(window.LegacyViewport.ScrollableWidth);window.UpdateLayout();
+            check(Math.Abs(window.LegacyViewport.VerticalOffset-window.LegacyViewport.ScrollableHeight)<1&&Math.Abs(window.LegacyViewport.HorizontalOffset-window.LegacyViewport.ScrollableWidth)<1,$"Entire legacy workspace is reachable by scrolling at {width}x{height}");
+            window.LegacyViewport.ScrollToTop();window.LegacyViewport.ScrollToHorizontalOffset(0);
+            shell.OpenSearch();window.UpdateLayout();
+            var searchBounds=shell.SearchPanel.TransformToAncestor(window).TransformBounds(new Rect(shell.SearchPanel.RenderSize));
+            check(searchBounds.Bottom<=window.ActualHeight&&shell.WorkspaceSearch.IsKeyboardFocused,$"Search fits and receives keyboard focus at {width}x{height}");
+            if(width==640)DashboardSmokeTest.Capture(window,Path.Combine(outputDirectory,"sierra-search-640.png"));
+            shell.CloseOverlays();
         }
         window.Width = 640; window.Height = 700;
+        window.Shell.ShowUtilities();
         window.SetHeaderWeather(new LocalWeather("San Luis Obispo", -5, 57, DateTimeOffset.UtcNow));
         window.RenderLocalWeather(DateTimeOffset.UtcNow);
         window.UpdateLayout();
@@ -78,6 +60,7 @@ internal static class ResponsiveSmokeTest
         DashboardSmokeTest.Capture(window, Path.Combine(outputDirectory, "responsive-long-weather.png"));
         window.SetHeaderWeather(new LocalWeather("Milwaukee", 25, 3, DateTimeOffset.UtcNow));
         window.RenderLocalWeather(DateTimeOffset.UtcNow);
+        window.Shell.CloseOverlays();
         foreach (var (pixelsWide, pixelsHigh, scale) in new[] { (1920, 1040, 1.5), (1920, 1040, 2.0), (1366, 728, 1.5), (1280, 680, 2.0) })
         {
             var available = new Size(pixelsWide / scale, pixelsHigh / scale);
@@ -97,6 +80,12 @@ internal static class ResponsiveSmokeTest
         DashboardSmokeTest.Capture(window, Path.Combine(outputDirectory, "responsive-200-percent.png"), 2);
         window.Width = savedWidth; window.Height = savedHeight; window.DashboardScroll.ScrollToTop(); window.UpdateLayout();
         await window.Dispatcher.InvokeAsync(() => { }, DispatcherPriority.ApplicationIdle);
+    }
+
+    private static bool IsAncestor(DependencyObject candidate,DependencyObject child)
+    {
+        for(var p=VisualTreeHelper.GetParent(child);p is not null;p=VisualTreeHelper.GetParent(p))if(p==candidate)return true;
+        return false;
     }
 
     private static IEnumerable<T> Descendants<T>(DependencyObject root) where T : DependencyObject

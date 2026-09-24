@@ -30,7 +30,7 @@ internal static class Program
     private static readonly DateTimeOffset Start = DateTimeOffset.Parse("2026-09-17T02:05:00Z");
     private static string output = "";
     private static readonly string[] Expected = [
-        "VIEW_RECREATE", "NAV_CONNECTION_OWNER", "NAV_OPERATIONAL_STATE", "REFRESH_PURITY", "FIRST_RENDER_PURITY", "HIDDEN_RUNTIME",
+        "SHELL_NATIVE_VIEWPORT", "SHELL_NAVIGATION_PURITY", "VIEW_RECREATE", "NAV_CONNECTION_OWNER", "NAV_OPERATIONAL_STATE", "REFRESH_PURITY", "FIRST_RENDER_PURITY", "HIDDEN_RUNTIME",
         "RECONNECT_REJECT_OLD_CALLBACK", "RECONNECT_ACCEPT_CURRENT_CALLBACK", "ASSIGNMENT_NO_ANIMATION_WAIT",
         "ASSIGNMENT_EVENTUAL_PERSISTENCE", "PIREP_SUBMIT_NO_ANIMATION_WAIT", "PIREP_CLOSEOUT_NO_ANIMATION_WAIT",
         "PIREP_EVENTUAL_DURABILITY", "TEXT_COMPLETION_INDEPENDENCE", "TEXT_HISTORY_INDEPENDENCE",
@@ -73,6 +73,23 @@ internal static class Program
     {
         await Section("views", ViewLifecycleAsync);
         await Section("application-owner", ApplicationOwnerAsync);
+        await Section("sierra-shell", () =>
+        {
+            var window = Window("sierra-shell");
+            var shell = window.FindName("Shell") as FrameworkElement;
+            Check("SHELL_NATIVE_VIEWPORT", shell is not null && shell.ActualWidth > 0 &&
+                !double.IsFinite(shell.Width) && shell is not System.Windows.Controls.Viewbox,
+                "Sierra 4 shell occupies the native viewport without a fixed reference-surface Viewbox.");
+            StartLive(window);
+            var before=Snapshot(window);var token=Field(window,"liveCancellation");
+            var navigation=Property(shell!,"Navigation")!;
+            foreach(var destination in new[]{"Airports","Flights","Dispatch","Logbook","Operations"})
+                Call(navigation,"Request",Enum.Parse(Type("ShellSection"),destination));
+            Call(shell!,"OpenSearch");Call(shell!,"CloseOverlays");Call(shell!,"ShowUtilities");Call(shell!,"CloseOverlays");
+            Check("SHELL_NAVIGATION_PURITY",before==Snapshot(window)&&ReferenceEquals(token,Field(window,"liveCancellation")),
+                "All embedded Sierra destinations and search/status overlays preserve flight state, storage and simulator owner.");
+            return Task.CompletedTask;
+        });
         await Section("pending-connection-view", PendingConnectionViewAsync);
         await Section("first-render", () => { FirstRenderPurity(); return Task.CompletedTask; });
         await Section("reconnect", ReconnectAsync);
@@ -480,6 +497,8 @@ internal static class Program
         {
             ShutdownMode = ShutdownMode.OnExplicitShutdown;
             Resources.MergedDictionaries.Add(new ResourceDictionary { Source = new Uri("pack://application:,,,/Alpha6OPS;component/DashboardStyles.xaml") });
+            Resources.MergedDictionaries.Add(new ResourceDictionary { Source = new Uri("pack://application:,,,/Alpha6OPS;component/SierraDesignTokens.xaml") });
+            Resources.MergedDictionaries.Add(new ResourceDictionary { Source = new Uri("pack://application:,,,/Alpha6OPS;component/SierraComponents.xaml") });
             Resources["Yellow"] = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(249, 217, 40));
             var text = new Style(typeof(TextBlock)); text.Setters.Add(new Setter(Control.FontFamilyProperty, new System.Windows.Media.FontFamily("Bahnschrift SemiCondensed"))); Resources[typeof(TextBlock)] = text;
             foreach (var (type, key) in new[] { (typeof(Button), "OpsButton"), (typeof(TextBox), "OpsInput"), (typeof(ComboBox), "OpsCombo") })

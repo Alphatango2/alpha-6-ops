@@ -87,12 +87,10 @@ public partial class MainWindow
     }
     private void PilotName_Changed(object sender, TextChangedEventArgs e)
     {
-        if(PilotDisplayText is null || PilotNameBox is null)return;
+        if(Shell is null || PilotNameBox is null)return;
         var name=PilotNameBox.Text.Trim();
-        PilotDisplayText.Text=name.Length==0?"Your flight deck":name;
-        PilotDisplayText.ToolTip=name;
+        Shell.PresentProfile(name);
         if(!initializingPresentation)coordinator.SetPilotName(name);
-        PilotInitialsText.Text=name.Length==0?"A6":string.Concat(name.Split(' ',StringSplitOptions.RemoveEmptyEntries).Take(2).Select(p=>char.ToUpperInvariant(p[0])));
     }
     private void RefreshFleetSummary()
     {
@@ -215,7 +213,7 @@ public partial class MainWindow
         OperationsWorkspaceWindow? window=null;
         window=new OperationsWorkspaceWindow(module,"ACKNOWLEDGE",r=>{AcknowledgeAlert(r.Reference);window!.Close();}){Owner=this};window.ShowDialog();
     }
-    private void RefreshMessages()=>MessagesItems.ItemsSource=DashboardData.Messages.Select(m=>m with{ReadLabel=dashboardState.ReadMessages.Contains(m.Id)?"READ":"NEW"}).ToArray();
+    private void RefreshMessages(){MessagesItems.ItemsSource=DashboardData.Messages.Select(m=>m with{ReadLabel=dashboardState.ReadMessages.Contains(m.Id)?"READ":"NEW"}).ToArray();Shell.PresentMessages(DashboardData.Messages.Count(m=>!dashboardState.ReadMessages.Contains(m.Id)));}
     private void Message_Click(object sender,RoutedEventArgs e)
     {
         if(((Button)sender).Tag is not DashboardMessage message)return;
@@ -225,34 +223,10 @@ public partial class MainWindow
             [new(message.Id,message.Title,"Product briefing","Read",message.Body)])){Owner=this}.ShowDialog();
     }
     private void Dashboard_Click(object sender,RoutedEventArgs e)=>ShowDashboard();
-    internal void ShowDashboard()
-    {
-        ToolsOverlay.Visibility=Visibility.Collapsed;FlightTrackingView.Visibility=PilotLogbookView.Visibility=DispatchView.Visibility=Visibility.Collapsed;DashboardScroll.Visibility=Visibility.Visible;DashboardScroll.ScrollToTop();
-        FlightTrackingNavButton.ClearValue(Button.BackgroundProperty);FlightTrackingNavButton.ClearValue(Button.ForegroundProperty);ClearDispatchSelection();
-        DashboardNavButton.Background=OpsUi.Brush("#FFDA00");DashboardNavButton.Foreground=OpsUi.Brush("#080C0F");
-    }
-    internal void ShowFlightTracking()
-    {
-        ToolsOverlay.Visibility=Visibility.Collapsed;DashboardScroll.Visibility=PilotLogbookView.Visibility=DispatchView.Visibility=Visibility.Collapsed;FlightTrackingView.Visibility=Visibility.Visible;
-        DashboardNavButton.ClearValue(Button.BackgroundProperty);DashboardNavButton.ClearValue(Button.ForegroundProperty);
-        ClearDispatchSelection();
-        FlightTrackingNavButton.Background=OpsUi.Brush("#FFDA00");FlightTrackingNavButton.Foreground=OpsUi.Brush("#080C0F");
-        RefreshFlightTrackingWorkspace(liveLast,flightState.Phase,StatusText.Text);
-    }
-    internal void ShowPilotLogbook()
-    {
-        ToolsOverlay.Visibility=Visibility.Collapsed;DashboardScroll.Visibility=FlightTrackingView.Visibility=DispatchView.Visibility=Visibility.Collapsed;PilotLogbookView.Visibility=Visibility.Visible;
-        DashboardNavButton.ClearValue(Button.BackgroundProperty);DashboardNavButton.ClearValue(Button.ForegroundProperty);FlightTrackingNavButton.ClearValue(Button.BackgroundProperty);FlightTrackingNavButton.ClearValue(Button.ForegroundProperty);
-        ClearDispatchSelection();
-        PilotLogbookView.Render(flightHistory);
-    }
-    internal void ShowDispatch()
-    {
-        ToolsOverlay.Visibility=Visibility.Collapsed;DashboardScroll.Visibility=FlightTrackingView.Visibility=PilotLogbookView.Visibility=Visibility.Collapsed;DispatchView.Visibility=Visibility.Visible;
-        DashboardNavButton.ClearValue(Button.BackgroundProperty);DashboardNavButton.ClearValue(Button.ForegroundProperty);FlightTrackingNavButton.ClearValue(Button.BackgroundProperty);FlightTrackingNavButton.ClearValue(Button.ForegroundProperty);
-        DispatchNavButton.Background=OpsUi.Brush("#FFDA00");DispatchNavButton.Foreground=OpsUi.Brush("#080C0F");HeaderDispatchButton.BorderBrush=OpsUi.Brush("#FFDA00");UpdateDispatchState();
-    }
-    private void ClearDispatchSelection(){DispatchNavButton.ClearValue(Button.BackgroundProperty);DispatchNavButton.ClearValue(Button.ForegroundProperty);DispatchNavButton.ClearValue(Button.BorderBrushProperty);HeaderDispatchButton.ClearValue(Button.BackgroundProperty);HeaderDispatchButton.ClearValue(Button.ForegroundProperty);HeaderDispatchButton.ClearValue(Button.BorderBrushProperty);}
+    internal void ShowDashboard()=>Shell.Navigation.Request(ShellSection.Operations);
+    internal void ShowFlightTracking()=>Shell.Navigation.Request(ShellSection.Flights);
+    internal void ShowPilotLogbook()=>Shell.Navigation.Request(ShellSection.Logbook);
+    internal void ShowDispatch()=>Shell.Navigation.Request(ShellSection.Dispatch);
     private void AcceptDispatchFlight(ActiveFlightPlan plan)
     {
         if(running)throw new InvalidOperationException("Finish the replay before accepting a different flight.");
@@ -273,7 +247,10 @@ public partial class MainWindow
             $"Scheduled: {f.Leg.ScheduledOut:HH:mm}Z to {f.Leg.ScheduledIn:HH:mm}Z. Projected/actual: {f.Out}Z to {f.In}Z. Departure delay {f.Leg.DepartureDelayMinutes:0} min; arrival delay {f.Leg.ArrivalDelayMinutes:0} min. "+(f.Leg.Completed?"Confirmed completion recorded.":"This leg is projected from the current actuals and minimum turnaround."))).ToArray(),"flights-unbranded");
     private void Module_Click(object sender,RoutedEventArgs e)
     {
-        var name=(string)((Button)sender).Tag;
+        Shell.Navigation.Request(ShellNavigation.FromLegacy((string)((Button)sender).Tag));
+    }
+    private void OpenLegacyModule(string name)
+    {
         switch(name)
         {
             case "Settings": new SettingsWindow(ConnectionBadgeText.Text, PilotNameBox.Text, OpenTools,
@@ -281,7 +258,7 @@ public partial class MainWindow
                 () => Logs_Click(this, new RoutedEventArgs()),
                 () => ExportLog_Click(this, new RoutedEventArgs()), MinimizeToTray,
                 ProgramHealthText.Text, LogStatusText.Text, generalSettings, ApplyGeneralSettings) { Owner = this }.ShowDialog(); return;
-            case "Aircraft": Fleet_Click(sender,e);return;
+            case "Aircraft": Fleet_Click(this,new RoutedEventArgs());return;
             case "Network": new NetworkWindow{Owner=this}.ShowDialog();return;
             case "FlightTracking": ShowFlightTracking();return;
             case "PilotLogbook":ShowPilotLogbook();return;

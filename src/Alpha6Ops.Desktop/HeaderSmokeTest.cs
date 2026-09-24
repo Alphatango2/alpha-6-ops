@@ -33,6 +33,8 @@ internal static class HeaderSmokeTest
             "Disconnected header is an enabled keyboard-focusable quick-connect button");
         check(AutomationProperties.GetName(window.ConnectionBadge) == "Simulator connection",
             "Quick connect exposes a descriptive accessible name");
+        window.Shell.ShowUtilities();
+        window.UpdateLayout();
         foreach (var button in new[] { window.ConnectionBadge, window.HeaderDispatchButton, window.LocalWeatherButton })
         {
             check(button.Focus() && button.IsKeyboardFocused, $"{button.Name} remains focusable without starting its action");
@@ -174,6 +176,7 @@ internal static class HeaderSmokeTest
         window.SetHeaderWeather(new LocalWeather("Milwaukee", 25, 3, DateTimeOffset.UtcNow));
         window.RenderClocks(DateTimeOffset.UtcNow, TimeZoneInfo.Local);
         window.RenderLocalWeather(DateTimeOffset.UtcNow);
+        window.Shell.CloseOverlays();
     }
 
     private sealed class FixtureHandler(params string[] responses) : HttpMessageHandler

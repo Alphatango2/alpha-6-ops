@@ -26,5 +26,6 @@
     <Content Include="Assets/alpha6.ico" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
     <Resource Include="Assets/alpha6-mark.png" />
     <Resource Include="Assets/Dashboard/*.png" />
+    <Resource Include="Assets/Sierra4/*.png" />
   </ItemGroup>
 </Project>
