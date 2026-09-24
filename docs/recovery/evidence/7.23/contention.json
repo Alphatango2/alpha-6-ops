@@ -1,0 +1,96 @@
+{
+  "isolatedDirectory": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.23\\map-final\\contention-026032194a1945d1b0dc1a78ca124dc3",
+  "sampleCount": 395,
+  "baseline": {
+    "sampleCount": 395,
+    "timelineHash": "7F5BACC5F3C373E4E972905B5E797C484E5E78FA5374CB34F37E603650E39601",
+    "eventHash": "D1B767F811610F83F7CFEEFB725401F136D568D525BAB5B20AD2DEC51A6A6B51",
+    "eventCount": 27,
+    "phase": "Complete",
+    "phaseEvents": 4,
+    "pirepEligible": true,
+    "submitted": true,
+    "durable": true,
+    "historyHash": "19C938ABD325BF2D7F4135DDF368A29F6DC1CC8FF51C0D1B3178DB2B85B11A1E",
+    "pirepHash": "D5E21D014AC687B229C0FC583C0A355BDDB194B20DA1F94736B7DC681515EB9A",
+    "generationUnchanged": true,
+    "samplesDuringStall": 0,
+    "browserStallMs": 0,
+    "feedMs": 8006.9813,
+    "heartbeatCount": 124,
+    "heartbeatMaxMs": 271.1868,
+    "projected": 0,
+    "visualCoalesced": 0,
+    "projectionError": null,
+    "mapMetrics": null
+  },
+  "stressed": {
+    "sampleCount": 395,
+    "timelineHash": "7F5BACC5F3C373E4E972905B5E797C484E5E78FA5374CB34F37E603650E39601",
+    "eventHash": "D1B767F811610F83F7CFEEFB725401F136D568D525BAB5B20AD2DEC51A6A6B51",
+    "eventCount": 27,
+    "phase": "Complete",
+    "phaseEvents": 4,
+    "pirepEligible": true,
+    "submitted": true,
+    "durable": true,
+    "historyHash": "19C938ABD325BF2D7F4135DDF368A29F6DC1CC8FF51C0D1B3178DB2B85B11A1E",
+    "pirepHash": "D5E21D014AC687B229C0FC583C0A355BDDB194B20DA1F94736B7DC681515EB9A",
+    "generationUnchanged": true,
+    "samplesDuringStall": 50,
+    "browserStallMs": 1000,
+    "feedMs": 8074.1982,
+    "heartbeatCount": 129,
+    "heartbeatMaxMs": 321.2756,
+    "projected": 41,
+    "visualCoalesced": 357,
+    "projectionError": null,
+    "mapMetrics": {
+      "produced": 41,
+      "offered": 41,
+      "coalesced": 3,
+      "acknowledged": 38,
+      "pending": false,
+      "rejected": 0,
+      "lastPayloadBytes": 2111,
+      "readyMs": 666.7757,
+      "projectionQueue": {
+        "offered": 395,
+        "coalesced": 354,
+        "consumed": 41,
+        "pending": false
+      },
+      "projectionMs": {
+        "count": 41,
+        "mean": 0.0428609756097561,
+        "p95": 0.0615,
+        "max": 0.1211
+      },
+      "serializationMs": {
+        "count": 38,
+        "mean": 0.04916842105263157,
+        "p95": 0.061,
+        "max": 0.0686
+      },
+      "dispatcherQueueMs": {
+        "count": 38,
+        "mean": 40.26763421052632,
+        "p95": 137.8715,
+        "max": 217.7168
+      },
+      "postMs": {
+        "count": 38,
+        "mean": 0.0918342105263158,
+        "p95": 0.1105,
+        "max": 0.2296
+      },
+      "acknowledgmentMs": {
+        "count": 38,
+        "mean": 61.73527631578946,
+        "p95": 150.1709,
+        "max": 809.5336
+      }
+    }
+  },
+  "limitations": "Diagnostic source feeds production connection callbacks at accelerated cadence. Actual native SimConnect is not exercised. One complete flight per arm and a one-second browser stall are bounded evidence, not a long-run contention guarantee. History equality excludes database IDs, recording wall-clock times, journal paths and PIREP submittedUtc; simulator times and event payloads are compared."
+}

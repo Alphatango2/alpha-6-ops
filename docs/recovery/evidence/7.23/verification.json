@@ -1,0 +1,20 @@
+{
+  "checkpoint": "7.23",
+  "baseCommit": "8ab65cceb6c3324aceea7fe6ad896865b65198fd",
+  "passed": true,
+  "counts": {
+    "failed": 0,
+    "executed": 2025,
+    "passed": 2025,
+    "unavailable": 2
+  },
+  "replays": 9,
+  "telemetrySamples": 91366,
+  "classicUnexpectedRecoveryReports": 0,
+  "mapUnexpectedReports": 0,
+  "mapGuardModified": false,
+  "mapV2DefaultEnabled": false,
+  "persistenceBlocker": "CLOSED",
+  "sourceProfileUnchanged": true,
+  "countConvention": "Final named assertion executions only. Excludes preliminary/red reruns, builds, raw unfixed probes and supplemental historical comparisons."
+}

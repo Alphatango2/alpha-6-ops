@@ -35,7 +35,7 @@ internal sealed partial class FlightSessionCoordinator
         if(activePlan is null||liveRecorder is null||liveAircraft is null)return;
         var leg=liveRotation?.Legs[0];
         try{FlightRecoveryStore.Save(new(activePlan.FlightNumber,activePlan.PlannedDepartureUtc,liveSource,liveAircraft,liveRecorder.Phase,liveLast,liveTelemetry,liveRouteProgress,leg?.ActualOut,leg?.ActualIn,liveRecorder.Events.ToArray(),trackingEvents.ToArray(),trackingEventMonitor?.CaptureState(),DateTimeOffset.UtcNow),stateDirectory);}
-        catch(Exception error) when(error is IOException or UnauthorizedAccessException){CrashReporter.Write("flight_recovery_save",error);}
+        catch(Exception error) when(error is IOException or UnauthorizedAccessException){CrashReporter.Write("flight_recovery_save",error,new{stage=error.Data["RecoveryStage"],attempts=error.Data["RecoveryAttempts"],path=error.Data["RecoveryPath"],hresult=error.HResult});}
     }
     private static AircraftRotation? BuildLiveRotation(ActiveFlightPlan? plan, string? simulatorAircraft, AircraftGroundProfile groundProfile)
     {

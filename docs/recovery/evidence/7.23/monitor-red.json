@@ -1,0 +1,14 @@
+{
+  "executed": 1,
+  "passed": 0,
+  "failed": 1,
+  "checks": [
+    {
+      "name": "MALFORMED_MONITOR_REJECTED_WITHOUT_STARTUP_CRASH",
+      "passed": false,
+      "milliseconds": 30.5377,
+      "error": "System.ArgumentNullException: Value cannot be null. (Parameter \u0027other\u0027)\r\n   at System.Collections.Generic.HashSet\u00601.UnionWith(IEnumerable\u00601 other)\r\n   at Alpha6Ops.Desktop.FlightTrackingEventMonitor..ctor(FlightTrackingMonitorState restored) in C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\src\\Alpha6Ops.Desktop\\FlightTrackingEvents.cs:line 46\r\n   at Alpha6Ops.Desktop.FlightSessionCoordinator.RestoreFlightRecovery(FlightRecoveryState state) in C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\src\\Alpha6Ops.Desktop\\FlightSessionCoordinator.Tracking.cs:line 29\r\n   at Alpha6Ops.Desktop.FlightSessionCoordinator..ctor(String directory, Boolean diagnostic, IFlightRuntimeDispatcher dispatcher, ISimulatorConnectionSource simulator) in C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\src\\Alpha6Ops.Desktop\\FlightSessionCoordinator.cs:line 73\r\n   at Program.\u003C\u003Ec.\u003CAdditionalChecks\u003Eb__17_0() in C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\tests\\Alpha6Ops.RecoveryChecks\\Program.cs:line 117\r\n   at Program.Check(String name, Action test) in C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\tests\\Alpha6Ops.RecoveryChecks\\Program.cs:line 30"
+    }
+  ],
+  "metrics": {}
+}

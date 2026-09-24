@@ -1,0 +1,418 @@
+CHECKPOINT 7.23 — FLIGHT RECOVERY PERSISTENCE HARDENING
+
+Checkpoint 7.22 is complete and committed as 8ab65cc.
+
+7.22 successfully integrated Sierra 4 Map V2 as an opt-in production renderer with the classic map retained as default/fallback.
+
+The production regression baseline remains healthy:
+
+- 2,004 automated assertion executions passed
+- 0 automated assertion failures
+- 2 native simulator checks unavailable
+- 9 / 9 recorded-flight replays passed
+- 91,366 / 91,366 telemetry samples processed
+- Map V2 flight-isolation/contention checks passed
+- FlightSessionCoordinator remains authoritative
+
+However, the final 7.22 verification gate correctly remained RED because an intermittent existing flight-recovery persistence failure was detected.
+
+KNOWN FAILURE
+
+FlightRecoveryStore.Save occasionally receives UnauthorizedAccessException during:
+
+File.Move(..., overwrite: true)
+
+The failure was reproduced:
+
+- during Map V2 contention testing
+- with the classic renderer
+- in a standalone file-replacement probe with no application or map loaded
+
+The standalone probe reproduced approximately 3 failures in 500 replacements.
+
+This currently prevents Map V2 from becoming the default renderer because Sierra 4 cannot claim a clean persistence/recovery verification run while an intermediate recovery checkpoint may fail.
+
+OBJECTIVE
+
+Identify the root cause of the intermittent recovery-file replacement failure and harden flight recovery persistence without changing Sierra 4's recovery semantics, storage location, data format or authoritative flight behavior.
+
+This is a PERSISTENCE RELIABILITY checkpoint.
+
+It is NOT:
+
+- a Map V2 feature checkpoint
+- a UI redesign
+- a database migration
+- a broad storage rewrite
+- an authentication checkpoint
+- a Flight Tracking redesign
+- a Dispatch redesign
+
+
+PART 1 — ROOT-CAUSE INVESTIGATION
+
+Before modifying production behavior, investigate the failure.
+
+Inspect:
+
+- FlightRecoveryStore
+- all callers of recovery Save
+- recovery read/load/delete behavior
+- temporary-file strategy
+- File.Move(... overwrite:true) behavior
+- concurrent save possibilities
+- concurrent read possibilities
+- cleanup/disposal
+- antivirus/indexer/file-watcher interaction possibilities
+- filesystem semantics on the current Windows environment
+- whether multiple application/runtime paths can attempt replacement simultaneously
+- whether destination or temporary files can retain handles
+- whether test infrastructure itself contributes
+- file attributes/permissions
+- timing around rapid sequential saves
+- crash/restart behavior
+
+Determine whether the failure is caused by:
+
+A. application concurrency
+B. incorrect handle lifetime
+C. Windows replacement semantics
+D. external/transient file locking
+E. test behavior
+F. another identified cause
+G. an unresolved combination
+
+Do not claim a root cause unless supported by evidence.
+
+
+PART 2 — PRESERVE RECOVERY CONTRACT
+
+The existing recovery contract must remain compatible.
+
+Do not change:
+
+- existing recovery file location
+- existing profile/storage directory
+- existing recovery JSON schema unless an additive backward-compatible field is absolutely required
+- assignment semantics
+- flight-session semantics
+- history semantics
+- PIREP semantics
+- telemetry semantics
+
+Existing recovery files must remain readable.
+
+A user upgrading Sierra 4 must not lose an existing recoverable flight.
+
+
+PART 3 — DEFINE REQUIRED SAVE GUARANTEES
+
+Flight recovery persistence should provide the strongest practical guarantees available on the current Windows/filesystem architecture.
+
+At minimum:
+
+1. A successful Save leaves a complete readable recovery document.
+2. A failed/interrupted Save must not leave the authoritative recovery file partially written.
+3. Existing valid recovery should not be destroyed before replacement is safely available.
+4. Temporary artifacts should be bounded and safely cleaned.
+5. Concurrent or rapid saves must not corrupt recovery.
+6. Transient external file contention should be handled safely where practical.
+7. Retry behavior must be bounded.
+8. Application shutdown must not hang indefinitely waiting for recovery persistence.
+9. Failures must remain observable through diagnostics.
+10. Recovery persistence must not silently report success when durability failed.
+
+
+PART 4 — CONCURRENCY ANALYSIS
+
+Determine whether FlightRecoveryStore.Save can currently execute concurrently or re-enter.
+
+If application-level serialization is required, implement the smallest appropriate mechanism.
+
+Do not introduce a global application lock unnecessarily.
+
+If saves can be coalesced safely, distinguish:
+
+- operational recovery state that must not be lost
+- superseded intermediate recovery snapshots
+
+Do not coalesce or discard state unless correctness is proven.
+
+The final authoritative state must be persisted.
+
+
+PART 5 — WINDOWS ATOMIC REPLACEMENT STRATEGY
+
+Evaluate the appropriate Windows/.NET replacement strategy rather than blindly retaining File.Move(... overwrite:true).
+
+Consider supported mechanisms such as:
+
+- write temporary file in the same directory
+- flush/close temporary file completely
+- atomic replacement/rename semantics where available
+- File.Replace where appropriate
+- File.Move fallback where appropriate
+- backup behavior if useful
+- bounded transient retries
+
+Choose based on actual .NET/Windows semantics and compatibility with Sierra 4's existing storage model.
+
+Do not add a heavyweight persistence dependency for this problem.
+
+Do not switch recovery to SQLite merely to avoid solving file replacement.
+
+
+PART 6 — TRANSIENT RETRY POLICY
+
+If evidence supports transient filesystem contention, implement a bounded retry policy.
+
+Requirements:
+
+- retry only errors reasonably classified as transient
+- do not retry invalid paths, malformed state, permission configuration errors or other permanent failures indefinitely
+- use a small bounded retry count/time budget
+- use reasonable short backoff
+- support cancellation/shutdown where appropriate
+- preserve diagnostics
+- record final failure if all attempts fail
+
+Do not hide persistent filesystem problems behind endless retries.
+
+
+PART 7 — DURABILITY
+
+Review whether the temporary recovery file is actually closed/flushed before replacement.
+
+Use appropriate flush/durability behavior for this small critical recovery document.
+
+Do not make every telemetry sample perform unnecessarily expensive full-volume synchronization if not required.
+
+Balance recovery reliability with flight-tracking performance and document the decision.
+
+
+PART 8 — CRASH / INTERRUPTION SAFETY
+
+Test or reason explicitly about interruption at these stages:
+
+- before temp write
+- during temp write
+- after temp write but before replacement
+- during replacement
+- after replacement
+- during cleanup
+
+Define what file Sierra 4 will recover from in each relevant state.
+
+If a temporary/backup recovery file may remain after a crash, determine whether startup should:
+
+- ignore it
+- clean it
+- validate it
+- use it only when the authoritative recovery file is missing/corrupt
+
+Do not introduce automatic recovery from a temporary artifact unless its integrity and precedence are clearly defined.
+
+
+PART 9 — FILE INTEGRITY
+
+Where practical, ensure recovery reads reject incomplete/corrupt JSON rather than interpreting partial state as valid flight truth.
+
+Preserve compatibility with existing valid recovery files.
+
+Do not redesign the format unless necessary.
+
+
+PART 10 — STRESS REGRESSION
+
+Create focused automated stress coverage.
+
+The previous standalone probe reproduced approximately 3 failures / 500 replacements.
+
+After the fix, run a substantially larger bounded replacement stress test.
+
+Target at least:
+
+- 5,000 sequential replacements
+
+and where appropriate:
+
+- rapid replacement
+- concurrent save attempts
+- save/read overlap
+- cleanup/recreation
+- simulated transient lock/contention
+- application shutdown/disposal interaction
+
+Use temporary isolated test directories.
+
+Do not modify the user's actual recovery/profile files.
+
+
+PART 11 — TRANSIENT LOCK INJECTION
+
+Where feasible, create deterministic tests that temporarily prevent replacement/access and verify:
+
+- bounded retry succeeds when contention clears
+- authoritative existing recovery remains readable during failed attempts
+- permanent failure surfaces correctly
+- no infinite retry
+- no corrupt authoritative file
+- temporary files are handled correctly
+
+Prefer deterministic injected/file-abstraction tests over relying solely on antivirus or random OS timing.
+
+
+PART 12 — RECOVERY ROUND-TRIP
+
+Verify repeatedly:
+
+state
+  ↓
+Save
+  ↓
+close/reopen
+  ↓
+Load
+  ↓
+equivalent recovery state
+
+Include representative existing fixtures and compatibility cases.
+
+Verify existing historical recovery formats remain readable.
+
+
+PART 13 — FLIGHT RUNTIME CONTENTION
+
+Recovery hardening must not materially interfere with FlightSessionCoordinator.
+
+Measure recovery-save impact under a representative replay or accelerated flight workload.
+
+Verify:
+
+- telemetry processing remains complete
+- ordered events remain complete
+- phase transitions remain correct
+- ETA/progress remain correct
+- history remains correct
+- PIREP behavior remains correct
+- no map dependency is introduced
+
+Recovery persistence should remain infrastructure below the authoritative flight session.
+
+
+PART 14 — MAP V2 RE-VERIFICATION
+
+This checkpoint is not a Map V2 development checkpoint.
+
+However, because the recovery failure blocked 7.22's final gate, rerun the relevant 7.22 verification after recovery hardening.
+
+Verify with:
+
+- classic renderer
+- Map V2 opt-in
+- Map V2 contention/stall test
+- standalone replacement stress test
+
+The unexpected flight_recovery_save report guard must remain enabled.
+
+Do NOT suppress, whitelist or downgrade the report simply to make verification green.
+
+
+PART 15 — MAP DEFAULT STATUS
+
+Do NOT automatically make Map V2 default during this checkpoint.
+
+7.23 exists to remove the persistence blocker.
+
+Even if all recovery tests pass, leave the current Map V2 opt-in/default setting unchanged.
+
+Default Map V2 activation belongs to a separate validation decision after performance/manual gates are reviewed.
+
+
+PART 16 — REGRESSION REQUIREMENTS
+
+Run the complete Sierra 4 regression suite.
+
+Required:
+
+- all previously passing checks remain passing
+- all new recovery checks pass
+- all Map V2 checks remain passing
+- 9/9 recorded-flight replays pass
+- 91,366/91,366 telemetry samples process
+- existing assignment/recovery/history/gate fixtures remain readable
+- source profile files remain unchanged
+- FlightSessionCoordinator behavior remains unchanged
+- Map V2 cannot mutate operational state
+- workspace switching remains safe
+- stale callbacks remain rejected
+- assignment/PIREP persistence remains independent of animation
+- display wording remains non-authoritative
+
+The two native simulator checks may remain unavailable if MSFS is unavailable.
+
+Do not count unavailable checks as passed.
+
+
+PART 17 — ACCEPTANCE GATE
+
+7.23 may be considered PASS only if:
+
+1. The recovery replacement failure has a documented evidence-based cause or sufficiently characterized transient failure mode.
+2. Production recovery persistence is hardened appropriately.
+3. Existing recovery compatibility is preserved.
+4. The previous 500-replacement reproduction no longer fails under a materially larger stress run.
+5. Deterministic contention tests pass.
+6. No partial/corrupt authoritative recovery file is produced.
+7. Full regression remains green.
+8. 9/9 replays remain green.
+9. 91,366/91,366 telemetry samples remain valid.
+10. The unexpected-report guard remains clean during the final verification run.
+
+If intermittent flight_recovery_save reports still occur:
+
+DO NOT call the checkpoint fully green.
+
+Report the evidence and leave Map V2 rollout blocked.
+
+
+PART 18 — COMPLETION REPORT
+
+At completion provide:
+
+1. Root-cause findings
+2. Previous recovery save architecture
+3. New recovery save architecture
+4. Exact replacement strategy selected
+5. Concurrency behavior
+6. Retry policy
+7. Durability behavior
+8. Crash/interruption behavior
+9. Temp/backup cleanup behavior
+10. Existing-format compatibility
+11. Deterministic contention results
+12. Sequential replacement stress results
+13. Concurrent stress results where applicable
+14. Recovery round-trip results
+15. Flight-runtime performance impact
+16. Classic-map verification result
+17. Map V2 verification result
+18. Unexpected-report guard result
+19. Files created/modified
+20. Build/package result
+21. Regression counts
+22. Replay result
+23. Telemetry result
+24. Known remaining risks
+25. Whether the 7.22 persistence blocker is CLOSED or OPEN
+26. Recommendation for Checkpoint 7.24
+
+STOP AFTER CHECKPOINT 7.23.
+
+Do not enable Map V2 by default.
+Do not begin Sierra 4 visual polish.
+Do not migrate Flight Tracking.
+Do not migrate Dispatch.
+Do not begin authentication/profile integration.
+Do not begin persistent airline-world development.
+Do not perform distribution rebranding.

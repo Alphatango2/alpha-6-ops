@@ -1,0 +1,372 @@
+{
+  "runtime": "10.0.11",
+  "os": "Microsoft Windows NT 10.0.19045.0",
+  "observations": [
+    {
+      "mode": "Move",
+      "attempted": 5000,
+      "milliseconds": 3552.4773,
+      "errors": [
+        {
+          "iteration": 733,
+          "type": "UnauthorizedAccessException",
+          "HResult": -2147024891,
+          "before": {
+            "targetExists": true,
+            "tempExists": true,
+            "attributes": "Archive"
+          },
+          "retryError": null
+        },
+        {
+          "iteration": 1282,
+          "type": "UnauthorizedAccessException",
+          "HResult": -2147024891,
+          "before": {
+            "targetExists": true,
+            "tempExists": true,
+            "attributes": "Archive"
+          },
+          "retryError": null
+        },
+        {
+          "iteration": 4813,
+          "type": "UnauthorizedAccessException",
+          "HResult": -2147024891,
+          "before": {
+            "targetExists": true,
+            "tempExists": true,
+            "attributes": "Archive"
+          },
+          "retryError": null
+        },
+        {
+          "iteration": 4931,
+          "type": "UnauthorizedAccessException",
+          "HResult": -2147024891,
+          "before": {
+            "targetExists": true,
+            "tempExists": true,
+            "attributes": "Archive"
+          },
+          "retryError": null
+        },
+        {
+          "iteration": 4980,
+          "type": "UnauthorizedAccessException",
+          "HResult": -2147024891,
+          "before": {
+            "targetExists": true,
+            "tempExists": true,
+            "attributes": "Archive"
+          },
+          "retryError": null
+        }
+      ]
+    },
+    {
+      "mode": "Replace",
+      "attempted": 5000,
+      "milliseconds": 9487.6493,
+      "errors": [
+        {
+          "iteration": 66,
+          "type": "IOException",
+          "HResult": -2147023721,
+          "before": {
+            "targetExists": true,
+            "tempExists": true,
+            "attributes": "Archive"
+          },
+          "retryError": null
+        },
+        {
+          "iteration": 227,
+          "type": "IOException",
+          "HResult": -2147023721,
+          "before": {
+            "targetExists": true,
+            "tempExists": true,
+            "attributes": "Archive"
+          },
+          "retryError": null
+        },
+        {
+          "iteration": 374,
+          "type": "IOException",
+          "HResult": -2147023721,
+          "before": {
+            "targetExists": true,
+            "tempExists": true,
+            "attributes": "Archive"
+          },
+          "retryError": null
+        },
+        {
+          "iteration": 486,
+          "type": "IOException",
+          "HResult": -2147023721,
+          "before": {
+            "targetExists": true,
+            "tempExists": true,
+            "attributes": "Archive"
+          },
+          "retryError": null
+        },
+        {
+          "iteration": 512,
+          "type": "IOException",
+          "HResult": -2147023721,
+          "before": {
+            "targetExists": true,
+            "tempExists": true,
+            "attributes": "Archive"
+          },
+          "retryError": null
+        },
+        {
+          "iteration": 536,
+          "type": "IOException",
+          "HResult": -2147023721,
+          "before": {
+            "targetExists": true,
+            "tempExists": true,
+            "attributes": "Archive"
+          },
+          "retryError": null
+        },
+        {
+          "iteration": 572,
+          "type": "IOException",
+          "HResult": -2147023721,
+          "before": {
+            "targetExists": true,
+            "tempExists": true,
+            "attributes": "Archive"
+          },
+          "retryError": null
+        },
+        {
+          "iteration": 879,
+          "type": "IOException",
+          "HResult": -2147023721,
+          "before": {
+            "targetExists": true,
+            "tempExists": true,
+            "attributes": "Archive"
+          },
+          "retryError": null
+        },
+        {
+          "iteration": 1076,
+          "type": "IOException",
+          "HResult": -2147023721,
+          "before": {
+            "targetExists": true,
+            "tempExists": true,
+            "attributes": "Archive"
+          },
+          "retryError": null
+        },
+        {
+          "iteration": 1133,
+          "type": "IOException",
+          "HResult": -2147023721,
+          "before": {
+            "targetExists": true,
+            "tempExists": true,
+            "attributes": "Archive"
+          },
+          "retryError": null
+        },
+        {
+          "iteration": 1182,
+          "type": "IOException",
+          "HResult": -2147023721,
+          "before": {
+            "targetExists": true,
+            "tempExists": true,
+            "attributes": "Archive"
+          },
+          "retryError": null
+        },
+        {
+          "iteration": 1270,
+          "type": "IOException",
+          "HResult": -2147023721,
+          "before": {
+            "targetExists": true,
+            "tempExists": true,
+            "attributes": "Archive"
+          },
+          "retryError": null
+        },
+        {
+          "iteration": 1711,
+          "type": "IOException",
+          "HResult": -2147023721,
+          "before": {
+            "targetExists": true,
+            "tempExists": true,
+            "attributes": "Archive"
+          },
+          "retryError": null
+        },
+        {
+          "iteration": 1724,
+          "type": "IOException",
+          "HResult": -2147023721,
+          "before": {
+            "targetExists": true,
+            "tempExists": true,
+            "attributes": "Archive"
+          },
+          "retryError": null
+        },
+        {
+          "iteration": 1940,
+          "type": "IOException",
+          "HResult": -2147023721,
+          "before": {
+            "targetExists": true,
+            "tempExists": true,
+            "attributes": "Archive"
+          },
+          "retryError": null
+        },
+        {
+          "iteration": 2137,
+          "type": "IOException",
+          "HResult": -2147023721,
+          "before": {
+            "targetExists": true,
+            "tempExists": true,
+            "attributes": "Archive"
+          },
+          "retryError": null
+        },
+        {
+          "iteration": 2496,
+          "type": "IOException",
+          "HResult": -2147023721,
+          "before": {
+            "targetExists": true,
+            "tempExists": true,
+            "attributes": "Archive"
+          },
+          "retryError": null
+        },
+        {
+          "iteration": 2543,
+          "type": "IOException",
+          "HResult": -2147023721,
+          "before": {
+            "targetExists": true,
+            "tempExists": true,
+            "attributes": "Archive"
+          },
+          "retryError": null
+        },
+        {
+          "iteration": 2680,
+          "type": "IOException",
+          "HResult": -2147023721,
+          "before": {
+            "targetExists": true,
+            "tempExists": true,
+            "attributes": "Archive"
+          },
+          "retryError": null
+        },
+        {
+          "iteration": 3106,
+          "type": "IOException",
+          "HResult": -2147023721,
+          "before": {
+            "targetExists": true,
+            "tempExists": true,
+            "attributes": "Archive"
+          },
+          "retryError": null
+        },
+        {
+          "iteration": 3776,
+          "type": "IOException",
+          "HResult": -2147023721,
+          "before": {
+            "targetExists": true,
+            "tempExists": true,
+            "attributes": "Archive"
+          },
+          "retryError": null
+        },
+        {
+          "iteration": 4072,
+          "type": "IOException",
+          "HResult": -2147023721,
+          "before": {
+            "targetExists": true,
+            "tempExists": true,
+            "attributes": "Archive"
+          },
+          "retryError": null
+        },
+        {
+          "iteration": 4098,
+          "type": "IOException",
+          "HResult": -2147023721,
+          "before": {
+            "targetExists": true,
+            "tempExists": true,
+            "attributes": "Archive"
+          },
+          "retryError": null
+        },
+        {
+          "iteration": 4410,
+          "type": "IOException",
+          "HResult": -2147023721,
+          "before": {
+            "targetExists": true,
+            "tempExists": true,
+            "attributes": "Archive"
+          },
+          "retryError": null
+        },
+        {
+          "iteration": 4469,
+          "type": "IOException",
+          "HResult": -2147023721,
+          "before": {
+            "targetExists": true,
+            "tempExists": true,
+            "attributes": "Archive"
+          },
+          "retryError": null
+        },
+        {
+          "iteration": 4791,
+          "type": "IOException",
+          "HResult": -2147023721,
+          "before": {
+            "targetExists": true,
+            "tempExists": true,
+            "attributes": "Archive"
+          },
+          "retryError": null
+        },
+        {
+          "iteration": 4870,
+          "type": "IOException",
+          "HResult": -2147023721,
+          "before": {
+            "targetExists": true,
+            "tempExists": true,
+            "attributes": "Archive"
+          },
+          "retryError": null
+        }
+      ]
+    }
+  ]
+}

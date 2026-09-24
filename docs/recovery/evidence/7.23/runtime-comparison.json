@@ -1,0 +1,26 @@
+[
+  {
+    "mode": "baseline",
+    "oldTrackingSamples": 395,
+    "newTrackingSamples": 395,
+    "orderedTrackingStateEquivalent": true,
+    "oldFeedMs": 7983.1499,
+    "newFeedMs": 8006.9813,
+    "oldHeartbeatP95": 82.7811,
+    "newHeartbeatP95": 162.7593,
+    "oldHeartbeatMax": 121.0485,
+    "newHeartbeatMax": 271.1868
+  },
+  {
+    "mode": "stressed",
+    "oldTrackingSamples": 395,
+    "newTrackingSamples": 395,
+    "orderedTrackingStateEquivalent": true,
+    "oldFeedMs": 8020.3883,
+    "newFeedMs": 8074.1982,
+    "oldHeartbeatP95": 81.9531,
+    "newHeartbeatP95": 178.0028,
+    "oldHeartbeatMax": 139.6861,
+    "newHeartbeatMax": 321.2756
+  }
+]

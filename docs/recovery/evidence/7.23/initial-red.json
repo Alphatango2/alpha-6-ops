@@ -1,0 +1,25 @@
+{
+  "executed": 3,
+  "passed": 0,
+  "failed": 3,
+  "checks": [
+    {
+      "name": "TRANSIENT_DESTINATION_LOCK_RECOVERS",
+      "passed": false,
+      "milliseconds": 63.0499,
+      "error": "System.Exception: Save failed instead of recovering after short lock: System.UnauthorizedAccessException: Access to the path is denied.\r\n   at System.IO.FileSystem.MoveFile(String sourceFullPath, String destFullPath, Boolean overwrite)\r\n   at Alpha6Ops.Desktop.FlightRecoveryStore.Save(FlightRecoveryState state, String root) in C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\src\\Alpha6Ops.Desktop\\FlightRecovery.cs:line 34\r\n   at Program.\u003C\u003Ec__DisplayClass11_0.\u003CMain\u003Eb__3() in C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\tests\\Alpha6Ops.RecoveryChecks\\Program.cs:line 41\r\n   at Program.Require(Boolean valid, String reason) in C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\tests\\Alpha6Ops.RecoveryChecks\\Program.cs:line 22\r\n   at Program.\u003C\u003Ec.\u003CMain\u003Eb__11_0() in C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\tests\\Alpha6Ops.RecoveryChecks\\Program.cs:line 50\r\n   at Program.Check(String name, Action test) in C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\tests\\Alpha6Ops.RecoveryChecks\\Program.cs:line 26"
+    },
+    {
+      "name": "FAILED_SAVE_PRESERVES_OLD_AND_CLEANS_TEMP",
+      "passed": false,
+      "milliseconds": 1.6855,
+      "error": "System.Exception: Failed save left temporary file\r\n   at Program.Require(Boolean valid, String reason) in C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\tests\\Alpha6Ops.RecoveryChecks\\Program.cs:line 22\r\n   at Program.\u003C\u003Ec.\u003CMain\u003Eb__11_1() in C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\tests\\Alpha6Ops.RecoveryChecks\\Program.cs:line 62\r\n   at Program.Check(String name, Action test) in C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\tests\\Alpha6Ops.RecoveryChecks\\Program.cs:line 26"
+    },
+    {
+      "name": "INCOMPLETE_JSON_REJECTED",
+      "passed": false,
+      "milliseconds": 1.292,
+      "error": "System.Exception: Incomplete JSON accepted as flight truth\r\n   at Program.Require(Boolean valid, String reason) in C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\tests\\Alpha6Ops.RecoveryChecks\\Program.cs:line 22\r\n   at Program.\u003C\u003Ec.\u003CMain\u003Eb__11_2() in C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\tests\\Alpha6Ops.RecoveryChecks\\Program.cs:line 68\r\n   at Program.Check(String name, Action test) in C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\tests\\Alpha6Ops.RecoveryChecks\\Program.cs:line 26"
+    }
+  ]
+}
