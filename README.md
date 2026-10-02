@@ -1,6 +1,6 @@
-# Alpha 6 OPS
+# Sierra 4
 
-Current release: **0.22.0 / checkpoint 7.17** corrects route recovery after changed departures, withdraws unreliable distance/ETA, accepts independently verified flights when simulator registration is unavailable, and cleans up A220 flap events, engine evidence, scheduled arrival and Dispatch layout. Includes the accumulated local checkpoints 7.13–7.16. See [checkpoint 7.17](docs/checkpoint-7.17.md) for validation and known limits. Build the Windows installer with `packaging/build-desktop.ps1` using the configured .NET 10 SDK/runtime. Generated packages and private flight journals are excluded from source control.
+Current candidate: **Sierra 4 v0.23.0 / checkpoint 7.26B** consolidates the validated flight-tracking foundation with canonical Sierra 4 product identity, verified legacy-profile migration, bounded production retention, portable replay fixtures, and a production package that excludes diagnostic command harnesses. See the [7.26B implementation report](docs/checkpoint-7.26b/implementation-report.md), [pre-premium-UI handoff](docs/checkpoint-7.26b/pre-premium-ui-handoff.md), and [known limitations](docs/checkpoint-7.26b/known-limitations.md). Generated packages and private flight journals are excluded from source control.
 
 Latest: **0.12.2 Launch and identify** turns the connection card into **Launch & Connect** for the Microsoft Store edition of MSFS 2024. OPS checks live aircraft/position, the active simulator plan and airport references before linking a saved assignment. Unrelated or stale briefings no longer impose airline routes and delays on free flight. See [flight identification, launch behavior and limits](docs/live-flight-identification.md).
 
@@ -60,7 +60,7 @@ Latest: **0.4 Aircraft database** adds a searchable, offline SQLite catalog of D
 
 Latest: **0.3 SimConnect test build** adds a read-only native SDK adapter and a colored/text connection badge. See `outputs/Alpha6OPS-Setup-0.3.exe` or `outputs/Alpha6OPS-Desktop-0.3-win-x64.zip`, and [live connection notes](docs/simconnect-live.md). The package is configured for the installed SDK on this PC. Successful live telemetry is not yet verified; the demo rotation remains separate. The 0.2 notes below describe the original replay release.
 
-The pilot interface is now also a native WPF Windows application. Run `outputs/Alpha6OPS-Setup-0.2.exe` to install the preview, or extract `outputs/Alpha6OPS-Desktop-0.2-win-x64.zip` and open `Alpha6OPS.exe`. Both include a private .NET runtime; neither needs the API, browser, Node, or internet. The generated binaries are ignored by Git. See [desktop build and packaging](docs/desktop.md) for rebuilding and current verification limits.
+The pilot interface is a native WPF Windows application. Build the current uninstalled package with `packaging/build-desktop.ps1`, then use `outputs/Sierra4-Setup-0.23.0.exe` or extract `outputs/Sierra4-Desktop-0.23.0-win-x64.zip` and open `Sierra4.exe`. Both include a private .NET runtime; neither needs the API, browser, Node, or internet. The generated binaries are ignored by Git. See [desktop build and packaging](docs/desktop.md) for rebuilding and current verification limits.
 
 The desktop app provides Simple/Advanced views, an approximately eight-second embedded replay, rotation timings, milestones, and a system tray icon. Closing/minimizing hides the window while replay continues. Double-click the tray icon to reopen; use Exit OPS to quit. This is an unsigned replay preview, not live SimConnect capture.
 

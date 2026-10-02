@@ -15,7 +15,7 @@ dotnet build Alpha6Ops.slnx
 dotnet run --project src/Alpha6Ops.Desktop --no-build
 ```
 
-The executable is `src/Alpha6Ops.Desktop/bin/Debug/net10.0-windows/Alpha6OPS.exe`. This is a development build; release packaging was not changed. Close/minimize keeps the process in the tray. Use **Exit OPS** to quit.
+The executable is `src/Alpha6Ops.Desktop/bin/Debug/net10.0-windows/Sierra4.exe`. This is a development build with diagnostic harnesses enabled. Production packaging builds `Sierra4.exe` without those command harnesses. Close/minimize keeps the process in the tray. Use **Exit OPS** to quit.
 
 The default window targets 1536 × 1024 physical pixels, bounded by the current monitor's usable area. Saved sizes are restored in WPF device-independent units; a maximized exit preserves the normal restore size. The body and navigation scroll independently. The normal minimum is 640 × 480 logical pixels, reduced if the monitor's usable area is smaller.
 
