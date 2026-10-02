@@ -1,0 +1,18 @@
+{
+  "all_hash_preservations_stable": true,
+  "preserved_copies_still_match_manifest": true,
+  "database_integrity_ok": true,
+  "json_and_jsonl_equal_all_four_connections": true,
+  "one_completed_history_row": true,
+  "one_pirep_submission": true,
+  "45_operational_events_retained_exactly": true,
+  "exactly_one_of_each_oooi": true,
+  "same_assignment_across_recovery": true,
+  "no_new_monitor_after_cruise_disconnect": true,
+  "no_invalidation_or_joined_reset": true,
+  "engine_running_confirmation_count_per_engine": {
+    "Engine 2 running": 3,
+    "Engine 1 running": 3
+  },
+  "cold_start_after_submission": "NOT PROVEN: stopped program-status omits processStartUtc; no post-submission live heartbeat supplied or found"
+}

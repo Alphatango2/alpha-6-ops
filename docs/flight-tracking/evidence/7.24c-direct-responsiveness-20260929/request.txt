@@ -1,0 +1,393 @@
+7.24C — APPROVE RESPONSIVENESS ACCEPTANCE MODEL REVISION
+
+The 7.24C responsiveness-gate validity review is accepted.
+
+Approved conclusion:
+
+HEARTBEAT VALID BUT ACCEPTANCE MODEL IS WRONG.
+
+This approval does NOT:
+
+- declare Background heartbeat delays irrelevant
+- change the existing heartbeat threshold
+- delete the heartbeat test
+- convert existing heartbeat failures into passes
+- authorize arbitrary new thresholds
+- waive direct responsiveness defects
+- clear T2 for installation yet
+
+It authorizes replacing Background heartbeat maximum interval as the
+STANDALONE release-blocking responsiveness criterion with direct
+product-facing responsiveness contracts.
+
+============================================================
+PRINCIPLE
+============================================================
+
+Sierra 4 responsiveness acceptance must directly protect:
+
+1. USER INPUT RESPONSIVENESS
+2. MAP/PRESENTATION FRESHNESS
+3. TELEMETRY PROCESSING RESPONSIVENESS
+4. AUTHORITATIVE DATA INTEGRITY
+5. WORKSPACE/MAP RESTORATION
+6. APPLICATION LIVENESS / MEANINGFUL-WORK PROGRESS
+
+Background heartbeat timing remains a diagnostic scheduling sentinel.
+
+A Background heartbeat excursion by itself must remain visible evidence,
+but it should not independently determine product responsiveness when
+higher-priority meaningful product work is demonstrably progressing
+normally.
+
+Conversely, passing the Background heartbeat must NOT mask a failure in
+any direct product-facing responsiveness contract.
+
+============================================================
+PART 1 — FORMALIZE DIRECT CONTRACTS
+============================================================
+
+Create direct automated coverage for each product requirement.
+
+A. INPUT RESPONSE
+
+Measure meaningful synthetic input delivery/handling directly.
+
+Cover at minimum:
+
+- map pointer movement
+- drag/pan interaction
+- click/select interaction where supported
+- interaction under telemetry/map activity
+
+Do not substitute Background heartbeat timing for input timing.
+
+Where pixel/frame presentation cannot be measured reliably, state exactly
+what boundary is measured.
+
+B. MAP/PRESENTATION FRESHNESS
+
+Measure the actual map presentation pipeline:
+
+authoritative/newest map state
+→ presentation handoff
+→ WebView/browser receipt
+→ browser acknowledgment
+
+Add the strongest practical correct-frame/freshness assertion available.
+
+The test must detect regressions equivalent to the previously observed
+4.28-second map-data handoff delay.
+
+Do not treat browser ACK as proof of pixel presentation if it is not.
+
+Explicitly document that boundary.
+
+C. TELEMETRY PROCESSING
+
+Directly measure:
+
+source/emission
+→ ingestion
+→ processing
+
+Verify timely processing under:
+
+- normal map activity
+- interaction
+- workspace navigation
+- recovery/reconnect scenarios where practical
+
+D. DATA INTEGRITY
+
+Require exact preservation of authoritative telemetry/events.
+
+No responsiveness optimization may achieve a pass by dropping source
+samples or lifecycle events.
+
+Presentation snapshots may coalesce only under the already-established
+presentation semantics.
+
+E. RESTORATION
+
+Retain direct map/workspace restoration checks.
+
+Verify:
+
+- retained state
+- correct renderer lifecycle
+- no duplicate subscriptions
+- bounded resources
+- timely usable restoration
+
+F. MEANINGFUL-WORK LIVENESS
+
+Add a watchdog/contract based on meaningful application work rather than
+only a Background-priority timer.
+
+Determine an appropriate observable such as:
+
+- ability to execute a deliberately scheduled meaningful dispatcher action
+- renderer/browser progress
+- telemetry progress
+- input progress
+
+The purpose is to detect genuine hangs/starvation while avoiding the false
+assumption that Background callbacks must run while higher-priority useful
+work is progressing.
+
+============================================================
+PART 2 — DASHBOARD REFRESH TIMER
+============================================================
+
+The validity review identified an actual dashboard refresh timer that waited
+approximately 1.09 seconds after becoming runnable.
+
+This is a real product consumer and therefore deserves direct measurement.
+
+Determine:
+
+- what data/UI it refreshes
+- intended freshness semantics
+- whether delayed execution causes stale visible information
+- whether newer state supersedes older refreshes
+- whether the consumer should coalesce
+- whether any user-visible stale state occurred
+
+Do not optimize it merely because the old Background heartbeat was delayed.
+
+Create a direct freshness test for the dashboard consumer.
+
+If a production defect is demonstrated, make the smallest safe correction.
+
+============================================================
+PART 3 — THRESHOLD DERIVATION
+============================================================
+
+Do NOT invent new numerical thresholds merely to replace the heartbeat
+numbers.
+
+For each direct contract:
+
+- identify existing measured native behavior
+- identify previous known-bad behavior where available
+- identify known-good native behavior
+- identify the regression the contract must detect
+
+Derive an acceptance boundary only where evidence supports one.
+
+For example:
+
+The historical 4.28-second map-data handoff is known-bad.
+
+Corrected native/map scheduling behavior provides known-good evidence.
+
+Use such evidence to construct a regression boundary with documented
+reasoning.
+
+If evidence is insufficient to justify a numerical threshold, use a
+behavioral/invariant-based assertion and document what further native
+calibration would be required.
+
+============================================================
+PART 4 — HEARTBEAT ROLE
+============================================================
+
+Retain the existing Background heartbeat instrumentation and existing
+threshold values unchanged.
+
+Reclassify its acceptance role from:
+
+SOLE/HARD PRODUCT RESPONSIVENESS GATE
+
+to:
+
+DIAGNOSTIC SCHEDULING SENTINEL / REGRESSION EVIDENCE
+
+Do NOT rewrite historical results.
+
+Previous heartbeat failures remain failures under the historical gate and
+must remain preserved in reports.
+
+Future heartbeat excursions must be:
+
+- recorded
+- surfaced
+- correlated with direct product metrics
+- investigated when accompanied by product-facing degradation or a new
+  scheduling pattern
+
+Do not silently suppress them.
+
+============================================================
+PART 5 — VALIDATE THE NEW ACCEPTANCE MODEL AGAINST KNOWN EVIDENCE
+============================================================
+
+Prove that the new contracts correctly classify BOTH known-good and
+known-bad cases.
+
+KNOWN BAD:
+
+- original 4.28-second map-data handoff
+- original stale/cached-coordinate browser-input test condition where
+  relevant to test correctness
+- any preserved real responsiveness defect
+
+KNOWN GOOD:
+
+- corrected map scheduling behavior
+- C1/T1 smooth native panning evidence
+- preserved telemetry processing during Background delays
+- current map restoration behavior
+
+The new model must catch the actual product defect without declaring a
+responsive application failed solely because a Background callback yielded
+to higher-priority work.
+
+============================================================
+PART 6 — RUN ACCEPTANCE
+============================================================
+
+After implementing the acceptance-model coverage:
+
+Run:
+
+- direct input-response contracts
+- map/presentation freshness contracts
+- telemetry responsiveness contracts
+- data-integrity contracts
+- restoration/resource contracts
+- meaningful-work liveness contracts
+- dashboard freshness contract
+- existing Background heartbeat diagnostic
+- Operations browser/input/lifecycle
+- Map V2 scheduling
+- terminal/recovery
+- full regression
+- 11/11 replay set
+- telemetry validation
+
+Preserve heartbeat results separately.
+
+Do not require the Background heartbeat diagnostic to PASS in order for the
+new direct responsiveness acceptance model to pass.
+
+However:
+
+If heartbeat excursions correlate with failure of a direct contract,
+T2 remains blocked.
+
+============================================================
+PART 7 — T2 DECISION
+============================================================
+
+T2 may be cleared for native parked installation ONLY if:
+
+- all direct responsiveness contracts pass
+- known-bad scheduling behavior is detected by the new model
+- known-good corrected behavior passes
+- telemetry fidelity remains exact
+- restoration remains correct
+- terminal/recovery tests remain clean
+- full regression remains clean
+- no unresolved product-facing responsiveness defect remains
+
+A Background diagnostic excursion alone is not sufficient to block T2 once
+the direct acceptance model is established and passing.
+
+============================================================
+DOCUMENTATION
+============================================================
+
+Update 7.24C documentation to record:
+
+- why the acceptance model changed
+- historical heartbeat role
+- direct product requirements
+- new contracts
+- threshold derivation/evidence
+- known-good/known-bad validation
+- dashboard consumer analysis
+- heartbeat diagnostic results
+- T2 decision
+
+Do not rewrite history as though the old gate never existed.
+
+============================================================
+RETURN FORMAT
+============================================================
+
+7.24C — DIRECT RESPONSIVENESS ACCEPTANCE MODEL
+
+Input response:
+PASS / FAIL
+Measured boundary:
+Evidence:
+
+Map/presentation freshness:
+PASS / FAIL
+Measured boundary:
+Evidence:
+
+Telemetry responsiveness:
+PASS / FAIL
+Evidence:
+
+Data integrity:
+PASS / FAIL
+Evidence:
+
+Restoration/resources:
+PASS / FAIL
+Evidence:
+
+Meaningful-work liveness:
+PASS / FAIL
+Evidence:
+
+Dashboard freshness:
+PASS / FAIL
+Root cause/correction if applicable:
+
+Known-bad 4.28s regression detected:
+YES / NO
+
+Known-good corrected behavior accepted:
+YES / NO
+
+Background heartbeat diagnostic:
+[result — informational, not standalone release authority]
+
+Heartbeat thresholds changed:
+NO
+
+Production files changed:
+[list or NONE]
+
+Test/support files changed:
+[list]
+
+Full regression:
+[result]
+
+Replays:
+[result]
+
+Terminal/recovery:
+[result]
+
+Direct responsiveness acceptance:
+PASS / FAIL
+
+T2 cleared for native parked installation:
+YES / NO
+
+7.24C:
+GO / NO-GO
+
+Remaining gates:
+[list]
+
+Do NOT install T2 automatically.
+Do NOT begin 7.25.
+Do NOT begin premium UI work.

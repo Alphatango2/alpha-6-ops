@@ -1,0 +1,641 @@
+[
+  {
+    "utc": "2026-09-29T20:59:30.8969368+00:00",
+    "reason": "window-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": false,
+    "width": 0,
+    "height": 0
+  },
+  {
+    "utc": "2026-09-29T20:59:30.9857306+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": true,
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "utc": "2026-09-29T20:59:33.5244811+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": false,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:39.3001857+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": true,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:39.6280865+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": false,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:40.1795999+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": true,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:40.5212496+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": false,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:41.0608981+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": true,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:41.4019596+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": false,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:41.9305519+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": true,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:42.2695207+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": false,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:42.8170809+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": true,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:43.1529735+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": false,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:43.6815818+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": true,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:44.024446+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": false,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:44.5541713+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": true,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:44.8922524+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": false,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:45.4408606+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": true,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:45.7817255+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": false,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:46.3151606+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": true,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:46.6550763+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": false,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:47.1836861+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": true,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:47.5267435+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": false,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:48.0752091+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": true,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:48.4184158+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": false,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:48.9481737+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": true,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:49.288203+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": false,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:49.8167254+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": true,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:50.161446+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": false,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:50.7094309+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": true,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:51.0542251+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": false,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:51.5850962+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": true,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:51.9248726+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": false,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:52.4541971+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": true,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:52.7987466+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": false,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:53.3471724+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": true,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:53.6948589+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": false,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:54.2242751+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": true,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:54.5674439+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": false,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:54.5698551+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": true,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:54.5704005+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": false,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:54.5710618+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": true,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:54.5711477+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": false,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:54.5717861+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": true,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:54.5718667+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": false,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:54.5724904+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": true,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:54.5725655+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": false,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:54.5732311+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": true,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:54.5733072+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": false,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:54.57396+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": true,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:54.5740538+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": false,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:54.5746789+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": true,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:54.5747527+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": false,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:54.5753653+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": true,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:54.5754397+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": false,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:54.5760494+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": true,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:54.5761227+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": false,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:54.57673+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": true,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:54.5768006+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": false,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:54.5774068+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": true,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:54.5774795+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": false,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:54.5780868+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": true,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:55.0510356+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": false,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:55.0535235+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": true,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:56.1695814+00:00",
+    "reason": "window-visibility",
+    "windowState": "Minimized",
+    "visible": false,
+    "operationsVisible": true,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:56.1696433+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Minimized",
+    "visible": false,
+    "operationsVisible": false,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:56.1811855+00:00",
+    "reason": "window-state",
+    "windowState": "Minimized",
+    "visible": false,
+    "operationsVisible": false,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:56.4308337+00:00",
+    "reason": "window-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": false,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:56.4309182+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": true,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:56.9439581+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": false,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:59:57.1306615+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": true,
+    "width": 3440,
+    "height": 1400
+  }
+]

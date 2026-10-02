@@ -1,0 +1,22 @@
+[
+  {
+    "path": "C:\\Users\\DanniBaLs\\AppData\\Local\\Alpha6Designs\\Alpha6OPS\\TestLogs\\Alpha6OPS-20260923-133450-66b8b1cbbdc941b89cd3762beec4e440.json",
+    "bytes": 31282154,
+    "sha256": "6B1E6E29D7170B57514BEEF804F4577636B7A30C005782034456C75F4A2A77B5"
+  },
+  {
+    "path": "C:\\Users\\DanniBaLs\\AppData\\Local\\Alpha6Designs\\Alpha6OPS\\TestLogs\\Alpha6OPS-20260923-133450-66b8b1cbbdc941b89cd3762beec4e440.jsonl",
+    "bytes": 20172395,
+    "sha256": "206B05846E8C75EA673C0907E1BD1CC1D0FFAF8814F6A87CF343EBE4F43F27CB"
+  },
+  {
+    "path": "C:\\Users\\DanniBaLs\\AppData\\Local\\Alpha6Designs\\Alpha6OPS\\TestLogs\\Alpha6OPS-20260924-142104-8e78fc8d558c4b41a32438d4d1ccea32.json",
+    "bytes": 38898922,
+    "sha256": "C35F39F3132212CD065EC44CCFB8F05BD864C5190E3550A107572368F5DB2A37"
+  },
+  {
+    "path": "C:\\Users\\DanniBaLs\\AppData\\Local\\Alpha6Designs\\Alpha6OPS\\TestLogs\\Alpha6OPS-20260924-142104-8e78fc8d558c4b41a32438d4d1ccea32.jsonl",
+    "bytes": 25080714,
+    "sha256": "E2D23B8BA9E5D0C841A33A9737F5BC1579E33F075B34F0A3213154252D7219C9"
+  }
+]

@@ -1,0 +1,4582 @@
+{
+  "baseline": {
+    "heartbeatMaxMs": 185.5019,
+    "hookCostMs": 8.9388,
+    "dropped": 0,
+    "worstWindows": [
+      {
+        "start": 3280.0733999999998,
+        "end": 3465.5753,
+        "intervalMs": 185.5019,
+        "callbackUnionMs": 32.21470000000136,
+        "longest": [
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 3398.4547,
+            "end": 3403.8283,
+            "duration": 5.373600000000351,
+            "queue": 0.0625
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 3438.5556,
+            "end": 3443.6236,
+            "duration": 5.067999999999756,
+            "queue": 0.14030000000002474
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 3418.5784,
+            "end": 3423.5308,
+            "duration": 4.952400000000125,
+            "queue": 0.18659999999999854
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 3458.5469,
+            "end": 3463.4383,
+            "duration": 4.891399999999976,
+            "queue": 0.09899999999970532
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 3378.5532,
+            "end": 3381.2939,
+            "duration": 2.740700000000288,
+            "queue": 0.1455999999998312
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 3318.5788,
+            "end": 3320.6827,
+            "duration": 2.103900000000067,
+            "queue": 0.11549999999988358
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 3358.534,
+            "end": 3360.5917,
+            "duration": 2.0576999999998407,
+            "queue": 0.16990000000032524
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 3338.3889,
+            "end": 3340.3471,
+            "duration": 1.9582000000000335,
+            "queue": 0.03949999999986176
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 3297.8642,
+            "end": 3299.7993,
+            "duration": 1.9351000000001477,
+            "queue": 0.06219999999984793
+          },
+          {
+            "name": "System.Windows.Media.MediaContext.RenderMessageHandler",
+            "priority": 7,
+            "start": 3310.1817,
+            "end": 3310.2414,
+            "duration": 0.05969999999979336,
+            "queue": 0.10210000000006403
+          }
+        ],
+        "counts": {
+          "System.Windows.Threading.DispatcherTimer+<>c.<Restart>b__21_0/timer-20ms": 2,
+          "System.Windows.Media.MediaContext.RenderMessageHandler": 43,
+          "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4": 9,
+          "System.Windows.Input.InputManager.HitTestInvalidatedAsyncCallback": 1
+        },
+        "markers": [
+          {
+            "t": 3297.7981,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 3299.7901,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 1.869,
+            "thread": 2
+          },
+          {
+            "t": 3299.7974,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 125,
+            "thread": 2
+          },
+          {
+            "t": 3318.3059,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 3320.672,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.0126,
+            "thread": 2
+          },
+          {
+            "t": 3320.6807,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 126,
+            "thread": 2
+          },
+          {
+            "t": 3338.3203,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 7
+          },
+          {
+            "t": 3340.3368,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 1.8845,
+            "thread": 2
+          },
+          {
+            "t": 3340.3452,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 127,
+            "thread": 2
+          },
+          {
+            "t": 3358.3262,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 7
+          },
+          {
+            "t": 3360.5719,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 1.97,
+            "thread": 2
+          },
+          {
+            "t": 3360.5878,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 128,
+            "thread": 2
+          },
+          {
+            "t": 3378.3332,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 7
+          },
+          {
+            "t": 3381.264,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.6235,
+            "thread": 2
+          },
+          {
+            "t": 3381.2893,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 129,
+            "thread": 2
+          },
+          {
+            "t": 3398.3426,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 7
+          },
+          {
+            "t": 3403.8134,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 5.2405,
+            "thread": 2
+          },
+          {
+            "t": 3403.8243,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 130,
+            "thread": 2
+          },
+          {
+            "t": 3418.3438,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 7
+          },
+          {
+            "t": 3423.5189,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 4.8657,
+            "thread": 2
+          },
+          {
+            "t": 3423.527,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 131,
+            "thread": 2
+          },
+          {
+            "t": 3438.3444,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 7
+          },
+          {
+            "t": 3443.6168,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 4.9927,
+            "thread": 2
+          },
+          {
+            "t": 3443.622,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 132,
+            "thread": 2
+          },
+          {
+            "t": 3458.3499,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 7
+          },
+          {
+            "t": 3463.4323,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 4.8252,
+            "thread": 2
+          },
+          {
+            "t": 3463.4369,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 133,
+            "thread": 2
+          }
+        ],
+        "os": [
+          {
+            "t": 3067.7887,
+            "hostCpuMs": 5781.25,
+            "uiCpuMs": 2656.25,
+            "uiState": "Wait",
+            "waitReason": "UserRequest",
+            "allocatedBytes": 308356448,
+            "gen0": 9,
+            "gen1": 7,
+            "gen2": 5,
+            "gcIndex": 9,
+            "gcPausesMs": [
+              0.169,
+              0.537
+            ],
+            "heapBytes": 78456800,
+            "lohBytes": 41860648,
+            "browser": [],
+            "samplerMs": 4.4209
+          },
+          {
+            "t": 3322.7701,
+            "hostCpuMs": 5968.75,
+            "uiCpuMs": 2671.875,
+            "uiState": "Wait",
+            "waitReason": "UserRequest",
+            "allocatedBytes": 309184176,
+            "gen0": 9,
+            "gen1": 7,
+            "gen2": 5,
+            "gcIndex": 9,
+            "gcPausesMs": [
+              0.169,
+              0.537
+            ],
+            "heapBytes": 78456800,
+            "lohBytes": 41860648,
+            "browser": [],
+            "samplerMs": 4.4547
+          },
+          {
+            "t": 3578.0811,
+            "hostCpuMs": 6125,
+            "uiCpuMs": 2703.125,
+            "uiState": "Wait",
+            "waitReason": "UserRequest",
+            "allocatedBytes": 309757512,
+            "gen0": 9,
+            "gen1": 7,
+            "gen2": 5,
+            "gcIndex": 9,
+            "gcPausesMs": [
+              0.169,
+              0.537
+            ],
+            "heapBytes": 78456800,
+            "lohBytes": 41860648,
+            "browser": [],
+            "samplerMs": 5.4986
+          }
+        ]
+      },
+      {
+        "start": 4483.3378,
+        "end": 4667.7571,
+        "intervalMs": 184.4193,
+        "callbackUnionMs": 23.81970000000183,
+        "longest": [
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 4583.2871,
+            "end": 4588.042,
+            "duration": 4.754900000000816,
+            "queue": 0.018399999999928696
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 4603.9582,
+            "end": 4606.5461,
+            "duration": 2.587899999999536,
+            "queue": 0.022299999999631837
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 4501.4578,
+            "end": 4503.9399,
+            "duration": 2.482100000000173,
+            "queue": 0.020099999999729334
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 4665.4112,
+            "end": 4667.7013,
+            "duration": 2.290100000000166,
+            "queue": 0.022099999999227293
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 4624.9111,
+            "end": 4627.1336,
+            "duration": 2.2224999999998545,
+            "queue": 0.025099999999838474
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 4542.4038,
+            "end": 4544.5416,
+            "duration": 2.1377999999995154,
+            "queue": 0.12319999999999709
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 4645.5759,
+            "end": 4647.6519,
+            "duration": 2.076000000000022,
+            "queue": 0.10419999999976426
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 4521.5535,
+            "end": 4523.5725,
+            "duration": 2.019000000000233,
+            "queue": 0.01929999999993015
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 4563.1089,
+            "end": 4565.0966,
+            "duration": 1.987699999999677,
+            "queue": 0.019500000000334694
+          },
+          {
+            "name": "System.Windows.Media.MediaContext.RenderMessageHandler",
+            "priority": 7,
+            "start": 4485.2893,
+            "end": 4485.3548,
+            "duration": 0.06549999999970169,
+            "queue": 0.10840000000007421
+          }
+        ],
+        "counts": {
+          "System.Windows.Threading.DispatcherTimer+<>c.<Restart>b__21_0/timer-20ms": 2,
+          "System.Windows.Media.MediaContext.RenderMessageHandler": 44,
+          "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4": 9,
+          "System.Windows.Input.InputManager.HitTestInvalidatedAsyncCallback": 1
+        },
+        "markers": [
+          {
+            "t": 4501.4224,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 4503.935,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.4351,
+            "thread": 2
+          },
+          {
+            "t": 4503.9386,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 185,
+            "thread": 2
+          },
+          {
+            "t": 4521.5238,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 4523.5676,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 1.9693,
+            "thread": 2
+          },
+          {
+            "t": 4523.5711,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 186,
+            "thread": 2
+          },
+          {
+            "t": 4542.2583,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 4544.5347,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.0887,
+            "thread": 2
+          },
+          {
+            "t": 4544.5389,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 187,
+            "thread": 2
+          },
+          {
+            "t": 4563.0779,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 4565.0916,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 1.9394,
+            "thread": 2
+          },
+          {
+            "t": 4565.0952,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 188,
+            "thread": 2
+          },
+          {
+            "t": 4583.2583,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 4588.037,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 4.7034,
+            "thread": 2
+          },
+          {
+            "t": 4588.0406,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 189,
+            "thread": 2
+          },
+          {
+            "t": 4603.9254,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 4606.54,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.3506,
+            "thread": 2
+          },
+          {
+            "t": 4606.5447,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 190,
+            "thread": 2
+          },
+          {
+            "t": 4624.8712,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 4627.1286,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.1608,
+            "thread": 2
+          },
+          {
+            "t": 4627.1323,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 191,
+            "thread": 2
+          },
+          {
+            "t": 4645.3757,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 4647.646,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.0133,
+            "thread": 2
+          },
+          {
+            "t": 4647.6505,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 192,
+            "thread": 2
+          },
+          {
+            "t": 4665.3771,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 4667.6964,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.2321,
+            "thread": 2
+          },
+          {
+            "t": 4667.6999,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 193,
+            "thread": 2
+          }
+        ],
+        "os": [
+          {
+            "t": 4339.9634,
+            "hostCpuMs": 6343.75,
+            "uiCpuMs": 2781.25,
+            "uiState": "Wait",
+            "waitReason": "UserRequest",
+            "allocatedBytes": 311541792,
+            "gen0": 9,
+            "gen1": 7,
+            "gen2": 5,
+            "gcIndex": 9,
+            "gcPausesMs": [
+              0.169,
+              0.537
+            ],
+            "heapBytes": 78456800,
+            "lohBytes": 41860648,
+            "browser": [],
+            "samplerMs": 4.5479
+          },
+          {
+            "t": 4594.2242,
+            "hostCpuMs": 6390.625,
+            "uiCpuMs": 2796.875,
+            "uiState": "Wait",
+            "waitReason": "UserRequest",
+            "allocatedBytes": 312148368,
+            "gen0": 9,
+            "gen1": 7,
+            "gen2": 5,
+            "gcIndex": 9,
+            "gcPausesMs": [
+              0.169,
+              0.537
+            ],
+            "heapBytes": 78456800,
+            "lohBytes": 41860648,
+            "browser": [],
+            "samplerMs": 3.99
+          },
+          {
+            "t": 4849.7898,
+            "hostCpuMs": 6453.125,
+            "uiCpuMs": 2812.5,
+            "uiState": "Wait",
+            "waitReason": "UserRequest",
+            "allocatedBytes": 312754600,
+            "gen0": 9,
+            "gen1": 7,
+            "gen2": 5,
+            "gcIndex": 9,
+            "gcPausesMs": [
+              0.169,
+              0.537
+            ],
+            "heapBytes": 78456800,
+            "lohBytes": 41860648,
+            "browser": [],
+            "samplerMs": 4.8901
+          }
+        ]
+      },
+      {
+        "start": 1376.574,
+        "end": 1538.4069,
+        "intervalMs": 161.8329,
+        "callbackUnionMs": 25.704099999999926,
+        "longest": [
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 1515.7662,
+            "end": 1521.6859,
+            "duration": 5.919699999999921,
+            "queue": 0.018600000000105865
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 1414.7603,
+            "end": 1419.9575,
+            "duration": 5.197200000000066,
+            "queue": 0.03469999999992979
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 1495.6833,
+            "end": 1498.2202,
+            "duration": 2.5369000000000597,
+            "queue": 0.03469999999992979
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 1454.5534,
+            "end": 1456.8019,
+            "duration": 2.248499999999922,
+            "queue": 0.21959999999990032
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 1475.2118,
+            "end": 1477.3808,
+            "duration": 2.168999999999869,
+            "queue": 0.017800000000079308
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 1434.7525,
+            "end": 1436.9071,
+            "duration": 2.1545999999998457,
+            "queue": 0.018700000000080763
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 1394.4866,
+            "end": 1396.5486,
+            "duration": 2.0620000000001255,
+            "queue": 0.018499999999903594
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 1536.3136,
+            "end": 1538.3706,
+            "duration": 2.0570000000000164,
+            "queue": 0.027399999999943248
+          },
+          {
+            "name": "System.Windows.Media.MediaContext.RenderMessageHandler",
+            "priority": 7,
+            "start": 1376.9012,
+            "end": 1376.9758,
+            "duration": 0.07459999999991851,
+            "queue": 0.10419999999999163
+          },
+          {
+            "name": "System.Windows.Media.MediaContext.RenderMessageHandler",
+            "priority": 7,
+            "start": 1422.6876,
+            "end": 1422.756,
+            "duration": 0.0684000000001106,
+            "queue": 0.0906999999999698
+          }
+        ],
+        "counts": {
+          "System.Windows.Threading.DispatcherTimer+<>c.<Restart>b__21_0/timer-20ms": 2,
+          "System.Windows.Media.MediaContext.RenderMessageHandler": 39,
+          "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4": 8,
+          "System.Windows.Input.InputManager.HitTestInvalidatedAsyncCallback": 2
+        },
+        "markers": [
+          {
+            "t": 1394.4552,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 1396.5348,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 1.9347,
+            "thread": 2
+          },
+          {
+            "t": 1396.5462,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 31,
+            "thread": 2
+          },
+          {
+            "t": 1414.7126,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 1419.9407,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 5.0916,
+            "thread": 2
+          },
+          {
+            "t": 1419.9541,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 32,
+            "thread": 2
+          },
+          {
+            "t": 1434.7207,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 1436.8918,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.0384,
+            "thread": 2
+          },
+          {
+            "t": 1436.9046,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 33,
+            "thread": 2
+          },
+          {
+            "t": 1454.3069,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 1456.7843,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.1325,
+            "thread": 2
+          },
+          {
+            "t": 1456.799,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 34,
+            "thread": 2
+          },
+          {
+            "t": 1475.1808,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 1477.3644,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.0017,
+            "thread": 2
+          },
+          {
+            "t": 1477.3782,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 35,
+            "thread": 2
+          },
+          {
+            "t": 1495.6355,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 1498.2034,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.4198,
+            "thread": 2
+          },
+          {
+            "t": 1498.2175,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 36,
+            "thread": 2
+          },
+          {
+            "t": 1515.7308,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 1519.3607,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.3124,
+            "thread": 2
+          },
+          {
+            "t": 1521.6687,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.2543,
+            "thread": 2
+          },
+          {
+            "t": 1521.6824,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 37,
+            "thread": 2
+          },
+          {
+            "t": 1536.2373,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 1538.3557,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 1.9193,
+            "thread": 2
+          },
+          {
+            "t": 1538.3681,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 38,
+            "thread": 2
+          }
+        ],
+        "os": [
+          {
+            "t": 1290.3904,
+            "hostCpuMs": 4656.25,
+            "uiCpuMs": 2453.125,
+            "uiState": "Wait",
+            "waitReason": "UserRequest",
+            "allocatedBytes": 303696488,
+            "gen0": 9,
+            "gen1": 7,
+            "gen2": 5,
+            "gcIndex": 9,
+            "gcPausesMs": [
+              0.169,
+              0.537
+            ],
+            "heapBytes": 78456800,
+            "lohBytes": 41860648,
+            "browser": [],
+            "samplerMs": 4.5826
+          },
+          {
+            "t": 1543.6003,
+            "hostCpuMs": 4734.375,
+            "uiCpuMs": 2468.75,
+            "uiState": "Wait",
+            "waitReason": "UserRequest",
+            "allocatedBytes": 304342008,
+            "gen0": 9,
+            "gen1": 7,
+            "gen2": 5,
+            "gcIndex": 9,
+            "gcPausesMs": [
+              0.169,
+              0.537
+            ],
+            "heapBytes": 78456800,
+            "lohBytes": 41860648,
+            "browser": [],
+            "samplerMs": 4.3851
+          }
+        ]
+      },
+      {
+        "start": 764.5467000000001,
+        "end": 909.9065,
+        "intervalMs": 145.3598,
+        "callbackUnionMs": 102.49960000000021,
+        "longest": [
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 765.3526,
+            "end": 829.3245,
+            "duration": 63.97189999999989,
+            "queue": 0.011000000000080945
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 847.2805,
+            "end": 863.7753,
+            "duration": 16.494800000000055,
+            "queue": 0.02580000000000382
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 831.9164,
+            "end": 839.1941,
+            "duration": 7.277700000000095,
+            "queue": 25.183899999999994
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 867.3598,
+            "end": 872.4888,
+            "duration": 5.129000000000019,
+            "queue": 0.08240000000000691
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 829.3589,
+            "end": 831.6951,
+            "duration": 2.336200000000076,
+            "queue": 43.28729999999996
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 839.2131,
+            "end": 841.442,
+            "duration": 2.2288999999999533,
+            "queue": 12.489200000000096
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 887.2684,
+            "end": 889.4555,
+            "duration": 2.1870999999999867,
+            "queue": 0.018200000000092587
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 907.5206,
+            "end": 909.5555,
+            "duration": 2.034900000000107,
+            "queue": 0.016799999999989268
+          },
+          {
+            "name": "System.Windows.Threading.DispatcherTimer+<>c.<Restart>b__21_0/timer-20ms",
+            "priority": 4,
+            "start": 909.5882,
+            "end": 909.9232,
+            "duration": 0.3349999999999227,
+            "queue": 145.20389999999998
+          },
+          {
+            "name": "System.Windows.Media.MediaContext.RenderMessageHandler",
+            "priority": 7,
+            "start": 841.5719,
+            "end": 841.6361,
+            "duration": 0.06420000000002801,
+            "queue": 9.788400000000024
+          }
+        ],
+        "counts": {
+          "System.Windows.Media.MediaContext.RenderMessageHandler": 13,
+          "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4": 8,
+          "System.Windows.Input.InputManager.HitTestInvalidatedAsyncCallback": 1,
+          "System.Windows.Threading.DispatcherTimer+<>c.<Restart>b__21_0/timer-20ms": 1
+        },
+        "markers": [
+          {
+            "t": 765.0317,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 5
+          },
+          {
+            "t": 786.0634,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 5
+          },
+          {
+            "t": 806.722,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 5
+          },
+          {
+            "t": 811.1864,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 20.357,
+            "thread": 2
+          },
+          {
+            "t": 813.3603,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.0366,
+            "thread": 2
+          },
+          {
+            "t": 815.8429,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.4409,
+            "thread": 2
+          },
+          {
+            "t": 818.0599,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.1065,
+            "thread": 2
+          },
+          {
+            "t": 826.7143,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 5
+          },
+          {
+            "t": 828.5977,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.0691,
+            "thread": 2
+          },
+          {
+            "t": 828.9987,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 2
+          },
+          {
+            "t": 831.6781,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 1.9157,
+            "thread": 2
+          },
+          {
+            "t": 831.6925,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 1,
+            "thread": 2
+          },
+          {
+            "t": 835.1781,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.3641,
+            "thread": 2
+          },
+          {
+            "t": 837.2142,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 1.9947,
+            "thread": 2
+          },
+          {
+            "t": 839.1768,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 1.9164,
+            "thread": 2
+          },
+          {
+            "t": 839.1914,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 2,
+            "thread": 2
+          },
+          {
+            "t": 841.4251,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 1.8856,
+            "thread": 2
+          },
+          {
+            "t": 841.4394,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 3,
+            "thread": 2
+          },
+          {
+            "t": 847.2346,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 5
+          },
+          {
+            "t": 861.4156,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.1233,
+            "thread": 2
+          },
+          {
+            "t": 863.7363,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.2827,
+            "thread": 2
+          },
+          {
+            "t": 863.7703,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 4,
+            "thread": 2
+          },
+          {
+            "t": 867.2292,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 5
+          },
+          {
+            "t": 870.4821,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 1.9763,
+            "thread": 2
+          },
+          {
+            "t": 872.4716,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 1.9507,
+            "thread": 2
+          },
+          {
+            "t": 872.486,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 5,
+            "thread": 2
+          },
+          {
+            "t": 887.2374,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 5
+          },
+          {
+            "t": 889.437,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.0644,
+            "thread": 2
+          },
+          {
+            "t": 889.4527,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 6,
+            "thread": 2
+          },
+          {
+            "t": 907.4906,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 5
+          },
+          {
+            "t": 909.5387,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 1.9171,
+            "thread": 2
+          },
+          {
+            "t": 909.5527,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 7,
+            "thread": 2
+          }
+        ],
+        "os": [
+          {
+            "t": 528.5937,
+            "hostCpuMs": 4265.625,
+            "uiCpuMs": 2312.5,
+            "uiState": "Wait",
+            "waitReason": "UserRequest",
+            "allocatedBytes": 300600920,
+            "gen0": 9,
+            "gen1": 7,
+            "gen2": 5,
+            "gcIndex": 9,
+            "gcPausesMs": [
+              0.169,
+              0.537
+            ],
+            "heapBytes": 78456800,
+            "lohBytes": 41860648,
+            "browser": [],
+            "samplerMs": 4.7845
+          },
+          {
+            "t": 782.331,
+            "hostCpuMs": 4406.25,
+            "uiCpuMs": 2343.75,
+            "uiState": "Running",
+            "waitReason": null,
+            "allocatedBytes": 301486920,
+            "gen0": 9,
+            "gen1": 7,
+            "gen2": 5,
+            "gcIndex": 9,
+            "gcPausesMs": [
+              0.169,
+              0.537
+            ],
+            "heapBytes": 78456800,
+            "lohBytes": 41860648,
+            "browser": [],
+            "samplerMs": 4.5394
+          },
+          {
+            "t": 1035.9061,
+            "hostCpuMs": 4515.625,
+            "uiCpuMs": 2421.875,
+            "uiState": "Wait",
+            "waitReason": "UserRequest",
+            "allocatedBytes": 303091472,
+            "gen0": 9,
+            "gen1": 7,
+            "gen2": 5,
+            "gcIndex": 9,
+            "gcPausesMs": [
+              0.169,
+              0.537
+            ],
+            "heapBytes": 78456800,
+            "lohBytes": 41860648,
+            "browser": [],
+            "samplerMs": 4.292
+          }
+        ]
+      },
+      {
+        "start": 8229.687399999999,
+        "end": 8372.6168,
+        "intervalMs": 142.9294,
+        "callbackUnionMs": 38.245000000009895,
+        "longest": [
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 8268.466,
+            "end": 8286.5969,
+            "duration": 18.13090000000011,
+            "queue": 0.019099999999525608
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 8350.0049,
+            "end": 8355.5385,
+            "duration": 5.533600000000661,
+            "queue": 0.02629999999953725
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 8288.4625,
+            "end": 8293.6645,
+            "duration": 5.202000000001135,
+            "queue": 0.019399999999222928
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 8329.4451,
+            "end": 8331.7438,
+            "duration": 2.2986999999993714,
+            "queue": 0.01960000000144646
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 8308.4901,
+            "end": 8310.6211,
+            "duration": 2.1309999999994034,
+            "queue": 0.019800000000032014
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 8247.6211,
+            "end": 8249.7294,
+            "duration": 2.108299999999872,
+            "queue": 0.020099999999729334
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 8370.4129,
+            "end": 8372.5,
+            "duration": 2.087100000000646,
+            "queue": 0.02260000000023865
+          },
+          {
+            "name": "System.Windows.Media.MediaContext.RenderMessageHandler",
+            "priority": 7,
+            "start": 8347.8357,
+            "end": 8347.901,
+            "duration": 0.06530000000020664,
+            "queue": 0.1150999999990745
+          },
+          {
+            "name": "System.Windows.Media.MediaContext.RenderMessageHandler",
+            "priority": 7,
+            "start": 8235.3804,
+            "end": 8235.4335,
+            "duration": 0.05309999999917636,
+            "queue": 0.10419999999976426
+          },
+          {
+            "name": "System.Windows.Media.MediaContext.RenderMessageHandler",
+            "priority": 7,
+            "start": 8306.2619,
+            "end": 8306.2921,
+            "duration": 0.03020000000105938,
+            "queue": 0.11930000000029395
+          }
+        ],
+        "counts": {
+          "System.Windows.Threading.DispatcherTimer+<>c.<Restart>b__21_0/timer-20ms": 2,
+          "System.Windows.Media.MediaContext.RenderMessageHandler": 28,
+          "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4": 7,
+          "System.Windows.Input.InputManager.HitTestInvalidatedAsyncCallback": 1
+        },
+        "markers": [
+          {
+            "t": 8247.5897,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 8249.7244,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.0516,
+            "thread": 2
+          },
+          {
+            "t": 8249.728,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 370,
+            "thread": 2
+          },
+          {
+            "t": 8268.4294,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 8284.1808,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 11.6513,
+            "thread": 2
+          },
+          {
+            "t": 8286.5911,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.3891,
+            "thread": 2
+          },
+          {
+            "t": 8286.5949,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 371,
+            "thread": 2
+          },
+          {
+            "t": 8288.431,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 8291.622,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 1.9707,
+            "thread": 2
+          },
+          {
+            "t": 8293.6592,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.0192,
+            "thread": 2
+          },
+          {
+            "t": 8293.663,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 372,
+            "thread": 2
+          },
+          {
+            "t": 8308.4592,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 8310.6159,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.0801,
+            "thread": 2
+          },
+          {
+            "t": 8310.6196,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 373,
+            "thread": 2
+          },
+          {
+            "t": 8329.415,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 8331.7365,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.2139,
+            "thread": 2
+          },
+          {
+            "t": 8331.7419,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 374,
+            "thread": 2
+          },
+          {
+            "t": 8349.9641,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 8353.611,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 1.8859,
+            "thread": 2
+          },
+          {
+            "t": 8355.5334,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 1.9049,
+            "thread": 2
+          },
+          {
+            "t": 8355.5372,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 375,
+            "thread": 2
+          },
+          {
+            "t": 8370.3782,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 8372.4948,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.033,
+            "thread": 2
+          },
+          {
+            "t": 8372.4986,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 376,
+            "thread": 2
+          }
+        ],
+        "os": [
+          {
+            "t": 8150.3389,
+            "hostCpuMs": 7328.125,
+            "uiCpuMs": 3078.125,
+            "uiState": "Wait",
+            "waitReason": "UserRequest",
+            "allocatedBytes": 321129216,
+            "gen0": 10,
+            "gen1": 8,
+            "gen2": 5,
+            "gcIndex": 10,
+            "gcPausesMs": [
+              15.895,
+              0
+            ],
+            "heapBytes": 74771416,
+            "lohBytes": 41860648,
+            "browser": [],
+            "samplerMs": 3.9161
+          },
+          {
+            "t": 8403.9346,
+            "hostCpuMs": 7406.25,
+            "uiCpuMs": 3093.75,
+            "uiState": "Wait",
+            "waitReason": "UserRequest",
+            "allocatedBytes": 321818648,
+            "gen0": 10,
+            "gen1": 8,
+            "gen2": 5,
+            "gcIndex": 10,
+            "gcPausesMs": [
+              15.895,
+              0
+            ],
+            "heapBytes": 74771416,
+            "lohBytes": 41860648,
+            "browser": [],
+            "samplerMs": 4.1745
+          }
+        ]
+      }
+    ],
+    "longestCallbacks": [
+      {
+        "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+        "priority": 9,
+        "start": 765.3526,
+        "end": 829.3245,
+        "duration": 63.97189999999989,
+        "queue": 0.011000000000080945
+      },
+      {
+        "name": "System.Threading.Tasks.SynchronizationContextAwaitTaskContinuation+<>c.<.cctor>b__8_0",
+        "priority": 10,
+        "start": 8854.2983,
+        "end": 8918.2002,
+        "duration": 63.90189999999893,
+        "queue": 0.02660000000105356
+      },
+      {
+        "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+        "priority": 9,
+        "start": 8673.3477,
+        "end": 8703.468,
+        "duration": 30.120300000000498,
+        "queue": 0.01870000000053551
+      },
+      {
+        "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+        "priority": 9,
+        "start": 5471.5764,
+        "end": 5490.0557,
+        "duration": 18.479299999999967,
+        "queue": 0.025599999999940337
+      },
+      {
+        "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+        "priority": 9,
+        "start": 8268.466,
+        "end": 8286.5969,
+        "duration": 18.13090000000011,
+        "queue": 0.019099999999525608
+      },
+      {
+        "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+        "priority": 9,
+        "start": 847.2805,
+        "end": 863.7753,
+        "duration": 16.494800000000055,
+        "queue": 0.02580000000000382
+      },
+      {
+        "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+        "priority": 9,
+        "start": 1131.0379,
+        "end": 1143.3482,
+        "duration": 12.31029999999987,
+        "queue": 0.12049999999999272
+      },
+      {
+        "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+        "priority": 9,
+        "start": 927.8457,
+        "end": 940.0699,
+        "duration": 12.224199999999996,
+        "queue": 0.018799999999941974
+      },
+      {
+        "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+        "priority": 9,
+        "start": 6584.6432,
+        "end": 6593.837,
+        "duration": 9.19380000000001,
+        "queue": 0.02900000000045111
+      },
+      {
+        "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+        "priority": 9,
+        "start": 5227.7241,
+        "end": 5236.696,
+        "duration": 8.97189999999955,
+        "queue": 0.019100000000435102
+      },
+      {
+        "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+        "priority": 9,
+        "start": 8390.6509,
+        "end": 8399.3014,
+        "duration": 8.650499999999738,
+        "queue": 0.022500000000945874
+      },
+      {
+        "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+        "priority": 9,
+        "start": 8105.3482,
+        "end": 8113.7678,
+        "duration": 8.419599999999264,
+        "queue": 0.01860000000033324
+      }
+    ],
+    "mapPosts": []
+  },
+  "stressed": {
+    "heartbeatMaxMs": 287.2381,
+    "hookCostMs": 5.3623,
+    "dropped": 0,
+    "worstWindows": [
+      {
+        "start": 5882.877200000001,
+        "end": 6170.1153,
+        "intervalMs": 287.2381,
+        "callbackUnionMs": 38.590900000003785,
+        "longest": [
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 6127.0794,
+            "end": 6132.4666,
+            "duration": 5.387200000000121,
+            "queue": 0.02790000000004511
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 6044.0436,
+            "end": 6048.9118,
+            "duration": 4.868199999999888,
+            "queue": 0.019099999999525608
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 6064.922,
+            "end": 6067.3467,
+            "duration": 2.4247000000004846,
+            "queue": 0.05089999999927386
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 6167.7336,
+            "end": 6170.079,
+            "duration": 2.3454000000001543,
+            "queue": 0.04899999999997817
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 5982.572,
+            "end": 5984.9026,
+            "duration": 2.3306000000002314,
+            "queue": 0.033100000000558794
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 5941.6557,
+            "end": 5943.9541,
+            "duration": 2.298399999999674,
+            "queue": 0.0625
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 5920.8266,
+            "end": 5923.1116,
+            "duration": 2.2849999999998545,
+            "queue": 0.13150000000041473
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 6147.6865,
+            "end": 6149.9502,
+            "duration": 2.2637000000004264,
+            "queue": 0.017600000000129512
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 6085.7345,
+            "end": 6087.9326,
+            "duration": 2.1981000000005224,
+            "queue": 0.06199999999989814
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 5961.6258,
+            "end": 5963.7645,
+            "duration": 2.1387000000004264,
+            "queue": 0.018699999999626016
+          }
+        ],
+        "counts": {
+          "System.Windows.Threading.DispatcherTimer+<>c.<Restart>b__21_0/timer-20ms": 2,
+          "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0": 1,
+          "System.Windows.Media.MediaContext.RenderMessageHandler": 69,
+          "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4": 14,
+          "System.Windows.Input.InputManager.HitTestInvalidatedAsyncCallback": 2
+        },
+        "markers": [
+          {
+            "t": 5900.6783,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 5
+          },
+          {
+            "t": 5902.7947,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.0177,
+            "thread": 2
+          },
+          {
+            "t": 5902.7992,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 288,
+            "thread": 2
+          },
+          {
+            "t": 5920.6837,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 5
+          },
+          {
+            "t": 5923.1042,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.2159,
+            "thread": 2
+          },
+          {
+            "t": 5923.1085,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 289,
+            "thread": 2
+          },
+          {
+            "t": 5941.5897,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 5
+          },
+          {
+            "t": 5943.947,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.2443,
+            "thread": 2
+          },
+          {
+            "t": 5943.9514,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 290,
+            "thread": 2
+          },
+          {
+            "t": 5961.5964,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 5
+          },
+          {
+            "t": 5963.7582,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.0822,
+            "thread": 2
+          },
+          {
+            "t": 5963.7617,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 291,
+            "thread": 2
+          },
+          {
+            "t": 5982.5197,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 5984.8949,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.2734,
+            "thread": 2
+          },
+          {
+            "t": 5984.8999,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 292,
+            "thread": 2
+          },
+          {
+            "t": 6003.1846,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 6005.2499,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 1.9805,
+            "thread": 2
+          },
+          {
+            "t": 6005.2536,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 293,
+            "thread": 2
+          },
+          {
+            "t": 6023.1941,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 6025.2627,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 1.9655,
+            "thread": 2
+          },
+          {
+            "t": 6025.2663,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 294,
+            "thread": 2
+          },
+          {
+            "t": 6044.014,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 6048.9054,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 4.8193,
+            "thread": 2
+          },
+          {
+            "t": 6048.909,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 295,
+            "thread": 2
+          },
+          {
+            "t": 6064.85,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 6067.3397,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.3683,
+            "thread": 2
+          },
+          {
+            "t": 6067.3441,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 296,
+            "thread": 2
+          },
+          {
+            "t": 6085.66,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 6087.9255,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.1287,
+            "thread": 2
+          },
+          {
+            "t": 6087.9291,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 297,
+            "thread": 2
+          },
+          {
+            "t": 6107.0345,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 6109.067,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 1.9559,
+            "thread": 2
+          },
+          {
+            "t": 6109.0712,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 298,
+            "thread": 2
+          },
+          {
+            "t": 6127.0367,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 5
+          },
+          {
+            "t": 6132.4579,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 5.317,
+            "thread": 2
+          },
+          {
+            "t": 6132.4628,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 299,
+            "thread": 2
+          },
+          {
+            "t": 6147.6582,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 5
+          },
+          {
+            "t": 6149.9418,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.2137,
+            "thread": 2
+          },
+          {
+            "t": 6149.9471,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 300,
+            "thread": 2
+          },
+          {
+            "t": 6167.6643,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 5
+          },
+          {
+            "t": 6170.0718,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.2932,
+            "thread": 2
+          },
+          {
+            "t": 6170.0754,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 301,
+            "thread": 2
+          }
+        ],
+        "os": [
+          {
+            "t": 5845.4884,
+            "hostCpuMs": 9125,
+            "uiCpuMs": 3625,
+            "uiState": "Wait",
+            "waitReason": "UserRequest",
+            "allocatedBytes": 359132728,
+            "gen0": 10,
+            "gen1": 8,
+            "gen2": 5,
+            "gcIndex": 10,
+            "gcPausesMs": [
+              15.895,
+              0
+            ],
+            "heapBytes": 74771416,
+            "lohBytes": 41860648,
+            "browser": [],
+            "samplerMs": 3.8303
+          },
+          {
+            "t": 6099.1787,
+            "hostCpuMs": 9265.625,
+            "uiCpuMs": 3640.625,
+            "uiState": "Wait",
+            "waitReason": "UserRequest",
+            "allocatedBytes": 359804408,
+            "gen0": 10,
+            "gen1": 8,
+            "gen2": 5,
+            "gcIndex": 10,
+            "gcPausesMs": [
+              15.895,
+              0
+            ],
+            "heapBytes": 74771416,
+            "lohBytes": 41860648,
+            "browser": [],
+            "samplerMs": 4.1767
+          },
+          {
+            "t": 6352.7283,
+            "hostCpuMs": 9296.875,
+            "uiCpuMs": 3656.25,
+            "uiState": "Wait",
+            "waitReason": "UserRequest",
+            "allocatedBytes": 360458304,
+            "gen0": 10,
+            "gen1": 8,
+            "gen2": 5,
+            "gcIndex": 10,
+            "gcPausesMs": [
+              15.895,
+              0
+            ],
+            "heapBytes": 74771416,
+            "lohBytes": 41860648,
+            "browser": [],
+            "samplerMs": 3.5464
+          }
+        ]
+      },
+      {
+        "start": 4614.7733,
+        "end": 4819.8418,
+        "intervalMs": 205.0685,
+        "callbackUnionMs": 23.14890000000105,
+        "longest": [
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 4675.0941,
+            "end": 4677.5489,
+            "duration": 2.4547999999995227,
+            "queue": 0.09760000000005675
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 4797.7593,
+            "end": 4800.1532,
+            "duration": 2.3939000000000306,
+            "queue": 0.06919999999990978
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 4695.0465,
+            "end": 4697.2973,
+            "duration": 2.250799999999799,
+            "queue": 0.02540000000044529
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 4735.7065,
+            "end": 4737.8494,
+            "duration": 2.142899999999827,
+            "queue": 0.025099999999838474
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 4777.0204,
+            "end": 4779.154,
+            "duration": 2.133600000000115,
+            "queue": 0.021300000000337604
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 4715.7039,
+            "end": 4717.818,
+            "duration": 2.1140999999997803,
+            "queue": 0.026300000000446744
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 4817.7136,
+            "end": 4819.7993,
+            "duration": 2.0856999999996333,
+            "queue": 0.02220000000033906
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 4654.1141,
+            "end": 4656.1875,
+            "duration": 2.0734000000002197,
+            "queue": 0.0999999999994543
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 4633.1987,
+            "end": 4635.2596,
+            "duration": 2.0609000000004016,
+            "queue": 0.04320000000006985
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 4756.5322,
+            "end": 4758.5907,
+            "duration": 2.0585000000000946,
+            "queue": 0.019099999999525608
+          }
+        ],
+        "counts": {
+          "System.Windows.Threading.DispatcherTimer+<>c.<Restart>b__21_0/timer-20ms": 2,
+          "System.Windows.Media.MediaContext.RenderMessageHandler": 49,
+          "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4": 10,
+          "System.Windows.Input.InputManager.HitTestInvalidatedAsyncCallback": 1
+        },
+        "markers": [
+          {
+            "t": 4633.1435,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 4635.2513,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.0097,
+            "thread": 2
+          },
+          {
+            "t": 4635.2555,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 226,
+            "thread": 2
+          },
+          {
+            "t": 4654.0044,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 5
+          },
+          {
+            "t": 4656.1801,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.0241,
+            "thread": 2
+          },
+          {
+            "t": 4656.1847,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 227,
+            "thread": 2
+          },
+          {
+            "t": 4674.9923,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 4677.5405,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.3991,
+            "thread": 2
+          },
+          {
+            "t": 4677.5447,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 228,
+            "thread": 2
+          },
+          {
+            "t": 4695.0066,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 4697.2906,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.1833,
+            "thread": 2
+          },
+          {
+            "t": 4697.2945,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 229,
+            "thread": 2
+          },
+          {
+            "t": 4715.6638,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 4717.8108,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.049,
+            "thread": 2
+          },
+          {
+            "t": 4717.8144,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 230,
+            "thread": 2
+          },
+          {
+            "t": 4735.6673,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 4737.8421,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.0769,
+            "thread": 2
+          },
+          {
+            "t": 4737.8463,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 231,
+            "thread": 2
+          },
+          {
+            "t": 4756.5024,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 4758.5834,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.0081,
+            "thread": 2
+          },
+          {
+            "t": 4758.5877,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 232,
+            "thread": 2
+          },
+          {
+            "t": 4776.987,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 4779.1478,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.0779,
+            "thread": 2
+          },
+          {
+            "t": 4779.1514,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 233,
+            "thread": 2
+          },
+          {
+            "t": 4797.6654,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 4800.1458,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.336,
+            "thread": 2
+          },
+          {
+            "t": 4800.1494,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 234,
+            "thread": 2
+          },
+          {
+            "t": 4817.6792,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 4819.792,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.0257,
+            "thread": 2
+          },
+          {
+            "t": 4819.7962,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 235,
+            "thread": 2
+          }
+        ],
+        "os": [
+          {
+            "t": 4577.4843,
+            "hostCpuMs": 8859.375,
+            "uiCpuMs": 3578.125,
+            "uiState": "Wait",
+            "waitReason": "UserRequest",
+            "allocatedBytes": 355035208,
+            "gen0": 10,
+            "gen1": 8,
+            "gen2": 5,
+            "gcIndex": 10,
+            "gcPausesMs": [
+              15.895,
+              0
+            ],
+            "heapBytes": 74771416,
+            "lohBytes": 41860648,
+            "browser": [],
+            "samplerMs": 4.3292
+          },
+          {
+            "t": 4830.3893,
+            "hostCpuMs": 8921.875,
+            "uiCpuMs": 3593.75,
+            "uiState": "Wait",
+            "waitReason": "UserRequest",
+            "allocatedBytes": 355664272,
+            "gen0": 10,
+            "gen1": 8,
+            "gen2": 5,
+            "gcIndex": 10,
+            "gcPausesMs": [
+              15.895,
+              0
+            ],
+            "heapBytes": 74771416,
+            "lohBytes": 41860648,
+            "browser": [],
+            "samplerMs": 3.7165
+          }
+        ]
+      },
+      {
+        "start": 2986.0353,
+        "end": 3169.8357,
+        "intervalMs": 183.8004,
+        "callbackUnionMs": 24.25189999999975,
+        "longest": [
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 3065.0247,
+            "end": 3069.899,
+            "duration": 4.874299999999948,
+            "queue": 0.020899999999983265
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 3127.1865,
+            "end": 3129.6314,
+            "duration": 2.444900000000416,
+            "queue": 0.018699999999626016
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 3045.0201,
+            "end": 3047.4448,
+            "duration": 2.42470000000003,
+            "queue": 0.021600000000034925
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 3024.3529,
+            "end": 3026.7647,
+            "duration": 2.411800000000312,
+            "queue": 0.01890000000003056
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 3106.5832,
+            "end": 3108.9781,
+            "duration": 2.3948999999997795,
+            "queue": 0.10219999999981155
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 3004.3853,
+            "end": 3006.5646,
+            "duration": 2.1793000000002394,
+            "queue": 0.01890000000003056
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 3086.0177,
+            "end": 3088.1728,
+            "duration": 2.1550999999999476,
+            "queue": 0.01679999999987558
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 3147.6018,
+            "end": 3149.6439,
+            "duration": 2.0421000000001186,
+            "queue": 0.10840000000007421
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 3167.5879,
+            "end": 3169.5654,
+            "duration": 1.9774999999999636,
+            "queue": 0.10410000000001673
+          },
+          {
+            "name": "System.Windows.Media.MediaContext.RenderMessageHandler",
+            "priority": 7,
+            "start": 2987.7344,
+            "end": 2987.8509,
+            "duration": 0.11650000000008731,
+            "queue": 0.2943000000000211
+          }
+        ],
+        "counts": {
+          "System.Windows.Threading.DispatcherTimer+<>c.<Restart>b__21_0/timer-20ms": 2,
+          "System.Windows.Media.MediaContext.RenderMessageHandler": 44,
+          "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4": 9,
+          "System.Windows.Input.InputManager.HitTestInvalidatedAsyncCallback": 1
+        },
+        "markers": [
+          {
+            "t": 3004.3164,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 5
+          },
+          {
+            "t": 3006.5573,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.1174,
+            "thread": 2
+          },
+          {
+            "t": 3006.5616,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 146,
+            "thread": 2
+          },
+          {
+            "t": 3024.324,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 5
+          },
+          {
+            "t": 3026.7572,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.3458,
+            "thread": 2
+          },
+          {
+            "t": 3026.761,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 147,
+            "thread": 2
+          },
+          {
+            "t": 3044.9892,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 5
+          },
+          {
+            "t": 3047.4382,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.3671,
+            "thread": 2
+          },
+          {
+            "t": 3047.4419,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 148,
+            "thread": 2
+          },
+          {
+            "t": 3064.9934,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 5
+          },
+          {
+            "t": 3069.8926,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 4.8128,
+            "thread": 2
+          },
+          {
+            "t": 3069.8963,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 149,
+            "thread": 2
+          },
+          {
+            "t": 3085.9906,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 5
+          },
+          {
+            "t": 3088.1653,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.0994,
+            "thread": 2
+          },
+          {
+            "t": 3088.1701,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 150,
+            "thread": 2
+          },
+          {
+            "t": 3106.4701,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 5
+          },
+          {
+            "t": 3108.9692,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.3409,
+            "thread": 2
+          },
+          {
+            "t": 3108.9735,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 151,
+            "thread": 2
+          },
+          {
+            "t": 3127.158,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 5
+          },
+          {
+            "t": 3129.6245,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.3891,
+            "thread": 2
+          },
+          {
+            "t": 3129.6285,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 152,
+            "thread": 2
+          },
+          {
+            "t": 3147.4737,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 5
+          },
+          {
+            "t": 3149.6366,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 1.9569,
+            "thread": 2
+          },
+          {
+            "t": 3149.6409,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 153,
+            "thread": 2
+          },
+          {
+            "t": 3167.4734,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 5
+          },
+          {
+            "t": 3169.558,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 1.9246,
+            "thread": 2
+          },
+          {
+            "t": 3169.5617,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 154,
+            "thread": 2
+          }
+        ],
+        "os": [
+          {
+            "t": 2797.4432,
+            "hostCpuMs": 8359.375,
+            "uiCpuMs": 3453.125,
+            "uiState": "Wait",
+            "waitReason": "UserRequest",
+            "allocatedBytes": 350485088,
+            "gen0": 10,
+            "gen1": 8,
+            "gen2": 5,
+            "gcIndex": 10,
+            "gcPausesMs": [
+              15.895,
+              0
+            ],
+            "heapBytes": 74771416,
+            "lohBytes": 41860648,
+            "browser": [],
+            "samplerMs": 4.471
+          },
+          {
+            "t": 3051.3553,
+            "hostCpuMs": 8406.25,
+            "uiCpuMs": 3453.125,
+            "uiState": "Wait",
+            "waitReason": "UserRequest",
+            "allocatedBytes": 351154208,
+            "gen0": 10,
+            "gen1": 8,
+            "gen2": 5,
+            "gcIndex": 10,
+            "gcPausesMs": [
+              15.895,
+              0
+            ],
+            "heapBytes": 74771416,
+            "lohBytes": 41860648,
+            "browser": [],
+            "samplerMs": 4.3755
+          },
+          {
+            "t": 3304.4922,
+            "hostCpuMs": 8468.75,
+            "uiCpuMs": 3453.125,
+            "uiState": "Wait",
+            "waitReason": "UserRequest",
+            "allocatedBytes": 351782992,
+            "gen0": 10,
+            "gen1": 8,
+            "gen2": 5,
+            "gcIndex": 10,
+            "gcPausesMs": [
+              15.895,
+              0
+            ],
+            "heapBytes": 74771416,
+            "lohBytes": 41860648,
+            "browser": [],
+            "samplerMs": 4.0306
+          }
+        ]
+      },
+      {
+        "start": 4227.7255000000005,
+        "end": 4408.9759,
+        "intervalMs": 181.2504,
+        "callbackUnionMs": 28.09700000000157,
+        "longest": [
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 4327.931,
+            "end": 4333.6194,
+            "duration": 5.6884000000000015,
+            "queue": 0.016799999999420834
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 4389.1287,
+            "end": 4394.2793,
+            "duration": 5.15059999999994,
+            "queue": 0.01890000000003056
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 4245.5978,
+            "end": 4250.6119,
+            "duration": 5.014100000000326,
+            "queue": 0.0433999999995649
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 4266.3619,
+            "end": 4268.7212,
+            "duration": 2.3593000000000757,
+            "queue": 0.09490000000005239
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 4348.1193,
+            "end": 4350.4377,
+            "duration": 2.3184000000001106,
+            "queue": 0.017300000000432192
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 4286.6961,
+            "end": 4288.8909,
+            "duration": 2.194800000000214,
+            "queue": 0.01919999999972788
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 4368.777,
+            "end": 4370.9705,
+            "duration": 2.193500000000313,
+            "queue": 0.12030000000049768
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 4306.7073,
+            "end": 4308.8356,
+            "duration": 2.1283000000003085,
+            "queue": 0.01749999999992724
+          },
+          {
+            "name": "System.Windows.Media.MediaContext.RenderMessageHandler",
+            "priority": 7,
+            "start": 4233.4828,
+            "end": 4233.5382,
+            "duration": 0.05540000000019063,
+            "queue": 0.19499999999970896
+          },
+          {
+            "name": "System.Windows.Media.MediaContext.RenderMessageHandler",
+            "priority": 7,
+            "start": 4408.4175,
+            "end": 4408.4627,
+            "duration": 0.0452000000004773,
+            "queue": 0.11239999999997963
+          }
+        ],
+        "counts": {
+          "System.Windows.Threading.DispatcherTimer+<>c.<Restart>b__21_0/timer-20ms": 2,
+          "System.Windows.Media.MediaContext.RenderMessageHandler": 42,
+          "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4": 8,
+          "System.Windows.Input.InputManager.HitTestInvalidatedAsyncCallback": 1
+        },
+        "markers": [
+          {
+            "t": 4245.5406,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 5
+          },
+          {
+            "t": 4250.604,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 4.9284,
+            "thread": 2
+          },
+          {
+            "t": 4250.609,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 207,
+            "thread": 2
+          },
+          {
+            "t": 4266.2482,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 4268.7143,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.3059,
+            "thread": 2
+          },
+          {
+            "t": 4268.7182,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 208,
+            "thread": 2
+          },
+          {
+            "t": 4286.6658,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 4288.8831,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.1141,
+            "thread": 2
+          },
+          {
+            "t": 4288.887,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 209,
+            "thread": 2
+          },
+          {
+            "t": 4306.6745,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 4308.8285,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.0769,
+            "thread": 2
+          },
+          {
+            "t": 4308.8327,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 210,
+            "thread": 2
+          },
+          {
+            "t": 4327.8994,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 4331.2449,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.0117,
+            "thread": 2
+          },
+          {
+            "t": 4333.6076,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.3394,
+            "thread": 2
+          },
+          {
+            "t": 4333.6151,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 211,
+            "thread": 2
+          },
+          {
+            "t": 4348.0882,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 4350.4271,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.1399,
+            "thread": 2
+          },
+          {
+            "t": 4350.4336,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 212,
+            "thread": 2
+          },
+          {
+            "t": 4368.5877,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 4370.9599,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.0613,
+            "thread": 2
+          },
+          {
+            "t": 4370.9664,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 213,
+            "thread": 2
+          },
+          {
+            "t": 4389.0998,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 4394.2708,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 5.0918,
+            "thread": 2
+          },
+          {
+            "t": 4394.2763,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 214,
+            "thread": 2
+          }
+        ],
+        "os": [
+          {
+            "t": 4068.3063,
+            "hostCpuMs": 8765.625,
+            "uiCpuMs": 3546.875,
+            "uiState": "Wait",
+            "waitReason": "UserRequest",
+            "allocatedBytes": 353754248,
+            "gen0": 10,
+            "gen1": 8,
+            "gen2": 5,
+            "gcIndex": 10,
+            "gcPausesMs": [
+              15.895,
+              0
+            ],
+            "heapBytes": 74771416,
+            "lohBytes": 41860648,
+            "browser": [],
+            "samplerMs": 4.6363
+          },
+          {
+            "t": 4323.2421,
+            "hostCpuMs": 8781.25,
+            "uiCpuMs": 3562.5,
+            "uiState": "Wait",
+            "waitReason": "UserRequest",
+            "allocatedBytes": 354381312,
+            "gen0": 10,
+            "gen1": 8,
+            "gen2": 5,
+            "gcIndex": 10,
+            "gcPausesMs": [
+              15.895,
+              0
+            ],
+            "heapBytes": 74771416,
+            "lohBytes": 41860648,
+            "browser": [],
+            "samplerMs": 4.9908
+          },
+          {
+            "t": 4577.4843,
+            "hostCpuMs": 8859.375,
+            "uiCpuMs": 3578.125,
+            "uiState": "Wait",
+            "waitReason": "UserRequest",
+            "allocatedBytes": 355035208,
+            "gen0": 10,
+            "gen1": 8,
+            "gen2": 5,
+            "gcIndex": 10,
+            "gcPausesMs": [
+              15.895,
+              0
+            ],
+            "heapBytes": 74771416,
+            "lohBytes": 41860648,
+            "browser": [],
+            "samplerMs": 4.3292
+          }
+        ]
+      },
+      {
+        "start": 5705.603300000001,
+        "end": 5882.8769,
+        "intervalMs": 177.2736,
+        "callbackUnionMs": 32.82850000000053,
+        "longest": [
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 5818.8136,
+            "end": 5833.2341,
+            "duration": 14.420499999999265,
+            "queue": 0.02230000000054133
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 5716.5569,
+            "end": 5718.8628,
+            "duration": 2.3059000000002925,
+            "queue": 0.03339999999934662
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 5839.7002,
+            "end": 5841.9859,
+            "duration": 2.2856999999994514,
+            "queue": 0.028900000000248838
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 5797.8859,
+            "end": 5800.0951,
+            "duration": 2.2091999999993277,
+            "queue": 0.017600000000129512
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 5777.5615,
+            "end": 5779.7487,
+            "duration": 2.1872000000003027,
+            "queue": 0.025099999999838474
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 5860.7039,
+            "end": 5862.8527,
+            "duration": 2.1487999999999374,
+            "queue": 0.022700000000440923
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 5880.7003,
+            "end": 5882.7919,
+            "duration": 2.091599999999744,
+            "queue": 0.017300000000432192
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 5757.5456,
+            "end": 5759.5806,
+            "duration": 2.0349999999998545,
+            "queue": 0.017800000000534055
+          },
+          {
+            "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+            "priority": 9,
+            "start": 5736.7104,
+            "end": 5738.6986,
+            "duration": 1.9881999999997788,
+            "queue": 0.019500000000334694
+          },
+          {
+            "name": "System.Windows.Media.MediaContext.RenderMessageHandler",
+            "priority": 7,
+            "start": 5720.8268,
+            "end": 5720.893,
+            "duration": 0.06620000000020809,
+            "queue": 0.0963000000001557
+          }
+        ],
+        "counts": {
+          "System.Windows.Threading.DispatcherTimer+<>c.<Restart>b__21_0/timer-20ms": 2,
+          "System.Windows.Media.MediaContext.RenderMessageHandler": 39,
+          "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4": 9,
+          "System.Windows.Input.InputManager.HitTestInvalidatedAsyncCallback": 2
+        },
+        "markers": [
+          {
+            "t": 5716.5188,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 5718.8567,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.2239,
+            "thread": 2
+          },
+          {
+            "t": 5718.8603,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 279,
+            "thread": 2
+          },
+          {
+            "t": 5736.6807,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 5738.6912,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 1.9338,
+            "thread": 2
+          },
+          {
+            "t": 5738.6958,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 280,
+            "thread": 2
+          },
+          {
+            "t": 5757.5134,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 5759.5744,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 1.9843,
+            "thread": 2
+          },
+          {
+            "t": 5759.578,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 281,
+            "thread": 2
+          },
+          {
+            "t": 5777.5226,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 5779.7416,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.1251,
+            "thread": 2
+          },
+          {
+            "t": 5779.7457,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 282,
+            "thread": 2
+          },
+          {
+            "t": 5797.8555,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 5800.0868,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.1501,
+            "thread": 2
+          },
+          {
+            "t": 5800.0914,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 283,
+            "thread": 2
+          },
+          {
+            "t": 5818.7808,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 5833.2241,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 14.2948,
+            "thread": 2
+          },
+          {
+            "t": 5833.2304,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 284,
+            "thread": 2
+          },
+          {
+            "t": 5839.661,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 5841.9774,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.2184,
+            "thread": 2
+          },
+          {
+            "t": 5841.9829,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 285,
+            "thread": 2
+          },
+          {
+            "t": 5860.6694,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 5862.845,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.0889,
+            "thread": 2
+          },
+          {
+            "t": 5862.8489,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 286,
+            "thread": 2
+          },
+          {
+            "t": 5880.6708,
+            "kind": "sample-emitted",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 0,
+            "thread": 9
+          },
+          {
+            "t": 5882.783,
+            "kind": "activity-end",
+            "id": 0,
+            "name": "Alpha6Ops.Recovery/Save",
+            "priority": 0,
+            "value": 2.0356,
+            "thread": 2
+          },
+          {
+            "t": 5882.7883,
+            "kind": "sample-processed",
+            "id": 0,
+            "name": "",
+            "priority": 0,
+            "value": 287,
+            "thread": 2
+          }
+        ],
+        "os": [
+          {
+            "t": 5591.9317,
+            "hostCpuMs": 9062.5,
+            "uiCpuMs": 3625,
+            "uiState": "Wait",
+            "waitReason": "UserRequest",
+            "allocatedBytes": 358501456,
+            "gen0": 10,
+            "gen1": 8,
+            "gen2": 5,
+            "gcIndex": 10,
+            "gcPausesMs": [
+              15.895,
+              0
+            ],
+            "heapBytes": 74771416,
+            "lohBytes": 41860648,
+            "browser": [],
+            "samplerMs": 4.2317
+          },
+          {
+            "t": 5845.4884,
+            "hostCpuMs": 9125,
+            "uiCpuMs": 3625,
+            "uiState": "Wait",
+            "waitReason": "UserRequest",
+            "allocatedBytes": 359132728,
+            "gen0": 10,
+            "gen1": 8,
+            "gen2": 5,
+            "gcIndex": 10,
+            "gcPausesMs": [
+              15.895,
+              0
+            ],
+            "heapBytes": 74771416,
+            "lohBytes": 41860648,
+            "browser": [],
+            "samplerMs": 3.8303
+          },
+          {
+            "t": 6099.1787,
+            "hostCpuMs": 9265.625,
+            "uiCpuMs": 3640.625,
+            "uiState": "Wait",
+            "waitReason": "UserRequest",
+            "allocatedBytes": 359804408,
+            "gen0": 10,
+            "gen1": 8,
+            "gen2": 5,
+            "gcIndex": 10,
+            "gcPausesMs": [
+              15.895,
+              0
+            ],
+            "heapBytes": 74771416,
+            "lohBytes": 41860648,
+            "browser": [],
+            "samplerMs": 4.1767
+          }
+        ]
+      }
+    ],
+    "longestCallbacks": [
+      {
+        "name": "System.Threading.Tasks.SynchronizationContextAwaitTaskContinuation+<>c.<.cctor>b__8_0",
+        "priority": 10,
+        "start": 8326.1262,
+        "end": 8346.6145,
+        "duration": 20.48829999999907,
+        "queue": 0.019800000000032014
+      },
+      {
+        "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+        "priority": 9,
+        "start": 7992.7537,
+        "end": 8011.0429,
+        "duration": 18.289200000000164,
+        "queue": 0.023299999999835563
+      },
+      {
+        "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+        "priority": 9,
+        "start": 5818.8136,
+        "end": 5833.2341,
+        "duration": 14.420499999999265,
+        "queue": 0.02230000000054133
+      },
+      {
+        "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+        "priority": 9,
+        "start": 35.914,
+        "end": 48.9828,
+        "duration": 13.068799999999996,
+        "queue": 0.013800000000003365
+      },
+      {
+        "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+        "priority": 9,
+        "start": 116.8268,
+        "end": 129.5411,
+        "duration": 12.714299999999994,
+        "queue": 0.02230000000000132
+      },
+      {
+        "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+        "priority": 9,
+        "start": 2757.1827,
+        "end": 2769.2331,
+        "duration": 12.050400000000081,
+        "queue": 0.017599999999674765
+      },
+      {
+        "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+        "priority": 9,
+        "start": 7711.7508,
+        "end": 7720.6433,
+        "duration": 8.892499999999927,
+        "queue": 0.02099999999973079
+      },
+      {
+        "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+        "priority": 9,
+        "start": 7145.8429,
+        "end": 7153.9924,
+        "duration": 8.149500000000444,
+        "queue": 0.17259999999987485
+      },
+      {
+        "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+        "priority": 9,
+        "start": 7207.0713,
+        "end": 7213.7166,
+        "duration": 6.645300000000134,
+        "queue": 0.017899999999826832
+      },
+      {
+        "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+        "priority": 9,
+        "start": 7529.8887,
+        "end": 7536.0415,
+        "duration": 6.152799999999843,
+        "queue": 0.030000000000654836
+      },
+      {
+        "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+        "priority": 9,
+        "start": 76.3301,
+        "end": 82.4601,
+        "duration": 6.1299999999999955,
+        "queue": 0.019000000000005457
+      },
+      {
+        "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+        "priority": 9,
+        "start": 7671.7342,
+        "end": 7677.455,
+        "duration": 5.720800000000054,
+        "queue": 0.018399999999928696
+      }
+    ],
+    "mapPosts": [
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 4,
+        "start": 269.449,
+        "end": 269.5607,
+        "duration": 0.11169999999998481,
+        "queue": 20.77600000000001
+      },
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 4,
+        "start": 1667.2685,
+        "end": 1667.3562,
+        "duration": 0.08770000000004075,
+        "queue": 0.00889999999981228
+      },
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 4,
+        "start": 1882.7291,
+        "end": 1882.8447,
+        "duration": 0.11560000000008586,
+        "queue": 32.64730000000009
+      },
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 4,
+        "start": 2066.2217,
+        "end": 2066.327,
+        "duration": 0.10530000000017026,
+        "queue": 16.021700000000237
+      },
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 4,
+        "start": 2249.6432,
+        "end": 2249.7549,
+        "duration": 0.11169999999992797,
+        "queue": 0.014900000000125146
+      },
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 4,
+        "start": 2453.9558,
+        "end": 2454.0833,
+        "duration": 0.12749999999959982,
+        "queue": 4.064300000000003
+      },
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 4,
+        "start": 2678.909,
+        "end": 2679.0369,
+        "duration": 0.12789999999995416,
+        "queue": 29.103399999999965
+      },
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 4,
+        "start": 2860.9334,
+        "end": 2861.0302,
+        "duration": 0.09680000000025757,
+        "queue": 11.191199999999753
+      },
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 4,
+        "start": 3169.8689,
+        "end": 3169.9739,
+        "duration": 0.10500000000001819,
+        "queue": 119.15430000000015
+      },
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 4,
+        "start": 3332.6766,
+        "end": 3332.7787,
+        "duration": 0.10210000000006403,
+        "queue": 82.32459999999992
+      },
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 4,
+        "start": 3537.1004,
+        "end": 3537.2365,
+        "duration": 0.13610000000016953,
+        "queue": 86.29939999999988
+      },
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 4,
+        "start": 3699.0434,
+        "end": 3699.1389,
+        "duration": 0.09549999999990177,
+        "queue": 48.172199999999975
+      },
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 4,
+        "start": 3861.4278,
+        "end": 3861.5273,
+        "duration": 0.09950000000026193,
+        "queue": 9.220400000000154
+      },
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 4,
+        "start": 4065.7038,
+        "end": 4065.8037,
+        "duration": 0.09990000000016153,
+        "queue": 12.531999999999698
+      },
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 4,
+        "start": 4409.1043,
+        "end": 4409.2047,
+        "duration": 0.10040000000026339,
+        "queue": 155.3177999999998
+      },
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 4,
+        "start": 4574.5214,
+        "end": 4574.721,
+        "duration": 0.1995999999999185,
+        "queue": 119.82559999999921
+      },
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 4,
+        "start": 4819.8572,
+        "end": 4819.9652,
+        "duration": 0.10799999999926513,
+        "queue": 164.6845000000003
+      },
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 4,
+        "start": 4860.9592,
+        "end": 4861.0432,
+        "duration": 0.08399999999983265,
+        "queue": 6.074900000000525
+      },
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 4,
+        "start": 5064.6246,
+        "end": 5064.7107,
+        "duration": 0.08609999999953288,
+        "queue": 8.91820000000007
+      },
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 4,
+        "start": 5270.074,
+        "end": 5270.159,
+        "duration": 0.08500000000003638,
+        "queue": 12.776599999999235
+      },
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 4,
+        "start": 5456.5087,
+        "end": 5456.6157,
+        "duration": 0.1069999999999709,
+        "queue": 0.012300000000323053
+      },
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 4,
+        "start": 5656.831,
+        "end": 5656.9366,
+        "duration": 0.10559999999986758,
+        "queue": 0.011099999999714782
+      },
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 4,
+        "start": 5882.8921,
+        "end": 5883.0148,
+        "duration": 0.12269999999989523,
+        "queue": 26.04790000000048
+      },
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 4,
+        "start": 6170.1279,
+        "end": 6170.2254,
+        "duration": 0.09749999999985448,
+        "queue": 112.94040000000041
+      },
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 4,
+        "start": 6291.3442,
+        "end": 6291.4812,
+        "duration": 0.13700000000062573,
+        "queue": 34.67519999999968
+      },
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 4,
+        "start": 6474.4726,
+        "end": 6474.5719,
+        "duration": 0.09929999999985739,
+        "queue": 17.98400000000038
+      },
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 4,
+        "start": 6760.8363,
+        "end": 6760.9342,
+        "duration": 0.09789999999975407,
+        "queue": 102.82610000000022
+      },
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 4,
+        "start": 6861.7229,
+        "end": 6861.7958,
+        "duration": 0.07290000000011787,
+        "queue": 4.070299999999406
+      },
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 4,
+        "start": 7086.7916,
+        "end": 7086.9056,
+        "duration": 0.11400000000048749,
+        "queue": 28.939899999999398
+      },
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 4,
+        "start": 7270.6435,
+        "end": 7270.7288,
+        "duration": 0.0852999999997337,
+        "queue": 12.298099999999977
+      },
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 4,
+        "start": 7512.1205,
+        "end": 7512.2313,
+        "duration": 0.11080000000038126,
+        "queue": 54.15049999999974
+      },
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 4,
+        "start": 7693.9724,
+        "end": 7694.0583,
+        "duration": 0.08590000000003783,
+        "queue": 36.1282999999994
+      },
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 4,
+        "start": 7895.0571,
+        "end": 7895.1566,
+        "duration": 0.09950000000026193,
+        "queue": 37.24380000000019
+      },
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 4,
+        "start": 8074.191,
+        "end": 8074.2872,
+        "duration": 0.09619999999995343,
+        "queue": 16.03020000000015
+      }
+    ]
+  }
+}

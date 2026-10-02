@@ -70,14 +70,13 @@ public partial class PilotLogbookWorkspace:UserControl
         DetailStatusText.Foreground=(System.Windows.Media.Brush)new System.Windows.Media.BrushConverter().ConvertFromString(row.StatusColor)!;DetailStatusBadge.Background=(System.Windows.Media.Brush)new System.Windows.Media.BrushConverter().ConvertFromString(row.StatusBackground)!;DetailStatusBadge.BorderBrush=(System.Windows.Media.Brush)new System.Windows.Media.BrushConverter().ConvertFromString(row.StatusBorder)!;
         var rawEvents=database?.ReadFlightEvents(row.Id)??[];var events=rawEvents.Select(ToEventRow).ToArray();DetailEventsList.ItemsSource=events;NoEventsNotice.Visibility=events.Length==0?Visibility.Visible:Visibility.Collapsed;
         if(events.Length==0)NoEventsText.Text=row.Source=="FLYVIRTUAL IMPORT"?"FlyVirtual preserved the flight summary, duration, and acceptance result. Detailed simulator telemetry was not included in the historical PIREP.":"No detailed operational events were recorded for this flight.";
-        DetailTimesText.Text=OperationalTimes(row,events);DetailPerformanceText.Text=PerformanceSummary(row,events);DetailRouteText.Text=string.IsNullOrWhiteSpace(row.Route)?$"{row.Departure} → {row.Arrival}":row.Route;
+        DetailTimesText.Text=OperationalTimes(row,rawEvents);DetailPerformanceText.Text=PerformanceSummary(row,events);DetailRouteText.Text=string.IsNullOrWhiteSpace(row.Route)?$"{row.Departure} → {row.Arrival}":row.Route;
     }
 
-    private static string OperationalTimes(PilotLogbookRow row,IReadOnlyList<PilotLogbookEventRow> events)
+    private static string OperationalTimes(PilotLogbookRow row,IReadOnlyList<FlightHistoryEventEntry> events)
     {
         if(row.Source=="FLYVIRTUAL IMPORT")return "Not recorded by FlyVirtual";
-        string At(params string[] names)=>events.FirstOrDefault(item=>names.Any(name=>item.Title.Contains(name,StringComparison.OrdinalIgnoreCase)))?.Time??"—";
-        return $"OUT {At("Block-out")}  •  OFF {At("Liftoff","Takeoff")}\nON {At("Touchdown")}  •  IN {At("Block-in","completed")}";
+        return PilotLogbookOperationalTimes.Read(events).Display;
     }
 
     private static string PerformanceSummary(PilotLogbookRow row,IReadOnlyList<PilotLogbookEventRow> events)

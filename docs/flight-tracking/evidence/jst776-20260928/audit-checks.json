@@ -1,0 +1,203 @@
+{
+  "recordedAtUtc": "2026-09-28T15:58:11.222783+00:00",
+  "scope": "Read-only evidence consistency assertions, not additional production regression tests",
+  "executed": 20,
+  "passed": 20,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "JSON and JSONL equivalent",
+      "passed": true,
+      "detail": "Compare every parsed record, not only counts."
+    },
+    {
+      "name": "Contiguous journal sequence",
+      "passed": true,
+      "detail": 12349
+    },
+    {
+      "name": "All current telemetry paired",
+      "passed": true,
+      "detail": 6145
+    },
+    {
+      "name": "Telemetry time strictly increases",
+      "passed": true,
+      "detail": "No duplicated/reversed sample times."
+    },
+    {
+      "name": "Recorded journal time never reverses",
+      "passed": true,
+      "detail": "Backdated effective milestone time is distinct from recorded UTC."
+    },
+    {
+      "name": "Four milestones ordered once",
+      "passed": true,
+      "detail": [
+        "2026-09-27T21:04:45.6519165+00:00",
+        "2026-09-27T21:16:14.6521759+00:00",
+        "2026-09-27T22:19:56.2668685+00:00",
+        "2026-09-27T22:27:29.2802352+00:00"
+      ]
+    },
+    {
+      "name": "Final state complete",
+      "passed": true,
+      "detail": {
+        "progress": 1,
+        "remainingNm": 0,
+        "routeReliable": true,
+        "crossTrackNm": 0.4233010071117314,
+        "estimatedIn": "2026-09-27T22:27:29.2802352+00:00",
+        "phase": "Complete"
+      }
+    },
+    {
+      "name": "One closeout then session termination",
+      "passed": true,
+      "detail": "Exact journal tail."
+    },
+    {
+      "name": "Durable logbook single completed row",
+      "passed": true,
+      "detail": "Read-only SQLite backup of actual pilot database; no fixture insertion."
+    },
+    {
+      "name": "History event payloads match flight journal",
+      "passed": true,
+      "detail": "Recording UTC differs for preflight backfill at OUT. All significant simulator UTC digits and all parsed event details match; SQLite pads trailing fractional zeros."
+    },
+    {
+      "name": "Exactly one durable PIREP",
+      "passed": true,
+      "detail": "48 tracking events + 1 PIREP."
+    },
+    {
+      "name": "Persisted PIREP actuals exactly match journal",
+      "passed": true,
+      "detail": {
+        "actualOut": "2026-09-27T21:04:45.6519165+00:00",
+        "actualOff": "2026-09-27T21:16:14.6521759+00:00",
+        "actualOn": "2026-09-27T22:19:56.2668685+00:00",
+        "actualIn": "2026-09-27T22:27:29.2802352+00:00"
+      }
+    },
+    {
+      "name": "Durable PIREP retains dispatch route",
+      "passed": true,
+      "detail": "YMML/34 PEDNI1 PEDNI H345 MAVTO INTOG1V YPAD/05"
+    },
+    {
+      "name": "SQLite integrity check",
+      "passed": true,
+      "detail": "ok"
+    },
+    {
+      "name": "Original ZIP unchanged",
+      "passed": true,
+      "detail": "1B973BA31394314C89F1C47237FD5687A6F5CF494C80A8CFAC16C4471726DE67"
+    },
+    {
+      "name": "All eleven preserved package members unchanged",
+      "passed": true,
+      "detail": 11
+    },
+    {
+      "name": "Existing production/test/build files unchanged by review",
+      "passed": true,
+      "detail": {
+        "filesChecked": 215,
+        "changed": []
+      }
+    },
+    {
+      "name": "Nine frozen baseline replays pass",
+      "passed": true,
+      "detail": "91,366 baseline samples, separate from current validation."
+    },
+    {
+      "name": "Current frozen replay passes existing checks",
+      "passed": true,
+      "detail": "Existing harness does not check premature route saturation, past ETA, input latency or durable PIREP."
+    },
+    {
+      "name": "Replay IN matches recorded IN",
+      "passed": true,
+      "detail": "2026-09-27T22:27:29.2802352+00:00"
+    }
+  ],
+  "productFindings": [
+    {
+      "id": "JST776-PROGRESS",
+      "status": "FAIL",
+      "scope": "Route presentation, not milestone completion",
+      "simulatorUtc": "2026-09-27T22:11:45.2700805+00:00",
+      "sequence": 10414,
+      "altitudeFeet": 8100.948891021104,
+      "distanceToDestinationNm": 20.1480873986374,
+      "crossTrackNm": 20.148087398637745,
+      "remainingNm": 0,
+      "statesAt100Percent": 955,
+      "secondsBeforeOn": 490.996788,
+      "secondsBeforeIn": 944.010155
+    },
+    {
+      "id": "JST776-ETA",
+      "status": "FAIL",
+      "scope": "Estimate freshness during taxi-in",
+      "count": 90,
+      "phaseCounts": {
+        "TaxiIn": 90
+      },
+      "first": {
+        "sequence": 11902,
+        "kind": "tracking_state",
+        "recordedAtUtc": "2026-09-28T15:34:51.095036+00:00",
+        "simulatorUtc": "2026-09-27T22:24:00.2831039+00:00",
+        "detail": {
+          "progress": 1,
+          "remainingNm": 0,
+          "routeReliable": true,
+          "crossTrackNm": 0.21399715193058003,
+          "estimatedIn": "2026-09-27T22:24:00+00:00",
+          "phase": "TaxiIn"
+        }
+      },
+      "last": {
+        "sequence": 12201,
+        "kind": "tracking_state",
+        "recordedAtUtc": "2026-09-28T15:37:20.0390258+00:00",
+        "simulatorUtc": "2026-09-27T22:26:29.2769165+00:00",
+        "detail": {
+          "progress": 1,
+          "remainingNm": 0,
+          "routeReliable": true,
+          "crossTrackNm": 0.4233010228161521,
+          "estimatedIn": "2026-09-27T22:26:00+00:00",
+          "phase": "TaxiIn"
+        }
+      },
+      "maximumSecondsInPast": 59.267745
+    },
+    {
+      "id": "JST776-CADENCE",
+      "status": "FINDING",
+      "scope": "One 3.025146 s sample gap; gesture correlation unavailable"
+    },
+    {
+      "id": "JST776-FUEL",
+      "status": "FINDING",
+      "scope": "Preflight ~11,000 lb down/up sensor/loading transient; not burn"
+    },
+    {
+      "id": "JST776-MAP-DRAG",
+      "status": "PHYSICAL FAIL",
+      "scope": "User reports >=0.5 s stalls; current-flight cause not isolated"
+    },
+    {
+      "id": "JST776-MAP-RETURN",
+      "status": "PHYSICAL UX FAIL",
+      "scope": "Fresh WebView/MapLibre each Operations return; code path confirmed"
+    }
+  ]
+}

@@ -1,0 +1,327 @@
+7.24C — HEARTBEAT GATE VALIDITY & PRODUCT RESPONSIVENESS REVIEW
+
+Do NOT modify frozen T2.
+Do NOT install T2.
+Do NOT change or waive the existing heartbeat threshold yet.
+Do NOT continue open-ended CoreMessaging/native investigation without first
+answering the product-level question below.
+
+The heartbeat investigation has produced an important contradiction:
+
+BACKGROUND HEARTBEAT CHARACTERIZATION
+
+Flight baseline:
+p95 162.86 ms
+max 429.34 ms
+
+Stressed flight:
+p95 152.51 ms
+max 497.00 ms
+
+Idle map:
+p95 924.01 ms
+max 3,128.19 ms
+
+Normal map:
+p95 751.35 ms
+max 1,472.14 ms
+
+The heartbeat:
+
+- runs at WPF DispatcherPriority.Background
+- nominally targets a 20 ms interval
+- measures elapsed time between callbacks
+- does NOT directly measure pointer/input latency
+- does NOT directly measure visual frame latency
+- does NOT directly measure telemetry latency
+
+The current acceptance rule was introduced in 7.22:
+
+maximum <500 ms
+
+and
+
+maximum <= max(150 ms, baseline maximum +100 ms)
+
+No documented empirical/product derivation for those numerical allowances
+was found.
+
+The latest investigation narrowed delays to selective Background scheduling
+amid native/composition activity, including CoreMessaging.dll, while short
+render/telemetry callbacks and native messages continue.
+
+Before spending additional engineering time attempting to optimize or
+attribute Windows/framework scheduling, determine whether this heartbeat is
+a valid RELEASE-BLOCKING PRODUCT ACCEPTANCE GATE.
+
+============================================================
+PART 1 — IDENTIFY THE PRODUCT REQUIREMENT
+============================================================
+
+Define the actual Sierra 4 product behavior we are trying to protect.
+
+At minimum distinguish:
+
+1. USER INPUT RESPONSIVENESS
+
+Can the user pan/click/navigate/interact without visible or tactile stalls?
+
+2. VISUAL UPDATE RESPONSIVENESS
+
+Can map/aircraft/route presentation update within an acceptable interval?
+
+3. TRACKING RESPONSIVENESS
+
+Does incoming telemetry continue to be ingested and processed promptly?
+
+4. FLIGHT DATA INTEGRITY
+
+Are authoritative telemetry samples/events preserved without loss?
+
+5. APPLICATION LIVENESS
+
+Does the WPF UI remain capable of servicing meaningful work without
+deadlock/starvation?
+
+Then determine which of these the existing Background heartbeat actually
+measures.
+
+============================================================
+PART 2 — EXPLAIN THE IDLE/STRESSED INVERSION
+============================================================
+
+Explain why:
+
+Idle/normal map activity produces substantially WORSE Background heartbeat
+latency than stressed flight activity.
+
+Determine whether this is consistent with WPF dispatcher/composition/native
+message behavior at Background priority.
+
+Specifically investigate whether differences in:
+
+- rendering/composition cadence
+- dispatcher wakeups
+- native CoreMessaging traffic
+- WebView2 behavior
+- timer coalescing
+- Windows power/timer behavior
+- test harness activity
+
+can explain why the Background sentinel runs LESS frequently when the
+application is comparatively idle.
+
+Do not assume that explanation is benign until supported by evidence.
+
+============================================================
+PART 3 — COMPARE HEARTBEAT WITH DIRECT PRODUCT METRICS
+============================================================
+
+Using existing evidence and narrowly scoped diagnostics where necessary,
+compare heartbeat excursions against DIRECT measurements of:
+
+- synthetic pointer movement/click latency
+- map drag/pan response
+- map snapshot delivery latency
+- browser ACK latency
+- WPF meaningful-work dispatch latency
+- telemetry processing delay
+- telemetry loss
+- route/event processing
+- workspace restoration
+- UI freeze/hang detection
+
+For heartbeat excursions >500 ms and >1 second, determine whether any
+corresponding product-facing metric also deteriorates.
+
+If possible, specifically analyze the idle-map 3.128-second heartbeat
+interval.
+
+What happened to:
+
+- input
+- map rendering
+- telemetry
+- browser communication
+- WPF meaningful work
+
+during those same 3.128 seconds?
+
+============================================================
+PART 4 — DETERMINE WHETHER BACKGROUND IS THE RIGHT SENTINEL
+============================================================
+
+Answer:
+
+Is DispatcherPriority.Background an appropriate priority for a sentinel
+whose purpose is to block releases based on USER/FLIGHT responsiveness?
+
+Background work is expected to yield to higher-priority dispatcher work.
+
+If higher-priority meaningful work continues normally while a Background
+sentinel is delayed, determine whether that represents:
+
+- genuine starvation risk
+
+or
+
+- expected priority semantics that make callback interval a poor proxy for
+  product responsiveness.
+
+Do NOT change the priority merely to make the existing test pass.
+
+============================================================
+PART 5 — REVIEW THE ACCEPTANCE RULE
+============================================================
+
+Trace the history of the 7.22 heartbeat acceptance rule.
+
+Determine:
+
+- why the heartbeat was introduced
+- what defect/risk it was intended to catch
+- whether the original test environment exhibited a known user-visible
+  failure
+- how <500 ms was selected
+- how baseline +100 ms was selected
+- whether subsequent architecture changes altered what the metric means
+
+Do not alter the rule yet.
+
+We need to understand whether it is:
+
+A. a valid product-derived gate
+
+B. a conservative engineering heuristic
+
+C. a diagnostic sentinel that was accidentally promoted into a hard release
+   gate
+
+D. something else
+
+============================================================
+PART 6 — PROPOSE THE CORRECT LONG-TERM ACCEPTANCE MODEL
+============================================================
+
+Based on evidence, propose how Sierra 4 should guard responsiveness going
+forward.
+
+The answer may retain the heartbeat.
+
+It may also recommend a MULTI-METRIC responsiveness contract such as:
+
+- direct input latency
+- map presentation latency
+- telemetry processing latency
+- no lost authoritative samples
+- restoration latency
+- hang/deadlock watchdog
+- Background heartbeat as diagnostic telemetry rather than sole release
+  authority
+
+Do not invent thresholds without evidence.
+
+Where thresholds are proposed, derive them from:
+
+- measured native behavior
+- existing validated behavior
+- user-visible requirements
+- regression baselines
+
+Do not simply choose larger numbers than the current failures.
+
+============================================================
+PART 7 — DECISION
+============================================================
+
+Return one of:
+
+HEARTBEAT REMAINS VALID HARD GATE
+
+Evidence shows its current semantics directly protect a meaningful product
+requirement.
+
+HEARTBEAT VALID BUT ACCEPTANCE MODEL IS WRONG
+
+The signal is useful, but max callback interval at Background priority is
+not an appropriate standalone release criterion.
+
+HEARTBEAT SHOULD BE DIAGNOSTIC
+
+Direct product-facing metrics provide the actual acceptance gate while the
+Background heartbeat remains useful for diagnostics/regression analysis.
+
+PRODUCTION DEFECT FOUND
+
+A concrete S4 behavior explains the heartbeat delays and should be fixed.
+
+UNRESOLVED
+
+Evidence still cannot support a decision.
+
+============================================================
+RETURN FORMAT
+============================================================
+
+7.24C — RESPONSIVENESS GATE VALIDITY REVIEW
+
+Product requirement being protected:
+[answer]
+
+What Background heartbeat actually measures:
+[answer]
+
+Idle/stressed inversion:
+[explanation]
+
+3.128s idle heartbeat interval:
+[what happened to meaningful work]
+
+Correlation with physical input:
+[answer]
+
+Correlation with map presentation:
+[answer]
+
+Correlation with telemetry:
+[answer]
+
+Correlation with data integrity:
+[answer]
+
+Original 7.22 gate rationale:
+[answer]
+
+<500 ms derivation:
+[answer]
+
+baseline +100 ms derivation:
+[answer]
+
+Current heartbeat classification:
+[hard product gate / heuristic / diagnostic]
+
+Recommended responsiveness acceptance model:
+[answer]
+
+Existing heartbeat threshold modified:
+NO
+
+Production change justified:
+YES / NO
+
+Recommendation:
+HEARTBEAT REMAINS VALID HARD GATE /
+HEARTBEAT VALID BUT ACCEPTANCE MODEL IS WRONG /
+HEARTBEAT SHOULD BE DIAGNOSTIC /
+PRODUCTION DEFECT FOUND /
+UNRESOLVED
+
+T2 installation recommendation:
+YES / NO
+
+Evidence supporting recommendation:
+[answer]
+
+Do NOT install T2 automatically.
+Do NOT begin 7.25.

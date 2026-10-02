@@ -1,0 +1,10 @@
+{
+  "mode": "production-retained",
+  "coldMs": 1806.8963,
+  "returns": 18,
+  "sameRendererReturns": 18,
+  "initialEpoch": 1,
+  "sourceStarts": 1,
+  "recreationCount": 3,
+  "scope": "Actual isolated WPF/WebView2 and injected synthetic readings; no physical mouse or native simulator certification"
+}

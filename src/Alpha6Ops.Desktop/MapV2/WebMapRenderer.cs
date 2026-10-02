@@ -10,6 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Automation;
+using System.Windows.Input;
 using System.Windows.Threading;
 using Microsoft.Web.WebView2.Core;
 using Microsoft.Web.WebView2.Wpf;
@@ -31,7 +32,10 @@ internal sealed class WebMapRenderer : IMapRenderer
     private TaskCompletionSource? acknowledgment;
     private MapSnapshot? applying,applied;
     private long lastSequence;
-    private bool disposed,failed;
+    private long visibilityVersion,applyingVisibilityVersion;
+    private Task visibilityTransition=Task.CompletedTask;
+    private volatile bool paused;
+    private bool disposed,failed,visibleReady;
     private MapPresentationState? presentation;
     internal CoreWebView2Environment? Environment { get; private set; }
     internal CoreWebView2 Core=>browser.CoreWebView2;
@@ -39,6 +43,7 @@ internal sealed class WebMapRenderer : IMapRenderer
     internal long Epoch=>epoch;
     internal object Measurements=>Metrics.Read(mailbox);
     internal Task Ready=>ready.Task;
+    internal bool Paused=>paused;
     public FrameworkElement View { get; }
     public event Action<MapSelection?>? SelectionChanged;
     public event Action<MapCameraState>? CameraChanged;
@@ -57,6 +62,12 @@ internal sealed class WebMapRenderer : IMapRenderer
         {
             var control=new GuardedCompositionControl();
             control.InitializationFault+=()=>control.Dispatcher.BeginInvoke(()=>Fail("composition-initialization-failed"));
+            // The SDK forwards first; stop the parent ScrollViewer taking focus
+            // and cancelling MapLibre's drag when this left press bubbles upward.
+            control.AddHandler(UIElement.MouseDownEvent,new MouseButtonEventHandler((_,e)=>
+            {
+                if(e.ChangedButton==MouseButton.Left)e.Handled=true;
+            }));
             browser=control;
         }
         else browser=new WebView2();
@@ -97,8 +108,8 @@ internal sealed class WebMapRenderer : IMapRenderer
             await ready.Task.WaitAsync(token);
             Metrics.ReadyMs=watch.Elapsed.TotalMilliseconds;
             mailbox=new(ApplyAsync,_=>Fail("bridge-failed"),TimeSpan.Zero);
-            View.Opacity=1;
-            StatusChanged?.Invoke(new(MapRendererState.Ready,"ready",null));
+            // The bridge can accept data now. Visible readiness waits for the
+            // first snapshot's completed browser frame, not this handshake.
         }
         catch(Exception) when(!lifetime.IsCancellationRequested)
         {
@@ -109,13 +120,48 @@ internal sealed class WebMapRenderer : IMapRenderer
     internal static bool TrustedOrigin(string value)=>Uri.TryCreate(value,UriKind.Absolute,out var uri)&&uri.Scheme=="https"&&uri.Host=="sierra-map.invalid"&&uri.IsDefaultPort&&string.IsNullOrEmpty(uri.UserInfo);
     public void Offer(MapSnapshot snapshot)
     {
-        if(!disposed&&!failed)mailbox?.Offer(snapshot);
+        if(!disposed&&!failed&&!paused)mailbox?.Offer(snapshot);
     }
     public void Present(MapPresentationState state)
     {
         View.Dispatcher.VerifyAccess();presentation=state;
-        if(ready.Task.IsCompletedSuccessfully&&!disposed&&!failed)
+        if(ready.Task.IsCompletedSuccessfully&&!disposed&&!failed&&!paused)
             Core.PostWebMessageAsJson(JsonSerializer.Serialize(new{type="presentation",schemaVersion=1,epoch,presentation=state},MapSnapshotValidator.JsonOptions));
+    }
+    internal Task SetVisibleAsync(bool visible)
+    {
+        View.Dispatcher.VerifyAccess();
+        if(disposed||failed||paused==!visible)return visibilityTransition;
+        paused=!visible;visibleReady=false;View.Opacity=0;
+        var version=Interlocked.Increment(ref visibilityVersion);
+        var stopped=Task.CompletedTask;
+        if(!visible)
+        {
+            // Controller invisibility is required by TrySuspendAsync, including
+            // a rapid hide/show while the previous bridge ACK is still pending.
+            View.Visibility=Visibility.Collapsed;
+            var old=mailbox;mailbox=null;
+            if(old is not null)stopped=old.DisposeAsync().AsTask();
+        }
+        return visibilityTransition=ChangeVisibilityAsync(visibilityTransition,stopped,visible,version);
+    }
+    private async Task ChangeVisibilityAsync(Task preceding,Task stopped,bool visible,long version)
+    {
+        await preceding;await stopped;
+        if(disposed||failed||version!=Interlocked.Read(ref visibilityVersion))return;
+        lock(ackLock){applying=null;acknowledgment=null;}
+        if(!visible)
+        {
+            Core.PostWebMessageAsJson(JsonSerializer.Serialize(new{type="visibility",schemaVersion=1,epoch,visible=false}));
+            await Core.TrySuspendAsync();
+        }
+        else
+        {
+            Core.Resume();
+            Core.PostWebMessageAsJson(JsonSerializer.Serialize(new{type="visibility",schemaVersion=1,epoch,visible=true}));
+            mailbox=new(ApplyAsync,_=>Fail("bridge-failed"),TimeSpan.Zero);
+            View.Visibility=Visibility.Visible;
+        }
     }
     private async Task ApplyAsync(MapSnapshot snapshot,CancellationToken token)
     {
@@ -128,16 +174,22 @@ internal sealed class WebMapRenderer : IMapRenderer
         Metrics.SerializationMs.Add(watch.Elapsed.TotalMilliseconds);
         Interlocked.Exchange(ref Metrics.PayloadBytes,Encoding.UTF8.GetByteCount(payload));
         var ack=new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
-        lock(ackLock){acknowledgment=ack;applying=snapshot;}
-        var queued=Stopwatch.StartNew();var ackTime=Stopwatch.StartNew();
+        lock(ackLock){acknowledgment=ack;applying=snapshot;applyingVisibilityVersion=Interlocked.Read(ref visibilityVersion);}
+        var queued=Stopwatch.StartNew();var ackTime=Stopwatch.StartNew();var posted=new Stopwatch();
         await View.Dispatcher.InvokeAsync(()=>
         {
             Metrics.DispatcherQueueMs.Add(queued.Elapsed.TotalMilliseconds);
-            if(disposed||failed)throw new OperationCanceledException(token);
-            var post=Stopwatch.StartNew();Core.PostWebMessageAsJson(payload);Metrics.PostMs.Add(post.Elapsed.TotalMilliseconds);
-        },DispatcherPriority.Background,token).Task.ConfigureAwait(false);
+            if(disposed||failed||paused)throw new OperationCanceledException(token);
+            posted.Start();var post=Stopwatch.StartNew();Core.PostWebMessageAsJson(payload);Metrics.PostMs.Add(post.Elapsed.TotalMilliseconds);
+        // Current visual data must reach the browser during input/composition,
+        // not wait for WPF's Background/input-idle scheduling. Only the short
+        // post runs here: projection/serialization stay on the mailbox worker,
+        // with one in-flight update and one newest pending value. Render shares
+        // composition turns fairly and remains below authoritative Normal work.
+        },DispatcherPriority.Render,token).Task.ConfigureAwait(false);
         await ack.Task.WaitAsync(TimeSpan.FromSeconds(3),token).ConfigureAwait(false);
         Metrics.AcknowledgmentMs.Add(ackTime.Elapsed.TotalMilliseconds);
+        Metrics.PostToAcknowledgmentMs.Add(posted.Elapsed.TotalMilliseconds);
         Interlocked.Exchange(ref lastSequence,snapshot.Sequence);
         lock(ackLock){applied=snapshot;applying=null;acknowledgment=null;}
     }
@@ -168,6 +220,11 @@ internal sealed class WebMapRenderer : IMapRenderer
                 lock(ackLock)
                 {
                     if(applying is null||root.GetProperty("generation").GetInt64()!=applying.Generation||root.GetProperty("sequence").GetInt64()!=applying.Sequence)throw new ArgumentException();
+                    if(!visibleReady&&!paused&&applyingVisibilityVersion==Interlocked.Read(ref visibilityVersion))
+                    {
+                        visibleReady=true;View.Opacity=1;
+                        StatusChanged?.Invoke(new(MapRendererState.Ready,"ready",null));
+                    }
                     acknowledgment?.TrySetResult();
                 }
                 return;
@@ -218,6 +275,7 @@ internal sealed class WebMapRenderer : IMapRenderer
     {
         View.Dispatcher.VerifyAccess();if(disposed)return;disposed=true;lifetime.Cancel();
         if(mailbox is not null)await mailbox.DisposeAsync();
+        try{await visibilityTransition;}catch(Exception){/* Disposal still owns the browser after a failed suspension. */}
         ((IDisposable)browser).Dispose();Environment=null;
         SelectionChanged=null;CameraChanged=null;StatusChanged=null;PreferencesChanged=null;
     }

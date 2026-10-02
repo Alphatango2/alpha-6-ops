@@ -1,0 +1,13 @@
+{
+  "recommendation": "HEARTBEAT VALID BUT ACCEPTANCE MODEL IS WRONG",
+  "classification": "Engineering heuristic enforced as hard test; useful scheduling diagnostic, not established product-derived SLA",
+  "existingHeartbeatThresholdModified": false,
+  "productionChangeJustified": false,
+  "t2InstallationRecommended": false,
+  "reason": "Approval and direct product-metric coverage required before replacing the current gate; no open-ended OS attribution required to decide validity.",
+  "newApplicationExecutions": 0,
+  "regressionRerun": false,
+  "priorFailuresPreserved": true,
+  "correlation": "correlation-v2.json",
+  "preservation": "preservation.json"
+}

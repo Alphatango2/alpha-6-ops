@@ -1,0 +1,31 @@
+{
+  "executed": 6,
+  "passed": 6,
+  "failed": 0,
+  "checks": [
+    {
+      "passed": true,
+      "name": "Nearest-rank quantiles and even median"
+    },
+    {
+      "passed": true,
+      "name": "Nested/overlapping callbacks are not double-counted"
+    },
+    {
+      "passed": true,
+      "name": "Historical relative failure preserved without rounding"
+    },
+    {
+      "passed": true,
+      "name": "Original strict absolute boundary preserved"
+    },
+    {
+      "passed": true,
+      "name": "Equality allowed at relative boundary"
+    },
+    {
+      "passed": true,
+      "name": "All four preserved failed runs, five relative and one absolute excursion"
+    }
+  ]
+}

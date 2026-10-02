@@ -1,10 +1,12 @@
 using System;
 using System.Windows.Controls;
+using Alpha6Ops.Desktop.MapV2;
 
 namespace Alpha6Ops.Desktop;
 
 public partial class MainWindow
 {
+    private readonly FlightTrackPresentationHistory mapTrackHistory=new();
     // Transitional names for existing current-flight presenters and their regression checks.
     // Every alias targets a visible control in the Sierra workspace; no legacy page is retained.
     internal TextBlock HeroFlightText => OperationsView.HeroFlightText;
@@ -47,6 +49,8 @@ public partial class MainWindow
     private void RefreshOperations()
     {
         if(OperationsView is null)return;
-        OperationsView.Present(OperationsOverviewQuery.Project(flightState,!dashboardShowsLive,DashboardFlights,localWeather,weatherRefreshFailed,DateTimeOffset.UtcNow));
+        var state=flightState;mapTrackHistory.Observe(state);
+        OperationsView.Present(OperationsOverviewQuery.Project(state,!dashboardShowsLive,DashboardFlights,localWeather,weatherRefreshFailed,DateTimeOffset.UtcNow)
+            with{MapTrack=mapTrackHistory.Capture()});
     }
 }

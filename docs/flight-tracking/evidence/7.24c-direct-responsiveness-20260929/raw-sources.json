@@ -1,0 +1,950 @@
+[
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\request.txt",
+    "copy": "request.txt",
+    "rawSha256": "B5E2E6F1BC9FBDB7B3EAC771F4F670DBD7ADB19F6F72F7A744946D5E50F7AF15",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\progress.md",
+    "copy": "progress.md",
+    "rawSha256": "C24137D58506EFA7B865718DC3926B23A41FEADE8C759A0F7B2F9E76452686A1",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\acceptance-input.json",
+    "copy": "acceptance-input.json",
+    "rawSha256": "4896782D1690027D29ADCE675DE11C1DA08083A285CE39A26063E50185ECAFB6",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\acceptance.json",
+    "copy": "acceptance.json",
+    "rawSha256": "AFB1FE3ED35CDB87B829A1619727E2AC3D67BC632BECF6924C3686AD79619704",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\metrics.json",
+    "copy": "metrics.json",
+    "rawSha256": "877413353F0DECB3ABB4C95C9201EB0395C9B784F376E0C6744E6AAC6B4AAFE7",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\calibration.json",
+    "copy": "calibration.json",
+    "rawSha256": "48A4CF4C40E1D2456C07B4DB57C64D283DBF558C02DE74FCD0839B43F449C231",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\preservation.json",
+    "copy": "preservation.json",
+    "rawSha256": "2221389A7019E3C800FDA83225B29A32E3934D42E9E23E87213AC438A4ED564B",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\policy-red.log",
+    "copy": "policy-red.log",
+    "rawSha256": "3D3A5F80EF5AD85F9AC07BC2CE1DD7625C09BA045C77D9DA310A62C5DB11DDCC",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\policy-green.log",
+    "copy": "policy-green.log",
+    "rawSha256": "383A12FBA9B5B327054A24CE7E5739569C4F0B6621FACD981F2D6A4271063B3C",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\calibration-red.log",
+    "copy": "calibration-red.log",
+    "rawSha256": "5AD4798FA5C15862DE8327C9FC707D20539F8F9F00881C7FDBA29EB59588682F",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\calibration-green.log",
+    "copy": "calibration-green.log",
+    "rawSha256": "46A59D823D772C3809446EBA836399E2612BA33924B6C71ABE8E15B736B8F4B7",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\policy-final.log",
+    "copy": "policy-final.log",
+    "rawSha256": "46A59D823D772C3809446EBA836399E2612BA33924B6C71ABE8E15B736B8F4B7",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\review-policy-green.log",
+    "copy": "review-policy-green.log",
+    "rawSha256": "46A59D823D772C3809446EBA836399E2612BA33924B6C71ABE8E15B736B8F4B7",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\build-1.log",
+    "copy": "build-1.log",
+    "rawSha256": "CAA60295DC3F08BC7CB6E9A7A96A827A27C127DA75C0F1B42676662BCCCB2927",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\build-2.log",
+    "copy": "build-2.log",
+    "rawSha256": "83176A9110AC5D0F096664D674A102F9E526DFA4871B57482FAAC8D946DD78EE",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\build-3.log",
+    "copy": "build-3.log",
+    "rawSha256": "23B41414425C1E75FA2171CA15654406F1FBA53ED14D47D1D424FFD7FAE01E4A",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\build-4.log",
+    "copy": "build-4.log",
+    "rawSha256": "7FF6737396D7EB53B17DF9C57AB800E2D6143046473AE64289AF2A822E399070",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\review-red-build.log",
+    "copy": "review-red-build.log",
+    "rawSha256": "D4990EB0FC33792C68A75193D2E843E5D8EC55399ACCD4C33DB2455ACEA79561",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\review-green-build.log",
+    "copy": "review-green-build.log",
+    "rawSha256": "0407E231C553D0B70603784B61FD2E8F07916009A17A920FDDC1619A3C55501F",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\run-verification.ps1",
+    "copy": "run-verification.ps1",
+    "rawSha256": "9F5A7D80FDD59AE6D3F5C9A49CB8AB3D16D093AF7F9753A41940B387B4B2B4C4",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\summarize.py",
+    "copy": "summarize.py",
+    "rawSha256": "2E7DD63B8F091071E2B3CB7377AC6674095E29CB82C9EBB23CFFC4C3D40398D1",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\preserve.py",
+    "copy": "preserve.py",
+    "rawSha256": "AB8D642214DA86E87EBD2DE0D6ED5A4617006D0A9A875E23DF3B064493E43CC9",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\archive.py",
+    "copy": "archive.py",
+    "rawSha256": "8A3C3C788DBEF9F55B9899A49A73F567C195295E9203E8683E7BD93A01AFA454",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\verification.log",
+    "copy": "verification.log",
+    "rawSha256": "9583FC89A25C9983AB60357536DE52FBA173A7C5A38B4339E35342ED7E1D8196",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\final-baseline.log",
+    "copy": "final-baseline.log",
+    "rawSha256": "8210C12473A03C6C1ECBE92973F88C714890B69D46A2AB2FA8F624496DB8FB07",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\review.md",
+    "copy": "review.md",
+    "rawSha256": "02A9061A639E7F1324960F4594E61110518F2D0456C5C17A0870375D826C0165",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\direct-1\\direct-contracts.json",
+    "copy": "direct-1\\direct-contracts.json",
+    "rawSha256": "215F2252622054D773A0A01070315798C13097D31274732D9B7026C001218B66",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\direct-1\\direct-trace.json",
+    "copy": "direct-1\\direct-trace.json.gz",
+    "rawSha256": "920CC95D2A319677ECC2379A9D257335FB446297EC22E29E606E3E036A36FC5E",
+    "gzip": true
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\direct-1\\preferences.json",
+    "copy": "direct-1\\preferences.json",
+    "rawSha256": "C82F6F9365BEFA6DC9F5D205003EEC3D6D8078C46E8C06072C4518428EBBCD4A",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\direct-1\\summary.json",
+    "copy": "direct-1\\summary.json",
+    "rawSha256": "42635D15C87ECEBE0CCADE3BE9293BB05DBEAF597B1ED6702A0E182B7B57E5CA",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\direct-1\\view-lifecycle.json",
+    "copy": "direct-1\\view-lifecycle.json",
+    "rawSha256": "E60888211A98C3B8DCCF523710AA62452301226067B7A57BCFD172C6C026D94C",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\direct-2\\direct-contracts.json",
+    "copy": "direct-2\\direct-contracts.json",
+    "rawSha256": "FFC1B8775FA8B1CC826DBB49B12DF16B40DC93B6B5C713AE26538508DAE863F6",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\direct-2\\direct-observations.json",
+    "copy": "direct-2\\direct-observations.json",
+    "rawSha256": "C654E34D61159BC5495C0D99BC65A2565795295EF46560F0B0E5DA539952526C",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\direct-2\\direct-trace.json",
+    "copy": "direct-2\\direct-trace.json.gz",
+    "rawSha256": "ECB6CF98556F5D9191D787EDBA3644FE38AE1A6D58E0F028A66913F56A4EB83D",
+    "gzip": true
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\direct-2\\final-resources.json",
+    "copy": "direct-2\\final-resources.json",
+    "rawSha256": "41F6FB2D14F8F3EC85866C8A50E32E08B3C5A2DAC40D2BF4A8828270D73FADE4",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\direct-2\\partial-observations.json",
+    "copy": "direct-2\\partial-observations.json",
+    "rawSha256": "7457BF5847E0AEF59FE1AF9CD94603ECE3D529FEA754DB8EE4E5A9D3C901D069",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\direct-2\\preferences.json",
+    "copy": "direct-2\\preferences.json",
+    "rawSha256": "C82F6F9365BEFA6DC9F5D205003EEC3D6D8078C46E8C06072C4518428EBBCD4A",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\direct-2\\resource-samples.json",
+    "copy": "direct-2\\resource-samples.json",
+    "rawSha256": "261AED0444E5A2435492649D9DA1735959425A10D9C2C9E6B541E9F807992453",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\direct-2\\summary.json",
+    "copy": "direct-2\\summary.json",
+    "rawSha256": "EC97AF11DBED33696F23EC13453D70B4280E0108BAD604AE6542A4CEAB142418",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\direct-2\\view-lifecycle.json",
+    "copy": "direct-2\\view-lifecycle.json",
+    "rawSha256": "D76E5BED595C5DF840186C04ACB5689231A929B9F2D052F524B28EFC52BF1D94",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\direct-3\\direct-contracts.json",
+    "copy": "direct-3\\direct-contracts.json",
+    "rawSha256": "ECDE4650E62F87A1B886DDF0E940E3056755A4B9CFA114DB06B7DCB856F260D2",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\direct-3\\direct-observations.json",
+    "copy": "direct-3\\direct-observations.json",
+    "rawSha256": "0919B138C00257E052AEB7903FC5073C93B340A3BBCB190B187C5B3F9F64ED40",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\direct-3\\direct-trace.json",
+    "copy": "direct-3\\direct-trace.json.gz",
+    "rawSha256": "C99BA525529863A7A2EE389EFD778DBC9CE97D720E365BC999F5AA7934BDF547",
+    "gzip": true
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\direct-3\\final-resources.json",
+    "copy": "direct-3\\final-resources.json",
+    "rawSha256": "F3C6F97F295B767B28A864116BC5C0582F0C466DEE8238FDB70E793BD7D1181D",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\direct-3\\partial-observations.json",
+    "copy": "direct-3\\partial-observations.json",
+    "rawSha256": "012EDB8EB122B990ADBFA19AFB98E6ABC465821C4831C1F994BE329C4EE969C9",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\direct-3\\preferences.json",
+    "copy": "direct-3\\preferences.json",
+    "rawSha256": "C82F6F9365BEFA6DC9F5D205003EEC3D6D8078C46E8C06072C4518428EBBCD4A",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\direct-3\\resource-samples.json",
+    "copy": "direct-3\\resource-samples.json",
+    "rawSha256": "1E40CCFD075A9F25F7FE5CC590A6255FC8984BA9B33C884921CFC5591E14A2A7",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\direct-3\\summary.json",
+    "copy": "direct-3\\summary.json",
+    "rawSha256": "9F712A875A328E15E2327E98529A584088C8138977F23BA203349DFBDEBD1E17",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\direct-3\\view-lifecycle.json",
+    "copy": "direct-3\\view-lifecycle.json",
+    "rawSha256": "3AA66E820C5CCDF5AB5C6DC904431634581708205950EE681719C444CEC23C86",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\direct-contracts\\direct-contracts.json",
+    "copy": "direct-contracts\\direct-contracts.json",
+    "rawSha256": "ECDE4650E62F87A1B886DDF0E940E3056755A4B9CFA114DB06B7DCB856F260D2",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\direct-contracts\\direct-observations.json",
+    "copy": "direct-contracts\\direct-observations.json",
+    "rawSha256": "865B12C45B8145E3A334371DF9E08231516DA4030F7489715571CB0D654DD0F2",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\direct-contracts\\direct-trace.json",
+    "copy": "direct-contracts\\direct-trace.json.gz",
+    "rawSha256": "0B171FF13C63405E10F490C1A3DD466AD6DD6123E47ECE3A7E2101E026672EE0",
+    "gzip": true
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\direct-contracts\\final-resources.json",
+    "copy": "direct-contracts\\final-resources.json",
+    "rawSha256": "7ACC6CAC071E6443CB5553C64A5F09D02EC1E2B1E90F2D950DB3D95B2EC7B1F4",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\direct-contracts\\partial-observations.json",
+    "copy": "direct-contracts\\partial-observations.json",
+    "rawSha256": "1FEEE946FD16A80EEAB52467B7BDCA33CA5FB21747F577B91E0A135D3CE50AE6",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\direct-contracts\\preferences.json",
+    "copy": "direct-contracts\\preferences.json",
+    "rawSha256": "C82F6F9365BEFA6DC9F5D205003EEC3D6D8078C46E8C06072C4518428EBBCD4A",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\direct-contracts\\resource-samples.json",
+    "copy": "direct-contracts\\resource-samples.json",
+    "rawSha256": "BED0DC2E925CA004F49FB905ECCE6727842B5B95D07B9075ECE3E66088AC1321",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\direct-contracts\\summary.json",
+    "copy": "direct-contracts\\summary.json",
+    "rawSha256": "E0401EDAE79198603481C45D454579B599773B5B35CB967016D63EE48B1852A3",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\direct-contracts\\view-lifecycle.json",
+    "copy": "direct-contracts\\view-lifecycle.json",
+    "rawSha256": "2DFB003C1C40BAAC7B36772E9BE2957344AB4E2B7C21778885F48E2313424B1C",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\review-red\\direct-contracts.json",
+    "copy": "review-red\\direct-contracts.json",
+    "rawSha256": "9F204FDD0AF58D347C5F70BAE848C7A79C47153915D21D8C1C3DC4588922A6AC",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\review-red\\direct-observations.json",
+    "copy": "review-red\\direct-observations.json",
+    "rawSha256": "D0A6DF2C20113191037C9538803E92AD2394BCBF61BC65CD91900D69A1345619",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\review-red\\direct-trace.json",
+    "copy": "review-red\\direct-trace.json.gz",
+    "rawSha256": "29F8C9AA66288A75F9F81439F462619BDFC7C5BD1DCABA00E662C7B80D51DF48",
+    "gzip": true
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\review-red\\final-resources.json",
+    "copy": "review-red\\final-resources.json",
+    "rawSha256": "42AE785454AE9F4AE82D8EC722C8CFE71D37EB17E32B28207BC9989631523DF9",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\review-red\\partial-observations.json",
+    "copy": "review-red\\partial-observations.json",
+    "rawSha256": "D3B19DC83F8D170B9923D74691413F5FE8475C7C32D9316037DA1D324EA158A6",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\review-red\\preferences.json",
+    "copy": "review-red\\preferences.json",
+    "rawSha256": "C82F6F9365BEFA6DC9F5D205003EEC3D6D8078C46E8C06072C4518428EBBCD4A",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\review-red\\resource-samples.json",
+    "copy": "review-red\\resource-samples.json",
+    "rawSha256": "B0264159A56C09B7348DA61E849A05126988A75585241D025FC5EB1C1733F9B6",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\review-red\\summary.json",
+    "copy": "review-red\\summary.json",
+    "rawSha256": "97599B39BF5BA771C233D70D016606271178430B6DBF71C528B099642626F0D0",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\review-red\\view-lifecycle.json",
+    "copy": "review-red\\view-lifecycle.json",
+    "rawSha256": "01935F0B1A0644AFA81904B4009B10F55A6D397D081C8F58472083797E79BBF3",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\review-green\\direct-contracts.json",
+    "copy": "review-green\\direct-contracts.json",
+    "rawSha256": "F9492DB293F1FFF2878A786A7ADC232EE14A2B269876486E233D3699A6BEA7FF",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\review-green\\direct-observations.json",
+    "copy": "review-green\\direct-observations.json",
+    "rawSha256": "483F26CDD343478F9E35A5469137CDEC4EB583831EF5AAB997BC577142AE6A83",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\review-green\\direct-trace.json",
+    "copy": "review-green\\direct-trace.json.gz",
+    "rawSha256": "15C3D61809216D46B688A4B2BFC3D47171E8713BBB2B57C550C4BB2BF9538CEE",
+    "gzip": true
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\review-green\\final-resources.json",
+    "copy": "review-green\\final-resources.json",
+    "rawSha256": "20C879BAF74E6B0EE7EDA573A0119B52B89ED4DBF51DFEBFBA9588E7D10CB186",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\review-green\\partial-observations.json",
+    "copy": "review-green\\partial-observations.json",
+    "rawSha256": "38E488C99AF4CE65F9B29DC45E23594569DA042395CC018B1B94A6FFE626EF17",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\review-green\\preferences.json",
+    "copy": "review-green\\preferences.json",
+    "rawSha256": "C82F6F9365BEFA6DC9F5D205003EEC3D6D8078C46E8C06072C4518428EBBCD4A",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\review-green\\resource-samples.json",
+    "copy": "review-green\\resource-samples.json",
+    "rawSha256": "85D21AA866AE6C742047CFED82816C8B222FF50315D5487AD7B20A57BDFFF6F6",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\review-green\\summary.json",
+    "copy": "review-green\\summary.json",
+    "rawSha256": "39336DDE87DCAC463013B275FCE0EFBC3B10A89E985CB9EC742F035EC199DE23",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\review-green\\view-lifecycle.json",
+    "copy": "review-green\\view-lifecycle.json",
+    "rawSha256": "816DDAEB9EC0FDE600F26945165AF4008ED43A766ED96CF86457C29E0BE90E33",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\raw-move-full-1\\benchmark.json",
+    "copy": "raw-move-full-1\\benchmark.json",
+    "rawSha256": "61D502CFA566C79892D297925330A92E7DA2533FFF6104C11FA9FE16A1A0403D",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\raw-move-full-1\\browser-press-forwarding.json",
+    "copy": "raw-move-full-1\\browser-press-forwarding.json",
+    "rawSha256": "0A40881F26DC0D7E9835DD401768631B3AB64B6F25D323409C89EE846A4C8180",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\raw-move-full-1\\contention.json",
+    "copy": "raw-move-full-1\\contention.json",
+    "rawSha256": "F7261B199F8A3D4AC28BCBA89FD45E7E936244B9CCD2F06BB8EEC8C693D13605",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\raw-move-full-1\\delivery-pressure.json",
+    "copy": "raw-move-full-1\\delivery-pressure.json",
+    "rawSha256": "1D6B9AAD0238AEBC201817C01F530234ED8E2CAA2745CFD82D8D4FA9BD7DFD96",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\raw-move-full-1\\failures-progress.json",
+    "copy": "raw-move-full-1\\failures-progress.json",
+    "rawSha256": "E51FE8572AC946FE2AA35A8E4E97BE62D89D5FD3E1B68C8DD089AD9061995CCB",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\raw-move-full-1\\failures.json",
+    "copy": "raw-move-full-1\\failures.json",
+    "rawSha256": "E51FE8572AC946FE2AA35A8E4E97BE62D89D5FD3E1B68C8DD089AD9061995CCB",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\raw-move-full-1\\first-paint-lifecycle.json",
+    "copy": "raw-move-full-1\\first-paint-lifecycle.json",
+    "rawSha256": "6C34C86C9CEF2BEA397B5D327533887461A42B5EC2097838A14BEECE07C4D204",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\raw-move-full-1\\first-paint-timing-1.json",
+    "copy": "raw-move-full-1\\first-paint-timing-1.json",
+    "rawSha256": "86A4A4511E33EED913C35D1B5F96084A033476431BF04C24A625B98D66826B0E",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\raw-move-full-1\\first-paint-timing-2.json",
+    "copy": "raw-move-full-1\\first-paint-timing-2.json",
+    "rawSha256": "86A4A4511E33EED913C35D1B5F96084A033476431BF04C24A625B98D66826B0E",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\raw-move-full-1\\first-paint-timing-3.json",
+    "copy": "raw-move-full-1\\first-paint-timing-3.json",
+    "rawSha256": "86A4A4511E33EED913C35D1B5F96084A033476431BF04C24A625B98D66826B0E",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\raw-move-full-1\\first-paint.json",
+    "copy": "raw-move-full-1\\first-paint.json",
+    "rawSha256": "FC82CEBD70F36D5F7A69FC64A8CB51F41586066BAFDBDD19E9E4929DF9706DD6",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\raw-move-full-1\\heartbeat-diagnostic.json",
+    "copy": "raw-move-full-1\\heartbeat-diagnostic.json",
+    "rawSha256": "07C66C5B1EF223C5039C272CE908C6A8C9BFC4B82139E38653A370B48C9EB51A",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\raw-move-full-1\\host-lifetime.json",
+    "copy": "raw-move-full-1\\host-lifetime.json",
+    "rawSha256": "25CAA56ECA69127AD8607BF8EF0138DD1EE7684DE12A218B35F4F4C69932C501",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\raw-move-full-1\\initial-renderer.json",
+    "copy": "raw-move-full-1\\initial-renderer.json",
+    "rawSha256": "65F970C5517803A980EEF53A78FEB105ED6E69BDA0621B93C6BCD97756E34AB6",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\raw-move-full-1\\keyboard.json",
+    "copy": "raw-move-full-1\\keyboard.json",
+    "rawSha256": "98E85F1F01BE3A1933EABE18DF5D0ECE04159513612A9F7300DED08C6584DFC1",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\raw-move-full-1\\lifecycle.json",
+    "copy": "raw-move-full-1\\lifecycle.json",
+    "rawSha256": "E066EFA3BB7455CA7A81A249DE9AC30B27C02340F1C430AE3F43EBEAA20DC734",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\raw-move-full-1\\preferences.json",
+    "copy": "raw-move-full-1\\preferences.json",
+    "rawSha256": "CC5C41F25EF8A7C2AA0818C38F64E5CEE3890357591047B15796A7F8561028F4",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\raw-move-full-1\\restored-paint.json",
+    "copy": "raw-move-full-1\\restored-paint.json",
+    "rawSha256": "B409B98E2E9061F1DB22D7424E8B9B97D87553E58C3FD51BAB512C9CCACDBD93",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\raw-move-full-1\\routed-input.json",
+    "copy": "raw-move-full-1\\routed-input.json",
+    "rawSha256": "15F161F26D08F4C75A062B6CA9087271A4F7BFF24C9B837327393B9274C7304A",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\raw-move-full-1\\standard-host.json",
+    "copy": "raw-move-full-1\\standard-host.json",
+    "rawSha256": "080C76897F489858B45CB86A2E12AB554B4A3ECDE2F053220C8A541D9D293EA8",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\raw-move-full-1\\summary.json",
+    "copy": "raw-move-full-1\\summary.json",
+    "rawSha256": "D58117624C67448CED0320D1AA1A0BF10DD53BFC02FECB2F146E8FA995D63B9F",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\raw-move-full-1\\visual-host.json",
+    "copy": "raw-move-full-1\\visual-host.json",
+    "rawSha256": "98BFABF463EA04808939A6C31F0E630F6DF86FD818B0A823B3DA033D3377B740",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\contracts\\final-resources.json",
+    "copy": "contracts\\final-resources.json",
+    "rawSha256": "B7C00F83C210C95056F969F12C3DC6BC870FB697505B37C4FBD1EFEB107149A1",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\contracts\\input.json",
+    "copy": "contracts\\input.json",
+    "rawSha256": "6C2F75EBDF60B55B5BBCA5C397F3D0C2C3B78395CB604F5730D94D947639C71C",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\contracts\\preferences.json",
+    "copy": "contracts\\preferences.json",
+    "rawSha256": "CC5C41F25EF8A7C2AA0818C38F64E5CEE3890357591047B15796A7F8561028F4",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\contracts\\reduced-motion.json",
+    "copy": "contracts\\reduced-motion.json",
+    "rawSha256": "0D757D022D7235EC7134E036034AC3B4E993AC61C45A62A9AE00E49D2BAE1858",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\contracts\\resource-samples.json",
+    "copy": "contracts\\resource-samples.json",
+    "rawSha256": "C11B0EE936A40E47C55A795DD4D771005A87B650FE53071619F6F2F90DD00702",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\contracts\\scaling.json",
+    "copy": "contracts\\scaling.json",
+    "rawSha256": "3187141AFA3C6C3196DC12AF13A7231831205644EE92DA554635A463AA1D4A26",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\contracts\\summary.json",
+    "copy": "contracts\\summary.json",
+    "rawSha256": "758B14441B21DE4135AC0C07DE924EA31CB2B215B31EFDFA0D3645ADF47C0DC8",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\contracts\\view-lifecycle.json",
+    "copy": "contracts\\view-lifecycle.json",
+    "rawSha256": "916D8C22AA0CCE28F41F0A183AD163307C495898361C6798195DDB5BA453001B",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\interaction-contract\\final-resources.json",
+    "copy": "interaction-contract\\final-resources.json",
+    "rawSha256": "9CE51ECA2967D9B95A2648877050C8146C153899B119B3709637E225B599EC14",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\interaction-contract\\interaction-trace.json",
+    "copy": "interaction-contract\\interaction-trace.json.gz",
+    "rawSha256": "E8B635A47A6B54E82A3ACF64F7F38125D4C0B1BC9C2816EBFB187D1C646B7B16",
+    "gzip": true
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\interaction-contract\\interaction.json",
+    "copy": "interaction-contract\\interaction.json",
+    "rawSha256": "87C434D4767253884E1E458A8206AE2FA8949D200AB68F794617F8E7DA6D5055",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\interaction-contract\\preferences.json",
+    "copy": "interaction-contract\\preferences.json",
+    "rawSha256": "C82F6F9365BEFA6DC9F5D205003EEC3D6D8078C46E8C06072C4518428EBBCD4A",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\interaction-contract\\resource-samples.json",
+    "copy": "interaction-contract\\resource-samples.json",
+    "rawSha256": "0E76BAE0A9A685086A2879A259C6CD8F92B8BCC5725503C11781EA6128A90F0D",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\interaction-contract\\summary.json",
+    "copy": "interaction-contract\\summary.json",
+    "rawSha256": "E416DC5FBD667F377C70F94981FCD71DEB2CCE595399F5567C45CCB6832ACE7B",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\interaction-contract\\view-lifecycle.json",
+    "copy": "interaction-contract\\view-lifecycle.json",
+    "rawSha256": "714C7CB432358751E35BBB6D3E25B9CD0245710AFBB6D3AB30D499E9BACBE846",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\restoration-verify\\final-resources.json",
+    "copy": "restoration-verify\\final-resources.json",
+    "rawSha256": "1C7055192D832F59C190237028EF1AAFE2EAC45E3B693FEC3E6D130FAAC35CDB",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\restoration-verify\\preferences.json",
+    "copy": "restoration-verify\\preferences.json",
+    "rawSha256": "02843608FFA82CC1F0A2519BC67A4451D88ADD548BE999DC497452263C099E9B",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\restoration-verify\\resource-samples.json",
+    "copy": "restoration-verify\\resource-samples.json",
+    "rawSha256": "336CF9E68F0EECB7169DD7EBE734500C78677A14F1CBC2B5FBA37916BA6AF7FC",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\restoration-verify\\restoration-hidden-resources.json",
+    "copy": "restoration-verify\\restoration-hidden-resources.json",
+    "rawSha256": "8649EF94C039A6441D0B4DE358209DD73FE9FD7ADDC5590DE41443B09EE430BC",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\restoration-verify\\restoration-navigation.json",
+    "copy": "restoration-verify\\restoration-navigation.json",
+    "rawSha256": "F19A661F805AEC679ADA778BB63BE855F96AB86D90BBD5DBDF2762E53AC7A827",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\restoration-verify\\restoration-result.json",
+    "copy": "restoration-verify\\restoration-result.json",
+    "rawSha256": "D2695217E3B7F1E96F30D91ACE4FCB5B82F78682ADADE9DFD4F4B990D0AF59C5",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\restoration-verify\\summary.json",
+    "copy": "restoration-verify\\summary.json",
+    "rawSha256": "762E76B4BD1AFF28D9137A6EE4C47840938B44D533DDE2CAEEAE11BACEE2F875",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\restoration-verify\\view-lifecycle.json",
+    "copy": "restoration-verify\\view-lifecycle.json",
+    "rawSha256": "9F71367146860CF2179C684F95CC3EEE231F5C0A2F1D27402755ECE15F5DE550",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\scheduling-baseline\\application.json",
+    "copy": "scheduling-baseline\\application.json",
+    "rawSha256": "928B04BCBA8C7F88B3DD728EE1EBE7F4C684DE856E7BEA215778E298345631BC",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\scheduling-baseline\\assembly.json",
+    "copy": "scheduling-baseline\\assembly.json",
+    "rawSha256": "95BBE5453D5D368C2484B05DA4CCE9A29919BBA3AF1EA33441BAE8031EE4A6B1",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\scheduling-baseline\\final-resources.json",
+    "copy": "scheduling-baseline\\final-resources.json",
+    "rawSha256": "584DC40A90D25B81AA037C9B5D53697C6CB8882ACBC5DC3CBF5423030BD42B90",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\scheduling-baseline\\preferences.json",
+    "copy": "scheduling-baseline\\preferences.json",
+    "rawSha256": "C82F6F9365BEFA6DC9F5D205003EEC3D6D8078C46E8C06072C4518428EBBCD4A",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\scheduling-baseline\\resource-samples.json",
+    "copy": "scheduling-baseline\\resource-samples.json",
+    "rawSha256": "6EB5509DBCD6EA5B0B25FE73F4B90314EC45F2AAB4F52386D310320300EF80DE",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\scheduling-baseline\\runner-settings.json",
+    "copy": "scheduling-baseline\\runner-settings.json",
+    "rawSha256": "95821EBA580C088C1DEF91D98B5AA2817352ABBAA03B7EFE40577C5742C957DA",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\scheduling-baseline\\scheduling-integrity.json",
+    "copy": "scheduling-baseline\\scheduling-integrity.json",
+    "rawSha256": "96A7B29F87CA034E53BEE7A88C15D911B23FD175DA77EF4595B8FE4A78DEACF6",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\scheduling-baseline\\scheduling-trace.json",
+    "copy": "scheduling-baseline\\scheduling-trace.json.gz",
+    "rawSha256": "410B278079D2A168134AE6048807EA1BC5894AB3AC85D45477A56FC7E16F9637",
+    "gzip": true
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\scheduling-baseline\\scheduling-window.json",
+    "copy": "scheduling-baseline\\scheduling-window.json",
+    "rawSha256": "8EC0C93BA648CC0130BC40D5AAD12790BF109AE475ACB30B2B0CC88EA9FFCCE9",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\scheduling-baseline\\summary.json",
+    "copy": "scheduling-baseline\\summary.json",
+    "rawSha256": "AFEFDB0CF19668A647633BF21D138E698E26DDFFD57B96C7528A231C99087017",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\scheduling-baseline\\unexpected-report-guard.json",
+    "copy": "scheduling-baseline\\unexpected-report-guard.json",
+    "rawSha256": "B0F3060AC6B0FC4F7CAEEC6019755D495746633D04448FB1C827ADDD8D7B88A6",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\scheduling-baseline\\view-lifecycle.json",
+    "copy": "scheduling-baseline\\view-lifecycle.json",
+    "rawSha256": "77D09D815CA67FE9DA77A2436187B4DE6F61C1155C98046674E6C24F7AB022CD",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\scheduling-contract\\application.json",
+    "copy": "scheduling-contract\\application.json",
+    "rawSha256": "928B04BCBA8C7F88B3DD728EE1EBE7F4C684DE856E7BEA215778E298345631BC",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\scheduling-contract\\assembly.json",
+    "copy": "scheduling-contract\\assembly.json",
+    "rawSha256": "95BBE5453D5D368C2484B05DA4CCE9A29919BBA3AF1EA33441BAE8031EE4A6B1",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\scheduling-contract\\final-resources.json",
+    "copy": "scheduling-contract\\final-resources.json",
+    "rawSha256": "1CE4B85FC9B9BD68F0FFFAEDB03B88747F5260E0868EEA4202EFE687C1D5EC6B",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\scheduling-contract\\preferences.json",
+    "copy": "scheduling-contract\\preferences.json",
+    "rawSha256": "C82F6F9365BEFA6DC9F5D205003EEC3D6D8078C46E8C06072C4518428EBBCD4A",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\scheduling-contract\\resource-samples.json",
+    "copy": "scheduling-contract\\resource-samples.json",
+    "rawSha256": "8970DF393E5039BF48ECB7123356ECFCCC37A0F9A8D11E9D3D1E6DE51CE71036",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\scheduling-contract\\runner-settings.json",
+    "copy": "scheduling-contract\\runner-settings.json",
+    "rawSha256": "4558B0932A1C33928D6DBC6A0660483647C9821EA741D060280C951905C79379",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\scheduling-contract\\scheduling-trace.json",
+    "copy": "scheduling-contract\\scheduling-trace.json.gz",
+    "rawSha256": "17850F9054BF67C718AD20355DF65514B26F7FC9B1E6D517AD4F6351E5236E2D",
+    "gzip": true
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\scheduling-contract\\summary.json",
+    "copy": "scheduling-contract\\summary.json",
+    "rawSha256": "9747B9DD49FBB39E52811A8EAB59D2D10D62E86636CA00DB7FDA0190E72D26C5",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\scheduling-contract\\unexpected-report-guard.json",
+    "copy": "scheduling-contract\\unexpected-report-guard.json",
+    "rawSha256": "B0F3060AC6B0FC4F7CAEEC6019755D495746633D04448FB1C827ADDD8D7B88A6",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\scheduling-contract\\view-lifecycle.json",
+    "copy": "scheduling-contract\\view-lifecycle.json",
+    "rawSha256": "284056CA608399E79E1AD2E3AD131B6B8EB4B88499DF9CBCB54EEE9401CA7DA6",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\terminal\\summary.json",
+    "copy": "terminal\\summary.json",
+    "rawSha256": "A4E0759343435C15A98915E21B372F2417AC59F65869559ED3C650AD538188F2",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\active-restart\\source-hashes.json",
+    "copy": "active-restart\\source-hashes.json",
+    "rawSha256": "7AA3ACBBB9F0B9C7955208C27F36663E8813EE94D54D27A85E6D33752AF31FCA",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\active-restart\\summary.json",
+    "copy": "active-restart\\summary.json",
+    "rawSha256": "9E52C44E2B89B4F1F2A2459DE5DDE2BF8C2F2CF7F4D06BA600A082754EEB2A09",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\verify\\summary.json",
+    "copy": "verify\\summary.json",
+    "rawSha256": "D03C89862C7AE7CAA80CCBF51BCE208EADA1E71F965BDFA649FFF8E9CD1E040C",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\jst776-replay\\JST776.json",
+    "copy": "jst776-replay\\JST776.json",
+    "rawSha256": "716A72D1787834BC5000FC104025834E615B73AD3EF061151F7FF2374B8C8814",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\jst776-replay\\summary.json",
+    "copy": "jst776-replay\\summary.json",
+    "rawSha256": "77E11D27B54E68A61FA3333359080FE3B1401F5D220C33C922A9BBAF1B262964",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\jst771-replay\\JST771.json",
+    "copy": "jst771-replay\\JST771.json",
+    "rawSha256": "11BFF938A30FDF79F473493C927D391CD3A19FB91EAD981FDE20DCDD9CEA104C",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\jst771-replay\\summary.json",
+    "copy": "jst771-replay\\summary.json",
+    "rawSha256": "8BAF39FAAC2EB37698114E06EAD060FDAAEA5756D3EBA5F527838BB177A0AE7B",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\full-20260929-160443-3f648361\\summary.json",
+    "copy": "full-baseline\\summary.json",
+    "rawSha256": "F60C469588C48C8BEDCD1E4AE0D3D79AFD51F468DA46925DDAD43327457307B0",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\full-20260929-160443-3f648361\\build-hashes.json",
+    "copy": "full-baseline\\build-hashes.json",
+    "rawSha256": "F99E475F6FADD11045AED6C308ED73BF933447E40D12D3B3CEF19A8D1FA78AC3",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\full-20260929-160443-3f648361\\build.log",
+    "copy": "full-baseline\\build.log",
+    "rawSha256": "EDC17091CBC4D5DC54782482C0D7ECB7ACCFDF5408E8656F2F0CFFC7C792923C",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\full-20260929-160443-3f648361\\package-build.log",
+    "copy": "full-baseline\\package-build.log",
+    "rawSha256": "EEC1B1D1BE6B56836BDA030BDA8EC4D574AD0A658A5590FF690C0D4279D76FE2",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\full-20260929-160443-3f648361\\input-hashes.json",
+    "copy": "full-baseline\\input-hashes.json",
+    "rawSha256": "35FB9E1C03009B6C11E4F6F83A13401DF3839D4BE5F7856D7AB72493F5E82F01",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\full-20260929-160443-3f648361\\fleet-import.log",
+    "copy": "full-baseline\\fleet-import.log",
+    "rawSha256": "55DD8C570458FA4C73C9359D80147E6D0BCF6143901588B20D8D33ADCF22C6F2",
+    "gzip": false
+  },
+  {
+    "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\jst771-evidence.json",
+    "copy": "jst771-evidence.json",
+    "rawSha256": "F2D25C2F4DE219382950812850335E56D20A4B730A5857C1330FC31CFE6BAF6A",
+    "gzip": false
+  }
+]

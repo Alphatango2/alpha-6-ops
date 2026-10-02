@@ -1,0 +1,535 @@
+{
+  "executed": 132,
+  "passed": 132,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "validated Fenix variant/version selects enhanced adapter",
+      "passed": true
+    },
+    {
+      "name": "fresh zero defaults are not qualified intent",
+      "passed": true
+    },
+    {
+      "name": "positive ON and combustion qualify both channels",
+      "passed": true
+    },
+    {
+      "name": "single-engine shutdown cannot complete",
+      "passed": true
+    },
+    {
+      "name": "master cutoff with combustion still present is contradictory",
+      "passed": true
+    },
+    {
+      "name": "all verified cutoffs and combustion absent confirm intent",
+      "passed": true
+    },
+    {
+      "name": "failure or fuel starvation with masters ON is not intent",
+      "passed": true
+    },
+    {
+      "name": "relight revokes terminal evidence",
+      "passed": true
+    },
+    {
+      "name": "nonfinite master invalidates evidence",
+      "passed": true
+    },
+    {
+      "name": "intermediate master cannot be coerced to OFF",
+      "passed": true
+    },
+    {
+      "name": "two-channel adapter cannot cover four engines",
+      "passed": true
+    },
+    {
+      "name": "stale channel cannot confirm",
+      "passed": true
+    },
+    {
+      "name": "missing channel cannot confirm",
+      "passed": true
+    },
+    {
+      "name": "new connection cannot inherit qualification from earlier adapter",
+      "passed": true
+    },
+    {
+      "name": "unvalidated aircraft remains limited",
+      "passed": true
+    },
+    {
+      "name": "unvalidated package version remains limited",
+      "passed": true
+    },
+    {
+      "name": "missing version cannot promote enhanced authority",
+      "passed": true
+    },
+    {
+      "name": "native capture: all 180 groups replay, intent at 39.2s, never during single-engine shutdown",
+      "passed": true
+    },
+    {
+      "name": "optional native packet routed independently 301/1/1",
+      "passed": true
+    },
+    {
+      "name": "optional native packet routed independently 302/1/1",
+      "passed": true
+    },
+    {
+      "name": "native boundary qualifies positive master signals",
+      "passed": true
+    },
+    {
+      "name": "optional native packet routed independently 301/0/1",
+      "passed": true
+    },
+    {
+      "name": "optional native packet routed independently 302/0/1",
+      "passed": true
+    },
+    {
+      "name": "native boundary preserves independently sampled cutoffs",
+      "passed": true
+    },
+    {
+      "name": "optional native packet routed independently 301/0/2",
+      "passed": true
+    },
+    {
+      "name": "malformed optional payload withdraws previous OFF",
+      "passed": true
+    },
+    {
+      "name": "optional native packet routed independently 301/NaN/1",
+      "passed": true
+    },
+    {
+      "name": "native NaN cannot become OFF",
+      "passed": true
+    },
+    {
+      "name": "optional parser does not steal primary telemetry",
+      "passed": true
+    },
+    {
+      "name": "optional native packet routed independently 301/1/1",
+      "passed": true
+    },
+    {
+      "name": "optional native packet routed independently 302/1/1",
+      "passed": true
+    },
+    {
+      "name": "aircraft switch cannot qualify from previous aircraft cached masters",
+      "passed": true
+    },
+    {
+      "name": "optional native packet routed independently 301/0/1",
+      "passed": true
+    },
+    {
+      "name": "optional native packet routed independently 302/0/1",
+      "passed": true
+    },
+    {
+      "name": "new aircraft default zeros remain unqualified after switch",
+      "passed": true
+    },
+    {
+      "name": "optional native packet routed independently 301/1/1",
+      "passed": true
+    },
+    {
+      "name": "optional native packet routed independently 302/1/1",
+      "passed": true
+    },
+    {
+      "name": "new aircraft fresh ON observations qualify independently",
+      "passed": true
+    },
+    {
+      "name": "missing engine count cannot hide fresh primary combustion",
+      "passed": true
+    },
+    {
+      "name": "missing engine count cannot hide positive starter evidence",
+      "passed": true
+    },
+    {
+      "name": "invalid primary combustion cannot enable manual fallback",
+      "passed": true
+    },
+    {
+      "name": "missing primary combustion cannot enable manual fallback",
+      "passed": true
+    },
+    {
+      "name": "valid absent combustion permits guarded manual fallback only",
+      "passed": true
+    },
+    {
+      "name": "installed package version resolved without fixed drive path",
+      "passed": true
+    },
+    {
+      "name": "mismatched package versions cannot claim validation",
+      "passed": true
+    },
+    {
+      "name": "coordinator: stable evidence controls IN timestamp: enhanced",
+      "passed": true
+    },
+    {
+      "name": "completion does not forge mechanical engine validity",
+      "passed": true
+    },
+    {
+      "name": "coordinator produces exactly one IN",
+      "passed": true
+    },
+    {
+      "name": "coordinator persists exactly one completed history row",
+      "passed": true
+    },
+    {
+      "name": "PIREP submits exactly once",
+      "passed": true
+    },
+    {
+      "name": "exact history identity owns one durable PIREP",
+      "passed": true
+    },
+    {
+      "name": "unsupported mechanical absence does not auto-complete: manual",
+      "passed": true
+    },
+    {
+      "name": "manual eligibility agrees with destination: manual",
+      "passed": true
+    },
+    {
+      "name": "direct manual command cannot bypass shared safety predicate: manual",
+      "passed": true
+    },
+    {
+      "name": "unsupported mechanical absence does not auto-complete: wrong-destination",
+      "passed": true
+    },
+    {
+      "name": "manual eligibility agrees with destination: wrong-destination",
+      "passed": true
+    },
+    {
+      "name": "direct manual command cannot bypass shared safety predicate: wrong-destination",
+      "passed": true
+    },
+    {
+      "name": "interruption resets three-second phase confirmation: pause",
+      "passed": true
+    },
+    {
+      "name": "coordinator: stable evidence controls IN timestamp: pause",
+      "passed": true
+    },
+    {
+      "name": "completion does not forge mechanical engine validity",
+      "passed": true
+    },
+    {
+      "name": "coordinator produces exactly one IN",
+      "passed": true
+    },
+    {
+      "name": "coordinator persists exactly one completed history row",
+      "passed": true
+    },
+    {
+      "name": "PIREP submits exactly once",
+      "passed": true
+    },
+    {
+      "name": "exact history identity owns one durable PIREP",
+      "passed": true
+    },
+    {
+      "name": "interruption resets three-second phase confirmation: slew",
+      "passed": true
+    },
+    {
+      "name": "coordinator: stable evidence controls IN timestamp: slew",
+      "passed": true
+    },
+    {
+      "name": "completion does not forge mechanical engine validity",
+      "passed": true
+    },
+    {
+      "name": "coordinator produces exactly one IN",
+      "passed": true
+    },
+    {
+      "name": "coordinator persists exactly one completed history row",
+      "passed": true
+    },
+    {
+      "name": "PIREP submits exactly once",
+      "passed": true
+    },
+    {
+      "name": "exact history identity owns one durable PIREP",
+      "passed": true
+    },
+    {
+      "name": "interruption resets three-second phase confirmation: brake",
+      "passed": true
+    },
+    {
+      "name": "coordinator: stable evidence controls IN timestamp: brake",
+      "passed": true
+    },
+    {
+      "name": "completion does not forge mechanical engine validity",
+      "passed": true
+    },
+    {
+      "name": "coordinator produces exactly one IN",
+      "passed": true
+    },
+    {
+      "name": "coordinator persists exactly one completed history row",
+      "passed": true
+    },
+    {
+      "name": "PIREP submits exactly once",
+      "passed": true
+    },
+    {
+      "name": "exact history identity owns one durable PIREP",
+      "passed": true
+    },
+    {
+      "name": "interruption resets three-second phase confirmation: movement",
+      "passed": true
+    },
+    {
+      "name": "coordinator: stable evidence controls IN timestamp: movement",
+      "passed": true
+    },
+    {
+      "name": "completion does not forge mechanical engine validity",
+      "passed": true
+    },
+    {
+      "name": "coordinator produces exactly one IN",
+      "passed": true
+    },
+    {
+      "name": "coordinator persists exactly one completed history row",
+      "passed": true
+    },
+    {
+      "name": "PIREP submits exactly once",
+      "passed": true
+    },
+    {
+      "name": "exact history identity owns one durable PIREP",
+      "passed": true
+    },
+    {
+      "name": "interruption resets three-second phase confirmation: relight",
+      "passed": true
+    },
+    {
+      "name": "coordinator: stable evidence controls IN timestamp: relight",
+      "passed": true
+    },
+    {
+      "name": "completion does not forge mechanical engine validity",
+      "passed": true
+    },
+    {
+      "name": "coordinator produces exactly one IN",
+      "passed": true
+    },
+    {
+      "name": "coordinator persists exactly one completed history row",
+      "passed": true
+    },
+    {
+      "name": "PIREP submits exactly once",
+      "passed": true
+    },
+    {
+      "name": "exact history identity owns one durable PIREP",
+      "passed": true
+    },
+    {
+      "name": "interrupted candidate is not restored complete: disconnect",
+      "passed": true
+    },
+    {
+      "name": "interruption resets three-second phase confirmation: disconnect",
+      "passed": true
+    },
+    {
+      "name": "coordinator: stable evidence controls IN timestamp: disconnect",
+      "passed": true
+    },
+    {
+      "name": "completion does not forge mechanical engine validity",
+      "passed": true
+    },
+    {
+      "name": "coordinator produces exactly one IN",
+      "passed": true
+    },
+    {
+      "name": "coordinator persists exactly one completed history row",
+      "passed": true
+    },
+    {
+      "name": "PIREP submits exactly once",
+      "passed": true
+    },
+    {
+      "name": "exact history identity owns one durable PIREP",
+      "passed": true
+    },
+    {
+      "name": "interrupted candidate is not restored complete: restart",
+      "passed": true
+    },
+    {
+      "name": "interruption resets three-second phase confirmation: restart",
+      "passed": true
+    },
+    {
+      "name": "coordinator: stable evidence controls IN timestamp: restart",
+      "passed": true
+    },
+    {
+      "name": "completion does not forge mechanical engine validity",
+      "passed": true
+    },
+    {
+      "name": "coordinator produces exactly one IN",
+      "passed": true
+    },
+    {
+      "name": "coordinator persists exactly one completed history row",
+      "passed": true
+    },
+    {
+      "name": "PIREP submits exactly once",
+      "passed": true
+    },
+    {
+      "name": "exact history identity owns one durable PIREP",
+      "passed": true
+    },
+    {
+      "name": "interruption resets three-second phase confirmation: duplicate",
+      "passed": true
+    },
+    {
+      "name": "coordinator: stable evidence controls IN timestamp: duplicate",
+      "passed": true
+    },
+    {
+      "name": "completion does not forge mechanical engine validity",
+      "passed": true
+    },
+    {
+      "name": "coordinator produces exactly one IN",
+      "passed": true
+    },
+    {
+      "name": "coordinator persists exactly one completed history row",
+      "passed": true
+    },
+    {
+      "name": "PIREP submits exactly once",
+      "passed": true
+    },
+    {
+      "name": "exact history identity owns one durable PIREP",
+      "passed": true
+    },
+    {
+      "name": "interruption resets three-second phase confirmation: stale",
+      "passed": true
+    },
+    {
+      "name": "coordinator: stable evidence controls IN timestamp: stale",
+      "passed": true
+    },
+    {
+      "name": "completion does not forge mechanical engine validity",
+      "passed": true
+    },
+    {
+      "name": "coordinator produces exactly one IN",
+      "passed": true
+    },
+    {
+      "name": "coordinator persists exactly one completed history row",
+      "passed": true
+    },
+    {
+      "name": "PIREP submits exactly once",
+      "passed": true
+    },
+    {
+      "name": "exact history identity owns one durable PIREP",
+      "passed": true
+    },
+    {
+      "name": "interruption resets three-second phase confirmation: missing",
+      "passed": true
+    },
+    {
+      "name": "coordinator: stable evidence controls IN timestamp: missing",
+      "passed": true
+    },
+    {
+      "name": "completion does not forge mechanical engine validity",
+      "passed": true
+    },
+    {
+      "name": "coordinator produces exactly one IN",
+      "passed": true
+    },
+    {
+      "name": "coordinator persists exactly one completed history row",
+      "passed": true
+    },
+    {
+      "name": "PIREP submits exactly once",
+      "passed": true
+    },
+    {
+      "name": "exact history identity owns one durable PIREP",
+      "passed": true
+    },
+    {
+      "name": "interruption resets three-second phase confirmation: go-around",
+      "passed": true
+    },
+    {
+      "name": "go-around still confirms TaxiIn to Airborne after ON",
+      "passed": true
+    },
+    {
+      "name": "go-around cancels pending terminal completion",
+      "passed": true
+    }
+  ]
+}

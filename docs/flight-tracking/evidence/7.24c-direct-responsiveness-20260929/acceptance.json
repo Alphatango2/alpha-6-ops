@@ -1,0 +1,105 @@
+{
+  "passed": true,
+  "failures": [],
+  "contracts": {
+    "dashboard": {
+      "passed": true,
+      "checks": 25,
+      "boundary": "Real timer callback/current WPF text and latest Operations overview"
+    },
+    "map": {
+      "passed": true,
+      "checks": 4,
+      "boundary": "Receipt/ACK and loaded MapLibre source/render; not GPU presentation"
+    },
+    "input": {
+      "passed": true,
+      "checks": 6,
+      "boundary": "WPF/browser handling and injected camera/selection response; not physical pixels"
+    },
+    "liveness": {
+      "passed": true,
+      "checks": 2,
+      "boundary": "Progress of actual input, browser and authoritative work"
+    },
+    "restoration": {
+      "passed": true,
+      "checks": 2,
+      "boundary": "Retained renderer usable after navigation; supplemental full resource suite required"
+    },
+    "telemetry": {
+      "passed": true,
+      "checks": 3,
+      "boundary": "Independent emission through connection ingestion to authoritative completion"
+    },
+    "integrity": {
+      "passed": true,
+      "checks": 3,
+      "boundary": "Exact emitted/ingested/processed/recorded identity and order"
+    }
+  },
+  "suites": {
+    "direct": {
+      "passed": true,
+      "checks": 49,
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\review-green"
+    },
+    "operations": {
+      "passed": true,
+      "checks": 199,
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\raw-move-full-1"
+    },
+    "presentation": {
+      "passed": true,
+      "checks": 22,
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\contracts"
+    },
+    "restoration": {
+      "passed": true,
+      "checks": 157,
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\restoration-verify"
+    },
+    "interaction-control": {
+      "passed": true,
+      "checks": 13,
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\interaction-contract"
+    },
+    "delivery": {
+      "passed": true,
+      "checks": 4
+    },
+    "scheduling": {
+      "passed": true,
+      "checks": 15
+    },
+    "terminal-recovery": {
+      "passed": true,
+      "checks": 293
+    },
+    "regression": {
+      "passed": true,
+      "checks": 1958
+    },
+    "replay": {
+      "passed": true,
+      "checks": 11,
+      "samples": 100632
+    }
+  },
+  "heartbeat": {
+    "passed": true,
+    "role": "diagnostic",
+    "releaseBlocking": false,
+    "thresholdsChanged": false,
+    "baselineMaxMs": 330.0657,
+    "stressedMaxMs": 362.6237,
+    "absoluteLimitMs": 500,
+    "relativeAllowanceMs": 100,
+    "floorMs": 150,
+    "relativeLimitMs": 430.0657,
+    "condition": "maximum <500ms and <=max(150ms, baseline maximum+100ms)",
+    "disposition": "Historical predicate passed"
+  },
+  "policy": "7.24C direct responsiveness; heartbeat diagnostic retained",
+  "physicalCertification": false
+}

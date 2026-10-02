@@ -8,6 +8,7 @@ namespace Alpha6Ops.Desktop;
 
 public partial class MainWindow
 {
+    internal static readonly System.Diagnostics.ActivitySource PresentationTiming = new("Alpha6Ops.Presentation");
     private readonly FlightSessionCoordinator coordinator;
     private FlightSessionSnapshot flightState => coordinator.Snapshot;
     private ActiveFlightPlan? activePlan => flightState.Assignment;
@@ -39,6 +40,7 @@ public partial class MainWindow
 
     private void RuntimeChanged(object? sender,EventArgs e)
     {
+        using var timing = PresentationTiming.StartActivity("RuntimeChanged");
         if(presentationDisposed||exiting)return;
         var snapshot=flightState;
         RenderConnection(snapshot);

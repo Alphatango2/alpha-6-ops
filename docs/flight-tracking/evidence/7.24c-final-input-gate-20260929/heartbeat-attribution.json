@@ -1,0 +1,1044 @@
+{
+  "rows": [
+    {
+      "run": "contention-0-T1",
+      "arm": "baseline",
+      "trace": "contention-0-T1\\contention-b9d78ad912054dbeb07a062fe849cf83\\baseline\\scheduling-trace.json",
+      "heartbeatMs": 450.8502,
+      "beginMs": 8024.8378999999995,
+      "endMs": 8475.6881,
+      "readyQueueMs": 420.0606999999991,
+      "completedCallbackUnionMs": 83.94659999999203,
+      "longestCallbackMs": 8.607299999999668,
+      "longestCallback": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+      "callbackCount": 132,
+      "gcMarks": [],
+      "dropped": 0,
+      "os": [
+        {
+          "t": 7853.7656,
+          "hostCpuMs": 7031.25,
+          "uiCpuMs": 2937.5,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 328777048,
+          "gen0": 10,
+          "gen1": 8,
+          "gen2": 5,
+          "gcIndex": 10,
+          "gcPausesMs": [
+            13.094,
+            0
+          ],
+          "heapBytes": 74373936,
+          "lohBytes": 41955744,
+          "browser": [],
+          "samplerMs": 1.9798
+        },
+        {
+          "t": 8106.1035,
+          "hostCpuMs": 7093.75,
+          "uiCpuMs": 2937.5,
+          "uiState": "Running",
+          "waitReason": null,
+          "allocatedBytes": 329458704,
+          "gen0": 10,
+          "gen1": 8,
+          "gen2": 5,
+          "gcIndex": 10,
+          "gcPausesMs": [
+            13.094,
+            0
+          ],
+          "heapBytes": 74373936,
+          "lohBytes": 41955744,
+          "browser": [],
+          "samplerMs": 2.5169
+        },
+        {
+          "t": 8357.7466,
+          "hostCpuMs": 7140.625,
+          "uiCpuMs": 2953.125,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 330167600,
+          "gen0": 10,
+          "gen1": 8,
+          "gen2": 5,
+          "gcIndex": 10,
+          "gcPausesMs": [
+            13.094,
+            0
+          ],
+          "heapBytes": 74373936,
+          "lohBytes": 41955744,
+          "browser": [],
+          "samplerMs": 2.1476
+        },
+        {
+          "t": 8609.5842,
+          "hostCpuMs": 7187.5,
+          "uiCpuMs": 2953.125,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 330891296,
+          "gen0": 10,
+          "gen1": 8,
+          "gen2": 5,
+          "gcIndex": 10,
+          "gcPausesMs": [
+            13.094,
+            0
+          ],
+          "heapBytes": 74373936,
+          "lohBytes": 41955744,
+          "browser": [],
+          "samplerMs": 2.3219
+        }
+      ]
+    },
+    {
+      "run": "contention-0-T1",
+      "arm": "stressed",
+      "trace": "contention-0-T1\\contention-b9d78ad912054dbeb07a062fe849cf83\\stressed\\scheduling-trace.json",
+      "heartbeatMs": 200.5083,
+      "beginMs": 7810.7472,
+      "endMs": 8011.2555,
+      "readyQueueMs": 178.10649999999987,
+      "completedCallbackUnionMs": 39.14329999999609,
+      "longestCallbackMs": 10.949099999999817,
+      "longestCallback": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+      "callbackCount": 59,
+      "gcMarks": [],
+      "dropped": 0,
+      "os": [
+        {
+          "t": 7602.9003,
+          "hostCpuMs": 9390.625,
+          "uiCpuMs": 3578.125,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 379550568,
+          "gen0": 10,
+          "gen1": 8,
+          "gen2": 5,
+          "gcIndex": 10,
+          "gcPausesMs": [
+            13.094,
+            0
+          ],
+          "heapBytes": 74373936,
+          "lohBytes": 41955744,
+          "browser": [],
+          "samplerMs": 2.5166
+        },
+        {
+          "t": 7855.6331,
+          "hostCpuMs": 9421.875,
+          "uiCpuMs": 3593.75,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 380340928,
+          "gen0": 10,
+          "gen1": 8,
+          "gen2": 5,
+          "gcIndex": 10,
+          "gcPausesMs": [
+            13.094,
+            0
+          ],
+          "heapBytes": 74373936,
+          "lohBytes": 41955744,
+          "browser": [],
+          "samplerMs": 3.6102
+        },
+        {
+          "t": 8109.2125,
+          "hostCpuMs": 9437.5,
+          "uiCpuMs": 3609.375,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 381132728,
+          "gen0": 10,
+          "gen1": 8,
+          "gen2": 5,
+          "gcIndex": 10,
+          "gcPausesMs": [
+            13.094,
+            0
+          ],
+          "heapBytes": 74373936,
+          "lohBytes": 41955744,
+          "browser": [],
+          "samplerMs": 3.0196
+        }
+      ]
+    },
+    {
+      "run": "contention-1-T2",
+      "arm": "baseline",
+      "trace": "contention-1-T2\\contention-130619ed44fa443e8801992420415433\\baseline\\scheduling-trace.json",
+      "heartbeatMs": 325.6709,
+      "beginMs": 7407.2993,
+      "endMs": 7732.9702,
+      "readyQueueMs": 295.1876000000002,
+      "completedCallbackUnionMs": 63.22499999999309,
+      "longestCallbackMs": 8.155399999999645,
+      "longestCallback": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+      "callbackCount": 94,
+      "gcMarks": [],
+      "dropped": 0,
+      "os": [
+        {
+          "t": 7349.5495,
+          "hostCpuMs": 6890.625,
+          "uiCpuMs": 2765.625,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 328610760,
+          "gen0": 10,
+          "gen1": 8,
+          "gen2": 5,
+          "gcIndex": 10,
+          "gcPausesMs": [
+            12.65,
+            0
+          ],
+          "heapBytes": 75011848,
+          "lohBytes": 41955744,
+          "browser": [],
+          "samplerMs": 1.6783
+        },
+        {
+          "t": 7601.9922,
+          "hostCpuMs": 6906.25,
+          "uiCpuMs": 2781.25,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 329311968,
+          "gen0": 10,
+          "gen1": 8,
+          "gen2": 5,
+          "gcIndex": 10,
+          "gcPausesMs": [
+            12.65,
+            0
+          ],
+          "heapBytes": 75011848,
+          "lohBytes": 41955744,
+          "browser": [],
+          "samplerMs": 2.7787
+        },
+        {
+          "t": 7853.5075,
+          "hostCpuMs": 6968.75,
+          "uiCpuMs": 2812.5,
+          "uiState": "Running",
+          "waitReason": null,
+          "allocatedBytes": 330074280,
+          "gen0": 10,
+          "gen1": 8,
+          "gen2": 5,
+          "gcIndex": 10,
+          "gcPausesMs": [
+            12.65,
+            0
+          ],
+          "heapBytes": 75011848,
+          "lohBytes": 41955744,
+          "browser": [],
+          "samplerMs": 1.7992
+        }
+      ]
+    },
+    {
+      "run": "contention-1-T2",
+      "arm": "stressed",
+      "trace": "contention-1-T2\\contention-130619ed44fa443e8801992420415433\\stressed\\scheduling-trace.json",
+      "heartbeatMs": 387.7588,
+      "beginMs": 5818.065100000001,
+      "endMs": 6205.8239,
+      "readyQueueMs": 357.5741000000007,
+      "completedCallbackUnionMs": 50.07810000000063,
+      "longestCallbackMs": 5.038499999999658,
+      "longestCallback": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+      "callbackCount": 119,
+      "gcMarks": [],
+      "dropped": 0,
+      "os": [
+        {
+          "t": 5569.3948,
+          "hostCpuMs": 8750,
+          "uiCpuMs": 3328.125,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 371895952,
+          "gen0": 10,
+          "gen1": 8,
+          "gen2": 5,
+          "gcIndex": 10,
+          "gcPausesMs": [
+            12.65,
+            0
+          ],
+          "heapBytes": 75011848,
+          "lohBytes": 41955744,
+          "browser": [],
+          "samplerMs": 3.4443
+        },
+        {
+          "t": 5823.1023,
+          "hostCpuMs": 8906.25,
+          "uiCpuMs": 3375,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 372649544,
+          "gen0": 10,
+          "gen1": 8,
+          "gen2": 5,
+          "gcIndex": 10,
+          "gcPausesMs": [
+            12.65,
+            0
+          ],
+          "heapBytes": 75011848,
+          "lohBytes": 41955744,
+          "browser": [],
+          "samplerMs": 3.5313
+        },
+        {
+          "t": 6076.5162,
+          "hostCpuMs": 8984.375,
+          "uiCpuMs": 3390.625,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 373319120,
+          "gen0": 10,
+          "gen1": 8,
+          "gen2": 5,
+          "gcIndex": 10,
+          "gcPausesMs": [
+            12.65,
+            0
+          ],
+          "heapBytes": 75011848,
+          "lohBytes": 41955744,
+          "browser": [],
+          "samplerMs": 3.8812
+        },
+        {
+          "t": 6329.4654,
+          "hostCpuMs": 9046.875,
+          "uiCpuMs": 3390.625,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 374040664,
+          "gen0": 10,
+          "gen1": 8,
+          "gen2": 5,
+          "gcIndex": 10,
+          "gcPausesMs": [
+            12.65,
+            0
+          ],
+          "heapBytes": 75011848,
+          "lohBytes": 41955744,
+          "browser": [],
+          "samplerMs": 3.3312
+        }
+      ]
+    },
+    {
+      "run": "contention-2-T2",
+      "arm": "baseline",
+      "trace": "contention-2-T2\\contention-0c3cefaf9f414c3aa0beff5a5be2e4c5\\baseline\\scheduling-trace.json",
+      "heartbeatMs": 245.4435,
+      "beginMs": 7383.065299999999,
+      "endMs": 7628.5088,
+      "readyQueueMs": 215.08329999999933,
+      "completedCallbackUnionMs": 41.641099999999824,
+      "longestCallbackMs": 8.257300000000214,
+      "longestCallback": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+      "callbackCount": 75,
+      "gcMarks": [],
+      "dropped": 0,
+      "os": [
+        {
+          "t": 7341.7101,
+          "hostCpuMs": 7156.25,
+          "uiCpuMs": 2890.625,
+          "uiState": "Wait",
+          "waitReason": "Executive",
+          "allocatedBytes": 328915496,
+          "gen0": 10,
+          "gen1": 8,
+          "gen2": 5,
+          "gcIndex": 10,
+          "gcPausesMs": [
+            12.838,
+            0
+          ],
+          "heapBytes": 74964760,
+          "lohBytes": 41955744,
+          "browser": [],
+          "samplerMs": 1.781
+        },
+        {
+          "t": 7593.4199,
+          "hostCpuMs": 7234.375,
+          "uiCpuMs": 2921.875,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 329615416,
+          "gen0": 10,
+          "gen1": 8,
+          "gen2": 5,
+          "gcIndex": 10,
+          "gcPausesMs": [
+            12.838,
+            0
+          ],
+          "heapBytes": 74964760,
+          "lohBytes": 41955744,
+          "browser": [],
+          "samplerMs": 2.2986
+        },
+        {
+          "t": 7845.405,
+          "hostCpuMs": 7250,
+          "uiCpuMs": 2937.5,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 330349488,
+          "gen0": 10,
+          "gen1": 8,
+          "gen2": 5,
+          "gcIndex": 10,
+          "gcPausesMs": [
+            12.838,
+            0
+          ],
+          "heapBytes": 74964760,
+          "lohBytes": 41955744,
+          "browser": [],
+          "samplerMs": 1.7185
+        }
+      ]
+    },
+    {
+      "run": "contention-2-T2",
+      "arm": "stressed",
+      "trace": "contention-2-T2\\contention-0c3cefaf9f414c3aa0beff5a5be2e4c5\\stressed\\scheduling-trace.json",
+      "heartbeatMs": 400.1605,
+      "beginMs": 2271.6718,
+      "endMs": 2671.8323,
+      "readyQueueMs": 367.7139000000002,
+      "completedCallbackUnionMs": 52.90960000000405,
+      "longestCallbackMs": 8.008700000000317,
+      "longestCallback": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+      "callbackCount": 120,
+      "gcMarks": [],
+      "dropped": 0,
+      "os": [
+        {
+          "t": 2031.8213,
+          "hostCpuMs": 8187.5,
+          "uiCpuMs": 3265.625,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 362283384,
+          "gen0": 10,
+          "gen1": 8,
+          "gen2": 5,
+          "gcIndex": 10,
+          "gcPausesMs": [
+            12.838,
+            0
+          ],
+          "heapBytes": 74964760,
+          "lohBytes": 41955744,
+          "browser": [],
+          "samplerMs": 3.5928
+        },
+        {
+          "t": 2284.4532,
+          "hostCpuMs": 8281.25,
+          "uiCpuMs": 3281.25,
+          "uiState": "Wait",
+          "waitReason": "Executive",
+          "allocatedBytes": 362988760,
+          "gen0": 10,
+          "gen1": 8,
+          "gen2": 5,
+          "gcIndex": 10,
+          "gcPausesMs": [
+            12.838,
+            0
+          ],
+          "heapBytes": 74964760,
+          "lohBytes": 41955744,
+          "browser": [],
+          "samplerMs": 3.2889
+        },
+        {
+          "t": 2538.5893,
+          "hostCpuMs": 8390.625,
+          "uiCpuMs": 3296.875,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 364046824,
+          "gen0": 10,
+          "gen1": 8,
+          "gen2": 5,
+          "gcIndex": 10,
+          "gcPausesMs": [
+            12.838,
+            0
+          ],
+          "heapBytes": 74964760,
+          "lohBytes": 41955744,
+          "browser": [],
+          "samplerMs": 4.1883
+        },
+        {
+          "t": 2791.077,
+          "hostCpuMs": 8453.125,
+          "uiCpuMs": 3296.875,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 364701736,
+          "gen0": 10,
+          "gen1": 8,
+          "gen2": 5,
+          "gcIndex": 10,
+          "gcPausesMs": [
+            12.838,
+            0
+          ],
+          "heapBytes": 74964760,
+          "lohBytes": 41955744,
+          "browser": [],
+          "samplerMs": 3.0004
+        }
+      ]
+    },
+    {
+      "run": "contention-3-T1",
+      "arm": "baseline",
+      "trace": "contention-3-T1\\contention-ae25f5e4ab9e43ffbbb531505df0442c\\baseline\\scheduling-trace.json",
+      "heartbeatMs": 324.4734,
+      "beginMs": 8195.3931,
+      "endMs": 8519.8665,
+      "readyQueueMs": 294.14600000000064,
+      "completedCallbackUnionMs": 64.88219999999274,
+      "longestCallbackMs": 29.98070000000007,
+      "longestCallback": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+      "callbackCount": 93,
+      "gcMarks": [],
+      "dropped": 0,
+      "os": [
+        {
+          "t": 8114.1859,
+          "hostCpuMs": 7890.625,
+          "uiCpuMs": 3265.625,
+          "uiState": "Running",
+          "waitReason": null,
+          "allocatedBytes": 329911672,
+          "gen0": 10,
+          "gen1": 8,
+          "gen2": 5,
+          "gcIndex": 10,
+          "gcPausesMs": [
+            12.956,
+            0
+          ],
+          "heapBytes": 74454848,
+          "lohBytes": 41955744,
+          "browser": [],
+          "samplerMs": 2.082
+        },
+        {
+          "t": 8367.0344,
+          "hostCpuMs": 7968.75,
+          "uiCpuMs": 3281.25,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 330618592,
+          "gen0": 10,
+          "gen1": 8,
+          "gen2": 5,
+          "gcIndex": 10,
+          "gcPausesMs": [
+            12.956,
+            0
+          ],
+          "heapBytes": 74454848,
+          "lohBytes": 41955744,
+          "browser": [],
+          "samplerMs": 2.2959
+        },
+        {
+          "t": 8617.9936,
+          "hostCpuMs": 8031.25,
+          "uiCpuMs": 3312.5,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 336874224,
+          "gen0": 10,
+          "gen1": 8,
+          "gen2": 5,
+          "gcIndex": 10,
+          "gcPausesMs": [
+            12.956,
+            0
+          ],
+          "heapBytes": 74454848,
+          "lohBytes": 41955744,
+          "browser": [],
+          "samplerMs": 2.0334
+        }
+      ]
+    },
+    {
+      "run": "contention-3-T1",
+      "arm": "stressed",
+      "trace": "contention-3-T1\\contention-ae25f5e4ab9e43ffbbb531505df0442c\\stressed\\scheduling-trace.json",
+      "heartbeatMs": 284.7424,
+      "beginMs": 2218.5398,
+      "endMs": 2503.2822,
+      "readyQueueMs": 259.2238000000002,
+      "completedCallbackUnionMs": 32.49570000000131,
+      "longestCallbackMs": 4.918799999999919,
+      "longestCallback": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+      "callbackCount": 89,
+      "gcMarks": [],
+      "dropped": 0,
+      "os": [
+        {
+          "t": 2024.3505,
+          "hostCpuMs": 8890.625,
+          "uiCpuMs": 3593.75,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 361472504,
+          "gen0": 10,
+          "gen1": 8,
+          "gen2": 5,
+          "gcIndex": 10,
+          "gcPausesMs": [
+            12.956,
+            0
+          ],
+          "heapBytes": 74454848,
+          "lohBytes": 41955744,
+          "browser": [],
+          "samplerMs": 4.4627
+        },
+        {
+          "t": 2278.8826,
+          "hostCpuMs": 8921.875,
+          "uiCpuMs": 3625,
+          "uiState": "Running",
+          "waitReason": null,
+          "allocatedBytes": 362122176,
+          "gen0": 10,
+          "gen1": 8,
+          "gen2": 5,
+          "gcIndex": 10,
+          "gcPausesMs": [
+            12.956,
+            0
+          ],
+          "heapBytes": 74454848,
+          "lohBytes": 41955744,
+          "browser": [],
+          "samplerMs": 4.3541
+        },
+        {
+          "t": 2532.3873,
+          "hostCpuMs": 8968.75,
+          "uiCpuMs": 3625,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 363200304,
+          "gen0": 10,
+          "gen1": 8,
+          "gen2": 5,
+          "gcIndex": 10,
+          "gcPausesMs": [
+            12.956,
+            0
+          ],
+          "heapBytes": 74454848,
+          "lohBytes": 41955744,
+          "browser": [],
+          "samplerMs": 3.8544
+        }
+      ]
+    },
+    {
+      "run": "contention-4-T1",
+      "arm": "baseline",
+      "trace": "contention-4-T1\\contention-88375da369af462fa3f9c3768acca873\\baseline\\scheduling-trace.json",
+      "heartbeatMs": 266.9534,
+      "beginMs": 4567.2032,
+      "endMs": 4834.1566,
+      "readyQueueMs": 236.85840000000007,
+      "completedCallbackUnionMs": 35.153000000002066,
+      "longestCallbackMs": 5.359400000000278,
+      "longestCallback": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+      "callbackCount": 81,
+      "gcMarks": [],
+      "dropped": 0,
+      "os": [
+        {
+          "t": 4326.0466,
+          "hostCpuMs": 6296.875,
+          "uiCpuMs": 2656.25,
+          "uiState": "Wait",
+          "waitReason": "Executive",
+          "allocatedBytes": 317306080,
+          "gen0": 10,
+          "gen1": 8,
+          "gen2": 5,
+          "gcIndex": 10,
+          "gcPausesMs": [
+            13.188,
+            0
+          ],
+          "heapBytes": 75121952,
+          "lohBytes": 41955744,
+          "browser": [],
+          "samplerMs": 3.559
+        },
+        {
+          "t": 4579.9514,
+          "hostCpuMs": 6578.125,
+          "uiCpuMs": 2718.75,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 317947264,
+          "gen0": 10,
+          "gen1": 8,
+          "gen2": 5,
+          "gcIndex": 10,
+          "gcPausesMs": [
+            13.188,
+            0
+          ],
+          "heapBytes": 75121952,
+          "lohBytes": 41955744,
+          "browser": [],
+          "samplerMs": 4.4093
+        },
+        {
+          "t": 4832.856,
+          "hostCpuMs": 6718.75,
+          "uiCpuMs": 2750,
+          "uiState": "Wait",
+          "waitReason": "Executive",
+          "allocatedBytes": 318608304,
+          "gen0": 10,
+          "gen1": 8,
+          "gen2": 5,
+          "gcIndex": 10,
+          "gcPausesMs": [
+            13.188,
+            0
+          ],
+          "heapBytes": 75121952,
+          "lohBytes": 41955744,
+          "browser": [],
+          "samplerMs": 3.8648
+        }
+      ]
+    },
+    {
+      "run": "contention-4-T1",
+      "arm": "stressed",
+      "trace": "contention-4-T1\\contention-88375da369af462fa3f9c3768acca873\\stressed\\scheduling-trace.json",
+      "heartbeatMs": 267.1484,
+      "beginMs": 5612.1984,
+      "endMs": 5879.3468,
+      "readyQueueMs": 249.21660000000065,
+      "completedCallbackUnionMs": 30.593400000003385,
+      "longestCallbackMs": 2.8231000000005224,
+      "longestCallback": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+      "callbackCount": 83,
+      "gcMarks": [],
+      "dropped": 0,
+      "os": [
+        {
+          "t": 5565.7792,
+          "hostCpuMs": 9109.375,
+          "uiCpuMs": 3531.25,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 371410128,
+          "gen0": 10,
+          "gen1": 8,
+          "gen2": 5,
+          "gcIndex": 10,
+          "gcPausesMs": [
+            13.188,
+            0
+          ],
+          "heapBytes": 75121952,
+          "lohBytes": 41955744,
+          "browser": [],
+          "samplerMs": 2.8694
+        },
+        {
+          "t": 5819.2467,
+          "hostCpuMs": 9203.125,
+          "uiCpuMs": 3546.875,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 372114600,
+          "gen0": 10,
+          "gen1": 8,
+          "gen2": 5,
+          "gcIndex": 10,
+          "gcPausesMs": [
+            13.188,
+            0
+          ],
+          "heapBytes": 75121952,
+          "lohBytes": 41955744,
+          "browser": [],
+          "samplerMs": 3.1654
+        },
+        {
+          "t": 6072.6527,
+          "hostCpuMs": 9281.25,
+          "uiCpuMs": 3578.125,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 372832600,
+          "gen0": 10,
+          "gen1": 8,
+          "gen2": 5,
+          "gcIndex": 10,
+          "gcPausesMs": [
+            13.188,
+            0
+          ],
+          "heapBytes": 75121952,
+          "lohBytes": 41955744,
+          "browser": [],
+          "samplerMs": 2.4053
+        }
+      ]
+    },
+    {
+      "run": "contention-5-T2",
+      "arm": "baseline",
+      "trace": "contention-5-T2\\contention-1cb974fb7a0b42a9bbfd3ba7a7335952\\baseline\\scheduling-trace.json",
+      "heartbeatMs": 329.1395,
+      "beginMs": 6515.9996,
+      "endMs": 6845.1391,
+      "readyQueueMs": 309.71160000000054,
+      "completedCallbackUnionMs": 39.70930000000499,
+      "longestCallbackMs": 4.882400000000416,
+      "longestCallback": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+      "callbackCount": 99,
+      "gcMarks": [],
+      "dropped": 0,
+      "os": [
+        {
+          "t": 6341.163,
+          "hostCpuMs": 6984.375,
+          "uiCpuMs": 2765.625,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 325692248,
+          "gen0": 10,
+          "gen1": 8,
+          "gen2": 5,
+          "gcIndex": 10,
+          "gcPausesMs": [
+            12.636,
+            0
+          ],
+          "heapBytes": 74409248,
+          "lohBytes": 41955744,
+          "browser": [],
+          "samplerMs": 3.1613
+        },
+        {
+          "t": 6593.9415,
+          "hostCpuMs": 7031.25,
+          "uiCpuMs": 2765.625,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 326421008,
+          "gen0": 10,
+          "gen1": 8,
+          "gen2": 5,
+          "gcIndex": 10,
+          "gcPausesMs": [
+            12.636,
+            0
+          ],
+          "heapBytes": 74409248,
+          "lohBytes": 41955744,
+          "browser": [],
+          "samplerMs": 2.6011
+        },
+        {
+          "t": 6846.8553,
+          "hostCpuMs": 7062.5,
+          "uiCpuMs": 2781.25,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 327073128,
+          "gen0": 10,
+          "gen1": 8,
+          "gen2": 5,
+          "gcIndex": 10,
+          "gcPausesMs": [
+            12.636,
+            0
+          ],
+          "heapBytes": 74409248,
+          "lohBytes": 41955744,
+          "browser": [],
+          "samplerMs": 3.0846
+        }
+      ]
+    },
+    {
+      "run": "contention-5-T2",
+      "arm": "stressed",
+      "trace": "contention-5-T2\\contention-1cb974fb7a0b42a9bbfd3ba7a7335952\\stressed\\scheduling-trace.json",
+      "heartbeatMs": 345.8824,
+      "beginMs": 7853.036599999999,
+      "endMs": 8198.919,
+      "readyQueueMs": 319.9260999999997,
+      "completedCallbackUnionMs": 65.81029999999828,
+      "longestCallbackMs": 21.328199999999924,
+      "longestCallback": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+      "callbackCount": 99,
+      "gcMarks": [
+        {
+          "t": 7985.5854,
+          "kind": "gc",
+          "id": 0,
+          "name": "GCSuspendEEBegin_V1",
+          "priority": 0,
+          "value": 0,
+          "thread": 14
+        },
+        {
+          "t": 7985.5865,
+          "kind": "gc",
+          "id": 0,
+          "name": "GCSuspendEEEnd_V1",
+          "priority": 0,
+          "value": 0,
+          "thread": 14
+        },
+        {
+          "t": 7985.5887,
+          "kind": "gc",
+          "id": 0,
+          "name": "GCStart_V2",
+          "priority": 0,
+          "value": 0,
+          "thread": 14
+        },
+        {
+          "t": 7985.5966,
+          "kind": "gc",
+          "id": 0,
+          "name": "GCEnd_V1",
+          "priority": 0,
+          "value": 0,
+          "thread": 14
+        },
+        {
+          "t": 7985.5983,
+          "kind": "gc",
+          "id": 0,
+          "name": "GCRestartEEBegin_V1",
+          "priority": 0,
+          "value": 0,
+          "thread": 14
+        },
+        {
+          "t": 7985.5987,
+          "kind": "gc",
+          "id": 0,
+          "name": "GCRestartEEEnd_V1",
+          "priority": 0,
+          "value": 0,
+          "thread": 14
+        }
+      ],
+      "dropped": 0,
+      "os": [
+        {
+          "t": 7844.9203,
+          "hostCpuMs": 9968.75,
+          "uiCpuMs": 3640.625,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 380975432,
+          "gen0": 10,
+          "gen1": 8,
+          "gen2": 5,
+          "gcIndex": 10,
+          "gcPausesMs": [
+            12.636,
+            0
+          ],
+          "heapBytes": 74409248,
+          "lohBytes": 41955744,
+          "browser": [],
+          "samplerMs": 2.8744
+        },
+        {
+          "t": 8097.935,
+          "hostCpuMs": 10046.875,
+          "uiCpuMs": 3656.25,
+          "uiState": "Wait",
+          "waitReason": "Executive",
+          "allocatedBytes": 381695912,
+          "gen0": 11,
+          "gen1": 8,
+          "gen2": 5,
+          "gcIndex": 11,
+          "gcPausesMs": [
+            13.297,
+            0
+          ],
+          "heapBytes": 83686656,
+          "lohBytes": 47338384,
+          "browser": [],
+          "samplerMs": 4.0738
+        },
+        {
+          "t": 8350.8048,
+          "hostCpuMs": 10109.375,
+          "uiCpuMs": 3671.875,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 387993472,
+          "gen0": 11,
+          "gen1": 8,
+          "gen2": 5,
+          "gcIndex": 11,
+          "gcPausesMs": [
+            13.297,
+            0
+          ],
+          "heapBytes": 83686656,
+          "lohBytes": 47338384,
+          "browser": [],
+          "samplerMs": 2.4147
+        }
+      ]
+    }
+  ],
+  "limitations": "Dispatcher callback envelopes are not CPU durations. Remaining time includes unhooked native/COM dispatch and OS scheduling; this does not identify the particular Win32 message stream. Original 513.2116ms run had no detailed trace and cannot be retrospectively attributed to one exact message."
+}

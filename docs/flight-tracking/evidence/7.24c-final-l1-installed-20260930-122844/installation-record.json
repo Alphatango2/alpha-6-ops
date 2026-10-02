@@ -1,0 +1,16 @@
+{
+  "recordedAtUtc": "2026-09-30T17:28:44.1359669+00:00",
+  "buildId": "S4-7.24C-FINAL-L1-20260930-318659425b88",
+  "installationDirectory": "C:/Users/DanniBaLs/AppData/Local/Alpha6Designs/Alpha6OPSPreview",
+  "payloadFiles": 514,
+  "matched": 514,
+  "failed": 0,
+  "status": "PASS",
+  "screenshotSha256": "003AB9E425A5B432D67E60DF65863C7D9AAAE70E026978850BD2948E2DEA6156",
+  "installerReported": "Upgrade complete. Existing logs and settings preserved.",
+  "profilePreservation": "Installer-reported; this verification does not independently assert all profile bytes unchanged.",
+  "scope": "Read-only installed payload verification. No app launch, simulator connection, rebuild, code change or new flight.",
+  "frozenT2AndL1Modified": false,
+  "checkpoint": "7.24C PASS / CLOSED",
+  "evidenceDirectory": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\docs\\flight-tracking\\evidence\\7.24c-final-l1-installed-20260930-122844"
+}

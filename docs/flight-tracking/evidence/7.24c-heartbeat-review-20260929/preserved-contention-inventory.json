@@ -1,0 +1,1622 @@
+[
+  {
+    "path": "work\\checkpoint-7.24c\\input-gate-20260929\\contention-0-T1\\contention.json",
+    "sha256": "2bfed33fecc66d88693da23f5aa49347f2b48f53b6b79fc9ad3bd28f1a70412d",
+    "baseline": 450.8502,
+    "stress": 200.5083,
+    "limit": 550.8502,
+    "passed": true,
+    "sampleCounts": [
+      395,
+      395
+    ],
+    "traced": true,
+    "raw": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\input-gate-20260929\\contention-0-T1\\contention-b9d78ad912054dbeb07a062fe849cf83",
+    "bridge": {
+      "produced": 41,
+      "offered": 41,
+      "coalesced": 6,
+      "acknowledged": 35,
+      "pending": false,
+      "rejected": 0,
+      "lastPayloadBytes": 2113,
+      "readyMs": 637.5659,
+      "projectionQueue": {
+        "offered": 395,
+        "coalesced": 354,
+        "consumed": 41,
+        "pending": false
+      },
+      "projectionMs": {
+        "count": 41,
+        "mean": 0.04720243902439025,
+        "p50": 0.0383,
+        "p95": 0.0983,
+        "p99": 0.1162,
+        "max": 0.1223
+      },
+      "serializationMs": {
+        "count": 35,
+        "mean": 0.07073999999999998,
+        "p50": 0.0644,
+        "p95": 0.1041,
+        "p99": 0.1226,
+        "max": 0.1392
+      },
+      "dispatcherQueueMs": {
+        "count": 35,
+        "mean": 0.22520000000000004,
+        "p50": 0.043,
+        "p95": 1.1213,
+        "p99": 1.5433,
+        "max": 2.172
+      },
+      "postMs": {
+        "count": 35,
+        "mean": 0.09930000000000001,
+        "p50": 0.0959,
+        "p95": 0.1337,
+        "p99": 0.1526,
+        "max": 0.1634
+      },
+      "acknowledgmentMs": {
+        "count": 35,
+        "mean": 41.580197142857145,
+        "p50": 0.4745,
+        "p95": 2.5136,
+        "p99": 9.011,
+        "max": 1423.8043
+      },
+      "postToAcknowledgmentMs": {
+        "count": 35,
+        "mean": 41.35494,
+        "p50": 0.3977,
+        "p95": 0.887,
+        "p99": 8.9819,
+        "max": 1423.7645
+      }
+    },
+    "sameTimeline": true,
+    "sameEvents": true,
+    "samePirep": true
+  },
+  {
+    "path": "work\\checkpoint-7.24c\\input-gate-20260929\\contention-1-T2\\contention.json",
+    "sha256": "ae9facc5b73220df914047e94f2c4340c9e16442543734f6602b196b16274766",
+    "baseline": 325.6709,
+    "stress": 387.7588,
+    "limit": 425.6709,
+    "passed": true,
+    "sampleCounts": [
+      395,
+      395
+    ],
+    "traced": true,
+    "raw": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\input-gate-20260929\\contention-1-T2\\contention-130619ed44fa443e8801992420415433",
+    "bridge": {
+      "produced": 41,
+      "offered": 41,
+      "coalesced": 6,
+      "acknowledged": 35,
+      "pending": false,
+      "rejected": 0,
+      "lastPayloadBytes": 2114,
+      "readyMs": 611.6334,
+      "projectionQueue": {
+        "offered": 395,
+        "coalesced": 354,
+        "consumed": 41,
+        "pending": false
+      },
+      "projectionMs": {
+        "count": 41,
+        "mean": 0.041573170731707326,
+        "p50": 0.0374,
+        "p95": 0.0619,
+        "p99": 0.0886,
+        "max": 0.1383
+      },
+      "serializationMs": {
+        "count": 35,
+        "mean": 0.07091714285714286,
+        "p50": 0.064,
+        "p95": 0.0941,
+        "p99": 0.0976,
+        "max": 0.1879
+      },
+      "dispatcherQueueMs": {
+        "count": 35,
+        "mean": 0.8263885714285714,
+        "p50": 0.0442,
+        "p95": 2.347,
+        "p99": 3.3946,
+        "max": 11.7656
+      },
+      "postMs": {
+        "count": 35,
+        "mean": 0.09496857142857143,
+        "p50": 0.0913,
+        "p95": 0.1157,
+        "p99": 0.1291,
+        "max": 0.1319
+      },
+      "acknowledgmentMs": {
+        "count": 35,
+        "mean": 42.094797142857146,
+        "p50": 0.4734,
+        "p95": 12.1339,
+        "p99": 13.3574,
+        "max": 1420.7462
+      },
+      "postToAcknowledgmentMs": {
+        "count": 35,
+        "mean": 41.26837142857143,
+        "p50": 0.3857,
+        "p95": 0.8245,
+        "p99": 9.9627,
+        "max": 1420.7018
+      }
+    },
+    "sameTimeline": true,
+    "sameEvents": true,
+    "samePirep": true
+  },
+  {
+    "path": "work\\checkpoint-7.24c\\input-gate-20260929\\contention-2-T2\\contention.json",
+    "sha256": "d77110627d683af965ce9218ed9d3d2197ab1bd70b3b66ed525a7f11ad26dd41",
+    "baseline": 245.4435,
+    "stress": 400.1605,
+    "limit": 345.4435,
+    "passed": false,
+    "sampleCounts": [
+      395,
+      395
+    ],
+    "traced": true,
+    "raw": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\input-gate-20260929\\contention-2-T2\\contention-0c3cefaf9f414c3aa0beff5a5be2e4c5",
+    "bridge": {
+      "produced": 41,
+      "offered": 41,
+      "coalesced": 6,
+      "acknowledged": 35,
+      "pending": false,
+      "rejected": 0,
+      "lastPayloadBytes": 2113,
+      "readyMs": 606.8769,
+      "projectionQueue": {
+        "offered": 395,
+        "coalesced": 354,
+        "consumed": 41,
+        "pending": false
+      },
+      "projectionMs": {
+        "count": 41,
+        "mean": 0.055709756097560965,
+        "p50": 0.0535,
+        "p95": 0.0816,
+        "p99": 0.1113,
+        "max": 0.154
+      },
+      "serializationMs": {
+        "count": 35,
+        "mean": 0.072,
+        "p50": 0.0696,
+        "p95": 0.0832,
+        "p99": 0.1068,
+        "max": 0.179
+      },
+      "dispatcherQueueMs": {
+        "count": 35,
+        "mean": 0.7350057142857143,
+        "p50": 0.0379,
+        "p95": 1.9968,
+        "p99": 7.8827,
+        "max": 10.6543
+      },
+      "postMs": {
+        "count": 35,
+        "mean": 0.09149714285714286,
+        "p50": 0.0868,
+        "p95": 0.1104,
+        "p99": 0.1173,
+        "max": 0.1272
+      },
+      "acknowledgmentMs": {
+        "count": 35,
+        "mean": 41.992219999999996,
+        "p50": 0.4576,
+        "p95": 9.7906,
+        "p99": 11.0283,
+        "max": 1421.2058
+      },
+      "postToAcknowledgmentMs": {
+        "count": 35,
+        "mean": 41.25722285714286,
+        "p50": 0.3775,
+        "p95": 1.0522,
+        "p99": 9.7451,
+        "max": 1421.1678
+      }
+    },
+    "sameTimeline": true,
+    "sameEvents": true,
+    "samePirep": true
+  },
+  {
+    "path": "work\\checkpoint-7.24c\\input-gate-20260929\\contention-3-T1\\contention.json",
+    "sha256": "f608a48668084d0aa99f792bc8b5fcadd41a7951312e430a579acc5c8a8cda89",
+    "baseline": 324.4734,
+    "stress": 284.7424,
+    "limit": 424.4734,
+    "passed": true,
+    "sampleCounts": [
+      395,
+      395
+    ],
+    "traced": true,
+    "raw": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\input-gate-20260929\\contention-3-T1\\contention-ae25f5e4ab9e43ffbbb531505df0442c",
+    "bridge": {
+      "produced": 41,
+      "offered": 41,
+      "coalesced": 6,
+      "acknowledged": 35,
+      "pending": false,
+      "rejected": 0,
+      "lastPayloadBytes": 2111,
+      "readyMs": 608.381,
+      "projectionQueue": {
+        "offered": 395,
+        "coalesced": 354,
+        "consumed": 41,
+        "pending": false
+      },
+      "projectionMs": {
+        "count": 41,
+        "mean": 0.04120975609756097,
+        "p50": 0.0376,
+        "p95": 0.0615,
+        "p99": 0.0685,
+        "max": 0.1232
+      },
+      "serializationMs": {
+        "count": 35,
+        "mean": 0.4246657142857143,
+        "p50": 0.0648,
+        "p95": 0.0892,
+        "p99": 0.1825,
+        "max": 12.5447
+      },
+      "dispatcherQueueMs": {
+        "count": 35,
+        "mean": 0.8898428571428572,
+        "p50": 0.0434,
+        "p95": 2.5048,
+        "p99": 10.769,
+        "max": 13.2079
+      },
+      "postMs": {
+        "count": 35,
+        "mean": 0.09628857142857143,
+        "p50": 0.0944,
+        "p95": 0.1219,
+        "p99": 0.1318,
+        "max": 0.2089
+      },
+      "acknowledgmentMs": {
+        "count": 35,
+        "mean": 41.97984,
+        "p50": 0.4539,
+        "p95": 11.1154,
+        "p99": 15.5741,
+        "max": 1422.1237
+      },
+      "postToAcknowledgmentMs": {
+        "count": 35,
+        "mean": 41.09001428571428,
+        "p50": 0.3981,
+        "p95": 0.9557,
+        "p99": 2.3661,
+        "max": 1422.09
+      }
+    },
+    "sameTimeline": true,
+    "sameEvents": true,
+    "samePirep": true
+  },
+  {
+    "path": "work\\checkpoint-7.24c\\input-gate-20260929\\contention-4-T1\\contention.json",
+    "sha256": "cd3ff22beeb4398efd7e733f37d5f88847b20fa908ab9f86a6a36136892f483c",
+    "baseline": 266.9534,
+    "stress": 267.1484,
+    "limit": 366.9534,
+    "passed": true,
+    "sampleCounts": [
+      395,
+      395
+    ],
+    "traced": true,
+    "raw": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\input-gate-20260929\\contention-4-T1\\contention-88375da369af462fa3f9c3768acca873",
+    "bridge": {
+      "produced": 41,
+      "offered": 41,
+      "coalesced": 6,
+      "acknowledged": 35,
+      "pending": false,
+      "rejected": 0,
+      "lastPayloadBytes": 2112,
+      "readyMs": 583.8964,
+      "projectionQueue": {
+        "offered": 395,
+        "coalesced": 354,
+        "consumed": 41,
+        "pending": false
+      },
+      "projectionMs": {
+        "count": 41,
+        "mean": 0.06415365853658538,
+        "p50": 0.0601,
+        "p95": 0.1072,
+        "p99": 0.157,
+        "max": 0.1768
+      },
+      "serializationMs": {
+        "count": 35,
+        "mean": 0.07133142857142859,
+        "p50": 0.0659,
+        "p95": 0.0943,
+        "p99": 0.1522,
+        "max": 0.1612
+      },
+      "dispatcherQueueMs": {
+        "count": 35,
+        "mean": 0.2645914285714286,
+        "p50": 0.0438,
+        "p95": 1.416,
+        "p99": 2.0109,
+        "max": 2.0972
+      },
+      "postMs": {
+        "count": 35,
+        "mean": 0.09614571428571429,
+        "p50": 0.091,
+        "p95": 0.108,
+        "p99": 0.1895,
+        "max": 0.2617
+      },
+      "acknowledgmentMs": {
+        "count": 35,
+        "mean": 41.659371428571426,
+        "p50": 0.4765,
+        "p95": 2.4845,
+        "p99": 11.1859,
+        "max": 1424.0144
+      },
+      "postToAcknowledgmentMs": {
+        "count": 35,
+        "mean": 41.39479142857142,
+        "p50": 0.4035,
+        "p95": 0.8942,
+        "p99": 11.1607,
+        "max": 1423.9758
+      }
+    },
+    "sameTimeline": true,
+    "sameEvents": true,
+    "samePirep": true
+  },
+  {
+    "path": "work\\checkpoint-7.24c\\input-gate-20260929\\contention-5-T2\\contention.json",
+    "sha256": "f66bc6210e1dbf6f48007e1638643364f951d5486e63d5d217882cd5befbb0fa",
+    "baseline": 329.1395,
+    "stress": 345.8824,
+    "limit": 429.1395,
+    "passed": true,
+    "sampleCounts": [
+      395,
+      395
+    ],
+    "traced": true,
+    "raw": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\input-gate-20260929\\contention-5-T2\\contention-1cb974fb7a0b42a9bbfd3ba7a7335952",
+    "bridge": {
+      "produced": 41,
+      "offered": 41,
+      "coalesced": 6,
+      "acknowledged": 35,
+      "pending": false,
+      "rejected": 0,
+      "lastPayloadBytes": 2113,
+      "readyMs": 606.1448,
+      "projectionQueue": {
+        "offered": 395,
+        "coalesced": 354,
+        "consumed": 41,
+        "pending": false
+      },
+      "projectionMs": {
+        "count": 41,
+        "mean": 0.05087560975609756,
+        "p50": 0.0482,
+        "p95": 0.1114,
+        "p99": 0.1224,
+        "max": 0.1462
+      },
+      "serializationMs": {
+        "count": 35,
+        "mean": 0.06634000000000001,
+        "p50": 0.0646,
+        "p95": 0.0889,
+        "p99": 0.0928,
+        "max": 0.0931
+      },
+      "dispatcherQueueMs": {
+        "count": 35,
+        "mean": 0.6403028571428572,
+        "p50": 0.0419,
+        "p95": 2.1317,
+        "p99": 5.7641,
+        "max": 9.4578
+      },
+      "postMs": {
+        "count": 35,
+        "mean": 0.08989714285714287,
+        "p50": 0.0849,
+        "p95": 0.1145,
+        "p99": 0.1168,
+        "max": 0.1323
+      },
+      "acknowledgmentMs": {
+        "count": 35,
+        "mean": 41.96165428571429,
+        "p50": 0.447,
+        "p95": 9.4854,
+        "p99": 9.8069,
+        "max": 1423.1582
+      },
+      "postToAcknowledgmentMs": {
+        "count": 35,
+        "mean": 41.32127714285715,
+        "p50": 0.3669,
+        "p95": 0.84,
+        "p99": 9.4541,
+        "max": 1423.1201
+      }
+    },
+    "sameTimeline": true,
+    "sameEvents": true,
+    "samePirep": true
+  },
+  {
+    "path": "work\\checkpoint-7.24c\\input-gate-20260929\\frozen-full-3\\contention.json",
+    "sha256": "dc272ee03dd8e971748ab19240d73e913b946b4acae1f8392c6fb5eeab783b91",
+    "baseline": 229.8059,
+    "stress": 245.8813,
+    "limit": 329.8059,
+    "passed": true,
+    "sampleCounts": [
+      395,
+      395
+    ],
+    "traced": false,
+    "raw": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\input-gate-20260929\\frozen-full-3\\contention-acc597c65a7045658ce8fa39781eafe8",
+    "bridge": {
+      "produced": 40,
+      "offered": 40,
+      "coalesced": 6,
+      "acknowledged": 34,
+      "pending": false,
+      "rejected": 0,
+      "lastPayloadBytes": 2111,
+      "readyMs": 1671.4529,
+      "projectionQueue": {
+        "offered": 395,
+        "coalesced": 355,
+        "consumed": 40,
+        "pending": false
+      },
+      "projectionMs": {
+        "count": 40,
+        "mean": 0.0523975,
+        "p50": 0.0424,
+        "p95": 0.089,
+        "p99": 0.1329,
+        "max": 0.1332
+      },
+      "serializationMs": {
+        "count": 34,
+        "mean": 0.047394117647058816,
+        "p50": 0.0444,
+        "p95": 0.0593,
+        "p99": 0.0616,
+        "max": 0.0733
+      },
+      "dispatcherQueueMs": {
+        "count": 34,
+        "mean": 0.45070882352941183,
+        "p50": 0.0313,
+        "p95": 2.1123,
+        "p99": 2.3991,
+        "max": 4.9659
+      },
+      "postMs": {
+        "count": 34,
+        "mean": 0.09116470588235293,
+        "p50": 0.0856,
+        "p95": 0.113,
+        "p99": 0.1316,
+        "max": 0.2114
+      },
+      "acknowledgmentMs": {
+        "count": 34,
+        "mean": 42.63427647058823,
+        "p50": 0.4048,
+        "p95": 2.8375,
+        "p99": 5.3467,
+        "max": 1421.7181
+      },
+      "postToAcknowledgmentMs": {
+        "count": 34,
+        "mean": 42.18377058823529,
+        "p50": 0.3465,
+        "p95": 0.5771,
+        "p99": 0.9254,
+        "max": 1421.6809
+      }
+    },
+    "sameTimeline": true,
+    "sameEvents": true,
+    "samePirep": true
+  },
+  {
+    "path": "work\\checkpoint-7.24c\\input-gate-20260929\\instrumented-original\\contention.json",
+    "sha256": "045085bc720329f7aaf6e8c9457e5a58113eefa6152559897ec7b51536bfee71",
+    "baseline": 183.8955,
+    "stress": 134.1688,
+    "limit": 283.89549999999997,
+    "passed": true,
+    "sampleCounts": [
+      395,
+      395
+    ],
+    "traced": true,
+    "raw": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\input-gate-20260929\\instrumented-original\\contention-e841e215bba94c8fb1289c3bf153ea1b",
+    "bridge": {
+      "produced": 40,
+      "offered": 40,
+      "coalesced": 6,
+      "acknowledged": 34,
+      "pending": false,
+      "rejected": 0,
+      "lastPayloadBytes": 2113,
+      "readyMs": 590.3475,
+      "projectionQueue": {
+        "offered": 395,
+        "coalesced": 355,
+        "consumed": 40,
+        "pending": false
+      },
+      "projectionMs": {
+        "count": 40,
+        "mean": 0.04126999999999999,
+        "p50": 0.0374,
+        "p95": 0.0695,
+        "p99": 0.0747,
+        "max": 0.0776
+      },
+      "serializationMs": {
+        "count": 34,
+        "mean": 0.05316176470588235,
+        "p50": 0.0526,
+        "p95": 0.0617,
+        "p99": 0.0656,
+        "max": 0.0775
+      },
+      "dispatcherQueueMs": {
+        "count": 34,
+        "mean": 0.03731176470588235,
+        "p50": 0.0362,
+        "p95": 0.0423,
+        "p99": 0.0441,
+        "max": 0.0572
+      },
+      "postMs": {
+        "count": 34,
+        "mean": 0.10389117647058822,
+        "p50": 0.1036,
+        "p95": 0.121,
+        "p99": 0.1224,
+        "max": 0.1309
+      },
+      "acknowledgmentMs": {
+        "count": 34,
+        "mean": 42.31256176470588,
+        "p50": 0.4605,
+        "p95": 0.552,
+        "p99": 0.6057,
+        "max": 1423.3951
+      },
+      "postToAcknowledgmentMs": {
+        "count": 34,
+        "mean": 42.27538529411765,
+        "p50": 0.4246,
+        "p95": 0.5098,
+        "p99": 0.5704,
+        "max": 1423.363
+      }
+    },
+    "sameTimeline": true,
+    "sameEvents": true,
+    "samePirep": true
+  },
+  {
+    "path": "work\\checkpoint-7.24c\\input-gate-20260929\\raw-move-full-1\\contention.json",
+    "sha256": "13ce78da1d9383018d500ab1422355ffbb03de0441b7855edb56230b589eecfe",
+    "baseline": 225.8726,
+    "stress": 267.7007,
+    "limit": 325.87260000000003,
+    "passed": true,
+    "sampleCounts": [
+      395,
+      395
+    ],
+    "traced": false,
+    "raw": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\input-gate-20260929\\raw-move-full-1\\contention-007697c2652d4eba90c5d68f0abf924c",
+    "bridge": {
+      "produced": 41,
+      "offered": 41,
+      "coalesced": 6,
+      "acknowledged": 35,
+      "pending": false,
+      "rejected": 0,
+      "lastPayloadBytes": 2112,
+      "readyMs": 590.5047,
+      "projectionQueue": {
+        "offered": 395,
+        "coalesced": 354,
+        "consumed": 41,
+        "pending": false
+      },
+      "projectionMs": {
+        "count": 41,
+        "mean": 0.03629512195121952,
+        "p50": 0.0332,
+        "p95": 0.0705,
+        "p99": 0.0745,
+        "max": 0.0804
+      },
+      "serializationMs": {
+        "count": 35,
+        "mean": 0.04964857142857144,
+        "p50": 0.049,
+        "p95": 0.0588,
+        "p99": 0.0599,
+        "max": 0.0909
+      },
+      "dispatcherQueueMs": {
+        "count": 35,
+        "mean": 0.3013485714285714,
+        "p50": 0.0395,
+        "p95": 1.145,
+        "p99": 1.9189,
+        "max": 4.8878
+      },
+      "postMs": {
+        "count": 35,
+        "mean": 0.09113142857142857,
+        "p50": 0.0911,
+        "p95": 0.1093,
+        "p99": 0.1184,
+        "max": 0.1281
+      },
+      "acknowledgmentMs": {
+        "count": 35,
+        "mean": 41.33174857142857,
+        "p50": 0.4379,
+        "p95": 2.268,
+        "p99": 5.2507,
+        "max": 1423.3859
+      },
+      "postToAcknowledgmentMs": {
+        "count": 35,
+        "mean": 41.03055714285714,
+        "p50": 0.3632,
+        "p95": 0.4628,
+        "p99": 0.592,
+        "max": 1423.3526
+      }
+    },
+    "sameTimeline": true,
+    "sameEvents": true,
+    "samePirep": true
+  },
+  {
+    "path": "work\\checkpoint-7.24c\\input-gate-20260929\\raw-move-full-2\\contention.json",
+    "sha256": "a81bbfd02092abbd03097f4afb913f99fd17975f3a18f08b7b12a7c95b819636",
+    "baseline": 392.7704,
+    "stress": 281.296,
+    "limit": 492.7704,
+    "passed": true,
+    "sampleCounts": [
+      395,
+      395
+    ],
+    "traced": false,
+    "raw": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\input-gate-20260929\\raw-move-full-2\\contention-8727b92a3a3b430ab080320576ead8ca",
+    "bridge": {
+      "produced": 41,
+      "offered": 41,
+      "coalesced": 6,
+      "acknowledged": 35,
+      "pending": false,
+      "rejected": 0,
+      "lastPayloadBytes": 2439,
+      "readyMs": 608.4338,
+      "projectionQueue": {
+        "offered": 395,
+        "coalesced": 354,
+        "consumed": 41,
+        "pending": false
+      },
+      "projectionMs": {
+        "count": 41,
+        "mean": 0.040936585365853664,
+        "p50": 0.037,
+        "p95": 0.0664,
+        "p99": 0.0836,
+        "max": 0.1002
+      },
+      "serializationMs": {
+        "count": 35,
+        "mean": 0.05127714285714286,
+        "p50": 0.0513,
+        "p95": 0.0603,
+        "p99": 0.0639,
+        "max": 0.0688
+      },
+      "dispatcherQueueMs": {
+        "count": 35,
+        "mean": 0.26792,
+        "p50": 0.0421,
+        "p95": 1.1668,
+        "p99": 2.1822,
+        "max": 2.1909
+      },
+      "postMs": {
+        "count": 35,
+        "mean": 0.09670285714285713,
+        "p50": 0.0982,
+        "p95": 0.1279,
+        "p99": 0.1326,
+        "max": 0.1344
+      },
+      "acknowledgmentMs": {
+        "count": 35,
+        "mean": 41.69538571428571,
+        "p50": 0.5077,
+        "p95": 2.5463,
+        "p99": 10.0291,
+        "max": 1425.5453
+      },
+      "postToAcknowledgmentMs": {
+        "count": 35,
+        "mean": 41.42758285714286,
+        "p50": 0.3862,
+        "p95": 1.1032,
+        "p99": 9.9592,
+        "max": 1425.4706
+      }
+    },
+    "sameTimeline": true,
+    "sameEvents": true,
+    "samePirep": true
+  },
+  {
+    "path": "work\\checkpoint-7.24c\\input-gate-20260929\\raw-move-full-3\\contention.json",
+    "sha256": "18fb0e511c3af8d27a1f15fcf9d448b4a5f3d9036e98d8aeae688c3e1a48c9db",
+    "baseline": 308.7285,
+    "stress": 289.8697,
+    "limit": 408.7285,
+    "passed": true,
+    "sampleCounts": [
+      395,
+      395
+    ],
+    "traced": false,
+    "raw": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\input-gate-20260929\\raw-move-full-3\\contention-ff369595bd4f4bc59395e6e110abccc4",
+    "bridge": {
+      "produced": 41,
+      "offered": 41,
+      "coalesced": 6,
+      "acknowledged": 35,
+      "pending": false,
+      "rejected": 0,
+      "lastPayloadBytes": 2439,
+      "readyMs": 592.3429,
+      "projectionQueue": {
+        "offered": 395,
+        "coalesced": 354,
+        "consumed": 41,
+        "pending": false
+      },
+      "projectionMs": {
+        "count": 41,
+        "mean": 0.03715853658536585,
+        "p50": 0.0327,
+        "p95": 0.0665,
+        "p99": 0.0811,
+        "max": 0.0938
+      },
+      "serializationMs": {
+        "count": 35,
+        "mean": 0.05032000000000002,
+        "p50": 0.0503,
+        "p95": 0.0634,
+        "p99": 0.0697,
+        "max": 0.0701
+      },
+      "dispatcherQueueMs": {
+        "count": 35,
+        "mean": 0.1761142857142857,
+        "p50": 0.0406,
+        "p95": 1.1234,
+        "p99": 1.146,
+        "max": 1.276
+      },
+      "postMs": {
+        "count": 35,
+        "mean": 0.10178,
+        "p50": 0.096,
+        "p95": 0.1382,
+        "p99": 0.1557,
+        "max": 0.1724
+      },
+      "acknowledgmentMs": {
+        "count": 35,
+        "mean": 41.28152285714286,
+        "p50": 0.492,
+        "p95": 1.4888,
+        "p99": 1.781,
+        "max": 1423.6608
+      },
+      "postToAcknowledgmentMs": {
+        "count": 35,
+        "mean": 41.105531428571425,
+        "p50": 0.4108,
+        "p95": 0.7388,
+        "p99": 0.7976,
+        "max": 1423.6299
+      }
+    },
+    "sameTimeline": true,
+    "sameEvents": true,
+    "samePirep": true
+  },
+  {
+    "path": "work\\checkpoint-7.24c\\jst771-review-20260929\\map-full\\contention.json",
+    "sha256": "d85c9cacbd99c57355736ca1bb1b6a56a21d74c52693f3c43aa6d376dec0da1a",
+    "baseline": 288.1277,
+    "stress": 513.2116,
+    "limit": 388.1277,
+    "passed": false,
+    "sampleCounts": [
+      395,
+      395
+    ],
+    "traced": false,
+    "raw": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\jst771-review-20260929\\map-full\\contention-01956041acde459598d88801389d2e5d",
+    "bridge": {
+      "produced": 41,
+      "offered": 41,
+      "coalesced": 6,
+      "acknowledged": 35,
+      "pending": false,
+      "rejected": 0,
+      "lastPayloadBytes": 2436,
+      "readyMs": 614.8865,
+      "projectionQueue": {
+        "offered": 395,
+        "coalesced": 354,
+        "consumed": 41,
+        "pending": false
+      },
+      "projectionMs": {
+        "count": 41,
+        "mean": 0.05070243902439025,
+        "p50": 0.0436,
+        "p95": 0.0942,
+        "p99": 0.1,
+        "max": 0.1155
+      },
+      "serializationMs": {
+        "count": 35,
+        "mean": 0.050311428571428556,
+        "p50": 0.0503,
+        "p95": 0.0602,
+        "p99": 0.0669,
+        "max": 0.077
+      },
+      "dispatcherQueueMs": {
+        "count": 35,
+        "mean": 0.25316857142857147,
+        "p50": 0.0397,
+        "p95": 1.8609,
+        "p99": 2.0109,
+        "max": 3.226
+      },
+      "postMs": {
+        "count": 35,
+        "mean": 0.09755428571428572,
+        "p50": 0.0926,
+        "p95": 0.1165,
+        "p99": 0.12,
+        "max": 0.2077
+      },
+      "acknowledgmentMs": {
+        "count": 35,
+        "mean": 41.610197142857146,
+        "p50": 0.5425,
+        "p95": 3.5684,
+        "p99": 9.5182,
+        "max": 1422.4074
+      },
+      "postToAcknowledgmentMs": {
+        "count": 35,
+        "mean": 41.35717142857143,
+        "p50": 0.4713,
+        "p95": 0.6688,
+        "p99": 9.4879,
+        "max": 1422.3658
+      }
+    },
+    "sameTimeline": true,
+    "sameEvents": true,
+    "samePirep": true
+  },
+  {
+    "path": "work\\checkpoint-7.24c\\jst771-review-20260929\\map-full-recheck\\contention.json",
+    "sha256": "b6296c8829e9f3cb868d0b0cf90264fbbef1f719324fbd5e669a768b068b785f",
+    "baseline": 330.2327,
+    "stress": 285.0577,
+    "limit": 430.2327,
+    "passed": true,
+    "sampleCounts": [
+      395,
+      395
+    ],
+    "traced": false,
+    "raw": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\jst771-review-20260929\\map-full-recheck\\contention-848d49c90cc543c1af5ebd5e11dbe443",
+    "bridge": {
+      "produced": 40,
+      "offered": 40,
+      "coalesced": 6,
+      "acknowledged": 34,
+      "pending": false,
+      "rejected": 0,
+      "lastPayloadBytes": 2110,
+      "readyMs": 580.8711,
+      "projectionQueue": {
+        "offered": 395,
+        "coalesced": 355,
+        "consumed": 40,
+        "pending": false
+      },
+      "projectionMs": {
+        "count": 40,
+        "mean": 0.0497425,
+        "p50": 0.0428,
+        "p95": 0.0913,
+        "p99": 0.1153,
+        "max": 0.1739
+      },
+      "serializationMs": {
+        "count": 34,
+        "mean": 0.04796764705882354,
+        "p50": 0.0481,
+        "p95": 0.0563,
+        "p99": 0.0585,
+        "max": 0.0628
+      },
+      "dispatcherQueueMs": {
+        "count": 34,
+        "mean": 0.2497294117647059,
+        "p50": 0.0357,
+        "p95": 1.8759,
+        "p99": 1.9346,
+        "max": 2.0597
+      },
+      "postMs": {
+        "count": 34,
+        "mean": 0.09625,
+        "p50": 0.0912,
+        "p95": 0.1107,
+        "p99": 0.189,
+        "max": 0.1942
+      },
+      "acknowledgmentMs": {
+        "count": 34,
+        "mean": 42.52630294117647,
+        "p50": 0.5002,
+        "p95": 2.3318,
+        "p99": 2.4164,
+        "max": 1422.4461
+      },
+      "postToAcknowledgmentMs": {
+        "count": 34,
+        "mean": 42.27668529411764,
+        "p50": 0.438,
+        "p95": 0.6235,
+        "p99": 0.7555,
+        "max": 1422.4051
+      }
+    },
+    "sameTimeline": true,
+    "sameEvents": true,
+    "samePirep": true
+  },
+  {
+    "path": "work\\checkpoint-7.24c\\map-restoration\\full-map-final\\contention.json",
+    "sha256": "befba7b449c92fe932e4b53bc48bd0e475e6f972e79cb652fa1be15ff05dd887",
+    "baseline": 266.8021,
+    "stress": 208.061,
+    "limit": 366.8021,
+    "passed": true,
+    "sampleCounts": [
+      395,
+      395
+    ],
+    "traced": false,
+    "raw": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\map-restoration\\full-map-final\\contention-f6baadfc9b664c30ba5c3a9d16a98875",
+    "bridge": {
+      "produced": 40,
+      "offered": 40,
+      "coalesced": 6,
+      "acknowledged": 33,
+      "pending": false,
+      "rejected": 0,
+      "lastPayloadBytes": 2112,
+      "readyMs": 643.5246,
+      "projectionQueue": {
+        "offered": 395,
+        "coalesced": 355,
+        "consumed": 40,
+        "pending": false
+      },
+      "projectionMs": {
+        "count": 40,
+        "mean": 0.047972499999999994,
+        "p50": 0.0404,
+        "p95": 0.0827,
+        "p99": 0.09,
+        "max": 0.1491
+      },
+      "serializationMs": {
+        "count": 34,
+        "mean": 0.057967647058823527,
+        "p50": 0.0534,
+        "p95": 0.0728,
+        "p99": 0.0797,
+        "max": 0.1322
+      },
+      "dispatcherQueueMs": {
+        "count": 33,
+        "mean": 34.58056666666666,
+        "p50": 18.6794,
+        "p95": 92.0454,
+        "p99": 96.688,
+        "max": 193.9937
+      },
+      "postMs": {
+        "count": 33,
+        "mean": 0.10142727272727271,
+        "p50": 0.0961,
+        "p95": 0.1189,
+        "p99": 0.1261,
+        "max": 0.2344
+      },
+      "acknowledgmentMs": {
+        "count": 33,
+        "mean": 75.77363030303032,
+        "p50": 19.5413,
+        "p95": 101.2794,
+        "p99": 194.4549,
+        "max": 1423.3447
+      },
+      "postToAcknowledgmentMs": {
+        "count": 33,
+        "mean": 41.193260606060605,
+        "p50": 0.4495,
+        "p95": 4.4463,
+        "p99": 9.5449,
+        "max": 1331.2997
+      }
+    },
+    "sameTimeline": true,
+    "sameEvents": true,
+    "samePirep": true
+  },
+  {
+    "path": "work\\checkpoint-7.24c\\map-restoration\\full-map-final-2\\contention.json",
+    "sha256": "d7f6ccc3d86eea88dd664d8e3a4cbead42489bb9c411252272606004e2ebb7e1",
+    "baseline": 251.9789,
+    "stress": 226.3431,
+    "limit": 351.9789,
+    "passed": true,
+    "sampleCounts": [
+      395,
+      395
+    ],
+    "traced": false,
+    "raw": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\map-restoration\\full-map-final-2\\contention-c001c86f9dc34a3eb36b7a1488e72fa2",
+    "bridge": {
+      "produced": 40,
+      "offered": 40,
+      "coalesced": 6,
+      "acknowledged": 34,
+      "pending": false,
+      "rejected": 0,
+      "lastPayloadBytes": 2109,
+      "readyMs": 636.1404,
+      "projectionQueue": {
+        "offered": 395,
+        "coalesced": 355,
+        "consumed": 40,
+        "pending": false
+      },
+      "projectionMs": {
+        "count": 40,
+        "mean": 0.039845000000000005,
+        "p50": 0.0349,
+        "p95": 0.0647,
+        "p99": 0.0723,
+        "max": 0.0886
+      },
+      "serializationMs": {
+        "count": 34,
+        "mean": 0.05082058823529412,
+        "p50": 0.0507,
+        "p95": 0.0606,
+        "p99": 0.0619,
+        "max": 0.0831
+      },
+      "dispatcherQueueMs": {
+        "count": 34,
+        "mean": 31.401023529411773,
+        "p50": 19.2245,
+        "p95": 81.5858,
+        "p99": 104.269,
+        "max": 140.2199
+      },
+      "postMs": {
+        "count": 34,
+        "mean": 0.09005882352941176,
+        "p50": 0.0864,
+        "p95": 0.1157,
+        "p99": 0.1188,
+        "max": 0.1753
+      },
+      "acknowledgmentMs": {
+        "count": 34,
+        "mean": 72.42767941176471,
+        "p50": 19.8643,
+        "p95": 104.7865,
+        "p99": 140.6409,
+        "max": 1426.0118
+      },
+      "postToAcknowledgmentMs": {
+        "count": 34,
+        "mean": 41.02675294117647,
+        "p50": 0.419,
+        "p95": 0.8381,
+        "p99": 10.4358,
+        "max": 1369.9677
+      }
+    },
+    "sameTimeline": true,
+    "sameEvents": true,
+    "samePirep": true
+  },
+  {
+    "path": "work\\checkpoint-7.24c\\map-restoration\\full-map-published\\contention.json",
+    "sha256": "4f3ea94569d812af6f1e1b6050e244f8f1af93d242dd23a358666819b902cd19",
+    "baseline": 183.8978,
+    "stress": 350.4527,
+    "limit": 283.89779999999996,
+    "passed": false,
+    "sampleCounts": [
+      395,
+      395
+    ],
+    "traced": false,
+    "raw": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\map-restoration\\full-map-published\\contention-a6b3ea27781248b388680bfbe4ff1830",
+    "bridge": {
+      "produced": 41,
+      "offered": 41,
+      "coalesced": 6,
+      "acknowledged": 35,
+      "pending": false,
+      "rejected": 0,
+      "lastPayloadBytes": 2438,
+      "readyMs": 651.8229,
+      "projectionQueue": {
+        "offered": 395,
+        "coalesced": 354,
+        "consumed": 41,
+        "pending": false
+      },
+      "projectionMs": {
+        "count": 41,
+        "mean": 0.05434390243902438,
+        "p50": 0.0488,
+        "p95": 0.1019,
+        "p99": 0.1029,
+        "max": 0.1268
+      },
+      "serializationMs": {
+        "count": 35,
+        "mean": 0.05383428571428572,
+        "p50": 0.0538,
+        "p95": 0.062,
+        "p99": 0.0646,
+        "max": 0.0819
+      },
+      "dispatcherQueueMs": {
+        "count": 35,
+        "mean": 38.2662,
+        "p50": 20.0173,
+        "p95": 120.8522,
+        "p99": 130.3739,
+        "max": 222.1847
+      },
+      "postMs": {
+        "count": 35,
+        "mean": 0.09663428571428569,
+        "p50": 0.0933,
+        "p95": 0.1156,
+        "p99": 0.1271,
+        "max": 0.1673
+      },
+      "acknowledgmentMs": {
+        "count": 35,
+        "mean": 79.03307714285714,
+        "p50": 23.7336,
+        "p95": 131.324,
+        "p99": 222.5962,
+        "max": 1423.5562
+      },
+      "postToAcknowledgmentMs": {
+        "count": 35,
+        "mean": 40.767920000000004,
+        "p50": 0.4195,
+        "p95": 0.9054,
+        "p99": 0.9505,
+        "max": 1410.5443
+      }
+    },
+    "sameTimeline": true,
+    "sameEvents": true,
+    "samePirep": true
+  },
+  {
+    "path": "work\\checkpoint-7.24c\\scheduling-continuation-20260928-152808\\after-full-map\\contention.json",
+    "sha256": "96ced3addea3e2f7c30fbb0b221c367355d29606dbf69dfe899363760e52a829",
+    "baseline": 212.8064,
+    "stress": 263.3183,
+    "limit": 312.8064,
+    "passed": true,
+    "sampleCounts": [
+      395,
+      395
+    ],
+    "traced": false,
+    "raw": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\scheduling-continuation-20260928-152808\\after-full-map\\contention-4549b5fa018648f88b91ec3dccc807c6",
+    "bridge": {
+      "produced": 40,
+      "offered": 40,
+      "coalesced": 6,
+      "acknowledged": 34,
+      "pending": false,
+      "rejected": 0,
+      "lastPayloadBytes": 2112,
+      "readyMs": 589.6859,
+      "projectionQueue": {
+        "offered": 395,
+        "coalesced": 355,
+        "consumed": 40,
+        "pending": false
+      },
+      "projectionMs": {
+        "count": 40,
+        "mean": 0.043587499999999994,
+        "p50": 0.036,
+        "p95": 0.0995,
+        "p99": 0.1157,
+        "max": 0.1452
+      },
+      "serializationMs": {
+        "count": 34,
+        "mean": 0.049944117647058826,
+        "p50": 0.0484,
+        "p95": 0.0619,
+        "p99": 0.0624,
+        "max": 0.0713
+      },
+      "dispatcherQueueMs": {
+        "count": 34,
+        "mean": 0.21464411764705882,
+        "p50": 0.0371,
+        "p95": 1.4672,
+        "p99": 1.763,
+        "max": 2.564
+      },
+      "postMs": {
+        "count": 34,
+        "mean": 0.09294411764705883,
+        "p50": 0.0913,
+        "p95": 0.1146,
+        "p99": 0.1208,
+        "max": 0.1215
+      },
+      "acknowledgmentMs": {
+        "count": 34,
+        "mean": 42.94990294117647,
+        "p50": 0.4315,
+        "p95": 9.4467,
+        "p99": 10.6598,
+        "max": 1421.2576
+      },
+      "postToAcknowledgmentMs": {
+        "count": 34,
+        "mean": 42.735367647058816,
+        "p50": 0.3808,
+        "p95": 9.4043,
+        "p99": 10.6333,
+        "max": 1421.2267
+      }
+    },
+    "sameTimeline": true,
+    "sameEvents": true,
+    "samePirep": true
+  },
+  {
+    "path": "work\\checkpoint-7.24c\\scheduling-continuation-20260928-152808\\after-traced\\contention.json",
+    "sha256": "05b2687a393abd1db9f861023c39ae367a9f5c92af7182bcab57b6340eac73f3",
+    "baseline": 308.7542,
+    "stress": 225.6188,
+    "limit": 408.7542,
+    "passed": true,
+    "sampleCounts": [
+      395,
+      395
+    ],
+    "traced": true,
+    "raw": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\scheduling-continuation-20260928-152808\\after-traced\\contention-69eac8e6e51945c7824ac9b29cc69ebe",
+    "bridge": {
+      "produced": 41,
+      "offered": 41,
+      "coalesced": 6,
+      "acknowledged": 35,
+      "pending": false,
+      "rejected": 0,
+      "lastPayloadBytes": 2438,
+      "readyMs": 627.2269,
+      "projectionQueue": {
+        "offered": 395,
+        "coalesced": 354,
+        "consumed": 41,
+        "pending": false
+      },
+      "projectionMs": {
+        "count": 41,
+        "mean": 0.04519268292682927,
+        "p50": 0.0375,
+        "p95": 0.0864,
+        "p99": 0.0892,
+        "max": 0.1641
+      },
+      "serializationMs": {
+        "count": 35,
+        "mean": 0.06936285714285713,
+        "p50": 0.0674,
+        "p95": 0.0936,
+        "p99": 0.0952,
+        "max": 0.1285
+      },
+      "dispatcherQueueMs": {
+        "count": 35,
+        "mean": 0.22319999999999998,
+        "p50": 0.0361,
+        "p95": 1.5598,
+        "p99": 1.8782,
+        "max": 2.0513
+      },
+      "postMs": {
+        "count": 35,
+        "mean": 0.09118857142857144,
+        "p50": 0.0903,
+        "p95": 0.1165,
+        "p99": 0.1205,
+        "max": 0.1602
+      },
+      "acknowledgmentMs": {
+        "count": 35,
+        "mean": 41.18331714285714,
+        "p50": 0.4487,
+        "p95": 2.2761,
+        "p99": 2.384,
+        "max": 1420.5049
+      },
+      "postToAcknowledgmentMs": {
+        "count": 35,
+        "mean": 40.960034285714286,
+        "p50": 0.375,
+        "p95": 0.5122,
+        "p99": 0.5409,
+        "max": 1420.47
+      }
+    },
+    "sameTimeline": true,
+    "sameEvents": true,
+    "samePirep": true
+  },
+  {
+    "path": "work\\checkpoint-7.24c\\scheduling-continuation-20260928-152808\\before-traced\\contention.json",
+    "sha256": "14e0ed77b39644f6fae35f0c9d745f0f346c8117b87f232f844e132fbc2d7d06",
+    "baseline": 185.5019,
+    "stress": 287.2381,
+    "limit": 285.5019,
+    "passed": false,
+    "sampleCounts": [
+      395,
+      395
+    ],
+    "traced": true,
+    "raw": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\scheduling-continuation-20260928-152808\\before-traced\\contention-660498802ca34796a34204832017d10e",
+    "bridge": {
+      "produced": 40,
+      "offered": 40,
+      "coalesced": 6,
+      "acknowledged": 34,
+      "pending": false,
+      "rejected": 0,
+      "lastPayloadBytes": 2113,
+      "readyMs": 652.5023,
+      "projectionQueue": {
+        "offered": 395,
+        "coalesced": 355,
+        "consumed": 40,
+        "pending": false
+      },
+      "projectionMs": {
+        "count": 40,
+        "mean": 0.07622,
+        "p50": 0.074,
+        "p95": 0.133,
+        "p99": 0.1338,
+        "max": 0.1616
+      },
+      "serializationMs": {
+        "count": 34,
+        "mean": 0.08353529411764707,
+        "p50": 0.0809,
+        "p95": 0.1261,
+        "p99": 0.1312,
+        "max": 0.1369
+      },
+      "dispatcherQueueMs": {
+        "count": 34,
+        "mean": 41.84818529411765,
+        "p50": 20.7946,
+        "p95": 119.8353,
+        "p99": 155.33,
+        "max": 164.6933
+      },
+      "postMs": {
+        "count": 34,
+        "mean": 0.10264411764705883,
+        "p50": 0.0973,
+        "p95": 0.1315,
+        "p99": 0.1338,
+        "max": 0.1964
+      },
+      "acknowledgmentMs": {
+        "count": 34,
+        "mean": 83.47926470588236,
+        "p50": 26.7283,
+        "p95": 157.7498,
+        "p99": 165.1356,
+        "max": 1418.4541
+      },
+      "postToAcknowledgmentMs": {
+        "count": 34,
+        "mean": 41.631035294117645,
+        "p50": 0.4491,
+        "p95": 0.797,
+        "p99": 2.4196,
+        "max": 1397.6596
+      }
+    },
+    "sameTimeline": true,
+    "sameEvents": true,
+    "samePirep": true
+  },
+  {
+    "path": "work\\checkpoint-7.24c\\terminal-implementation-20260928\\map-full\\contention.json",
+    "sha256": "bd0d2dc1bec79688384ad7ec7b6cdf47ea10079a6e3fb590bc8f09994c70f0b7",
+    "baseline": 392.7331,
+    "stress": 316.2035,
+    "limit": 492.7331,
+    "passed": true,
+    "sampleCounts": [
+      395,
+      395
+    ],
+    "traced": false,
+    "raw": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\terminal-implementation-20260928\\map-full\\contention-3af7aea8157f4b1c82c42f56f336d246",
+    "bridge": {
+      "produced": 41,
+      "offered": 41,
+      "coalesced": 6,
+      "acknowledged": 35,
+      "pending": false,
+      "rejected": 0,
+      "lastPayloadBytes": 2439,
+      "readyMs": 596.4549,
+      "projectionQueue": {
+        "offered": 395,
+        "coalesced": 354,
+        "consumed": 41,
+        "pending": false
+      },
+      "projectionMs": {
+        "count": 41,
+        "mean": 0.041185365853658534,
+        "p50": 0.033,
+        "p95": 0.0713,
+        "p99": 0.0797,
+        "max": 0.1838
+      },
+      "serializationMs": {
+        "count": 35,
+        "mean": 0.04882,
+        "p50": 0.0486,
+        "p95": 0.0576,
+        "p99": 0.0589,
+        "max": 0.0644
+      },
+      "dispatcherQueueMs": {
+        "count": 35,
+        "mean": 0.44684,
+        "p50": 0.039,
+        "p95": 2.2257,
+        "p99": 2.6546,
+        "max": 4.6494
+      },
+      "postMs": {
+        "count": 35,
+        "mean": 0.09653142857142857,
+        "p50": 0.0928,
+        "p95": 0.1288,
+        "p99": 0.1707,
+        "max": 0.2105
+      },
+      "acknowledgmentMs": {
+        "count": 35,
+        "mean": 41.95205428571428,
+        "p50": 0.4387,
+        "p95": 9.6639,
+        "p99": 13.9825,
+        "max": 1421.6354
+      },
+      "postToAcknowledgmentMs": {
+        "count": 35,
+        "mean": 41.505405714285715,
+        "p50": 0.3891,
+        "p95": 9.3334,
+        "p99": 9.634,
+        "max": 1421.56
+      }
+    },
+    "sameTimeline": true,
+    "sameEvents": true,
+    "samePirep": true
+  }
+]

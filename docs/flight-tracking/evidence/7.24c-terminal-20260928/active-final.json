@@ -1,0 +1,353 @@
+{
+  "executed": 69,
+  "passed": 69,
+  "failed": 0,
+  "evidencePool": "synthetic active-flight recovery; no native MSFS",
+  "checks": [
+    {
+      "name": "kill_MISMATCH_REJECTED",
+      "passed": true,
+      "detail": "A conflicting simulator route cannot inherit recovered assignment acceptance."
+    },
+    {
+      "name": "kill_BACKWARD_INVALIDATES",
+      "passed": true,
+      "detail": "An incompatible recovered aircraft, clock or position cannot inherit the old operational session."
+    },
+    {
+      "name": "kill_AIRCRAFT_INVALIDATES",
+      "passed": true,
+      "detail": "An incompatible recovered aircraft, clock or position cannot inherit the old operational session."
+    },
+    {
+      "name": "kill_POSITION_INVALIDATES",
+      "passed": true,
+      "detail": "An incompatible recovered aircraft, clock or position cannot inherit the old operational session."
+    },
+    {
+      "name": "kill_AIRBORNE_CHECKPOINT",
+      "passed": true,
+      "detail": "Interruption follows observed OUT and OFF in a separate process."
+    },
+    {
+      "name": "kill_ASSIGNMENT_IMMUTABLE",
+      "passed": true,
+      "detail": "Restart/reconnect/landing preserve accepted assignment bytes."
+    },
+    {
+      "name": "kill_COLD_RESTORE",
+      "passed": true,
+      "detail": "Cold coordinator restores phase, exact milestone times and existing event history."
+    },
+    {
+      "name": "kill_SESSION_CONTINUITY",
+      "passed": true,
+      "detail": "Departure-location verification and session start survive airborne recovery without a simulator route."
+    },
+    {
+      "name": "kill_STEADY_ENGINES_NO_DUPLICATE",
+      "passed": true,
+      "detail": "An unchanged per-engine Running state does not create another running event after restart."
+    },
+    {
+      "name": "kill_RECONNECT_SAME_SESSION",
+      "passed": true,
+      "detail": "Explicit disconnect/reconnect continues the existing operational session/history row."
+    },
+    {
+      "name": "kill_ON_IN_ONCE",
+      "passed": true,
+      "detail": "Each OUT/OFF/ON/IN occurs once, at the independently specified simulator times."
+    },
+    {
+      "name": "kill_ONE_COMPLETED_HISTORY",
+      "passed": true,
+      "detail": "The original durable flight row reaches Complete."
+    },
+    {
+      "name": "kill_OLD_EVENTS_IMMUTABLE",
+      "passed": true,
+      "detail": "Pre-interruption database event sequence, payloads and timestamps remain byte-equivalent."
+    },
+    {
+      "name": "kill_ALL_EVENTS_DURABLE",
+      "passed": true,
+      "detail": "Every tracking event appends exactly once with contiguous durable sequences."
+    },
+    {
+      "name": "kill_ELIGIBLE_AFTER_LANDING",
+      "passed": true,
+      "detail": "Recovery continues through normal PIREP eligibility with preserved actuals."
+    },
+    {
+      "name": "kill_COLD_COMPLETE_SUBMISSION",
+      "passed": true,
+      "detail": "Another cold process submits once and the cleared assignment prevents repeat coordinator submission."
+    },
+    {
+      "name": "kill_ONE_DURABLE_PIREP",
+      "passed": true,
+      "detail": "A final cold process finds one original flight row and one PIREP."
+    },
+    {
+      "name": "kill_PIREP_ACTUALS",
+      "passed": true,
+      "detail": "PIREP retains the four dated observed simulator actuals."
+    },
+    {
+      "name": "kill_CLOSEOUT_DURABLE",
+      "passed": true,
+      "detail": "Assignment and recovery remain cleared after final process restart."
+    },
+    {
+      "name": "kill_SYNTHETIC_SOURCE_IMMUTABLE",
+      "passed": true,
+      "detail": "The synthetic telemetry input is unchanged by all processes."
+    },
+    {
+      "name": "kill_PRIOR_JOURNAL_IMMUTABLE",
+      "passed": true,
+      "detail": "The previous connection journal remains unchanged while new transport connections use their own journals."
+    },
+    {
+      "name": "kill_REPORT_GUARD",
+      "passed": true,
+      "detail": "Only the deliberately killed process may produce one previous_unclean_exit report; no persistence errors allowed."
+    },
+    {
+      "name": "clean_MISMATCH_REJECTED",
+      "passed": true,
+      "detail": "A conflicting simulator route cannot inherit recovered assignment acceptance."
+    },
+    {
+      "name": "clean_BACKWARD_INVALIDATES",
+      "passed": true,
+      "detail": "An incompatible recovered aircraft, clock or position cannot inherit the old operational session."
+    },
+    {
+      "name": "clean_AIRCRAFT_INVALIDATES",
+      "passed": true,
+      "detail": "An incompatible recovered aircraft, clock or position cannot inherit the old operational session."
+    },
+    {
+      "name": "clean_POSITION_INVALIDATES",
+      "passed": true,
+      "detail": "An incompatible recovered aircraft, clock or position cannot inherit the old operational session."
+    },
+    {
+      "name": "clean_AIRBORNE_CHECKPOINT",
+      "passed": true,
+      "detail": "Interruption follows observed OUT and OFF in a separate process."
+    },
+    {
+      "name": "clean_ASSIGNMENT_IMMUTABLE",
+      "passed": true,
+      "detail": "Restart/reconnect/landing preserve accepted assignment bytes."
+    },
+    {
+      "name": "clean_COLD_RESTORE",
+      "passed": true,
+      "detail": "Cold coordinator restores phase, exact milestone times and existing event history."
+    },
+    {
+      "name": "clean_SESSION_CONTINUITY",
+      "passed": true,
+      "detail": "Departure-location verification and session start survive airborne recovery without a simulator route."
+    },
+    {
+      "name": "clean_STEADY_ENGINES_NO_DUPLICATE",
+      "passed": true,
+      "detail": "An unchanged per-engine Running state does not create another running event after restart."
+    },
+    {
+      "name": "clean_RECONNECT_SAME_SESSION",
+      "passed": true,
+      "detail": "Explicit disconnect/reconnect continues the existing operational session/history row."
+    },
+    {
+      "name": "clean_ON_IN_ONCE",
+      "passed": true,
+      "detail": "Each OUT/OFF/ON/IN occurs once, at the independently specified simulator times."
+    },
+    {
+      "name": "clean_ONE_COMPLETED_HISTORY",
+      "passed": true,
+      "detail": "The original durable flight row reaches Complete."
+    },
+    {
+      "name": "clean_OLD_EVENTS_IMMUTABLE",
+      "passed": true,
+      "detail": "Pre-interruption database event sequence, payloads and timestamps remain byte-equivalent."
+    },
+    {
+      "name": "clean_ALL_EVENTS_DURABLE",
+      "passed": true,
+      "detail": "Every tracking event appends exactly once with contiguous durable sequences."
+    },
+    {
+      "name": "clean_ELIGIBLE_AFTER_LANDING",
+      "passed": true,
+      "detail": "Recovery continues through normal PIREP eligibility with preserved actuals."
+    },
+    {
+      "name": "clean_COLD_COMPLETE_SUBMISSION",
+      "passed": true,
+      "detail": "Another cold process submits once and the cleared assignment prevents repeat coordinator submission."
+    },
+    {
+      "name": "clean_ONE_DURABLE_PIREP",
+      "passed": true,
+      "detail": "A final cold process finds one original flight row and one PIREP."
+    },
+    {
+      "name": "clean_PIREP_ACTUALS",
+      "passed": true,
+      "detail": "PIREP retains the four dated observed simulator actuals."
+    },
+    {
+      "name": "clean_CLOSEOUT_DURABLE",
+      "passed": true,
+      "detail": "Assignment and recovery remain cleared after final process restart."
+    },
+    {
+      "name": "clean_SYNTHETIC_SOURCE_IMMUTABLE",
+      "passed": true,
+      "detail": "The synthetic telemetry input is unchanged by all processes."
+    },
+    {
+      "name": "clean_PRIOR_JOURNAL_IMMUTABLE",
+      "passed": true,
+      "detail": "The previous connection journal remains unchanged while new transport connections use their own journals."
+    },
+    {
+      "name": "clean_REPORT_GUARD",
+      "passed": true,
+      "detail": "Only the deliberately killed process may produce one previous_unclean_exit report; no persistence errors allowed."
+    },
+    {
+      "name": "kill_COMPLETE_BOUNDARY_REPRODUCED",
+      "passed": true,
+      "detail": "The real AddTrackingEvent checkpoint has Complete phase and only its active history ID; database completion differs at the two interruption boundaries."
+    },
+    {
+      "name": "kill_COMPLETE_BOUNDARY_RECONCILED",
+      "passed": true,
+      "detail": "A cold coordinator reconciles the saved Complete phase with its exact existing history row."
+    },
+    {
+      "name": "kill_COMPLETE_BOUNDARY_EVENTS_PRESERVED",
+      "passed": true,
+      "detail": "Completion reconciliation preserves old event payloads/sequences and all four milestones."
+    },
+    {
+      "name": "kill_COMPLETE_BOUNDARY_IDEMPOTENT",
+      "passed": true,
+      "detail": "A second cold reconciliation does not rewrite ended time, append events or create another flight."
+    },
+    {
+      "name": "kill_COMPLETE_BOUNDARY_SUBMITS",
+      "passed": true,
+      "detail": "The formerly stranded flight submits exactly once after cold restart."
+    },
+    {
+      "name": "kill_COMPLETE_BOUNDARY_ONE_PIREP",
+      "passed": true,
+      "detail": "The original row contains one PIREP and closeout survives the final process restart."
+    },
+    {
+      "name": "kill_COMPLETE_BOUNDARY_REPORT_GUARD",
+      "passed": true,
+      "detail": "Exactly the injected termination/replacement failure is reported; recovery persistence errors remain visible."
+    },
+    {
+      "name": "locked-replace_COMPLETE_BOUNDARY_REPRODUCED",
+      "passed": true,
+      "detail": "The real AddTrackingEvent checkpoint has Complete phase and only its active history ID; database completion differs at the two interruption boundaries."
+    },
+    {
+      "name": "locked-replace_COMPLETE_BOUNDARY_RECONCILED",
+      "passed": true,
+      "detail": "A cold coordinator reconciles the saved Complete phase with its exact existing history row."
+    },
+    {
+      "name": "locked-replace_COMPLETE_BOUNDARY_EVENTS_PRESERVED",
+      "passed": true,
+      "detail": "Completion reconciliation preserves old event payloads/sequences and all four milestones."
+    },
+    {
+      "name": "locked-replace_COMPLETE_BOUNDARY_IDEMPOTENT",
+      "passed": true,
+      "detail": "A second cold reconciliation does not rewrite ended time, append events or create another flight."
+    },
+    {
+      "name": "locked-replace_COMPLETE_BOUNDARY_SUBMITS",
+      "passed": true,
+      "detail": "The formerly stranded flight submits exactly once after cold restart."
+    },
+    {
+      "name": "locked-replace_COMPLETE_BOUNDARY_ONE_PIREP",
+      "passed": true,
+      "detail": "The original row contains one PIREP and closeout survives the final process restart."
+    },
+    {
+      "name": "locked-replace_COMPLETE_BOUNDARY_REPORT_GUARD",
+      "passed": true,
+      "detail": "Exactly the injected termination/replacement failure is reported; recovery persistence errors remain visible."
+    },
+    {
+      "name": "RECONCILE_WRITE_FAILURE_INELIGIBLE",
+      "passed": true,
+      "detail": "A failed completion UPDATE keeps actuals visible and withholds PIREP eligibility."
+    },
+    {
+      "name": "RECONCILE_WRITE_FAILURE_RETAINS_ID",
+      "passed": true,
+      "detail": "Saving a gate change after failed reconciliation retains the same exact pending history ID."
+    },
+    {
+      "name": "RECONCILE_WRITE_FAILURE_RETRIES",
+      "passed": true,
+      "detail": "Once the writer lock is released a cold restart completes the original exact history row."
+    },
+    {
+      "name": "RECONCILE_WRITE_FAILURE_ONE_PIREP",
+      "passed": true,
+      "detail": "The retained identity supports exactly one final PIREP and durable closeout after retry."
+    },
+    {
+      "name": "RECONCILE_WRITE_FAILURE_REPORT_GUARD",
+      "passed": true,
+      "detail": "Exactly one intentional unclean exit and one SQLite completion failure are reported, with no startup/storage failures hidden."
+    },
+    {
+      "name": "JOINED_IN_PROGRESS_RESTORED",
+      "passed": true,
+      "detail": "An airborne join stays explicitly joined in progress after a cold restart and cannot manufacture OUT/OFF."
+    },
+    {
+      "name": "REOPEN_APPENDS_SEQUENCE",
+      "passed": true,
+      "detail": "Reopened SQLite appends to MAX(sequence), preserving the previous event: "
+    },
+    {
+      "name": "LEGACY_MISSING_ID_NOT_ELIGIBLE",
+      "passed": true,
+      "detail": "A recovered completed flight without durable identity retains its actuals but does not advertise PIREP eligibility."
+    },
+    {
+      "name": "LEGACY_MISSING_ID_REVIEW_STATUS",
+      "passed": true,
+      "detail": "The restored status explicitly explains that the history identity needs review."
+    },
+    {
+      "name": "LEGACY_MISSING_ID_FAILS_SAFE",
+      "passed": true,
+      "detail": "Legacy recovery with no saved history identity cannot submit against an unrelated same-number completed flight."
+    },
+    {
+      "name": "SOURCE_FIXTURES_UNCHANGED",
+      "passed": true,
+      "detail": "Frozen assignment/recovery fixture SHA-256 hashes unchanged."
+    }
+  ]
+}

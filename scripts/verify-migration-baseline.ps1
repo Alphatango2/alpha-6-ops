@@ -11,7 +11,7 @@ $manifest = (Resolve-Path -LiteralPath $ReplayManifest).Path
 $inputs = @(Get-Content -LiteralPath $manifest -Raw | ConvertFrom-Json)
 if ($inputs.Count -ne 9) { throw 'The baseline requires all nine checkpoint 7.17 journals.' }
 foreach ($inputPath in $inputs) { if (-not (Test-Path -LiteralPath $inputPath -PathType Leaf)) { throw "Journal unavailable: $inputPath" } }
-foreach ($existing in @(Get-Process -Name Alpha6OPS -ErrorAction SilentlyContinue)) {
+foreach ($existing in @(Get-Process -Name Alpha6OPS,Sierra4 -ErrorAction SilentlyContinue)) {
     # Windows can retain a terminated process entry after a diagnostic crash.
     # Fail closed unless both independent liveness counts confirm it cannot run.
     $terminated = $false
@@ -77,11 +77,13 @@ try {
     if ($code -ne 0 -or -not $coreSummary.Success -or [int]$coreSummary.Groups[1].Value -ne $coreCount) { throw 'Core regression execution/report mismatch.' }
     Add-Checks 'Core' ([pscustomobject]@{ passed = $true }) $coreCount
 
+    $app = Join-Path $repo 'src/Alpha6Ops.Desktop/bin/Release/net10.0-windows10.0.17763.0/Sierra4.exe'
     & (Join-Path $repo 'packaging/build-desktop.ps1') -DotNetRoot $DotNetRoot *>&1 | Out-File -LiteralPath (Join-Path $run 'package-build.log') -Encoding utf8
     $builds.Add([pscustomobject]@{ name = 'normal production packaging'; exitCode = 0 })
-    $app = Join-Path $repo 'outputs/Alpha6OPS-Desktop-0.22.0/Alpha6OPS.exe'
-    Get-FileHash -LiteralPath (Join-Path (Split-Path $app) 'Alpha6OPS.dll'), (Join-Path (Split-Path $app) 'Alpha6Ops.Core.dll'), (Join-Path $repo 'outputs/Alpha6OPS-Setup-0.22.0.exe'), (Join-Path $repo 'outputs/Alpha6OPS-Desktop-0.22.0-win-x64.zip') | Select-Object Path, Hash | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $run 'build-hashes.json') -Encoding utf8
+    Get-FileHash -LiteralPath (Join-Path $repo 'outputs/Sierra4-Desktop-0.23.0/Sierra4.dll'), (Join-Path $repo 'outputs/Sierra4-Desktop-0.23.0/Alpha6Ops.Core.dll'), (Join-Path $repo 'outputs/Sierra4-Setup-0.23.0.exe'), (Join-Path $repo 'outputs/Sierra4-Desktop-0.23.0-win-x64.zip') | Select-Object Path, Hash | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $run 'build-hashes.json') -Encoding utf8
     Write-Host 'Normal production packaging: built (not installed)'
+    $code = Invoke-Console $dotnet @('build','src/Alpha6Ops.Desktop','-c','Release','--no-restore','-p:IncludeDiagnosticHarnesses=true') (Join-Path $run 'development-desktop-rebuild.log')
+    if($code -ne 0){throw 'Development desktop rebuild failed after production packaging.'}
 
     $desktopDirectory = Join-Path $run 'desktop'
     $code = Invoke-App $app @('--smoke-test', $desktopDirectory) 'desktop'

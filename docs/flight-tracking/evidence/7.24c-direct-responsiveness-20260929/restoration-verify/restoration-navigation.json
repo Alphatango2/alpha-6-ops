@@ -1,0 +1,3480 @@
+{
+  "coldMs": 1806.8963,
+  "rows": [
+    {
+      "cycle": 0,
+      "target": "Dispatch",
+      "retainedWhileHidden": true,
+      "sameRenderer": true,
+      "beforeEpoch": 1,
+      "afterEpoch": 1,
+      "correctVisibleMs": 308.1951,
+      "restoreMs": 323.6534,
+      "browser": {
+        "camera": {
+          "bearing": 18,
+          "followId": null,
+          "latitude": -36,
+          "longitude": 149,
+          "zoom": 5
+        },
+        "counts": {
+          "aircraft": 1,
+          "airports": 2,
+          "labels": 3,
+          "routes": 2
+        },
+        "frameIntervals": [
+          50,
+          54.200000000000045,
+          54.09999999999991,
+          50,
+          50,
+          62.5,
+          70.90000000000009,
+          50,
+          54.09999999999991,
+          50,
+          66.70000000000005,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          51.100000000000364,
+          54.099999999999454,
+          50,
+          50.100000000000364,
+          54.100000000000364
+        ],
+        "lastSequence": 2,
+        "points": [
+          {
+            "id": "current-aircraft",
+            "kind": "Aircraft",
+            "x": 1407.1933393960562,
+            "y": 182.23646651610673
+          },
+          {
+            "id": "YSSY",
+            "kind": "Airport",
+            "x": 1425.476841615855,
+            "y": 79.87357046521788
+          },
+          {
+            "id": "YMHB",
+            "kind": "Airport",
+            "x": 1426.6424732449616,
+            "y": 623.5013602091094
+          },
+          {
+            "id": "planned-route",
+            "kind": "Route",
+            "x": 1428.812597609573,
+            "y": 396.87302683803443
+          },
+          {
+            "id": "completed-plan",
+            "kind": "Route",
+            "x": 1426.4596593959402,
+            "y": 130.41985438423075
+          }
+        ],
+        "selection": {
+          "id": "current-aircraft",
+          "kind": "Aircraft"
+        },
+        "selectionFilters": {
+          "airport": [
+            "==",
+            [
+              "get",
+              "id"
+            ],
+            ""
+          ],
+          "route": [
+            "==",
+            [
+              "get",
+              "id"
+            ],
+            ""
+          ]
+        },
+        "solarSignature": "-0.735,-0.676,-0.039",
+        "sourceIDs": [
+          {
+            "id": "current-aircraft",
+            "source": "Observed"
+          }
+        ],
+        "sourceUpdates": 11
+      },
+      "resources": {
+        "cpuPercentMachine": 3.3372807917720957,
+        "samplingMs": {
+          "count": 21,
+          "mean": 11.175357142857145,
+          "p50": 10.4565,
+          "p95": 13.7338,
+          "p99": 13.7338,
+          "max": 14.2373
+        },
+        "last": {
+          "utc": "2026-09-29T20:59:39.6235659+00:00",
+          "stage": "restoration-return-0",
+          "browserProcesses": 5,
+          "hostMiB": 270.65234375,
+          "browserMiB": 370.8359375,
+          "totalMiB": 641.48828125,
+          "cpuPercentMachine": 3.3372816321216976
+        },
+        "logicalProcessors": 16,
+        "workingSetsMayDoubleCountSharedPages": true,
+        "trackedProcessHandles": 5,
+        "exitedBeforeTracking": 0,
+        "samplingErrors": 0
+      }
+    },
+    {
+      "cycle": 1,
+      "target": "Flights",
+      "retainedWhileHidden": true,
+      "sameRenderer": true,
+      "beforeEpoch": 1,
+      "afterEpoch": 1,
+      "correctVisibleMs": 325.0829,
+      "restoreMs": 340.5177,
+      "browser": {
+        "camera": {
+          "bearing": 18,
+          "followId": null,
+          "latitude": -36,
+          "longitude": 149,
+          "zoom": 5
+        },
+        "counts": {
+          "aircraft": 1,
+          "airports": 2,
+          "labels": 3,
+          "routes": 2
+        },
+        "frameIntervals": [
+          50,
+          54.200000000000045,
+          54.09999999999991,
+          50,
+          50,
+          62.5,
+          70.90000000000009,
+          50,
+          54.09999999999991,
+          50,
+          66.70000000000005,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          51.100000000000364,
+          54.099999999999454,
+          50,
+          50.100000000000364,
+          54.100000000000364,
+          54.099999999999454,
+          50.20000000000073,
+          54,
+          50.100000000000364,
+          54.100000000000364,
+          50,
+          50.099999999998545
+        ],
+        "lastSequence": 3,
+        "points": [
+          {
+            "id": "current-aircraft",
+            "kind": "Aircraft",
+            "x": 1415.7106361088906,
+            "y": 182.2897003244538
+          },
+          {
+            "id": "YSSY",
+            "kind": "Airport",
+            "x": 1433.976841615855,
+            "y": 79.87357046521788
+          },
+          {
+            "id": "YMHB",
+            "kind": "Airport",
+            "x": 1435.1424732449616,
+            "y": 623.5013602091094
+          },
+          {
+            "id": "planned-route",
+            "kind": "Route",
+            "x": 1437.3125782235638,
+            "y": 396.90146231990934
+          },
+          {
+            "id": "completed-plan",
+            "kind": "Route",
+            "x": 1434.9601377651816,
+            "y": 130.44666348887654
+          }
+        ],
+        "selection": {
+          "id": "current-aircraft",
+          "kind": "Aircraft"
+        },
+        "selectionFilters": {
+          "airport": [
+            "==",
+            [
+              "get",
+              "id"
+            ],
+            ""
+          ],
+          "route": [
+            "==",
+            [
+              "get",
+              "id"
+            ],
+            ""
+          ]
+        },
+        "solarSignature": "-0.736,-0.676,-0.039",
+        "sourceIDs": [
+          {
+            "id": "current-aircraft",
+            "source": "Observed"
+          }
+        ],
+        "sourceUpdates": 16
+      },
+      "resources": {
+        "cpuPercentMachine": 3.7361354343443858,
+        "samplingMs": {
+          "count": 22,
+          "mean": 11.30679090909091,
+          "p50": 10.4565,
+          "p95": 13.7338,
+          "p99": 14.0669,
+          "max": 14.2373
+        },
+        "last": {
+          "utc": "2026-09-29T20:59:40.5199052+00:00",
+          "stage": "restoration-return-1",
+          "browserProcesses": 5,
+          "hostMiB": 279.12890625,
+          "browserMiB": 375.671875,
+          "totalMiB": 654.80078125,
+          "cpuPercentMachine": 3.7361363023840797
+        },
+        "logicalProcessors": 16,
+        "workingSetsMayDoubleCountSharedPages": true,
+        "trackedProcessHandles": 5,
+        "exitedBeforeTracking": 0,
+        "samplingErrors": 0
+      }
+    },
+    {
+      "cycle": 2,
+      "target": "Logbook",
+      "retainedWhileHidden": true,
+      "sameRenderer": true,
+      "beforeEpoch": 1,
+      "afterEpoch": 1,
+      "correctVisibleMs": 325.1116,
+      "restoreMs": 340.1541,
+      "browser": {
+        "camera": {
+          "bearing": 18,
+          "followId": null,
+          "latitude": -36,
+          "longitude": 149,
+          "zoom": 5
+        },
+        "counts": {
+          "aircraft": 1,
+          "airports": 2,
+          "labels": 3,
+          "routes": 2
+        },
+        "frameIntervals": [
+          50,
+          54.200000000000045,
+          54.09999999999991,
+          50,
+          50,
+          62.5,
+          70.90000000000009,
+          50,
+          54.09999999999991,
+          50,
+          66.70000000000005,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          51.100000000000364,
+          54.099999999999454,
+          50,
+          50.100000000000364,
+          54.100000000000364,
+          54.099999999999454,
+          50.20000000000073,
+          54,
+          50.100000000000364,
+          54.100000000000364,
+          50,
+          50.099999999998545,
+          50.100000000000364,
+          50.100000000000364,
+          54,
+          50,
+          50,
+          50.099999999998545
+        ],
+        "lastSequence": 4,
+        "points": [
+          {
+            "id": "current-aircraft",
+            "kind": "Aircraft",
+            "x": 1407.2279330378774,
+            "y": 182.34293479803102
+          },
+          {
+            "id": "YSSY",
+            "kind": "Airport",
+            "x": 1425.476841615855,
+            "y": 79.87357046521788
+          },
+          {
+            "id": "YMHB",
+            "kind": "Airport",
+            "x": 1426.6424732449616,
+            "y": 623.5013602091094
+          },
+          {
+            "id": "planned-route",
+            "kind": "Route",
+            "x": 1428.812558776805,
+            "y": 396.92989773789844
+          },
+          {
+            "id": "completed-plan",
+            "kind": "Route",
+            "x": 1426.4606160869312,
+            "y": 130.47347250872548
+          }
+        ],
+        "selection": {
+          "id": "current-aircraft",
+          "kind": "Aircraft"
+        },
+        "selectionFilters": {
+          "airport": [
+            "==",
+            [
+              "get",
+              "id"
+            ],
+            ""
+          ],
+          "route": [
+            "==",
+            [
+              "get",
+              "id"
+            ],
+            ""
+          ]
+        },
+        "solarSignature": "-0.736,-0.676,-0.039",
+        "sourceIDs": [
+          {
+            "id": "current-aircraft",
+            "source": "Observed"
+          }
+        ],
+        "sourceUpdates": 21
+      },
+      "resources": {
+        "cpuPercentMachine": 4.006294275573166,
+        "samplingMs": {
+          "count": 23,
+          "mean": 11.426900000000002,
+          "p50": 10.7699,
+          "p95": 14.0669,
+          "p99": 14.0693,
+          "max": 14.2373
+        },
+        "last": {
+          "utc": "2026-09-29T20:59:41.4008317+00:00",
+          "stage": "restoration-return-2",
+          "browserProcesses": 5,
+          "hostMiB": 286.04296875,
+          "browserMiB": 374.51171875,
+          "totalMiB": 660.5546875,
+          "cpuPercentMachine": 4.006294985416622
+        },
+        "logicalProcessors": 16,
+        "workingSetsMayDoubleCountSharedPages": true,
+        "trackedProcessHandles": 5,
+        "exitedBeforeTracking": 0,
+        "samplingErrors": 0
+      }
+    },
+    {
+      "cycle": 3,
+      "target": "Dispatch",
+      "retainedWhileHidden": true,
+      "sameRenderer": true,
+      "beforeEpoch": 1,
+      "afterEpoch": 1,
+      "correctVisibleMs": 322.9444,
+      "restoreMs": 338.1819,
+      "browser": {
+        "camera": {
+          "bearing": 18,
+          "followId": null,
+          "latitude": -36,
+          "longitude": 149,
+          "zoom": 5
+        },
+        "counts": {
+          "aircraft": 1,
+          "airports": 2,
+          "labels": 3,
+          "routes": 2
+        },
+        "frameIntervals": [
+          50,
+          54.200000000000045,
+          54.09999999999991,
+          50,
+          50,
+          62.5,
+          70.90000000000009,
+          50,
+          54.09999999999991,
+          50,
+          66.70000000000005,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          51.100000000000364,
+          54.099999999999454,
+          50,
+          50.100000000000364,
+          54.100000000000364,
+          54.099999999999454,
+          50.20000000000073,
+          54,
+          50.100000000000364,
+          54.100000000000364,
+          50,
+          50.099999999998545,
+          50.100000000000364,
+          50.100000000000364,
+          54,
+          50,
+          50,
+          50.099999999998545,
+          50.100000000000364,
+          50,
+          50,
+          50,
+          50,
+          50
+        ],
+        "lastSequence": 5,
+        "points": [
+          {
+            "id": "current-aircraft",
+            "kind": "Aircraft",
+            "x": 1415.7452301830165,
+            "y": 182.39616993686812
+          },
+          {
+            "id": "YSSY",
+            "kind": "Airport",
+            "x": 1433.976841615855,
+            "y": 79.87357046521788
+          },
+          {
+            "id": "YMHB",
+            "kind": "Airport",
+            "x": 1435.1424732449616,
+            "y": 623.5013602091094
+          },
+          {
+            "id": "planned-route",
+            "kind": "Route",
+            "x": 1437.3125392693,
+            "y": 396.958333091894
+          },
+          {
+            "id": "completed-plan",
+            "kind": "Route",
+            "x": 1434.9610943611815,
+            "y": 130.50028144368093
+          }
+        ],
+        "selection": {
+          "id": "current-aircraft",
+          "kind": "Aircraft"
+        },
+        "selectionFilters": {
+          "airport": [
+            "==",
+            [
+              "get",
+              "id"
+            ],
+            ""
+          ],
+          "route": [
+            "==",
+            [
+              "get",
+              "id"
+            ],
+            ""
+          ]
+        },
+        "solarSignature": "-0.736,-0.676,-0.039",
+        "sourceIDs": [
+          {
+            "id": "current-aircraft",
+            "source": "Observed"
+          }
+        ],
+        "sourceUpdates": 26
+      },
+      "resources": {
+        "cpuPercentMachine": 4.272925261053176,
+        "samplingMs": {
+          "count": 24,
+          "mean": 11.540295833333333,
+          "p50": 10.7699,
+          "p95": 14.0693,
+          "p99": 14.1484,
+          "max": 14.2373
+        },
+        "last": {
+          "utc": "2026-09-29T20:59:42.2685669+00:00",
+          "stage": "restoration-return-3",
+          "browserProcesses": 5,
+          "hostMiB": 290.28125,
+          "browserMiB": 374.69140625,
+          "totalMiB": 664.97265625,
+          "cpuPercentMachine": 4.272926146383036
+        },
+        "logicalProcessors": 16,
+        "workingSetsMayDoubleCountSharedPages": true,
+        "trackedProcessHandles": 5,
+        "exitedBeforeTracking": 0,
+        "samplingErrors": 0
+      }
+    },
+    {
+      "cycle": 4,
+      "target": "Flights",
+      "retainedWhileHidden": true,
+      "sameRenderer": true,
+      "beforeEpoch": 1,
+      "afterEpoch": 1,
+      "correctVisibleMs": 323.5713,
+      "restoreMs": 335.0586,
+      "browser": {
+        "camera": {
+          "bearing": 18,
+          "followId": null,
+          "latitude": -36,
+          "longitude": 149,
+          "zoom": 5
+        },
+        "counts": {
+          "aircraft": 1,
+          "airports": 2,
+          "labels": 3,
+          "routes": 2
+        },
+        "frameIntervals": [
+          50,
+          54.200000000000045,
+          54.09999999999991,
+          50,
+          50,
+          62.5,
+          70.90000000000009,
+          50,
+          54.09999999999991,
+          50,
+          66.70000000000005,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          51.100000000000364,
+          54.099999999999454,
+          50,
+          50.100000000000364,
+          54.100000000000364,
+          54.099999999999454,
+          50.20000000000073,
+          54,
+          50.100000000000364,
+          54.100000000000364,
+          50,
+          50.099999999998545,
+          50.100000000000364,
+          50.100000000000364,
+          54,
+          50,
+          50,
+          50.099999999998545,
+          50.100000000000364,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50.20000000000073,
+          54.100000000000364,
+          50,
+          50.100000000000364,
+          54,
+          50
+        ],
+        "lastSequence": 6,
+        "points": [
+          {
+            "id": "current-aircraft",
+            "kind": "Aircraft",
+            "x": 1407.262527544323,
+            "y": 182.44940574099672
+          },
+          {
+            "id": "YSSY",
+            "kind": "Airport",
+            "x": 1425.476841615855,
+            "y": 79.87357046521788
+          },
+          {
+            "id": "YMHB",
+            "kind": "Airport",
+            "x": 1426.6424732449616,
+            "y": 623.5013602091094
+          },
+          {
+            "id": "planned-route",
+            "kind": "Route",
+            "x": 1428.8125197010527,
+            "y": 396.9867683818049
+          },
+          {
+            "id": "completed-plan",
+            "kind": "Route",
+            "x": 1426.4615725879326,
+            "y": 130.52709029365644
+          }
+        ],
+        "selection": {
+          "id": "current-aircraft",
+          "kind": "Aircraft"
+        },
+        "selectionFilters": {
+          "airport": [
+            "==",
+            [
+              "get",
+              "id"
+            ],
+            ""
+          ],
+          "route": [
+            "==",
+            [
+              "get",
+              "id"
+            ],
+            ""
+          ]
+        },
+        "solarSignature": "-0.736,-0.676,-0.039",
+        "sourceIDs": [
+          {
+            "id": "current-aircraft",
+            "source": "Observed"
+          }
+        ],
+        "sourceUpdates": 31
+      },
+      "resources": {
+        "cpuPercentMachine": 4.427088981095392,
+        "samplingMs": {
+          "count": 25,
+          "mean": 11.494603999999999,
+          "p50": 10.7699,
+          "p95": 14.0693,
+          "p99": 14.1484,
+          "max": 14.2373
+        },
+        "last": {
+          "utc": "2026-09-29T20:59:43.151965+00:00",
+          "stage": "restoration-return-4",
+          "browserProcesses": 5,
+          "hostMiB": 298.52734375,
+          "browserMiB": 374.66015625,
+          "totalMiB": 673.1875,
+          "cpuPercentMachine": 4.427089809205805
+        },
+        "logicalProcessors": 16,
+        "workingSetsMayDoubleCountSharedPages": true,
+        "trackedProcessHandles": 5,
+        "exitedBeforeTracking": 0,
+        "samplingErrors": 0
+      }
+    },
+    {
+      "cycle": 5,
+      "target": "Logbook",
+      "retainedWhileHidden": true,
+      "sameRenderer": true,
+      "beforeEpoch": 1,
+      "afterEpoch": 1,
+      "correctVisibleMs": 327.3477,
+      "restoreMs": 341.8712,
+      "browser": {
+        "camera": {
+          "bearing": 18,
+          "followId": null,
+          "latitude": -36,
+          "longitude": 149,
+          "zoom": 5
+        },
+        "counts": {
+          "aircraft": 1,
+          "airports": 2,
+          "labels": 3,
+          "routes": 2
+        },
+        "frameIntervals": [
+          50,
+          54.200000000000045,
+          54.09999999999991,
+          50,
+          50,
+          62.5,
+          70.90000000000009,
+          50,
+          54.09999999999991,
+          50,
+          66.70000000000005,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          51.100000000000364,
+          54.099999999999454,
+          50,
+          50.100000000000364,
+          54.100000000000364,
+          54.099999999999454,
+          50.20000000000073,
+          54,
+          50.100000000000364,
+          54.100000000000364,
+          50,
+          50.099999999998545,
+          50.100000000000364,
+          50.100000000000364,
+          54,
+          50,
+          50,
+          50.099999999998545,
+          50.100000000000364,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50.20000000000073,
+          54.100000000000364,
+          50,
+          50.100000000000364,
+          54,
+          50,
+          50,
+          50,
+          50.100000000000364,
+          50,
+          54.100000000000364,
+          50.100000000000364
+        ],
+        "lastSequence": 7,
+        "points": [
+          {
+            "id": "current-aircraft",
+            "kind": "Aircraft",
+            "x": 1415.7798251218037,
+            "y": 182.50264221045214
+          },
+          {
+            "id": "YSSY",
+            "kind": "Airport",
+            "x": 1433.976841615855,
+            "y": 79.87357046521788
+          },
+          {
+            "id": "YMHB",
+            "kind": "Airport",
+            "x": 1435.1424732449616,
+            "y": 623.5013602091094
+          },
+          {
+            "id": "planned-route",
+            "kind": "Route",
+            "x": 1437.312500072052,
+            "y": 397.01520360753074
+          },
+          {
+            "id": "completed-plan",
+            "kind": "Route",
+            "x": 1434.962050767184,
+            "y": 130.55389905855256
+          }
+        ],
+        "selection": {
+          "id": "current-aircraft",
+          "kind": "Aircraft"
+        },
+        "selectionFilters": {
+          "airport": [
+            "==",
+            [
+              "get",
+              "id"
+            ],
+            ""
+          ],
+          "route": [
+            "==",
+            [
+              "get",
+              "id"
+            ],
+            ""
+          ]
+        },
+        "solarSignature": "-0.736,-0.676,-0.039",
+        "sourceIDs": [
+          {
+            "id": "current-aircraft",
+            "source": "Observed"
+          }
+        ],
+        "sourceUpdates": 36
+      },
+      "resources": {
+        "cpuPercentMachine": 4.44180673753277,
+        "samplingMs": {
+          "count": 26,
+          "mean": 11.56153076923077,
+          "p50": 10.7699,
+          "p95": 14.0693,
+          "p99": 14.1484,
+          "max": 14.2373
+        },
+        "last": {
+          "utc": "2026-09-29T20:59:44.0232673+00:00",
+          "stage": "restoration-return-5",
+          "browserProcesses": 5,
+          "hostMiB": 301.33984375,
+          "browserMiB": 369.390625,
+          "totalMiB": 670.73046875,
+          "cpuPercentMachine": 4.441807763300442
+        },
+        "logicalProcessors": 16,
+        "workingSetsMayDoubleCountSharedPages": true,
+        "trackedProcessHandles": 5,
+        "exitedBeforeTracking": 0,
+        "samplingErrors": 0
+      }
+    },
+    {
+      "cycle": 6,
+      "target": "Dispatch",
+      "retainedWhileHidden": true,
+      "sameRenderer": true,
+      "beforeEpoch": 1,
+      "afterEpoch": 1,
+      "correctVisibleMs": 323.0427,
+      "restoreMs": 337.0175,
+      "browser": {
+        "camera": {
+          "bearing": 18,
+          "followId": null,
+          "latitude": -36,
+          "longitude": 149,
+          "zoom": 5
+        },
+        "counts": {
+          "aircraft": 1,
+          "airports": 2,
+          "labels": 3,
+          "routes": 2
+        },
+        "frameIntervals": [
+          50,
+          54.200000000000045,
+          54.09999999999991,
+          50,
+          50,
+          62.5,
+          70.90000000000009,
+          50,
+          54.09999999999991,
+          50,
+          66.70000000000005,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          51.100000000000364,
+          54.099999999999454,
+          50,
+          50.100000000000364,
+          54.100000000000364,
+          54.099999999999454,
+          50.20000000000073,
+          54,
+          50.100000000000364,
+          54.100000000000364,
+          50,
+          50.099999999998545,
+          50.100000000000364,
+          50.100000000000364,
+          54,
+          50,
+          50,
+          50.099999999998545,
+          50.100000000000364,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50.20000000000073,
+          54.100000000000364,
+          50,
+          50.100000000000364,
+          54,
+          50,
+          50,
+          50,
+          50.100000000000364,
+          50,
+          54.100000000000364,
+          50.100000000000364,
+          50.100000000000364,
+          50,
+          50,
+          54.100000000000364,
+          50,
+          50
+        ],
+        "lastSequence": 8,
+        "points": [
+          {
+            "id": "current-aircraft",
+            "kind": "Aircraft",
+            "x": 1407.297122915478,
+            "y": 182.55587934526594
+          },
+          {
+            "id": "YSSY",
+            "kind": "Airport",
+            "x": 1425.476841615855,
+            "y": 79.87357046521788
+          },
+          {
+            "id": "YMHB",
+            "kind": "Airport",
+            "x": 1426.6424732449616,
+            "y": 623.5013602091094
+          },
+          {
+            "id": "planned-route",
+            "kind": "Route",
+            "x": 1428.8124803823052,
+            "y": 397.0436387689758
+          },
+          {
+            "id": "completed-plan",
+            "kind": "Route",
+            "x": 1426.4625288989291,
+            "y": 130.58070773828473
+          }
+        ],
+        "selection": {
+          "id": "current-aircraft",
+          "kind": "Aircraft"
+        },
+        "selectionFilters": {
+          "airport": [
+            "==",
+            [
+              "get",
+              "id"
+            ],
+            ""
+          ],
+          "route": [
+            "==",
+            [
+              "get",
+              "id"
+            ],
+            ""
+          ]
+        },
+        "solarSignature": "-0.736,-0.676,-0.039",
+        "sourceIDs": [
+          {
+            "id": "current-aircraft",
+            "source": "Observed"
+          }
+        ],
+        "sourceUpdates": 41
+      },
+      "resources": {
+        "cpuPercentMachine": 4.4916701101120555,
+        "samplingMs": {
+          "count": 27,
+          "mean": 11.609666666666666,
+          "p50": 11.3507,
+          "p95": 14.0693,
+          "p99": 14.1484,
+          "max": 14.2373
+        },
+        "last": {
+          "utc": "2026-09-29T20:59:44.8910752+00:00",
+          "stage": "restoration-return-6",
+          "browserProcesses": 5,
+          "hostMiB": 307.078125,
+          "browserMiB": 369.98046875,
+          "totalMiB": 677.05859375,
+          "cpuPercentMachine": 4.4916708983185245
+        },
+        "logicalProcessors": 16,
+        "workingSetsMayDoubleCountSharedPages": true,
+        "trackedProcessHandles": 5,
+        "exitedBeforeTracking": 0,
+        "samplingErrors": 0
+      }
+    },
+    {
+      "cycle": 7,
+      "target": "Flights",
+      "retainedWhileHidden": true,
+      "sameRenderer": true,
+      "beforeEpoch": 1,
+      "afterEpoch": 1,
+      "correctVisibleMs": 325.9919,
+      "restoreMs": 339.9127,
+      "browser": {
+        "camera": {
+          "bearing": 18,
+          "followId": null,
+          "latitude": -36,
+          "longitude": 149,
+          "zoom": 5
+        },
+        "counts": {
+          "aircraft": 1,
+          "airports": 2,
+          "labels": 3,
+          "routes": 2
+        },
+        "frameIntervals": [
+          50,
+          54.200000000000045,
+          54.09999999999991,
+          50,
+          50,
+          62.5,
+          70.90000000000009,
+          50,
+          54.09999999999991,
+          50,
+          66.70000000000005,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          51.100000000000364,
+          54.099999999999454,
+          50,
+          50.100000000000364,
+          54.100000000000364,
+          54.099999999999454,
+          50.20000000000073,
+          54,
+          50.100000000000364,
+          54.100000000000364,
+          50,
+          50.099999999998545,
+          50.100000000000364,
+          50.100000000000364,
+          54,
+          50,
+          50,
+          50.099999999998545,
+          50.100000000000364,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50.20000000000073,
+          54.100000000000364,
+          50,
+          50.100000000000364,
+          54,
+          50,
+          50,
+          50,
+          50.100000000000364,
+          50,
+          54.100000000000364,
+          50.100000000000364,
+          50.100000000000364,
+          50,
+          50,
+          54.100000000000364,
+          50,
+          50,
+          50.100000000000364,
+          50.099999999998545,
+          50,
+          50,
+          50,
+          50
+        ],
+        "lastSequence": 9,
+        "points": [
+          {
+            "id": "current-aircraft",
+            "kind": "Aircraft",
+            "x": 1415.8144209253492,
+            "y": 182.60911714547163
+          },
+          {
+            "id": "YSSY",
+            "kind": "Airport",
+            "x": 1433.976841615855,
+            "y": 79.87357046521788
+          },
+          {
+            "id": "YMHB",
+            "kind": "Airport",
+            "x": 1435.1424732449616,
+            "y": 623.5013602091094
+          },
+          {
+            "id": "planned-route",
+            "kind": "Route",
+            "x": 1437.3124606318013,
+            "y": 397.072073866036
+          },
+          {
+            "id": "completed-plan",
+            "kind": "Route",
+            "x": 1434.963006983171,
+            "y": 130.6075163327563
+          }
+        ],
+        "selection": {
+          "id": "current-aircraft",
+          "kind": "Aircraft"
+        },
+        "selectionFilters": {
+          "airport": [
+            "==",
+            [
+              "get",
+              "id"
+            ],
+            ""
+          ],
+          "route": [
+            "==",
+            [
+              "get",
+              "id"
+            ],
+            ""
+          ]
+        },
+        "solarSignature": "-0.736,-0.676,-0.039",
+        "sourceIDs": [
+          {
+            "id": "current-aircraft",
+            "source": "Observed"
+          }
+        ],
+        "sourceUpdates": 46
+      },
+      "resources": {
+        "cpuPercentMachine": 4.600727557829135,
+        "samplingMs": {
+          "count": 28,
+          "mean": 11.647339285714283,
+          "p50": 11.3507,
+          "p95": 14.0693,
+          "p99": 14.1484,
+          "max": 14.2373
+        },
+        "last": {
+          "utc": "2026-09-29T20:59:45.7806402+00:00",
+          "stage": "restoration-return-7",
+          "browserProcesses": 5,
+          "hostMiB": 316.47265625,
+          "browserMiB": 371.125,
+          "totalMiB": 687.59765625,
+          "cpuPercentMachine": 4.6007283038785305
+        },
+        "logicalProcessors": 16,
+        "workingSetsMayDoubleCountSharedPages": true,
+        "trackedProcessHandles": 5,
+        "exitedBeforeTracking": 0,
+        "samplingErrors": 0
+      }
+    },
+    {
+      "cycle": 8,
+      "target": "Logbook",
+      "retainedWhileHidden": true,
+      "sameRenderer": true,
+      "beforeEpoch": 1,
+      "afterEpoch": 1,
+      "correctVisibleMs": 322.9654,
+      "restoreMs": 339.0246,
+      "browser": {
+        "camera": {
+          "bearing": 18,
+          "followId": null,
+          "latitude": -36,
+          "longitude": 149,
+          "zoom": 5
+        },
+        "counts": {
+          "aircraft": 1,
+          "airports": 2,
+          "labels": 3,
+          "routes": 2
+        },
+        "frameIntervals": [
+          50,
+          54.200000000000045,
+          54.09999999999991,
+          50,
+          50,
+          62.5,
+          70.90000000000009,
+          50,
+          54.09999999999991,
+          50,
+          66.70000000000005,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          51.100000000000364,
+          54.099999999999454,
+          50,
+          50.100000000000364,
+          54.100000000000364,
+          54.099999999999454,
+          50.20000000000073,
+          54,
+          50.100000000000364,
+          54.100000000000364,
+          50,
+          50.099999999998545,
+          50.100000000000364,
+          50.100000000000364,
+          54,
+          50,
+          50,
+          50.099999999998545,
+          50.100000000000364,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50.20000000000073,
+          54.100000000000364,
+          50,
+          50.100000000000364,
+          54,
+          50,
+          50,
+          50,
+          50.100000000000364,
+          50,
+          54.100000000000364,
+          50.100000000000364,
+          50.100000000000364,
+          50,
+          50,
+          54.100000000000364,
+          50,
+          50,
+          50.100000000000364,
+          50.099999999998545,
+          50,
+          50,
+          50,
+          50,
+          50.099999999998545,
+          50,
+          50,
+          50,
+          50.100000000000364,
+          54.100000000000364
+        ],
+        "lastSequence": 10,
+        "points": [
+          {
+            "id": "current-aircraft",
+            "kind": "Aircraft",
+            "x": 1407.3317191514323,
+            "y": 182.6623556111008
+          },
+          {
+            "id": "YSSY",
+            "kind": "Airport",
+            "x": 1425.476841615855,
+            "y": 79.87357046521788
+          },
+          {
+            "id": "YMHB",
+            "kind": "Airport",
+            "x": 1426.6424732449616,
+            "y": 623.5013602091094
+          },
+          {
+            "id": "planned-route",
+            "kind": "Route",
+            "x": 1428.8124408205551,
+            "y": 397.1005088986212
+          },
+          {
+            "id": "completed-plan",
+            "kind": "Route",
+            "x": 1426.463485019906,
+            "y": 130.63432484187703
+          }
+        ],
+        "selection": {
+          "id": "current-aircraft",
+          "kind": "Aircraft"
+        },
+        "selectionFilters": {
+          "airport": [
+            "==",
+            [
+              "get",
+              "id"
+            ],
+            ""
+          ],
+          "route": [
+            "==",
+            [
+              "get",
+              "id"
+            ],
+            ""
+          ]
+        },
+        "solarSignature": "-0.736,-0.676,-0.039",
+        "sourceIDs": [
+          {
+            "id": "current-aircraft",
+            "source": "Observed"
+          }
+        ],
+        "sourceUpdates": 51
+      },
+      "resources": {
+        "cpuPercentMachine": 4.646141134428169,
+        "samplingMs": {
+          "count": 29,
+          "mean": 11.747313793103446,
+          "p50": 12.1116,
+          "p95": 14.1484,
+          "p99": 14.2373,
+          "max": 14.5466
+        },
+        "last": {
+          "utc": "2026-09-29T20:59:46.6539971+00:00",
+          "stage": "restoration-return-8",
+          "browserProcesses": 5,
+          "hostMiB": 310.1953125,
+          "browserMiB": 376.390625,
+          "totalMiB": 686.5859375,
+          "cpuPercentMachine": 4.64614179867654
+        },
+        "logicalProcessors": 16,
+        "workingSetsMayDoubleCountSharedPages": true,
+        "trackedProcessHandles": 5,
+        "exitedBeforeTracking": 0,
+        "samplingErrors": 0
+      }
+    },
+    {
+      "cycle": 9,
+      "target": "Dispatch",
+      "retainedWhileHidden": true,
+      "sameRenderer": true,
+      "beforeEpoch": 1,
+      "afterEpoch": 1,
+      "correctVisibleMs": 327.7703,
+      "restoreMs": 341.9423,
+      "browser": {
+        "camera": {
+          "bearing": 18,
+          "followId": null,
+          "latitude": -36,
+          "longitude": 149,
+          "zoom": 5
+        },
+        "counts": {
+          "aircraft": 1,
+          "airports": 2,
+          "labels": 3,
+          "routes": 2
+        },
+        "frameIntervals": [
+          50,
+          54.200000000000045,
+          54.09999999999991,
+          50,
+          50,
+          62.5,
+          70.90000000000009,
+          50,
+          54.09999999999991,
+          50,
+          66.70000000000005,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          51.100000000000364,
+          54.099999999999454,
+          50,
+          50.100000000000364,
+          54.100000000000364,
+          54.099999999999454,
+          50.20000000000073,
+          54,
+          50.100000000000364,
+          54.100000000000364,
+          50,
+          50.099999999998545,
+          50.100000000000364,
+          50.100000000000364,
+          54,
+          50,
+          50,
+          50.099999999998545,
+          50.100000000000364,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50.20000000000073,
+          54.100000000000364,
+          50,
+          50.100000000000364,
+          54,
+          50,
+          50,
+          50,
+          50.100000000000364,
+          50,
+          54.100000000000364,
+          50.100000000000364,
+          50.100000000000364,
+          50,
+          50,
+          54.100000000000364,
+          50,
+          50,
+          50.100000000000364,
+          50.099999999998545,
+          50,
+          50,
+          50,
+          50,
+          50.099999999998545,
+          50,
+          50,
+          50,
+          50.100000000000364,
+          54.100000000000364,
+          50.20000000000073,
+          50,
+          54.099999999998545,
+          50,
+          50,
+          50
+        ],
+        "lastSequence": 11,
+        "points": [
+          {
+            "id": "current-aircraft",
+            "kind": "Aircraft",
+            "x": 1415.849017593727,
+            "y": 182.71559474218688
+          },
+          {
+            "id": "YSSY",
+            "kind": "Airport",
+            "x": 1433.976841615855,
+            "y": 79.87357046521788
+          },
+          {
+            "id": "YMHB",
+            "kind": "Airport",
+            "x": 1435.1424732449616,
+            "y": 623.5013602091094
+          },
+          {
+            "id": "planned-route",
+            "kind": "Route",
+            "x": 1437.3124209485554,
+            "y": 397.12894386662816
+          },
+          {
+            "id": "completed-plan",
+            "kind": "Route",
+            "x": 1434.9639630091272,
+            "y": 130.66113326554938
+          }
+        ],
+        "selection": {
+          "id": "current-aircraft",
+          "kind": "Aircraft"
+        },
+        "selectionFilters": {
+          "airport": [
+            "==",
+            [
+              "get",
+              "id"
+            ],
+            ""
+          ],
+          "route": [
+            "==",
+            [
+              "get",
+              "id"
+            ],
+            ""
+          ]
+        },
+        "solarSignature": "-0.736,-0.676,-0.039",
+        "sourceIDs": [
+          {
+            "id": "current-aircraft",
+            "source": "Observed"
+          }
+        ],
+        "sourceUpdates": 56
+      },
+      "resources": {
+        "cpuPercentMachine": 4.570233179032945,
+        "samplingMs": {
+          "count": 30,
+          "mean": 11.796033333333332,
+          "p50": 12.1116,
+          "p95": 14.1484,
+          "p99": 14.2373,
+          "max": 14.5466
+        },
+        "last": {
+          "utc": "2026-09-29T20:59:47.5255142+00:00",
+          "stage": "restoration-return-9",
+          "browserProcesses": 5,
+          "hostMiB": 313.234375,
+          "browserMiB": 381.328125,
+          "totalMiB": 694.5625,
+          "cpuPercentMachine": 4.5702345709716585
+        },
+        "logicalProcessors": 16,
+        "workingSetsMayDoubleCountSharedPages": true,
+        "trackedProcessHandles": 5,
+        "exitedBeforeTracking": 0,
+        "samplingErrors": 0
+      }
+    },
+    {
+      "cycle": 10,
+      "target": "Flights",
+      "retainedWhileHidden": true,
+      "sameRenderer": true,
+      "beforeEpoch": 1,
+      "afterEpoch": 1,
+      "correctVisibleMs": 328.9261,
+      "restoreMs": 342.1,
+      "browser": {
+        "camera": {
+          "bearing": 18,
+          "followId": null,
+          "latitude": -36,
+          "longitude": 149,
+          "zoom": 5
+        },
+        "counts": {
+          "aircraft": 1,
+          "airports": 2,
+          "labels": 3,
+          "routes": 2
+        },
+        "frameIntervals": [
+          50,
+          54.200000000000045,
+          54.09999999999991,
+          50,
+          50,
+          62.5,
+          70.90000000000009,
+          50,
+          54.09999999999991,
+          50,
+          66.70000000000005,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          51.100000000000364,
+          54.099999999999454,
+          50,
+          50.100000000000364,
+          54.100000000000364,
+          54.099999999999454,
+          50.20000000000073,
+          54,
+          50.100000000000364,
+          54.100000000000364,
+          50,
+          50.099999999998545,
+          50.100000000000364,
+          50.100000000000364,
+          54,
+          50,
+          50,
+          50.099999999998545,
+          50.100000000000364,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50.20000000000073,
+          54.100000000000364,
+          50,
+          50.100000000000364,
+          54,
+          50,
+          50,
+          50,
+          50.100000000000364,
+          50,
+          54.100000000000364,
+          50.100000000000364,
+          50.100000000000364,
+          50,
+          50,
+          54.100000000000364,
+          50,
+          50,
+          50.100000000000364,
+          50.099999999998545,
+          50,
+          50,
+          50,
+          50,
+          50.099999999998545,
+          50,
+          50,
+          50,
+          50.100000000000364,
+          54.100000000000364,
+          50.20000000000073,
+          50,
+          54.099999999998545,
+          50,
+          50,
+          50,
+          50,
+          50.100000000000364,
+          54.100000000000364,
+          50,
+          54.099999999998545,
+          50
+        ],
+        "lastSequence": 12,
+        "points": [
+          {
+            "id": "current-aircraft",
+            "kind": "Aircraft",
+            "x": 1407.3663162522635,
+            "y": 182.76883453876525
+          },
+          {
+            "id": "YSSY",
+            "kind": "Airport",
+            "x": 1425.476841615855,
+            "y": 79.87357046521788
+          },
+          {
+            "id": "YMHB",
+            "kind": "Airport",
+            "x": 1426.6424732449616,
+            "y": 623.5013602091094
+          },
+          {
+            "id": "planned-route",
+            "kind": "Route",
+            "x": 1428.8124010158097,
+            "y": 397.15737876996025
+          },
+          {
+            "id": "completed-plan",
+            "kind": "Route",
+            "x": 1426.464440950845,
+            "y": 130.68794160368694
+          }
+        ],
+        "selection": {
+          "id": "current-aircraft",
+          "kind": "Aircraft"
+        },
+        "selectionFilters": {
+          "airport": [
+            "==",
+            [
+              "get",
+              "id"
+            ],
+            ""
+          ],
+          "route": [
+            "==",
+            [
+              "get",
+              "id"
+            ],
+            ""
+          ]
+        },
+        "solarSignature": "-0.736,-0.676,-0.039",
+        "sourceIDs": [
+          {
+            "id": "current-aircraft",
+            "source": "Observed"
+          }
+        ],
+        "sourceUpdates": 61
+      },
+      "resources": {
+        "cpuPercentMachine": 4.558457847185787,
+        "samplingMs": {
+          "count": 31,
+          "mean": 11.807109677419353,
+          "p50": 12.1394,
+          "p95": 14.1484,
+          "p99": 14.2373,
+          "max": 14.5466
+        },
+        "last": {
+          "utc": "2026-09-29T20:59:48.4171939+00:00",
+          "stage": "restoration-return-10",
+          "browserProcesses": 5,
+          "hostMiB": 312.23046875,
+          "browserMiB": 381.9609375,
+          "totalMiB": 694.19140625,
+          "cpuPercentMachine": 4.558464707048828
+        },
+        "logicalProcessors": 16,
+        "workingSetsMayDoubleCountSharedPages": true,
+        "trackedProcessHandles": 5,
+        "exitedBeforeTracking": 0,
+        "samplingErrors": 0
+      }
+    },
+    {
+      "cycle": 11,
+      "target": "Logbook",
+      "retainedWhileHidden": true,
+      "sameRenderer": true,
+      "beforeEpoch": 1,
+      "afterEpoch": 1,
+      "correctVisibleMs": 327.2157,
+      "restoreMs": 339.1432,
+      "browser": {
+        "camera": {
+          "bearing": 18,
+          "followId": null,
+          "latitude": -36,
+          "longitude": 149,
+          "zoom": 5
+        },
+        "counts": {
+          "aircraft": 1,
+          "airports": 2,
+          "labels": 3,
+          "routes": 2
+        },
+        "frameIntervals": [
+          50,
+          54.200000000000045,
+          54.09999999999991,
+          50,
+          50,
+          62.5,
+          70.90000000000009,
+          50,
+          54.09999999999991,
+          50,
+          66.70000000000005,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          51.100000000000364,
+          54.099999999999454,
+          50,
+          50.100000000000364,
+          54.100000000000364,
+          54.099999999999454,
+          50.20000000000073,
+          54,
+          50.100000000000364,
+          54.100000000000364,
+          50,
+          50.099999999998545,
+          50.100000000000364,
+          50.100000000000364,
+          54,
+          50,
+          50,
+          50.099999999998545,
+          50.100000000000364,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50.20000000000073,
+          54.100000000000364,
+          50,
+          50.100000000000364,
+          54,
+          50,
+          50,
+          50,
+          50.100000000000364,
+          50,
+          54.100000000000364,
+          50.100000000000364,
+          50.100000000000364,
+          50,
+          50,
+          54.100000000000364,
+          50,
+          50,
+          50.100000000000364,
+          50.099999999998545,
+          50,
+          50,
+          50,
+          50,
+          50.099999999998545,
+          50,
+          50,
+          50,
+          50.100000000000364,
+          54.100000000000364,
+          50.20000000000073,
+          50,
+          54.099999999998545,
+          50,
+          50,
+          50,
+          50,
+          50.100000000000364,
+          54.100000000000364,
+          50,
+          54.099999999998545,
+          50,
+          50.10000000000218,
+          50,
+          54.099999999998545,
+          50,
+          50.10000000000218,
+          50
+        ],
+        "lastSequence": 13,
+        "points": [
+          {
+            "id": "current-aircraft",
+            "kind": "Aircraft",
+            "x": 1415.883615127034,
+            "y": 182.82207500086372
+          },
+          {
+            "id": "YSSY",
+            "kind": "Airport",
+            "x": 1433.976841615855,
+            "y": 79.87357046521788
+          },
+          {
+            "id": "YMHB",
+            "kind": "Airport",
+            "x": 1435.1424732449616,
+            "y": 623.5013602091094
+          },
+          {
+            "id": "planned-route",
+            "kind": "Route",
+            "x": 1437.3123810223067,
+            "y": 397.1858136085189
+          },
+          {
+            "id": "completed-plan",
+            "kind": "Route",
+            "x": 1434.964918845045,
+            "y": 130.71474985619858
+          }
+        ],
+        "selection": {
+          "id": "current-aircraft",
+          "kind": "Aircraft"
+        },
+        "selectionFilters": {
+          "airport": [
+            "==",
+            [
+              "get",
+              "id"
+            ],
+            ""
+          ],
+          "route": [
+            "==",
+            [
+              "get",
+              "id"
+            ],
+            ""
+          ]
+        },
+        "solarSignature": "-0.736,-0.676,-0.039",
+        "sourceIDs": [
+          {
+            "id": "current-aircraft",
+            "source": "Observed"
+          }
+        ],
+        "sourceUpdates": 66
+      },
+      "resources": {
+        "cpuPercentMachine": 4.612306648820857,
+        "samplingMs": {
+          "count": 32,
+          "mean": 11.773684374999997,
+          "p50": 12.1116,
+          "p95": 14.1484,
+          "p99": 14.2373,
+          "max": 14.5466
+        },
+        "last": {
+          "utc": "2026-09-29T20:59:49.2871118+00:00",
+          "stage": "restoration-return-11",
+          "browserProcesses": 5,
+          "hostMiB": 313.94140625,
+          "browserMiB": 380.203125,
+          "totalMiB": 694.14453125,
+          "cpuPercentMachine": 4.6123072850693525
+        },
+        "logicalProcessors": 16,
+        "workingSetsMayDoubleCountSharedPages": true,
+        "trackedProcessHandles": 5,
+        "exitedBeforeTracking": 0,
+        "samplingErrors": 0
+      }
+    },
+    {
+      "cycle": 12,
+      "target": "Dispatch",
+      "retainedWhileHidden": true,
+      "sameRenderer": true,
+      "beforeEpoch": 1,
+      "afterEpoch": 1,
+      "correctVisibleMs": 328.6198,
+      "restoreMs": 343.7858,
+      "browser": {
+        "camera": {
+          "bearing": 18,
+          "followId": null,
+          "latitude": -36,
+          "longitude": 149,
+          "zoom": 5
+        },
+        "counts": {
+          "aircraft": 1,
+          "airports": 2,
+          "labels": 3,
+          "routes": 2
+        },
+        "frameIntervals": [
+          50,
+          54.200000000000045,
+          54.09999999999991,
+          50,
+          50,
+          62.5,
+          70.90000000000009,
+          50,
+          54.09999999999991,
+          50,
+          66.70000000000005,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          51.100000000000364,
+          54.099999999999454,
+          50,
+          50.100000000000364,
+          54.100000000000364,
+          54.099999999999454,
+          50.20000000000073,
+          54,
+          50.100000000000364,
+          54.100000000000364,
+          50,
+          50.099999999998545,
+          50.100000000000364,
+          50.100000000000364,
+          54,
+          50,
+          50,
+          50.099999999998545,
+          50.100000000000364,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50.20000000000073,
+          54.100000000000364,
+          50,
+          50.100000000000364,
+          54,
+          50,
+          50,
+          50,
+          50.100000000000364,
+          50,
+          54.100000000000364,
+          50.100000000000364,
+          50.100000000000364,
+          50,
+          50,
+          54.100000000000364,
+          50,
+          50,
+          50.100000000000364,
+          50.099999999998545,
+          50,
+          50,
+          50,
+          50,
+          50.099999999998545,
+          50,
+          50,
+          50,
+          50.100000000000364,
+          54.100000000000364,
+          50.20000000000073,
+          50,
+          54.099999999998545,
+          50,
+          50,
+          50,
+          50,
+          50.100000000000364,
+          54.100000000000364,
+          50,
+          54.099999999998545,
+          50,
+          50.10000000000218,
+          50,
+          54.099999999998545,
+          50,
+          50.10000000000218,
+          50,
+          50.099999999998545,
+          50,
+          50,
+          50,
+          54.099999999998545,
+          50
+        ],
+        "lastSequence": 14,
+        "points": [
+          {
+            "id": "current-aircraft",
+            "kind": "Aircraft",
+            "x": 1407.4009142180612,
+            "y": 182.87531612851953
+          },
+          {
+            "id": "YSSY",
+            "kind": "Airport",
+            "x": 1425.476841615855,
+            "y": 79.87357046521788
+          },
+          {
+            "id": "YMHB",
+            "kind": "Airport",
+            "x": 1426.6424732449616,
+            "y": 623.5013602091094
+          },
+          {
+            "id": "planned-route",
+            "kind": "Route",
+            "x": 1428.812360968054,
+            "y": 397.2142483822066
+          },
+          {
+            "id": "completed-plan",
+            "kind": "Route",
+            "x": 1426.4653966917308,
+            "y": 130.74155802298577
+          }
+        ],
+        "selection": {
+          "id": "current-aircraft",
+          "kind": "Aircraft"
+        },
+        "selectionFilters": {
+          "airport": [
+            "==",
+            [
+              "get",
+              "id"
+            ],
+            ""
+          ],
+          "route": [
+            "==",
+            [
+              "get",
+              "id"
+            ],
+            ""
+          ]
+        },
+        "solarSignature": "-0.736,-0.676,-0.039",
+        "sourceIDs": [
+          {
+            "id": "current-aircraft",
+            "source": "Observed"
+          }
+        ],
+        "sourceUpdates": 71
+      },
+      "resources": {
+        "cpuPercentMachine": 4.471278318627314,
+        "samplingMs": {
+          "count": 33,
+          "mean": 11.838766666666663,
+          "p50": 12.1394,
+          "p95": 14.1484,
+          "p99": 14.2373,
+          "max": 14.5466
+        },
+        "last": {
+          "utc": "2026-09-29T20:59:50.1604051+00:00",
+          "stage": "restoration-return-12",
+          "browserProcesses": 5,
+          "hostMiB": 305.359375,
+          "browserMiB": 378.921875,
+          "totalMiB": 684.28125,
+          "cpuPercentMachine": 4.471279068624636
+        },
+        "logicalProcessors": 16,
+        "workingSetsMayDoubleCountSharedPages": true,
+        "trackedProcessHandles": 5,
+        "exitedBeforeTracking": 0,
+        "samplingErrors": 0
+      }
+    },
+    {
+      "cycle": 13,
+      "target": "Flights",
+      "retainedWhileHidden": true,
+      "sameRenderer": true,
+      "beforeEpoch": 1,
+      "afterEpoch": 1,
+      "correctVisibleMs": 329.1139,
+      "restoreMs": 343.8519,
+      "browser": {
+        "camera": {
+          "bearing": 18,
+          "followId": null,
+          "latitude": -36,
+          "longitude": 149,
+          "zoom": 5
+        },
+        "counts": {
+          "aircraft": 1,
+          "airports": 2,
+          "labels": 3,
+          "routes": 2
+        },
+        "frameIntervals": [
+          50,
+          54.200000000000045,
+          54.09999999999991,
+          50,
+          50,
+          62.5,
+          70.90000000000009,
+          50,
+          54.09999999999991,
+          50,
+          66.70000000000005,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          51.100000000000364,
+          54.099999999999454,
+          50,
+          50.100000000000364,
+          54.100000000000364,
+          54.099999999999454,
+          50.20000000000073,
+          54,
+          50.100000000000364,
+          54.100000000000364,
+          50,
+          50.099999999998545,
+          50.100000000000364,
+          50.100000000000364,
+          54,
+          50,
+          50,
+          50.099999999998545,
+          50.100000000000364,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50.20000000000073,
+          54.100000000000364,
+          50,
+          50.100000000000364,
+          54,
+          50,
+          50,
+          50,
+          50.100000000000364,
+          50,
+          54.100000000000364,
+          50.100000000000364,
+          50.100000000000364,
+          50,
+          50,
+          54.100000000000364,
+          50,
+          50,
+          50.100000000000364,
+          50.099999999998545,
+          50,
+          50,
+          50,
+          50,
+          50.099999999998545,
+          50,
+          50,
+          50,
+          50.100000000000364,
+          54.100000000000364,
+          50.20000000000073,
+          50,
+          54.099999999998545,
+          50,
+          50,
+          50,
+          50,
+          50.100000000000364,
+          54.100000000000364,
+          50,
+          54.099999999998545,
+          50,
+          50.10000000000218,
+          50,
+          54.099999999998545,
+          50,
+          50.10000000000218,
+          50,
+          50.099999999998545,
+          50,
+          50,
+          50,
+          54.099999999998545,
+          50,
+          50.20000000000073,
+          50,
+          50,
+          50,
+          54.099999999998545,
+          50
+        ],
+        "lastSequence": 15,
+        "points": [
+          {
+            "id": "current-aircraft",
+            "kind": "Aircraft",
+            "x": 1415.9182135253445,
+            "y": 182.92855792176425
+          },
+          {
+            "id": "YSSY",
+            "kind": "Airport",
+            "x": 1433.976841615855,
+            "y": 79.87357046521788
+          },
+          {
+            "id": "YMHB",
+            "kind": "Airport",
+            "x": 1435.1424732449616,
+            "y": 623.5013602091094
+          },
+          {
+            "id": "planned-route",
+            "kind": "Route",
+            "x": 1437.3123408530444,
+            "y": 397.24268309092486
+          },
+          {
+            "id": "completed-plan",
+            "kind": "Route",
+            "x": 1434.9658744908988,
+            "y": 130.76836610396026
+          }
+        ],
+        "selection": {
+          "id": "current-aircraft",
+          "kind": "Aircraft"
+        },
+        "selectionFilters": {
+          "airport": [
+            "==",
+            [
+              "get",
+              "id"
+            ],
+            ""
+          ],
+          "route": [
+            "==",
+            [
+              "get",
+              "id"
+            ],
+            ""
+          ]
+        },
+        "solarSignature": "-0.736,-0.676,-0.039",
+        "sourceIDs": [
+          {
+            "id": "current-aircraft",
+            "source": "Observed"
+          }
+        ],
+        "sourceUpdates": 76
+      },
+      "resources": {
+        "cpuPercentMachine": 4.420267360004395,
+        "samplingMs": {
+          "count": 34,
+          "mean": 11.882982352941173,
+          "p50": 12.1394,
+          "p95": 14.1484,
+          "p99": 14.2373,
+          "max": 14.5466
+        },
+        "last": {
+          "utc": "2026-09-29T20:59:51.053136+00:00",
+          "stage": "restoration-return-13",
+          "browserProcesses": 5,
+          "hostMiB": 310.38671875,
+          "browserMiB": 380.16015625,
+          "totalMiB": 690.546875,
+          "cpuPercentMachine": 4.420267880360604
+        },
+        "logicalProcessors": 16,
+        "workingSetsMayDoubleCountSharedPages": true,
+        "trackedProcessHandles": 5,
+        "exitedBeforeTracking": 0,
+        "samplingErrors": 0
+      }
+    },
+    {
+      "cycle": 14,
+      "target": "Logbook",
+      "retainedWhileHidden": true,
+      "sameRenderer": true,
+      "beforeEpoch": 1,
+      "afterEpoch": 1,
+      "correctVisibleMs": 327.3564,
+      "restoreMs": 338.8838,
+      "browser": {
+        "camera": {
+          "bearing": 18,
+          "followId": null,
+          "latitude": -36,
+          "longitude": 149,
+          "zoom": 5
+        },
+        "counts": {
+          "aircraft": 1,
+          "airports": 2,
+          "labels": 3,
+          "routes": 2
+        },
+        "frameIntervals": [
+          50,
+          54.200000000000045,
+          54.09999999999991,
+          50,
+          50,
+          62.5,
+          70.90000000000009,
+          50,
+          54.09999999999991,
+          50,
+          66.70000000000005,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          51.100000000000364,
+          54.099999999999454,
+          50,
+          50.100000000000364,
+          54.100000000000364,
+          54.099999999999454,
+          50.20000000000073,
+          54,
+          50.100000000000364,
+          54.100000000000364,
+          50,
+          50.099999999998545,
+          50.100000000000364,
+          50.100000000000364,
+          54,
+          50,
+          50,
+          50.099999999998545,
+          50.100000000000364,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50.20000000000073,
+          54.100000000000364,
+          50,
+          50.100000000000364,
+          54,
+          50,
+          50,
+          50,
+          50.100000000000364,
+          50,
+          54.100000000000364,
+          50.100000000000364,
+          50.100000000000364,
+          50,
+          50,
+          54.100000000000364,
+          50,
+          50,
+          50.100000000000364,
+          50.099999999998545,
+          50,
+          50,
+          50,
+          50,
+          50.099999999998545,
+          50,
+          50,
+          50,
+          50.100000000000364,
+          54.100000000000364,
+          50.20000000000073,
+          50,
+          54.099999999998545,
+          50,
+          50,
+          50,
+          50,
+          50.100000000000364,
+          54.100000000000364,
+          50,
+          54.099999999998545,
+          50,
+          50.10000000000218,
+          50,
+          54.099999999998545,
+          50,
+          50.10000000000218,
+          50,
+          50.099999999998545,
+          50,
+          50,
+          50,
+          54.099999999998545,
+          50,
+          50.20000000000073,
+          50,
+          50,
+          50,
+          54.099999999998545,
+          50,
+          50.20000000000073,
+          50,
+          50,
+          50,
+          50,
+          50
+        ],
+        "lastSequence": 16,
+        "points": [
+          {
+            "id": "current-aircraft",
+            "kind": "Aircraft",
+            "x": 1407.4355130489105,
+            "y": 182.9818003806295
+          },
+          {
+            "id": "YSSY",
+            "kind": "Airport",
+            "x": 1425.476841615855,
+            "y": 79.87357046521788
+          },
+          {
+            "id": "YMHB",
+            "kind": "Airport",
+            "x": 1426.6424732449616,
+            "y": 623.5013602091094
+          },
+          {
+            "id": "planned-route",
+            "kind": "Route",
+            "x": 1428.812320677292,
+            "y": 397.271117734575
+          },
+          {
+            "id": "completed-plan",
+            "kind": "Route",
+            "x": 1426.466352242545,
+            "y": 130.79517409902815
+          }
+        ],
+        "selection": {
+          "id": "current-aircraft",
+          "kind": "Aircraft"
+        },
+        "selectionFilters": {
+          "airport": [
+            "==",
+            [
+              "get",
+              "id"
+            ],
+            ""
+          ],
+          "route": [
+            "==",
+            [
+              "get",
+              "id"
+            ],
+            ""
+          ]
+        },
+        "solarSignature": "-0.736,-0.676,-0.039",
+        "sourceIDs": [
+          {
+            "id": "current-aircraft",
+            "source": "Observed"
+          }
+        ],
+        "sourceUpdates": 81
+      },
+      "resources": {
+        "cpuPercentMachine": 4.346951949889955,
+        "samplingMs": {
+          "count": 35,
+          "mean": 11.845874285714283,
+          "p50": 12.1394,
+          "p95": 14.1484,
+          "p99": 14.2373,
+          "max": 14.5466
+        },
+        "last": {
+          "utc": "2026-09-29T20:59:51.9237806+00:00",
+          "stage": "restoration-return-14",
+          "browserProcesses": 5,
+          "hostMiB": 312.7265625,
+          "browserMiB": 380.33984375,
+          "totalMiB": 693.06640625,
+          "cpuPercentMachine": 4.346952387991775
+        },
+        "logicalProcessors": 16,
+        "workingSetsMayDoubleCountSharedPages": true,
+        "trackedProcessHandles": 5,
+        "exitedBeforeTracking": 0,
+        "samplingErrors": 0
+      }
+    },
+    {
+      "cycle": 15,
+      "target": "Dispatch",
+      "retainedWhileHidden": true,
+      "sameRenderer": true,
+      "beforeEpoch": 1,
+      "afterEpoch": 1,
+      "correctVisibleMs": 328.4608,
+      "restoreMs": 343.4479,
+      "browser": {
+        "camera": {
+          "bearing": 18,
+          "followId": null,
+          "latitude": -36,
+          "longitude": 149,
+          "zoom": 5
+        },
+        "counts": {
+          "aircraft": 1,
+          "airports": 2,
+          "labels": 3,
+          "routes": 2
+        },
+        "frameIntervals": [
+          50,
+          54.200000000000045,
+          54.09999999999991,
+          50,
+          50,
+          62.5,
+          70.90000000000009,
+          50,
+          54.09999999999991,
+          50,
+          66.70000000000005,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          51.100000000000364,
+          54.099999999999454,
+          50,
+          50.100000000000364,
+          54.100000000000364,
+          54.099999999999454,
+          50.20000000000073,
+          54,
+          50.100000000000364,
+          54.100000000000364,
+          50,
+          50.099999999998545,
+          50.100000000000364,
+          50.100000000000364,
+          54,
+          50,
+          50,
+          50.099999999998545,
+          50.100000000000364,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50.20000000000073,
+          54.100000000000364,
+          50,
+          50.100000000000364,
+          54,
+          50,
+          50,
+          50,
+          50.100000000000364,
+          50,
+          54.100000000000364,
+          50.100000000000364,
+          50.100000000000364,
+          50,
+          50,
+          54.100000000000364,
+          50,
+          50,
+          50.100000000000364,
+          50.099999999998545,
+          50,
+          50,
+          50,
+          50,
+          50.099999999998545,
+          50,
+          50,
+          50,
+          50.100000000000364,
+          54.100000000000364,
+          50.20000000000073,
+          50,
+          54.099999999998545,
+          50,
+          50,
+          50,
+          50,
+          50.100000000000364,
+          54.100000000000364,
+          50,
+          54.099999999998545,
+          50,
+          50.10000000000218,
+          50,
+          54.099999999998545,
+          50,
+          50.10000000000218,
+          50,
+          50.099999999998545,
+          50,
+          50,
+          50,
+          54.099999999998545,
+          50,
+          50.20000000000073,
+          50,
+          50,
+          50,
+          54.099999999998545,
+          50,
+          50.20000000000073,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50.099999999998545,
+          50,
+          50,
+          50,
+          50,
+          50
+        ],
+        "lastSequence": 17,
+        "points": [
+          {
+            "id": "current-aircraft",
+            "kind": "Aircraft",
+            "x": 1415.9528127887515,
+            "y": 183.0350435051487
+          },
+          {
+            "id": "YSSY",
+            "kind": "Airport",
+            "x": 1433.976841615855,
+            "y": 79.87357046521788
+          },
+          {
+            "id": "YMHB",
+            "kind": "Airport",
+            "x": 1435.1424732449616,
+            "y": 623.5013602091094
+          },
+          {
+            "id": "planned-route",
+            "kind": "Route",
+            "x": 1437.3123004407753,
+            "y": 397.2995523130577
+          },
+          {
+            "id": "completed-plan",
+            "kind": "Route",
+            "x": 1434.9668299466662,
+            "y": 130.82198200809552
+          }
+        ],
+        "selection": {
+          "id": "current-aircraft",
+          "kind": "Aircraft"
+        },
+        "selectionFilters": {
+          "airport": [
+            "==",
+            [
+              "get",
+              "id"
+            ],
+            ""
+          ],
+          "route": [
+            "==",
+            [
+              "get",
+              "id"
+            ],
+            ""
+          ]
+        },
+        "solarSignature": "-0.736,-0.676,-0.039",
+        "sourceIDs": [
+          {
+            "id": "current-aircraft",
+            "source": "Observed"
+          }
+        ],
+        "sourceUpdates": 86
+      },
+      "resources": {
+        "cpuPercentMachine": 4.232822741913058,
+        "samplingMs": {
+          "count": 36,
+          "mean": 11.906569444444441,
+          "p50": 12.1394,
+          "p95": 14.1484,
+          "p99": 14.2373,
+          "max": 14.5466
+        },
+        "last": {
+          "utc": "2026-09-29T20:59:52.7975479+00:00",
+          "stage": "restoration-return-15",
+          "browserProcesses": 5,
+          "hostMiB": 314.6328125,
+          "browserMiB": 381.0546875,
+          "totalMiB": 695.6875,
+          "cpuPercentMachine": 4.232823148615367
+        },
+        "logicalProcessors": 16,
+        "workingSetsMayDoubleCountSharedPages": true,
+        "trackedProcessHandles": 5,
+        "exitedBeforeTracking": 0,
+        "samplingErrors": 0
+      }
+    },
+    {
+      "cycle": 16,
+      "target": "Flights",
+      "retainedWhileHidden": true,
+      "sameRenderer": true,
+      "beforeEpoch": 1,
+      "afterEpoch": 1,
+      "correctVisibleMs": 332.048,
+      "restoreMs": 346.7172,
+      "browser": {
+        "camera": {
+          "bearing": 18,
+          "followId": null,
+          "latitude": -36,
+          "longitude": 149,
+          "zoom": 5
+        },
+        "counts": {
+          "aircraft": 1,
+          "airports": 2,
+          "labels": 3,
+          "routes": 2
+        },
+        "frameIntervals": [
+          50,
+          54.200000000000045,
+          54.09999999999991,
+          50,
+          50,
+          62.5,
+          70.90000000000009,
+          50,
+          54.09999999999991,
+          50,
+          66.70000000000005,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          51.100000000000364,
+          54.099999999999454,
+          50,
+          50.100000000000364,
+          54.100000000000364,
+          54.099999999999454,
+          50.20000000000073,
+          54,
+          50.100000000000364,
+          54.100000000000364,
+          50,
+          50.099999999998545,
+          50.100000000000364,
+          50.100000000000364,
+          54,
+          50,
+          50,
+          50.099999999998545,
+          50.100000000000364,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50.20000000000073,
+          54.100000000000364,
+          50,
+          50.100000000000364,
+          54,
+          50,
+          50,
+          50,
+          50.100000000000364,
+          50,
+          54.100000000000364,
+          50.100000000000364,
+          50.100000000000364,
+          50,
+          50,
+          54.100000000000364,
+          50,
+          50,
+          50.100000000000364,
+          50.099999999998545,
+          50,
+          50,
+          50,
+          50,
+          50.099999999998545,
+          50,
+          50,
+          50,
+          50.100000000000364,
+          54.100000000000364,
+          50.20000000000073,
+          50,
+          54.099999999998545,
+          50,
+          50,
+          50,
+          50,
+          50.100000000000364,
+          54.100000000000364,
+          50,
+          54.099999999998545,
+          50,
+          50.10000000000218,
+          50,
+          54.099999999998545,
+          50,
+          50.10000000000218,
+          50,
+          50.099999999998545,
+          50,
+          50,
+          50,
+          54.099999999998545,
+          50,
+          50.20000000000073,
+          50,
+          50,
+          50,
+          54.099999999998545,
+          50,
+          50.20000000000073,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50.099999999998545,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50.10000000000218,
+          50,
+          50,
+          50,
+          50
+        ],
+        "lastSequence": 18,
+        "points": [
+          {
+            "id": "current-aircraft",
+            "kind": "Aircraft",
+            "x": 1407.4701127448936,
+            "y": 183.08828729535722
+          },
+          {
+            "id": "YSSY",
+            "kind": "Airport",
+            "x": 1425.476841615855,
+            "y": 79.87357046521788
+          },
+          {
+            "id": "YMHB",
+            "kind": "Airport",
+            "x": 1426.6424732449616,
+            "y": 623.5013602091094
+          },
+          {
+            "id": "planned-route",
+            "kind": "Route",
+            "x": 1428.8122801435127,
+            "y": 397.32798682627623
+          },
+          {
+            "id": "completed-plan",
+            "kind": "Route",
+            "x": 1426.4673076032766,
+            "y": 130.84878983107131
+          }
+        ],
+        "selection": {
+          "id": "current-aircraft",
+          "kind": "Aircraft"
+        },
+        "selectionFilters": {
+          "airport": [
+            "==",
+            [
+              "get",
+              "id"
+            ],
+            ""
+          ],
+          "route": [
+            "==",
+            [
+              "get",
+              "id"
+            ],
+            ""
+          ]
+        },
+        "solarSignature": "-0.736,-0.676,-0.039",
+        "sourceIDs": [
+          {
+            "id": "current-aircraft",
+            "source": "Observed"
+          }
+        ],
+        "sourceUpdates": 91
+      },
+      "resources": {
+        "cpuPercentMachine": 4.218671992774974,
+        "samplingMs": {
+          "count": 37,
+          "mean": 11.94733243243243,
+          "p50": 12.4618,
+          "p95": 14.1484,
+          "p99": 14.2373,
+          "max": 14.5466
+        },
+        "last": {
+          "utc": "2026-09-29T20:59:53.6937359+00:00",
+          "stage": "restoration-return-16",
+          "browserProcesses": 5,
+          "hostMiB": 327.66796875,
+          "browserMiB": 383.0078125,
+          "totalMiB": 710.67578125,
+          "cpuPercentMachine": 4.218672379612119
+        },
+        "logicalProcessors": 16,
+        "workingSetsMayDoubleCountSharedPages": true,
+        "trackedProcessHandles": 5,
+        "exitedBeforeTracking": 0,
+        "samplingErrors": 0
+      }
+    },
+    {
+      "cycle": 17,
+      "target": "Logbook",
+      "retainedWhileHidden": true,
+      "sameRenderer": true,
+      "beforeEpoch": 1,
+      "afterEpoch": 1,
+      "correctVisibleMs": 328.9403,
+      "restoreMs": 342.6796,
+      "browser": {
+        "camera": {
+          "bearing": 18,
+          "followId": null,
+          "latitude": -36,
+          "longitude": 149,
+          "zoom": 5
+        },
+        "counts": {
+          "aircraft": 1,
+          "airports": 2,
+          "labels": 3,
+          "routes": 2
+        },
+        "frameIntervals": [
+          50,
+          54.200000000000045,
+          54.09999999999991,
+          50,
+          50,
+          62.5,
+          70.90000000000009,
+          50,
+          54.09999999999991,
+          50,
+          66.70000000000005,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          51.100000000000364,
+          54.099999999999454,
+          50,
+          50.100000000000364,
+          54.100000000000364,
+          54.099999999999454,
+          50.20000000000073,
+          54,
+          50.100000000000364,
+          54.100000000000364,
+          50,
+          50.099999999998545,
+          50.100000000000364,
+          50.100000000000364,
+          54,
+          50,
+          50,
+          50.099999999998545,
+          50.100000000000364,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50.20000000000073,
+          54.100000000000364,
+          50,
+          50.100000000000364,
+          54,
+          50,
+          50,
+          50,
+          50.100000000000364,
+          50,
+          54.100000000000364,
+          50.100000000000364,
+          50.100000000000364,
+          50,
+          50,
+          54.100000000000364,
+          50,
+          50,
+          50.100000000000364,
+          50.099999999998545,
+          50,
+          50,
+          50,
+          50,
+          50.099999999998545,
+          50,
+          50,
+          50,
+          50.100000000000364,
+          54.100000000000364,
+          50.20000000000073,
+          50,
+          54.099999999998545,
+          50,
+          50,
+          50,
+          50,
+          50.100000000000364,
+          54.100000000000364,
+          50,
+          54.099999999998545,
+          50,
+          50.10000000000218,
+          50,
+          54.099999999998545,
+          50,
+          50.10000000000218,
+          50,
+          50.099999999998545,
+          50,
+          50,
+          50,
+          54.099999999998545,
+          50,
+          50.20000000000073,
+          50,
+          50,
+          50,
+          54.099999999998545,
+          50,
+          50.20000000000073,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50.099999999998545,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50,
+          50.10000000000218,
+          50,
+          50,
+          50,
+          50,
+          50.10000000000218,
+          50,
+          50,
+          50,
+          50,
+          50
+        ],
+        "lastSequence": 19,
+        "points": [
+          {
+            "id": "current-aircraft",
+            "kind": "Aircraft",
+            "x": 1415.9874129173365,
+            "y": 183.14153175128294
+          },
+          {
+            "id": "YSSY",
+            "kind": "Airport",
+            "x": 1433.976841615855,
+            "y": 79.87357046521788
+          },
+          {
+            "id": "YMHB",
+            "kind": "Airport",
+            "x": 1435.1424732449616,
+            "y": 623.5013602091094
+          },
+          {
+            "id": "planned-route",
+            "kind": "Route",
+            "x": 1437.312259785489,
+            "y": 397.35642127412933
+          },
+          {
+            "id": "completed-plan",
+            "kind": "Route",
+            "x": 1434.9677852123546,
+            "y": 130.87559756786447
+          }
+        ],
+        "selection": {
+          "id": "current-aircraft",
+          "kind": "Aircraft"
+        },
+        "selectionFilters": {
+          "airport": [
+            "==",
+            [
+              "get",
+              "id"
+            ],
+            ""
+          ],
+          "route": [
+            "==",
+            [
+              "get",
+              "id"
+            ],
+            ""
+          ]
+        },
+        "solarSignature": "-0.736,-0.676,-0.039",
+        "sourceIDs": [
+          {
+            "id": "current-aircraft",
+            "source": "Observed"
+          }
+        ],
+        "sourceUpdates": 96
+      },
+      "resources": {
+        "cpuPercentMachine": 4.172392739069097,
+        "samplingMs": {
+          "count": 38,
+          "mean": 11.969278947368421,
+          "p50": 12.4618,
+          "p95": 14.1484,
+          "p99": 14.2373,
+          "max": 14.5466
+        },
+        "last": {
+          "utc": "2026-09-29T20:59:54.5668168+00:00",
+          "stage": "restoration-return-17",
+          "browserProcesses": 5,
+          "hostMiB": 318.95703125,
+          "browserMiB": 383.1328125,
+          "totalMiB": 702.08984375,
+          "cpuPercentMachine": 4.172393125720734
+        },
+        "logicalProcessors": 16,
+        "workingSetsMayDoubleCountSharedPages": true,
+        "trackedProcessHandles": 5,
+        "exitedBeforeTracking": 0,
+        "samplingErrors": 0
+      }
+    }
+  ],
+  "sourceStarts": 1,
+  "recreationCount": 1
+}

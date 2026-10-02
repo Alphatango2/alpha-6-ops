@@ -1,0 +1,819 @@
+{
+  "executed": 203,
+  "passed": 203,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "catalog resolves shipped twin-engine capability: FenixA320 CFM SL",
+      "passed": true
+    },
+    {
+      "name": "catalog resolves shipped twin-engine capability: FenixA320 CFM WF",
+      "passed": true
+    },
+    {
+      "name": "catalog resolves shipped twin-engine capability: FenixA320 IAE SL",
+      "passed": true
+    },
+    {
+      "name": "catalog resolves shipped twin-engine capability: FenixA320 IAE WF",
+      "passed": true
+    },
+    {
+      "name": "catalog resolves shipped twin-engine capability: FenixA319 CFM SL HD",
+      "passed": true
+    },
+    {
+      "name": "catalog resolves shipped twin-engine capability: FenixA319 CFM SL SD",
+      "passed": true
+    },
+    {
+      "name": "catalog resolves shipped twin-engine capability: FenixA319 CFM WF HD",
+      "passed": true
+    },
+    {
+      "name": "catalog resolves shipped twin-engine capability: FenixA319 CFM WF SD",
+      "passed": true
+    },
+    {
+      "name": "catalog resolves shipped twin-engine capability: FenixA319 IAE SL HD",
+      "passed": true
+    },
+    {
+      "name": "catalog resolves shipped twin-engine capability: FenixA319 IAE SL SD",
+      "passed": true
+    },
+    {
+      "name": "catalog resolves shipped twin-engine capability: FenixA319 IAE WF HD",
+      "passed": true
+    },
+    {
+      "name": "catalog resolves shipped twin-engine capability: FenixA319 IAE WF SD",
+      "passed": true
+    },
+    {
+      "name": "catalog resolves shipped twin-engine capability: FenixA321 CFM SL SC",
+      "passed": true
+    },
+    {
+      "name": "catalog resolves shipped twin-engine capability: FenixA321 CFM SL TC",
+      "passed": true
+    },
+    {
+      "name": "catalog resolves shipped twin-engine capability: FenixA321 CFM WF SC",
+      "passed": true
+    },
+    {
+      "name": "catalog resolves shipped twin-engine capability: FenixA321 CFM WF TC",
+      "passed": true
+    },
+    {
+      "name": "catalog resolves shipped twin-engine capability: FenixA321 IAE SL SC",
+      "passed": true
+    },
+    {
+      "name": "catalog resolves shipped twin-engine capability: FenixA321 IAE SL TC",
+      "passed": true
+    },
+    {
+      "name": "catalog resolves shipped twin-engine capability: FenixA321 IAE WF SC",
+      "passed": true
+    },
+    {
+      "name": "catalog resolves shipped twin-engine capability: FenixA321 IAE WF TC",
+      "passed": true
+    },
+    {
+      "name": "unlisted aircraft and title-prefix lookalikes remain unavailable",
+      "passed": true
+    },
+    {
+      "name": "runtime title must match an installed preset exactly",
+      "passed": true
+    },
+    {
+      "name": "A320 capability does not require the optional A319/A321 expansion",
+      "passed": true
+    },
+    {
+      "name": "absent expansion cannot provide an A321 capability",
+      "passed": true
+    },
+    {
+      "name": "absent configuration produces an empty catalog",
+      "passed": true
+    },
+    {
+      "name": "base manifest is required for base and shared-cockpit expansion capabilities",
+      "passed": true
+    },
+    {
+      "name": "unreviewed expansion version does not disable valid base A320 or qualify expansion",
+      "passed": true
+    },
+    {
+      "name": "unknown future base version cannot inherit the reviewed switch contract",
+      "passed": true
+    },
+    {
+      "name": "package naming alone does not identify the Fenix provider",
+      "passed": true
+    },
+    {
+      "name": "malformed manifest fails closed without escaping the optional resolver",
+      "passed": true
+    },
+    {
+      "name": "untrusted preset is isolated from other valid candidates",
+      "passed": true
+    },
+    {
+      "name": "a Fenix-looking title cannot override the actual airframe type",
+      "passed": true
+    },
+    {
+      "name": "a four-engine definition cannot claim the two-channel contract",
+      "passed": true
+    },
+    {
+      "name": "non-jet engine configuration cannot claim the Fenix jet contract",
+      "passed": true
+    },
+    {
+      "name": "engine definitions must cover exactly the two expected channels",
+      "passed": true
+    },
+    {
+      "name": "repeated installed turbine tuning does not obscure valid engine identity",
+      "passed": true
+    },
+    {
+      "name": "missing shared cockpit provenance cannot qualify a candidate",
+      "passed": true
+    },
+    {
+      "name": "different cockpit attachment cannot inherit the master-switch contract",
+      "passed": true
+    },
+    {
+      "name": "both indexed master bindings must be present in the shared cockpit",
+      "passed": true
+    },
+    {
+      "name": "two installed presets claiming the same title are ambiguous",
+      "passed": true
+    },
+    {
+      "name": "duplicate identity fields are rejected instead of last-value-wins parsing",
+      "passed": true
+    },
+    {
+      "name": "attachment traversal cannot escape the bounded Fenix package roots",
+      "passed": true
+    },
+    {
+      "name": "supported identity comes from proven configuration rather than a hardcoded title list",
+      "passed": true
+    },
+    {
+      "name": "ambiguous installed-package roots cannot select a catalog",
+      "passed": true
+    },
+    {
+      "name": "validated Fenix variant/version selects enhanced adapter",
+      "passed": true
+    },
+    {
+      "name": "fresh zero defaults are not qualified intent",
+      "passed": true
+    },
+    {
+      "name": "positive ON and combustion qualify both channels",
+      "passed": true
+    },
+    {
+      "name": "single-engine shutdown cannot complete",
+      "passed": true
+    },
+    {
+      "name": "master cutoff with combustion still present is contradictory",
+      "passed": true
+    },
+    {
+      "name": "all verified cutoffs and combustion absent confirm intent",
+      "passed": true
+    },
+    {
+      "name": "failure or fuel starvation with masters ON is not intent",
+      "passed": true
+    },
+    {
+      "name": "relight revokes terminal evidence",
+      "passed": true
+    },
+    {
+      "name": "nonfinite master invalidates evidence",
+      "passed": true
+    },
+    {
+      "name": "intermediate master cannot be coerced to OFF",
+      "passed": true
+    },
+    {
+      "name": "two-channel adapter cannot cover four engines",
+      "passed": true
+    },
+    {
+      "name": "stale channel cannot confirm",
+      "passed": true
+    },
+    {
+      "name": "missing channel cannot confirm",
+      "passed": true
+    },
+    {
+      "name": "new connection cannot inherit qualification from earlier adapter",
+      "passed": true
+    },
+    {
+      "name": "unvalidated aircraft remains limited",
+      "passed": true
+    },
+    {
+      "name": "unrecognized installed package remains limited",
+      "passed": true
+    },
+    {
+      "name": "missing version cannot promote enhanced authority",
+      "passed": true
+    },
+    {
+      "name": "JST771 installed A320 shared cockpit selects a family candidate",
+      "passed": true
+    },
+    {
+      "name": "missing engine coverage cannot establish future shutdown authority",
+      "passed": true
+    },
+    {
+      "name": "valid count arriving with default zeros cannot inherit incomplete running qualification",
+      "passed": true
+    },
+    {
+      "name": "fresh two-engine running evidence qualifies A320",
+      "passed": true
+    },
+    {
+      "name": "wrong identity withdraws qualification and cannot requalify in the same frame",
+      "passed": true
+    },
+    {
+      "name": "returning aircraft must supply fresh running evidence",
+      "passed": true
+    },
+    {
+      "name": "returning aircraft requalifies from fresh positive evidence",
+      "passed": true
+    },
+    {
+      "name": "incompatible engine coverage withdraws previously granted qualification",
+      "passed": true
+    },
+    {
+      "name": "two-engine OFF cannot inherit four-engine running evidence",
+      "passed": true
+    },
+    {
+      "name": "coherent engine coverage can qualify again",
+      "passed": true
+    },
+    {
+      "name": "connection change cannot import old ON qualification",
+      "passed": true
+    },
+    {
+      "name": "fresh running post-reconnect grants current-connection qualification",
+      "passed": true
+    },
+    {
+      "name": "family candidate qualified before cruise disconnect",
+      "passed": true
+    },
+    {
+      "name": "no cached master authority after reconnect",
+      "passed": true
+    },
+    {
+      "name": "fresh zero defaults do not establish capability after interruption",
+      "passed": true
+    },
+    {
+      "name": "fresh cruise running signals requalify family adapter",
+      "passed": true
+    },
+    {
+      "name": "assignment, OUT/OFF and event prefix survive interruption without reacceptance",
+      "passed": true
+    },
+    {
+      "name": "no cached master authority after application reconstruction",
+      "passed": true
+    },
+    {
+      "name": "fresh zero defaults do not establish capability after interruption",
+      "passed": true
+    },
+    {
+      "name": "fresh cruise running signals requalify family adapter",
+      "passed": true
+    },
+    {
+      "name": "assignment, OUT/OFF and event prefix survive interruption without reacceptance",
+      "passed": true
+    },
+    {
+      "name": "destination brake and 15-second both-running hold cannot complete",
+      "passed": true
+    },
+    {
+      "name": "20-second single-engine taxi shutdown cannot complete",
+      "passed": true
+    },
+    {
+      "name": "all OFF requires unchanged three-second confirmation",
+      "passed": true
+    },
+    {
+      "name": "recovered family flight automatically records first valid all-OFF IN after three seconds",
+      "passed": true
+    },
+    {
+      "name": "family recovery records each OOOI exactly once",
+      "passed": true
+    },
+    {
+      "name": "intent completion does not relabel mechanical spool-down validity",
+      "passed": true
+    },
+    {
+      "name": "family automatic completion submits exactly one PIREP",
+      "passed": true
+    },
+    {
+      "name": "cold reconstruction preserves one original completed flight/PIREP without resurrected assignment",
+      "passed": true
+    },
+    {
+      "name": "native capture: all 180 groups replay, intent at 39.2s, never during single-engine shutdown",
+      "passed": true
+    },
+    {
+      "name": "optional native packet routed independently 301/1/1",
+      "passed": true
+    },
+    {
+      "name": "optional native packet routed independently 302/1/1",
+      "passed": true
+    },
+    {
+      "name": "native boundary qualifies positive master signals",
+      "passed": true
+    },
+    {
+      "name": "optional native packet routed independently 301/0/1",
+      "passed": true
+    },
+    {
+      "name": "optional native packet routed independently 302/0/1",
+      "passed": true
+    },
+    {
+      "name": "native boundary preserves independently sampled cutoffs",
+      "passed": true
+    },
+    {
+      "name": "optional native packet routed independently 301/0/2",
+      "passed": true
+    },
+    {
+      "name": "malformed optional payload withdraws previous OFF",
+      "passed": true
+    },
+    {
+      "name": "optional native packet routed independently 301/NaN/1",
+      "passed": true
+    },
+    {
+      "name": "native NaN cannot become OFF",
+      "passed": true
+    },
+    {
+      "name": "optional parser does not steal primary telemetry",
+      "passed": true
+    },
+    {
+      "name": "optional native packet routed independently 301/1/1",
+      "passed": true
+    },
+    {
+      "name": "optional native packet routed independently 302/1/1",
+      "passed": true
+    },
+    {
+      "name": "aircraft switch cannot qualify from previous aircraft cached masters",
+      "passed": true
+    },
+    {
+      "name": "optional native packet routed independently 301/0/1",
+      "passed": true
+    },
+    {
+      "name": "optional native packet routed independently 302/0/1",
+      "passed": true
+    },
+    {
+      "name": "new aircraft default zeros remain unqualified after switch",
+      "passed": true
+    },
+    {
+      "name": "optional native packet routed independently 301/1/1",
+      "passed": true
+    },
+    {
+      "name": "optional native packet routed independently 302/1/1",
+      "passed": true
+    },
+    {
+      "name": "new aircraft fresh ON observations qualify independently",
+      "passed": true
+    },
+    {
+      "name": "missing engine count cannot hide fresh primary combustion",
+      "passed": true
+    },
+    {
+      "name": "missing engine count cannot hide positive starter evidence",
+      "passed": true
+    },
+    {
+      "name": "invalid primary combustion cannot enable manual fallback",
+      "passed": true
+    },
+    {
+      "name": "missing primary combustion cannot enable manual fallback",
+      "passed": true
+    },
+    {
+      "name": "valid absent combustion permits guarded manual fallback only",
+      "passed": true
+    },
+    {
+      "name": "coordinator: stable evidence controls IN timestamp: enhanced",
+      "passed": true
+    },
+    {
+      "name": "completion does not forge mechanical engine validity",
+      "passed": true
+    },
+    {
+      "name": "coordinator produces exactly one IN",
+      "passed": true
+    },
+    {
+      "name": "coordinator persists exactly one completed history row",
+      "passed": true
+    },
+    {
+      "name": "PIREP submits exactly once",
+      "passed": true
+    },
+    {
+      "name": "exact history identity owns one durable PIREP",
+      "passed": true
+    },
+    {
+      "name": "unsupported mechanical absence does not auto-complete: manual",
+      "passed": true
+    },
+    {
+      "name": "manual eligibility agrees with destination: manual",
+      "passed": true
+    },
+    {
+      "name": "direct manual command cannot bypass shared safety predicate: manual",
+      "passed": true
+    },
+    {
+      "name": "unsupported mechanical absence does not auto-complete: wrong-destination",
+      "passed": true
+    },
+    {
+      "name": "manual eligibility agrees with destination: wrong-destination",
+      "passed": true
+    },
+    {
+      "name": "direct manual command cannot bypass shared safety predicate: wrong-destination",
+      "passed": true
+    },
+    {
+      "name": "interruption resets three-second phase confirmation: pause",
+      "passed": true
+    },
+    {
+      "name": "coordinator: stable evidence controls IN timestamp: pause",
+      "passed": true
+    },
+    {
+      "name": "completion does not forge mechanical engine validity",
+      "passed": true
+    },
+    {
+      "name": "coordinator produces exactly one IN",
+      "passed": true
+    },
+    {
+      "name": "coordinator persists exactly one completed history row",
+      "passed": true
+    },
+    {
+      "name": "PIREP submits exactly once",
+      "passed": true
+    },
+    {
+      "name": "exact history identity owns one durable PIREP",
+      "passed": true
+    },
+    {
+      "name": "interruption resets three-second phase confirmation: slew",
+      "passed": true
+    },
+    {
+      "name": "coordinator: stable evidence controls IN timestamp: slew",
+      "passed": true
+    },
+    {
+      "name": "completion does not forge mechanical engine validity",
+      "passed": true
+    },
+    {
+      "name": "coordinator produces exactly one IN",
+      "passed": true
+    },
+    {
+      "name": "coordinator persists exactly one completed history row",
+      "passed": true
+    },
+    {
+      "name": "PIREP submits exactly once",
+      "passed": true
+    },
+    {
+      "name": "exact history identity owns one durable PIREP",
+      "passed": true
+    },
+    {
+      "name": "interruption resets three-second phase confirmation: brake",
+      "passed": true
+    },
+    {
+      "name": "coordinator: stable evidence controls IN timestamp: brake",
+      "passed": true
+    },
+    {
+      "name": "completion does not forge mechanical engine validity",
+      "passed": true
+    },
+    {
+      "name": "coordinator produces exactly one IN",
+      "passed": true
+    },
+    {
+      "name": "coordinator persists exactly one completed history row",
+      "passed": true
+    },
+    {
+      "name": "PIREP submits exactly once",
+      "passed": true
+    },
+    {
+      "name": "exact history identity owns one durable PIREP",
+      "passed": true
+    },
+    {
+      "name": "interruption resets three-second phase confirmation: movement",
+      "passed": true
+    },
+    {
+      "name": "coordinator: stable evidence controls IN timestamp: movement",
+      "passed": true
+    },
+    {
+      "name": "completion does not forge mechanical engine validity",
+      "passed": true
+    },
+    {
+      "name": "coordinator produces exactly one IN",
+      "passed": true
+    },
+    {
+      "name": "coordinator persists exactly one completed history row",
+      "passed": true
+    },
+    {
+      "name": "PIREP submits exactly once",
+      "passed": true
+    },
+    {
+      "name": "exact history identity owns one durable PIREP",
+      "passed": true
+    },
+    {
+      "name": "interruption resets three-second phase confirmation: relight",
+      "passed": true
+    },
+    {
+      "name": "coordinator: stable evidence controls IN timestamp: relight",
+      "passed": true
+    },
+    {
+      "name": "completion does not forge mechanical engine validity",
+      "passed": true
+    },
+    {
+      "name": "coordinator produces exactly one IN",
+      "passed": true
+    },
+    {
+      "name": "coordinator persists exactly one completed history row",
+      "passed": true
+    },
+    {
+      "name": "PIREP submits exactly once",
+      "passed": true
+    },
+    {
+      "name": "exact history identity owns one durable PIREP",
+      "passed": true
+    },
+    {
+      "name": "interrupted candidate is not restored complete: disconnect",
+      "passed": true
+    },
+    {
+      "name": "interruption resets three-second phase confirmation: disconnect",
+      "passed": true
+    },
+    {
+      "name": "coordinator: stable evidence controls IN timestamp: disconnect",
+      "passed": true
+    },
+    {
+      "name": "completion does not forge mechanical engine validity",
+      "passed": true
+    },
+    {
+      "name": "coordinator produces exactly one IN",
+      "passed": true
+    },
+    {
+      "name": "coordinator persists exactly one completed history row",
+      "passed": true
+    },
+    {
+      "name": "PIREP submits exactly once",
+      "passed": true
+    },
+    {
+      "name": "exact history identity owns one durable PIREP",
+      "passed": true
+    },
+    {
+      "name": "interrupted candidate is not restored complete: restart",
+      "passed": true
+    },
+    {
+      "name": "interruption resets three-second phase confirmation: restart",
+      "passed": true
+    },
+    {
+      "name": "coordinator: stable evidence controls IN timestamp: restart",
+      "passed": true
+    },
+    {
+      "name": "completion does not forge mechanical engine validity",
+      "passed": true
+    },
+    {
+      "name": "coordinator produces exactly one IN",
+      "passed": true
+    },
+    {
+      "name": "coordinator persists exactly one completed history row",
+      "passed": true
+    },
+    {
+      "name": "PIREP submits exactly once",
+      "passed": true
+    },
+    {
+      "name": "exact history identity owns one durable PIREP",
+      "passed": true
+    },
+    {
+      "name": "interruption resets three-second phase confirmation: duplicate",
+      "passed": true
+    },
+    {
+      "name": "coordinator: stable evidence controls IN timestamp: duplicate",
+      "passed": true
+    },
+    {
+      "name": "completion does not forge mechanical engine validity",
+      "passed": true
+    },
+    {
+      "name": "coordinator produces exactly one IN",
+      "passed": true
+    },
+    {
+      "name": "coordinator persists exactly one completed history row",
+      "passed": true
+    },
+    {
+      "name": "PIREP submits exactly once",
+      "passed": true
+    },
+    {
+      "name": "exact history identity owns one durable PIREP",
+      "passed": true
+    },
+    {
+      "name": "interruption resets three-second phase confirmation: stale",
+      "passed": true
+    },
+    {
+      "name": "coordinator: stable evidence controls IN timestamp: stale",
+      "passed": true
+    },
+    {
+      "name": "completion does not forge mechanical engine validity",
+      "passed": true
+    },
+    {
+      "name": "coordinator produces exactly one IN",
+      "passed": true
+    },
+    {
+      "name": "coordinator persists exactly one completed history row",
+      "passed": true
+    },
+    {
+      "name": "PIREP submits exactly once",
+      "passed": true
+    },
+    {
+      "name": "exact history identity owns one durable PIREP",
+      "passed": true
+    },
+    {
+      "name": "interruption resets three-second phase confirmation: missing",
+      "passed": true
+    },
+    {
+      "name": "coordinator: stable evidence controls IN timestamp: missing",
+      "passed": true
+    },
+    {
+      "name": "completion does not forge mechanical engine validity",
+      "passed": true
+    },
+    {
+      "name": "coordinator produces exactly one IN",
+      "passed": true
+    },
+    {
+      "name": "coordinator persists exactly one completed history row",
+      "passed": true
+    },
+    {
+      "name": "PIREP submits exactly once",
+      "passed": true
+    },
+    {
+      "name": "exact history identity owns one durable PIREP",
+      "passed": true
+    },
+    {
+      "name": "interruption resets three-second phase confirmation: go-around",
+      "passed": true
+    },
+    {
+      "name": "go-around still confirms TaxiIn to Airborne after ON",
+      "passed": true
+    },
+    {
+      "name": "go-around cancels pending terminal completion",
+      "passed": true
+    }
+  ]
+}

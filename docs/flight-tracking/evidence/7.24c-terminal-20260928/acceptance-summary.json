@@ -1,0 +1,141 @@
+{
+  "checkpoint": "7.24C terminal shutdown implementation",
+  "build": "S4-7.24C-T1-20260928-00e3f628b90e",
+  "builds": [
+    {
+      "name": "production solution Release",
+      "exitCode": 0
+    },
+    {
+      "name": "normal production packaging",
+      "exitCode": 0
+    },
+    {
+      "name": "test-only migration harness",
+      "exitCode": 0
+    }
+  ],
+  "passed": 2579,
+  "failed": 0,
+  "skipped": 2,
+  "groups": [
+    {
+      "name": "Full baseline",
+      "passed": 1953,
+      "failed": 0,
+      "skipped": 2,
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\full-20260928-170103-dd023640\\summary.json"
+    },
+    {
+      "name": "terminal-final",
+      "passed": 132,
+      "failed": 0,
+      "skipped": 0,
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\terminal-implementation-20260928\\terminal-final\\summary.json"
+    },
+    {
+      "name": "map-full",
+      "passed": 197,
+      "failed": 0,
+      "skipped": 0,
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\terminal-implementation-20260928\\map-full\\summary.json"
+    },
+    {
+      "name": "contracts",
+      "passed": 22,
+      "failed": 0,
+      "skipped": 0,
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\terminal-implementation-20260928\\contracts\\summary.json"
+    },
+    {
+      "name": "interaction-contract",
+      "passed": 13,
+      "failed": 0,
+      "skipped": 0,
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\terminal-implementation-20260928\\interaction-contract\\summary.json"
+    },
+    {
+      "name": "restoration-verify",
+      "passed": 157,
+      "failed": 0,
+      "skipped": 0,
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\terminal-implementation-20260928\\restoration-verify\\summary.json"
+    },
+    {
+      "name": "active-final",
+      "passed": 69,
+      "failed": 0,
+      "skipped": 0,
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\terminal-implementation-20260928\\active-final\\summary.json"
+    },
+    {
+      "name": "recovery-guard",
+      "passed": 21,
+      "failed": 0,
+      "skipped": 0,
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\terminal-implementation-20260928\\recovery-guard\\summary.json"
+    },
+    {
+      "name": "JST776",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\terminal-implementation-20260928\\jst776\\summary.json"
+    },
+    {
+      "name": "mailbox",
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0,
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\terminal-implementation-20260928\\mailbox.log"
+    },
+    {
+      "name": "browser-math",
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0,
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\terminal-implementation-20260928\\browser-math.log"
+    }
+  ],
+  "historicalReplays": 9,
+  "historicalTelemetrySamples": 91366,
+  "jst776Replays": 1,
+  "jst776TelemetrySamples": 6145,
+  "nativeCaptureGroups": 180,
+  "nativeCaptureRawObservations": 4860,
+  "nativeCaptureHashesUnchanged": true,
+  "genericMechanicalClassifierUnchanged": true,
+  "originalC1HashesUnchanged": true,
+  "frozenSourceFilesVerified": 227,
+  "verifiedPayloadFiles": 514,
+  "mapUnexpectedReports": 0,
+  "mapExpectedInjectedFallbackReports": 16,
+  "scheduling": {
+    "stressedHeartbeatMaxMs": 316.2035,
+    "ackDuring750MsPressureAtMs": 1.1077,
+    "deliveryQueueMaxMs": 0.4426,
+    "baselineHeartbeatMaxMs": 392.7331
+  },
+  "skippedChecks": [
+    {
+      "Id": "NATIVE_CONNECTION_LIFECYCLE",
+      "Status": "Skipped",
+      "Detail": "No real SimConnect open/close was exercised. Synthetic tests do not prove native handles or worker disposal."
+    },
+    {
+      "Id": "NATIVE_RECONNECT",
+      "Status": "Skipped",
+      "Detail": "Rapid queued callbacks were tested below the native boundary; an actual simulator disconnect/reconnect remains a hardware validation."
+    }
+  ],
+  "developmentIssues": [
+    "Three review findings reproduced RED and corrected; details in implementation report.",
+    "First live-refresh smoke fixture lacked intent/position and compared newly added metadata; corrected diagnostic inputs, retained underlying sample/phase assertions.",
+    "Final candidate smoke attempt hit transient Windows Access denied in unchanged DashboardStateStore.Save; no persistent lock remained. Failed evidence retained in full-20260928-165904-c0a51810. Only incomplete stages resumed in a fresh directory, passed."
+  ],
+  "regressionCountConvention": "Final acceptance assertion executions; includes shared setup in focused suites. Excludes build steps, RED tests, earlier attempts and repeated successful groups. Two native validations remain skipped.",
+  "status": "NO-GO for checkpoint closure or airborne validation; GO for installed parked T1 retest only",
+  "installed": false,
+  "defaultRenderer": "classic",
+  "mapV2": "session opt-in"
+}

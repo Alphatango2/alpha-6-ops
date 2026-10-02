@@ -1,0 +1,371 @@
+[
+  {
+    "utc": "2026-09-29T20:59:33.5192848+00:00",
+    "stage": "restoration-cold",
+    "browserProcesses": 5,
+    "hostMiB": 283.8515625,
+    "browserMiB": 434.8203125,
+    "totalMiB": 718.671875,
+    "cpuPercentMachine": 0
+  },
+  {
+    "utc": "2026-09-29T20:59:34.0775934+00:00",
+    "stage": "restoration-hidden",
+    "browserProcesses": 5,
+    "hostMiB": 288.1328125,
+    "browserMiB": 431.55078125,
+    "totalMiB": 719.68359375,
+    "cpuPercentMachine": 0
+  },
+  {
+    "utc": "2026-09-29T20:59:34.3422828+00:00",
+    "stage": "restoration-hidden",
+    "browserProcesses": 5,
+    "hostMiB": 288.328125,
+    "browserMiB": 431.0625,
+    "totalMiB": 719.390625,
+    "cpuPercentMachine": 0.7011983873110242
+  },
+  {
+    "utc": "2026-09-29T20:59:34.6058328+00:00",
+    "stage": "restoration-hidden",
+    "browserProcesses": 5,
+    "hostMiB": 289.59765625,
+    "browserMiB": 355.7265625,
+    "totalMiB": 645.32421875,
+    "cpuPercentMachine": 5.0441440427678845
+  },
+  {
+    "utc": "2026-09-29T20:59:34.867467+00:00",
+    "stage": "restoration-hidden",
+    "browserProcesses": 5,
+    "hostMiB": 290.88671875,
+    "browserMiB": 355.7265625,
+    "totalMiB": 646.61328125,
+    "cpuPercentMachine": 5.1032091685410705
+  },
+  {
+    "utc": "2026-09-29T20:59:35.1300154+00:00",
+    "stage": "restoration-hidden",
+    "browserProcesses": 5,
+    "hostMiB": 291.9921875,
+    "browserMiB": 355.76953125,
+    "totalMiB": 647.76171875,
+    "cpuPercentMachine": 5.403607116640987
+  },
+  {
+    "utc": "2026-09-29T20:59:35.390033+00:00",
+    "stage": "restoration-hidden",
+    "browserProcesses": 5,
+    "hostMiB": 292.53515625,
+    "browserMiB": 355.76953125,
+    "totalMiB": 648.3046875,
+    "cpuPercentMachine": 4.859668695992057
+  },
+  {
+    "utc": "2026-09-29T20:59:35.651005+00:00",
+    "stage": "restoration-hidden",
+    "browserProcesses": 5,
+    "hostMiB": 293.97265625,
+    "browserMiB": 355.76953125,
+    "totalMiB": 649.7421875,
+    "cpuPercentMachine": 5.2911569200543935
+  },
+  {
+    "utc": "2026-09-29T20:59:35.9111349+00:00",
+    "stage": "restoration-hidden",
+    "browserProcesses": 5,
+    "hostMiB": 295.015625,
+    "browserMiB": 355.76953125,
+    "totalMiB": 650.78515625,
+    "cpuPercentMachine": 5.656202514118287
+  },
+  {
+    "utc": "2026-09-29T20:59:36.1746341+00:00",
+    "stage": "restoration-hidden",
+    "browserProcesses": 5,
+    "hostMiB": 295.359375,
+    "browserMiB": 355.76953125,
+    "totalMiB": 651.12890625,
+    "cpuPercentMachine": 5.782885285226218
+  },
+  {
+    "utc": "2026-09-29T20:59:36.4355982+00:00",
+    "stage": "restoration-hidden",
+    "browserProcesses": 5,
+    "hostMiB": 295.484375,
+    "browserMiB": 355.76953125,
+    "totalMiB": 651.25390625,
+    "cpuPercentMachine": 5.352486838244746
+  },
+  {
+    "utc": "2026-09-29T20:59:36.6953364+00:00",
+    "stage": "restoration-hidden",
+    "browserProcesses": 5,
+    "hostMiB": 295.51171875,
+    "browserMiB": 355.76953125,
+    "totalMiB": 651.28125,
+    "cpuPercentMachine": 5.0468518854183655
+  },
+  {
+    "utc": "2026-09-29T20:59:36.9559814+00:00",
+    "stage": "restoration-hidden",
+    "browserProcesses": 5,
+    "hostMiB": 295.84375,
+    "browserMiB": 356.47265625,
+    "totalMiB": 652.31640625,
+    "cpuPercentMachine": 4.7270922881929005
+  },
+  {
+    "utc": "2026-09-29T20:59:37.2160727+00:00",
+    "stage": "restoration-hidden",
+    "browserProcesses": 5,
+    "hostMiB": 296.12109375,
+    "browserMiB": 356.57421875,
+    "totalMiB": 652.6953125,
+    "cpuPercentMachine": 4.430012412104191
+  },
+  {
+    "utc": "2026-09-29T20:59:37.4759268+00:00",
+    "stage": "restoration-hidden",
+    "browserProcesses": 5,
+    "hostMiB": 296.4375,
+    "browserMiB": 356.57421875,
+    "totalMiB": 653.01171875,
+    "cpuPercentMachine": 4.264360709205704
+  },
+  {
+    "utc": "2026-09-29T20:59:37.736357+00:00",
+    "stage": "restoration-hidden",
+    "browserProcesses": 5,
+    "hostMiB": 297.515625,
+    "browserMiB": 356.578125,
+    "totalMiB": 654.09375,
+    "cpuPercentMachine": 4.174696151382909
+  },
+  {
+    "utc": "2026-09-29T20:59:37.9960246+00:00",
+    "stage": "restoration-hidden",
+    "browserProcesses": 5,
+    "hostMiB": 294.46484375,
+    "browserMiB": 356.578125,
+    "totalMiB": 651.04296875,
+    "cpuPercentMachine": 4.023192995164279
+  },
+  {
+    "utc": "2026-09-29T20:59:38.2591086+00:00",
+    "stage": "restoration-hidden",
+    "browserProcesses": 5,
+    "hostMiB": 271.79296875,
+    "browserMiB": 356.578125,
+    "totalMiB": 628.37109375,
+    "cpuPercentMachine": 3.864013078248533
+  },
+  {
+    "utc": "2026-09-29T20:59:38.5188352+00:00",
+    "stage": "restoration-hidden",
+    "browserProcesses": 5,
+    "hostMiB": 271.81640625,
+    "browserMiB": 356.578125,
+    "totalMiB": 628.39453125,
+    "cpuPercentMachine": 3.7264265101583147
+  },
+  {
+    "utc": "2026-09-29T20:59:38.7783346+00:00",
+    "stage": "restoration-hidden",
+    "browserProcesses": 5,
+    "hostMiB": 271.81640625,
+    "browserMiB": 356.578125,
+    "totalMiB": 628.39453125,
+    "cpuPercentMachine": 3.5627445839070666
+  },
+  {
+    "utc": "2026-09-29T20:59:39.0385722+00:00",
+    "stage": "restoration-hidden",
+    "browserProcesses": 5,
+    "hostMiB": 271.81640625,
+    "browserMiB": 356.578125,
+    "totalMiB": 628.39453125,
+    "cpuPercentMachine": 3.4548949816451855
+  },
+  {
+    "utc": "2026-09-29T20:59:39.6235659+00:00",
+    "stage": "restoration-return-0",
+    "browserProcesses": 5,
+    "hostMiB": 270.65234375,
+    "browserMiB": 370.8359375,
+    "totalMiB": 641.48828125,
+    "cpuPercentMachine": 3.3372816321216976
+  },
+  {
+    "utc": "2026-09-29T20:59:40.5199052+00:00",
+    "stage": "restoration-return-1",
+    "browserProcesses": 5,
+    "hostMiB": 279.12890625,
+    "browserMiB": 375.671875,
+    "totalMiB": 654.80078125,
+    "cpuPercentMachine": 3.7361363023840797
+  },
+  {
+    "utc": "2026-09-29T20:59:41.4008317+00:00",
+    "stage": "restoration-return-2",
+    "browserProcesses": 5,
+    "hostMiB": 286.04296875,
+    "browserMiB": 374.51171875,
+    "totalMiB": 660.5546875,
+    "cpuPercentMachine": 4.006294985416622
+  },
+  {
+    "utc": "2026-09-29T20:59:42.2685669+00:00",
+    "stage": "restoration-return-3",
+    "browserProcesses": 5,
+    "hostMiB": 290.28125,
+    "browserMiB": 374.69140625,
+    "totalMiB": 664.97265625,
+    "cpuPercentMachine": 4.272926146383036
+  },
+  {
+    "utc": "2026-09-29T20:59:43.151965+00:00",
+    "stage": "restoration-return-4",
+    "browserProcesses": 5,
+    "hostMiB": 298.52734375,
+    "browserMiB": 374.66015625,
+    "totalMiB": 673.1875,
+    "cpuPercentMachine": 4.427089809205805
+  },
+  {
+    "utc": "2026-09-29T20:59:44.0232673+00:00",
+    "stage": "restoration-return-5",
+    "browserProcesses": 5,
+    "hostMiB": 301.33984375,
+    "browserMiB": 369.390625,
+    "totalMiB": 670.73046875,
+    "cpuPercentMachine": 4.441807763300442
+  },
+  {
+    "utc": "2026-09-29T20:59:44.8910752+00:00",
+    "stage": "restoration-return-6",
+    "browserProcesses": 5,
+    "hostMiB": 307.078125,
+    "browserMiB": 369.98046875,
+    "totalMiB": 677.05859375,
+    "cpuPercentMachine": 4.4916708983185245
+  },
+  {
+    "utc": "2026-09-29T20:59:45.7806402+00:00",
+    "stage": "restoration-return-7",
+    "browserProcesses": 5,
+    "hostMiB": 316.47265625,
+    "browserMiB": 371.125,
+    "totalMiB": 687.59765625,
+    "cpuPercentMachine": 4.6007283038785305
+  },
+  {
+    "utc": "2026-09-29T20:59:46.6539971+00:00",
+    "stage": "restoration-return-8",
+    "browserProcesses": 5,
+    "hostMiB": 310.1953125,
+    "browserMiB": 376.390625,
+    "totalMiB": 686.5859375,
+    "cpuPercentMachine": 4.64614179867654
+  },
+  {
+    "utc": "2026-09-29T20:59:47.5255142+00:00",
+    "stage": "restoration-return-9",
+    "browserProcesses": 5,
+    "hostMiB": 313.234375,
+    "browserMiB": 381.328125,
+    "totalMiB": 694.5625,
+    "cpuPercentMachine": 4.5702345709716585
+  },
+  {
+    "utc": "2026-09-29T20:59:48.4171939+00:00",
+    "stage": "restoration-return-10",
+    "browserProcesses": 5,
+    "hostMiB": 312.23046875,
+    "browserMiB": 381.9609375,
+    "totalMiB": 694.19140625,
+    "cpuPercentMachine": 4.558464707048828
+  },
+  {
+    "utc": "2026-09-29T20:59:49.2871118+00:00",
+    "stage": "restoration-return-11",
+    "browserProcesses": 5,
+    "hostMiB": 313.94140625,
+    "browserMiB": 380.203125,
+    "totalMiB": 694.14453125,
+    "cpuPercentMachine": 4.6123072850693525
+  },
+  {
+    "utc": "2026-09-29T20:59:50.1604051+00:00",
+    "stage": "restoration-return-12",
+    "browserProcesses": 5,
+    "hostMiB": 305.359375,
+    "browserMiB": 378.921875,
+    "totalMiB": 684.28125,
+    "cpuPercentMachine": 4.471279068624636
+  },
+  {
+    "utc": "2026-09-29T20:59:51.053136+00:00",
+    "stage": "restoration-return-13",
+    "browserProcesses": 5,
+    "hostMiB": 310.38671875,
+    "browserMiB": 380.16015625,
+    "totalMiB": 690.546875,
+    "cpuPercentMachine": 4.420267880360604
+  },
+  {
+    "utc": "2026-09-29T20:59:51.9237806+00:00",
+    "stage": "restoration-return-14",
+    "browserProcesses": 5,
+    "hostMiB": 312.7265625,
+    "browserMiB": 380.33984375,
+    "totalMiB": 693.06640625,
+    "cpuPercentMachine": 4.346952387991775
+  },
+  {
+    "utc": "2026-09-29T20:59:52.7975479+00:00",
+    "stage": "restoration-return-15",
+    "browserProcesses": 5,
+    "hostMiB": 314.6328125,
+    "browserMiB": 381.0546875,
+    "totalMiB": 695.6875,
+    "cpuPercentMachine": 4.232823148615367
+  },
+  {
+    "utc": "2026-09-29T20:59:53.6937359+00:00",
+    "stage": "restoration-return-16",
+    "browserProcesses": 5,
+    "hostMiB": 327.66796875,
+    "browserMiB": 383.0078125,
+    "totalMiB": 710.67578125,
+    "cpuPercentMachine": 4.218672379612119
+  },
+  {
+    "utc": "2026-09-29T20:59:54.5668168+00:00",
+    "stage": "restoration-return-17",
+    "browserProcesses": 5,
+    "hostMiB": 318.95703125,
+    "browserMiB": 383.1328125,
+    "totalMiB": 702.08984375,
+    "cpuPercentMachine": 4.172393125720734
+  },
+  {
+    "utc": "2026-09-29T20:59:59.835648+00:00",
+    "stage": "before-final-disposal",
+    "browserProcesses": 5,
+    "hostMiB": 304.3984375,
+    "browserMiB": 430.48828125,
+    "totalMiB": 734.88671875,
+    "cpuPercentMachine": 3.9105086348454074
+  },
+  {
+    "utc": "2026-09-29T21:00:00.1711129+00:00",
+    "stage": "disposed",
+    "browserProcesses": 0,
+    "hostMiB": 305.45703125,
+    "browserMiB": 0,
+    "totalMiB": 305.45703125,
+    "cpuPercentMachine": 3.8901854939649234
+  }
+]

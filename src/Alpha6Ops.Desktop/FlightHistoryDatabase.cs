@@ -65,8 +65,14 @@ internal sealed class FlightHistoryDatabase : IDisposable
     {
         lock (gate)
         {
-            var sequence = sequences.TryGetValue(flightId, out var current) ? current + 1 : 1;
-            sequences[flightId] = sequence;
+            if(!sequences.TryGetValue(flightId,out var current))
+            {
+                using var previous=Prepare("SELECT COALESCE(MAX(sequence),0) FROM flight_event WHERE flight_id=?;");
+                previous.BindText(1,flightId);
+                if(!previous.StepRow())throw new IOException("Could not recover the flight event sequence.");
+                current=previous.ReadInt32(0);
+            }
+            var sequence = current + 1;
             using var statement = Prepare("INSERT INTO flight_event(flight_id,sequence,kind,recorded_utc,simulator_utc,detail_json) VALUES(?,?,?,?,?,?);");
             statement.BindText(1, flightId);
             statement.BindInt64Value(2, sequence);
@@ -75,6 +81,37 @@ internal sealed class FlightHistoryDatabase : IDisposable
             statement.BindTextOrNull(5, simulatorUtc?.ToString("O"));
             statement.BindText(6, JsonSerializer.Serialize(detail));
             statement.ExecuteNonQuery();
+            sequences[flightId] = sequence;
+        }
+    }
+
+    internal bool MatchesFlight(string flightId,string flightNumber,string origin,string destination)
+    {
+        lock(gate)
+        {
+            using var statement=Prepare("SELECT 1 FROM flight WHERE id=? AND source='live' AND flight_number=? COLLATE NOCASE AND origin=? COLLATE NOCASE AND destination=? COLLATE NOCASE;");
+            statement.BindText(1,flightId);statement.BindText(2,flightNumber);statement.BindText(3,origin);statement.BindText(4,destination);
+            return statement.StepRow();
+        }
+    }
+
+    internal bool TryCompleteRecoveredFlight(string flightId)
+    {
+        lock(gate)
+        {
+            string? phase;
+            using(var statement=Prepare("SELECT final_phase FROM flight WHERE id=?;"))
+            {
+                statement.BindText(1,flightId);
+                if(!statement.StepRow())return false;
+                phase=statement.ReadText(0);
+            }
+            // Reopening a completed checkpoint is idempotent: do not rewrite its
+            // durable end time, and never revive an explicitly invalidated row.
+            if(string.Equals(phase,"Complete",StringComparison.OrdinalIgnoreCase))return true;
+            if(phase is not null&&!string.Equals(phase,"Interrupted",StringComparison.OrdinalIgnoreCase))return false;
+            EndFlight(flightId,"Complete");
+            return true;
         }
     }
 
@@ -120,7 +157,7 @@ internal sealed class FlightHistoryDatabase : IDisposable
             using var flight=Prepare("SELECT final_phase FROM flight WHERE id=?;");flight.BindText(1,flightId);if(!flight.StepRow()||!string.Equals(flight.ReadText(0),"Complete",StringComparison.OrdinalIgnoreCase))return false;
             using var duplicate=Prepare("SELECT COUNT(*) FROM flight_event WHERE flight_id=? AND kind='pirep_submitted';");duplicate.BindText(1,flightId);if(duplicate.StepRow()&&duplicate.ReadInt32(0)>0)return true;
             using var sequenceQuery=Prepare("SELECT COALESCE(MAX(sequence),0)+1 FROM flight_event WHERE flight_id=?;");sequenceQuery.BindText(1,flightId);if(!sequenceQuery.StepRow())return false;var sequence=sequenceQuery.ReadInt32(0);
-            using var statement=Prepare("INSERT INTO flight_event(flight_id,sequence,kind,recorded_utc,simulator_utc,detail_json) VALUES(?,?,'pirep_submitted',?,NULL,?);");statement.BindText(1,flightId);statement.BindInt64Value(2,sequence);statement.BindText(3,DateTimeOffset.UtcNow.ToString("O"));statement.BindText(4,JsonSerializer.Serialize(detail));statement.ExecuteNonQuery();return true;
+            using var statement=Prepare("INSERT INTO flight_event(flight_id,sequence,kind,recorded_utc,simulator_utc,detail_json) VALUES(?,?,'pirep_submitted',?,NULL,?);");statement.BindText(1,flightId);statement.BindInt64Value(2,sequence);statement.BindText(3,DateTimeOffset.UtcNow.ToString("O"));statement.BindText(4,JsonSerializer.Serialize(detail));statement.ExecuteNonQuery();sequences[flightId]=sequence;return true;
         }
     }
 

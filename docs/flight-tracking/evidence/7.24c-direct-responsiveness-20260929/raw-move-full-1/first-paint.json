@@ -1,0 +1,772 @@
+{
+  "records": [
+    {
+      "cycle": 0,
+      "initial": {
+        "camera": {
+          "bearing": 0,
+          "followId": null,
+          "latitude": 20,
+          "longitude": 0,
+          "zoom": 0.6
+        },
+        "counts": {
+          "aircraft": 0,
+          "airports": 0,
+          "labels": 0,
+          "routes": 0
+        },
+        "frameIntervals": [],
+        "lastSequence": 0,
+        "points": [],
+        "selection": null,
+        "selectionFilters": {
+          "airport": [
+            "==",
+            [
+              "get",
+              "id"
+            ],
+            ""
+          ],
+          "route": [
+            "==",
+            [
+              "get",
+              "id"
+            ],
+            ""
+          ]
+        },
+        "solarSignature": "",
+        "sourceIDs": [],
+        "sourceUpdates": 0
+      },
+      "atReady": {
+        "map": {
+          "camera": {
+            "bearing": 0,
+            "followId": null,
+            "latitude": 20,
+            "longitude": 0,
+            "zoom": 0.6
+          },
+          "counts": {
+            "aircraft": 0,
+            "airports": 0,
+            "labels": 0,
+            "routes": 0
+          },
+          "frameIntervals": [],
+          "lastSequence": 1,
+          "points": [],
+          "selection": null,
+          "selectionFilters": {
+            "airport": [
+              "==",
+              [
+                "get",
+                "id"
+              ],
+              ""
+            ],
+            "route": [
+              "==",
+              [
+                "get",
+                "id"
+              ],
+              ""
+            ]
+          },
+          "solarSignature": "0.000,1.000,0.000",
+          "sourceIDs": [],
+          "sourceUpdates": 6
+        },
+        "probe": {
+          "events": [
+            {
+              "nightLoaded": false,
+              "sequence": 0,
+              "solar": "",
+              "type": "render"
+            },
+            {
+              "nightLoaded": false,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": false,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": false,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": false,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "idle"
+            }
+          ],
+          "installed": true,
+          "loads": 1,
+          "release": {}
+        }
+      },
+      "readyCount": 1
+    },
+    {
+      "cycle": 1,
+      "initial": {
+        "camera": {
+          "bearing": 0,
+          "followId": null,
+          "latitude": 20,
+          "longitude": 0,
+          "zoom": 0.6
+        },
+        "counts": {
+          "aircraft": 0,
+          "airports": 0,
+          "labels": 0,
+          "routes": 0
+        },
+        "frameIntervals": [],
+        "lastSequence": 0,
+        "points": [],
+        "selection": null,
+        "selectionFilters": {
+          "airport": [
+            "==",
+            [
+              "get",
+              "id"
+            ],
+            ""
+          ],
+          "route": [
+            "==",
+            [
+              "get",
+              "id"
+            ],
+            ""
+          ]
+        },
+        "solarSignature": "",
+        "sourceIDs": [],
+        "sourceUpdates": 0
+      },
+      "atReady": {
+        "map": {
+          "camera": {
+            "bearing": 0,
+            "followId": null,
+            "latitude": 20,
+            "longitude": 0,
+            "zoom": 0.6
+          },
+          "counts": {
+            "aircraft": 0,
+            "airports": 0,
+            "labels": 0,
+            "routes": 0
+          },
+          "frameIntervals": [
+            54,
+            50.10000000000002,
+            50
+          ],
+          "lastSequence": 1,
+          "points": [],
+          "selection": null,
+          "selectionFilters": {
+            "airport": [
+              "==",
+              [
+                "get",
+                "id"
+              ],
+              ""
+            ],
+            "route": [
+              "==",
+              [
+                "get",
+                "id"
+              ],
+              ""
+            ]
+          },
+          "solarSignature": "0.000,1.000,0.000",
+          "sourceIDs": [],
+          "sourceUpdates": 6
+        },
+        "probe": {
+          "events": [
+            {
+              "nightLoaded": false,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": false,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": false,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": false,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": false,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "idle"
+            }
+          ],
+          "installed": true,
+          "loads": 1,
+          "release": {}
+        }
+      },
+      "readyCount": 1
+    },
+    {
+      "cycle": 2,
+      "initial": {
+        "camera": {
+          "bearing": 0,
+          "followId": null,
+          "latitude": 20,
+          "longitude": 0,
+          "zoom": 0.6
+        },
+        "counts": {
+          "aircraft": 0,
+          "airports": 0,
+          "labels": 0,
+          "routes": 0
+        },
+        "frameIntervals": [],
+        "lastSequence": 0,
+        "points": [],
+        "selection": null,
+        "selectionFilters": {
+          "airport": [
+            "==",
+            [
+              "get",
+              "id"
+            ],
+            ""
+          ],
+          "route": [
+            "==",
+            [
+              "get",
+              "id"
+            ],
+            ""
+          ]
+        },
+        "solarSignature": "",
+        "sourceIDs": [],
+        "sourceUpdates": 0
+      },
+      "atReady": {
+        "map": {
+          "camera": {
+            "bearing": 0,
+            "followId": null,
+            "latitude": 20,
+            "longitude": 0,
+            "zoom": 0.6
+          },
+          "counts": {
+            "aircraft": 0,
+            "airports": 0,
+            "labels": 0,
+            "routes": 0
+          },
+          "frameIntervals": [
+            50,
+            50,
+            50
+          ],
+          "lastSequence": 1,
+          "points": [],
+          "selection": null,
+          "selectionFilters": {
+            "airport": [
+              "==",
+              [
+                "get",
+                "id"
+              ],
+              ""
+            ],
+            "route": [
+              "==",
+              [
+                "get",
+                "id"
+              ],
+              ""
+            ]
+          },
+          "solarSignature": "0.000,1.000,0.000",
+          "sourceIDs": [],
+          "sourceUpdates": 6
+        },
+        "probe": {
+          "events": [
+            {
+              "nightLoaded": false,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": false,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": false,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": false,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "render"
+            },
+            {
+              "nightLoaded": true,
+              "sequence": 1,
+              "solar": "0.000,1.000,0.000",
+              "type": "idle"
+            }
+          ],
+          "installed": true,
+          "loads": 1,
+          "release": {}
+        }
+      },
+      "readyCount": 1
+    }
+  ],
+  "scope": "Real isolated WebView/MapLibre with deliberately delayed image decoding; not installed physical validation"
+}

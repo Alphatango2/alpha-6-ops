@@ -1,0 +1,74 @@
+7.24C TERMINAL T1 — native flight pilot notes
+Expected build: S4-7.24C-T1-20260928-00e3f628b90e / 0.22.0 TERMINAL T1
+Fill during the test. Use full dated simulator UTC; record computer UTC separately.
+Leave unobserved values UNKNOWN, not a guessed timestamp or PASS.
+
+Evidence folder:
+Flight number / dated release:
+Route:
+Aircraft title / registration:
+Fenix package version / MSFS version:
+Resolution / scaling / maximized or windowed:
+Date/time at start (simulator UTC):
+Date/time at start (computer UTC):
+00-before snapshot saved; existing unrelated flight preserved:
+
+Accepted assignment and logging ready before movement:
+OUT observed:
+OFF observed:
+Pre-reconnect screenshot filename:
+Disconnect clicked:
+Disconnected confirmed:
+Connect clicked:
+Telemetry resumed:
+OUT/OFF and original flight retained:
+Any joined-in-progress/identity/reset warning:
+Map drag / workspace return observation:
+
+Pre-exit screenshot filename:
+Airborne Exit clicked:
+Process fully exited:
+01-airborne-restart cold files copied:
+Application reopened:
+Recovered state BEFORE connecting (flight/phase/OUT/OFF/events):
+Connect clicked:
+Telemetry resumed:
+Both engines operating for at least 30 seconds afterward:
+Original flight and events retained:
+Map V2 reselected / workspace return observation:
+
+ON / touchdown observed:
+Taxi In observed:
+Final stand/gate:
+Stationary/brake SET:
+Both-running 15-second hold: any premature IN/Complete/PIREP?
+Engine 1 master OFF (simulator UTC; computer UTC if known):
+Single-engine 20-second hold: any premature IN/Complete/PIREP?
+Engine 2 master OFF (simulator UTC; computer UTC if known):
+First visible Complete:
+Displayed actual IN:
+First visible SUBMIT PIREP:
+N1/N2 still visible at eligibility (or UNKNOWN):
+Any >10-second timing exception:
+IN/Complete/eligibility unchanged during 60-second observation:
+Video/screenshots and timing precision:
+
+SUBMIT PIREP clicked once:
+Submission result:
+Active assignment cleared:
+Disconnected / fully exited:
+Post-submission application restart (no simulator connection):
+One completed logbook entry for this run:
+OUT/OFF/ON/IN and event history retained:
+Any resurrected assignment / duplicate PIREP action:
+Final exit and 02-after-restart-audit snapshot:
+active-flight.json present or absent after closeout:
+active-flight-state.json present or absent after closeout:
+
+All connection JSONL + matching JSON exports included:
+Program-monitor files and any crash/error reports included:
+Any extra connection / pause / clock change / deviation:
+Any hitch / flicker / scrollbar oscillation (time and workspace):
+Other errors or limitations:
+
+Pilot observation only — durable PASS requires log/SQLite review.

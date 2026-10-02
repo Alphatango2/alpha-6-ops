@@ -1,0 +1,151 @@
+[
+  {
+    "run": "run-00",
+    "executed": 98,
+    "failed": 0,
+    "failedChecks": [],
+    "baselineMs": 303.8643,
+    "stressedMs": 210.1591,
+    "exactLimitMs": 403.8643,
+    "timelinesEqual": true,
+    "eventsEqual": true,
+    "pirepsEqual": true
+  },
+  {
+    "run": "run-01",
+    "executed": 98,
+    "failed": 0,
+    "failedChecks": [],
+    "baselineMs": 203.9421,
+    "stressedMs": 281.0741,
+    "exactLimitMs": 303.9421,
+    "timelinesEqual": true,
+    "eventsEqual": true,
+    "pirepsEqual": true
+  },
+  {
+    "run": "run-02",
+    "executed": 98,
+    "failed": 0,
+    "failedChecks": [],
+    "baselineMs": 161.9863,
+    "stressedMs": 183.9063,
+    "exactLimitMs": 261.9863,
+    "timelinesEqual": true,
+    "eventsEqual": true,
+    "pirepsEqual": true
+  },
+  {
+    "run": "run-03",
+    "executed": 98,
+    "failed": 0,
+    "failedChecks": [],
+    "baselineMs": 246.4799,
+    "stressedMs": 226.1082,
+    "exactLimitMs": 346.4799,
+    "timelinesEqual": true,
+    "eventsEqual": true,
+    "pirepsEqual": true
+  },
+  {
+    "run": "run-04",
+    "executed": 98,
+    "failed": 0,
+    "failedChecks": [],
+    "baselineMs": 429.3428,
+    "stressedMs": 497.0016,
+    "exactLimitMs": 529.3428,
+    "timelinesEqual": true,
+    "eventsEqual": true,
+    "pirepsEqual": true
+  },
+  {
+    "run": "run-05",
+    "executed": 98,
+    "failed": 0,
+    "failedChecks": [],
+    "baselineMs": 392.8279,
+    "stressedMs": 404.571,
+    "exactLimitMs": 492.8279,
+    "timelinesEqual": true,
+    "eventsEqual": true,
+    "pirepsEqual": true
+  },
+  {
+    "run": "run-06",
+    "executed": 98,
+    "failed": 0,
+    "failedChecks": [],
+    "baselineMs": 239.2777,
+    "stressedMs": 239.6727,
+    "exactLimitMs": 339.2777,
+    "timelinesEqual": true,
+    "eventsEqual": true,
+    "pirepsEqual": true
+  },
+  {
+    "run": "run-07",
+    "executed": 98,
+    "failed": 0,
+    "failedChecks": [],
+    "baselineMs": 203.9647,
+    "stressedMs": 220.7386,
+    "exactLimitMs": 303.9647,
+    "timelinesEqual": true,
+    "eventsEqual": true,
+    "pirepsEqual": true
+  },
+  {
+    "run": "run-08",
+    "executed": 98,
+    "failed": 0,
+    "failedChecks": [],
+    "baselineMs": 183.8717,
+    "stressedMs": 200.9864,
+    "exactLimitMs": 283.87170000000003,
+    "timelinesEqual": true,
+    "eventsEqual": true,
+    "pirepsEqual": true
+  },
+  {
+    "run": "run-09",
+    "executed": 98,
+    "failed": 0,
+    "failedChecks": [],
+    "baselineMs": 343.2413,
+    "stressedMs": 205.4009,
+    "exactLimitMs": 443.2413,
+    "timelinesEqual": true,
+    "eventsEqual": true,
+    "pirepsEqual": true
+  },
+  {
+    "run": "run-10",
+    "executed": 98,
+    "failed": 1,
+    "failedChecks": [
+      {
+        "passed": false,
+        "name": "Contention: dispatcher heartbeat maximum below 500ms and within 100ms of baseline (150ms floor)."
+      }
+    ],
+    "baselineMs": 204.002,
+    "stressedMs": 345.9318,
+    "exactLimitMs": 304.002,
+    "timelinesEqual": true,
+    "eventsEqual": true,
+    "pirepsEqual": true
+  },
+  {
+    "run": "run-11",
+    "executed": 98,
+    "failed": 0,
+    "failedChecks": [],
+    "baselineMs": 329.3447,
+    "stressedMs": 296.9383,
+    "exactLimitMs": 429.3447,
+    "timelinesEqual": true,
+    "eventsEqual": true,
+    "pirepsEqual": true
+  }
+]

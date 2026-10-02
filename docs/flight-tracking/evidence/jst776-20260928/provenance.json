@@ -1,0 +1,108 @@
+{
+  "capturedAtUtc": "2026-09-28T16:05:05.886112+00:00",
+  "installed": {
+    "verifiedAtUtc": "2026-09-28T15:48:23.6054484+00:00",
+    "buildId": "S4-7.24B-LAYOUT-R3-20260927-666f495dce7e",
+    "expectedVersion": "0.22.0",
+    "sourceCommit": "666f495dce7efb3ccd70b99939501144d91ab606",
+    "directory": "C:\\Users\\DanniBaLs\\AppData\\Local\\Alpha6Designs\\Alpha6OPSPreview",
+    "expectedFiles": 514,
+    "matchedFiles": 514,
+    "missing": [],
+    "mismatched": [],
+    "passed": true,
+    "scope": "Expected immutable payload files only; installer marker/uninstaller and runtime-generated files are not payload identity."
+  },
+  "appRestart": {
+    "processId": 23748,
+    "processStartUtc": "2026-09-28T15:40:59.7059Z",
+    "connection": "Disconnected",
+    "samples": 0,
+    "lastCrashReport": null
+  },
+  "frozenPackages": [
+    {
+      "name": "Alpha6OPS-Setup-0.22.0-7.24B-LAYOUT-R3.exe",
+      "expected": "19FA4133006BFE69A6975F03467E8608630D1E140D9AFDB087FE8CAF55FB4490",
+      "actual": "19FA4133006BFE69A6975F03467E8608630D1E140D9AFDB087FE8CAF55FB4490"
+    },
+    {
+      "name": "Alpha6OPS-Desktop-0.22.0-7.24B-LAYOUT-R3-win-x64.zip",
+      "expected": "AB94D2013983F0EE9672DDE22BA6B34498E8D4A6F6D351CE7DA891B24968E36D",
+      "actual": "AB94D2013983F0EE9672DDE22BA6B34498E8D4A6F6D351CE7DA891B24968E36D"
+    }
+  ],
+  "baselineReplayInputs": [
+    {
+      "name": "Alpha6OPS-20260915-162430-9aca09b18a574161b63e2436bcfd9e93.jsonl",
+      "sha256": "20839580DE1D3FE3E3CB1C27B632845F31CB816150CCEBCB2255745A0F875AB4",
+      "unchangedFromR3": true
+    },
+    {
+      "name": "Alpha6OPS-20260916-135053-c49d9b0c34fe4f4c90208ac3e4539dcc.jsonl",
+      "sha256": "A3CDA3E402272B4B4A1959A93C5385C8F7F718D38133CF2509210128E5499292",
+      "unchangedFromR3": true
+    },
+    {
+      "name": "Alpha6OPS-20260916-184239-4173094f394d4d6e848f02a3c6435c18.jsonl",
+      "sha256": "4DF187F832843F341E24E3362E6E4CC386AA3D8304405E5C10FC13FE397A47C9",
+      "unchangedFromR3": true
+    },
+    {
+      "name": "Alpha6OPS-20260917-140626-af692dafa75c49b59ae375fa32c8261a.jsonl",
+      "sha256": "F1ACEF79F3B0421CF2480B284E19EB0C0C24276DB04461436D6EC1D027271FDB",
+      "unchangedFromR3": true
+    },
+    {
+      "name": "Alpha6OPS-20260917-181957-8243977147324ed8b7b638d8b02e4d00.jsonl",
+      "sha256": "B4BA957717FC60B2511CABCDA76AC2190ED7EF2120D8D601F010ED11AF848C5B",
+      "unchangedFromR3": true
+    },
+    {
+      "name": "Alpha6OPS-20260917-232910-6acfe19dbe3b4ec1b2de1bbd69467871.jsonl",
+      "sha256": "D1BF2A095A2CD4921998283ACCCDC9A8CDF4C21B2F062BB52512F24A2D2ADD9F",
+      "unchangedFromR3": true
+    },
+    {
+      "name": "Alpha6OPS-20260921-152808-966942d7378743faab8973e5965ca4c4.jsonl",
+      "sha256": "CC69C1482964D635BC92DB56AD0E395740820208DABA99F67BB5666BA11EE51B",
+      "unchangedFromR3": true
+    },
+    {
+      "name": "Alpha6OPS-20260922-132436-eaa1940f42bd473d99f822460b3bc79d.jsonl",
+      "sha256": "94F954F0ED45A96EE8C6C94256B3874FBE39D22C8132BA1299B13D133A98CF6F",
+      "unchangedFromR3": true
+    },
+    {
+      "name": "Alpha6OPS-20260918-134301-c7123d665f8b432abaa6165802d72480.jsonl",
+      "sha256": "2AA85C50BBEEFAEB636F87B1A83B743D4DAC8F9AF9BC27DC39F57ADA772F20BA",
+      "unchangedFromR3": true
+    }
+  ],
+  "preMigrationAlgorithmComparison": [
+    {
+      "path": "src/Alpha6Ops.Core/RouteProgressTracker.cs",
+      "checkpoint717Blob": "b519fa97d94b8d559039121d6cf84c19407c338f",
+      "frozenR3Blob": "b519fa97d94b8d559039121d6cf84c19407c338f",
+      "unchanged": true
+    },
+    {
+      "path": "src/Alpha6Ops.Core/ArrivalEstimator.cs",
+      "checkpoint717Blob": "ed52fe29713295dd55c12791945b5a5f786ff9a4",
+      "frozenR3Blob": "ed52fe29713295dd55c12791945b5a5f786ff9a4",
+      "unchanged": true
+    }
+  ],
+  "crashReports": {
+    "count": 26,
+    "baselineCount": 26,
+    "unchanged": true,
+    "new": [],
+    "changed": [],
+    "missing": []
+  },
+  "nativeTestsRunDuringReview": false,
+  "fullSuiteRunDuringReview": false,
+  "freshReplayFlights": 10,
+  "sourceArchive": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\jst776-review\\entry-20260928-154645"
+}

@@ -1,0 +1,162 @@
+{
+  "schema": "sierra4.flight-tracking.replay-fixtures.v1",
+  "root": "work/regression-fixtures/flight-tracking-v1",
+  "baselineManifest": "work/regression-fixtures/flight-tracking-v1/baseline/replay-manifest.json",
+  "jst776Manifest": "work/regression-fixtures/flight-tracking-v1/jst776/replay-manifest.json",
+  "jst771Manifest": "work/regression-fixtures/flight-tracking-v1/jst771/replay-manifest.json",
+  "finalHistoryDatabase": "work/regression-fixtures/flight-tracking-v1/history/Alpha6OPS-flights.sqlite",
+  "jst771Evidence": {
+    "journals": [
+      "work/regression-fixtures/flight-tracking-v1/jst771-evidence/supplemental-132028.jsonl",
+      "work/regression-fixtures/flight-tracking-v1/jst771-evidence/supplemental-140712.jsonl"
+    ],
+    "historyDatabase": "work/regression-fixtures/flight-tracking-v1/jst771-evidence/Alpha6OPS-flights.sqlite"
+  },
+  "dal40Journal": "work/regression-fixtures/flight-tracking-v1/dal40/DAL40-authoritative.jsonl",
+  "files": [
+    {
+      "group": "baseline",
+      "name": "JST221.jsonl",
+      "path": "work/regression-fixtures/flight-tracking-v1/baseline/JST221.jsonl",
+      "bytes": 9561439,
+      "sha256": "20839580DE1D3FE3E3CB1C27B632845F31CB816150CCEBCB2255745A0F875AB4",
+      "source": "work/flight-test-JST221-20260915/JST221 - 9-15 Flight Test/Alpha6OPS-20260915-162430-9aca09b18a574161b63e2436bcfd9e93.jsonl",
+      "archivePath": "fixtures/flight-tracking-v1/baseline/JST221.jsonl.gz"
+    },
+    {
+      "group": "baseline",
+      "name": "QFA124.jsonl",
+      "path": "work/regression-fixtures/flight-tracking-v1/baseline/QFA124.jsonl",
+      "bytes": 9249124,
+      "sha256": "A3CDA3E402272B4B4A1959A93C5385C8F7F718D38133CF2509210128E5499292",
+      "source": "work/flight-test-QFA124-20260916-review/QFA124 - 9-16 Flight Test/Alpha6OPS-20260916-135053-c49d9b0c34fe4f4c90208ac3e4539dcc.jsonl",
+      "archivePath": "fixtures/flight-tracking-v1/baseline/QFA124.jsonl.gz"
+    },
+    {
+      "group": "baseline",
+      "name": "JST786.jsonl",
+      "path": "work/regression-fixtures/flight-tracking-v1/baseline/JST786.jsonl",
+      "bytes": 5821286,
+      "sha256": "4DF187F832843F341E24E3362E6E4CC386AA3D8304405E5C10FC13FE397A47C9",
+      "source": "work/flight-test-JST786-20260916-review/JST786 - 9-16 Flight Test/Alpha6OPS-20260916-184239-4173094f394d4d6e848f02a3c6435c18.jsonl",
+      "archivePath": "fixtures/flight-tracking-v1/baseline/JST786.jsonl.gz"
+    },
+    {
+      "group": "baseline",
+      "name": "QLK1579.jsonl",
+      "path": "work/regression-fixtures/flight-tracking-v1/baseline/QLK1579.jsonl",
+      "bytes": 7521974,
+      "sha256": "F1ACEF79F3B0421CF2480B284E19EB0C0C24276DB04461436D6EC1D027271FDB",
+      "source": "work/flight-test-QLK1579-20260917-review-2/QLK1579 9-17 FT - A220/Alpha6OPS-20260917-140626-af692dafa75c49b59ae375fa32c8261a.jsonl",
+      "archivePath": "fixtures/flight-tracking-v1/baseline/QLK1579.jsonl.gz"
+    },
+    {
+      "group": "baseline",
+      "name": "JST721.jsonl",
+      "path": "work/regression-fixtures/flight-tracking-v1/baseline/JST721.jsonl",
+      "bytes": 6422772,
+      "sha256": "B4BA957717FC60B2511CABCDA76AC2190ED7EF2120D8D601F010ED11AF848C5B",
+      "source": "work/JST721-review/JST721 - 9-17 FT - A320/Alpha6OPS-20260917-181957-8243977147324ed8b7b638d8b02e4d00.jsonl",
+      "archivePath": "fixtures/flight-tracking-v1/baseline/JST721.jsonl.gz"
+    },
+    {
+      "group": "baseline",
+      "name": "JST724.jsonl",
+      "path": "work/regression-fixtures/flight-tracking-v1/baseline/JST724.jsonl",
+      "bytes": 8289329,
+      "sha256": "D1BF2A095A2CD4921998283ACCCDC9A8CDF4C21B2F062BB52512F24A2D2ADD9F",
+      "source": "work/JST724-review/JST724 - 9-17 FT - A320/Alpha6OPS-20260917-232910-6acfe19dbe3b4ec1b2de1bbd69467871.jsonl",
+      "archivePath": "fixtures/flight-tracking-v1/baseline/JST724.jsonl.gz"
+    },
+    {
+      "group": "baseline",
+      "name": "JST760.jsonl",
+      "path": "work/regression-fixtures/flight-tracking-v1/baseline/JST760.jsonl",
+      "bytes": 18509829,
+      "sha256": "CC69C1482964D635BC92DB56AD0E395740820208DABA99F67BB5666BA11EE51B",
+      "source": ".work/jst760-7.16/JST760 - 9-21 FT - A320/Alpha6OPS-20260921-152808-966942d7378743faab8973e5965ca4c4.jsonl",
+      "archivePath": "fixtures/flight-tracking-v1/baseline/JST760.jsonl.gz"
+    },
+    {
+      "group": "baseline",
+      "name": "QLK1274.jsonl",
+      "path": "work/regression-fixtures/flight-tracking-v1/baseline/QLK1274.jsonl",
+      "bytes": 18317153,
+      "sha256": "94F954F0ED45A96EE8C6C94256B3874FBE39D22C8132BA1299B13D133A98CF6F",
+      "source": ".work/qlk1274-review-20260922/QLK1274/Alpha6OPS-20260922-132436-eaa1940f42bd473d99f822460b3bc79d.jsonl",
+      "archivePath": "fixtures/flight-tracking-v1/baseline/QLK1274.jsonl.gz"
+    },
+    {
+      "group": "baseline",
+      "name": "ANG2.jsonl",
+      "path": "work/regression-fixtures/flight-tracking-v1/baseline/ANG2.jsonl",
+      "bytes": 17323868,
+      "sha256": "2AA85C50BBEEFAEB636F87B1A83B743D4DAC8F9AF9BC27DC39F57ADA772F20BA",
+      "source": "work/ANG2-review-20260919-210735/ANG2 - 9-18 FT - A220/Alpha6OPS-20260918-134301-c7123d665f8b432abaa6165802d72480.jsonl",
+      "archivePath": "fixtures/flight-tracking-v1/baseline/ANG2.jsonl.gz"
+    },
+    {
+      "group": "jst776",
+      "name": "JST776.jsonl",
+      "path": "work/regression-fixtures/flight-tracking-v1/jst776/JST776.jsonl",
+      "bytes": 11119794,
+      "sha256": "58C53BC645BEB098E991FE4AC42DE3A3A748CA83F7091658191A9BF0CCEE7D8A",
+      "source": "work/jst776-review/entry-20260928-154645/package/JST776 - S4 TF - 9-28/Alpha6OPS-20260928-135604-e35f29af4dec42b2b0e0d46be26c22c8.jsonl",
+      "archivePath": "fixtures/flight-tracking-v1/jst776/JST776.jsonl.gz"
+    },
+    {
+      "group": "jst771",
+      "name": "JST771.jsonl",
+      "path": "work/regression-fixtures/flight-tracking-v1/jst771/JST771.jsonl",
+      "bytes": 7156842,
+      "sha256": "28E0E81CE112AC92B347D60F24900D3A3007A51AA46321095E7BD99A042A138A",
+      "source": "work/checkpoint-7.24c/jst771-review-20260929/extracted/JST771 - S4TF - 9-29/Alpha6OPS-20260929-140838-d803e26c9d8b4aec8cac7c52986c89b2.jsonl",
+      "archivePath": "fixtures/flight-tracking-v1/jst771/JST771.jsonl.gz"
+    },
+    {
+      "group": "jst771-evidence",
+      "name": "supplemental-132028.jsonl",
+      "path": "work/regression-fixtures/flight-tracking-v1/jst771-evidence/supplemental-132028.jsonl",
+      "bytes": 6417132,
+      "sha256": "4093D595C3BA89B938305D87664B410BBCDAA640E85DD709C866FB5ADF2E8842",
+      "source": "work/checkpoint-7.24c/jst771-review-20260929/recovery-review/supplemental/Alpha6OPS-20260929-132028-8b82910e17c643edb0daaadcaf382fe3.jsonl",
+      "archivePath": "fixtures/flight-tracking-v1/jst771-evidence/supplemental-132028.jsonl.gz"
+    },
+    {
+      "group": "jst771-evidence",
+      "name": "supplemental-140712.jsonl",
+      "path": "work/regression-fixtures/flight-tracking-v1/jst771-evidence/supplemental-140712.jsonl",
+      "bytes": 178978,
+      "sha256": "E55BB1E2EAB6A3FE0AB9A6A7D718C8B063FA99377126F5611489B1CED0BF6318",
+      "source": "work/checkpoint-7.24c/jst771-review-20260929/recovery-review/supplemental/Alpha6OPS-20260929-140712-45a372128d6c48869b91cd6e6a66176e.jsonl",
+      "archivePath": "fixtures/flight-tracking-v1/jst771-evidence/supplemental-140712.jsonl.gz"
+    },
+    {
+      "group": "jst771-evidence",
+      "name": "Alpha6OPS-flights.sqlite",
+      "path": "work/regression-fixtures/flight-tracking-v1/jst771-evidence/Alpha6OPS-flights.sqlite",
+      "bytes": 589824,
+      "sha256": "BBD963D58D745AFAC94D64FFB4613A785EE0C5CCF4EABFB08501D1FF79EDEFC8",
+      "source": "work/checkpoint-7.24c/jst771-review-20260929/recovery-review/supplemental/Alpha6OPS-flights.sqlite",
+      "archivePath": "fixtures/flight-tracking-v1/jst771-evidence/Alpha6OPS-flights.sqlite.gz"
+    },
+    {
+      "group": "history",
+      "name": "Alpha6OPS-flights.sqlite",
+      "path": "work/regression-fixtures/flight-tracking-v1/history/Alpha6OPS-flights.sqlite",
+      "bytes": 610304,
+      "sha256": "1EAC6BDBE318E21EAB73E4187FCF03D8B0AFE021224CEBE03DBB1BDB4F484278",
+      "source": "work/checkpoint-7.24c/t2-final-20260930-163624/supplemental/profile/Alpha6OPS-flights.sqlite",
+      "archivePath": "fixtures/flight-tracking-v1/history/Alpha6OPS-flights.sqlite.gz"
+    },
+    {
+      "group": "dal40",
+      "name": "DAL40-authoritative.jsonl",
+      "path": "work/regression-fixtures/flight-tracking-v1/dal40/DAL40-authoritative.jsonl",
+      "bytes": 121791362,
+      "sha256": "7377B5057546B9954D7792DFC47593AE1009E09A94FF29D5FB694839999A34D0",
+      "source": "work/checkpoint-7.25a/dal40-ece78d7e/Alpha6OPS-20260930-232037-38402f43630440d79e21911eb3fb70a7.jsonl",
+      "archivePath": "fixtures/flight-tracking-v1/dal40/DAL40-authoritative.jsonl.gz"
+    }
+  ]
+}

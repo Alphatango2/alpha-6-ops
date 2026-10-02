@@ -6,6 +6,7 @@ void Reject(Action action, string name) { try { action(); } catch (ArgumentExcep
 FlightIdentityTests.Run(Check);
 TrackingTests.Run(Check);
 EngineEvidenceTests.Run(Check);
+TerminalShutdownTests.Run(Check);
 var rotation = Demo.Rotation();
 var positionedTelemetry=new Telemetry(DateTimeOffset.Parse("2026-09-10T12:00:00Z"),false,430,false,true,LatitudeDegrees:35.2,LongitudeDegrees:-120.4,AltitudeFeet:35000,HeadingDegrees:92);
 Check(positionedTelemetry.HasPosition&&positionedTelemetry.AltitudeFeet==35000&&positionedTelemetry.HeadingDegrees==92,"positioned telemetry validates live map coordinates");

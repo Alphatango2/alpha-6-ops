@@ -1,0 +1,19 @@
+[
+  {
+    "flight": "JST771",
+    "samples": 3121,
+    "passed": true,
+    "failures": [],
+    "maximumJump": 0.0018325214807461965,
+    "maxAirborne": 0.9987640046878998,
+    "actualIn": "2026-09-28T23:03:55.3247909+00:00",
+    "calculationChecks": {
+      "prematureEndpointSamples": 0,
+      "understatedRemainingSamples": 0,
+      "expiredEstimateSamples": 0,
+      "completionMismatchSamples": 0,
+      "maximumRemainingShortfallNm": 0,
+      "maximumExpiredSeconds": 0
+    }
+  }
+]

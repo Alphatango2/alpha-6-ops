@@ -1,0 +1,53 @@
+{
+  "sourceFilesChecked": 238,
+  "sourceFilesChanged": [],
+  "frozen": {
+    "files": 524,
+    "changed": [],
+    "added": [],
+    "removed": []
+  },
+  "profile": [
+    {
+      "path": "C:\\Users\\DanniBaLs\\AppData\\Local\\Alpha6Designs\\Alpha6OPS\\Alpha6OPS-flights.sqlite",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\DanniBaLs\\AppData\\Local\\Alpha6Designs\\Alpha6OPS\\Alpha6OPS-flights.sqlite.before-flyvirtual-20260911-115925.bak",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\DanniBaLs\\AppData\\Local\\Alpha6Designs\\Alpha6OPS\\Alpha6OPS-logs.sqlite",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\DanniBaLs\\AppData\\Local\\Alpha6Designs\\Alpha6OPS\\dashboard-state.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\DanniBaLs\\AppData\\Local\\Alpha6Designs\\Alpha6OPS\\gate-history.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\DanniBaLs\\AppData\\Local\\Alpha6Designs\\Alpha6OPS\\general-settings.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\DanniBaLs\\AppData\\Local\\Alpha6Designs\\Alpha6OPS\\ofp-viewer-state.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\DanniBaLs\\AppData\\Local\\Alpha6Designs\\Alpha6OPS\\preferences.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\DanniBaLs\\AppData\\Local\\Alpha6Designs\\Alpha6OPS\\program-status.json",
+      "unchanged": true
+    }
+  ],
+  "analysisInputFilesUnchanged": 28,
+  "priorEvidenceFilesUnchanged": 36,
+  "productionChanged": false,
+  "acceptanceChanged": false,
+  "installerLaunched": false
+}

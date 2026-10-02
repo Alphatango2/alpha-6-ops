@@ -1,0 +1,3355 @@
+{
+  "completedRuns": 12,
+  "arms": [
+    {
+      "run": "run-00",
+      "trace": false,
+      "condition": "baseline",
+      "stats": {
+        "count": 120,
+        "min": 19.8156,
+        "median": 44.37215,
+        "p95": 161.8824,
+        "p99": 245.0792,
+        "max": 303.8643
+      },
+      "limit": 403.8643,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 0,
+      "pendingTailMs": 15.9839,
+      "sampleCount": 395,
+      "mapMetrics": null
+    },
+    {
+      "run": "run-00",
+      "trace": false,
+      "condition": "stressed",
+      "stats": {
+        "count": 140,
+        "min": 17.3186,
+        "median": 41.6908,
+        "p95": 137.7952,
+        "p99": 163.7095,
+        "max": 210.1591
+      },
+      "limit": 403.8643,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 0,
+      "pendingTailMs": 38.8438,
+      "sampleCount": 395,
+      "mapMetrics": {
+        "produced": 40,
+        "offered": 40,
+        "coalesced": 6,
+        "acknowledged": 34,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 2112,
+        "readyMs": 616.6034,
+        "projectionQueue": {
+          "offered": 395,
+          "coalesced": 355,
+          "consumed": 40,
+          "pending": false
+        },
+        "projectionMs": {
+          "count": 40,
+          "mean": 0.055945,
+          "p50": 0.0508,
+          "p95": 0.1125,
+          "p99": 0.1389,
+          "max": 0.1423
+        },
+        "serializationMs": {
+          "count": 34,
+          "mean": 0.056250000000000015,
+          "p50": 0.0553,
+          "p95": 0.0678,
+          "p99": 0.0697,
+          "max": 0.082
+        },
+        "dispatcherQueueMs": {
+          "count": 34,
+          "mean": 0.21096176470588232,
+          "p50": 0.0358,
+          "p95": 0.8676,
+          "p99": 1.2395,
+          "max": 2.2076
+        },
+        "postMs": {
+          "count": 34,
+          "mean": 0.09580294117647059,
+          "p50": 0.089,
+          "p95": 0.1445,
+          "p99": 0.1451,
+          "max": 0.2218
+        },
+        "acknowledgmentMs": {
+          "count": 34,
+          "mean": 42.50730294117647,
+          "p50": 0.4849,
+          "p95": 1.7107,
+          "p99": 2.526,
+          "max": 1425.1775
+        },
+        "postToAcknowledgmentMs": {
+          "count": 34,
+          "mean": 42.296258823529406,
+          "p50": 0.3852,
+          "p95": 0.559,
+          "p99": 0.5734,
+          "max": 1425.1469
+        }
+      }
+    },
+    {
+      "run": "run-00",
+      "trace": false,
+      "condition": "idle",
+      "stats": {
+        "count": 268,
+        "min": 28.8748,
+        "median": 47.03235,
+        "p95": 438.0136,
+        "p99": 1143.136,
+        "max": 2186.291
+      },
+      "limit": 2286.291,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 9,
+      "pendingTailMs": 21.285,
+      "mapMetrics": {
+        "produced": 0,
+        "offered": 0,
+        "coalesced": 0,
+        "acknowledged": 0,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 0,
+        "readyMs": 1555.7321,
+        "projectionQueue": null,
+        "projectionMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "serializationMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "dispatcherQueueMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "postMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "acknowledgmentMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "postToAcknowledgmentMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        }
+      },
+      "elapsedMs": 30000.8353,
+      "dimensions": {
+        "mainWidth": 3440,
+        "mainHeight": 1400,
+        "mapWidth": 1134,
+        "mapHeight": 611
+      }
+    },
+    {
+      "run": "run-00",
+      "trace": false,
+      "condition": "normal",
+      "stats": {
+        "count": 308,
+        "min": 21.4502,
+        "median": 60.99495,
+        "p95": 296.1242,
+        "p99": 811.8441,
+        "max": 915.1681
+      },
+      "limit": 2286.291,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 8,
+      "pendingTailMs": 481.4998,
+      "mapMetrics": {
+        "produced": 0,
+        "offered": 30,
+        "coalesced": 0,
+        "acknowledged": 30,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 4646,
+        "readyMs": 1555.7321,
+        "projectionQueue": null,
+        "projectionMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "serializationMs": {
+          "count": 30,
+          "mean": 0.3281166666666666,
+          "p50": 0.134,
+          "p95": 0.7568,
+          "p99": 2.1163,
+          "max": 3.1816
+        },
+        "dispatcherQueueMs": {
+          "count": 30,
+          "mean": 0.05361333333333333,
+          "p50": 0.0406,
+          "p95": 0.1345,
+          "p99": 0.1377,
+          "max": 0.1537
+        },
+        "postMs": {
+          "count": 30,
+          "mean": 0.14479999999999998,
+          "p50": 0.1404,
+          "p95": 0.1685,
+          "p99": 0.1728,
+          "max": 0.1854
+        },
+        "acknowledgmentMs": {
+          "count": 30,
+          "mean": 32.721,
+          "p50": 0.5597,
+          "p95": 9.6874,
+          "p99": 11.1472,
+          "max": 936.3428
+        },
+        "postToAcknowledgmentMs": {
+          "count": 30,
+          "mean": 32.667336666666664,
+          "p50": 0.4967,
+          "p95": 9.6545,
+          "p99": 11.1073,
+          "max": 936.1889
+        }
+      },
+      "elapsedMs": 30012.2747,
+      "dimensions": {
+        "mainWidth": 3440,
+        "mainHeight": 1400,
+        "mapWidth": 1134,
+        "mapHeight": 611
+      }
+    },
+    {
+      "run": "run-01",
+      "trace": true,
+      "condition": "baseline",
+      "stats": {
+        "count": 147,
+        "min": 16.0998,
+        "median": 41.0666,
+        "p95": 122.0335,
+        "p99": 173.5912,
+        "max": 203.9421
+      },
+      "limit": 303.9421,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 0,
+      "pendingTailMs": 100.9396,
+      "sampleCount": 395,
+      "mapMetrics": null
+    },
+    {
+      "run": "run-01",
+      "trace": true,
+      "condition": "stressed",
+      "stats": {
+        "count": 139,
+        "min": 16.0951,
+        "median": 41.1111,
+        "p95": 163.3192,
+        "p99": 199.8109,
+        "max": 281.0741
+      },
+      "limit": 303.9421,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 0,
+      "pendingTailMs": 44.8452,
+      "sampleCount": 395,
+      "mapMetrics": {
+        "produced": 41,
+        "offered": 41,
+        "coalesced": 6,
+        "acknowledged": 35,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 2438,
+        "readyMs": 628.3832,
+        "projectionQueue": {
+          "offered": 395,
+          "coalesced": 354,
+          "consumed": 41,
+          "pending": false
+        },
+        "projectionMs": {
+          "count": 41,
+          "mean": 0.05268536585365854,
+          "p50": 0.0478,
+          "p95": 0.0956,
+          "p99": 0.1167,
+          "max": 0.1473
+        },
+        "serializationMs": {
+          "count": 35,
+          "mean": 0.05478857142857143,
+          "p50": 0.0564,
+          "p95": 0.0647,
+          "p99": 0.0661,
+          "max": 0.0677
+        },
+        "dispatcherQueueMs": {
+          "count": 35,
+          "mean": 0.27264,
+          "p50": 0.0428,
+          "p95": 1.7036,
+          "p99": 1.8332,
+          "max": 2.1005
+        },
+        "postMs": {
+          "count": 35,
+          "mean": 0.09797142857142856,
+          "p50": 0.093,
+          "p95": 0.1165,
+          "p99": 0.1674,
+          "max": 0.2318
+        },
+        "acknowledgmentMs": {
+          "count": 35,
+          "mean": 41.60126857142857,
+          "p50": 0.4922,
+          "p95": 2.7101,
+          "p99": 10.823,
+          "max": 1422.5841
+        },
+        "postToAcknowledgmentMs": {
+          "count": 35,
+          "mean": 41.32868,
+          "p50": 0.3744,
+          "p95": 0.9708,
+          "p99": 9.9568,
+          "max": 1422.5414
+        }
+      }
+    },
+    {
+      "run": "run-01",
+      "trace": true,
+      "condition": "idle",
+      "stats": {
+        "count": 183,
+        "min": 29.7364,
+        "median": 46.1582,
+        "p95": 1031.9375,
+        "p99": 1471.9518,
+        "max": 1798.1156
+      },
+      "limit": 1898.1156,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 17,
+      "pendingTailMs": 429.8992,
+      "mapMetrics": {
+        "produced": 0,
+        "offered": 30,
+        "coalesced": 0,
+        "acknowledged": 30,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 4646,
+        "readyMs": 745.1822,
+        "projectionQueue": null,
+        "projectionMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "serializationMs": {
+          "count": 30,
+          "mean": 0.26286333333333334,
+          "p50": 0.1226,
+          "p95": 0.1945,
+          "p99": 0.289,
+          "max": 3.9607
+        },
+        "dispatcherQueueMs": {
+          "count": 30,
+          "mean": 0.05985,
+          "p50": 0.0446,
+          "p95": 0.14,
+          "p99": 0.1876,
+          "max": 0.1914
+        },
+        "postMs": {
+          "count": 30,
+          "mean": 0.15378999999999995,
+          "p50": 0.1555,
+          "p95": 0.1718,
+          "p99": 0.1751,
+          "max": 0.199
+        },
+        "acknowledgmentMs": {
+          "count": 30,
+          "mean": 32.36100333333333,
+          "p50": 0.5654,
+          "p95": 9.5174,
+          "p99": 10.7184,
+          "max": 934.9866
+        },
+        "postToAcknowledgmentMs": {
+          "count": 30,
+          "mean": 32.30121,
+          "p50": 0.5126,
+          "p95": 9.326,
+          "p99": 10.6708,
+          "max": 934.7985
+        }
+      },
+      "elapsedMs": 29999.8055,
+      "dimensions": {
+        "mainWidth": 3440,
+        "mainHeight": 1400,
+        "mapWidth": 1134,
+        "mapHeight": 611
+      }
+    },
+    {
+      "run": "run-01",
+      "trace": true,
+      "condition": "normal",
+      "stats": {
+        "count": 197,
+        "min": 21.2738,
+        "median": 46.2064,
+        "p95": 735.2697,
+        "p99": 1035.5093,
+        "max": 1094.5043
+      },
+      "limit": 1898.1156,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 22,
+      "pendingTailMs": 725.1481,
+      "mapMetrics": {
+        "produced": 0,
+        "offered": 30,
+        "coalesced": 0,
+        "acknowledged": 30,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 4646,
+        "readyMs": 745.1822,
+        "projectionQueue": null,
+        "projectionMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "serializationMs": {
+          "count": 30,
+          "mean": 0.26286333333333334,
+          "p50": 0.1226,
+          "p95": 0.1945,
+          "p99": 0.289,
+          "max": 3.9607
+        },
+        "dispatcherQueueMs": {
+          "count": 30,
+          "mean": 0.05985,
+          "p50": 0.0446,
+          "p95": 0.14,
+          "p99": 0.1876,
+          "max": 0.1914
+        },
+        "postMs": {
+          "count": 30,
+          "mean": 0.15378999999999995,
+          "p50": 0.1555,
+          "p95": 0.1718,
+          "p99": 0.1751,
+          "max": 0.199
+        },
+        "acknowledgmentMs": {
+          "count": 30,
+          "mean": 32.36100333333333,
+          "p50": 0.5654,
+          "p95": 9.5174,
+          "p99": 10.7184,
+          "max": 934.9866
+        },
+        "postToAcknowledgmentMs": {
+          "count": 30,
+          "mean": 32.30121,
+          "p50": 0.5126,
+          "p95": 9.326,
+          "p99": 10.6708,
+          "max": 934.7985
+        }
+      },
+      "elapsedMs": 30014.5738,
+      "dimensions": {
+        "mainWidth": 3440,
+        "mainHeight": 1400,
+        "mapWidth": 1134,
+        "mapHeight": 611
+      }
+    },
+    {
+      "run": "run-02",
+      "trace": true,
+      "condition": "baseline",
+      "stats": {
+        "count": 135,
+        "min": 19.7128,
+        "median": 45.4038,
+        "p95": 122.4005,
+        "p99": 144.8881,
+        "max": 161.9863
+      },
+      "limit": 261.9863,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 0,
+      "pendingTailMs": 99.9476,
+      "sampleCount": 395,
+      "mapMetrics": null
+    },
+    {
+      "run": "run-02",
+      "trace": true,
+      "condition": "stressed",
+      "stats": {
+        "count": 138,
+        "min": 16.8741,
+        "median": 42.0172,
+        "p95": 162.2421,
+        "p99": 182.2347,
+        "max": 183.9063
+      },
+      "limit": 261.9863,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 0,
+      "pendingTailMs": 99.9911,
+      "sampleCount": 395,
+      "mapMetrics": {
+        "produced": 40,
+        "offered": 40,
+        "coalesced": 6,
+        "acknowledged": 34,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 2112,
+        "readyMs": 600.0355,
+        "projectionQueue": {
+          "offered": 395,
+          "coalesced": 355,
+          "consumed": 40,
+          "pending": false
+        },
+        "projectionMs": {
+          "count": 40,
+          "mean": 0.044094999999999995,
+          "p50": 0.0341,
+          "p95": 0.0941,
+          "p99": 0.1226,
+          "max": 0.1562
+        },
+        "serializationMs": {
+          "count": 34,
+          "mean": 0.05122941176470588,
+          "p50": 0.0501,
+          "p95": 0.0633,
+          "p99": 0.0648,
+          "max": 0.0779
+        },
+        "dispatcherQueueMs": {
+          "count": 34,
+          "mean": 0.2506529411764706,
+          "p50": 0.0406,
+          "p95": 1.9278,
+          "p99": 1.9384,
+          "max": 2.0326
+        },
+        "postMs": {
+          "count": 34,
+          "mean": 0.09227058823529408,
+          "p50": 0.0875,
+          "p95": 0.1207,
+          "p99": 0.1296,
+          "max": 0.1324
+        },
+        "acknowledgmentMs": {
+          "count": 34,
+          "mean": 42.71478529411765,
+          "p50": 0.4093,
+          "p95": 2.3999,
+          "p99": 9.3332,
+          "max": 1423.1085
+        },
+        "postToAcknowledgmentMs": {
+          "count": 34,
+          "mean": 42.46421176470588,
+          "p50": 0.3539,
+          "p95": 0.5213,
+          "p99": 9.2964,
+          "max": 1423.0592
+        }
+      }
+    },
+    {
+      "run": "run-02",
+      "trace": true,
+      "condition": "idle",
+      "stats": {
+        "count": 181,
+        "min": 29.9059,
+        "median": 46.0534,
+        "p95": 924.9807,
+        "p99": 1504.1731,
+        "max": 1969.9175
+      },
+      "limit": 2069.9175,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 19,
+      "pendingTailMs": 346.2979,
+      "mapMetrics": {
+        "produced": 0,
+        "offered": 0,
+        "coalesced": 0,
+        "acknowledged": 0,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 0,
+        "readyMs": 769.3627,
+        "projectionQueue": null,
+        "projectionMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "serializationMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "dispatcherQueueMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "postMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "acknowledgmentMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "postToAcknowledgmentMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        }
+      },
+      "elapsedMs": 30001.1203,
+      "dimensions": {
+        "mainWidth": 3440,
+        "mainHeight": 1400,
+        "mapWidth": 1134,
+        "mapHeight": 611
+      }
+    },
+    {
+      "run": "run-02",
+      "trace": true,
+      "condition": "normal",
+      "stats": {
+        "count": 182,
+        "min": 29.7568,
+        "median": 46.8994,
+        "p95": 735.1046,
+        "p99": 1111.2639,
+        "max": 1221.4749
+      },
+      "limit": 2069.9175,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 19,
+      "pendingTailMs": 1000.6536,
+      "mapMetrics": {
+        "produced": 0,
+        "offered": 30,
+        "coalesced": 0,
+        "acknowledged": 30,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 4647,
+        "readyMs": 769.3627,
+        "projectionQueue": null,
+        "projectionMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "serializationMs": {
+          "count": 30,
+          "mean": 0.25554666666666664,
+          "p50": 0.1252,
+          "p95": 0.2699,
+          "p99": 0.2806,
+          "max": 3.0933
+        },
+        "dispatcherQueueMs": {
+          "count": 30,
+          "mean": 0.07031,
+          "p50": 0.0467,
+          "p95": 0.1736,
+          "p99": 0.2213,
+          "max": 0.2716
+        },
+        "postMs": {
+          "count": 30,
+          "mean": 0.14765333333333336,
+          "p50": 0.1418,
+          "p95": 0.1713,
+          "p99": 0.1714,
+          "max": 0.232
+        },
+        "acknowledgmentMs": {
+          "count": 30,
+          "mean": 32.30796,
+          "p50": 0.5515,
+          "p95": 9.4021,
+          "p99": 10.015,
+          "max": 934.0433
+        },
+        "postToAcknowledgmentMs": {
+          "count": 30,
+          "mean": 32.23757666666667,
+          "p50": 0.4956,
+          "p95": 9.3625,
+          "p99": 9.9313,
+          "max": 933.8215
+        }
+      },
+      "elapsedMs": 30010.2894,
+      "dimensions": {
+        "mainWidth": 3440,
+        "mainHeight": 1400,
+        "mapWidth": 1134,
+        "mapHeight": 611
+      }
+    },
+    {
+      "run": "run-03",
+      "trace": false,
+      "condition": "baseline",
+      "stats": {
+        "count": 109,
+        "min": 19.7386,
+        "median": 61.6507,
+        "p95": 184.0667,
+        "p99": 205.0255,
+        "max": 246.4799
+      },
+      "limit": 346.4799,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 0,
+      "pendingTailMs": 118.0866,
+      "sampleCount": 395,
+      "mapMetrics": null
+    },
+    {
+      "run": "run-03",
+      "trace": false,
+      "condition": "stressed",
+      "stats": {
+        "count": 136,
+        "min": 19.9053,
+        "median": 41.257000000000005,
+        "p95": 178.4637,
+        "p99": 216.0207,
+        "max": 226.1082
+      },
+      "limit": 346.4799,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 0,
+      "pendingTailMs": 100.0333,
+      "sampleCount": 395,
+      "mapMetrics": {
+        "produced": 41,
+        "offered": 41,
+        "coalesced": 6,
+        "acknowledged": 35,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 2438,
+        "readyMs": 820.5965,
+        "projectionQueue": {
+          "offered": 395,
+          "coalesced": 354,
+          "consumed": 41,
+          "pending": false
+        },
+        "projectionMs": {
+          "count": 41,
+          "mean": 0.03863902439024391,
+          "p50": 0.0326,
+          "p95": 0.0755,
+          "p99": 0.0864,
+          "max": 0.1291
+        },
+        "serializationMs": {
+          "count": 35,
+          "mean": 0.04727714285714285,
+          "p50": 0.0469,
+          "p95": 0.061,
+          "p99": 0.0622,
+          "max": 0.0693
+        },
+        "dispatcherQueueMs": {
+          "count": 35,
+          "mean": 0.21095142857142857,
+          "p50": 0.0349,
+          "p95": 1.9864,
+          "p99": 1.9882,
+          "max": 2.0597
+        },
+        "postMs": {
+          "count": 35,
+          "mean": 0.08923714285714286,
+          "p50": 0.0837,
+          "p95": 0.1196,
+          "p99": 0.1762,
+          "max": 0.2225
+        },
+        "acknowledgmentMs": {
+          "count": 35,
+          "mean": 41.491428571428564,
+          "p50": 0.3664,
+          "p95": 2.3729,
+          "p99": 9.2903,
+          "max": 1423.341
+        },
+        "postToAcknowledgmentMs": {
+          "count": 35,
+          "mean": 41.28048857142857,
+          "p50": 0.3292,
+          "p95": 0.8926,
+          "p99": 9.1057,
+          "max": 1423.3061
+        }
+      }
+    },
+    {
+      "run": "run-03",
+      "trace": false,
+      "condition": "idle",
+      "stats": {
+        "count": 194,
+        "min": 29.927,
+        "median": 46.0013,
+        "p95": 940.3852,
+        "p99": 1488.4821,
+        "max": 2330.5562
+      },
+      "limit": 2430.5562,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 15,
+      "pendingTailMs": 386.758,
+      "mapMetrics": {
+        "produced": 0,
+        "offered": 30,
+        "coalesced": 0,
+        "acknowledged": 30,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 4647,
+        "readyMs": 756.3217,
+        "projectionQueue": null,
+        "projectionMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "serializationMs": {
+          "count": 30,
+          "mean": 0.2567933333333333,
+          "p50": 0.1154,
+          "p95": 0.1738,
+          "p99": 0.1878,
+          "max": 4.1284
+        },
+        "dispatcherQueueMs": {
+          "count": 30,
+          "mean": 0.051713333333333326,
+          "p50": 0.04,
+          "p95": 0.1117,
+          "p99": 0.1344,
+          "max": 0.1682
+        },
+        "postMs": {
+          "count": 30,
+          "mean": 0.14385,
+          "p50": 0.1354,
+          "p95": 0.1678,
+          "p99": 0.1854,
+          "max": 0.2332
+        },
+        "acknowledgmentMs": {
+          "count": 30,
+          "mean": 32.630646666666664,
+          "p50": 0.523,
+          "p95": 9.4885,
+          "p99": 10.6897,
+          "max": 935.6056
+        },
+        "postToAcknowledgmentMs": {
+          "count": 30,
+          "mean": 32.57873333333333,
+          "p50": 0.4736,
+          "p95": 9.3766,
+          "p99": 10.6324,
+          "max": 935.437
+        }
+      },
+      "elapsedMs": 29999.4618,
+      "dimensions": {
+        "mainWidth": 3440,
+        "mainHeight": 1400,
+        "mapWidth": 1134,
+        "mapHeight": 611
+      }
+    },
+    {
+      "run": "run-03",
+      "trace": false,
+      "condition": "normal",
+      "stats": {
+        "count": 207,
+        "min": 19.445,
+        "median": 46.5273,
+        "p95": 636.9523,
+        "p99": 999.7209,
+        "max": 1472.1431
+      },
+      "limit": 2430.5562,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 15,
+      "pendingTailMs": 46.1331,
+      "mapMetrics": {
+        "produced": 0,
+        "offered": 30,
+        "coalesced": 0,
+        "acknowledged": 30,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 4647,
+        "readyMs": 756.3217,
+        "projectionQueue": null,
+        "projectionMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "serializationMs": {
+          "count": 30,
+          "mean": 0.2567933333333333,
+          "p50": 0.1154,
+          "p95": 0.1738,
+          "p99": 0.1878,
+          "max": 4.1284
+        },
+        "dispatcherQueueMs": {
+          "count": 30,
+          "mean": 0.051713333333333326,
+          "p50": 0.04,
+          "p95": 0.1117,
+          "p99": 0.1344,
+          "max": 0.1682
+        },
+        "postMs": {
+          "count": 30,
+          "mean": 0.14385,
+          "p50": 0.1354,
+          "p95": 0.1678,
+          "p99": 0.1854,
+          "max": 0.2332
+        },
+        "acknowledgmentMs": {
+          "count": 30,
+          "mean": 32.630646666666664,
+          "p50": 0.523,
+          "p95": 9.4885,
+          "p99": 10.6897,
+          "max": 935.6056
+        },
+        "postToAcknowledgmentMs": {
+          "count": 30,
+          "mean": 32.57873333333333,
+          "p50": 0.4736,
+          "p95": 9.3766,
+          "p99": 10.6324,
+          "max": 935.437
+        }
+      },
+      "elapsedMs": 30012.1582,
+      "dimensions": {
+        "mainWidth": 3440,
+        "mainHeight": 1400,
+        "mapWidth": 1134,
+        "mapHeight": 611
+      }
+    },
+    {
+      "run": "run-04",
+      "trace": false,
+      "condition": "baseline",
+      "stats": {
+        "count": 107,
+        "min": 20.1583,
+        "median": 47.0519,
+        "p95": 204.4518,
+        "p99": 305.3453,
+        "max": 429.3428
+      },
+      "limit": 529.3428,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 0,
+      "pendingTailMs": 8.2521,
+      "sampleCount": 395,
+      "mapMetrics": null
+    },
+    {
+      "run": "run-04",
+      "trace": false,
+      "condition": "stressed",
+      "stats": {
+        "count": 131,
+        "min": 19.9028,
+        "median": 41.4019,
+        "p95": 188.4144,
+        "p99": 399.665,
+        "max": 497.0016
+      },
+      "limit": 529.3428,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 0,
+      "pendingTailMs": 138.7135,
+      "sampleCount": 395,
+      "mapMetrics": {
+        "produced": 41,
+        "offered": 41,
+        "coalesced": 6,
+        "acknowledged": 35,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 2113,
+        "readyMs": 618.8118,
+        "projectionQueue": {
+          "offered": 395,
+          "coalesced": 354,
+          "consumed": 41,
+          "pending": false
+        },
+        "projectionMs": {
+          "count": 41,
+          "mean": 0.048078048780487805,
+          "p50": 0.0434,
+          "p95": 0.0946,
+          "p99": 0.104,
+          "max": 0.14
+        },
+        "serializationMs": {
+          "count": 35,
+          "mean": 0.05167999999999999,
+          "p50": 0.0508,
+          "p95": 0.0647,
+          "p99": 0.0893,
+          "max": 0.1077
+        },
+        "dispatcherQueueMs": {
+          "count": 35,
+          "mean": 0.6572828571428572,
+          "p50": 0.0402,
+          "p95": 2.0766,
+          "p99": 2.8086,
+          "max": 13.9517
+        },
+        "postMs": {
+          "count": 35,
+          "mean": 0.08622285714285713,
+          "p50": 0.0844,
+          "p95": 0.103,
+          "p99": 0.1046,
+          "max": 0.1121
+        },
+        "acknowledgmentMs": {
+          "count": 35,
+          "mean": 41.97665714285714,
+          "p50": 0.4241,
+          "p95": 9.3889,
+          "p99": 14.2518,
+          "max": 1425.1474
+        },
+        "postToAcknowledgmentMs": {
+          "count": 35,
+          "mean": 41.31939714285715,
+          "p50": 0.355,
+          "p95": 0.4462,
+          "p99": 9.3493,
+          "max": 1425.009
+        }
+      }
+    },
+    {
+      "run": "run-04",
+      "trace": false,
+      "condition": "idle",
+      "stats": {
+        "count": 197,
+        "min": 29.2747,
+        "median": 46.1878,
+        "p95": 859.4284,
+        "p99": 1722.0887,
+        "max": 2140.4818
+      },
+      "limit": 2240.4818,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 19,
+      "pendingTailMs": 166.2143,
+      "mapMetrics": {
+        "produced": 0,
+        "offered": 0,
+        "coalesced": 0,
+        "acknowledged": 0,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 0,
+        "readyMs": 736.6013,
+        "projectionQueue": null,
+        "projectionMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "serializationMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "dispatcherQueueMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "postMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "acknowledgmentMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "postToAcknowledgmentMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        }
+      },
+      "elapsedMs": 29999.0797,
+      "dimensions": {
+        "mainWidth": 3440,
+        "mainHeight": 1400,
+        "mapWidth": 1134,
+        "mapHeight": 611
+      }
+    },
+    {
+      "run": "run-04",
+      "trace": false,
+      "condition": "normal",
+      "stats": {
+        "count": 224,
+        "min": 16.2217,
+        "median": 45.926950000000005,
+        "p95": 727.4845,
+        "p99": 1000.2679,
+        "max": 1065.5331
+      },
+      "limit": 2240.4818,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 20,
+      "pendingTailMs": 248.7851,
+      "mapMetrics": {
+        "produced": 0,
+        "offered": 30,
+        "coalesced": 0,
+        "acknowledged": 30,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 4647,
+        "readyMs": 736.6013,
+        "projectionQueue": null,
+        "projectionMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "serializationMs": {
+          "count": 30,
+          "mean": 0.34379333333333334,
+          "p50": 0.1335,
+          "p95": 1.0577,
+          "p99": 2.2023,
+          "max": 3.2572
+        },
+        "dispatcherQueueMs": {
+          "count": 30,
+          "mean": 0.05502666666666666,
+          "p50": 0.0398,
+          "p95": 0.097,
+          "p99": 0.1072,
+          "max": 0.1785
+        },
+        "postMs": {
+          "count": 30,
+          "mean": 0.1461166666666667,
+          "p50": 0.1456,
+          "p95": 0.1699,
+          "p99": 0.1726,
+          "max": 0.1784
+        },
+        "acknowledgmentMs": {
+          "count": 30,
+          "mean": 32.63364333333333,
+          "p50": 0.6036,
+          "p95": 9.3341,
+          "p99": 9.8753,
+          "max": 934.6309
+        },
+        "postToAcknowledgmentMs": {
+          "count": 30,
+          "mean": 32.57857,
+          "p50": 0.5623,
+          "p95": 9.2908,
+          "p99": 9.8322,
+          "max": 934.4523
+        }
+      },
+      "elapsedMs": 30013.7986,
+      "dimensions": {
+        "mainWidth": 3440,
+        "mainHeight": 1400,
+        "mapWidth": 1134,
+        "mapHeight": 611
+      }
+    },
+    {
+      "run": "run-05",
+      "trace": true,
+      "condition": "baseline",
+      "stats": {
+        "count": 106,
+        "min": 17.3076,
+        "median": 48.13075,
+        "p95": 206.0115,
+        "p99": 308.12,
+        "max": 392.8279
+      },
+      "limit": 492.8279,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 0,
+      "pendingTailMs": 99.8649,
+      "sampleCount": 395,
+      "mapMetrics": null
+    },
+    {
+      "run": "run-05",
+      "trace": true,
+      "condition": "stressed",
+      "stats": {
+        "count": 144,
+        "min": 19.6959,
+        "median": 41.42855,
+        "p95": 142.1214,
+        "p99": 329.2344,
+        "max": 404.571
+      },
+      "limit": 492.8279,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 0,
+      "pendingTailMs": 5.9448,
+      "sampleCount": 395,
+      "mapMetrics": {
+        "produced": 41,
+        "offered": 41,
+        "coalesced": 6,
+        "acknowledged": 35,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 2437,
+        "readyMs": 623.1681,
+        "projectionQueue": {
+          "offered": 395,
+          "coalesced": 354,
+          "consumed": 41,
+          "pending": false
+        },
+        "projectionMs": {
+          "count": 41,
+          "mean": 0.06268292682926828,
+          "p50": 0.0557,
+          "p95": 0.0913,
+          "p99": 0.1658,
+          "max": 0.1981
+        },
+        "serializationMs": {
+          "count": 35,
+          "mean": 0.05336285714285714,
+          "p50": 0.0515,
+          "p95": 0.0691,
+          "p99": 0.0717,
+          "max": 0.0772
+        },
+        "dispatcherQueueMs": {
+          "count": 35,
+          "mean": 0.33615142857142855,
+          "p50": 0.0414,
+          "p95": 1.0964,
+          "p99": 2.2848,
+          "max": 4.9071
+        },
+        "postMs": {
+          "count": 35,
+          "mean": 0.09096285714285716,
+          "p50": 0.0911,
+          "p95": 0.1112,
+          "p99": 0.1119,
+          "max": 0.114
+        },
+        "acknowledgmentMs": {
+          "count": 35,
+          "mean": 41.43553142857143,
+          "p50": 0.4605,
+          "p95": 2.6335,
+          "p99": 5.3594,
+          "max": 1424.3839
+        },
+        "postToAcknowledgmentMs": {
+          "count": 35,
+          "mean": 41.09940285714285,
+          "p50": 0.3803,
+          "p95": 0.7669,
+          "p99": 0.7878,
+          "max": 1424.3455
+        }
+      }
+    },
+    {
+      "run": "run-05",
+      "trace": true,
+      "condition": "idle",
+      "stats": {
+        "count": 197,
+        "min": 29.9124,
+        "median": 46.2506,
+        "p95": 906.3137,
+        "p99": 1722.4646,
+        "max": 2035.0576
+      },
+      "limit": 2135.0576,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 20,
+      "pendingTailMs": 376.3389,
+      "mapMetrics": {
+        "produced": 0,
+        "offered": 30,
+        "coalesced": 0,
+        "acknowledged": 30,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 4646,
+        "readyMs": 749.2691,
+        "projectionQueue": null,
+        "projectionMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "serializationMs": {
+          "count": 30,
+          "mean": 0.24179666666666666,
+          "p50": 0.1316,
+          "p95": 0.1796,
+          "p99": 0.2106,
+          "max": 3.3364
+        },
+        "dispatcherQueueMs": {
+          "count": 30,
+          "mean": 0.06223,
+          "p50": 0.0383,
+          "p95": 0.1307,
+          "p99": 0.219,
+          "max": 0.2648
+        },
+        "postMs": {
+          "count": 30,
+          "mean": 0.14633000000000002,
+          "p50": 0.1434,
+          "p95": 0.1718,
+          "p99": 0.173,
+          "max": 0.2251
+        },
+        "acknowledgmentMs": {
+          "count": 30,
+          "mean": 32.551590000000004,
+          "p50": 0.5402,
+          "p95": 9.3792,
+          "p99": 9.7532,
+          "max": 933.3649
+        },
+        "postToAcknowledgmentMs": {
+          "count": 30,
+          "mean": 32.489423333333335,
+          "p50": 0.5008,
+          "p95": 9.3237,
+          "p99": 9.6225,
+          "max": 933.0998
+        }
+      },
+      "elapsedMs": 29999.3924,
+      "dimensions": {
+        "mainWidth": 3440,
+        "mainHeight": 1400,
+        "mapWidth": 1134,
+        "mapHeight": 611
+      }
+    },
+    {
+      "run": "run-05",
+      "trace": true,
+      "condition": "normal",
+      "stats": {
+        "count": 196,
+        "min": 27.4909,
+        "median": 46.4942,
+        "p95": 797.9648,
+        "p99": 1158.7326,
+        "max": 1218.9943
+      },
+      "limit": 2135.0576,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 24,
+      "pendingTailMs": 28.4297,
+      "mapMetrics": {
+        "produced": 0,
+        "offered": 30,
+        "coalesced": 0,
+        "acknowledged": 30,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 4646,
+        "readyMs": 749.2691,
+        "projectionQueue": null,
+        "projectionMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "serializationMs": {
+          "count": 30,
+          "mean": 0.24179666666666666,
+          "p50": 0.1316,
+          "p95": 0.1796,
+          "p99": 0.2106,
+          "max": 3.3364
+        },
+        "dispatcherQueueMs": {
+          "count": 30,
+          "mean": 0.06223,
+          "p50": 0.0383,
+          "p95": 0.1307,
+          "p99": 0.219,
+          "max": 0.2648
+        },
+        "postMs": {
+          "count": 30,
+          "mean": 0.14633000000000002,
+          "p50": 0.1434,
+          "p95": 0.1718,
+          "p99": 0.173,
+          "max": 0.2251
+        },
+        "acknowledgmentMs": {
+          "count": 30,
+          "mean": 32.551590000000004,
+          "p50": 0.5402,
+          "p95": 9.3792,
+          "p99": 9.7532,
+          "max": 933.3649
+        },
+        "postToAcknowledgmentMs": {
+          "count": 30,
+          "mean": 32.489423333333335,
+          "p50": 0.5008,
+          "p95": 9.3237,
+          "p99": 9.6225,
+          "max": 933.0998
+        }
+      },
+      "elapsedMs": 30010.4595,
+      "dimensions": {
+        "mainWidth": 3440,
+        "mainHeight": 1400,
+        "mapWidth": 1134,
+        "mapHeight": 611
+      }
+    },
+    {
+      "run": "run-06",
+      "trace": true,
+      "condition": "baseline",
+      "stats": {
+        "count": 121,
+        "min": 19.8693,
+        "median": 46.3405,
+        "p95": 162.8576,
+        "p99": 205.3362,
+        "max": 239.2777
+      },
+      "limit": 339.2777,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 0,
+      "pendingTailMs": 99.4779,
+      "sampleCount": 395,
+      "mapMetrics": null
+    },
+    {
+      "run": "run-06",
+      "trace": true,
+      "condition": "stressed",
+      "stats": {
+        "count": 128,
+        "min": 18.8605,
+        "median": 43.428399999999996,
+        "p95": 183.5605,
+        "p99": 226.4524,
+        "max": 239.6727
+      },
+      "limit": 339.2777,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 0,
+      "pendingTailMs": 105.8867,
+      "sampleCount": 395,
+      "mapMetrics": {
+        "produced": 40,
+        "offered": 40,
+        "coalesced": 6,
+        "acknowledged": 34,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 2111,
+        "readyMs": 595.6471,
+        "projectionQueue": {
+          "offered": 395,
+          "coalesced": 355,
+          "consumed": 40,
+          "pending": false
+        },
+        "projectionMs": {
+          "count": 40,
+          "mean": 0.0452525,
+          "p50": 0.0374,
+          "p95": 0.0881,
+          "p99": 0.0955,
+          "max": 0.1216
+        },
+        "serializationMs": {
+          "count": 34,
+          "mean": 0.05477647058823528,
+          "p50": 0.056,
+          "p95": 0.0653,
+          "p99": 0.0685,
+          "max": 0.0857
+        },
+        "dispatcherQueueMs": {
+          "count": 34,
+          "mean": 0.45106470588235287,
+          "p50": 0.0474,
+          "p95": 2.1316,
+          "p99": 2.2911,
+          "max": 5.1521
+        },
+        "postMs": {
+          "count": 34,
+          "mean": 0.09371176470588238,
+          "p50": 0.0924,
+          "p95": 0.1109,
+          "p99": 0.1282,
+          "max": 0.1612
+        },
+        "acknowledgmentMs": {
+          "count": 34,
+          "mean": 42.975564705882356,
+          "p50": 0.4912,
+          "p95": 5.678,
+          "p99": 9.287,
+          "max": 1423.9862
+        },
+        "postToAcknowledgmentMs": {
+          "count": 34,
+          "mean": 42.52450588235294,
+          "p50": 0.3985,
+          "p95": 0.5263,
+          "p99": 9.2557,
+          "max": 1423.9396
+        }
+      }
+    },
+    {
+      "run": "run-06",
+      "trace": true,
+      "condition": "idle",
+      "stats": {
+        "count": 186,
+        "min": 28.6276,
+        "median": 46.3759,
+        "p95": 937.5481,
+        "p99": 1564.7233,
+        "max": 1862.4807
+      },
+      "limit": 1962.4807,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 18,
+      "pendingTailMs": 32.6272,
+      "mapMetrics": {
+        "produced": 0,
+        "offered": 0,
+        "coalesced": 0,
+        "acknowledged": 0,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 0,
+        "readyMs": 748.7076,
+        "projectionQueue": null,
+        "projectionMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "serializationMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "dispatcherQueueMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "postMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "acknowledgmentMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "postToAcknowledgmentMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        }
+      },
+      "elapsedMs": 30001.3126,
+      "dimensions": {
+        "mainWidth": 3440,
+        "mainHeight": 1400,
+        "mapWidth": 1134,
+        "mapHeight": 611
+      }
+    },
+    {
+      "run": "run-06",
+      "trace": true,
+      "condition": "normal",
+      "stats": {
+        "count": 193,
+        "min": 29.8402,
+        "median": 46.4514,
+        "p95": 768.7731,
+        "p99": 1064.9407,
+        "max": 1075.2453
+      },
+      "limit": 1962.4807,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 23,
+      "pendingTailMs": 279.2872,
+      "mapMetrics": {
+        "produced": 0,
+        "offered": 30,
+        "coalesced": 0,
+        "acknowledged": 30,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 4647,
+        "readyMs": 748.7076,
+        "projectionQueue": null,
+        "projectionMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "serializationMs": {
+          "count": 30,
+          "mean": 0.2564633333333333,
+          "p50": 0.1269,
+          "p95": 0.2363,
+          "p99": 0.2406,
+          "max": 3.2484
+        },
+        "dispatcherQueueMs": {
+          "count": 30,
+          "mean": 0.05771666666666666,
+          "p50": 0.0462,
+          "p95": 0.0771,
+          "p99": 0.1757,
+          "max": 0.2837
+        },
+        "postMs": {
+          "count": 30,
+          "mean": 0.15265333333333328,
+          "p50": 0.1541,
+          "p95": 0.1717,
+          "p99": 0.1831,
+          "max": 0.2597
+        },
+        "acknowledgmentMs": {
+          "count": 30,
+          "mean": 32.584140000000005,
+          "p50": 0.5523,
+          "p95": 9.4733,
+          "p99": 10.4771,
+          "max": 932.9591
+        },
+        "postToAcknowledgmentMs": {
+          "count": 30,
+          "mean": 32.52639,
+          "p50": 0.4925,
+          "p95": 9.4237,
+          "p99": 10.4281,
+          "max": 932.7837
+        }
+      },
+      "elapsedMs": 30014.4823,
+      "dimensions": {
+        "mainWidth": 3440,
+        "mainHeight": 1400,
+        "mapWidth": 1134,
+        "mapHeight": 611
+      }
+    },
+    {
+      "run": "run-07",
+      "trace": false,
+      "condition": "baseline",
+      "stats": {
+        "count": 127,
+        "min": 19.8616,
+        "median": 41.7564,
+        "p95": 141.3272,
+        "p99": 172.6413,
+        "max": 203.9647
+      },
+      "limit": 303.9647,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 0,
+      "pendingTailMs": 99.899,
+      "sampleCount": 395,
+      "mapMetrics": null
+    },
+    {
+      "run": "run-07",
+      "trace": false,
+      "condition": "stressed",
+      "stats": {
+        "count": 151,
+        "min": 19.7973,
+        "median": 40.4345,
+        "p95": 127.9377,
+        "p99": 200.1102,
+        "max": 220.7386
+      },
+      "limit": 303.9647,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 0,
+      "pendingTailMs": 50.8103,
+      "sampleCount": 395,
+      "mapMetrics": {
+        "produced": 40,
+        "offered": 40,
+        "coalesced": 6,
+        "acknowledged": 34,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 2112,
+        "readyMs": 632.6745,
+        "projectionQueue": {
+          "offered": 395,
+          "coalesced": 355,
+          "consumed": 40,
+          "pending": false
+        },
+        "projectionMs": {
+          "count": 40,
+          "mean": 0.052815,
+          "p50": 0.0398,
+          "p95": 0.0977,
+          "p99": 0.1477,
+          "max": 0.2527
+        },
+        "serializationMs": {
+          "count": 34,
+          "mean": 0.05649705882352941,
+          "p50": 0.0579,
+          "p95": 0.0682,
+          "p99": 0.0693,
+          "max": 0.0714
+        },
+        "dispatcherQueueMs": {
+          "count": 34,
+          "mean": 0.38959411764705887,
+          "p50": 0.0349,
+          "p95": 2.2392,
+          "p99": 2.3877,
+          "max": 2.3975
+        },
+        "postMs": {
+          "count": 34,
+          "mean": 0.10109117647058825,
+          "p50": 0.0954,
+          "p95": 0.1274,
+          "p99": 0.1306,
+          "max": 0.1789
+        },
+        "acknowledgmentMs": {
+          "count": 34,
+          "mean": 43.276876470588235,
+          "p50": 0.5055,
+          "p95": 9.5191,
+          "p99": 9.9314,
+          "max": 1425.2854
+        },
+        "postToAcknowledgmentMs": {
+          "count": 34,
+          "mean": 42.88727647058823,
+          "p50": 0.4167,
+          "p95": 9.4794,
+          "p99": 9.896,
+          "max": 1425.256
+        }
+      }
+    },
+    {
+      "run": "run-07",
+      "trace": false,
+      "condition": "idle",
+      "stats": {
+        "count": 179,
+        "min": 29.8326,
+        "median": 46.1203,
+        "p95": 1018.5506,
+        "p99": 1504.1658,
+        "max": 1565.1622
+      },
+      "limit": 1665.1622,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 22,
+      "pendingTailMs": 18.8618,
+      "mapMetrics": {
+        "produced": 0,
+        "offered": 30,
+        "coalesced": 0,
+        "acknowledged": 30,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 4646,
+        "readyMs": 688.0898,
+        "projectionQueue": null,
+        "projectionMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "serializationMs": {
+          "count": 30,
+          "mean": 0.24404666666666666,
+          "p50": 0.1159,
+          "p95": 0.1993,
+          "p99": 0.2061,
+          "max": 3.6167
+        },
+        "dispatcherQueueMs": {
+          "count": 30,
+          "mean": 0.04392666666666667,
+          "p50": 0.0379,
+          "p95": 0.0569,
+          "p99": 0.0599,
+          "max": 0.1548
+        },
+        "postMs": {
+          "count": 30,
+          "mean": 0.14879666666666666,
+          "p50": 0.1377,
+          "p95": 0.2013,
+          "p99": 0.222,
+          "max": 0.2304
+        },
+        "acknowledgmentMs": {
+          "count": 30,
+          "mean": 32.607663333333335,
+          "p50": 0.5508,
+          "p95": 9.7921,
+          "p99": 9.9995,
+          "max": 932.3404
+        },
+        "postToAcknowledgmentMs": {
+          "count": 30,
+          "mean": 32.563586666666666,
+          "p50": 0.5081,
+          "p95": 9.7576,
+          "p99": 9.9576,
+          "max": 932.1857
+        }
+      },
+      "elapsedMs": 29999.6194,
+      "dimensions": {
+        "mainWidth": 3440,
+        "mainHeight": 1400,
+        "mapWidth": 1134,
+        "mapHeight": 611
+      }
+    },
+    {
+      "run": "run-07",
+      "trace": false,
+      "condition": "normal",
+      "stats": {
+        "count": 189,
+        "min": 29.8611,
+        "median": 46.0454,
+        "p95": 898.4378,
+        "p99": 1237.9855,
+        "max": 1390.6378
+      },
+      "limit": 1665.1622,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 19,
+      "pendingTailMs": 336.423,
+      "mapMetrics": {
+        "produced": 0,
+        "offered": 30,
+        "coalesced": 0,
+        "acknowledged": 30,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 4646,
+        "readyMs": 688.0898,
+        "projectionQueue": null,
+        "projectionMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "serializationMs": {
+          "count": 30,
+          "mean": 0.24404666666666666,
+          "p50": 0.1159,
+          "p95": 0.1993,
+          "p99": 0.2061,
+          "max": 3.6167
+        },
+        "dispatcherQueueMs": {
+          "count": 30,
+          "mean": 0.04392666666666667,
+          "p50": 0.0379,
+          "p95": 0.0569,
+          "p99": 0.0599,
+          "max": 0.1548
+        },
+        "postMs": {
+          "count": 30,
+          "mean": 0.14879666666666666,
+          "p50": 0.1377,
+          "p95": 0.2013,
+          "p99": 0.222,
+          "max": 0.2304
+        },
+        "acknowledgmentMs": {
+          "count": 30,
+          "mean": 32.607663333333335,
+          "p50": 0.5508,
+          "p95": 9.7921,
+          "p99": 9.9995,
+          "max": 932.3404
+        },
+        "postToAcknowledgmentMs": {
+          "count": 30,
+          "mean": 32.563586666666666,
+          "p50": 0.5081,
+          "p95": 9.7576,
+          "p99": 9.9576,
+          "max": 932.1857
+        }
+      },
+      "elapsedMs": 30012.9981,
+      "dimensions": {
+        "mainWidth": 3440,
+        "mainHeight": 1400,
+        "mapWidth": 1134,
+        "mapHeight": 611
+      }
+    },
+    {
+      "run": "run-08",
+      "trace": false,
+      "condition": "baseline",
+      "stats": {
+        "count": 120,
+        "min": 19.5635,
+        "median": 48.597849999999994,
+        "p95": 143.0325,
+        "p99": 183.6531,
+        "max": 183.8717
+      },
+      "limit": 283.87170000000003,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 0,
+      "pendingTailMs": 117.6028,
+      "sampleCount": 395,
+      "mapMetrics": null
+    },
+    {
+      "run": "run-08",
+      "trace": false,
+      "condition": "stressed",
+      "stats": {
+        "count": 127,
+        "min": 17.7259,
+        "median": 44.1932,
+        "p95": 150.0174,
+        "p99": 200.0981,
+        "max": 200.9864
+      },
+      "limit": 283.87170000000003,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 0,
+      "pendingTailMs": 99.1773,
+      "sampleCount": 395,
+      "mapMetrics": {
+        "produced": 41,
+        "offered": 41,
+        "coalesced": 6,
+        "acknowledged": 35,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 2438,
+        "readyMs": 602.7887,
+        "projectionQueue": {
+          "offered": 395,
+          "coalesced": 354,
+          "consumed": 41,
+          "pending": false
+        },
+        "projectionMs": {
+          "count": 41,
+          "mean": 0.04492682926829269,
+          "p50": 0.0405,
+          "p95": 0.0812,
+          "p99": 0.0825,
+          "max": 0.1531
+        },
+        "serializationMs": {
+          "count": 35,
+          "mean": 0.05402857142857143,
+          "p50": 0.0515,
+          "p95": 0.0676,
+          "p99": 0.0685,
+          "max": 0.0932
+        },
+        "dispatcherQueueMs": {
+          "count": 35,
+          "mean": 0.14423142857142857,
+          "p50": 0.0346,
+          "p95": 0.258,
+          "p99": 0.9798,
+          "max": 2.0189
+        },
+        "postMs": {
+          "count": 35,
+          "mean": 0.10055714285714286,
+          "p50": 0.0914,
+          "p95": 0.1833,
+          "p99": 0.1876,
+          "max": 0.2334
+        },
+        "acknowledgmentMs": {
+          "count": 35,
+          "mean": 41.473934285714286,
+          "p50": 0.4435,
+          "p95": 1.9443,
+          "p99": 12.2649,
+          "max": 1422.3658
+        },
+        "postToAcknowledgmentMs": {
+          "count": 35,
+          "mean": 41.32974857142857,
+          "p50": 0.3827,
+          "p95": 0.9677,
+          "p99": 10.246,
+          "max": 1422.3352
+        }
+      }
+    },
+    {
+      "run": "run-08",
+      "trace": false,
+      "condition": "idle",
+      "stats": {
+        "count": 206,
+        "min": 29.6006,
+        "median": 46.01065,
+        "p95": 810.1331,
+        "p99": 1547.6184,
+        "max": 2689.0829
+      },
+      "limit": 2789.0829,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 14,
+      "pendingTailMs": 897.7771,
+      "mapMetrics": {
+        "produced": 0,
+        "offered": 0,
+        "coalesced": 0,
+        "acknowledged": 0,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 0,
+        "readyMs": 798.2052,
+        "projectionQueue": null,
+        "projectionMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "serializationMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "dispatcherQueueMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "postMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "acknowledgmentMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "postToAcknowledgmentMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        }
+      },
+      "elapsedMs": 29999.6217,
+      "dimensions": {
+        "mainWidth": 3440,
+        "mainHeight": 1400,
+        "mapWidth": 1134,
+        "mapHeight": 611
+      }
+    },
+    {
+      "run": "run-08",
+      "trace": false,
+      "condition": "normal",
+      "stats": {
+        "count": 190,
+        "min": 29.8017,
+        "median": 46.49395,
+        "p95": 879.7511,
+        "p99": 1000.1404,
+        "max": 1090.5376
+      },
+      "limit": 2789.0829,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 20,
+      "pendingTailMs": 74.8832,
+      "mapMetrics": {
+        "produced": 0,
+        "offered": 30,
+        "coalesced": 0,
+        "acknowledged": 30,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 4646,
+        "readyMs": 798.2052,
+        "projectionQueue": null,
+        "projectionMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "serializationMs": {
+          "count": 30,
+          "mean": 0.3377733333333333,
+          "p50": 0.1261,
+          "p95": 1.0999,
+          "p99": 1.9758,
+          "max": 3.0774
+        },
+        "dispatcherQueueMs": {
+          "count": 30,
+          "mean": 0.06131999999999999,
+          "p50": 0.0402,
+          "p95": 0.1557,
+          "p99": 0.1638,
+          "max": 0.1645
+        },
+        "postMs": {
+          "count": 30,
+          "mean": 0.15325666666666665,
+          "p50": 0.1428,
+          "p95": 0.1881,
+          "p99": 0.26,
+          "max": 0.2968
+        },
+        "acknowledgmentMs": {
+          "count": 30,
+          "mean": 32.357256666666665,
+          "p50": 0.6004,
+          "p95": 8.8949,
+          "p99": 9.8793,
+          "max": 935.4725
+        },
+        "postToAcknowledgmentMs": {
+          "count": 30,
+          "mean": 32.29585333333333,
+          "p50": 0.4971,
+          "p95": 8.8298,
+          "p99": 9.8394,
+          "max": 935.3165
+        }
+      },
+      "elapsedMs": 30013.2894,
+      "dimensions": {
+        "mainWidth": 3440,
+        "mainHeight": 1400,
+        "mapWidth": 1134,
+        "mapHeight": 611
+      }
+    },
+    {
+      "run": "run-09",
+      "trace": true,
+      "condition": "baseline",
+      "stats": {
+        "count": 108,
+        "min": 19.5511,
+        "median": 56.9471,
+        "p95": 162.7896,
+        "p99": 245.6646,
+        "max": 343.2413
+      },
+      "limit": 443.2413,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 0,
+      "pendingTailMs": 99.8521,
+      "sampleCount": 395,
+      "mapMetrics": null
+    },
+    {
+      "run": "run-09",
+      "trace": true,
+      "condition": "stressed",
+      "stats": {
+        "count": 131,
+        "min": 19.5472,
+        "median": 41.9135,
+        "p95": 163.1335,
+        "p99": 204.0139,
+        "max": 205.4009
+      },
+      "limit": 443.2413,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 0,
+      "pendingTailMs": 98.9758,
+      "sampleCount": 395,
+      "mapMetrics": {
+        "produced": 41,
+        "offered": 41,
+        "coalesced": 6,
+        "acknowledged": 35,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 2438,
+        "readyMs": 603.8311,
+        "projectionQueue": {
+          "offered": 395,
+          "coalesced": 354,
+          "consumed": 41,
+          "pending": false
+        },
+        "projectionMs": {
+          "count": 41,
+          "mean": 0.0463658536585366,
+          "p50": 0.0448,
+          "p95": 0.0885,
+          "p99": 0.1093,
+          "max": 0.1144
+        },
+        "serializationMs": {
+          "count": 35,
+          "mean": 0.04973428571428571,
+          "p50": 0.0506,
+          "p95": 0.059,
+          "p99": 0.0612,
+          "max": 0.0633
+        },
+        "dispatcherQueueMs": {
+          "count": 35,
+          "mean": 0.19753428571428572,
+          "p50": 0.0369,
+          "p95": 1.0248,
+          "p99": 1.9318,
+          "max": 2.3299
+        },
+        "postMs": {
+          "count": 35,
+          "mean": 0.0842742857142857,
+          "p50": 0.0813,
+          "p95": 0.1079,
+          "p99": 0.1117,
+          "max": 0.1198
+        },
+        "acknowledgmentMs": {
+          "count": 35,
+          "mean": 41.47560285714285,
+          "p50": 0.3943,
+          "p95": 2.6389,
+          "p99": 8.8988,
+          "max": 1424.1747
+        },
+        "postToAcknowledgmentMs": {
+          "count": 35,
+          "mean": 41.278085714285716,
+          "p50": 0.345,
+          "p95": 0.6205,
+          "p99": 8.7353,
+          "max": 1424.1323
+        }
+      }
+    },
+    {
+      "run": "run-09",
+      "trace": true,
+      "condition": "idle",
+      "stats": {
+        "count": 175,
+        "min": 30.0276,
+        "median": 46.0521,
+        "p95": 1002.9358,
+        "p99": 2863.0503,
+        "max": 3128.1934
+      },
+      "limit": 3228.1934,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 11,
+      "pendingTailMs": 206.7204,
+      "mapMetrics": {
+        "produced": 0,
+        "offered": 30,
+        "coalesced": 0,
+        "acknowledged": 30,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 4648,
+        "readyMs": 707.6311,
+        "projectionQueue": null,
+        "projectionMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "serializationMs": {
+          "count": 30,
+          "mean": 0.24026,
+          "p50": 0.1292,
+          "p95": 0.1803,
+          "p99": 0.1849,
+          "max": 3.3533
+        },
+        "dispatcherQueueMs": {
+          "count": 30,
+          "mean": 0.048089999999999994,
+          "p50": 0.042,
+          "p95": 0.0727,
+          "p99": 0.0866,
+          "max": 0.2067
+        },
+        "postMs": {
+          "count": 30,
+          "mean": 0.15427333333333335,
+          "p50": 0.1412,
+          "p95": 0.1716,
+          "p99": 0.2034,
+          "max": 0.3213
+        },
+        "acknowledgmentMs": {
+          "count": 30,
+          "mean": 32.718536666666665,
+          "p50": 0.5474,
+          "p95": 10.6414,
+          "p99": 11.7829,
+          "max": 933.6701
+        },
+        "postToAcknowledgmentMs": {
+          "count": 30,
+          "mean": 32.67040333333333,
+          "p50": 0.4933,
+          "p95": 10.5957,
+          "p99": 11.7387,
+          "max": 933.4633
+        }
+      },
+      "elapsedMs": 30000.0724,
+      "dimensions": {
+        "mainWidth": 3440,
+        "mainHeight": 1400,
+        "mapWidth": 1134,
+        "mapHeight": 611
+      }
+    },
+    {
+      "run": "run-09",
+      "trace": true,
+      "condition": "normal",
+      "stats": {
+        "count": 190,
+        "min": 29.7611,
+        "median": 46.672250000000005,
+        "p95": 737.6043,
+        "p99": 1000.0604,
+        "max": 1000.6236
+      },
+      "limit": 3228.1934,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 20,
+      "pendingTailMs": 65.5365,
+      "mapMetrics": {
+        "produced": 0,
+        "offered": 30,
+        "coalesced": 0,
+        "acknowledged": 30,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 4648,
+        "readyMs": 707.6311,
+        "projectionQueue": null,
+        "projectionMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "serializationMs": {
+          "count": 30,
+          "mean": 0.24026,
+          "p50": 0.1292,
+          "p95": 0.1803,
+          "p99": 0.1849,
+          "max": 3.3533
+        },
+        "dispatcherQueueMs": {
+          "count": 30,
+          "mean": 0.048089999999999994,
+          "p50": 0.042,
+          "p95": 0.0727,
+          "p99": 0.0866,
+          "max": 0.2067
+        },
+        "postMs": {
+          "count": 30,
+          "mean": 0.15427333333333335,
+          "p50": 0.1412,
+          "p95": 0.1716,
+          "p99": 0.2034,
+          "max": 0.3213
+        },
+        "acknowledgmentMs": {
+          "count": 30,
+          "mean": 32.718536666666665,
+          "p50": 0.5474,
+          "p95": 10.6414,
+          "p99": 11.7829,
+          "max": 933.6701
+        },
+        "postToAcknowledgmentMs": {
+          "count": 30,
+          "mean": 32.67040333333333,
+          "p50": 0.4933,
+          "p95": 10.5957,
+          "p99": 11.7387,
+          "max": 933.4633
+        }
+      },
+      "elapsedMs": 30009.8279,
+      "dimensions": {
+        "mainWidth": 3440,
+        "mainHeight": 1400,
+        "mapWidth": 1134,
+        "mapHeight": 611
+      }
+    },
+    {
+      "run": "run-10",
+      "trace": true,
+      "condition": "baseline",
+      "stats": {
+        "count": 126,
+        "min": 19.7034,
+        "median": 46.43575,
+        "p95": 162.7972,
+        "p99": 183.0109,
+        "max": 204.002
+      },
+      "limit": 304.002,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 0,
+      "pendingTailMs": 100.8906,
+      "sampleCount": 395,
+      "mapMetrics": null
+    },
+    {
+      "run": "run-10",
+      "trace": true,
+      "condition": "stressed",
+      "stats": {
+        "count": 129,
+        "min": 16.4009,
+        "median": 46.0401,
+        "p95": 141.7691,
+        "p99": 201.5037,
+        "max": 345.9318
+      },
+      "limit": 304.002,
+      "relativeExceedances": 1,
+      "absoluteExceedances": 0,
+      "pendingTailMs": 112.4703,
+      "sampleCount": 395,
+      "mapMetrics": {
+        "produced": 40,
+        "offered": 40,
+        "coalesced": 6,
+        "acknowledged": 34,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 2112,
+        "readyMs": 597.6441,
+        "projectionQueue": {
+          "offered": 395,
+          "coalesced": 355,
+          "consumed": 40,
+          "pending": false
+        },
+        "projectionMs": {
+          "count": 40,
+          "mean": 0.03934000000000001,
+          "p50": 0.0327,
+          "p95": 0.0938,
+          "p99": 0.1288,
+          "max": 0.1326
+        },
+        "serializationMs": {
+          "count": 34,
+          "mean": 0.048226470588235294,
+          "p50": 0.0476,
+          "p95": 0.061,
+          "p99": 0.0627,
+          "max": 0.0646
+        },
+        "dispatcherQueueMs": {
+          "count": 34,
+          "mean": 0.3200088235294118,
+          "p50": 0.0366,
+          "p95": 1.9012,
+          "p99": 2.0993,
+          "max": 5.5765
+        },
+        "postMs": {
+          "count": 34,
+          "mean": 0.08177647058823528,
+          "p50": 0.0804,
+          "p95": 0.1017,
+          "p99": 0.1025,
+          "max": 0.1031
+        },
+        "acknowledgmentMs": {
+          "count": 34,
+          "mean": 43.03175588235294,
+          "p50": 0.3826,
+          "p95": 8.8666,
+          "p99": 10.6668,
+          "max": 1424.1068
+        },
+        "postToAcknowledgmentMs": {
+          "count": 34,
+          "mean": 42.711749999999995,
+          "p50": 0.3394,
+          "p95": 8.5676,
+          "p99": 8.8171,
+          "max": 1424.0754
+        }
+      }
+    },
+    {
+      "run": "run-10",
+      "trace": true,
+      "condition": "idle",
+      "stats": {
+        "count": 188,
+        "min": 27.8176,
+        "median": 47.04895,
+        "p95": 878.565,
+        "p99": 1268.1671,
+        "max": 2141.2996
+      },
+      "limit": 2241.2996,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 16,
+      "pendingTailMs": 1055.2973,
+      "mapMetrics": {
+        "produced": 0,
+        "offered": 0,
+        "coalesced": 0,
+        "acknowledged": 0,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 0,
+        "readyMs": 710.1612,
+        "projectionQueue": null,
+        "projectionMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "serializationMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "dispatcherQueueMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "postMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "acknowledgmentMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "postToAcknowledgmentMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        }
+      },
+      "elapsedMs": 30001.6788,
+      "dimensions": {
+        "mainWidth": 3440,
+        "mainHeight": 1400,
+        "mapWidth": 1134,
+        "mapHeight": 611
+      }
+    },
+    {
+      "run": "run-10",
+      "trace": true,
+      "condition": "normal",
+      "stats": {
+        "count": 210,
+        "min": 29.8628,
+        "median": 46.03915,
+        "p95": 803.1826,
+        "p99": 999.7361,
+        "max": 1253.3302
+      },
+      "limit": 2241.2996,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 18,
+      "pendingTailMs": 20.8722,
+      "mapMetrics": {
+        "produced": 0,
+        "offered": 30,
+        "coalesced": 0,
+        "acknowledged": 30,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 4647,
+        "readyMs": 710.1612,
+        "projectionQueue": null,
+        "projectionMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "serializationMs": {
+          "count": 30,
+          "mean": 0.25367,
+          "p50": 0.1295,
+          "p95": 0.2374,
+          "p99": 0.3096,
+          "max": 3.0606
+        },
+        "dispatcherQueueMs": {
+          "count": 30,
+          "mean": 0.05510999999999999,
+          "p50": 0.0409,
+          "p95": 0.1106,
+          "p99": 0.1623,
+          "max": 0.2087
+        },
+        "postMs": {
+          "count": 30,
+          "mean": 0.14005,
+          "p50": 0.1328,
+          "p95": 0.17,
+          "p99": 0.1719,
+          "max": 0.179
+        },
+        "acknowledgmentMs": {
+          "count": 30,
+          "mean": 32.51986333333333,
+          "p50": 0.5576,
+          "p95": 9.3277,
+          "p99": 10.2076,
+          "max": 932.8514
+        },
+        "postToAcknowledgmentMs": {
+          "count": 30,
+          "mean": 32.464686666666665,
+          "p50": 0.4945,
+          "p95": 9.2916,
+          "p99": 10.1649,
+          "max": 932.6423
+        }
+      },
+      "elapsedMs": 30014.0665,
+      "dimensions": {
+        "mainWidth": 3440,
+        "mainHeight": 1400,
+        "mapWidth": 1134,
+        "mapHeight": 611
+      }
+    },
+    {
+      "run": "run-11",
+      "trace": false,
+      "condition": "baseline",
+      "stats": {
+        "count": 111,
+        "min": 19.7657,
+        "median": 41.699,
+        "p95": 163.5944,
+        "p99": 308.5578,
+        "max": 329.3447
+      },
+      "limit": 429.3447,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 0,
+      "pendingTailMs": 99.8832,
+      "sampleCount": 395,
+      "mapMetrics": null
+    },
+    {
+      "run": "run-11",
+      "trace": false,
+      "condition": "stressed",
+      "stats": {
+        "count": 121,
+        "min": 19.837,
+        "median": 41.5162,
+        "p95": 174.3797,
+        "p99": 211.9294,
+        "max": 296.9383
+      },
+      "limit": 429.3447,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 0,
+      "pendingTailMs": 138.5931,
+      "sampleCount": 395,
+      "mapMetrics": {
+        "produced": 41,
+        "offered": 41,
+        "coalesced": 6,
+        "acknowledged": 35,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 2112,
+        "readyMs": 641.8435,
+        "projectionQueue": {
+          "offered": 395,
+          "coalesced": 354,
+          "consumed": 41,
+          "pending": false
+        },
+        "projectionMs": {
+          "count": 41,
+          "mean": 0.03810243902439025,
+          "p50": 0.0326,
+          "p95": 0.0639,
+          "p99": 0.0765,
+          "max": 0.1381
+        },
+        "serializationMs": {
+          "count": 35,
+          "mean": 0.04851428571428572,
+          "p50": 0.0479,
+          "p95": 0.0594,
+          "p99": 0.0595,
+          "max": 0.0689
+        },
+        "dispatcherQueueMs": {
+          "count": 35,
+          "mean": 0.5614228571428571,
+          "p50": 0.0421,
+          "p95": 2.6465,
+          "p99": 2.9876,
+          "max": 5.0074
+        },
+        "postMs": {
+          "count": 35,
+          "mean": 0.08538000000000001,
+          "p50": 0.0836,
+          "p95": 0.099,
+          "p99": 0.107,
+          "max": 0.2124
+        },
+        "acknowledgmentMs": {
+          "count": 35,
+          "mean": 41.263354285714286,
+          "p50": 0.3967,
+          "p95": 3.3071,
+          "p99": 5.3188,
+          "max": 1414.1506
+        },
+        "postToAcknowledgmentMs": {
+          "count": 35,
+          "mean": 40.70193714285714,
+          "p50": 0.3462,
+          "p95": 0.5462,
+          "p99": 0.7695,
+          "max": 1412.2285
+        }
+      }
+    },
+    {
+      "run": "run-11",
+      "trace": false,
+      "condition": "idle",
+      "stats": {
+        "count": 180,
+        "min": 29.8729,
+        "median": 46.11875,
+        "p95": 1065.6035,
+        "p99": 1863.0412,
+        "max": 2331.0482
+      },
+      "limit": 2431.0482,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 16,
+      "pendingTailMs": 29.2235,
+      "mapMetrics": {
+        "produced": 0,
+        "offered": 30,
+        "coalesced": 0,
+        "acknowledged": 30,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 4647,
+        "readyMs": 752.4001,
+        "projectionQueue": null,
+        "projectionMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "serializationMs": {
+          "count": 30,
+          "mean": 0.23491,
+          "p50": 0.1289,
+          "p95": 0.1833,
+          "p99": 0.2045,
+          "max": 3.2608
+        },
+        "dispatcherQueueMs": {
+          "count": 30,
+          "mean": 0.05281333333333334,
+          "p50": 0.0369,
+          "p95": 0.1114,
+          "p99": 0.1787,
+          "max": 0.2155
+        },
+        "postMs": {
+          "count": 30,
+          "mean": 0.14590000000000003,
+          "p50": 0.1364,
+          "p95": 0.1629,
+          "p99": 0.191,
+          "max": 0.2838
+        },
+        "acknowledgmentMs": {
+          "count": 30,
+          "mean": 32.59491333333333,
+          "p50": 0.5591,
+          "p95": 9.8288,
+          "p99": 10.0559,
+          "max": 933.6386
+        },
+        "postToAcknowledgmentMs": {
+          "count": 30,
+          "mean": 32.54203333333333,
+          "p50": 0.4996,
+          "p95": 9.7938,
+          "p99": 10.0324,
+          "max": 933.4221
+        }
+      },
+      "elapsedMs": 29999.1742,
+      "dimensions": {
+        "mainWidth": 3440,
+        "mainHeight": 1400,
+        "mapWidth": 1134,
+        "mapHeight": 611
+      }
+    },
+    {
+      "run": "run-11",
+      "trace": false,
+      "condition": "normal",
+      "stats": {
+        "count": 190,
+        "min": 20.4948,
+        "median": 46.03415,
+        "p95": 772.0866,
+        "p99": 1096.6598,
+        "max": 1206.8923
+      },
+      "limit": 2431.0482,
+      "relativeExceedances": 0,
+      "absoluteExceedances": 24,
+      "pendingTailMs": 503.8665,
+      "mapMetrics": {
+        "produced": 0,
+        "offered": 30,
+        "coalesced": 0,
+        "acknowledged": 30,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 4647,
+        "readyMs": 752.4001,
+        "projectionQueue": null,
+        "projectionMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "serializationMs": {
+          "count": 30,
+          "mean": 0.23491,
+          "p50": 0.1289,
+          "p95": 0.1833,
+          "p99": 0.2045,
+          "max": 3.2608
+        },
+        "dispatcherQueueMs": {
+          "count": 30,
+          "mean": 0.05281333333333334,
+          "p50": 0.0369,
+          "p95": 0.1114,
+          "p99": 0.1787,
+          "max": 0.2155
+        },
+        "postMs": {
+          "count": 30,
+          "mean": 0.14590000000000003,
+          "p50": 0.1364,
+          "p95": 0.1629,
+          "p99": 0.191,
+          "max": 0.2838
+        },
+        "acknowledgmentMs": {
+          "count": 30,
+          "mean": 32.59491333333333,
+          "p50": 0.5591,
+          "p95": 9.8288,
+          "p99": 10.0559,
+          "max": 933.6386
+        },
+        "postToAcknowledgmentMs": {
+          "count": 30,
+          "mean": 32.54203333333333,
+          "p50": 0.4996,
+          "p95": 9.7938,
+          "p99": 10.0324,
+          "max": 933.4221
+        }
+      },
+      "elapsedMs": 30012.1666,
+      "dimensions": {
+        "mainWidth": 3440,
+        "mainHeight": 1400,
+        "mapWidth": 1134,
+        "mapHeight": 611
+      }
+    }
+  ],
+  "pooled": {
+    "count": 7862,
+    "min": 16.0951,
+    "median": 46.05735,
+    "p95": 547.5543,
+    "p99": 1158.7326,
+    "max": 3128.1934
+  },
+  "groups": {
+    "baseline": {
+      "count": 1437,
+      "min": 16.0998,
+      "median": 45.957,
+      "p95": 162.8576,
+      "p99": 245.0792,
+      "max": 429.3428
+    },
+    "baseline/trace-False": {
+      "count": 694,
+      "min": 19.5635,
+      "median": 46.1588,
+      "p95": 163.3775,
+      "p99": 246.4799,
+      "max": 429.3428
+    },
+    "stressed": {
+      "count": 1615,
+      "min": 16.0951,
+      "median": 41.5736,
+      "p95": 152.5093,
+      "p99": 214.7725,
+      "max": 497.0016
+    },
+    "stressed/trace-False": {
+      "count": 806,
+      "min": 17.3186,
+      "median": 41.47985,
+      "p95": 159.6442,
+      "p99": 216.0207,
+      "max": 497.0016
+    },
+    "idle": {
+      "count": 2334,
+      "min": 27.8176,
+      "median": 46.1837,
+      "p95": 924.0126,
+      "p99": 1565.1622,
+      "max": 3128.1934
+    },
+    "idle/trace-False": {
+      "count": 1224,
+      "min": 28.8748,
+      "median": 46.11035,
+      "p95": 861.9022,
+      "p99": 1548.9539,
+      "max": 2689.0829
+    },
+    "idle/order-idle-first": {
+      "count": 1226,
+      "min": 27.8176,
+      "median": 46.334649999999996,
+      "p95": 859.0715,
+      "p99": 1534.9943,
+      "max": 2689.0829
+    },
+    "normal": {
+      "count": 2476,
+      "min": 16.2217,
+      "median": 46.5172,
+      "p95": 751.3485,
+      "p99": 1000.5039,
+      "max": 1472.1431
+    },
+    "normal/trace-False": {
+      "count": 1308,
+      "min": 16.2217,
+      "median": 46.66145,
+      "p95": 723.8939,
+      "p99": 1000.2679,
+      "max": 1472.1431
+    },
+    "normal/order-idle-first": {
+      "count": 1307,
+      "min": 16.2217,
+      "median": 46.7096,
+      "p95": 721.8461,
+      "p99": 1000.0249,
+      "max": 1253.3302
+    },
+    "baseline/trace-True": {
+      "count": 743,
+      "min": 16.0998,
+      "median": 45.4038,
+      "p95": 144.8881,
+      "p99": 220.354,
+      "max": 392.8279
+    },
+    "stressed/trace-True": {
+      "count": 809,
+      "min": 16.0951,
+      "median": 41.6366,
+      "p95": 145.3059,
+      "p99": 205.4009,
+      "max": 404.571
+    },
+    "idle/trace-True": {
+      "count": 1110,
+      "min": 27.8176,
+      "median": 46.2953,
+      "p95": 941.1108,
+      "p99": 1722.4646,
+      "max": 3128.1934
+    },
+    "idle/order-normal-first": {
+      "count": 1108,
+      "min": 29.7364,
+      "median": 46.071,
+      "p95": 1007.8185,
+      "p99": 1722.4646,
+      "max": 3128.1934
+    },
+    "normal/trace-True": {
+      "count": 1168,
+      "min": 21.2738,
+      "median": 46.408649999999994,
+      "p95": 765.4559,
+      "p99": 1000.6236,
+      "max": 1253.3302
+    },
+    "normal/order-normal-first": {
+      "count": 1169,
+      "min": 19.445,
+      "median": 46.2624,
+      "p95": 772.0866,
+      "p99": 1003.2365,
+      "max": 1472.1431
+    }
+  },
+  "failingOriginalComparisons": 1,
+  "newAuthoritativeSamples": 9480,
+  "absoluteExceedances": 428,
+  "stressedRelativeExceedances": 1,
+  "stressedAbsoluteExceedances": 0,
+  "contextNormalRelativeExceedances": 0,
+  "maxPendingTailMs": 1055.2973,
+  "limitation": "Nearest-rank percentiles, medians use midpoint. Mixed-condition pooled numbers are descriptive, not one product SLA. Context relative limits are diagnostic comparisons only. Original assertions evaluated only on stressed arms; baseline and idle absolute excursions retained separately. PowerShell wrapper limitMs is rounded by integer overload; these exact double limits and original C# assertion are authoritative."
+}

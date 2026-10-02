@@ -1,0 +1,79 @@
+{
+  "zip": {
+    "capturedAtUtc": "2026-09-28T15:46:45.698846+00:00",
+    "zipSource": "C:\\Users\\DanniBaLs\\Desktop\\JST776 - S4 TF - 9-28.zip",
+    "zipSha256": "1B973BA31394314C89F1C47237FD5687A6F5CF494C80A8CFAC16C4471726DE67",
+    "archiveSha256": "1B973BA31394314C89F1C47237FD5687A6F5CF494C80A8CFAC16C4471726DE67",
+    "specSha256": "22F4B230C89CB65C859221478C9318BB032AEB513CEDF389D1088928CB566D89"
+  },
+  "members": [
+    {
+      "path": "JST776 - S4 TF - 9-28/Alpha6OPS-20260928-135604-e35f29af4dec42b2b0e0d46be26c22c8.json",
+      "bytes": 17251154,
+      "sha256": "2A12151E58720184CD6E284D9532A36144739513BF6E52EE2C72BC155D01D470",
+      "unchanged": true
+    },
+    {
+      "path": "JST776 - S4 TF - 9-28/Alpha6OPS-20260928-135604-e35f29af4dec42b2b0e0d46be26c22c8.jsonl",
+      "bytes": 11119794,
+      "sha256": "58C53BC645BEB098E991FE4AC42DE3A3A748CA83F7091658191A9BF0CCEE7D8A",
+      "unchanged": true
+    },
+    {
+      "path": "JST776 - S4 TF - 9-28/ofp-1790603669.pdf",
+      "bytes": 484468,
+      "sha256": "EF3CD62C1F7C44C8C79DED597F6AB81DB9FE5137465B3FFD65651C42153420CF",
+      "unchanged": true
+    },
+    {
+      "path": "JST776 - S4 TF - 9-28/ofp-1790603669.txt",
+      "bytes": 46797,
+      "sha256": "88902A4D883E82F69229B76026B01172C3FED0D91F54655BB4910AC4EC9B20F3",
+      "unchanged": true
+    },
+    {
+      "path": "JST776 - S4 TF - 9-28/S4FT - 1.JPG",
+      "bytes": 192257,
+      "sha256": "449B6DD2BBB339B8447B743891229E4200B6B29FED3CCF024073C64D5EF9B714",
+      "unchanged": true
+    },
+    {
+      "path": "JST776 - S4 TF - 9-28/S4FT - 2.JPG",
+      "bytes": 206309,
+      "sha256": "763A72BA728A140F3DD7BA962C3858ED70687FD965EDC12BA351D5162730EF45",
+      "unchanged": true
+    },
+    {
+      "path": "JST776 - S4 TF - 9-28/S4FT - 3.jpg",
+      "bytes": 669053,
+      "sha256": "EF1264C953CDEB85740F2DB4F2557F8E8F8FC9D703D9F6D6E47EC37555ACC031",
+      "unchanged": true
+    },
+    {
+      "path": "JST776 - S4 TF - 9-28/S4FT - 4.JPG",
+      "bytes": 206002,
+      "sha256": "47EB20DA288E5BAFE9706D095D2574F85501667FB0EDAFC9D29D500D1FD79C74",
+      "unchanged": true
+    },
+    {
+      "path": "JST776 - S4 TF - 9-28/S4FT - 5.JPG",
+      "bytes": 198787,
+      "sha256": "38E53CB785C21E4CAECE6E44193BBFABD3641E831880CD20DF643D6307157F02",
+      "unchanged": true
+    },
+    {
+      "path": "JST776 - S4 TF - 9-28/S4FT - 6.JPG",
+      "bytes": 200069,
+      "sha256": "3051A71C613AE4F860917F79275C1113BC11E6FFC9F8AFB1CF6FE492D9438AEB",
+      "unchanged": true
+    },
+    {
+      "path": "JST776 - S4 TF - 9-28/S4FT - 7.JPG",
+      "bytes": 196747,
+      "sha256": "2412CC13B2C402DB81793B06576B060245FBBAA7E6ACA45C4B5463A0C07EA8D2",
+      "unchanged": true
+    }
+  ],
+  "workingSourceFilesChecked": 215,
+  "workingSourceChanges": []
+}

@@ -1,0 +1,26 @@
+{
+  "expectedFailureDetected": true,
+  "exitCode": 1,
+  "replay": [
+    {
+      "flight": "JST776",
+      "samples": 6145,
+      "passed": false,
+      "failures": [
+        "Premature geographical endpoint completion in 948 samples.",
+        "Expired gate-IN prediction in 60 samples."
+      ],
+      "maximumJump": 0.013684671296842033,
+      "maxAirborne": 1,
+      "actualIn": "2026-09-27T17:27:29.2802352-05:00",
+      "calculationChecks": {
+        "prematureEndpointSamples": 948,
+        "understatedRemainingSamples": 0,
+        "expiredEstimateSamples": 60,
+        "completionMismatchSamples": 0,
+        "maximumRemainingShortfallNm": 0,
+        "maximumExpiredSeconds": 29.2802352
+      }
+    }
+  ]
+}

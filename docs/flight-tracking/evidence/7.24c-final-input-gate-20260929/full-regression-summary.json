@@ -1,0 +1,136 @@
+{
+  "baselineCompleted": true,
+  "allMigrationContractsPassed": true,
+  "sourceCommit": "020bda9f7d1dd7e16c6ecfeec67c4e4e007c6215",
+  "builds": [
+    {
+      "name": "production solution Release",
+      "exitCode": 0
+    },
+    {
+      "name": "normal production packaging",
+      "exitCode": 0
+    },
+    {
+      "name": "test-only migration harness",
+      "exitCode": 0
+    }
+  ],
+  "counts": {
+    "executed": 1953,
+    "passed": 1953,
+    "failed": 0,
+    "skipped": 2
+  },
+  "groups": [
+    {
+      "name": "Core",
+      "executed": 185,
+      "passed": 185,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "desktop-smoke",
+      "executed": 18,
+      "passed": 18,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "dashboard-smoke",
+      "executed": 538,
+      "passed": 538,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "refresh-smoke",
+      "executed": 1010,
+      "passed": 1010,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "live-identity-smoke",
+      "executed": 24,
+      "passed": 24,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "diagnostic-index-smoke",
+      "executed": 19,
+      "passed": 19,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "monitor-lifecycle-smoke",
+      "executed": 22,
+      "passed": 22,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "tracking-integration",
+      "executed": 47,
+      "passed": 47,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "single-instance activation",
+      "executed": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "recorded-flight validations",
+      "executed": 9,
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "migration contracts and compatibility",
+      "executed": 31,
+      "passed": 31,
+      "failed": 0,
+      "skipped": 2
+    },
+    {
+      "name": "explicit large diagnostic-index suite",
+      "executed": 35,
+      "passed": 35,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "fleet import",
+      "executed": 14,
+      "passed": 14,
+      "failed": 0,
+      "skipped": 0
+    }
+  ],
+  "replayCount": 9,
+  "telemetrySamples": 91366,
+  "rawTelemetrySamples": 91366,
+  "migrationFailures": [],
+  "skippedChecks": [
+    {
+      "Id": "NATIVE_CONNECTION_LIFECYCLE",
+      "Status": "Skipped",
+      "Detail": "No real SimConnect open/close was exercised. Synthetic tests do not prove native handles or worker disposal."
+    },
+    {
+      "Id": "NATIVE_RECONNECT",
+      "Status": "Skipped",
+      "Detail": "Rapid queued callbacks were tested below the native boundary; an actual simulator disconnect/reconnect remains a hardware validation."
+    }
+  ],
+  "evidenceDirectory": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\full-20260929-141945-b4f54595",
+  "countConvention": "Reported assertion executions, including the explicit large-index suite; one validation per recorded flight. Builds and preliminary development/rerun attempts are excluded."
+}

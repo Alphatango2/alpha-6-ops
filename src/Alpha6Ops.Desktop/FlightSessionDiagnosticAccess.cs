@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using Alpha6Ops.Core;
 
 namespace Alpha6Ops.Desktop;
 
@@ -8,6 +9,14 @@ namespace Alpha6Ops.Desktop;
 // their adapter, not in the application API. Production never calls this class.
 internal static class FlightSessionDiagnosticAccess
 {
+    // Explicit synthetic intent fixture for live integration checks. No production
+    // simulator path infers cutoff commands from the old EnginesRunning flag.
+    internal static LiveReading WithTerminalFixture(LiveReading reading)
+    {
+        var now=DateTimeOffset.UtcNow;var sample=reading.Telemetry;var operating=sample.EnginesRunning;
+        return reading with{ReceivedUtc=now,Telemetry=sample with{TerminalShutdown=new(ShutdownIntentSupport.Enhanced,
+            "synthetic-validated-intent","diagnostic-source",2,[new(1,!operating,operating,now),new(2,!operating,operating,now)],sample.At,now,true,true)}};
+    }
     private const BindingFlags Flags=BindingFlags.Instance|BindingFlags.Public|BindingFlags.NonPublic;
     internal static FlightSessionCoordinator Owner(MainWindow window)=>(FlightSessionCoordinator)typeof(MainWindow).GetField("coordinator",Flags)!.GetValue(window)!;
     internal static object? Get(MainWindow window,string name)

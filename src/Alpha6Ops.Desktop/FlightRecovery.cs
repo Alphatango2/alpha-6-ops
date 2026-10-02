@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Concurrent;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
@@ -15,10 +16,15 @@ internal sealed record FlightRecoveryState(
     FlightPhase Phase, DateTimeOffset? LastSimulatorUtc, Telemetry? LastTelemetry, double? RouteProgress,
     DateTimeOffset? ActualOut, DateTimeOffset? ActualIn, IReadOnlyList<FlightEvent> PhaseEvents,
     IReadOnlyList<TrackingEventEntry> TrackingEvents, FlightTrackingMonitorState? MonitorState,
-    DateTimeOffset SavedUtc);
+    DateTimeOffset SavedUtc,
+    string? FlightHistoryId=null, string? CompletedFlightHistoryId=null, bool JoinedInProgress=false,
+    DateTimeOffset? ObservedSessionStart=null, GeoPosition? ObservedStartPosition=null, bool ObservedStartOnGround=false,
+    bool AssignmentAccepted=false, string? AssignmentOrigin=null, string? AssignmentDestination=null,
+    bool PilotConfirmedBlockIn=false, string? ArrivalMismatch=null, ArrivalEstimatorState? ArrivalEstimatorState=null);
 
 internal static class FlightRecoveryStore
 {
+    internal static readonly ActivitySource Timing = new("Alpha6Ops.Recovery");
     private static readonly JsonSerializerOptions JsonOptions=new(){WriteIndented=true,NumberHandling=JsonNumberHandling.AllowNamedFloatingPointLiterals};
     private static readonly ConcurrentDictionary<string, object> Gates = new(StringComparer.OrdinalIgnoreCase);
     private static readonly int[] RetryDelays = [10, 20, 40, 80];
@@ -55,6 +61,7 @@ internal static class FlightRecoveryStore
 
     internal static void Save(FlightRecoveryState state,string? root=null)
     {
+        using var timing = Timing.StartActivity("Save");
         Validate(state);
         var bytes = JsonSerializer.SerializeToUtf8Bytes(state, JsonOptions);
         var path = PathName(root);
@@ -125,6 +132,9 @@ internal static class FlightRecoveryStore
                     error.Data["RecoveryPath"] = path;
                     throw;
                 }
+                // No listener in ordinary operation. Diagnostics can observe an actual
+                // transient violation without replacing the I/O or changing retry policy.
+                using var retryTiming=Timing.StartActivity("Retry",ActivityKind.Internal,default(ActivityContext),tags:new Dictionary<string,object?>{{"path",path},{"stage",stage},{"attempt",attempt+1}});
                 Thread.Sleep(RetryDelays[attempt]);
             }
         }

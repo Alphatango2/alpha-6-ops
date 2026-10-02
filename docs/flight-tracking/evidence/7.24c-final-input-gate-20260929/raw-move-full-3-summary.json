@@ -1,0 +1,803 @@
+{
+  "passed": true,
+  "executed": 199,
+  "failed": 0,
+  "checks": [
+    {
+      "passed": true,
+      "name": "Free flight renders observed position without inventing route."
+    },
+    {
+      "passed": true,
+      "name": "Nonfinite optional input becomes unavailable without mutating telemetry."
+    },
+    {
+      "passed": true,
+      "name": "Consecutive observations create observed segment."
+    },
+    {
+      "passed": true,
+      "name": "Retained snapshots own immutable trail copies."
+    },
+    {
+      "passed": true,
+      "name": "Closed session suppression clears retained observed track."
+    },
+    {
+      "passed": true,
+      "name": "Pause freezes interpolation."
+    },
+    {
+      "passed": true,
+      "name": "Resume does not join unobserved pause interval."
+    },
+    {
+      "passed": true,
+      "name": "Hidden/reset discards trail continuity."
+    },
+    {
+      "passed": true,
+      "name": "Reconnect discards previous trail."
+    },
+    {
+      "passed": true,
+      "name": "Aircraft identity change discards previous trail."
+    },
+    {
+      "passed": true,
+      "name": "Unknown position does not fabricate aircraft."
+    },
+    {
+      "passed": true,
+      "name": "Replay preview cannot reclassify the live aircraft as simulated traffic."
+    },
+    {
+      "passed": true,
+      "name": "Validator rejects malformed or over-budget snapshot."
+    },
+    {
+      "passed": true,
+      "name": "Validator rejects malformed or over-budget snapshot."
+    },
+    {
+      "passed": true,
+      "name": "Validator rejects malformed or over-budget snapshot."
+    },
+    {
+      "passed": true,
+      "name": "Validator rejects malformed or over-budget snapshot."
+    },
+    {
+      "passed": true,
+      "name": "Validator rejects malformed or over-budget snapshot."
+    },
+    {
+      "passed": true,
+      "name": "Validator rejects malformed or over-budget snapshot."
+    },
+    {
+      "passed": true,
+      "name": "Geometry point budget is enforced."
+    },
+    {
+      "passed": true,
+      "name": "Actual UTF8 payload byte budget is enforced."
+    },
+    {
+      "passed": true,
+      "name": "Dateline great circle splits into geographic segments."
+    },
+    {
+      "passed": true,
+      "name": "High latitude path follows great circle."
+    },
+    {
+      "passed": true,
+      "name": "Candidate plan has geography and truthful endpoint roles."
+    },
+    {
+      "passed": true,
+      "name": "Authoritative progress splits completed and planned geography."
+    },
+    {
+      "passed": true,
+      "name": "Unreliable progress cannot imply completion."
+    },
+    {
+      "passed": true,
+      "name": "Known airports without supplied route do not invent a direct flight path."
+    },
+    {
+      "passed": true,
+      "name": "Stale/slew/menu/time reversal/time jump/teleport freezes interpolation."
+    },
+    {
+      "passed": true,
+      "name": "Discontinuity never bridges an unobserved gap."
+    },
+    {
+      "passed": true,
+      "name": "Stale/slew/menu/time reversal/time jump/teleport freezes interpolation."
+    },
+    {
+      "passed": true,
+      "name": "Discontinuity never bridges an unobserved gap."
+    },
+    {
+      "passed": true,
+      "name": "Stale/slew/menu/time reversal/time jump/teleport freezes interpolation."
+    },
+    {
+      "passed": true,
+      "name": "Discontinuity never bridges an unobserved gap."
+    },
+    {
+      "passed": true,
+      "name": "Stale/slew/menu/time reversal/time jump/teleport freezes interpolation."
+    },
+    {
+      "passed": true,
+      "name": "Discontinuity never bridges an unobserved gap."
+    },
+    {
+      "passed": true,
+      "name": "Stale/slew/menu/time reversal/time jump/teleport freezes interpolation."
+    },
+    {
+      "passed": true,
+      "name": "Discontinuity never bridges an unobserved gap."
+    },
+    {
+      "passed": true,
+      "name": "Stale/slew/menu/time reversal/time jump/teleport freezes interpolation."
+    },
+    {
+      "passed": true,
+      "name": "Discontinuity never bridges an unobserved gap."
+    },
+    {
+      "passed": true,
+      "name": "Visual trail remains bounded."
+    },
+    {
+      "passed": true,
+      "name": "Independent seasonal/leap-year reference: 2024-03-20T12:00:00Z"
+    },
+    {
+      "passed": true,
+      "name": "Sun vector is normalized."
+    },
+    {
+      "passed": true,
+      "name": "Independent seasonal/leap-year reference: 2024-06-21T12:00:00Z"
+    },
+    {
+      "passed": true,
+      "name": "Sun vector is normalized."
+    },
+    {
+      "passed": true,
+      "name": "Independent seasonal/leap-year reference: 2024-09-22T12:00:00Z"
+    },
+    {
+      "passed": true,
+      "name": "Sun vector is normalized."
+    },
+    {
+      "passed": true,
+      "name": "Independent seasonal/leap-year reference: 2024-12-21T12:00:00Z"
+    },
+    {
+      "passed": true,
+      "name": "Sun vector is normalized."
+    },
+    {
+      "passed": true,
+      "name": "Independent seasonal/leap-year reference: 2024-02-29T12:00:00Z"
+    },
+    {
+      "passed": true,
+      "name": "Sun vector is normalized."
+    },
+    {
+      "passed": true,
+      "name": "Independent USNO subsolar latitude/longitude within one degree: 2024-03-20T12:00:00Z"
+    },
+    {
+      "passed": true,
+      "name": "Independent USNO subsolar latitude/longitude within one degree: 2024-06-21T12:00:00Z"
+    },
+    {
+      "passed": true,
+      "name": "Independent USNO subsolar latitude/longitude within one degree: 2024-09-22T12:00:00Z"
+    },
+    {
+      "passed": true,
+      "name": "Independent USNO subsolar latitude/longitude within one degree: 2024-12-21T12:00:00Z"
+    },
+    {
+      "passed": true,
+      "name": "Independent USNO subsolar latitude/longitude within one degree: 2024-02-29T12:00:00Z"
+    },
+    {
+      "passed": true,
+      "name": "Independent USNO subsolar latitude/longitude within one degree: 2024-06-21T00:00:00Z"
+    },
+    {
+      "passed": true,
+      "name": "North and south polar seasons reverse."
+    },
+    {
+      "passed": true,
+      "name": "UTC midnight shifts illumination toward dateline."
+    },
+    {
+      "passed": true,
+      "name": "Solar time uses UTC independent of caller offset."
+    },
+    {
+      "passed": true,
+      "name": "Valid snapshot serializes inside payload budget."
+    },
+    {
+      "passed": true,
+      "name": "Coalesced pause/resume cannot create false observed continuity"
+    },
+    {
+      "passed": true,
+      "name": "Hidden map pump does not project telemetry"
+    },
+    {
+      "passed": true,
+      "name": "Resumed pump preserves sequence and begins fresh observation continuity"
+    },
+    {
+      "passed": true,
+      "name": "Resumed pump preserves the previously observed trail without joining the hidden interval"
+    },
+    {
+      "passed": true,
+      "name": "Post-return observations form a separate segment after the retained trail"
+    },
+    {
+      "passed": true,
+      "name": "Projection completed after hide and return cannot publish into the new visibility interval"
+    },
+    {
+      "passed": true,
+      "name": "Map left press cannot trigger parent focus (view 1)"
+    },
+    {
+      "passed": true,
+      "name": "Map Right press routing remains unchanged (view 1)"
+    },
+    {
+      "passed": true,
+      "name": "Map Middle press routing remains unchanged (view 1)"
+    },
+    {
+      "passed": true,
+      "name": "Map wheel routing remains unchanged (view 1)"
+    },
+    {
+      "passed": true,
+      "name": "Outside-map parent focus and wheel remain reachable (view 1)"
+    },
+    {
+      "passed": true,
+      "name": "Map left press cannot trigger parent focus (view 2)"
+    },
+    {
+      "passed": true,
+      "name": "Map Right press routing remains unchanged (view 2)"
+    },
+    {
+      "passed": true,
+      "name": "Map Middle press routing remains unchanged (view 2)"
+    },
+    {
+      "passed": true,
+      "name": "Map wheel routing remains unchanged (view 2)"
+    },
+    {
+      "passed": true,
+      "name": "Outside-map parent focus and wheel remain reachable (view 2)"
+    },
+    {
+      "passed": true,
+      "name": "Map left press cannot trigger parent focus (view 3)"
+    },
+    {
+      "passed": true,
+      "name": "Map Right press routing remains unchanged (view 3)"
+    },
+    {
+      "passed": true,
+      "name": "Map Middle press routing remains unchanged (view 3)"
+    },
+    {
+      "passed": true,
+      "name": "Map wheel routing remains unchanged (view 3)"
+    },
+    {
+      "passed": true,
+      "name": "Outside-map parent focus and wheel remain reachable (view 3)"
+    },
+    {
+      "passed": true,
+      "name": "Bridge origin rejects lookalikes, insecure and unexpected ports"
+    },
+    {
+      "passed": true,
+      "name": "First paint 1: initialized bridge stays concealed until current data"
+    },
+    {
+      "passed": true,
+      "name": "First paint 1: no placeholder sun is installed"
+    },
+    {
+      "passed": true,
+      "name": "First paint 1: slow night image cannot expose an incomplete frame"
+    },
+    {
+      "passed": true,
+      "name": "First paint 1: visible readiness follows current lighting\u0027s completed frame"
+    },
+    {
+      "passed": true,
+      "name": "First paint 1: subsequent snapshots retain normal visible streaming"
+    },
+    {
+      "passed": true,
+      "name": "First paint 2: initialized bridge stays concealed until current data"
+    },
+    {
+      "passed": true,
+      "name": "First paint 2: no placeholder sun is installed"
+    },
+    {
+      "passed": true,
+      "name": "First paint 2: slow night image cannot expose an incomplete frame"
+    },
+    {
+      "passed": true,
+      "name": "First paint 2: visible readiness follows current lighting\u0027s completed frame"
+    },
+    {
+      "passed": true,
+      "name": "First paint 2: subsequent snapshots retain normal visible streaming"
+    },
+    {
+      "passed": true,
+      "name": "First paint 3: initialized bridge stays concealed until current data"
+    },
+    {
+      "passed": true,
+      "name": "First paint 3: no placeholder sun is installed"
+    },
+    {
+      "passed": true,
+      "name": "First paint 3: slow night image cannot expose an incomplete frame"
+    },
+    {
+      "passed": true,
+      "name": "First paint 3: visible readiness follows current lighting\u0027s completed frame"
+    },
+    {
+      "passed": true,
+      "name": "First paint 3: subsequent snapshots retain normal visible streaming"
+    },
+    {
+      "passed": true,
+      "name": "Retained map is natively suspended and concealed while hidden"
+    },
+    {
+      "passed": true,
+      "name": "Returned map stays concealed through delayed current solar loading and stale ACK"
+    },
+    {
+      "passed": true,
+      "name": "Returned map reveals latest snapshot and current solar state"
+    },
+    {
+      "passed": true,
+      "name": "Returned map readiness follows the completed current-lighting frame"
+    },
+    {
+      "passed": true,
+      "name": "initial Operations: visible renderer becomes ready with supplied lighting"
+    },
+    {
+      "passed": true,
+      "name": "tracking return 1: hidden retained view remains concealed"
+    },
+    {
+      "passed": true,
+      "name": "tracking return 1: visible renderer becomes ready with supplied lighting"
+    },
+    {
+      "passed": true,
+      "name": "tracking return 1: correct-lighting return retains renderer identity"
+    },
+    {
+      "passed": true,
+      "name": "tracking return 2: hidden retained view remains concealed"
+    },
+    {
+      "passed": true,
+      "name": "tracking return 2: visible renderer becomes ready with supplied lighting"
+    },
+    {
+      "passed": true,
+      "name": "tracking return 2: correct-lighting return retains renderer identity"
+    },
+    {
+      "passed": true,
+      "name": "tracking return 3: hidden retained view remains concealed"
+    },
+    {
+      "passed": true,
+      "name": "tracking return 3: visible renderer becomes ready with supplied lighting"
+    },
+    {
+      "passed": true,
+      "name": "tracking return 3: correct-lighting return retains renderer identity"
+    },
+    {
+      "passed": true,
+      "name": "tracking return 4: hidden retained view remains concealed"
+    },
+    {
+      "passed": true,
+      "name": "tracking return 4: visible renderer becomes ready with supplied lighting"
+    },
+    {
+      "passed": true,
+      "name": "tracking return 4: correct-lighting return retains renderer identity"
+    },
+    {
+      "passed": true,
+      "name": "minimize restore: visible renderer becomes ready with supplied lighting"
+    },
+    {
+      "passed": true,
+      "name": "minimize restore: correct-lighting return retains renderer identity"
+    },
+    {
+      "passed": true,
+      "name": "classic to V2: visible renderer becomes ready with supplied lighting"
+    },
+    {
+      "passed": true,
+      "name": "unload reload: visible renderer becomes ready with supplied lighting"
+    },
+    {
+      "passed": true,
+      "name": "recreate before first data: visible renderer becomes ready with supplied lighting"
+    },
+    {
+      "passed": true,
+      "name": "First-paint lifecycle does not mutate authoritative flight state"
+    },
+    {
+      "passed": true,
+      "name": "Standard host evaluated in actual Operations shell"
+    },
+    {
+      "passed": true,
+      "name": "Composition host participates in WPF visual tree"
+    },
+    {
+      "passed": true,
+      "name": "Map viewport retained at 1920\u00D71080"
+    },
+    {
+      "passed": true,
+      "name": "Map viewport retained at 2560\u00D71440"
+    },
+    {
+      "passed": true,
+      "name": "Map viewport retained at 1366\u00D7768"
+    },
+    {
+      "passed": true,
+      "name": "Composition remains sized at 150% layout scaling"
+    },
+    {
+      "passed": true,
+      "name": "Composition remains sized at 200% layout scaling"
+    },
+    {
+      "passed": true,
+      "name": "Minimized window retains a paused renderer"
+    },
+    {
+      "passed": true,
+      "name": "Map survives minimize/restore without simulator interaction"
+    },
+    {
+      "passed": true,
+      "name": "Origin, malformed JSON and stale browser epoch rejected"
+    },
+    {
+      "passed": true,
+      "name": "Map controls are named and selection has non-canvas live text"
+    },
+    {
+      "passed": true,
+      "name": "GPU map canvas exists in production renderer"
+    },
+    {
+      "passed": true,
+      "name": "Browser keyboard Enter opens the named Layers control"
+    },
+    {
+      "passed": true,
+      "name": "Reduced-motion control changes presentation preference"
+    },
+    {
+      "passed": true,
+      "name": "Airport selection restores its highlight filter"
+    },
+    {
+      "passed": true,
+      "name": "Route selection restores its highlight filter"
+    },
+    {
+      "passed": true,
+      "name": "Escape bypass moves focus out of the map into WPF content"
+    },
+    {
+      "passed": true,
+      "name": "Synthetic WPF pointer is inside the map before move/press"
+    },
+    {
+      "passed": true,
+      "name": "Contained WPF left press still reaches initialized browser"
+    },
+    {
+      "passed": true,
+      "name": "Forwarded WPF press is trusted and inside the browser viewport"
+    },
+    {
+      "passed": true,
+      "name": "Hidden map retains one paused renderer in lifecycle cycle 1"
+    },
+    {
+      "passed": true,
+      "name": "Late message cannot expose hidden map in lifecycle cycle 1"
+    },
+    {
+      "passed": true,
+      "name": "Hidden map retains one paused renderer in lifecycle cycle 2"
+    },
+    {
+      "passed": true,
+      "name": "Late message cannot expose hidden map in lifecycle cycle 2"
+    },
+    {
+      "passed": true,
+      "name": "Hidden map retains one paused renderer in lifecycle cycle 3"
+    },
+    {
+      "passed": true,
+      "name": "Late message cannot expose hidden map in lifecycle cycle 3"
+    },
+    {
+      "passed": true,
+      "name": "Hidden map retains one paused renderer in lifecycle cycle 4"
+    },
+    {
+      "passed": true,
+      "name": "Late message cannot expose hidden map in lifecycle cycle 4"
+    },
+    {
+      "passed": true,
+      "name": "Hidden map retains one paused renderer in lifecycle cycle 5"
+    },
+    {
+      "passed": true,
+      "name": "Late message cannot expose hidden map in lifecycle cycle 5"
+    },
+    {
+      "passed": true,
+      "name": "Hidden map retains one paused renderer in lifecycle cycle 6"
+    },
+    {
+      "passed": true,
+      "name": "Late message cannot expose hidden map in lifecycle cycle 6"
+    },
+    {
+      "passed": true,
+      "name": "Hidden map retains one paused renderer in lifecycle cycle 7"
+    },
+    {
+      "passed": true,
+      "name": "Late message cannot expose hidden map in lifecycle cycle 7"
+    },
+    {
+      "passed": true,
+      "name": "Hidden map retains one paused renderer in lifecycle cycle 8"
+    },
+    {
+      "passed": true,
+      "name": "Late message cannot expose hidden map in lifecycle cycle 8"
+    },
+    {
+      "passed": true,
+      "name": "Hidden map retains one paused renderer in lifecycle cycle 9"
+    },
+    {
+      "passed": true,
+      "name": "Late message cannot expose hidden map in lifecycle cycle 9"
+    },
+    {
+      "passed": true,
+      "name": "Hidden map retains one paused renderer in lifecycle cycle 10"
+    },
+    {
+      "passed": true,
+      "name": "Late message cannot expose hidden map in lifecycle cycle 10"
+    },
+    {
+      "passed": true,
+      "name": "Hidden map retains one paused renderer in lifecycle cycle 11"
+    },
+    {
+      "passed": true,
+      "name": "Late message cannot expose hidden map in lifecycle cycle 11"
+    },
+    {
+      "passed": true,
+      "name": "Hidden map retains one paused renderer in lifecycle cycle 12"
+    },
+    {
+      "passed": true,
+      "name": "Late message cannot expose hidden map in lifecycle cycle 12"
+    },
+    {
+      "passed": true,
+      "name": "Twelve workspace returns retain one bridge epoch"
+    },
+    {
+      "passed": true,
+      "name": "Map navigation/recreation leaves authoritative flight snapshot unchanged"
+    },
+    {
+      "passed": true,
+      "name": "Owned WebView processes exit after final map disposal"
+    },
+    {
+      "passed": true,
+      "name": "Renderer construction failure: one restart then classic map fallback"
+    },
+    {
+      "passed": true,
+      "name": "Missing runtime (injected detection): one restart then classic map fallback"
+    },
+    {
+      "passed": true,
+      "name": "Missing local assets: one restart then classic map fallback"
+    },
+    {
+      "passed": true,
+      "name": "WebGL context loss: one restart then classic map fallback"
+    },
+    {
+      "passed": true,
+      "name": "Renderer process crash: one restart then classic map fallback"
+    },
+    {
+      "passed": true,
+      "name": "Invalid map payload: one restart then classic map fallback"
+    },
+    {
+      "passed": true,
+      "name": "Initialization timeout: one restart then classic map fallback"
+    },
+    {
+      "passed": true,
+      "name": "JavaScript initialization failure: one restart then classic map fallback"
+    },
+    {
+      "passed": true,
+      "name": "Renderer failures never publish or reconnect the flight session"
+    },
+    {
+      "passed": true,
+      "name": "Production bridge processes 1 aircraft with routes/trails/labels"
+    },
+    {
+      "passed": true,
+      "name": "Production bridge processes 25 aircraft with routes/trails/labels"
+    },
+    {
+      "passed": true,
+      "name": "Production bridge processes 100 aircraft with routes/trails/labels"
+    },
+    {
+      "passed": true,
+      "name": "Production bridge processes 500 aircraft with routes/trails/labels"
+    },
+    {
+      "passed": true,
+      "name": "Production bridge processes 1000 aircraft with routes/trails/labels"
+    },
+    {
+      "passed": true,
+      "name": "Production bridge processes 2000 aircraft with routes/trails/labels"
+    },
+    {
+      "passed": true,
+      "name": "Production bridge processes 5000 aircraft with routes/trails/labels"
+    },
+    {
+      "passed": true,
+      "name": "Delivery: sustained render work was exercised without blocking a single callback"
+    },
+    {
+      "passed": true,
+      "name": "Delivery: current map data reaches WebView during sustained render work instead of waiting for render idle"
+    },
+    {
+      "passed": true,
+      "name": "Delivery: newest snapshot is acknowledged before render pressure ends, including worker/serialization time"
+    },
+    {
+      "passed": true,
+      "name": "Delivery: browser receives the newest offered snapshot after render pressure"
+    },
+    {
+      "passed": true,
+      "name": "Contention: all authoritative samples recorded in baseline and browser-stalled run."
+    },
+    {
+      "passed": true,
+      "name": "Contention: recorded telemetry, per-sample phases and event counts are byte-equivalent."
+    },
+    {
+      "passed": true,
+      "name": "Contention: nontrivial ordered operational events are identical."
+    },
+    {
+      "passed": true,
+      "name": "Contention: ETA, progress, phase, actual times and PIREP eligibility match at every input sample."
+    },
+    {
+      "passed": true,
+      "name": "Contention: each complete recovery identifies its own sole completed live history row."
+    },
+    {
+      "passed": true,
+      "name": "Contention: final complete recovery matches excluding wall-clock save metadata and the verified per-run history ID."
+    },
+    {
+      "passed": true,
+      "name": "Contention: real telemetry reaches OUT/OFF/ON/IN and Complete without injected final state."
+    },
+    {
+      "passed": true,
+      "name": "Contention: real PIREP command persists and survives independent SQLite reopening in both runs."
+    },
+    {
+      "passed": true,
+      "name": "Contention: durable history and PIREP contents match excluding wall-clock submission metadata."
+    },
+    {
+      "passed": true,
+      "name": "Contention: map stress never reconnects either simulator session."
+    },
+    {
+      "passed": true,
+      "name": "Contention: authoritative samples processed while actual WebView JavaScript was blocked for one second."
+    },
+    {
+      "passed": true,
+      "name": "Contention: real projection and renderer mailbox coalesce visual snapshots without losing flight samples."
+    },
+    {
+      "passed": true,
+      "name": "Contention: dispatcher heartbeat maximum below 500ms and within 100ms of baseline (150ms floor)."
+    }
+  ]
+}

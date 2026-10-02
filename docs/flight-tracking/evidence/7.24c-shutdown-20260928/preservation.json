@@ -1,0 +1,11 @@
+{
+  "sourceFilesVerifiedUnchanged": 218,
+  "changed": [],
+  "journalUnchanged": true,
+  "frozenR3GateEquality": {
+    "src/Alpha6Ops.Core/Operations.cs": true,
+    "src/Alpha6Ops.Core/EngineEvidence.cs": true,
+    "src/Alpha6Ops.Desktop/SimConnectSource.cs": true,
+    "coordinatorBlockInGate": true
+  }
+}

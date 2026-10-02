@@ -1,0 +1,91 @@
+{
+  "readyCount": 2,
+  "atReveal": {
+    "map": {
+      "camera": {
+        "bearing": 0,
+        "followId": null,
+        "latitude": 20,
+        "longitude": 0,
+        "zoom": 0.6
+      },
+      "counts": {
+        "aircraft": 0,
+        "airports": 0,
+        "labels": 0,
+        "routes": 0
+      },
+      "frameIntervals": [
+        50
+      ],
+      "lastSequence": 2,
+      "points": [],
+      "selection": null,
+      "selectionFilters": {
+        "airport": [
+          "==",
+          [
+            "get",
+            "id"
+          ],
+          ""
+        ],
+        "route": [
+          "==",
+          [
+            "get",
+            "id"
+          ],
+          ""
+        ]
+      },
+      "solarSignature": "-1.000,0.000,0.000",
+      "sourceIDs": [],
+      "sourceUpdates": 8
+    },
+    "probe": {
+      "events": [
+        {
+          "nightLoaded": false,
+          "sequence": 2,
+          "solar": "-1.000,0.000,0.000",
+          "type": "render"
+        },
+        {
+          "nightLoaded": false,
+          "sequence": 2,
+          "solar": "-1.000,0.000,0.000",
+          "type": "render"
+        },
+        {
+          "nightLoaded": false,
+          "sequence": 2,
+          "solar": "-1.000,0.000,0.000",
+          "type": "render"
+        },
+        {
+          "nightLoaded": true,
+          "sequence": 2,
+          "solar": "-1.000,0.000,0.000",
+          "type": "render"
+        },
+        {
+          "nightLoaded": true,
+          "sequence": 2,
+          "solar": "-1.000,0.000,0.000",
+          "type": "render"
+        },
+        {
+          "nightLoaded": true,
+          "sequence": 2,
+          "solar": "-1.000,0.000,0.000",
+          "type": "idle"
+        }
+      ],
+      "installed": true,
+      "loads": 1,
+      "release": {}
+    }
+  },
+  "scope": "Actual retained WebView/MapLibre with delayed image load and injected obsolete sequence ACK; no physical input certification"
+}

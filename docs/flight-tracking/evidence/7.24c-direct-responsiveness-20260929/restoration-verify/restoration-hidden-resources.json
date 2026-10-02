@@ -1,0 +1,64 @@
+{
+  "resources": {
+    "cpuPercentMachine": 3.2894438431314517,
+    "samplingMs": {
+      "count": 20,
+      "mean": 11.104450000000002,
+      "p50": 10.1885,
+      "p95": 13.7338,
+      "p99": 13.7338,
+      "max": 14.2373
+    },
+    "last": {
+      "utc": "2026-09-29T20:59:39.0385722+00:00",
+      "stage": "restoration-hidden",
+      "browserProcesses": 5,
+      "hostMiB": 271.81640625,
+      "browserMiB": 356.578125,
+      "totalMiB": 628.39453125,
+      "cpuPercentMachine": 3.4548949816451855
+    },
+    "logicalProcessors": 16,
+    "workingSetsMayDoubleCountSharedPages": true,
+    "trackedProcessHandles": 5,
+    "exitedBeforeTracking": 0,
+    "samplingErrors": 0
+  },
+  "cpu": {
+    "wallMs": 5229.0601,
+    "browserCpuMs": 125,
+    "hostCpuMs": 2703.125,
+    "browserPercentOfMachine": 0.14940543521387334,
+    "hostPercentOfMachine": 3.2308924747127596,
+    "logicalProcessors": 16
+  },
+  "timings": {
+    "heartbeatMs": {
+      "count": 22,
+      "mean": 237.13096363636362,
+      "p50": 99.9861,
+      "p95": 487.2908,
+      "p99": 672.0706,
+      "max": 1549.4144
+    },
+    "pendingHeartbeatMs": 12.9529,
+    "recoverySaveMs": {
+      "count": 0,
+      "mean": 0,
+      "p50": 0,
+      "p95": 0,
+      "p99": 0,
+      "max": 0
+    },
+    "presentationMs": {
+      "count": 0,
+      "mean": 0,
+      "p50": 0,
+      "p95": 0,
+      "p99": 0,
+      "max": 0
+    },
+    "layoutEvents": 1348
+  },
+  "retained": true
+}

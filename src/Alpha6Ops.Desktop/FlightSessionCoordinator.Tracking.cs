@@ -15,26 +15,69 @@ internal sealed partial class FlightSessionCoordinator
 {
     private void ResetLiveTrackingState()
     {
-        blockInStoppedSince=null;pilotConfirmedBlockIn=false;canConfirmBlockIn=false;estimatedArrival=null;
-        liveRecorder=null;liveLast=null;liveAircraft=null;liveTelemetry=null;liveRouteProgress=null;liveRotation=null;liveNeedsBaseline=false;completedFlightHistoryId=null;routeTracker.Reset();arrivalEstimator.Reset();joinedInProgress=false;
+        ResetTerminalConfirmation();terminalDecisionReason=null;pilotConfirmedBlockIn=false;estimatedArrival=null;
+        liveRecorder=null;liveLast=null;liveAircraft=null;liveTelemetry=null;liveRouteProgress=null;liveRotation=null;liveNeedsBaseline=false;liveFlightHistoryId=null;completedFlightHistoryId=null;pendingCompletedFlightHistoryId=null;routeTracker.Reset();arrivalEstimator.Reset();joinedInProgress=false;
         trackingEventMonitor=null;trackingEvents.Clear();milestones.Clear();
     }
     private void RestoreFlightRecovery(FlightRecoveryState? state)
     {
         if(state is null||activePlan is null)return;
         liveLast=state.LastSimulatorUtc;liveAircraft=state.Aircraft;liveTelemetry=state.LastTelemetry;liveRouteProgress=state.RouteProgress;liveSource=state.Source;
+        joinedInProgress=state.JoinedInProgress;pilotConfirmedBlockIn=state.Phase==FlightPhase.Complete&&state.PilotConfirmedBlockIn;arrivalMismatch=state.ArrivalMismatch;
+        observedSessionStart=state.ObservedSessionStart;observedStartPosition=state.ObservedStartPosition;observedStartOnGround=state.ObservedStartOnGround;
+        // The saved assignment context is useful when MSFS has no flight plan.
+        // Current aircraft/time/position continuity and route evidence are still
+        // checked on the first sample; a different assignment cannot inherit it.
+        var sameAssignment=string.Equals(state.AssignmentOrigin,activePlan.Origin,StringComparison.OrdinalIgnoreCase)
+            &&string.Equals(state.AssignmentDestination,activePlan.Destination,StringComparison.OrdinalIgnoreCase);
+        if(state.AssignmentAccepted&&sameAssignment&&observedSessionStart is not null&&observedStartPosition is {IsValid:true})
+            liveAssociation=new(true,"VERIFIED ASSIGNMENT",[]);
+        // Keep the supplied exact identity as retry data even if SQLite cannot
+        // verify/complete it now. It is never authority for submission or live
+        // event writes until the normal identity and completion checks succeed.
+        if(state.Phase==FlightPhase.Complete&&sameAssignment)pendingCompletedFlightHistoryId=state.CompletedFlightHistoryId??state.FlightHistoryId;
+        try
+        {
+            if(sameAssignment&&state.FlightHistoryId is {} activeId&&flightHistory?.MatchesFlight(activeId,activePlan.FlightNumber,activePlan.Origin,activePlan.Destination)==true)liveFlightHistoryId=activeId;
+            if(sameAssignment&&state.CompletedFlightHistoryId is {} completeId&&flightHistory?.MatchesFlight(completeId,activePlan.FlightNumber,activePlan.Origin,activePlan.Destination)==true)completedFlightHistoryId=completeId;
+        }
+        catch(Exception error)when(error is IOException or UnauthorizedAccessException){CrashReporter.Write("flight_history_recovery",error,directory:stateDirectory);}
         var profile=AircraftGroundProfiles.ForFamily(state.Aircraft);liveRecorder=new TimelineRecorder(new PhaseDetector(profile,state.Phase,state.LastSimulatorUtc),state.PhaseEvents);
+        var estimatorState=state.ArrivalEstimatorState;
+        var estimatorCoherent=estimatorState is null||sameAssignment&&state.ActualIn is null
+            &&state.LastSimulatorUtc==estimatorState.LastSample&&state.LastTelemetry?.At==estimatorState.LastSample
+            &&state.Phase==estimatorState.LastPhase&&!state.PhaseEvents.Any(e=>e.At>estimatorState.LastSample)
+            &&(state.PhaseEvents.Count==0||state.JoinedInProgress||state.PhaseEvents[^1].Phase==state.Phase);
+        if(!estimatorCoherent||!arrivalEstimator.TryRestore(estimatorState))arrivalEstimator.Reset();
         var baseRotation=BuildLiveRotation(activePlan,state.Aircraft,profile);
         if(baseRotation is not null)liveRotation=baseRotation with{Legs=[baseRotation.Legs[0] with{ActualOut=state.ActualOut,ActualIn=state.ActualIn}]};
         trackingEventMonitor=new FlightTrackingEventMonitor(state.MonitorState);foreach(var entry in state.TrackingEvents)trackingEvents.Add(entry);
         foreach(var flightEvent in state.PhaseEvents)milestones.Add($"RECOVERED {flightEvent.At.UtcDateTime:HH:mm:ss}Z   {PhaseLabel(flightEvent.Phase)}");
+        if(state.Phase==FlightPhase.Complete&&ActualFlightIn is not null)
+        {
+            var completedId=completedFlightHistoryId??liveFlightHistoryId;
+            completedFlightHistoryId=null;liveFlightHistoryId=null;
+            try
+            {
+                // AddTrackingEvent can publish Complete before the final history
+                // update/checkpoint. Reconcile that exact verified row, including
+                // a final replacement failure after SQLite already completed it.
+                if(completedId is not null&&flightHistory?.TryCompleteRecoveredFlight(completedId)==true)
+                {
+                    completedFlightHistoryId=completedId;liveFlightHistoryId=null;pendingCompletedFlightHistoryId=null;
+                    if(state.CompletedFlightHistoryId!=completedId||state.FlightHistoryId is not null)SaveFlightRecovery();
+                }
+            }
+            catch(Exception error)when(error is IOException or UnauthorizedAccessException){CrashReporter.Write("flight_history_recovery",error,directory:stateDirectory);}
+        }
         liveNeedsBaseline=true;
     }
     private void SaveFlightRecovery()
     {
         if(activePlan is null||liveRecorder is null||liveAircraft is null)return;
         var leg=liveRotation?.Legs[0];
-        try{FlightRecoveryStore.Save(new(activePlan.FlightNumber,activePlan.PlannedDepartureUtc,liveSource,liveAircraft,liveRecorder.Phase,liveLast,liveTelemetry,liveRouteProgress,leg?.ActualOut,leg?.ActualIn,liveRecorder.Events.ToArray(),trackingEvents.ToArray(),trackingEventMonitor?.CaptureState(),DateTimeOffset.UtcNow),stateDirectory);}
+        try{FlightRecoveryStore.Save(new(activePlan.FlightNumber,activePlan.PlannedDepartureUtc,liveSource,liveAircraft,liveRecorder.Phase,liveLast,liveTelemetry,liveRouteProgress,leg?.ActualOut,leg?.ActualIn,liveRecorder.Events.ToArray(),trackingEvents.ToArray(),trackingEventMonitor?.CaptureState(),DateTimeOffset.UtcNow,
+            liveFlightHistoryId??pendingCompletedFlightHistoryId,completedFlightHistoryId,joinedInProgress,observedSessionStart,observedStartPosition,observedStartOnGround,liveAssociation.Accepted,activePlan.Origin,activePlan.Destination,pilotConfirmedBlockIn,arrivalMismatch,arrivalEstimator.CaptureState()),stateDirectory);}
         catch(Exception error) when(error is IOException or UnauthorizedAccessException){CrashReporter.Write("flight_recovery_save",error,new{stage=error.Data["RecoveryStage"],attempts=error.Data["RecoveryAttempts"],path=error.Data["RecoveryPath"],hresult=error.HResult});}
     }
     private static AircraftRotation? BuildLiveRotation(ActiveFlightPlan? plan, string? simulatorAircraft, AircraftGroundProfile groundProfile)
@@ -48,19 +91,21 @@ internal sealed partial class FlightSessionCoordinator
         if (liveCancellation is null || liveCancellation.IsCancellationRequested || exiting) return;
         dispatcher.VerifyAccess();
         reading = Freeze(reading);
+        reading = reading with { ReceivedUtc = reading.ReceivedUtc ?? DateTimeOffset.UtcNow };
         var s = reading.Telemetry;
+        var previousPosition=currentLiveReading?.Evidence?.Position??(liveTelemetry is {HasPosition:true} previousSample?new GeoPosition(previousSample.LatitudeDegrees,previousSample.LongitudeDegrees):null);
         liveTelemetry=s;liveRouteProgress=reading.RouteProgress;
         liveSource=reading.Source;
         programMonitor?.Update("Connected",reading.Aircraft,s.At,sampleReceived:true);
         
-        RecordLog("telemetry", s.At, new { aircraft = reading.Aircraft, onGround = s.OnGround, groundSpeedKnots = s.GroundSpeedKnots, indicatedAirspeedKnots=double.IsFinite(s.IndicatedAirspeedKnots)?(double?)s.IndicatedAirspeedKnots:null, verticalSpeedFeetPerMinute=double.IsFinite(s.VerticalSpeedFeetPerMinute)?(double?)s.VerticalSpeedFeetPerMinute:null, gearExtendedRatio=double.IsFinite(s.GearExtendedRatio)?(double?)s.GearExtendedRatio:null, flapsExtendedRatio=double.IsFinite(s.SelectedFlapRatio)?(double?)s.SelectedFlapRatio:null,
+        RecordLog("telemetry", s.At, new { aircraft = reading.Aircraft, terminalPolicyVersion = 1, terminalShutdown = s.TerminalShutdown, telemetryReceivedUtc = reading.ReceivedUtc, onGround = s.OnGround, groundSpeedKnots = s.GroundSpeedKnots, indicatedAirspeedKnots=double.IsFinite(s.IndicatedAirspeedKnots)?(double?)s.IndicatedAirspeedKnots:null, verticalSpeedFeetPerMinute=double.IsFinite(s.VerticalSpeedFeetPerMinute)?(double?)s.VerticalSpeedFeetPerMinute:null, gearExtendedRatio=double.IsFinite(s.GearExtendedRatio)?(double?)s.GearExtendedRatio:null, flapsExtendedRatio=double.IsFinite(s.SelectedFlapRatio)?(double?)s.SelectedFlapRatio:null,
             flapHandleRatio=double.IsFinite(s.SelectedFlapRatio)?(double?)s.SelectedFlapRatio:null,flapHandleIndex=s.FlapHandleIndex,flapHandlePositions=s.FlapHandlePositions,
             leftFlapDegrees=double.IsFinite(s.LeftFlapDegrees)?(double?)s.LeftFlapDegrees:null,rightFlapDegrees=double.IsFinite(s.RightFlapDegrees)?(double?)s.RightFlapDegrees:null,
             leftSlatDegrees=double.IsFinite(s.LeftSlatDegrees)?(double?)s.LeftSlatDegrees:null,rightSlatDegrees=double.IsFinite(s.RightSlatDegrees)?(double?)s.RightSlatDegrees:null,engineDataValid=s.EngineDataValid,engineReadings=s.EngineReadings,engineStates=s.EngineStates, pitchDegrees=double.IsFinite(s.PitchDegrees)?(double?)s.PitchDegrees:null, bankDegrees=double.IsFinite(s.BankDegrees)?(double?)s.BankDegrees:null, fuelTotalWeightPounds=double.IsFinite(s.FuelTotalWeightPounds)?(double?)s.FuelTotalWeightPounds:null, runningEngineCount=s.RunningEngineCount>=0?(int?)s.RunningEngineCount:null, runningEngineMask=s.RunningEngineMask>=0?(int?)s.RunningEngineMask:null, parkingBrake = s.ParkingBrake, enginesRunning = s.EnginesRunning, paused = s.Paused, slewing = s.Slewing, latitude = s.HasPosition?(double?)s.LatitudeDegrees:null, longitude = s.HasPosition?(double?)s.LongitudeDegrees:null, altitudeFeet = double.IsFinite(s.AltitudeFeet)?(double?)s.AltitudeFeet:null, pressureAltitudeFeet=double.IsFinite(s.PressureAltitudeFeet)?(double?)s.PressureAltitudeFeet:null, altitudeAboveGroundFeet=double.IsFinite(s.AltitudeAboveGroundFeet)?(double?)s.AltitudeAboveGroundFeet:null, headingDegrees = double.IsFinite(s.HeadingDegrees)?(double?)s.HeadingDegrees:null, routeProgress=reading.RouteProgress });
         liveDescription = $"{reading.Source} • {reading.Aircraft} • {s.At.UtcDateTime:HH:mm:ss}Z • {s.GroundSpeedKnots:0.0} kt • Brake {(s.ParkingBrake ? "set" : "released")} • {(s.Paused ? "Paused" : s.Slewing ? "Slew" : s.OnGround ? "On ground" : "Airborne")}";
-        var continuous=liveNeedsBaseline?(liveAircraft is null||reading.Aircraft==liveAircraft):TelemetryContinuity.IsContinuous(liveLast,liveAircraft,s.At,reading.Aircraft);
+        var continuous=liveNeedsBaseline?(liveAircraft is null||reading.Aircraft==liveAircraft)&&(liveLast is null||s.At>=liveLast):TelemetryContinuity.IsContinuous(liveLast,liveAircraft,s.At,reading.Aircraft);
         liveNeedsBaseline=false;
-        var positionJump = FlightIdentity.PositionJump(currentLiveReading?.Evidence?.Position, reading.Evidence?.Position, s.At - (liveLast ?? s.At));
+        var positionJump = FlightIdentity.PositionJump(previousPosition, reading.Evidence?.Position, s.At - (liveLast ?? s.At));
         if (!continuous || positionJump)
         {
             var reason = reading.Aircraft != liveAircraft ? "Aircraft changed" : positionJump ? "Aircraft position jumped" : "Simulator clock discontinuity";
@@ -73,6 +118,7 @@ internal sealed partial class FlightSessionCoordinator
         ReconcileLiveReading(reading);
         if (reading.Evidence?.SimulationRunning == false)
         {
+            ResetTerminalConfirmation();
             liveWasInMenu = true;
             connectionMessage = "Connected. Waiting for an active simulator flight; tracking is suspended.";
             trackingStatus=connectionMessage; PublishSnapshot();
@@ -95,25 +141,18 @@ internal sealed partial class FlightSessionCoordinator
             else if(initialPhase==FlightPhase.AtGate){var gate=activePlan?.DepartureGate is {Length:>0}?$"Gate {activePlan.DepartureGate}":"Departure gate unassigned";AddTrackingEvent(trackingEventMonitor?.SystemEvent(s.At,"Preflight at gate",$"{gate} • Parking brake {(s.ParkingBrake?"set":"released")}"));}
             AddTrackingEvent(trackingEventMonitor?.SystemEvent(s.At,"Flight monitoring armed",$"{AircraftIdentity.CanonicalType(activePlan?.AircraftType,reading.Aircraft)} • joined in {PhaseLabel(initialPhase).ToLowerInvariant()}"));
         }
-        var stopped=liveRecorder.Phase==FlightPhase.TaxiIn&&s.OnGround&&s.GroundSpeedKnots<.5&&s.ParkingBrake&&!s.Paused&&!s.Slewing;
-        if(!stopped){blockInStoppedSince=null;pilotConfirmedBlockIn=false;}else blockInStoppedSince??=s.At;
-        var destinationPoint=activePlan?.RoutePoints?.LastOrDefault();
-        var destinationPosition=destinationPoint is not null?new GeoPosition(destinationPoint.Latitude,destinationPoint.Longitude):AirportCatalog.Find(activePlan?.Destination)?.Position;
-        var observedPosition=s.HasPosition?new GeoPosition(s.LatitudeDegrees,s.LongitudeDegrees):reading.Evidence?.Position;
-        var atDestination=destinationPosition is not null&&observedPosition is not null&&observedPosition.DistanceNm(destinationPosition)<=5;
-        var eligible=stopped&&blockInStoppedSince is {} stop&&s.At-stop>=TimeSpan.FromSeconds(10);
-        canConfirmBlockIn=eligible&&(!s.EngineDataValid||!atDestination);
-        var milestone=liveRecorder.Observe(s with{BlockInAllowed=liveRecorder.Phase!=FlightPhase.TaxiIn||atDestination||pilotConfirmedBlockIn,PilotConfirmedBlockIn=eligible&&pilotConfirmedBlockIn});
+        var terminalSample=ApplyTerminalPolicy(reading);
+        var milestone=liveRecorder.Observe(terminalSample);
         if (milestone is not null)
         {
             milestones.Add($"LIVE {milestone.At.UtcDateTime:HH:mm:ss}Z   {PhaseLabel(milestone.Phase)}");
             RecordLog("flight_milestone", milestone.At, new { phase = milestone.Phase.ToString(), label = PhaseLabel(milestone.Phase) });
             if (milestone.Phase is FlightPhase.TaxiIn or FlightPhase.Complete && liveAssociation.Accepted && activePlan is not null)
             {
-                var destination = AirportCatalog.Find(activePlan.Destination);
-                arrivalMismatch = reading.Evidence?.Position is not { IsValid: true } position || destination is null
+                var destination = DestinationPosition();
+                arrivalMismatch = !s.HasPosition || destination is not { IsValid:true }
                     ? "Arrival airport unverified"
-                    : position.DistanceNm(destination.Position) > 5 ? $"Landed away from assigned destination {activePlan.Destination}" : null;
+                    : !AtDestination(s) ? $"Landed away from assigned destination {activePlan.Destination}" : null;
                 if (arrivalMismatch is not null) RecordLog("arrival_airport_review", s.At, new { reason = arrivalMismatch, nearby = reading.Evidence?.Nearby });
             }
             if (milestone.Phase == FlightPhase.Airborne) arrivalMismatch = null;
@@ -128,8 +167,8 @@ internal sealed partial class FlightSessionCoordinator
         var eventProgress=LiveRouteReliable?liveRouteProgress??0:double.NaN;
         estimatedArrival=LiveEstimatedArrival(s.At,liveRecorder.Phase,ActualFlightOut);
         var eventEstimate=estimatedArrival;
-        foreach(var entry in trackingEventMonitor?.Observe(s,liveRecorder.Phase,milestone,eventProgress,activePlan,null,eventEstimate)??[])AddTrackingEvent(entry);
-        RecordLog("tracking_state",s.At,new{progress=liveRouteProgress,remainingNm=LiveRemainingDistance,routeReliable=LiveRouteReliable,crossTrackNm=routeTracker.Current?.CrossTrackNm,estimatedIn=eventEstimate,phase=liveRecorder.Phase.ToString()});
+        foreach(var entry in trackingEventMonitor?.Observe(terminalSample,liveRecorder.Phase,milestone,eventProgress,activePlan,null,eventEstimate)??[])AddTrackingEvent(entry);
+        RecordLog("tracking_state",s.At,new{progress=liveRouteProgress,remainingNm=LiveRemainingDistance,routeReliable=LiveRouteReliable,crossTrackNm=routeTracker.Current?.CrossTrackNm,estimatedIn=eventEstimate,phase=liveRecorder.Phase.ToString(),terminalPolicyVersion=1,terminalSample.TerminalBlockInEligible,terminalSample.PilotConfirmedBlockIn});
         if(milestone?.Phase==FlightPhase.Complete&&liveFlightHistoryId is not null){completedFlightHistoryId=liveFlightHistoryId;EndFlightHistory(liveFlightHistoryId,"Complete");liveFlightHistoryId=null;}
         connectionMessage = $"Connected • {PhaseLabel(liveRecorder.Phase)}. Active flight tracking uses the assignment shown below.";
         var altitude=double.IsFinite(s.AltitudeFeet)?$" • {s.AltitudeFeet:0} ft":"";var heading=double.IsFinite(s.HeadingDegrees)?$" • {((s.HeadingDegrees%360)+360)%360:000}°":"";var brake=s.OnGround?$" • Brake {(s.ParkingBrake ? "set" : "released")}":"";

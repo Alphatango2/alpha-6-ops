@@ -1,0 +1,19 @@
+[
+  {
+    "flight": "JST776",
+    "samples": 6145,
+    "passed": true,
+    "failures": [],
+    "maximumJump": 0.041054013890525876,
+    "maxAirborne": 0.9986898702275115,
+    "actualIn": "2026-09-27T22:27:29.2802352+00:00",
+    "calculationChecks": {
+      "prematureEndpointSamples": 0,
+      "understatedRemainingSamples": 0,
+      "expiredEstimateSamples": 0,
+      "completionMismatchSamples": 0,
+      "maximumRemainingShortfallNm": 0,
+      "maximumExpiredSeconds": 0
+    }
+  }
+]

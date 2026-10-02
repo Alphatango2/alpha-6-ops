@@ -25,6 +25,7 @@ internal sealed class LogFileDatabase : IDisposable
     {
         lock (gate)
         {
+            Execute("DELETE FROM diagnostic_file;");
             IndexDirectory(testLogDirectory, "flight_log");
             IndexDirectory(crashDirectory, "crash_report");
             return ScalarInt("SELECT COUNT(*) FROM diagnostic_file;");

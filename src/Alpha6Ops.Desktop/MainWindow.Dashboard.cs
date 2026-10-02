@@ -54,7 +54,7 @@ public partial class MainWindow
         FlightTrackingView.DispatchRequested += (_,_)=>ShowDispatch();
         FlightTrackingView.GatesRequested += (_,_)=>AssignGates();
         DispatchView.GatesRequested += (_,_)=>AssignGates();
-        DispatchView.ConfigureGates(stateDirectory??CrashReporter.RootDirectory);
+        DispatchView.ConfigureGates(stateDirectory);
         DispatchView.GateValuesSaved+=(_,p)=>ApplyDispatchGates(p.DepartureGate,p.ArrivalGate);
         DispatchView.ScheduleRequested+=(_,_)=>CorrectSchedule();
         FlightTrackingView.ConfirmBlockInRequested+=(_,_)=>{if(flightState.Phase==FlightPhase.TaxiIn&&OpsConfirmWindow.Ask(this,"Confirm parked at gate","Confirm you have reached your parking stand. Automatic engine/destination verification is incomplete.")){coordinator.ConfirmBlockIn();}};
@@ -137,7 +137,14 @@ public partial class MainWindow
     {
         var selected=(DashboardFlightsGrid.SelectedItem as DashboardFlightRow)?.Key;
         var visible=DashboardFlights.Where(f=>flightTab=="all"||(flightTab=="assigned"&&!f.Leg.Completed)||(flightTab=="watchlist"&&dashboardState.Watchlist.Contains(f.Key))).ToArray();
-        DashboardFlightsGrid.ItemsSource=visible;DashboardFlightsGrid.SelectedItem=visible.FirstOrDefault(f=>f.Key==selected)??visible.FirstOrDefault();
+        // Resetting an unchanged DataGrid source rebuilds its star-width cells and
+        // briefly adds a horizontal scrollbar on every live snapshot. Compare the
+        // complete immutable rows so genuine data changes still bind immediately.
+        if(DashboardFlightsGrid.ItemsSource is not IEnumerable<DashboardFlightRow> existing || !existing.SequenceEqual(visible))
+        {
+            DashboardFlightsGrid.ItemsSource=visible;
+            DashboardFlightsGrid.SelectedItem=visible.FirstOrDefault(f=>f.Key==selected)??visible.FirstOrDefault();
+        }
         EmptyFlightsText.Visibility=visible.Length==0?Visibility.Visible:Visibility.Collapsed;
         EmptyFlightsText.Text=flightTab=="watchlist"?"Select a flight in My flights, then add it to your watchlist.":"No flights in this view.";
         UpdateFlightTabs();

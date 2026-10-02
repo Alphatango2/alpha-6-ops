@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -35,8 +36,8 @@ internal static class MapContentionChecks
             RoutePoints: [new("YSSY", departure.Position.Latitude, departure.Position.Longitude),
                 new("YMHB", arrival.Position.Latitude, arrival.Position.Longitude)], AircraftType: "A320");
         var samples = FlightSamples(start, departure.Position, arrival.Position);
-        var baseline = await RunFlightAsync(main.Dispatcher, null, Path.Combine(root, "baseline"), plan, samples);
-        var stressed = await RunFlightAsync(main.Dispatcher, renderer, Path.Combine(root, "stressed"), plan, samples);
+        var baseline = await RunFlightAsync(main, null, Path.Combine(root, "baseline"), plan, samples);
+        var stressed = await RunFlightAsync(main, renderer, Path.Combine(root, "stressed"), plan, samples);
 
         check(baseline.SampleCount == samples.Count && stressed.SampleCount == samples.Count,
             "Contention: all authoritative samples recorded in baseline and browser-stalled run.");
@@ -44,6 +45,12 @@ internal static class MapContentionChecks
             "Contention: recorded telemetry, per-sample phases and event counts are byte-equivalent.");
         check(baseline.EventHash == stressed.EventHash && baseline.EventCount > 10,
             "Contention: nontrivial ordered operational events are identical.");
+        check(baseline.OperationalHash==stressed.OperationalHash,
+            "Contention: ETA, progress, phase, actual times and PIREP eligibility match at every input sample.");
+        check(baseline.RecoveryIdentityValid&&stressed.RecoveryIdentityValid,
+            "Contention: each complete recovery identifies its own sole completed live history row.");
+        check(baseline.RecoveryHash==stressed.RecoveryHash,
+            "Contention: final complete recovery matches excluding wall-clock save metadata and the verified per-run history ID.");
         check(baseline.Phase == FlightPhase.Complete && stressed.Phase == FlightPhase.Complete
             && baseline.PhaseEvents == 4 && stressed.PhaseEvents == 4,
             "Contention: real telemetry reaches OUT/OFF/ON/IN and Complete without injected final state.");
@@ -58,25 +65,43 @@ internal static class MapContentionChecks
             "Contention: authoritative samples processed while actual WebView JavaScript was blocked for one second.");
         check(stressed.ProjectionError is null && stressed.Projected > 0 && stressed.VisualCoalesced > 0,
             "Contention: real projection and renderer mailbox coalesce visual snapshots without losing flight samples.");
-        check(stressed.HeartbeatCount > 0 && stressed.HeartbeatMaxMs < 500
-            && stressed.HeartbeatMaxMs <= Math.Max(150, baseline.HeartbeatMaxMs + 100),
-            "Contention: dispatcher heartbeat maximum below 500ms and within 100ms of baseline (150ms floor).");
+        // 7.24C approved role revision: retain the original predicate/results,
+        // separately from direct product acceptance. Never conceal an excursion.
+        var heartbeatPassed = stressed.HeartbeatCount > 0 && stressed.HeartbeatMaxMs < 500
+            && stressed.HeartbeatMaxMs <= Math.Max(150, baseline.HeartbeatMaxMs + 100);
+        var heartbeat = new { passed=heartbeatPassed, role="diagnostic", releaseBlocking=false,
+            thresholdsChanged=false, baselineMaxMs=baseline.HeartbeatMaxMs, stressedMaxMs=stressed.HeartbeatMaxMs,
+            absoluteLimitMs=500, relativeAllowanceMs=100, floorMs=150,
+            relativeLimitMs=Math.Max(150,baseline.HeartbeatMaxMs+100),
+            condition="maximum <500ms and <=max(150ms, baseline maximum+100ms)",
+            disposition=heartbeatPassed?"Historical predicate passed":"EXCURSION: correlate with direct product metrics; historical predicate failed" };
+        Write(Path.Combine(directory,"heartbeat-diagnostic.json"),heartbeat);
+        Console.WriteLine("Background heartbeat diagnostic: "+heartbeat.disposition);
+        check(baseline.HeartbeatCount>0&&stressed.HeartbeatCount>0,
+            "Contention: Background heartbeat measured and separately reported under unchanged historical thresholds.");
         Write(Path.Combine(directory, "contention.json"), new
         {
             isolatedDirectory = root,
             sampleCount = samples.Count,
             baseline,
             stressed,
+            heartbeat,
             limitations = "Diagnostic source feeds production connection callbacks at accelerated cadence. Actual native SimConnect is not exercised. " +
                 "One complete flight per arm and a one-second browser stall are bounded evidence, not a long-run contention guarantee. " +
-                "History equality excludes database IDs, recording wall-clock times, journal paths and PIREP submittedUtc; simulator times and event payloads are compared."
+                "History equality excludes database IDs, recording wall-clock times, journal paths and PIREP submittedUtc; simulator times and event payloads are compared. " +
+                "Recovery equality normalizes a completed history ID only after verifying that it identifies that run's sole Complete live flight; all other recovery fields remain compared."
         });
     }
 
-    private static async Task<Result> RunFlightAsync(Dispatcher dispatcher, WebMapRenderer? renderer,
+    private static async Task<Result> RunFlightAsync(MainWindow main, WebMapRenderer? renderer,
         string directory, ActiveFlightPlan plan, IReadOnlyList<LiveReading> readings)
     {
         Directory.CreateDirectory(directory);
+        var dispatcher=main.Dispatcher;
+        using var trace=Environment.GetEnvironmentVariable("S4_CONTENTION_TRACE")=="1"
+            ?new DispatcherSchedulingTrace(main,(DispatcherTimer)FlightSessionDiagnosticAccess.Get(main,"dashboardClock")!,[]):null;
+        var native=trace is not null&&Environment.GetEnvironmentVariable("S4_HEARTBEAT_NATIVE_TRACE")=="1"
+            ?new HeartbeatNativeObserver(trace,renderer):null;
         var source = new DiagnosticSource();
         using var owner = new FlightSessionCoordinator(directory, true, new WpfFlightRuntimeDispatcher(dispatcher), source);
         owner.AcceptAssignment(plan);
@@ -90,6 +115,7 @@ internal static class MapContentionChecks
         Task<string>? stall = null;
         int samplesDuringStall = 0;
         var processingTimes = new List<long>();
+        var operational=new List<object>();
         DateTimeOffset? previousAt = null;
         string? projectionError = null;
         long producedBefore = renderer is null ? 0 : Interlocked.Read(ref renderer.Metrics.Produced);
@@ -103,6 +129,7 @@ internal static class MapContentionChecks
         void Tick(object? sender, EventArgs args)
         {
             heartbeat.Add(tickWatch.Elapsed.TotalMilliseconds);
+            trace?.Mark("heartbeat",value:heartbeat[^1]);
             tickWatch.Restart();
         }
         void SnapshotChanged(object? sender, EventArgs args)
@@ -111,6 +138,8 @@ internal static class MapContentionChecks
             generationUnchanged &= snapshot.ConnectionGeneration == initialGeneration;
             if (snapshot.Telemetry is not {} telemetry || telemetry.At == previousAt) return;
             previousAt = telemetry.At;
+            trace?.Mark("sample-processed",value:operational.Count);
+            operational.Add(new{telemetry.At,snapshot.Phase,snapshot.EstimatedArrival,snapshot.RouteProgress,snapshot.ActualOut,snapshot.ActualIn,snapshot.PirepEligible,snapshot.Events,snapshot.PhaseEvents});
             processingTimes.Add(DateTimeOffset.UtcNow.ToUnixTimeMilliseconds());
             pump?.Offer(snapshot, false);
             if (telemetry.At == readings[^1].Telemetry.At) completed.TrySetResult();
@@ -121,12 +150,14 @@ internal static class MapContentionChecks
         try
         {
             timer.Start();
+            trace?.Mark("feed-start");
             if (renderer is not null)
                 stall = renderer.Core.ExecuteScriptAsync("(()=>{const epochStart=Date.now(),start=performance.now();while(performance.now()-start<1000){};return {elapsed:performance.now()-start,epochStart,epochEnd:Date.now()};})()");
             var producer = Task.Run(async () =>
             {
                 foreach (var reading in readings)
                 {
+                    trace?.Mark("sample-emitted");
                     source.Emit(reading);
                     // Still 500x faster than simulator time, but avoid turning a map
                     // contention test into hundreds of recovery-file replacements/sec.
@@ -146,7 +177,10 @@ internal static class MapContentionChecks
                 samplesDuringStall = processingTimes.Count(at => at >= stallStart && at <= stallEnd);
             }
             await Task.Delay(100);
+            if(Environment.GetEnvironmentVariable("S4_HEARTBEAT_CONTEXTS")=="1")
+                Write(Path.Combine(directory,"pending-heartbeat.json"),new{ageMs=tickWatch.Elapsed.TotalMilliseconds});
             timer.Stop();
+            trace?.Mark("feed-stop");
             if (pump is not null && renderer is not null)
             {
                 // Observe the actual production queue counters until the final input is consumed.
@@ -163,6 +197,8 @@ internal static class MapContentionChecks
             var timeline = owner.ReadTimeline() ?? throw new InvalidOperationException("No authoritative recorder was created.");
             var history = owner.History ?? throw new InvalidOperationException("Isolated flight database unavailable.");
             var flight = history.ReadRecentFlights().Single();
+            var recoveryIdentityValid=recovery!.FlightHistoryId is null&&recovery.CompletedFlightHistoryId==flight.Id&&flight.FinalPhase=="Complete"
+                &&history.MatchesFlight(flight.Id,plan.FlightNumber,plan.Origin,plan.Destination);
             var beforeSubmission = history.ReadFlightEvents(flight.Id);
             string historyHash = Hash(beforeSubmission.Select(e => new { e.Sequence, e.Kind, e.SimulatorUtc, e.DetailJson }));
             bool submitted = owner.SubmitPirep();
@@ -186,13 +222,13 @@ internal static class MapContentionChecks
             }
             Write(Path.Combine(directory, "authoritative-timeline.json"), timeline);
             Write(Path.Combine(directory, "operational-events.json"), snapshot.Events);
-            var resultValue = new Result(timeline.Snapshots.Count, Hash(timeline), Hash(snapshot.Events), snapshot.Events.Length,
+            var resultValue = new Result(timeline.Snapshots.Count, Hash(timeline with{Snapshots=timeline.Snapshots.Select(s=>s with{Sample=StableEvidenceTimes(s.Sample)}).ToArray()}), Hash(snapshot.Events), snapshot.Events.Length,
                 snapshot.Phase, snapshot.PhaseEvents.Length, snapshot.PirepEligible, submitted, durable, historyHash, pirepHash,
                 generationUnchanged && owner.Snapshot.ConnectionGeneration == initialGeneration,
                 samplesDuringStall, stallMs, feedMs, heartbeat.Count, heartbeat.DefaultIfEmpty().Max(),
                 renderer is null ? 0 : Interlocked.Read(ref renderer.Metrics.Produced) - producedBefore,
                 (pump?.Coalesced ?? 0) + (renderer is null ? 0 : Metric(renderer, "coalesced") - rendererCoalescedBefore),
-                projectionError, renderer?.Measurements);
+                projectionError, renderer?.Measurements,Hash(operational),Hash(recovery! with{SavedUtc=default,LastTelemetry=recovery.LastTelemetry is {} last?StableEvidenceTimes(last):null,CompletedFlightHistoryId=recoveryIdentityValid?"<verified-flight-id>":recovery.CompletedFlightHistoryId}),recoveryIdentityValid);
             Write(Path.Combine(directory, "timings.json"), new { heartbeatIntervalsMs = heartbeat, projectionQueueOffered = pump?.Offered ?? 0, projectionQueueCoalesced = pump?.Coalesced ?? 0, result = resultValue });
             return resultValue;
         }
@@ -204,16 +240,18 @@ internal static class MapContentionChecks
             if (pump is not null) await pump.DisposeAsync();
             owner.DisconnectSimulator();
             await connection.WaitAsync(TimeSpan.FromSeconds(5));
+            native?.Dispose();
+            if(trace is not null)Write(Path.Combine(directory,"scheduling-trace.json"),await trace.FinishAsync());
         }
     }
 
-    private static IReadOnlyList<LiveReading> FlightSamples(DateTimeOffset start, GeoPosition origin, GeoPosition destination)
+    internal static IReadOnlyList<LiveReading> FlightSamples(DateTimeOffset start, GeoPosition origin, GeoPosition destination, int stepSeconds=10)
     {
         var result = new List<LiveReading>();
         var from = new GeoPoint(origin.Longitude, origin.Latitude);
         var to = new GeoPoint(destination.Longitude, destination.Latitude);
         // Approximately one hour airborne, sampled every ten simulator seconds. Positions follow one physical great circle.
-        for (int second = 0; second <= 3940; second += 10)
+        for (int second = 0; second <= 3940; second += stepSeconds)
         {
             bool airborne = second is >= 130 and < 3740;
             bool stopped = second < 30 || second >= 3900;
@@ -245,12 +283,17 @@ internal static class MapContentionChecks
     }
     private static long Metric(WebMapRenderer renderer, string name) => JsonSerializer.SerializeToElement(renderer.Measurements).GetProperty(name).GetInt64();
     private static string Hash<T>(T value) => Convert.ToHexString(SHA256.HashData(JsonSerializer.SerializeToUtf8Bytes(value, Json)));
+    // Arms run at different wall times. Compare every signal/policy value while
+    // normalizing only newly recorded receipt clocks; raw evidence is saved above.
+    private static Telemetry StableEvidenceTimes(Telemetry sample) => sample.TerminalShutdown is not {} evidence ? sample : sample with
+    { TerminalShutdown=evidence with{ReceivedUtc=sample.At,Engines=evidence.Engines.Select(e=>e with{ReceivedUtc=sample.At}).ToImmutableArray()} };
     private static void Write<T>(string path, T value) => File.WriteAllText(path, JsonSerializer.Serialize(value, Json));
 
     private sealed record Result(int SampleCount, string TimelineHash, string EventHash, int EventCount,
         FlightPhase? Phase, int PhaseEvents, bool PirepEligible, bool Submitted, bool Durable, string HistoryHash, string PirepHash,
         bool GenerationUnchanged, int SamplesDuringStall, double BrowserStallMs, double FeedMs,
-        int HeartbeatCount, double HeartbeatMaxMs, long Projected, long VisualCoalesced, string? ProjectionError, object? MapMetrics);
+        int HeartbeatCount, double HeartbeatMaxMs, long Projected, long VisualCoalesced, string? ProjectionError, object? MapMetrics,
+        string OperationalHash,string RecoveryHash,bool RecoveryIdentityValid);
 
     private sealed class DiagnosticSource : ISimulatorConnectionSource
     {
@@ -265,6 +308,6 @@ internal static class MapContentionChecks
             Ready.TrySetResult();
             await Task.Delay(Timeout.Infinite, cancellation);
         }
-        internal void Emit(LiveReading reading) => (receive ?? throw new InvalidOperationException("Diagnostic source not connected."))(reading);
+        internal void Emit(LiveReading reading) => (receive ?? throw new InvalidOperationException("Diagnostic source not connected."))(FlightSessionDiagnosticAccess.WithTerminalFixture(reading));
     }
 }

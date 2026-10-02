@@ -1,0 +1,137 @@
+{
+  "archive": "final-t2-review-evidence.zip",
+  "sha256": "18075E89318C9ADEAF2576228AE9FDBA17B2C3D3D904359001A7530CE36BDD29",
+  "entries": [
+    {
+      "entry": "original/S4 - FINAL T2 DESTINATION VALIDATION.zip",
+      "sha256": "43D8A3724A9BBCA51FD9C570F88F0E29D198BB0FDDC6BE675E1B3A048C17C593",
+      "bytes": 5734983
+    },
+    {
+      "entry": "original/closure-guidelines.txt",
+      "sha256": "E81FDFE55EF6D060B3F4DD460D5489951164171E4D3C40E71527B971DF6F1305",
+      "bytes": 13842
+    },
+    {
+      "entry": "preservation-manifest.json",
+      "sha256": "38E067C3544CAEE15D0222DBFD7731128671BAB53622C114843F598C2A34FE94",
+      "bytes": 9280
+    },
+    {
+      "entry": "zip-entry-manifest.json",
+      "sha256": "0BB9F7D5B032720A98D789F814161FED192FB73A4F48D9FF8B888E30F0BDDF94",
+      "bytes": 6619
+    },
+    {
+      "entry": "profile-inventory.json",
+      "sha256": "CA1F460309C08D4C8B34B7F1A6494343C089B91E4BE049911905E66BD2DC2BAB",
+      "bytes": 892
+    },
+    {
+      "entry": "source-hashes-before.json",
+      "sha256": "1BA65CA48CF5763DDB67C32F00526C1C1CF39434C9078C5ECB0AE1B31419CD4C",
+      "bytes": 37133
+    },
+    {
+      "entry": "pilot-clarification.json",
+      "sha256": "6950346EAA13F6A47C621A9008CA0DFDE08D9F38038D2CB69C04EDED6A9900A9",
+      "bytes": 420
+    },
+    {
+      "entry": "review-verification.json",
+      "sha256": "C06E04F89B92F14197C8ACA3A8C333885224AEB5D7CA12FBB692CFCD305CF361",
+      "bytes": 83944
+    },
+    {
+      "entry": "flight-analysis.json",
+      "sha256": "212E665A9843484E3A581772699B73BD423EA20994ABDAF3361679D6892338F7",
+      "bytes": 106273
+    },
+    {
+      "entry": "terminal-telemetry.csv",
+      "sha256": "C6592E603938A63FB716F1F430EA6F57DAA4F3C5E26916384D0F7B748E8EF0CA",
+      "bytes": 150495
+    },
+    {
+      "entry": "analyze-flight.py",
+      "sha256": "55D946556B5A9AF73DEE76B2E6EBE0225F42B2A8C5031734DC90BC8F44A0CD6A",
+      "bytes": 14197
+    },
+    {
+      "entry": "verify-and-archive-review.py",
+      "sha256": "A87753BB899CD7B8FC90901213497691C2FF5F87846879F93F0FA876EA32B5F2",
+      "bytes": 6311
+    },
+    {
+      "entry": "supplemental/profile/Alpha6OPS-flights.sqlite",
+      "sha256": "1EAC6BDBE318E21EAB73E4187FCF03D8B0AFE021224CEBE03DBB1BDB4F484278",
+      "bytes": 610304
+    },
+    {
+      "entry": "supplemental/profile/Alpha6OPS-logs.sqlite",
+      "sha256": "6FA742D4F8ECC6B5534DC70ABBEA210F4E58085FEABC40ABBE1EBBA52E049E53",
+      "bytes": 126976
+    },
+    {
+      "entry": "supplemental/profile/program-status.json",
+      "sha256": "E7FA1C73C3C400D06DD947C1CDC3B30806F147AC81B74F6849622C5CD4FF05E5",
+      "bytes": 394
+    },
+    {
+      "entry": "persistence-review/PERSISTENCE-IDENTITY-REVIEW.md",
+      "sha256": "B918A24F0788A58B61D96A772DB7F9F9EB209F67F676714D0AF70D91A91EB7C1",
+      "bytes": 13917
+    },
+    {
+      "entry": "persistence-review/identity-analysis.json",
+      "sha256": "F1752F0301B2C9C702AE342B13FB66E13984BA37E02FAAD4EB3FE237DB5B53E5",
+      "bytes": 125397
+    },
+    {
+      "entry": "persistence-review/inspect_persistence.py",
+      "sha256": "1E7F514DC18EBC0DA46881C639219060381C68F95AED636D9181A8AC7D42DF5A",
+      "bytes": 1449
+    },
+    {
+      "entry": "persistence-review/analyze_identity.py",
+      "sha256": "7FA3D125828395A43FE163E3C66CDB369279B793BD18FB29C2B6AAEDCDAE6403",
+      "bytes": 5622
+    },
+    {
+      "entry": "persistence-review/frozen-PilotLogbookWorkspace.xaml.cs.txt",
+      "sha256": "AF04D56F11EB7E41FA8E22F15D4E84251131E17E7D3AE4E1FE4F50830229CA18",
+      "bytes": 16112
+    },
+    {
+      "entry": "persistence-review/frozen-FlightHistoryDatabase.cs.txt",
+      "sha256": "53A03FF3A844FCD658376B91CCCDC39FAC0400BCAD16977F3EA20F7E5F3B0347",
+      "bytes": 14798
+    },
+    {
+      "entry": "gate-review/gate-chain-review.md",
+      "sha256": "CFBAB7D9C29BBFF9A808E5EE495A5B23F5064ECFF2A42BD0EDA57B37D069D2CD",
+      "bytes": 17730
+    },
+    {
+      "entry": "gate-review/frozen-integrity.json",
+      "sha256": "CA7C0374FEA490D727EC04709A203CDB4986F428A4DAD320B3F686B780DD31A2",
+      "bytes": 697617
+    },
+    {
+      "entry": "gate-review/prior-failure-preservation.json",
+      "sha256": "230F755D988510941AF1EF5DA7B66BADD4EEE420BCC6C3FFC67F0164A15F5958",
+      "bytes": 17793
+    },
+    {
+      "entry": "gate-review/source-continuity.json",
+      "sha256": "D31658301C6C18F2375A90197794C20780332E6B6E6D3611A06A8EFD7BA6FB32",
+      "bytes": 5330
+    },
+    {
+      "entry": "7.24c-final-t2-destination-validation.md",
+      "sha256": "C518DC5EE3D980DDD790F7CFCD17E9CF351FDB8406FC3C6A6C53FD184191B995",
+      "bytes": 27006
+    }
+  ],
+  "status": "Native terminal PASS; checkpoint closure NO-GO pending logbook OFF-display disposition"
+}

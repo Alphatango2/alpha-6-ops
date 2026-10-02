@@ -1,0 +1,47 @@
+{
+  "passed": true,
+  "before": {
+    "initialPoint": {
+      "x": 777,
+      "y": 605
+    },
+    "point": {
+      "x": 641,
+      "y": 158
+    },
+    "origin": {
+      "x": 247,
+      "y": 396
+    },
+    "actualWidth": 1283,
+    "actualHeight": 316,
+    "isVisible": true,
+    "isKeyboardFocusWithin": false,
+    "opacity": 1,
+    "paused": false,
+    "nativeSuspended": false,
+    "windowActive": true
+  },
+  "elapsedMs": 1.2157,
+  "result": {
+    "at": 7950.200000047684,
+    "button": 0,
+    "trusted": true,
+    "x": 641,
+    "y": 158
+  },
+  "browser": {
+    "event": {
+      "at": 7950.200000047684,
+      "button": 0,
+      "trusted": true,
+      "x": 641,
+      "y": 158
+    },
+    "hasFocus": true,
+    "height": 316,
+    "hidden": false,
+    "width": 1283
+  },
+  "scope": "Coordinate-bearing WPF input-report move followed by routed down/up; original 1500ms deadline; no global cursor movement, SDK state seeding or CDP mouse injection"
+}

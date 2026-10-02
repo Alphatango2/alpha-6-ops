@@ -1,0 +1,23 @@
+{
+  "rows": [
+    {
+      "cycle": 0,
+      "leftHandled": true,
+      "leftPresses": 1,
+      "wheels": 1
+    },
+    {
+      "cycle": 1,
+      "leftHandled": true,
+      "leftPresses": 1,
+      "wheels": 1
+    },
+    {
+      "cycle": 2,
+      "leftHandled": true,
+      "leftPresses": 1,
+      "wheels": 1
+    }
+  ],
+  "scope": "Programmatically raised WPF events through actual renderer views; not physical mouse/DPI certification"
+}

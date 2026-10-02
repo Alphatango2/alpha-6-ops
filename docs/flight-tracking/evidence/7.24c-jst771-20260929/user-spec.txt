@@ -1,0 +1,470 @@
+7.24C — JST771 NATIVE END-TO-END VALIDATION REVIEW
+
+Review the complete attached:
+
+JST771 - S4TF - 9-29.zip
+
+This is the controlled native 7.24C flight using TERMINAL T1.
+
+DO NOT make production changes until the evidence has been fully correlated.
+
+USER-OBSERVED TEST RESULTS
+
+1. Disconnect/reconnect during cruise:
+PASS
+
+2. Exit/restart Sierra 4 during cruise, reconnect without reaccepting:
+PASS
+
+3. Continue recovered flight to YMML:
+PASS
+
+4. ON / TaxiIn:
+PASS
+
+5. Park at YMML, parking brake SET, both engines running for 15 seconds:
+PASS — no premature completion.
+
+6. Engine 1 OFF, Engine 2 left running for 20 seconds:
+PASS — no premature completion.
+
+7. Engine 2 OFF, expected automatic Complete / IN / PIREP eligibility
+approximately 3–4 seconds later:
+FAIL.
+
+8. Manual parked confirmation / PIREP / final persistence:
+PASS from user observation; verify independently from supplied evidence.
+
+============================================================
+CRITICAL EVIDENCE ALREADY OBSERVED
+============================================================
+
+The supplied flight export appears to show terminal-shutdown evidence
+remaining:
+
+Support: 0
+Provider: "unsupported"
+ExpectedEngineCount: 0
+Engines: []
+Qualified: false
+
+including after arrival and engine shutdown.
+
+A terminal_block_in event eventually reports:
+
+CanConfirm: true
+Reason:
+"Automatic shutdown intent unavailable; confirm Block In"
+
+The export also records aircraft as:
+
+"FenixA320 IAE WF"
+
+T1 was previously described/validated using the captured:
+
+"FenixA321 IAE WF SC, version 2.4.0.4720"
+
+DO NOT assume the reason for this discrepancy.
+
+Determine whether:
+
+- aircraft identification failed to match the Fenix adapter
+- the aircraft title/model changed or is normalized differently in native
+  telemetry
+- adapter qualification was lost during disconnect/reconnect
+- adapter qualification was lost during full application restart/recovery
+- the adapter intentionally requires observing engines running on the
+  current connection and failed to requalify after recovery
+- LVar subscriptions/state were not recreated after reconnect
+- aircraft capability state was not restored/rebuilt after recovery
+- the wrong provider was selected
+- another cause explains Support=0 / ExpectedEngineCount=0
+
+============================================================
+PHASE 1 — RECONSTRUCT THE ENTIRE FLIGHT
+============================================================
+
+Use JSON, JSONL, screenshots and any included evidence to construct a
+timeline covering:
+
+- initial connection
+- assignment identity
+- OUT
+- OFF
+- cruise disconnect
+- reconnect
+- post-reconnect flight identity
+- application exit
+- application recovery/restart
+- post-restart connection
+- aircraft identification
+- terminal-shutdown provider selection/qualification
+- ON
+- TaxiIn
+- final parking
+- parking brake
+- Engine 1 shutdown
+- Engine 2 shutdown
+- automatic terminal evidence
+- manual Block In availability
+- manual confirmation
+- IN / Complete
+- PIREP eligibility
+- PIREP submission
+- closeout
+- final persistence evidence
+
+Verify exactly-once OUT/OFF/ON/IN behavior.
+
+============================================================
+PHASE 2 — RECOVERY GATE
+============================================================
+
+Determine whether the disconnect/reconnect and full application restart
+actually satisfy the native recovery requirements.
+
+Verify:
+
+- same operational flight identity
+- assignment preserved
+- OUT preserved
+- OFF preserved
+- event history preserved
+- no joined-in-progress reset
+- no duplicate milestones
+- no duplicate session
+- route/tracking continuity
+- correct subsequent ON/IN
+- one final history row
+- one PIREP
+
+Do not mark recovery PASS merely because the UI appeared correct.
+
+Use persisted/exported evidence.
+
+============================================================
+PHASE 3 — TERMINAL T1 FAILURE
+============================================================
+
+This is the primary defect investigation.
+
+T1 was expected to provide enhanced Fenix terminal-shutdown evidence.
+
+During the actual recovered flight, evidence appears to remain unsupported.
+
+Establish exactly WHY.
+
+Trace:
+
+aircraft identification
+→ adapter/provider selection
+→ capability qualification
+→ engine-running observation
+→ disconnect
+→ reconnect
+→ restart/recovery
+→ adapter reconstruction
+→ LVar availability
+→ engine coverage
+→ shutdown evidence
+
+Answer explicitly:
+
+Was the Fenix adapter EVER active during JST771?
+
+If YES:
+At what time did it become active?
+At what time and why was it lost?
+
+If NO:
+Why did this native aircraft fail adapter matching/qualification?
+
+============================================================
+PHASE 4 — AIRCRAFT IDENTIFICATION
+============================================================
+
+Investigate the apparent discrepancy:
+
+Captured/validated aircraft:
+FenixA321 IAE WF SC
+
+JST771 export:
+FenixA320 IAE WF
+
+Determine the authoritative aircraft-identification fields available to S4.
+
+Do not make matching depend on a fragile exact display-name string if a
+more reliable identity/capability mechanism exists.
+
+However, do not broaden matching so far that unsupported aircraft can
+accidentally receive Fenix-specific authority.
+
+Design matching around positive, defensible evidence.
+
+Document:
+
+- aircraft title
+- model
+- ICAO/type if available
+- package/provider identity if available
+- Fenix-specific signal availability
+- version information if available
+- which fields should determine adapter selection
+
+============================================================
+PHASE 5 — RECOVERY + CAPABILITY REQUALIFICATION
+============================================================
+
+The T1 implementation previously documented this limitation:
+
+Enhanced qualification requires observing both engines running on the
+current connection.
+
+This flight intentionally included both:
+- disconnect/reconnect
+- full Sierra 4 restart/recovery
+
+Determine whether that qualification rule caused the end-of-flight failure.
+
+If the recovered connection occurred while both engines were running in
+cruise, determine why that was not sufficient to re-establish enhanced
+Fenix qualification before arrival.
+
+If the rule itself is too fragile, propose the smallest safe correction.
+
+Do NOT permit a recovered flight to trust stale pre-disconnect shutdown
+evidence.
+
+A safe solution should re-establish capability from fresh post-connection
+evidence.
+
+============================================================
+PHASE 6 — MANUAL FALLBACK
+============================================================
+
+The fallback appears to have behaved as designed:
+
+Automatic shutdown intent unavailable
+→ guarded Confirm Block In
+→ pilot confirmation
+→ Complete
+→ PIREP
+
+Verify this from evidence.
+
+Confirm that manual eligibility required:
+
+- ON
+- correct destination
+- on ground
+- stationary
+- parking conditions
+- required stable interval
+- valid session
+
+Confirm no off-destination bypass occurred.
+
+============================================================
+PHASE 7 — SCREENSHOT FINDINGS
+============================================================
+
+Review all screenshots in the ZIP.
+
+They include evidence for:
+
+- disconnect/reconnect
+- exit/restart recovery
+- apparent Top-of-Descent recognition issue
+- 10,000 ft state
+- 99.9% complete with no automatic Submit PIREP after expected shutdown
+- manual Confirm Parked action
+
+Do not ignore the screenshot labeled:
+
+"Not recognizing Top of Descent"
+
+Determine whether this represents:
+- an actual phase/event-detection defect
+- expected behavior
+- stale presentation
+- timing issue
+- or insufficient evidence
+
+Do not expand scope into unrelated UI redesign.
+
+Document it separately if it is a genuine additional finding.
+
+============================================================
+PHASE 8 — ROUTE PROGRESS
+============================================================
+
+The screenshot shows approximately 99.9% progress near completion.
+
+Verify that the 7.24C premature-100%-progress fix behaved correctly during
+JST771.
+
+Confirm that S4 did NOT prematurely report 100% while still meaningfully
+en route.
+
+============================================================
+PHASE 9 — PIREP / PERSISTENCE
+============================================================
+
+Verify independently:
+
+- actual IN
+- Complete
+- PIREP eligibility
+- exactly one PIREP submission
+- pirep_closeout_complete
+- session_ended: pirep_submitted
+- exactly one completed flight
+- exactly one PIREP
+- no resurrected assignment after final cold restart, if supplied evidence
+  supports that conclusion
+
+The export contains:
+pirep_closeout_complete
+and
+session_ended: pirep_submitted
+
+but use database/snapshot evidence where available for durable persistence.
+
+============================================================
+PHASE 10 — FIX ONLY AFTER ROOT CAUSE
+============================================================
+
+If the T1 failure is caused by adapter matching or recovery
+requalification:
+
+1. Establish root cause.
+2. Propose the smallest safe correction.
+3. Preserve the generic adapter architecture.
+4. Do not put Fenix LVar names into FlightSessionCoordinator.
+5. Preserve the generic mechanical engine classifier.
+6. Preserve manual fallback.
+7. Add regression coverage specifically reproducing JST771's sequence:
+
+Enhanced aircraft
+→ running engines
+→ disconnect/reconnect
+→ running engines
+→ application restart
+→ recovery
+→ running engines
+→ destination
+→ staged Engine 1 / Engine 2 shutdown
+→ enhanced automatic terminal completion
+
+The test must prove enhanced capability survives/requalifies correctly
+across the same recovery sequence without trusting stale shutdown evidence.
+
+============================================================
+VALIDATION
+============================================================
+
+After any justified correction:
+
+- Release build
+- targeted adapter tests
+- terminal-shutdown tests
+- disconnect/reconnect tests
+- application-recovery tests
+- lifecycle tests
+- persistence tests
+- map scheduling tests
+- map restoration tests
+- historical 9/9 replay
+- JST776 replay
+- JST771 replay/evidence assertions where supported
+- full regression suite
+
+Do not request another full flight unless native behavior genuinely cannot
+be proven with a shorter parked/recovery test.
+
+If physical validation is required, design the minimum native procedure.
+
+============================================================
+RETURN FORMAT
+============================================================
+
+7.24C — JST771 NATIVE VALIDATION
+
+Flight identity/recovery:
+PASS / FAIL
+Evidence:
+
+Disconnect/reconnect:
+PASS / FAIL
+
+Application restart recovery:
+PASS / FAIL
+
+OUT/OFF preservation:
+PASS / FAIL
+
+ON/TaxiIn:
+PASS / FAIL
+
+Terminal guards:
+PASS / FAIL
+
+Enhanced Fenix adapter during JST771:
+ACTIVE / LOST / NEVER ACTIVE
+
+Root cause:
+[exact finding]
+
+Aircraft identity discrepancy:
+[explanation]
+
+Automatic shutdown failure:
+[root cause]
+
+Manual Block In fallback:
+PASS / FAIL
+
+IN/Complete:
+PASS / FAIL
+
+PIREP:
+PASS / FAIL
+
+Cold-start persistence:
+PASS / FAIL / NOT PROVEN
+
+Route progress:
+PASS / FAIL
+
+Top-of-Descent observation:
+[status/explanation]
+
+Code change justified:
+YES / NO
+
+If YES:
+[smallest safe correction]
+
+Tests added:
+[list]
+
+Full regression:
+[result]
+
+Replays:
+[result]
+
+Additional native test required:
+YES / NO
+
+If YES:
+provide the shortest exact procedure.
+
+7.24C:
+GO / NO-GO
+
+Remaining gates:
+[list]
+
+Do not begin 7.25.
+Do not begin premium UI work.

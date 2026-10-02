@@ -10,6 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
 using Alpha6Ops.Core;
@@ -17,7 +18,7 @@ using Alpha6Ops.Core;
 namespace Alpha6Ops.Desktop.MapV2;
 
 // Explicit diagnostic entry point only. Never supplies normal Operations data.
-internal static class MapV2Checks
+internal static partial class MapV2Checks
 {
     private static readonly List<object> checks=[];
     private static int failures;
@@ -27,23 +28,35 @@ internal static class MapV2Checks
     {
         checks.Add(new{passed,name});if(!passed)failures++;
     }
-    internal static async Task<int> RunAsync(string directory,bool contentionOnly=false)
+    internal static async Task<int> RunAsync(string directory,bool contentionOnly=false,bool deliveryOnly=false)
     {
         Directory.CreateDirectory(directory);var windows=new List<Window>();
         try
         {
             MapModelChecks.Run(Check);
             await PumpChecks(Check);
+            await RoutedInputChecks(directory);
             Check(WebMapRenderer.TrustedOrigin(WebMapRenderer.Origin+"/index.html")&&!WebMapRenderer.TrustedOrigin("https://sierra-map.invalid.evil/")&&!WebMapRenderer.TrustedOrigin("http://sierra-map.invalid/")&&!WebMapRenderer.TrustedOrigin("https://sierra-map.invalid:8443/"),"Bridge origin rejects lookalikes, insecure and unexpected ports");
             var main=new MainWindow(Path.Combine(directory,"session"));windows.Add(main);
             main.Width=1920;main.Height=1080;main.Show();main.ShowDashboard();
             // Freeze only the diagnostic presentation clock so it cannot overwrite our explicitly labeled visual fixture.
             ((DispatcherTimer)FlightSessionDiagnosticAccess.Get(main,"dashboardClock")!).Stop();
+            if(deliveryOnly)
+            {
+                await DeliveryUnderRenderPressure(directory);
+                return failures==0?0:1;
+            }
             if(contentionOnly)
             {
+                if(Environment.GetEnvironmentVariable("S4_HEARTBEAT_CONTEXTS")=="1")
+                    await WithRenderer(directory,"heartbeat-context",r=>HeartbeatContextChecks.RunAsync(main,r,directory));
+                await DeliveryUnderRenderPressure(directory);
                 await WithRenderer(directory,"contention",r=>MapContentionChecks.RunAsync(main,r,directory,Check));
                 return failures==0?0:1;
             }
+            await FirstPaintChecks(directory);
+            await RestoredPaintChecks(directory);
+            await FirstPaintLifecycleChecks(main,directory);
             var host=main.OperationsView.MapHost;host.DiagnosticProfile=Path.Combine(directory,"browser");
             var state=Fixture();
             void Present()=>main.OperationsView.Present(OperationsOverviewQuery.Project(state,false,[],null,false,DateTimeOffset.UtcNow));
@@ -62,10 +75,12 @@ internal static class MapV2Checks
             await Visuals(main,state,directory);
             await host.WaitReadyAsync();renderer=host.V2!;
             await BridgeChecks(renderer,directory);
+            await BrowserPressForwarding(renderer,directory);
             await Lifecycle(main,state,directory);
             await FailureCases(main,directory);
             host.SetRenderer(false);
             await Benchmark(directory);
+            await DeliveryUnderRenderPressure(directory);
             await WithRenderer(directory,"contention",async r=>await MapContentionChecks.RunAsync(main,r,directory,Check));
         }
         catch(Exception error){Check(false,error.ToString());}
@@ -81,6 +96,77 @@ internal static class MapV2Checks
         return failures==0?0:1;
     }
     private static object? Read(object value,string property)=>value.GetType().GetProperty(property)!.GetValue(value);
+    // Routed WPF input, not CDP: removing containment must let ScrollViewer's
+    // left-button handler run again. Physical installed validation remains separate.
+    private static async Task RoutedInputChecks(string directory)
+    {
+        var rows=new List<object>();
+        for(var cycle=0;cycle<3;cycle++)
+        {
+            await using var renderer=new WebMapRenderer(1,Path.Combine(directory,"unused-input-profile"));
+            var outside=new Border();var panel=new StackPanel();panel.Children.Add(renderer.View);panel.Children.Add(outside);
+            var parent=new InputParent{Content=panel};
+            var left=new MouseButtonEventArgs(Mouse.PrimaryDevice,0,MouseButton.Left){RoutedEvent=UIElement.MouseDownEvent};
+            renderer.View.RaiseEvent(left);
+            Check(parent.LeftPresses==0&&left.Handled,$"Map left press cannot trigger parent focus (view {cycle+1})");
+            foreach(var button in new[]{MouseButton.Right,MouseButton.Middle})
+            {
+                var down=new MouseButtonEventArgs(Mouse.PrimaryDevice,0,button){RoutedEvent=UIElement.MouseDownEvent};
+                renderer.View.RaiseEvent(down);
+                Check(!down.Handled,$"Map {button} press routing remains unchanged (view {cycle+1})");
+            }
+            renderer.View.RaiseEvent(new MouseWheelEventArgs(Mouse.PrimaryDevice,0,120){RoutedEvent=UIElement.MouseWheelEvent});
+            Check(parent.Wheels==1,$"Map wheel routing remains unchanged (view {cycle+1})");
+            parent.LeftPresses=0;parent.Wheels=0;
+            outside.RaiseEvent(new MouseButtonEventArgs(Mouse.PrimaryDevice,0,MouseButton.Left){RoutedEvent=UIElement.MouseDownEvent});
+            outside.RaiseEvent(new MouseWheelEventArgs(Mouse.PrimaryDevice,0,-120){RoutedEvent=UIElement.MouseWheelEvent});
+            Check(parent.LeftPresses==1&&parent.Wheels==1,$"Outside-map parent focus and wheel remain reachable (view {cycle+1})");
+            rows.Add(new{cycle,leftHandled=left.Handled,parent.LeftPresses,parent.Wheels});
+            parent.Content=null;panel.Children.Clear();
+        }
+        Write(directory,"routed-input.json",new{rows,scope="Programmatically raised WPF events through actual renderer views; not physical mouse/DPI certification"});
+    }
+    private sealed class InputParent:ScrollViewer
+    {
+        internal int LeftPresses,Wheels;
+        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e){LeftPresses++;base.OnMouseLeftButtonDown(e);}
+        protected override void OnMouseWheel(MouseWheelEventArgs e){Wheels++;base.OnMouseWheel(e);}
+    }
+    internal static async Task<bool> BrowserPressForwarding(WebMapRenderer renderer,string directory)
+    {
+        var view=renderer.View;var initialPoint=Mouse.GetPosition(view);
+        try
+        {
+        SyntheticMapPointer.Move(view,new Point(view.ActualWidth/2,view.ActualHeight/2));
+        var point=Mouse.GetPosition(view);var origin=view.PointToScreen(new(0,0));
+        var inside=point.X>=0&&point.X<view.ActualWidth&&point.Y>=0&&point.Y<view.ActualHeight;
+        Check(inside,"Synthetic WPF pointer is inside the map before move/press");
+        if(!inside)throw new InvalidOperationException("Synthetic pointer report failed; input result would be invalid");
+        view.RaiseEvent(new MouseEventArgs(Mouse.PrimaryDevice,0){RoutedEvent=UIElement.MouseMoveEvent});
+        var before=new{initialPoint=new{x=initialPoint.X,y=initialPoint.Y},point=new{x=point.X,y=point.Y},origin=new{x=origin.X,y=origin.Y},view.ActualWidth,view.ActualHeight,view.IsVisible,view.IsKeyboardFocusWithin,view.Opacity,renderer.Paused,nativeSuspended=renderer.Core.IsSuspended,windowActive=Window.GetWindow(view)?.IsActive};
+        await renderer.Core.ExecuteScriptAsync("window.__s4BoundaryPress=null;document.addEventListener('mousedown',e=>window.__s4BoundaryPress={button:e.button,x:e.clientX,y:e.clientY,trusted:e.isTrusted,at:performance.now()},{capture:true,once:true});");
+        renderer.View.RaiseEvent(new MouseButtonEventArgs(Mouse.PrimaryDevice,0,MouseButton.Left){RoutedEvent=UIElement.MouseDownEvent});
+        var wait=Stopwatch.StartNew();JsonElement result;
+        do
+        {
+            using var read=JsonDocument.Parse(await renderer.Core.ExecuteScriptAsync("window.__s4BoundaryPress"));result=read.RootElement.Clone();
+            if(result.ValueKind==JsonValueKind.Object)break;
+            await Task.Delay(20);
+        }while(wait.ElapsedMilliseconds<1500);
+        var passed=result.ValueKind==JsonValueKind.Object&&result.GetProperty("button").GetInt32()==0;
+        Check(passed,"Contained WPF left press still reaches initialized browser");
+        Check(passed&&result.GetProperty("trusted").GetBoolean()&&result.GetProperty("x").GetDouble()>=0&&result.GetProperty("x").GetDouble()<view.ActualWidth
+            &&result.GetProperty("y").GetDouble()>=0&&result.GetProperty("y").GetDouble()<view.ActualHeight,"Forwarded WPF press is trusted and inside the browser viewport");
+        var browser=await renderer.Core.ExecuteScriptAsync("({hidden:document.hidden,hasFocus:document.hasFocus(),width:innerWidth,height:innerHeight,event:window.__s4BoundaryPress})");
+        Write(directory,"browser-press-forwarding.json",new{passed,before,elapsedMs=wait.Elapsed.TotalMilliseconds,result,browser=JsonDocument.Parse(browser).RootElement.Clone(),scope="Coordinate-bearing WPF input-report move followed by routed down/up; original 1500ms deadline; no global cursor movement, SDK state seeding or CDP mouse injection"});
+        return passed;
+        }
+        finally
+        {
+            view.RaiseEvent(new MouseButtonEventArgs(Mouse.PrimaryDevice,0,MouseButton.Left){RoutedEvent=UIElement.MouseUpEvent});
+            SyntheticMapPointer.Move(view,initialPoint);
+        }
+    }
     internal static async Task PumpChecks(Action<bool,string> check)
     {
         var collector=new SnapshotCollector();var state=Fixture();var metrics=new MapBridgeMetrics();Exception? error=null;
@@ -91,6 +177,38 @@ internal static class MapV2Checks
         pump.Offer(state with{Telemetry=state.Telemetry! with{At=At.AddSeconds(2),LatitudeDegrees=-35.6001}},false);
         await Until(()=>collector.Last!.Sequence>first.Sequence);
         check(error is null&&collector.Last!.Aircraft[0].InterpolationAllowed==false&&collector.Last.Routes.All(r=>r.Kind!=MapRouteKind.ObservedTrack),"Coalesced pause/resume cannot create false observed continuity");
+        for(var i=3;i<=4;i++)
+        {
+            var prior=collector.Last!.Sequence;
+            pump.Offer(state with{Telemetry=state.Telemetry! with{At=At.AddSeconds(i),LatitudeDegrees=-35.6-i*.0001}},false);
+            await Until(()=>collector.Last!.Sequence>prior);
+        }
+        var visible=collector.Last;
+        var priorSegment=visible!.Routes.Single(r=>r.Kind==MapRouteKind.ObservedTrack).Segments.Single();
+        pump.SetVisible(false);
+        for(var i=5;i<20;i++)pump.Offer(state with{Telemetry=state.Telemetry! with{At=At.AddSeconds(i),LatitudeDegrees=-35.6-i*.0001}},false);
+        await Task.Delay(300);
+        check(ReferenceEquals(collector.Last,visible),"Hidden map pump does not project telemetry");
+        pump.SetVisible(true);pump.Offer(state with{Telemetry=state.Telemetry! with{At=At.AddSeconds(20),LatitudeDegrees=-35.602}},false);
+        await Until(()=>collector.Last!.Sequence>visible!.Sequence);
+        check(collector.Last!.Aircraft[0].Position.Latitude==-35.602&&!collector.Last.Aircraft[0].InterpolationAllowed,"Resumed pump preserves sequence and begins fresh observation continuity");
+        check(collector.Last.Routes.SingleOrDefault(r=>r.Kind==MapRouteKind.ObservedTrack)?.Segments.Single().SequenceEqual(priorSegment)==true,"Resumed pump preserves the previously observed trail without joining the hidden interval");
+        var resumedSequence=collector.Last.Sequence;
+        pump.Offer(state with{Telemetry=state.Telemetry! with{At=At.AddSeconds(21),LatitudeDegrees=-35.6021}},false);
+        await Until(()=>collector.Last!.Sequence>resumedSequence);
+        var segments=collector.Last!.Routes.Single(r=>r.Kind==MapRouteKind.ObservedTrack).Segments;
+        check(segments.Length==2&&segments[0].SequenceEqual(priorSegment)&&segments[1].Length==2&&segments[1][0].Latitude==-35.602&&segments[1][1].Latitude==-35.6021,"Post-return observations form a separate segment after the retained trail");
+        // Exercise the publication boundary with a projection that began before
+        // hide/show but completes afterward. Its sequence is newer, so the
+        // renderer's normal sequence check cannot distinguish this stale work.
+        var accepted=collector.Last;
+        var staleProjection=accepted with{Sequence=accepted.Sequence+1};
+        var fields=BindingFlags.Instance|BindingFlags.NonPublic;
+        var inputContinuity=(long)typeof(MapProjectionPump).GetField("continuity",fields)!.GetValue(pump)!;
+        var inputVisibility=(long)typeof(MapProjectionPump).GetField("visibilityContinuity",fields)!.GetValue(pump)!;
+        pump.SetVisible(false);pump.SetVisible(true);
+        typeof(MapProjectionPump).GetMethod("PublishIfCurrent",fields)!.Invoke(pump,[collector,staleProjection,inputContinuity,inputVisibility]);
+        check(ReferenceEquals(accepted,collector.Last),"Projection completed after hide and return cannot publish into the new visibility interval");
     }
     private sealed class SnapshotCollector:IMapRenderer
     {
@@ -147,8 +265,9 @@ internal static class MapV2Checks
         main.OperationsView.LayoutTransform=Transform.Identity;main.UpdateLayout();await Task.Delay(400);
         main.Shell.OpenSearch();await Task.Delay(300);DashboardSmokeTest.Capture(main,Path.Combine(directory,"shell-search-overlay.png"));main.Shell.CloseOverlays();
         main.Shell.ShowUtilities();await Task.Delay(300);DashboardSmokeTest.Capture(main,Path.Combine(directory,"shell-utilities.png"));main.Shell.CloseOverlays();
+        var retained=host.V2;
         main.WindowState=WindowState.Minimized;await Task.Delay(250);
-        Check(host.V2 is null,"Minimized window disposes renderer and its visual mailbox");
+        Check(ReferenceEquals(retained,host.V2)&&host.V2?.Paused==true,"Minimized window retains a paused renderer");
         main.RestoreWindow();await host.WaitReadyAsync();await Task.Delay(500);
         Check(host.V2 is not null,"Map survives minimize/restore without simulator interaction");
         Write(directory,"visual-host.json",new{host="WebView2CompositionControl",dpiMethod="WPF LayoutTransform rendering at 150%/200%; no manual OS monitor change",manualInputOrScreenReaderCertified=false});
@@ -217,7 +336,7 @@ internal static class MapV2Checks
         }
         Write(directory,"benchmark.json",results);
     }
-    private static MapSnapshot Load(long generation,long sequence,int count,double elapsed)
+    internal static MapSnapshot Load(long generation,long sequence,int count,double elapsed)
     {
         var now=DateTimeOffset.UtcNow;
         var aircraft=Enumerable.Range(0,count).Select(i=>new MapAircraft("load-"+i,"SYN"+i,null,new(((i*137.5+elapsed*.03)%340)-170,((i*47.33)%120)-60),35000,(i*37)%360,450,MapEntitySource.Simulated,now,MapReliability.Current,MapAircraftStatus.Airborne,i==0,1,1,true)).ToImmutableArray();
@@ -234,18 +353,19 @@ internal static class MapV2Checks
         var memory=new List<object>();var watch=Stopwatch.StartNew();var epochs=new HashSet<long>();
         for(int i=0;i<12;i++)
         {
-            main.ShowDashboard();host.SetRenderer(true);
+            main.ShowDashboard();if(!host.UseV2)host.SetRenderer(true);
             main.OperationsView.Present(OperationsOverviewQuery.Project(state,false,[],null,false,DateTimeOffset.UtcNow));
             await host.WaitReadyAsync();var r=host.V2!;epochs.Add(r.Epoch);
             await r.Core.ExecuteScriptAsync("document.getElementById('follow').click();document.getElementById('follow').click();");
             main.Width=i%2==0?1366:1920;main.UpdateLayout();await Task.Delay(200);
             memory.Add(new{cycle=i,readyMs=r.Metrics.ReadyMs,hostWorkingSetMiB=Process.GetCurrentProcess().WorkingSet64/1048576d,browserProcesses=r.Environment!.GetProcessInfos().Count});
             main.ShowDispatch();await Task.Delay(100);
-            Check(host.V2 is null,$"Hidden map releases renderer/mailbox in lifecycle cycle {i+1}");
-            // An obsolete renderer can no longer receive selection messages.
+            Check(ReferenceEquals(host.V2,r)&&r.Paused,$"Hidden map retains one paused renderer in lifecycle cycle {i+1}");
+            // Malformed late messages cannot revive or reveal a hidden view.
             r.ReceiveMessage(WebMapRenderer.Origin+"/index.html","{\"schemaVersion\":1,\"type\":\"selection\"}");
+            Check(r.View.Opacity==0,$"Late message cannot expose hidden map in lifecycle cycle {i+1}");
         }
-        Check(epochs.Count==12,"Twelve view recreations use distinct bridge epochs");
+        Check(epochs.Count==1,"Twelve workspace returns retain one bridge epoch");
         Check(baseline==JsonSerializer.Serialize(owner.Snapshot,MapSnapshotValidator.JsonOptions),"Map navigation/recreation leaves authoritative flight snapshot unchanged");
         main.ShowDashboard();host.SetRenderer(true);
         main.OperationsView.Present(OperationsOverviewQuery.Project(state,false,[],null,false,DateTimeOffset.UtcNow));await host.WaitReadyAsync();

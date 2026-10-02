@@ -1,0 +1,202 @@
+[
+  {
+    "title": "FenixA320 CFM SL",
+    "installed": {
+      "AircraftTitle": "FenixA320 CFM SL",
+      "PackageVersion": "2.4.0.4720",
+      "IcaoType": "A320",
+      "PackageName": "fnx-aircraft-320"
+    },
+    "passed": true
+  },
+  {
+    "title": "FenixA320 CFM WF",
+    "installed": {
+      "AircraftTitle": "FenixA320 CFM WF",
+      "PackageVersion": "2.4.0.4720",
+      "IcaoType": "A320",
+      "PackageName": "fnx-aircraft-320"
+    },
+    "passed": true
+  },
+  {
+    "title": "FenixA320 IAE SL",
+    "installed": {
+      "AircraftTitle": "FenixA320 IAE SL",
+      "PackageVersion": "2.4.0.4720",
+      "IcaoType": "A320",
+      "PackageName": "fnx-aircraft-320"
+    },
+    "passed": true
+  },
+  {
+    "title": "FenixA320 IAE WF",
+    "installed": {
+      "AircraftTitle": "FenixA320 IAE WF",
+      "PackageVersion": "2.4.0.4720",
+      "IcaoType": "A320",
+      "PackageName": "fnx-aircraft-320"
+    },
+    "passed": true
+  },
+  {
+    "title": "FenixA319 CFM SL HD",
+    "installed": {
+      "AircraftTitle": "FenixA319 CFM SL HD",
+      "PackageVersion": "2.4.0.4720",
+      "IcaoType": "A319",
+      "PackageName": "fnx-aircraft-319-321"
+    },
+    "passed": true
+  },
+  {
+    "title": "FenixA319 CFM SL SD",
+    "installed": {
+      "AircraftTitle": "FenixA319 CFM SL SD",
+      "PackageVersion": "2.4.0.4720",
+      "IcaoType": "A319",
+      "PackageName": "fnx-aircraft-319-321"
+    },
+    "passed": true
+  },
+  {
+    "title": "FenixA319 CFM WF HD",
+    "installed": {
+      "AircraftTitle": "FenixA319 CFM WF HD",
+      "PackageVersion": "2.4.0.4720",
+      "IcaoType": "A319",
+      "PackageName": "fnx-aircraft-319-321"
+    },
+    "passed": true
+  },
+  {
+    "title": "FenixA319 CFM WF SD",
+    "installed": {
+      "AircraftTitle": "FenixA319 CFM WF SD",
+      "PackageVersion": "2.4.0.4720",
+      "IcaoType": "A319",
+      "PackageName": "fnx-aircraft-319-321"
+    },
+    "passed": true
+  },
+  {
+    "title": "FenixA319 IAE SL HD",
+    "installed": {
+      "AircraftTitle": "FenixA319 IAE SL HD",
+      "PackageVersion": "2.4.0.4720",
+      "IcaoType": "A319",
+      "PackageName": "fnx-aircraft-319-321"
+    },
+    "passed": true
+  },
+  {
+    "title": "FenixA319 IAE SL SD",
+    "installed": {
+      "AircraftTitle": "FenixA319 IAE SL SD",
+      "PackageVersion": "2.4.0.4720",
+      "IcaoType": "A319",
+      "PackageName": "fnx-aircraft-319-321"
+    },
+    "passed": true
+  },
+  {
+    "title": "FenixA319 IAE WF HD",
+    "installed": {
+      "AircraftTitle": "FenixA319 IAE WF HD",
+      "PackageVersion": "2.4.0.4720",
+      "IcaoType": "A319",
+      "PackageName": "fnx-aircraft-319-321"
+    },
+    "passed": true
+  },
+  {
+    "title": "FenixA319 IAE WF SD",
+    "installed": {
+      "AircraftTitle": "FenixA319 IAE WF SD",
+      "PackageVersion": "2.4.0.4720",
+      "IcaoType": "A319",
+      "PackageName": "fnx-aircraft-319-321"
+    },
+    "passed": true
+  },
+  {
+    "title": "FenixA321 CFM SL SC",
+    "installed": {
+      "AircraftTitle": "FenixA321 CFM SL SC",
+      "PackageVersion": "2.4.0.4720",
+      "IcaoType": "A321",
+      "PackageName": "fnx-aircraft-319-321"
+    },
+    "passed": true
+  },
+  {
+    "title": "FenixA321 CFM SL TC",
+    "installed": {
+      "AircraftTitle": "FenixA321 CFM SL TC",
+      "PackageVersion": "2.4.0.4720",
+      "IcaoType": "A321",
+      "PackageName": "fnx-aircraft-319-321"
+    },
+    "passed": true
+  },
+  {
+    "title": "FenixA321 CFM WF SC",
+    "installed": {
+      "AircraftTitle": "FenixA321 CFM WF SC",
+      "PackageVersion": "2.4.0.4720",
+      "IcaoType": "A321",
+      "PackageName": "fnx-aircraft-319-321"
+    },
+    "passed": true
+  },
+  {
+    "title": "FenixA321 CFM WF TC",
+    "installed": {
+      "AircraftTitle": "FenixA321 CFM WF TC",
+      "PackageVersion": "2.4.0.4720",
+      "IcaoType": "A321",
+      "PackageName": "fnx-aircraft-319-321"
+    },
+    "passed": true
+  },
+  {
+    "title": "FenixA321 IAE SL SC",
+    "installed": {
+      "AircraftTitle": "FenixA321 IAE SL SC",
+      "PackageVersion": "2.4.0.4720",
+      "IcaoType": "A321",
+      "PackageName": "fnx-aircraft-319-321"
+    },
+    "passed": true
+  },
+  {
+    "title": "FenixA321 IAE SL TC",
+    "installed": {
+      "AircraftTitle": "FenixA321 IAE SL TC",
+      "PackageVersion": "2.4.0.4720",
+      "IcaoType": "A321",
+      "PackageName": "fnx-aircraft-319-321"
+    },
+    "passed": true
+  },
+  {
+    "title": "FenixA321 IAE WF SC",
+    "installed": {
+      "AircraftTitle": "FenixA321 IAE WF SC",
+      "PackageVersion": "2.4.0.4720",
+      "IcaoType": "A321",
+      "PackageName": "fnx-aircraft-319-321"
+    },
+    "passed": true
+  },
+  {
+    "title": "FenixA321 IAE WF TC",
+    "installed": {
+      "AircraftTitle": "FenixA321 IAE WF TC",
+      "PackageVersion": "2.4.0.4720",
+      "IcaoType": "A321",
+      "PackageName": "fnx-aircraft-319-321"
+    },
+    "passed": true
+  }
+]

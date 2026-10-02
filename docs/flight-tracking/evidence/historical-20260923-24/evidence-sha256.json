@@ -1,0 +1,17 @@
+[
+  {
+    "path": "detail-schemas.json",
+    "bytes": 16934,
+    "sha256": "3775277BD319E4C840A031C0977D664E9F069824CFB714E8977A53E2E77AFBF6"
+  },
+  {
+    "path": "source-sha256.json",
+    "bytes": 1091,
+    "sha256": "C13475C3B98A6471A6F7829D2CF37D842E16A87160486542B3B4B2C9633C5C14"
+  },
+  {
+    "path": "summary.json",
+    "bytes": 113156,
+    "sha256": "4E65154124641CD7C7435F7EE65A41789EBEF7B2D5DFD5D63C9CCDEA8970DA2A"
+  }
+]

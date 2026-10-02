@@ -496,9 +496,9 @@ internal static class Program
         internal TestApplication()
         {
             ShutdownMode = ShutdownMode.OnExplicitShutdown;
-            Resources.MergedDictionaries.Add(new ResourceDictionary { Source = new Uri("pack://application:,,,/Alpha6OPS;component/DashboardStyles.xaml") });
-            Resources.MergedDictionaries.Add(new ResourceDictionary { Source = new Uri("pack://application:,,,/Alpha6OPS;component/SierraDesignTokens.xaml") });
-            Resources.MergedDictionaries.Add(new ResourceDictionary { Source = new Uri("pack://application:,,,/Alpha6OPS;component/SierraComponents.xaml") });
+            Resources.MergedDictionaries.Add(new ResourceDictionary { Source = new Uri("pack://application:,,,/Sierra4;component/DashboardStyles.xaml") });
+            Resources.MergedDictionaries.Add(new ResourceDictionary { Source = new Uri("pack://application:,,,/Sierra4;component/SierraDesignTokens.xaml") });
+            Resources.MergedDictionaries.Add(new ResourceDictionary { Source = new Uri("pack://application:,,,/Sierra4;component/SierraComponents.xaml") });
             Resources["Yellow"] = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(249, 217, 40));
             var text = new Style(typeof(TextBlock)); text.Setters.Add(new Setter(Control.FontFamilyProperty, new System.Windows.Media.FontFamily("Bahnschrift SemiCondensed"))); Resources[typeof(TextBlock)] = text;
             foreach (var (type, key) in new[] { (typeof(Button), "OpsButton"), (typeof(TextBox), "OpsInput"), (typeof(ComboBox), "OpsCombo") })

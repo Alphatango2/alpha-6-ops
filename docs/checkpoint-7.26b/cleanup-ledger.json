@@ -1,0 +1,2423 @@
+{
+  "schema": "sierra4.checkpoint-7.26b.cleanup-ledger.v1",
+  "completedAt": "2026-10-02T09:29:17.6828769-05:00",
+  "repository": "F:/Sierra4-Development",
+  "archiveManifest": {
+    "path": "F:\\Sierra4-Archive\\checkpoint-7.26b-20261002\\archive-manifest.json",
+    "sha256": "8951D5D4EB76530DF6A8F0F2837959E7206A57D266FBDF9FA2E57797965F148D",
+    "verified": true
+  },
+  "preExistingTrackedChanges": {
+    "expected": 43,
+    "matched": 43,
+    "failures": []
+  },
+  "archiveUnitsChecked": 254,
+  "removed": [
+    {
+      "path": "work/activation-smoke-e1647150ab4e473eae2cac829a1ef152",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 5,
+      "bytes": 41605
+    },
+    {
+      "path": "work/activation-smoke-eab2e8a4fc5f4168b3f4492112392210",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 5,
+      "bytes": 41605
+    },
+    {
+      "path": "work/ANG2-review-20260919-210735",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 23,
+      "bytes": 44737518
+    },
+    {
+      "path": "work/checkpoint-7.18a",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 19546,
+      "bytes": 388193386
+    },
+    {
+      "path": "work/checkpoint-7.18b",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 8720,
+      "bytes": 12822513
+    },
+    {
+      "path": "work/checkpoint-7.19",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 2457,
+      "bytes": 83491454
+    },
+    {
+      "path": "work/checkpoint-7.20",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 303,
+      "bytes": 34923317
+    },
+    {
+      "path": "work/checkpoint-7.21",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 2102,
+      "bytes": 143683694
+    },
+    {
+      "path": "work/checkpoint-7.22",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 7800,
+      "bytes": 748743736
+    },
+    {
+      "path": "work/checkpoint-7.23",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1898,
+      "bytes": 168536705
+    },
+    {
+      "path": "work/checkpoint-7.24a",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 9960,
+      "bytes": 1371046705
+    },
+    {
+      "path": "work/checkpoint-7.24a.1",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 7081,
+      "bytes": 729347099
+    },
+    {
+      "path": "work/checkpoint-7.24a.2",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 7746,
+      "bytes": 1323285766
+    },
+    {
+      "path": "work/checkpoint-7.24b",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 3558,
+      "bytes": 743178323
+    },
+    {
+      "path": "work/checkpoint-7.24b-first-paint",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 4784,
+      "bytes": 643527463
+    },
+    {
+      "path": "work/checkpoint-7.24b-first-paint-r2a",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 4317,
+      "bytes": 972185102
+    },
+    {
+      "path": "work/checkpoint-7.24b-input-correction",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 4055,
+      "bytes": 997791024
+    },
+    {
+      "path": "work/checkpoint-7.24b-installation-gate",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 721,
+      "bytes": 651964297
+    },
+    {
+      "path": "work/checkpoint-7.24b-installed-baseline",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 15,
+      "bytes": 90146
+    },
+    {
+      "path": "work/checkpoint-7.24b-layout-oscillation",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 4473,
+      "bytes": 1044653112
+    },
+    {
+      "path": "work/checkpoint-7.24b-physical-input",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 360,
+      "bytes": 67201289
+    },
+    {
+      "path": "work/checkpoint-7.24c",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 104880,
+      "bytes": 8309661380
+    },
+    {
+      "path": "work/checkpoint-7.25",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 27423,
+      "bytes": 1973526996
+    },
+    {
+      "path": "work/checkpoint-7.25a",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 24540,
+      "bytes": 2507879203
+    },
+    {
+      "path": "work/checkpoint1-20260909-145012",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 49,
+      "bytes": 16971692
+    },
+    {
+      "path": "work/checkpoint1-extract-20260909-145341",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 0,
+      "bytes": 0
+    },
+    {
+      "path": "work/checkpoint1-extract-ok-20260909-145450",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 494,
+      "bytes": 200647042
+    },
+    {
+      "path": "work/checkpoint1-extract-verified-20260909-145426",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 0,
+      "bytes": 0
+    },
+    {
+      "path": "work/checkpoint1-final-20260909-145142",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 50,
+      "bytes": 17128335
+    },
+    {
+      "path": "work/checkpoint1-package-20260909-145324",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 50,
+      "bytes": 17137739
+    },
+    {
+      "path": "work/checkpoint1-resolution-20260909-145603",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 52,
+      "bytes": 17948038
+    },
+    {
+      "path": "work/desktop-03-test",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 2,
+      "bytes": 44631
+    },
+    {
+      "path": "work/desktop-04-final",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 3,
+      "bytes": 97235
+    },
+    {
+      "path": "work/desktop-04-test",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 3,
+      "bytes": 94107
+    },
+    {
+      "path": "work/desktop-05-final",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 3,
+      "bytes": 94818
+    },
+    {
+      "path": "work/desktop-05-test",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 3,
+      "bytes": 94603
+    },
+    {
+      "path": "work/desktop-06-test",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 3,
+      "bytes": 97407
+    },
+    {
+      "path": "work/desktop-test",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 2,
+      "bytes": 45413
+    },
+    {
+      "path": "work/flight-lab-package-20260908-120915",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 2,
+      "bytes": 76973
+    },
+    {
+      "path": "work/flight-lab-packaged-20260908-123326",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 2,
+      "bytes": 80620
+    },
+    {
+      "path": "work/flight-lab-packaged-20260908-123354",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 2,
+      "bytes": 80412
+    },
+    {
+      "path": "work/flight-lab-review-20260908-120137",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 2,
+      "bytes": 76908
+    },
+    {
+      "path": "work/flight-lab-review-20260908-120605",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 2,
+      "bytes": 77028
+    },
+    {
+      "path": "work/flight-lab-review-20260908-123225",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 2,
+      "bytes": 80501
+    },
+    {
+      "path": "work/flight-lab-review-current",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 2,
+      "bytes": 79844
+    },
+    {
+      "path": "work/flight-lab-stop-review-20260908-132554",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 2,
+      "bytes": 80548
+    },
+    {
+      "path": "work/flight-test-JST221-20260915",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 12,
+      "bytes": 23489966
+    },
+    {
+      "path": "work/flight-test-JST786-20260916-review",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 24,
+      "bytes": 15661996
+    },
+    {
+      "path": "work/flight-test-QFA124-20260916-review",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 18,
+      "bytes": 23442079
+    },
+    {
+      "path": "work/flight-test-QLK1579-20260917-review-2",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 15,
+      "bytes": 19141332
+    },
+    {
+      "path": "work/git-auth",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 0,
+      "bytes": 0
+    },
+    {
+      "path": "work/git-publish-20260916",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1050,
+      "bytes": 29468066
+    },
+    {
+      "path": "work/historical-flight-reference-20260923-24",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 8018
+    },
+    {
+      "path": "work/icon-smoke-28e3400a19154c93955c4fcd79694b8a",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 8,
+      "bytes": 138284
+    },
+    {
+      "path": "work/import",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 4,
+      "bytes": 38822
+    },
+    {
+      "path": "work/install-7.14-check",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 489,
+      "bytes": 205606393
+    },
+    {
+      "path": "work/installer-7.15-extract",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 489,
+      "bytes": 205659143
+    },
+    {
+      "path": "work/installer-check-f4a77a8624404b7e9cdd28a254e1c1bd",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 486,
+      "bytes": 179488984
+    },
+    {
+      "path": "work/installer-checkpoint2-20260909-151724",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 0,
+      "bytes": 0
+    },
+    {
+      "path": "work/installer-checkpoint2-20260909-151746",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 494,
+      "bytes": 200663938
+    },
+    {
+      "path": "work/installer-checkpoint2-20260909-151802",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 494,
+      "bytes": 200663938
+    },
+    {
+      "path": "work/installer-checkpoint3-20260910-085721",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 494,
+      "bytes": 200865154
+    },
+    {
+      "path": "work/installer-checkpoint3-final-20260910-085901",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 494,
+      "bytes": 200865154
+    },
+    {
+      "path": "work/installer-globe-20260909-153552",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 494,
+      "bytes": 200807298
+    },
+    {
+      "path": "work/installer-raster-globe-20260909-160109",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 494,
+      "bytes": 200851330
+    },
+    {
+      "path": "work/installer-test",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 978,
+      "bytes": 394962034
+    },
+    {
+      "path": "work/JST721-review",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 19,
+      "bytes": 17384399
+    },
+    {
+      "path": "work/JST724-review",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 17,
+      "bytes": 21718493
+    },
+    {
+      "path": "work/jst776-review",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 56,
+      "bytes": 37748280
+    },
+    {
+      "path": "work/log-tests",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 540,
+      "bytes": 336918
+    },
+    {
+      "path": "work/mingit-2.55",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 0,
+      "bytes": 0
+    },
+    {
+      "path": "work/package-0.10-f998ab275b9247ae8c91ebcf967a189e",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 496,
+      "bytes": 180088123
+    },
+    {
+      "path": "work/package-0.18.2-hotfix",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 489,
+      "bytes": 205601066
+    },
+    {
+      "path": "work/package-0.8-c592efb85b554f64a2e922a5e021bc52",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 494,
+      "bytes": 180037975
+    },
+    {
+      "path": "work/package-0.9-c1e5acbd59b74d1d9520fe46a9600586",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 496,
+      "bytes": 180070005
+    },
+    {
+      "path": "work/package-7.13-final",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 493,
+      "bytes": 206040567
+    },
+    {
+      "path": "work/package-final-0.8-d0d2f1fd8d3140eb88977231e500ab14",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 495,
+      "bytes": 180039801
+    },
+    {
+      "path": "work/packaged-desktop-test",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 2,
+      "bytes": 45471
+    },
+    {
+      "path": "work/packaged-smoke-7.14",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 122,
+      "bytes": 38111260
+    },
+    {
+      "path": "work/release-0.12.0-8185fe90",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 420
+    },
+    {
+      "path": "work/replay-0.18.1-packaged",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 6,
+      "bytes": 274953
+    },
+    {
+      "path": "work/replay-0.18.2-packaged",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 6,
+      "bytes": 274953
+    },
+    {
+      "path": "work/replay-7.13",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 6,
+      "bytes": 275792
+    },
+    {
+      "path": "work/replay-7.13-final",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 6,
+      "bytes": 274953
+    },
+    {
+      "path": "work/replay-7.13-packaged",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 6,
+      "bytes": 274953
+    },
+    {
+      "path": "work/replay-7.14",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 7,
+      "bytes": 321047
+    },
+    {
+      "path": "work/replay-7.15",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 8,
+      "bytes": 393382
+    },
+    {
+      "path": "work/replay-7.15-release",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 8,
+      "bytes": 401134
+    },
+    {
+      "path": "work/setup-regression",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 3,
+      "bytes": 898
+    },
+    {
+      "path": "work/simbrief-smoke-cd272d889f204c5ab0917bca4926caca",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 8,
+      "bytes": 137545
+    },
+    {
+      "path": "work/smoke-0.18.1-packaged",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 121,
+      "bytes": 37995893
+    },
+    {
+      "path": "work/smoke-0.18.2-dev",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 6,
+      "bytes": 42191
+    },
+    {
+      "path": "work/smoke-0.18.2-dev2",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 125,
+      "bytes": 38064399
+    },
+    {
+      "path": "work/smoke-0.18.2-packaged",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 126,
+      "bytes": 38046622
+    },
+    {
+      "path": "work/smoke-0.8-cf038e69f25d497884ab9e2ff07c451f",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 6,
+      "bytes": 114665
+    },
+    {
+      "path": "work/smoke-7.12",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 25,
+      "bytes": 12823084
+    },
+    {
+      "path": "work/smoke-7.12b",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 112,
+      "bytes": 37407180
+    },
+    {
+      "path": "work/smoke-7.13-final",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 117,
+      "bytes": 38043396
+    },
+    {
+      "path": "work/smoke-7.13-initial",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 28,
+      "bytes": 14182264
+    },
+    {
+      "path": "work/smoke-7.13-integrated",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 120,
+      "bytes": 38047932
+    },
+    {
+      "path": "work/smoke-7.13-packaged",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 119,
+      "bytes": 38068821
+    },
+    {
+      "path": "work/smoke-7.13-second",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 116,
+      "bytes": 37003248
+    },
+    {
+      "path": "work/smoke-7.14",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 120,
+      "bytes": 38114401
+    },
+    {
+      "path": "work/smoke-7.15-a",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 76,
+      "bytes": 27846850
+    },
+    {
+      "path": "work/smoke-7.15-b",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 80,
+      "bytes": 32757073
+    },
+    {
+      "path": "work/smoke-7.15-c",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 125,
+      "bytes": 38541890
+    },
+    {
+      "path": "work/smoke-7.15-d",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 125,
+      "bytes": 38531660
+    },
+    {
+      "path": "work/smoke-7.15-release",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 124,
+      "bytes": 38555027
+    },
+    {
+      "path": "work/smoke-final-ffd8ca17a746485d8391b6b02b550144",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 7,
+      "bytes": 115492
+    },
+    {
+      "path": "work/tracker-final-37d971c000794cf68844d8fca2249cd2",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 8,
+      "bytes": 132688
+    },
+    {
+      "path": "work/tracker-smoke-c02441e6fccb46e6a3b1f0f0f6af1e28",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 7,
+      "bytes": 116597
+    },
+    {
+      "path": "work/upgrade-0.18.1",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 490,
+      "bytes": 205599035
+    },
+    {
+      "path": "work/upgrade-0.18.2",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 490,
+      "bytes": 205601098
+    },
+    {
+      "path": "work/upgrade-debug-b962e53fc24c49409d534e3ffe8853b7",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 3,
+      "bytes": 630
+    },
+    {
+      "path": "work/upgrade-tests-0f7be9355cea4c178f767c8d4eb1daf0",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 3,
+      "bytes": 41
+    },
+    {
+      "path": "work/workspace-relocation",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 509,
+      "bytes": 136793176
+    },
+    {
+      "path": "work/analyze_jst724_metrics.py",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 3374
+    },
+    {
+      "path": "work/analyze_jst724_schema.py",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 786
+    },
+    {
+      "path": "work/analyze_logs.py",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 2885
+    },
+    {
+      "path": "work/checkpoint-7.18b-attachment-build.log",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 627
+    },
+    {
+      "path": "work/checkpoint-7.18b-attachment-green.log",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 4042
+    },
+    {
+      "path": "work/checkpoint-7.18b-build.log",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 863
+    },
+    {
+      "path": "work/checkpoint-7.18b-complete.log",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 3790
+    },
+    {
+      "path": "work/checkpoint-7.18b-core.log",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 6961
+    },
+    {
+      "path": "work/checkpoint-7.18b-first.log",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 3689
+    },
+    {
+      "path": "work/checkpoint-7.18b-full-final.log",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 3790
+    },
+    {
+      "path": "work/checkpoint-7.18b-full-first.log",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 98
+    },
+    {
+      "path": "work/checkpoint-7.18b-full-second.log",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 3790
+    },
+    {
+      "path": "work/checkpoint-7.18b-palette-build.log",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 627
+    },
+    {
+      "path": "work/checkpoint-7.18b-palette-green.log",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 4042
+    },
+    {
+      "path": "work/checkpoint-7.18b-pending-green-build.log",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 627
+    },
+    {
+      "path": "work/checkpoint-7.18b-pending-green.log",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 4042
+    },
+    {
+      "path": "work/checkpoint-7.18b-pending-red-build.log",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 627
+    },
+    {
+      "path": "work/checkpoint-7.18b-pending-red.log",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 4042
+    },
+    {
+      "path": "work/checkpoint-7.18b-reattach-green.log",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 3885
+    },
+    {
+      "path": "work/checkpoint-7.18b-reattach-red.log",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 3885
+    },
+    {
+      "path": "work/checkpoint-7.18b-red.log",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 3541
+    },
+    {
+      "path": "work/checkpoint-7.18b-reviewed-final.log",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 98
+    },
+    {
+      "path": "work/checkpoint-7.18b-verified.log",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 98
+    },
+    {
+      "path": "work/checkpoint-7.19-final-suite.log",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 467
+    },
+    {
+      "path": "work/checkpoint-7.19-full-suite.log",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 98
+    },
+    {
+      "path": "work/checkpoint-7.19-migration-build.log",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 545
+    },
+    {
+      "path": "work/checkpoint-7.19-migration-final.log",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 4301
+    },
+    {
+      "path": "work/checkpoint-7.19-red-build.log",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 627
+    },
+    {
+      "path": "work/checkpoint-7.19-red.log",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 4158
+    },
+    {
+      "path": "work/checkpoint-7.19-resume-build.log",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 627
+    },
+    {
+      "path": "work/checkpoint-7.19-shell-build.log",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 545
+    },
+    {
+      "path": "work/checkpoint-7.19-smoke-1.log",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 0
+    },
+    {
+      "path": "work/checkpoint-7.19-verified-suite.log",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 3863
+    },
+    {
+      "path": "work/checkpoint-7.20-build-1.log",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 21981
+    },
+    {
+      "path": "work/checkpoint-7.20-build-2.log",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 863
+    },
+    {
+      "path": "work/checkpoint-7.20-build-3.log",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 863
+    },
+    {
+      "path": "work/checkpoint-7.20-build-final.log",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 863
+    },
+    {
+      "path": "work/checkpoint-7.20-final-suite.log",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 3863
+    },
+    {
+      "path": "work/checkpoint-7.20-full-suite.log",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 3863
+    },
+    {
+      "path": "work/checkpoint-7.20-integrate.py",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 5533
+    },
+    {
+      "path": "work/checkpoint-7.20-polish-2-build.log",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 1358
+    },
+    {
+      "path": "work/checkpoint-7.20-polish-build.log",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 863
+    },
+    {
+      "path": "work/checkpoint-7.20-red-build.log",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 863
+    },
+    {
+      "path": "work/checkpoint-7.20-tests.py",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 4883
+    },
+    {
+      "path": "work/checkpoint-7.20-verified-suite.log",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 3863
+    },
+    {
+      "path": "work/checkpoint1-extract-20260909-145341.setup-error.txt",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 169
+    },
+    {
+      "path": "work/checkpoint1-extract-verified-20260909-145426.setup-error.txt",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 169
+    },
+    {
+      "path": "work/compiled-a6-icon.png",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 1811
+    },
+    {
+      "path": "work/compose-sierra-shell.py",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 2543
+    },
+    {
+      "path": "work/dotnet-install.ps1",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 76676
+    },
+    {
+      "path": "work/dump_jst724_events.py",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 485
+    },
+    {
+      "path": "work/dump_jst724_states.py",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 345
+    },
+    {
+      "path": "work/engines715.py",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 6607
+    },
+    {
+      "path": "work/extract-718b.py",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 13650
+    },
+    {
+      "path": "work/finish715.py",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 6146
+    },
+    {
+      "path": "work/finish715b.py",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 2565
+    },
+    {
+      "path": "work/gates715.py",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 3474
+    },
+    {
+      "path": "work/icon-layer-0.png",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 40634
+    },
+    {
+      "path": "work/icon-layer-1.png",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 12491
+    },
+    {
+      "path": "work/icon-layer-2.png",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 4651
+    },
+    {
+      "path": "work/icon-layer-3.png",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 3193
+    },
+    {
+      "path": "work/icon-layer-4.png",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 1980
+    },
+    {
+      "path": "work/icon-layer-5.png",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 1466
+    },
+    {
+      "path": "work/icon-layer-6.png",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 930
+    },
+    {
+      "path": "work/implement715.py",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 4613
+    },
+    {
+      "path": "work/installer-checkpoint2-20260909-151724.setup-error.txt",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 169
+    },
+    {
+      "path": "work/jst724_eta_timeline.py",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 703
+    },
+    {
+      "path": "work/make_jst724_sheets.py",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 889
+    },
+    {
+      "path": "work/package-0.18.2-hotfix-probe.json",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 5920
+    },
+    {
+      "path": "work/probe-7.15",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 149
+    },
+    {
+      "path": "work/replay-7.13-input.json",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 1000
+    },
+    {
+      "path": "work/replay-7.14-input.json",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 1182
+    },
+    {
+      "path": "work/replay-7.15-input.json",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 1350
+    },
+    {
+      "path": "work/review_ang2.py",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 3631
+    },
+    {
+      "path": "work/simconnect-7.14.json",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 149
+    },
+    {
+      "path": "work/simconnect-probe.json",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 149
+    },
+    {
+      "path": "work/tests715.py",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 5217
+    },
+    {
+      "path": "outputs/Alpha6OPS-Desktop",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 494,
+      "bytes": 206015362
+    },
+    {
+      "path": "outputs/Alpha6OPS-Desktop-0.18.0",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 493,
+      "bytes": 206040567
+    },
+    {
+      "path": "outputs/Alpha6OPS-Desktop-0.18.1",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 488,
+      "bytes": 205598982
+    },
+    {
+      "path": "outputs/Alpha6OPS-Desktop-0.18.2",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 489,
+      "bytes": 205601066
+    },
+    {
+      "path": "outputs/Alpha6OPS-Desktop-0.19.0",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 489,
+      "bytes": 205606393
+    },
+    {
+      "path": "outputs/Alpha6OPS-Desktop-0.20.0",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 489,
+      "bytes": 205659425
+    },
+    {
+      "path": "outputs/Alpha6OPS-Desktop-0.20.1",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 489,
+      "bytes": 205659941
+    },
+    {
+      "path": "outputs/Alpha6OPS-Desktop-0.20.2",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 489,
+      "bytes": 205664549
+    },
+    {
+      "path": "outputs/Alpha6OPS-Desktop-0.20.3",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 489,
+      "bytes": 205664549
+    },
+    {
+      "path": "outputs/Alpha6OPS-Desktop-0.21.0",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 489,
+      "bytes": 205682123
+    },
+    {
+      "path": "outputs/Alpha6OPS-Desktop-S4-7.24B-20260925-46a1b304c3d6",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 523,
+      "bytes": 451638511
+    },
+    {
+      "path": "outputs/Alpha6OPS-Desktop-S4-7.24B-INPUT-R1-20260925-62b8c871dd05",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 529,
+      "bytes": 507184624
+    },
+    {
+      "path": "outputs/Alpha6OPS-Desktop-S4-7.24B-LAYOUT-R3-20260927-666f495dce7e",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 529,
+      "bytes": 507242486
+    },
+    {
+      "path": "outputs/Alpha6OPS-Desktop-S4-7.24B-VISUAL-R2-20260925-acc4f98f3a08",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 518,
+      "bytes": 451649984
+    },
+    {
+      "path": "outputs/Alpha6OPS-Desktop-S4-7.24B-VISUAL-R2A-20260927-87fa792a7c29",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 529,
+      "bytes": 507237079
+    },
+    {
+      "path": "outputs/Alpha6OPS-Desktop-S4-7.24C-C1-20260928-64e864462ace",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 520,
+      "bytes": 473567625
+    },
+    {
+      "path": "outputs/Alpha6OPS-Desktop-S4-7.24C-FINAL-L1-20260930-318659425b88",
+      "auditClass": "F",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 525,
+      "bytes": 473996936
+    },
+    {
+      "path": "outputs/Alpha6OPS-Desktop-S4-7.24C-T1-20260928-00e3f628b90e",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 526,
+      "bytes": 498332474
+    },
+    {
+      "path": "outputs/Alpha6OPS-Desktop-S4-7.24C-T2-20260929-f421af15530c",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 524,
+      "bytes": 473735425
+    },
+    {
+      "path": "outputs/Alpha6OPS-Desktop-S4-7.25-TRACKING-20260930-e7ee5c18d8ae",
+      "auditClass": "F",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 525,
+      "bytes": 474126031
+    },
+    {
+      "path": "outputs/S4-Fenix-Shutdown-Capture-7.24C-20260928",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 4,
+      "bytes": 16779
+    },
+    {
+      "path": "outputs/Alpha6OPS-0.12.1-SHA256.txt",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 198
+    },
+    {
+      "path": "outputs/Alpha6OPS-0.13.0-SHA256.txt",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 198
+    },
+    {
+      "path": "outputs/Alpha6OPS-0.18.0-SHA256.txt",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 198
+    },
+    {
+      "path": "outputs/Alpha6OPS-0.18.1-SHA256.txt",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 198
+    },
+    {
+      "path": "outputs/Alpha6OPS-0.18.2-SHA256.txt",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 198
+    },
+    {
+      "path": "outputs/Alpha6OPS-0.19.0-SHA256.txt",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 198
+    },
+    {
+      "path": "outputs/Alpha6OPS-0.20.0-SHA256.txt",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 198
+    },
+    {
+      "path": "outputs/Alpha6OPS-0.22.0-SHA256.txt",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 198
+    },
+    {
+      "path": "outputs/Alpha6OPS-Desktop-0.12.1-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 94637688
+    },
+    {
+      "path": "outputs/Alpha6OPS-Desktop-0.13.0-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 94955758
+    },
+    {
+      "path": "outputs/Alpha6OPS-Desktop-0.14.0-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 95532751
+    },
+    {
+      "path": "outputs/Alpha6OPS-Desktop-0.15.0-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 95534744
+    },
+    {
+      "path": "outputs/Alpha6OPS-Desktop-0.16.0-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 97923598
+    },
+    {
+      "path": "outputs/Alpha6OPS-Desktop-0.17.0-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 97926480
+    },
+    {
+      "path": "outputs/Alpha6OPS-Desktop-0.18.0-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 97936295
+    },
+    {
+      "path": "outputs/Alpha6OPS-Desktop-0.18.1-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 97793576
+    },
+    {
+      "path": "outputs/Alpha6OPS-Desktop-0.18.2-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 97794347
+    },
+    {
+      "path": "outputs/Alpha6OPS-Desktop-0.19.0-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 97796873
+    },
+    {
+      "path": "outputs/Alpha6OPS-Desktop-0.20.0-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 95432598
+    },
+    {
+      "path": "outputs/Alpha6OPS-Desktop-0.20.1-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 97815176
+    },
+    {
+      "path": "outputs/Alpha6OPS-Desktop-0.20.2-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 97816168
+    },
+    {
+      "path": "outputs/Alpha6OPS-Desktop-0.20.3-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 97816155
+    },
+    {
+      "path": "outputs/Alpha6OPS-Desktop-0.21.0-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 97822471
+    },
+    {
+      "path": "outputs/Alpha6OPS-Setup-0.12.1.exe",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 95574016
+    },
+    {
+      "path": "outputs/Alpha6OPS-Setup-0.13.0.exe",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 95891968
+    },
+    {
+      "path": "outputs/Alpha6OPS-Setup-0.14.0.exe",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 96468992
+    },
+    {
+      "path": "outputs/Alpha6OPS-Setup-0.15.0.exe",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 96471040
+    },
+    {
+      "path": "outputs/Alpha6OPS-Setup-0.16.0.exe",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 98860032
+    },
+    {
+      "path": "outputs/Alpha6OPS-Setup-0.17.0.exe",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 98862592
+    },
+    {
+      "path": "outputs/Alpha6OPS-Setup-0.18.0.exe",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 98872832
+    },
+    {
+      "path": "outputs/Alpha6OPS-Setup-0.18.1.exe",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 98729472
+    },
+    {
+      "path": "outputs/Alpha6OPS-Setup-0.18.2.exe",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 98730496
+    },
+    {
+      "path": "outputs/Alpha6OPS-Setup-0.19.0.exe",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 98733056
+    },
+    {
+      "path": "outputs/Alpha6OPS-Setup-0.20.0.exe",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 96368640
+    },
+    {
+      "path": "outputs/Alpha6OPS-Setup-0.20.1.exe",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 98751488
+    },
+    {
+      "path": "outputs/Alpha6OPS-Setup-0.20.2.exe",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 98752512
+    },
+    {
+      "path": "outputs/Alpha6OPS-Setup-0.20.3.exe",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 98752512
+    },
+    {
+      "path": "outputs/Alpha6OPS-Setup-0.21.0.exe",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 98758656
+    },
+    {
+      "path": "outputs/Alpha6OPS-v0.16.0-checkpoint-7.11.bundle",
+      "auditClass": "G",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 1,
+      "bytes": 27217925
+    },
+    {
+      "path": "docs/map-v2/evidence",
+      "auditClass": "E",
+      "disposition": "archived-and-removed",
+      "reason": "Explicit archive unit verified against the immutable external manifest.",
+      "files": 338,
+      "bytes": 7972110
+    },
+    {
+      "path": ".work",
+      "auditClass": "H/I after D/E selection",
+      "disposition": "removed-reproducible-or-temporary",
+      "reason": "Delete temporary worktree content after its unique native evidence and manifest units are confirmed in the archive.",
+      "files": 12266,
+      "bytes": 3378642036,
+      "requiredArchiveVerification": "native-evidence"
+    },
+    {
+      "path": "apps/ops-web/dist",
+      "auditClass": "H",
+      "disposition": "removed-reproducible-or-temporary",
+      "reason": "Generated dependency or web build output; reproducible from lockfile and source.",
+      "files": 3,
+      "bytes": 204867,
+      "requiredArchiveVerification": null
+    },
+    {
+      "path": "apps/ops-web/node_modules",
+      "auditClass": "H",
+      "disposition": "removed-reproducible-or-temporary",
+      "reason": "Generated dependency or web build output; reproducible from lockfile and source.",
+      "files": 530,
+      "bytes": 58069509,
+      "requiredArchiveVerification": null
+    },
+    {
+      "path": "prototypes/Sierra4.MapPrototype/bin",
+      "auditClass": "H",
+      "disposition": "removed-reproducible-or-temporary",
+      "reason": "Generated build output; reproducible from committed source.",
+      "files": 25,
+      "bytes": 3691973,
+      "requiredArchiveVerification": null
+    },
+    {
+      "path": "prototypes/Sierra4.MapPrototype/obj",
+      "auditClass": "H",
+      "disposition": "removed-reproducible-or-temporary",
+      "reason": "Generated build output; reproducible from committed source.",
+      "files": 22,
+      "bytes": 372471,
+      "requiredArchiveVerification": null
+    },
+    {
+      "path": "src/Alpha6Ops.Api/bin",
+      "auditClass": "H",
+      "disposition": "removed-reproducible-or-temporary",
+      "reason": "Generated build output; reproducible from committed source.",
+      "files": 18,
+      "bytes": 701206,
+      "requiredArchiveVerification": null
+    },
+    {
+      "path": "src/Alpha6Ops.Api/obj",
+      "auditClass": "H",
+      "disposition": "removed-reproducible-or-temporary",
+      "reason": "Generated build output; reproducible from committed source.",
+      "files": 55,
+      "bytes": 562321,
+      "requiredArchiveVerification": null
+    },
+    {
+      "path": "src/Alpha6Ops.Core/bin",
+      "auditClass": "H",
+      "disposition": "removed-reproducible-or-temporary",
+      "reason": "Generated build output; reproducible from committed source.",
+      "files": 6,
+      "bytes": 277840,
+      "requiredArchiveVerification": null
+    },
+    {
+      "path": "src/Alpha6Ops.Core/obj",
+      "auditClass": "H",
+      "disposition": "removed-reproducible-or-temporary",
+      "reason": "Generated build output; reproducible from committed source.",
+      "files": 31,
+      "bytes": 504773,
+      "requiredArchiveVerification": null
+    },
+    {
+      "path": "src/Alpha6Ops.Desktop/bin",
+      "auditClass": "H",
+      "disposition": "removed-reproducible-or-temporary",
+      "reason": "Generated build output; reproducible from committed source.",
+      "files": 2994,
+      "bytes": 462924770,
+      "requiredArchiveVerification": null
+    },
+    {
+      "path": "src/Alpha6Ops.Desktop/obj",
+      "auditClass": "H",
+      "disposition": "removed-reproducible-or-temporary",
+      "reason": "Generated build output; reproducible from committed source.",
+      "files": 2654,
+      "bytes": 195790123,
+      "requiredArchiveVerification": null
+    },
+    {
+      "path": "src/Alpha6Ops.FlightLab/bin",
+      "auditClass": "H",
+      "disposition": "removed-reproducible-or-temporary",
+      "reason": "Generated build output; reproducible from committed source.",
+      "files": 12,
+      "bytes": 901954,
+      "requiredArchiveVerification": null
+    },
+    {
+      "path": "src/Alpha6Ops.FlightLab/obj",
+      "auditClass": "H",
+      "disposition": "removed-reproducible-or-temporary",
+      "reason": "Generated build output; reproducible from committed source.",
+      "files": 50,
+      "bytes": 1365475,
+      "requiredArchiveVerification": null
+    },
+    {
+      "path": "src/Alpha6Ops.Pilot/bin",
+      "auditClass": "H",
+      "disposition": "removed-reproducible-or-temporary",
+      "reason": "Generated build output; reproducible from committed source.",
+      "files": 14,
+      "bytes": 643080,
+      "requiredArchiveVerification": null
+    },
+    {
+      "path": "src/Alpha6Ops.Pilot/obj",
+      "auditClass": "H",
+      "disposition": "removed-reproducible-or-temporary",
+      "reason": "Generated build output; reproducible from committed source.",
+      "files": 39,
+      "bytes": 470090,
+      "requiredArchiveVerification": null
+    },
+    {
+      "path": "tests/Alpha6Ops.MapBridgeChecks/bin",
+      "auditClass": "H",
+      "disposition": "removed-reproducible-or-temporary",
+      "reason": "Generated build output; reproducible from committed source.",
+      "files": 5,
+      "bytes": 193667,
+      "requiredArchiveVerification": null
+    },
+    {
+      "path": "tests/Alpha6Ops.MapBridgeChecks/obj",
+      "auditClass": "H",
+      "disposition": "removed-reproducible-or-temporary",
+      "reason": "Generated build output; reproducible from committed source.",
+      "files": 20,
+      "bytes": 259586,
+      "requiredArchiveVerification": null
+    },
+    {
+      "path": "tests/Alpha6Ops.MigrationChecks/bin",
+      "auditClass": "H",
+      "disposition": "removed-reproducible-or-temporary",
+      "reason": "Generated build output; reproducible from committed source.",
+      "files": 61,
+      "bytes": 85033148,
+      "requiredArchiveVerification": null
+    },
+    {
+      "path": "tests/Alpha6Ops.MigrationChecks/obj",
+      "auditClass": "H",
+      "disposition": "removed-reproducible-or-temporary",
+      "reason": "Generated build output; reproducible from committed source.",
+      "files": 37,
+      "bytes": 707980,
+      "requiredArchiveVerification": null
+    },
+    {
+      "path": "tests/Alpha6Ops.RecoveryChecks/bin",
+      "auditClass": "H",
+      "disposition": "removed-reproducible-or-temporary",
+      "reason": "Generated build output; reproducible from committed source.",
+      "files": 42,
+      "bytes": 57877293,
+      "requiredArchiveVerification": null
+    },
+    {
+      "path": "tests/Alpha6Ops.RecoveryChecks/obj",
+      "auditClass": "H",
+      "disposition": "removed-reproducible-or-temporary",
+      "reason": "Generated build output; reproducible from committed source.",
+      "files": 22,
+      "bytes": 526511,
+      "requiredArchiveVerification": null
+    },
+    {
+      "path": "tests/Alpha6Ops.Tests/bin",
+      "auditClass": "H",
+      "disposition": "removed-reproducible-or-temporary",
+      "reason": "Generated build output; reproducible from committed source.",
+      "files": 14,
+      "bytes": 765820,
+      "requiredArchiveVerification": null
+    },
+    {
+      "path": "tests/Alpha6Ops.Tests/obj",
+      "auditClass": "H",
+      "disposition": "removed-reproducible-or-temporary",
+      "reason": "Generated build output; reproducible from committed source.",
+      "files": 39,
+      "bytes": 620976,
+      "requiredArchiveVerification": null
+    },
+    {
+      "path": "work/checkpoint-7.26b-baseline-20261002",
+      "auditClass": "I",
+      "disposition": "removed-reproducible-or-temporary",
+      "reason": "Checkpoint 7.26B baseline or focused diagnostic output created during this run; reproducible and no longer needed.",
+      "files": 5,
+      "bytes": 283373,
+      "requiredArchiveVerification": null
+    },
+    {
+      "path": "work/checkpoint-7.26b-baseline-portable-20261002",
+      "auditClass": "I",
+      "disposition": "removed-reproducible-or-temporary",
+      "reason": "Checkpoint 7.26B baseline or focused diagnostic output created during this run; reproducible and no longer needed.",
+      "files": 4430,
+      "bytes": 28012752,
+      "requiredArchiveVerification": null
+    },
+    {
+      "path": "work/checkpoint-7.26b-debug-recovery-1",
+      "auditClass": "I",
+      "disposition": "removed-reproducible-or-temporary",
+      "reason": "Checkpoint 7.26B baseline or focused diagnostic output created during this run; reproducible and no longer needed.",
+      "files": 2,
+      "bytes": 2738,
+      "requiredArchiveVerification": null
+    },
+    {
+      "path": "work/checkpoint-7.26b-debug-recovery-10",
+      "auditClass": "I",
+      "disposition": "removed-reproducible-or-temporary",
+      "reason": "Checkpoint 7.26B baseline or focused diagnostic output created during this run; reproducible and no longer needed.",
+      "files": 2,
+      "bytes": 2739,
+      "requiredArchiveVerification": null
+    },
+    {
+      "path": "work/checkpoint-7.26b-debug-recovery-11",
+      "auditClass": "I",
+      "disposition": "removed-reproducible-or-temporary",
+      "reason": "Checkpoint 7.26B baseline or focused diagnostic output created during this run; reproducible and no longer needed.",
+      "files": 2,
+      "bytes": 2738,
+      "requiredArchiveVerification": null
+    },
+    {
+      "path": "work/checkpoint-7.26b-debug-recovery-2",
+      "auditClass": "I",
+      "disposition": "removed-reproducible-or-temporary",
+      "reason": "Checkpoint 7.26B baseline or focused diagnostic output created during this run; reproducible and no longer needed.",
+      "files": 2,
+      "bytes": 2739,
+      "requiredArchiveVerification": null
+    },
+    {
+      "path": "work/checkpoint-7.26b-debug-recovery-3",
+      "auditClass": "I",
+      "disposition": "removed-reproducible-or-temporary",
+      "reason": "Checkpoint 7.26B baseline or focused diagnostic output created during this run; reproducible and no longer needed.",
+      "files": 2,
+      "bytes": 2739,
+      "requiredArchiveVerification": null
+    },
+    {
+      "path": "work/checkpoint-7.26b-debug-recovery-4",
+      "auditClass": "I",
+      "disposition": "removed-reproducible-or-temporary",
+      "reason": "Checkpoint 7.26B baseline or focused diagnostic output created during this run; reproducible and no longer needed.",
+      "files": 2,
+      "bytes": 2738,
+      "requiredArchiveVerification": null
+    },
+    {
+      "path": "work/checkpoint-7.26b-debug-recovery-5",
+      "auditClass": "I",
+      "disposition": "removed-reproducible-or-temporary",
+      "reason": "Checkpoint 7.26B baseline or focused diagnostic output created during this run; reproducible and no longer needed.",
+      "files": 2,
+      "bytes": 2738,
+      "requiredArchiveVerification": null
+    },
+    {
+      "path": "work/checkpoint-7.26b-debug-recovery-6",
+      "auditClass": "I",
+      "disposition": "removed-reproducible-or-temporary",
+      "reason": "Checkpoint 7.26B baseline or focused diagnostic output created during this run; reproducible and no longer needed.",
+      "files": 2,
+      "bytes": 2739,
+      "requiredArchiveVerification": null
+    },
+    {
+      "path": "work/checkpoint-7.26b-debug-recovery-7",
+      "auditClass": "I",
+      "disposition": "removed-reproducible-or-temporary",
+      "reason": "Checkpoint 7.26B baseline or focused diagnostic output created during this run; reproducible and no longer needed.",
+      "files": 2,
+      "bytes": 2738,
+      "requiredArchiveVerification": null
+    },
+    {
+      "path": "work/checkpoint-7.26b-debug-recovery-8",
+      "auditClass": "I",
+      "disposition": "removed-reproducible-or-temporary",
+      "reason": "Checkpoint 7.26B baseline or focused diagnostic output created during this run; reproducible and no longer needed.",
+      "files": 2,
+      "bytes": 2739,
+      "requiredArchiveVerification": null
+    },
+    {
+      "path": "work/checkpoint-7.26b-debug-recovery-9",
+      "auditClass": "I",
+      "disposition": "removed-reproducible-or-temporary",
+      "reason": "Checkpoint 7.26B baseline or focused diagnostic output created during this run; reproducible and no longer needed.",
+      "files": 2,
+      "bytes": 2739,
+      "requiredArchiveVerification": null
+    },
+    {
+      "path": "work/dashboard-review",
+      "auditClass": "I",
+      "disposition": "removed-reproducible-or-temporary",
+      "reason": "Delete all dashboard review copies after the representative audited trace is confirmed in the archive.",
+      "files": 7590,
+      "bytes": 2218169562,
+      "requiredArchiveVerification": "historical-traces/dashboard-review/20260930-141916-6cd35877"
+    }
+  ],
+  "totals": {
+    "targets": 291,
+    "files": 302622,
+    "bytes": 44207965999
+  },
+  "frozenCandidate": {
+    "identity": "S4-7.25A-A350-20261001-6020896a402b",
+    "declared": 531,
+    "verified": 531,
+    "failures": []
+  },
+  "replayFixtures": {
+    "declared": 16,
+    "verified": 16,
+    "failures": []
+  },
+  "postPackagingCleanup": {
+    "completedAt": "2026-10-02T09:56:12.8347654-05:00",
+    "verification": "Generic 0.22 payload, ZIP and installer were byte-identical to the retained 7.25A frozen candidate before removal.",
+    "removed": [
+      {
+        "path": "outputs/Alpha6OPS-Desktop-0.22.0",
+        "files": 514,
+        "bytes": 237381924,
+        "retainedCopy": "outputs/Alpha6OPS-Desktop-S4-7.25A-A350-20261001-6020896a402b/portable"
+      },
+      {
+        "path": "outputs/Alpha6OPS-Desktop-0.22.0-win-x64.zip",
+        "files": 1,
+        "bytes": 106930051,
+        "retainedCopy": "outputs/Alpha6OPS-Desktop-S4-7.25A-A350-20261001-6020896a402b/Alpha6OPS-Desktop-0.22.0-7.25A-A350-ENDURANCE-win-x64.zip"
+      },
+      {
+        "path": "outputs/Alpha6OPS-Setup-0.22.0.exe",
+        "files": 1,
+        "bytes": 107866112,
+        "retainedCopy": "outputs/Alpha6OPS-Desktop-S4-7.25A-A350-20261001-6020896a402b/Alpha6OPS-Setup-0.22.0-7.25A-A350-ENDURANCE.exe"
+      }
+    ]
+  }
+}

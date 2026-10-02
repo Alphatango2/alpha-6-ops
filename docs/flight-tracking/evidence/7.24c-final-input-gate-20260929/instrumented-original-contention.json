@@ -1,0 +1,120 @@
+{
+  "isolatedDirectory": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\input-gate-20260929\\instrumented-original\\contention-e841e215bba94c8fb1289c3bf153ea1b",
+  "sampleCount": 395,
+  "baseline": {
+    "sampleCount": 395,
+    "timelineHash": "F692AA24038A8C7B07092B4A8120796E383639ECA134B64738381EF7A807BEB6",
+    "eventHash": "D1B767F811610F83F7CFEEFB725401F136D568D525BAB5B20AD2DEC51A6A6B51",
+    "eventCount": 27,
+    "phase": "Complete",
+    "phaseEvents": 4,
+    "pirepEligible": true,
+    "submitted": true,
+    "durable": true,
+    "historyHash": "19C938ABD325BF2D7F4135DDF368A29F6DC1CC8FF51C0D1B3178DB2B85B11A1E",
+    "pirepHash": "D5E21D014AC687B229C0FC583C0A355BDDB194B20DA1F94736B7DC681515EB9A",
+    "generationUnchanged": true,
+    "samplesDuringStall": 0,
+    "browserStallMs": 0,
+    "feedMs": 7947.9969,
+    "heartbeatCount": 120,
+    "heartbeatMaxMs": 183.8955,
+    "projected": 0,
+    "visualCoalesced": 0,
+    "projectionError": null,
+    "mapMetrics": null,
+    "operationalHash": "D1AF1AE7EF03D24D9B69959F37534BAA70474CDD9D030C9358201DCF379A9221",
+    "recoveryHash": "8ABF06AFE9D27AC6EB26822A343798287AFECEEE4352786A473D3F07FB7A944A",
+    "recoveryIdentityValid": true
+  },
+  "stressed": {
+    "sampleCount": 395,
+    "timelineHash": "F692AA24038A8C7B07092B4A8120796E383639ECA134B64738381EF7A807BEB6",
+    "eventHash": "D1B767F811610F83F7CFEEFB725401F136D568D525BAB5B20AD2DEC51A6A6B51",
+    "eventCount": 27,
+    "phase": "Complete",
+    "phaseEvents": 4,
+    "pirepEligible": true,
+    "submitted": true,
+    "durable": true,
+    "historyHash": "19C938ABD325BF2D7F4135DDF368A29F6DC1CC8FF51C0D1B3178DB2B85B11A1E",
+    "pirepHash": "D5E21D014AC687B229C0FC583C0A355BDDB194B20DA1F94736B7DC681515EB9A",
+    "generationUnchanged": true,
+    "samplesDuringStall": 50,
+    "browserStallMs": 1000,
+    "feedMs": 7902.4027,
+    "heartbeatCount": 135,
+    "heartbeatMaxMs": 134.1688,
+    "projected": 40,
+    "visualCoalesced": 361,
+    "projectionError": null,
+    "mapMetrics": {
+      "produced": 40,
+      "offered": 40,
+      "coalesced": 6,
+      "acknowledged": 34,
+      "pending": false,
+      "rejected": 0,
+      "lastPayloadBytes": 2113,
+      "readyMs": 590.3475,
+      "projectionQueue": {
+        "offered": 395,
+        "coalesced": 355,
+        "consumed": 40,
+        "pending": false
+      },
+      "projectionMs": {
+        "count": 40,
+        "mean": 0.04126999999999999,
+        "p50": 0.0374,
+        "p95": 0.0695,
+        "p99": 0.0747,
+        "max": 0.0776
+      },
+      "serializationMs": {
+        "count": 34,
+        "mean": 0.05316176470588235,
+        "p50": 0.0526,
+        "p95": 0.0617,
+        "p99": 0.0656,
+        "max": 0.0775
+      },
+      "dispatcherQueueMs": {
+        "count": 34,
+        "mean": 0.03731176470588235,
+        "p50": 0.0362,
+        "p95": 0.0423,
+        "p99": 0.0441,
+        "max": 0.0572
+      },
+      "postMs": {
+        "count": 34,
+        "mean": 0.10389117647058822,
+        "p50": 0.1036,
+        "p95": 0.121,
+        "p99": 0.1224,
+        "max": 0.1309
+      },
+      "acknowledgmentMs": {
+        "count": 34,
+        "mean": 42.31256176470588,
+        "p50": 0.4605,
+        "p95": 0.552,
+        "p99": 0.6057,
+        "max": 1423.3951
+      },
+      "postToAcknowledgmentMs": {
+        "count": 34,
+        "mean": 42.27538529411765,
+        "p50": 0.4246,
+        "p95": 0.5098,
+        "p99": 0.5704,
+        "max": 1423.363
+      }
+    },
+    "operationalHash": "D1AF1AE7EF03D24D9B69959F37534BAA70474CDD9D030C9358201DCF379A9221",
+    "recoveryHash": "8ABF06AFE9D27AC6EB26822A343798287AFECEEE4352786A473D3F07FB7A944A",
+    "recoveryIdentityValid": true
+  },
+  "limitations": "Diagnostic source feeds production connection callbacks at accelerated cadence. Actual native SimConnect is not exercised. One complete flight per arm and a one-second browser stall are bounded evidence, not a long-run contention guarantee. History equality excludes database IDs, recording wall-clock times, journal paths and PIREP submittedUtc; simulator times and event payloads are compared. Recovery equality normalizes a completed history ID only after verifying that it identifies that run\u0027s sole Complete live flight; all other recovery fields remain compared."
+}

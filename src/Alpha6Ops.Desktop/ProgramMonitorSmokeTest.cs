@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Text.Json;
@@ -92,6 +93,65 @@ internal static class ProgramMonitorSmokeTest
         using (var stopped = JsonDocument.Parse(File.ReadAllText(Path.Combine(directory, "program-status.json"))))
             Check(!stopped.RootElement.GetProperty("running").GetBoolean() && stopped.RootElement.GetProperty("reason").GetString() == "smoke_stop_in_flight", "stopped status remains final after active worker finishes");
         using (var reopened = new LogFileDatabase(directory)) Check(reopened.ReadRecent().Count == 1, "shutdown releases database after durable refresh");
+        var replacement=await ReplacementBehavior(outputDirectory);
+        File.WriteAllText(Path.Combine(outputDirectory,"program-status-replacement.json"),JsonSerializer.Serialize(replacement,new JsonSerializerOptions{WriteIndented=true}));
+        Check(replacement.TransientStopped,"released transient status lock publishes the final stopped marker");
+        Check(replacement.HeldOldFilePreserved&&replacement.HeldBounded&&replacement.HeldReportObserved,
+            "bounded held-lock failure preserves the old complete file, returns within two seconds and emits one five-attempt diagnostic");
+        Check(replacement.ReadOnlyOneAttempt,"a read-only status target fails permanently after one replacement attempt");
+        Check(replacement.StressComplete,"500 atomic replacements remain complete JSON under concurrent read/delete sharing");
         File.WriteAllText(Path.Combine(outputDirectory, "monitor-lifecycle-smoke.json"), JsonSerializer.Serialize(new { passed = true, count = checks.Count, checks }, new JsonSerializerOptions { WriteIndented = true }));
     }
+
+    private static async Task<ReplacementResult> ReplacementBehavior(string outputDirectory)
+    {
+        var transientRoot=Path.Combine(outputDirectory,"monitor-status-transient");var transientLogs=Path.Combine(transientRoot,"TestLogs");Directory.CreateDirectory(transientLogs);
+        bool transientStopped;long transientElapsedMs;
+        using(var transient=new ProgramMonitor(transientLogs,_=>{},transientRoot))
+        {
+            await transient.RefreshNowAsync();var target=Path.Combine(transientRoot,"program-status.json");
+            using var held=new FileStream(target,FileMode.Open,FileAccess.Read,FileShare.Read);
+            var release=Task.Run(()=>{Thread.Sleep(30);held.Dispose();});var transientWatch=Stopwatch.StartNew();transient.Stop("transient_lock");transientWatch.Stop();transientElapsedMs=transientWatch.ElapsedMilliseconds;await release;
+            using var document=JsonDocument.Parse(File.ReadAllText(target));transientStopped=!document.RootElement.GetProperty("running").GetBoolean();
+        }
+        var heldRoot=Path.Combine(outputDirectory,"monitor-status-held");var heldLogs=Path.Combine(heldRoot,"TestLogs");Directory.CreateDirectory(heldLogs);
+        bool oldPreserved,bounded,reportObserved;var heldAttempts=0;var heldHResult=0;long heldElapsedMs;
+        using(var permanent=new ProgramMonitor(heldLogs,_=>{},heldRoot))
+        {
+            await permanent.RefreshNowAsync();var target=Path.Combine(heldRoot,"program-status.json");var before=File.ReadAllBytes(target);
+            using var held=new FileStream(target,FileMode.Open,FileAccess.Read,FileShare.Read);var watch=Stopwatch.StartNew();
+            permanent.Stop("permanent_held_lock");watch.Stop();heldElapsedMs=watch.ElapsedMilliseconds;
+            oldPreserved=before.SequenceEqual(File.ReadAllBytes(target));bounded=watch.Elapsed<TimeSpan.FromSeconds(2);
+            var reports=Directory.Exists(Path.Combine(heldRoot,"CrashReports"))?Directory.GetFiles(Path.Combine(heldRoot,"CrashReports"),"Alpha6OPS-crash-*.json"):[];
+            if(reports.Length==1)
+            {
+                using var report=JsonDocument.Parse(File.ReadAllText(reports[0]));var root=report.RootElement;
+                heldAttempts=root.GetProperty("extra").GetProperty("attempts").GetInt32();heldHResult=root.GetProperty("extra").GetProperty("hresult").GetInt32();
+                reportObserved=root.GetProperty("source").GetString()=="program_status_stop"&&root.GetProperty("extra").GetProperty("stage").GetString()=="replace"&&heldAttempts==5;
+            }
+            else reportObserved=false;
+        }
+        var readOnlyRoot=Path.Combine(outputDirectory,"monitor-status-read-only");Directory.CreateDirectory(readOnlyRoot);var readOnlyPath=Path.Combine(readOnlyRoot,"program-status.json");
+        var readOnlyStore=new ProgramStatusStore(readOnlyPath);readOnlyStore.Write(new{sequence=0});File.SetAttributes(readOnlyPath,FileAttributes.ReadOnly);bool readOnlyOneAttempt=false;var readOnlyAttempts=0;var readOnlyHResult=0;
+        try{readOnlyStore.Write(new{sequence=1});}
+        catch(Exception error){readOnlyAttempts=error.Data["StatusAttempts"] is int attempts?attempts:0;readOnlyHResult=error.HResult;readOnlyOneAttempt=error.Data["StatusStage"] as string=="replace"&&readOnlyAttempts==1;}
+        finally{File.SetAttributes(readOnlyPath,FileAttributes.Normal);}
+        var stressRoot=Path.Combine(outputDirectory,"monitor-status-stress");Directory.CreateDirectory(stressRoot);var stressStore=new ProgramStatusStore(Path.Combine(stressRoot,"program-status.json"));stressStore.Write(new{sequence=0,payload=new string('X',1024)});
+        var done=0;var parsed=0;var parseFailures=0;var reader=Task.Run(()=>
+        {
+            while(Volatile.Read(ref done)==0)
+            {
+                try{using var document=stressStore.Read();if(document is null||!document.RootElement.TryGetProperty("sequence",out _))Interlocked.Increment(ref parseFailures);else Interlocked.Increment(ref parsed);}
+                catch{Interlocked.Increment(ref parseFailures);}
+            }
+        });
+        for(var sequence=1;sequence<=500;sequence++)stressStore.Write(new{sequence,payload=new string('X',1024)});
+        Volatile.Write(ref done,1);await reader;using var final=stressStore.Read();
+        var stressComplete=parsed>0&&parseFailures==0&&final?.RootElement.GetProperty("sequence").GetInt32()==500;
+        return new(transientStopped,transientElapsedMs,oldPreserved,bounded,reportObserved,heldAttempts,heldElapsedMs,heldHResult,
+            readOnlyOneAttempt,readOnlyAttempts,readOnlyHResult,stressComplete,parsed,parseFailures);
+    }
+    private sealed record ReplacementResult(bool TransientStopped,long TransientElapsedMs,bool HeldOldFilePreserved,bool HeldBounded,bool HeldReportObserved,
+        int HeldAttempts,long HeldElapsedMs,int HeldHResult,bool ReadOnlyOneAttempt,int ReadOnlyAttempts,int ReadOnlyHResult,
+        bool StressComplete,int StressReads,int StressFailures);
 }

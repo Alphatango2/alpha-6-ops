@@ -1,0 +1,23 @@
+{
+  "id": "S4-Fenix-Shutdown-Capture-7.24C-20260928",
+  "frozenUtc": "2026-09-28T20:59:42.4730723Z",
+  "purpose": "Parked read-only signal capture; native capability unvalidated",
+  "nativeCaptureRun": false,
+  "files": [
+    {
+      "name": "capture_fenix_shutdown.py",
+      "sha256": "678DEE4C8EB3B64735A4F1EC4055AEC55743E7B913942C75E7E798756F4BB520",
+      "bytes": 11824
+    },
+    {
+      "name": "README.md",
+      "sha256": "FCE1F0B6131A4259BADDC80FBBC4C95632BE351E9CFA45963815143396DEC55C",
+      "bytes": 2950
+    },
+    {
+      "name": "Start Capture.cmd",
+      "sha256": "6C8F4FBD7314C0BBD63D40CAD76A293436C0B8E254B229062999E065BD1AB967",
+      "bytes": 1298
+    }
+  ]
+}

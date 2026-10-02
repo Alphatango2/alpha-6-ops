@@ -1,0 +1,7 @@
+{
+  "existingFilesChanged": [
+    "src\\Alpha6Ops.Desktop\\MapV2\\MapV2Checks.cs"
+  ],
+  "newDiagnosticHelper": "src/Alpha6Ops.Desktop/MapV2/SyntheticMapPointer.cs",
+  "productionBehaviorChanged": false
+}

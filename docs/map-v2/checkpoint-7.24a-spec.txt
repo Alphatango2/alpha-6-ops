@@ -1,0 +1,706 @@
+CHECKPOINT 7.24A — MAP V2 AUTOMATED PERFORMANCE HARDENING & DEFAULT-ENABLE READINESS
+
+BASELINE
+
+Checkpoint 7.23 is complete and committed as:
+
+020bda9
+
+Checkpoint 7.23 closed the characterized flight-recovery persistence blocker discovered during 7.22.
+
+Verified baseline:
+
+- Production build/package: PASS
+- 2,025 / 2,025 executed checks passed
+- 0 failed
+- 2 native simulator checks unavailable
+- 9 / 9 recorded-flight replays passed
+- 91,366 / 91,366 telemetry samples processed
+- Recovery stress: 5,000 / 5,000 save/load cycles passed
+- Final unexpected-report guard: CLEAN
+- Map V2 remains OPT-IN
+- Classic Operations map remains default/fallback
+- FlightSessionCoordinator remains authoritative
+- Map V2 remains presentation-only
+
+The two unavailable native checks remain:
+
+- NATIVE_CONNECTION_LIFECYCLE
+- NATIVE_RECONNECT
+
+These are intentionally deferred to Checkpoint 7.24B, which will be an installed/native MSFS validation performed with the user.
+
+OBJECTIVE
+
+Determine whether the existing production Map V2 implementation is sufficiently stable, performant and operationally isolated to proceed to Checkpoint 7.24B — Installed Native Pilot Validation.
+
+This checkpoint is an AUTOMATED PERFORMANCE-HARDENING AND READINESS checkpoint.
+
+DO NOT enable Map V2 by default during 7.24A.
+
+The final decision for this checkpoint must be:
+
+READY FOR 7.24B
+
+or
+
+NOT READY FOR 7.24B
+
+Default Map V2 activation will not occur until native/manual validation is completed separately.
+
+This checkpoint should improve Map V2 performance only where measurements justify changes.
+
+Do not redesign Map V2 from scratch.
+
+Do not implement the proposed 3D globe experience.
+
+Do not migrate another workspace.
+
+Do not introduce new airline-world functionality.
+
+
+============================================================
+PART 1 — ESTABLISH CURRENT PERFORMANCE BASELINE
+============================================================
+
+Before making performance changes, measure the existing 7.23 production state.
+
+Use Map V2 inside the actual Sierra 4 Operations workspace.
+
+Record at minimum:
+
+- initial renderer startup time
+- recreated renderer startup time
+- WebView2 process count
+- WPF host working set
+- browser working set
+- total relevant working set
+- CPU usage
+- snapshot production rate
+- map projection time
+- serialization time
+- Dispatcher queue delay
+- Dispatcher post duration
+- browser acknowledgement latency
+- visual snapshots offered
+- visual snapshots consumed
+- visual snapshots coalesced
+- visual snapshots rejected
+- effective map update cadence
+- hidden-view resource behavior
+- recovery-save timing
+- WPF Dispatcher responsiveness
+
+Capture these measurements BEFORE optimization so later results can be compared against a real baseline.
+
+
+============================================================
+PART 2 — SUSTAINED MAP V2 SOAK
+============================================================
+
+Run a substantially longer production Map V2 soak than previous checkpoints.
+
+Target:
+
+AT LEAST 60 MINUTES continuous runtime.
+
+If environment or execution limits make 60 minutes impractical, run the longest practical duration and clearly report the actual duration.
+
+During the soak repeatedly exercise:
+
+- map visible
+- map hidden
+- navigation away from Operations
+- return to Operations
+- follow aircraft
+- unfollow aircraft
+- aircraft selection
+- airport selection
+- zoom
+- pan
+- World/Home
+- resize
+- renderer recreation
+- day/night updates
+- current-flight updates
+- recovery saves
+
+Where automation supports it, also exercise:
+
+- minimize
+- restore
+
+Track memory and resources throughout the run.
+
+Determine whether memory:
+
+- stabilizes
+- oscillates within a bounded range
+- grows monotonically
+- leaves browser processes behind
+
+Do NOT claim leak freedom from a bounded soak.
+
+Report the actual observed trend.
+
+
+============================================================
+PART 3 — DISPATCHER RESPONSIVENESS INVESTIGATION
+============================================================
+
+Checkpoint 7.23 observed higher Dispatcher heartbeat delays during accelerated tests.
+
+Investigate this explicitly.
+
+Measure:
+
+- WPF Dispatcher heartbeat p50
+- p95
+- p99
+- maximum
+- Dispatcher queue-delay distribution
+- Map V2 post duration
+- recovery-save duration
+- UI interaction responsiveness
+
+Investigate potential contributors independently where practical:
+
+- recovery Flush(true)
+- map projection
+- map serialization
+- WebView bridge
+- acknowledgement handling
+- WPF layout/render
+- map status updates
+- diagnostic/test workload
+- other discovered contributors
+
+Do not attribute latency to recovery hardening, Map V2, or another subsystem without evidence.
+
+Produce an evidence-based breakdown of the largest contributors.
+
+
+============================================================
+PART 4 — BOUNDED PERFORMANCE HARDENING
+============================================================
+
+Make performance improvements only where measurements justify them.
+
+Potential areas include:
+
+- unnecessary map snapshot production
+- redundant serialization
+- static route/geography caching
+- unnecessary Dispatcher work
+- presentation preparation that can safely occur outside the UI thread
+- unnecessary WPF layout invalidation
+- WebView message batching
+- redundant ACK/status work
+- trail processing
+- hidden-map updates
+- renderer recreation overhead
+- unnecessary recovery persistence activity, but ONLY if operational correctness permits
+
+CRITICAL RULES:
+
+Do not coalesce authoritative operational events.
+
+Do not skip authoritative telemetry processing.
+
+Do not change flight algorithms for performance.
+
+Do not weaken recovery durability simply to improve UI latency.
+
+Do not remove Flush(true) unless equivalent recovery guarantees are proven and explicitly documented.
+
+Do not make speculative optimizations without measurement.
+
+
+============================================================
+PART 5 — AUTHORITATIVE FLIGHT ISOLATION STRESS
+============================================================
+
+Repeat and expand the Map V2 isolation stress.
+
+Deliberately slow or stall Map V2 while authoritative flight processing continues.
+
+Verify that:
+
+- every authoritative telemetry sample reaches FlightSessionCoordinator
+- OUT/OFF/ON/IN remain correct
+- phase remains correct
+- ETA remains correct
+- progress remains correct
+- events remain ordered and complete
+- history remains complete
+- recovery remains complete
+- PIREP eligibility remains correct
+- PIREP submission remains correct
+- map failure/stall does not reconnect SimConnect
+- map failure/stall does not reset the active flight
+
+Visual snapshots MAY coalesce.
+
+Authoritative flight state MUST NOT.
+
+
+============================================================
+PART 6 — REPRESENTATIVE MAP LOAD TESTING
+============================================================
+
+Repeat production-path Map V2 testing with realistic combinations of presentation entities.
+
+Synthetic entities must remain TEST-ONLY.
+
+Test practical stages such as:
+
+- 1 aircraft
+- 25 aircraft
+- 100 aircraft
+- 500 aircraft
+- 1,000 aircraft
+- 2,000 aircraft
+
+5,000 aircraft may be tested again if useful, but 5,000-aircraft performance is NOT required for current product readiness.
+
+Include realistic combinations of:
+
+- aircraft
+- routes
+- labels
+- trails
+- airport markers
+- selection
+- day/night shading
+
+Measure:
+
+- serialization
+- Dispatcher post
+- browser ACK
+- CPU
+- memory
+- update cadence
+- coalescing
+- responsiveness
+
+Determine a reasonable presentation budget based on evidence.
+
+Do not market or document synthetic capacity as actual supported airline-world capacity.
+
+
+============================================================
+PART 7 — LOWER-PERFORMANCE PROFILE
+============================================================
+
+The primary development workstation is high-end.
+
+Create a bounded constrained-performance test where practical.
+
+Possible approaches:
+
+- CPU constraints
+- reduced worker cadence
+- increased rendering pressure
+- browser throttling where reliable
+- other controlled test constraints
+
+If actual representative lower-end hardware is available, record it separately.
+
+Clearly distinguish:
+
+MEASURED HARDWARE RESULTS
+
+from
+
+SIMULATED / CONSTRAINED RESULTS.
+
+Do not claim software throttling represents a specific lower-end computer.
+
+
+============================================================
+PART 8 — WEBVIEW2 LIFECYCLE STRESS
+============================================================
+
+Repeatedly exercise:
+
+- create
+- initialize
+- hide
+- show
+- navigate away
+- return
+- dispose
+- recreate
+- renderer failure
+- WebGL context loss
+- process failure
+- fallback
+- bounded restart
+
+Verify:
+
+- no duplicate message handlers
+- no stale renderer epochs accepted
+- no duplicate renderer instances
+- no orphan owned browser processes after final disposal
+- bounded restart behavior
+- no FlightSessionCoordinator reset
+- no simulator reconnect
+- no stale visual trail joining hidden/disposed intervals
+- latest valid state appears after recreation
+
+
+============================================================
+PART 9 — RECOVERY PERSISTENCE UNDER MAP LOAD
+============================================================
+
+Revalidate the hardened 7.23 recovery implementation while Map V2 is active.
+
+Exercise:
+
+- normal recovery saves
+- rapid recovery saves
+- transient file contention
+- map stall
+- map recreation
+- application navigation
+- hidden/visible transitions
+
+Required:
+
+- no unexpected flight_recovery_save reports
+- previous valid recovery remains safe during transient failure
+- final authoritative state persists
+- no corrupted recovery document
+- unexpected-report guard remains enabled
+
+Do NOT suppress or whitelist recovery errors.
+
+
+============================================================
+PART 10 — AUTOMATED INPUT VALIDATION
+============================================================
+
+Automate everything practical.
+
+Verify where possible:
+
+- mouse/pointer pan
+- selection
+- wheel zoom
+- keyboard navigation
+- keyboard map controls
+- Escape focus bypass
+- Follow
+- Unfollow
+- Layers
+- World/Home
+- route selection
+- airport selection
+- aircraft selection
+- reduced-motion behavior
+
+Clearly identify anything synthetic browser events cannot prove.
+
+Do not claim real physical pointer/touch certification from injected input.
+
+
+============================================================
+PART 11 — DPI / SCALING VALIDATION
+============================================================
+
+Continue automated rendering validation at:
+
+- 100%
+- 125%
+- 150%
+- 175%
+- 200%
+
+Review:
+
+- text readability
+- map controls
+- airport labels
+- route labels
+- clipping
+- WebView composition
+- WPF overlays
+- selection details
+- Operations layout balance
+- focus indicators
+
+Clearly distinguish controlled rendering from real monitor-DPI transitions.
+
+Real monitor movement/scaling belongs to 7.24B if Codex cannot test it physically.
+
+
+============================================================
+PART 12 — NATIVE SIMULATOR GATES
+============================================================
+
+The following two checks remain unavailable:
+
+- NATIVE_CONNECTION_LIFECYCLE
+- NATIVE_RECONNECT
+
+Attempt them ONLY if a real MSFS environment is available and doing so is safe.
+
+If MSFS is unavailable:
+
+DO NOT fake them.
+
+DO NOT replace them with synthetic tests and call them passed.
+
+Leave them explicitly UNAVAILABLE.
+
+These are expected to be closed during Checkpoint 7.24B.
+
+
+============================================================
+PART 13 — CREATE 7.24B MANUAL PILOT VALIDATION CHECKLIST
+============================================================
+
+Produce a concise, step-by-step validation checklist for the user to perform using the packaged Sierra 4 build.
+
+The checklist should include:
+
+INSTALL / STARTUP
+
+- install test build
+- launch Sierra 4
+- verify profile/history/settings
+- verify WebView2 availability
+- verify Operations loads
+- verify classic fallback remains available
+
+MSFS
+
+- launch MSFS
+- connect Sierra 4
+- verify connection
+- disconnect
+- reconnect
+- verify no duplicate flight session
+- verify no stale callbacks
+
+MAP V2
+
+- enable Map V2
+- pan
+- zoom
+- select aircraft
+- select origin airport
+- select destination airport
+- follow aircraft
+- unfollow aircraft
+- World/Home
+- Layers
+- switch workspace
+- return to Operations
+- minimize
+- restore
+- resize application
+
+DISPLAY
+
+- move Sierra 4 between monitors if multiple monitors are available
+- verify actual Windows DPI/scaling behavior
+- verify map focus/input
+- verify WPF overlays over WebView2
+
+REAL FLIGHT
+
+- import/accept flight
+- connect simulator
+- taxi
+- takeoff
+- climb
+- cruise
+- descend
+- land
+- block in
+- submit PIREP
+
+Verify throughout:
+
+- map movement
+- aircraft heading
+- route
+- phase
+- ETA
+- progress
+- events
+- recovery
+- no freezes
+- no unexpected reconnect
+
+RECOVERY
+
+During an appropriate safe validation flight:
+
+- close/restart Sierra 4
+- verify flight recovery
+- reconnect
+- verify continued tracking
+
+Do not automate user-controlled MSFS actions.
+
+
+============================================================
+PART 14 — READINESS DECISION
+============================================================
+
+7.24A does NOT authorize Map V2 default activation.
+
+At completion classify the build as:
+
+READY FOR 7.24B
+
+or
+
+NOT READY FOR 7.24B
+
+READY requires:
+
+- full automated regression green
+- unexpected-report guard clean
+- sustained resource behavior acceptable
+- Dispatcher responsiveness acceptable
+- recovery persistence clean
+- lifecycle/disposal acceptable
+- Map V2 fallback functional
+- production map performance acceptable for current product scope
+- no operational flight behavior changes
+- no critical unresolved automated Map V2 issue
+
+Native/manual validation may remain outstanding because those checks are the PURPOSE of 7.24B.
+
+
+============================================================
+PART 15 — GLOBE READINESS ANALYSIS
+============================================================
+
+DO NOT implement globe projection during 7.24A.
+
+However, document what the existing Map V2 implementation must preserve for the upcoming globe experiment.
+
+Identify:
+
+- projection-independent MapLibre layers
+- Mercator-specific assumptions
+- globe-sensitive route geometry
+- aircraft symbol behavior
+- airport marker behavior
+- camera-state implications
+- follow-mode implications
+- day/night implications
+- dateline behavior
+- polar behavior
+- label behavior
+- selection/picking behavior
+- performance implications
+- WebView bridge implications
+
+Determine whether the existing production architecture can support a future globe mode as a presentation change rather than an operational architecture rewrite.
+
+This analysis will inform Checkpoint 7.25.
+
+
+============================================================
+PART 16 — DO NOT DO IN 7.24A
+============================================================
+
+Do NOT:
+
+- enable Map V2 by default
+- implement globe projection
+- add city lights
+- add commercial map providers
+- migrate Flight Tracking
+- migrate Dispatch
+- redesign Operations
+- begin broad Sierra 4 visual polish
+- build persistent airline-world simulation
+- add simulated airline traffic to production
+- build passenger systems
+- build crew systems
+- build maintenance systems
+- integrate authentication/profile work
+- rebrand installer/storage paths
+- change flight algorithms
+- change telemetry semantics
+- remove classic-map fallback
+
+
+============================================================
+PART 17 — FULL REGRESSION
+============================================================
+
+Run the complete Sierra 4 verification suite.
+
+Required:
+
+- all previously passing checks remain passing
+- recovery checks remain passing
+- Map V2 checks remain passing
+- all new 7.24A automated checks pass
+- 9/9 recorded-flight replays pass
+- 91,366/91,366 telemetry samples process
+- unexpected-report guard remains clean
+- persisted profile compatibility remains valid
+- classic map remains available
+- Map V2 fallback remains available
+
+Native simulator checks may remain unavailable.
+
+Do not count unavailable checks as passes.
+
+
+============================================================
+PART 18 — COMPLETION REPORT
+============================================================
+
+At completion provide:
+
+1. Baseline performance measurements
+2. Sustained Map V2 soak duration
+3. Sustained Map V2 soak results
+4. Memory/resource trend
+5. Dispatcher latency before optimization
+6. Dispatcher latency after optimization
+7. Root contributors to UI scheduling delays
+8. Performance changes made
+9. Authoritative flight-isolation stress results
+10. Production-path load results
+11. Recommended presentation capacity/budgets
+12. Lower-performance/constrained-profile results
+13. WebView lifecycle results
+14. Recovery-under-map-load results
+15. Automated input results
+16. DPI/scaling results
+17. Native simulator gate status
+18. Complete 7.24B Manual Pilot Validation Checklist
+19. Build/package result
+20. Regression counts
+21. Replay result
+22. Telemetry result
+23. Unexpected-report guard result
+24. Known remaining risks
+25. Globe-readiness analysis
+26. READY FOR 7.24B or NOT READY FOR 7.24B
+27. Exact evidence supporting that decision
+28. Recommended scope for 7.24B
+
+STOP AFTER CHECKPOINT 7.24A.
+
+Do not begin 7.24B automatically.
+
+Do not enable Map V2 by default.
+
+Do not begin globe implementation.
+
+Do not migrate another workspace.
+
+Do not begin authentication/profile integration.

@@ -1,0 +1,100 @@
+{
+  "checkpoint": "7.24C",
+  "status": "PASS / CLOSED",
+  "report": "docs/flight-tracking/7.24c-logbook-correction-closeout.md",
+  "archive": "logbook-closeout-evidence.zip",
+  "archiveSha256": "0D73ECD64F4F7355111D8EF82F34F593C38812F6782394AC8FDB838F62BD18FE",
+  "archiveFiles": 2310,
+  "summary": {
+    "checkpoint": "7.24C",
+    "status": "PASS / CLOSED",
+    "groups": [
+      {
+        "name": "Full baseline",
+        "executed": 1958,
+        "passed": 1958,
+        "failed": 0,
+        "skipped": 2
+      },
+      {
+        "name": "Logbook final package",
+        "executed": 40,
+        "passed": 40,
+        "failed": 0,
+        "skipped": 0
+      },
+      {
+        "name": "Terminal",
+        "executed": 203,
+        "passed": 203,
+        "failed": 0,
+        "skipped": 0
+      },
+      {
+        "name": "Active recovery",
+        "executed": 69,
+        "passed": 69,
+        "failed": 0,
+        "skipped": 0
+      },
+      {
+        "name": "Recovery confirmation",
+        "executed": 21,
+        "passed": 21,
+        "failed": 0,
+        "skipped": 0
+      },
+      {
+        "name": "Map V2",
+        "executed": 199,
+        "passed": 199,
+        "failed": 0,
+        "skipped": 0
+      },
+      {
+        "name": "Additional replays",
+        "executed": 2,
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0
+      }
+    ],
+    "closingSet": {
+      "executed": 2492.0,
+      "passed": 2492.0,
+      "skipped": 2.0,
+      "failed": 0.0
+    },
+    "replays": 11,
+    "historicalSamples": 100632.0,
+    "preservedFinalNativeSamples": 6197,
+    "newLogbookChecks": 40,
+    "initialRecoveryWrapperFailed": true,
+    "initialFailurePreserved": true,
+    "unchangedT2Control": {
+      "unexpectedDiagnosticReports": 2,
+      "deniedHealthWrites": 4,
+      "focusedCases": 30
+    },
+    "correctedControl": {
+      "unexpectedDiagnosticReports": 1,
+      "deniedHealthWrites": 2,
+      "focusedCases": 20
+    },
+    "productionMonitorChanged": false,
+    "nativeConnected": false,
+    "installed": false,
+    "frozenT2Replaced": false,
+    "additionalFlightRequired": false,
+    "note": "Closing set counts one final run per group, not red/development/probe repetitions. Health status-marker limitation is retained in report; native flight evidence belongs to unchanged frozen T2."
+  },
+  "frozenBuild": "S4-7.24C-FINAL-L1-20260930-318659425b88",
+  "installerSha256": "E2106A3A3A9C30A738F2FF75BF00232CDAFADD7054023F3A53E2146986232824",
+  "finalDesktopSha256": "1ACB88B971FAF7FECFBFB27591D75F4AAD5CD04B97AA24A68515A939D32C6C4B",
+  "preservedFiles": 1246,
+  "preservedChanged": 0,
+  "noNativeConnection": true,
+  "installed": false,
+  "failureEvidencePreserved": true,
+  "excluded": "Executable/dependency caches and temporary SQLite copies; database source retained in original T2 evidence. All JSON assertions, failures, probes, logs and screenshots included."
+}

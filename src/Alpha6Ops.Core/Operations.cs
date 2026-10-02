@@ -19,7 +19,8 @@ public record Telemetry(DateTimeOffset At, bool OnGround, double GroundSpeedKnot
     int FlapHandleIndex = -1, int FlapHandlePositions = -1,
     double LeftFlapDegrees = double.NaN, double RightFlapDegrees = double.NaN,
     bool PilotConfirmedBlockIn = false, bool BlockInAllowed = true,
-    double LeftSlatDegrees = double.NaN, double RightSlatDegrees = double.NaN)
+    double LeftSlatDegrees = double.NaN, double RightSlatDegrees = double.NaN,
+    TerminalShutdownEvidence? TerminalShutdown = null, bool? TerminalBlockInEligible = null)
 {
     public double SelectedFlapRatio => double.IsFinite(FlapHandleRatio)?FlapHandleRatio:FlapsExtendedRatio;
     public bool HasPosition => double.IsFinite(LatitudeDegrees)&&LatitudeDegrees is>=-90 and<=90&&double.IsFinite(LongitudeDegrees)&&LongitudeDegrees is>=-180 and<=180;
@@ -78,6 +79,8 @@ public sealed class PhaseDetector
         Phase = initialPhase;
         last = lastObserved;
     }
+    public void ResetPendingTransition() => candidate = null;
+    public void ResetPendingCompletion() { if (candidate == FlightPhase.Complete) candidate = null; }
     public FlightEvent? Observe(Telemetry sample)
     {
         if (!double.IsFinite(sample.GroundSpeedKnots) || sample.GroundSpeedKnots < 0)
@@ -94,7 +97,7 @@ public sealed class PhaseDetector
             FlightPhase.TaxiIn when !sample.OnGround => FlightPhase.Airborne, // bounce/go-around
             FlightPhase.TaxiIn when sample.BlockInAllowed && sample.OnGround && sample.GroundSpeedKnots < profile.BlockInMaxGroundSpeedKnots
                 && (!profile.BlockInRequiresParkingBrake || sample.ParkingBrake)
-                && (!profile.BlockInRequiresEnginesOff || sample.EngineDataValid&&!sample.EnginesRunning || sample.PilotConfirmedBlockIn) => FlightPhase.Complete,
+                && (sample.TerminalBlockInEligible ?? (!profile.BlockInRequiresEnginesOff || sample.EngineDataValid&&!sample.EnginesRunning || sample.PilotConfirmedBlockIn)) => FlightPhase.Complete,
             _ => null
         };
         if (next is null) { candidate = null; return null; }

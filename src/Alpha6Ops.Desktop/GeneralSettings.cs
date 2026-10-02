@@ -18,7 +18,7 @@ internal sealed record GeneralSettings(
 
 internal static class GeneralSettingsStore
 {
-    private static string PathName(string? directory) => Path.Combine(directory ?? CrashReporter.RootDirectory, "general-settings.json");
+    private static string PathName(string? directory) => Path.Combine(directory ?? ProductStorage.Current.Settings, "general-settings.json");
 
     internal static GeneralSettings Load(string? directory = null)
     {

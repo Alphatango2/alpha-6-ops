@@ -46,8 +46,9 @@ public partial class FlightTrackingWorkspace : UserControl
         DepartureGateText.ToolTip=ArrivalGateText.ToolTip=plan.GateAssignmentSource??"Unassigned";
         var continuousProgress=routeProgress is{} fractionValue?fractionValue*100:progress;
         var fraction=continuousProgress/100;
-        var remaining=routeReliable?FlightMetrics.RemainingDistanceNm(plan.RoutePoints,fraction):double.NaN;
-        DistanceRemainingText.Text=double.IsFinite(remaining)?$"{remaining:0} NM":"— NM";
+        var remaining=routeReliable?FlightMetrics.RemainingDistanceNm(plan.RoutePoints,fraction,telemetry,complete):double.NaN;
+        DistanceRemainingText.Text=!double.IsFinite(remaining)?"— NM":remaining is >0 and <.1?"<0.1 NM":remaining is >=.1 and <1?$"{remaining:0.0} NM":$"{remaining:0} NM";
+        DistanceRemainingText.ToolTip="Estimated geographical distance to destination. Confirmed block-in closes the flight.";
         var arrival=actualIn??estimatedIn;
         ArrivalText.Text=arrival?.UtcDateTime.ToString("HH:mm'Z'")??"—";
         var scheduleValid=actualOut is {} outAt?FlightClock.DepartureScheduleIsPlausible(plan,outAt):telemetry is {} t&&FlightClock.ScheduleIsPlausible(plan,t.At);
@@ -58,6 +59,10 @@ public partial class FlightTrackingWorkspace : UserControl
         else if(estimatedIn is not null)ScheduleVarianceText.Text=Variance(estimatedIn.Value-plan.PlannedArrivalUtc,"ESTIMATE");
         else ScheduleVarianceText.Text=complete?"ACTUAL IN UNAVAILABLE":!connected&&telemetry is not null?"TELEMETRY UNAVAILABLE • ESTIMATE PENDING":!routeReliable?"ROUTE POSITION REVIEW • ESTIMATE PENDING":phase.Contains("TAXI IN",StringComparison.OrdinalIgnoreCase)?"ARRIVAL ESTIMATE PENDING":"WAITING FOR AIRBORNE DATA";
         UpdateProgress(continuousProgress,true);
+        if(!routeReliable&&!complete)ProgressText.Text="—";
+        ProgressText.ToolTip=ProgressBar.ToolTip=complete?"Flight complete • actual block-in confirmed":routeReliable
+            ?"Geographical route progress. 100% means the route endpoint is reached; flight completion requires block-in. Progress may decrease during vectors or a go-around."
+            :"Route position unavailable • bar shows the last known geographical estimate.";
         ProgressAircraftIcon.Visibility=complete?Visibility.Collapsed:Visibility.Visible;SubmitPirepButton.Visibility=pirepReady?Visibility.Visible:Visibility.Collapsed;ProgressBar.Foreground=complete?OpsUi.Brush("#55D66B"):(Brush)FindResource("OpsYellow");ProgressText.Foreground=complete?OpsUi.Brush("#55D66B"):(Brush)FindResource("OpsYellow");ProgressBar.Margin=pirepReady?new Thickness(0,0,175,0):new Thickness(0);
         var rows=events.Reverse().OrderByDescending(entry=>entry.At).ToArray();EventList.ItemsSource=rows;EventEmptyText.Visibility=rows.Length==0?Visibility.Visible:Visibility.Collapsed;
     }
@@ -86,7 +91,9 @@ public partial class FlightTrackingWorkspace : UserControl
         ProgressAircraftTranslate.BeginAnimation(TranslateTransform.XProperty,null);
         ProgressBar.Value=target;
         ProgressAircraftTranslate.X=targetX;
-        ProgressText.Text=$"{target:0}%";
+        // Preserve ordinary whole-percent presentation, but never round a value
+        // below the geographical endpoint up to a completed route.
+        ProgressText.Text=target is >=99.5 and <100?$"{Math.Floor(target*10)/10:0.0}%":$"{target:0}%";
 
         if(!animate||Math.Abs(target-current)<.01)return;
         var duration=TimeSpan.FromMilliseconds(850);

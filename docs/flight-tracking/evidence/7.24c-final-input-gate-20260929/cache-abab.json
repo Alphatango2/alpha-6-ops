@@ -1,0 +1,58 @@
+[
+  {
+    "intendedCachedInside": false,
+    "cached": {
+      "IsEmpty": false,
+      "X": 777,
+      "Y": 605
+    },
+    "actualInside": false,
+    "x": -86,
+    "y": -207,
+    "ActualWidth": 1297,
+    "ActualHeight": 316,
+    "browserAcknowledged": false
+  },
+  {
+    "intendedCachedInside": true,
+    "cached": {
+      "IsEmpty": false,
+      "X": 777,
+      "Y": 158
+    },
+    "actualInside": false,
+    "x": -86,
+    "y": -207,
+    "ActualWidth": 1297,
+    "ActualHeight": 316,
+    "browserAcknowledged": true
+  },
+  {
+    "intendedCachedInside": false,
+    "cached": {
+      "IsEmpty": false,
+      "X": 777,
+      "Y": 605
+    },
+    "actualInside": false,
+    "x": -86,
+    "y": -207,
+    "ActualWidth": 1297,
+    "ActualHeight": 316,
+    "browserAcknowledged": false
+  },
+  {
+    "intendedCachedInside": true,
+    "cached": {
+      "IsEmpty": false,
+      "X": 777,
+      "Y": 158
+    },
+    "actualInside": false,
+    "x": -86,
+    "y": -207,
+    "ActualWidth": 1297,
+    "ActualHeight": 316,
+    "browserAcknowledged": true
+  }
+]

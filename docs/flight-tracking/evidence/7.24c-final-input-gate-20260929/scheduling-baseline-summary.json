@@ -1,0 +1,45 @@
+{
+  "passed": true,
+  "executed": 9,
+  "failed": 0,
+  "mode": "scheduling-baseline",
+  "requestedMinutes": 0.5,
+  "checks": [
+    {
+      "passed": true,
+      "name": "Owned original process handle reports live child"
+    },
+    {
+      "passed": true,
+      "name": "Original process handle reports termination after child exit"
+    },
+    {
+      "passed": true,
+      "name": "Repeated exit checks retain original identity without reopening stale process IDs"
+    },
+    {
+      "passed": true,
+      "name": "Scheduling arm retains every authoritative input"
+    },
+    {
+      "passed": true,
+      "name": "Scheduling arm final recovery contains last input"
+    },
+    {
+      "passed": true,
+      "name": "Scheduling ablation never reconnects simulator source"
+    },
+    {
+      "passed": true,
+      "name": "Scheduling host lifecycle matches arm without failure/recreation"
+    },
+    {
+      "passed": true,
+      "name": "High-resolution trace has no dropped events"
+    },
+    {
+      "passed": true,
+      "name": "No owned browser processes after final renderer disposal"
+    }
+  ]
+}

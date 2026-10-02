@@ -1,0 +1,1197 @@
+{
+  "scope": "Read-only investigation. No completion logic, thresholds, timers, map code, profile or frozen packages modified.",
+  "journalPath": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\jst776-review\\entry-20260928-154645\\package\\JST776 - S4 TF - 9-28\\Alpha6OPS-20260928-135604-e35f29af4dec42b2b0e0d46be26c22c8.jsonl",
+  "journalSha256": "58C53BC645BEB098E991FE4AC42DE3A3A748CA83F7091658191A9BF0CCEE7D8A",
+  "zipSha256": "1B973BA31394314C89F1C47237FD5687A6F5CF494C80A8CFAC16C4471726DE67",
+  "records": 12349,
+  "telemetry": 6145,
+  "terminalTelemetryRows": 470,
+  "points": {
+    "last_at_least_half_knot": {
+      "sequence": 12187,
+      "simulatorUtc": "2026-09-27T22:26:23.2908096+00:00",
+      "recordedAtUtc": "2026-09-28T15:37:14.0321064+00:00",
+      "data": {
+        "aircraft": "FenixA321 IAE WF SC",
+        "onGround": true,
+        "groundSpeedKnots": 1.0632544738744838,
+        "indicatedAirspeedKnots": 0,
+        "verticalSpeedFeetPerMinute": -0.47018643468618304,
+        "gearExtendedRatio": 1,
+        "flapsExtendedRatio": 0,
+        "flapHandleRatio": 0,
+        "flapHandleIndex": 0,
+        "flapHandlePositions": 5,
+        "leftFlapDegrees": 0,
+        "rightFlapDegrees": 0,
+        "leftSlatDegrees": 0,
+        "rightSlatDegrees": 0,
+        "engineDataValid": true,
+        "engineReadings": [
+          {
+            "Index": 1,
+            "Combustion": 1,
+            "FuelFlowPph": 1118.522178668663,
+            "N1Percent": 29.055630134221193,
+            "N2Percent": 70.75920127076125,
+            "Starter": 0,
+            "OilPressurePsf": 10995.62310861696
+          },
+          {
+            "Index": 2,
+            "Combustion": 1,
+            "FuelFlowPph": 1118.5307638591144,
+            "N1Percent": 29.055809161229035,
+            "N2Percent": 70.75915069482498,
+            "Starter": 0,
+            "OilPressurePsf": 10995.24742232983
+          }
+        ],
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 3,
+            "Source": "combustion"
+          },
+          {
+            "Index": 2,
+            "Condition": 3,
+            "Source": "combustion"
+          }
+        ],
+        "pitchDegrees": -0.055577599030154204,
+        "bankDegrees": 0.011476926370429697,
+        "fuelTotalWeightPounds": 10703.586658182088,
+        "runningEngineCount": 2,
+        "runningEngineMask": 3,
+        "parkingBrake": false,
+        "enginesRunning": true,
+        "paused": false,
+        "slewing": false,
+        "latitude": -34.940317547281886,
+        "longitude": 138.53698584436188,
+        "altitudeFeet": 27.18990860238962,
+        "pressureAltitudeFeet": 27.146366119384766,
+        "altitudeAboveGroundFeet": 9.154942986073628,
+        "headingDegrees": 320.2524701499612,
+        "routeProgress": null
+      },
+      "toEffectiveInSeconds": "65.9894256",
+      "toCompleteSampleSeconds": "69.9865341",
+      "toRecordedCompleteWallSeconds": "70.1931867",
+      "toPirepCloseoutWallSeconds": "76.964647"
+    },
+    "final_below_half_knot": {
+      "sequence": 12189,
+      "simulatorUtc": "2026-09-27T22:26:24.2763519+00:00",
+      "recordedAtUtc": "2026-09-28T15:37:15.0322945+00:00",
+      "data": {
+        "aircraft": "FenixA321 IAE WF SC",
+        "onGround": true,
+        "groundSpeedKnots": 0.047916529620850155,
+        "indicatedAirspeedKnots": 0,
+        "verticalSpeedFeetPerMinute": 0.8789409510791284,
+        "gearExtendedRatio": 1,
+        "flapsExtendedRatio": 0,
+        "flapHandleRatio": 0,
+        "flapHandleIndex": 0,
+        "flapHandlePositions": 5,
+        "leftFlapDegrees": 0,
+        "rightFlapDegrees": 0,
+        "leftSlatDegrees": 0,
+        "rightSlatDegrees": 0,
+        "engineDataValid": true,
+        "engineReadings": [
+          {
+            "Index": 1,
+            "Combustion": 1,
+            "FuelFlowPph": 1123.0499056030842,
+            "N1Percent": 29.129558346732804,
+            "N2Percent": 70.85138604895425,
+            "Starter": 0,
+            "OilPressurePsf": 10996.073675488691
+          },
+          {
+            "Index": 2,
+            "Combustion": 1,
+            "FuelFlowPph": 1123.0386295320434,
+            "N1Percent": 29.129327348368633,
+            "N2Percent": 70.8504632071564,
+            "Starter": 0,
+            "OilPressurePsf": 10995.623059358757
+          }
+        ],
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 3,
+            "Source": "combustion"
+          },
+          {
+            "Index": 2,
+            "Condition": 3,
+            "Source": "combustion"
+          }
+        ],
+        "pitchDegrees": -0.12750347627701497,
+        "bankDegrees": 0.013777886943111469,
+        "fuelTotalWeightPounds": 10703.003516108845,
+        "runningEngineCount": 2,
+        "runningEngineMask": 3,
+        "parkingBrake": false,
+        "enginesRunning": true,
+        "paused": false,
+        "slewing": false,
+        "latitude": -34.94031649974489,
+        "longitude": 138.53698476315753,
+        "altitudeFeet": 27.236108405051432,
+        "pressureAltitudeFeet": 27.151460647583008,
+        "altitudeAboveGroundFeet": 9.200983531964077,
+        "headingDegrees": 320.23539795429684,
+        "routeProgress": null
+      },
+      "toEffectiveInSeconds": "65.0038833",
+      "toCompleteSampleSeconds": "69.0009918",
+      "toRecordedCompleteWallSeconds": "69.1929986",
+      "toPirepCloseoutWallSeconds": "75.9644589"
+    },
+    "parking_brake_set": {
+      "sequence": 12193,
+      "simulatorUtc": "2026-09-27T22:26:26.2914733+00:00",
+      "recordedAtUtc": "2026-09-28T15:37:17.0364362+00:00",
+      "data": {
+        "aircraft": "FenixA321 IAE WF SC",
+        "onGround": true,
+        "groundSpeedKnots": 0.00072643299291794,
+        "indicatedAirspeedKnots": 0,
+        "verticalSpeedFeetPerMinute": -0.035357315791770746,
+        "gearExtendedRatio": 1,
+        "flapsExtendedRatio": 0,
+        "flapHandleRatio": 0,
+        "flapHandleIndex": 0,
+        "flapHandlePositions": 5,
+        "leftFlapDegrees": 0,
+        "rightFlapDegrees": 0,
+        "leftSlatDegrees": 0,
+        "rightSlatDegrees": 0,
+        "engineDataValid": true,
+        "engineReadings": [
+          {
+            "Index": 1,
+            "Combustion": 1,
+            "FuelFlowPph": 1123.997095570517,
+            "N1Percent": 29.351523874101854,
+            "N2Percent": 70.94921450534083,
+            "Starter": 0,
+            "OilPressurePsf": 10997.24435098935
+          },
+          {
+            "Index": 2,
+            "Combustion": 1,
+            "FuelFlowPph": 1123.983128618887,
+            "N1Percent": 29.35122511886969,
+            "N2Percent": 70.94903748547686,
+            "Starter": 0,
+            "OilPressurePsf": 10996.752893783132
+          }
+        ],
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 3,
+            "Source": "combustion"
+          },
+          {
+            "Index": 2,
+            "Condition": 3,
+            "Source": "combustion"
+          }
+        ],
+        "pitchDegrees": -0.04951487366277211,
+        "bankDegrees": 0.014930983503008413,
+        "fuelTotalWeightPounds": 10701.810242217034,
+        "runningEngineCount": 2,
+        "runningEngineMask": 3,
+        "parkingBrake": true,
+        "enginesRunning": true,
+        "paused": false,
+        "slewing": false,
+        "latitude": -34.9403164738887,
+        "longitude": 138.53698473615077,
+        "altitudeFeet": 27.19585486403374,
+        "pressureAltitudeFeet": 27.149778366088867,
+        "altitudeAboveGroundFeet": 9.160726550430574,
+        "headingDegrees": 320.23534185474165,
+        "routeProgress": null
+      },
+      "toEffectiveInSeconds": "62.9887619",
+      "toCompleteSampleSeconds": "66.9858704",
+      "toRecordedCompleteWallSeconds": "67.1888569",
+      "toPirepCloseoutWallSeconds": "73.9603172"
+    },
+    "both_combustion_false": {
+      "sequence": 12206,
+      "simulatorUtc": "2026-09-27T22:26:32.2787399+00:00",
+      "recordedAtUtc": "2026-09-28T15:37:23.0447483+00:00",
+      "data": {
+        "aircraft": "FenixA321 IAE WF SC",
+        "onGround": true,
+        "groundSpeedKnots": 0.00038818073649852017,
+        "indicatedAirspeedKnots": 0,
+        "verticalSpeedFeetPerMinute": 0.0026024084945674934,
+        "gearExtendedRatio": 1,
+        "flapsExtendedRatio": 0,
+        "flapHandleRatio": 0,
+        "flapHandleIndex": 0,
+        "flapHandlePositions": 5,
+        "leftFlapDegrees": 0,
+        "rightFlapDegrees": 0,
+        "leftSlatDegrees": 0,
+        "rightSlatDegrees": 0,
+        "engineDataValid": true,
+        "engineReadings": [
+          {
+            "Index": 1,
+            "Combustion": 0,
+            "FuelFlowPph": 1174.7588921044035,
+            "N1Percent": 30.525803382021792,
+            "N2Percent": 68.96420926814699,
+            "Starter": 0,
+            "OilPressurePsf": 10999.788468927372
+          },
+          {
+            "Index": 2,
+            "Combustion": 0,
+            "FuelFlowPph": 1129.6918958576682,
+            "N1Percent": 29.62802976036012,
+            "N2Percent": 69.97254318257183,
+            "Starter": 0,
+            "OilPressurePsf": 10998.374266742545
+          }
+        ],
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 3,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 3,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "pitchDegrees": -0.04958144233164375,
+        "bankDegrees": 0.015510857380310343,
+        "fuelTotalWeightPounds": 10698.295850227238,
+        "runningEngineCount": 2,
+        "runningEngineMask": 3,
+        "parkingBrake": true,
+        "enginesRunning": true,
+        "paused": false,
+        "slewing": false,
+        "latitude": -34.940316474075786,
+        "longitude": 138.5369847359352,
+        "altitudeFeet": 27.196122321677183,
+        "pressureAltitudeFeet": 27.149999618530273,
+        "altitudeAboveGroundFeet": 9.160994081406503,
+        "headingDegrees": 320.2353404635703,
+        "routeProgress": null
+      },
+      "toEffectiveInSeconds": "57.0014953",
+      "toCompleteSampleSeconds": "60.9986038",
+      "toRecordedCompleteWallSeconds": "61.1805448",
+      "toPirepCloseoutWallSeconds": "67.9520051"
+    },
+    "both_stopping": {
+      "sequence": 12214,
+      "simulatorUtc": "2026-09-27T22:26:36.2872009+00:00",
+      "recordedAtUtc": "2026-09-28T15:37:27.0750838+00:00",
+      "data": {
+        "aircraft": "FenixA321 IAE WF SC",
+        "onGround": true,
+        "groundSpeedKnots": 9.371185505208703e-05,
+        "indicatedAirspeedKnots": 0,
+        "verticalSpeedFeetPerMinute": -0.011196207487955667,
+        "gearExtendedRatio": 1,
+        "flapsExtendedRatio": 0,
+        "flapHandleRatio": 0,
+        "flapHandleIndex": 0,
+        "flapHandlePositions": 5,
+        "leftFlapDegrees": 0,
+        "rightFlapDegrees": 0,
+        "leftSlatDegrees": 0,
+        "rightSlatDegrees": 0,
+        "engineDataValid": false,
+        "engineReadings": [
+          {
+            "Index": 1,
+            "Combustion": 0,
+            "FuelFlowPph": 436.5659681328885,
+            "N1Percent": 13.797090255817407,
+            "N2Percent": 46.18580308587915,
+            "Starter": 0,
+            "OilPressurePsf": 8623.437616754503
+          },
+          {
+            "Index": 2,
+            "Combustion": 0,
+            "FuelFlowPph": 448.3697721121864,
+            "N1Percent": 14.170316293833332,
+            "N2Percent": 46.86109121157001,
+            "Starter": 0,
+            "OilPressurePsf": 10043.031204357
+          }
+        ],
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 4,
+            "Source": "combustion loss / spool decay"
+          },
+          {
+            "Index": 2,
+            "Condition": 4,
+            "Source": "combustion loss / spool decay"
+          }
+        ],
+        "pitchDegrees": -0.060481165654358765,
+        "bankDegrees": 0.015531501657716348,
+        "fuelTotalWeightPounds": 10698.613184202579,
+        "runningEngineCount": null,
+        "runningEngineMask": null,
+        "parkingBrake": true,
+        "enginesRunning": false,
+        "paused": false,
+        "slewing": false,
+        "latitude": -34.9403164777475,
+        "longitude": 138.53698473965048,
+        "altitudeFeet": 27.19645185904148,
+        "pressureAltitudeFeet": 27.149999618530273,
+        "altitudeAboveGroundFeet": 9.161324119876124,
+        "headingDegrees": 320.2353412283259,
+        "routeProgress": null
+      },
+      "toEffectiveInSeconds": "52.9930343",
+      "toCompleteSampleSeconds": "56.9901428",
+      "toRecordedCompleteWallSeconds": "57.1502093",
+      "toPirepCloseoutWallSeconds": "63.9216696"
+    },
+    "both_spools_below_off_threshold": {
+      "sequence": 12262,
+      "simulatorUtc": "2026-09-27T22:26:59.2881851+00:00",
+      "recordedAtUtc": "2026-09-28T15:37:50.1006249+00:00",
+      "data": {
+        "aircraft": "FenixA321 IAE WF SC",
+        "onGround": true,
+        "groundSpeedKnots": 3.5928652177007727e-06,
+        "indicatedAirspeedKnots": 0,
+        "verticalSpeedFeetPerMinute": 7.156227184168515e-05,
+        "gearExtendedRatio": 1,
+        "flapsExtendedRatio": 0,
+        "flapHandleRatio": 0,
+        "flapHandleIndex": 0,
+        "flapHandlePositions": 5,
+        "leftFlapDegrees": 0,
+        "rightFlapDegrees": 0,
+        "leftSlatDegrees": 0,
+        "rightSlatDegrees": 0,
+        "engineDataValid": false,
+        "engineReadings": [
+          {
+            "Index": 1,
+            "Combustion": 0,
+            "FuelFlowPph": 17.8866356542844,
+            "N1Percent": 0.5668269893512011,
+            "N2Percent": 4.624669950097407,
+            "Starter": 0,
+            "OilPressurePsf": 354.98172563205026
+          },
+          {
+            "Index": 2,
+            "Combustion": 0,
+            "FuelFlowPph": 18.150410024907664,
+            "N1Percent": 0.5751146342475836,
+            "N2Percent": 4.692287800040031,
+            "Starter": 0,
+            "OilPressurePsf": 398.7104902219363
+          }
+        ],
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 4,
+            "Source": "combustion loss / spool decay"
+          },
+          {
+            "Index": 2,
+            "Condition": 4,
+            "Source": "combustion loss / spool decay"
+          }
+        ],
+        "pitchDegrees": -0.0657835887122507,
+        "bankDegrees": 0.015756815269974477,
+        "fuelTotalWeightPounds": 10696.755799001548,
+        "runningEngineCount": null,
+        "runningEngineMask": null,
+        "parkingBrake": true,
+        "enginesRunning": false,
+        "paused": false,
+        "slewing": false,
+        "latitude": -34.94031647959352,
+        "longitude": 138.53698474137022,
+        "altitudeFeet": 27.19662182488613,
+        "pressureAltitudeFeet": 27.149999618530273,
+        "altitudeAboveGroundFeet": 9.161494336273432,
+        "headingDegrees": 320.23534198763286,
+        "routeProgress": null
+      },
+      "toEffectiveInSeconds": "29.9920501",
+      "toCompleteSampleSeconds": "33.9891586",
+      "toRecordedCompleteWallSeconds": "34.1246682",
+      "toPirepCloseoutWallSeconds": "40.8961285"
+    },
+    "engine_1_unknown": {
+      "sequence": 12270,
+      "simulatorUtc": "2026-09-27T22:27:03.2804718+00:00",
+      "recordedAtUtc": "2026-09-28T15:37:54.1078176+00:00",
+      "data": {
+        "aircraft": "FenixA321 IAE WF SC",
+        "onGround": true,
+        "groundSpeedKnots": 1.8195113964463825e-06,
+        "indicatedAirspeedKnots": 0,
+        "verticalSpeedFeetPerMinute": -0.00011018719760613727,
+        "gearExtendedRatio": 1,
+        "flapsExtendedRatio": 0,
+        "flapHandleRatio": 0,
+        "flapHandleIndex": 0,
+        "flapHandlePositions": 5,
+        "leftFlapDegrees": 0,
+        "rightFlapDegrees": 0,
+        "leftSlatDegrees": 0,
+        "rightSlatDegrees": 0,
+        "engineDataValid": false,
+        "engineReadings": [
+          {
+            "Index": 1,
+            "Combustion": 0,
+            "FuelFlowPph": 11.902539675920833,
+            "N1Percent": 0.3792652504168609,
+            "N2Percent": 3.100933147406859,
+            "Starter": 0,
+            "OilPressurePsf": 237.96873495028424
+          },
+          {
+            "Index": 2,
+            "Combustion": 0,
+            "FuelFlowPph": 12.078862429535205,
+            "N1Percent": 0.3848105327976283,
+            "N2Percent": 3.1462722601448516,
+            "Starter": 0,
+            "OilPressurePsf": 266.6612388038672
+          }
+        ],
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 4,
+            "Source": "combustion loss / spool decay"
+          }
+        ],
+        "pitchDegrees": -0.06586353913964711,
+        "bankDegrees": 0.015823235892303642,
+        "fuelTotalWeightPounds": 10696.431922057644,
+        "runningEngineCount": null,
+        "runningEngineMask": null,
+        "parkingBrake": true,
+        "enginesRunning": false,
+        "paused": false,
+        "slewing": false,
+        "latitude": -34.94031647963894,
+        "longitude": 138.53698474137028,
+        "altitudeFeet": 27.19662197594674,
+        "pressureAltitudeFeet": 27.149999618530273,
+        "altitudeAboveGroundFeet": 9.161494487334043,
+        "headingDegrees": 320.2353421041391,
+        "routeProgress": null
+      },
+      "toEffectiveInSeconds": "25.9997634",
+      "toCompleteSampleSeconds": "29.9968719",
+      "toRecordedCompleteWallSeconds": "30.1174755",
+      "toPirepCloseoutWallSeconds": "36.8889358"
+    },
+    "both_unknown": {
+      "sequence": 12274,
+      "simulatorUtc": "2026-09-27T22:27:05.28376+00:00",
+      "recordedAtUtc": "2026-09-28T15:37:56.0144023+00:00",
+      "data": {
+        "aircraft": "FenixA321 IAE WF SC",
+        "onGround": true,
+        "groundSpeedKnots": 1.028189981629019e-06,
+        "indicatedAirspeedKnots": 0,
+        "verticalSpeedFeetPerMinute": -1.611826576208838e-05,
+        "gearExtendedRatio": 1,
+        "flapsExtendedRatio": 0,
+        "flapHandleRatio": 0,
+        "flapHandleIndex": 0,
+        "flapHandlePositions": 5,
+        "leftFlapDegrees": 0,
+        "rightFlapDegrees": 0,
+        "leftSlatDegrees": 0,
+        "rightSlatDegrees": 0,
+        "engineDataValid": false,
+        "engineReadings": [
+          {
+            "Index": 1,
+            "Combustion": 0,
+            "FuelFlowPph": 9.739810473001253,
+            "N1Percent": 0.3109003773485748,
+            "N2Percent": 2.5381546698056425,
+            "Starter": 0,
+            "OilPressurePsf": 194.78318692415004
+          },
+          {
+            "Index": 2,
+            "Combustion": 0,
+            "FuelFlowPph": 9.884472333610516,
+            "N1Percent": 0.31544608878085084,
+            "N2Percent": 2.575265331419551,
+            "Starter": 0,
+            "OilPressurePsf": 218.58698100039803
+          }
+        ],
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "pitchDegrees": -0.0658928567242576,
+        "bankDegrees": 0.015854506318094215,
+        "fuelTotalWeightPounds": 10696.26916571462,
+        "runningEngineCount": null,
+        "runningEngineMask": null,
+        "parkingBrake": true,
+        "enginesRunning": false,
+        "paused": false,
+        "slewing": false,
+        "latitude": -34.94031647965747,
+        "longitude": 138.53698474136755,
+        "altitudeFeet": 27.196622869552478,
+        "pressureAltitudeFeet": 27.149999618530273,
+        "altitudeAboveGroundFeet": 9.161495402328423,
+        "headingDegrees": 320.23534216368773,
+        "routeProgress": null
+      },
+      "toEffectiveInSeconds": "23.9964752",
+      "toCompleteSampleSeconds": "27.9935837",
+      "toRecordedCompleteWallSeconds": "28.2108908",
+      "toPirepCloseoutWallSeconds": "34.9823511"
+    },
+    "both_fuel_flows_at_most_1_pph": {
+      "sequence": 12318,
+      "simulatorUtc": "2026-09-27T22:27:27.2698364+00:00",
+      "recordedAtUtc": "2026-09-28T15:38:17.9974269+00:00",
+      "data": {
+        "aircraft": "FenixA321 IAE WF SC",
+        "onGround": true,
+        "groundSpeedKnots": 8.05307339312445e-07,
+        "indicatedAirspeedKnots": 0,
+        "verticalSpeedFeetPerMinute": 0.000327810776070691,
+        "gearExtendedRatio": 1,
+        "flapsExtendedRatio": 0,
+        "flapHandleRatio": 0,
+        "flapHandleIndex": 0,
+        "flapHandlePositions": 5,
+        "leftFlapDegrees": 0,
+        "rightFlapDegrees": 0,
+        "leftSlatDegrees": 0,
+        "rightSlatDegrees": 0,
+        "engineDataValid": false,
+        "engineReadings": [
+          {
+            "Index": 1,
+            "Combustion": 0,
+            "FuelFlowPph": 0.9741238626840801,
+            "N1Percent": 0.03438426670348753,
+            "N2Percent": 0.2811061733133659,
+            "Starter": 0,
+            "OilPressurePsf": 21.579140867446668
+          },
+          {
+            "Index": 2,
+            "Combustion": 0,
+            "FuelFlowPph": 0.9902508140953182,
+            "N1Percent": 0.034887003160668374,
+            "N2Percent": 0.2852162601412144,
+            "Starter": 0,
+            "OilPressurePsf": 24.177763954145508
+          }
+        ],
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "pitchDegrees": -0.06602340634730446,
+        "bankDegrees": 0.015811190999193588,
+        "fuelTotalWeightPounds": 10694.491931878496,
+        "runningEngineCount": null,
+        "runningEngineMask": null,
+        "parkingBrake": true,
+        "enginesRunning": false,
+        "paused": false,
+        "slewing": false,
+        "latitude": -34.94031647968786,
+        "longitude": 138.53698474143232,
+        "altitudeFeet": 27.19662761617144,
+        "pressureAltitudeFeet": 27.149999618530273,
+        "altitudeAboveGroundFeet": 9.161500148947386,
+        "headingDegrees": 320.23534302959445,
+        "routeProgress": null
+      },
+      "toEffectiveInSeconds": "2.0103988",
+      "toCompleteSampleSeconds": "6.0075073",
+      "toRecordedCompleteWallSeconds": "6.2278662",
+      "toPirepCloseoutWallSeconds": "12.9993265"
+    },
+    "both_off_valid": {
+      "sequence": 12322,
+      "simulatorUtc": "2026-09-27T22:27:29.2802352+00:00",
+      "recordedAtUtc": "2026-09-28T15:38:20.0426733+00:00",
+      "data": {
+        "aircraft": "FenixA321 IAE WF SC",
+        "onGround": true,
+        "groundSpeedKnots": 6.263631266172394e-07,
+        "indicatedAirspeedKnots": 0,
+        "verticalSpeedFeetPerMinute": 0.00027568709811021054,
+        "gearExtendedRatio": 1,
+        "flapsExtendedRatio": 0,
+        "flapHandleRatio": 0,
+        "flapHandleIndex": 0,
+        "flapHandlePositions": 5,
+        "leftFlapDegrees": 0,
+        "rightFlapDegrees": 0,
+        "leftSlatDegrees": 0,
+        "rightSlatDegrees": 0,
+        "engineDataValid": true,
+        "engineReadings": [
+          {
+            "Index": 1,
+            "Combustion": 0,
+            "FuelFlowPph": 0.7526041006448586,
+            "N1Percent": 0.02816872626849726,
+            "N2Percent": 0.22999591610070544,
+            "Starter": 0,
+            "OilPressurePsf": 17.65428755766089
+          },
+          {
+            "Index": 2,
+            "Combustion": 0,
+            "FuelFlowPph": 0.7657444799288284,
+            "N1Percent": 0.028580584568970613,
+            "N2Percent": 0.23335871377278128,
+            "Starter": 0,
+            "OilPressurePsf": 19.80778181950552
+          }
+        ],
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 1,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 1,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "pitchDegrees": -0.06601275124258575,
+        "bankDegrees": 0.01580568242661394,
+        "fuelTotalWeightPounds": 10694.330811277614,
+        "runningEngineCount": 0,
+        "runningEngineMask": 0,
+        "parkingBrake": true,
+        "enginesRunning": false,
+        "paused": false,
+        "slewing": false,
+        "latitude": -34.94031647968274,
+        "longitude": 138.5369847414307,
+        "altitudeFeet": 27.196635050656656,
+        "pressureAltitudeFeet": 27.149999618530273,
+        "altitudeAboveGroundFeet": 9.161507583432602,
+        "headingDegrees": 320.23534311801995,
+        "routeProgress": null
+      },
+      "toEffectiveInSeconds": "0",
+      "toCompleteSampleSeconds": "3.9971085",
+      "toRecordedCompleteWallSeconds": "4.1826198",
+      "toPirepCloseoutWallSeconds": "10.9540801"
+    },
+    "manual_confirmation_predicate_first_true": {
+      "sequence": 12218,
+      "simulatorUtc": "2026-09-27T22:26:37.2849807+00:00",
+      "recordedAtUtc": "2026-09-28T15:37:28.0763916+00:00",
+      "data": {
+        "aircraft": "FenixA321 IAE WF SC",
+        "onGround": true,
+        "groundSpeedKnots": 7.620422674847192e-05,
+        "indicatedAirspeedKnots": 0,
+        "verticalSpeedFeetPerMinute": -0.008555918466299757,
+        "gearExtendedRatio": 1,
+        "flapsExtendedRatio": 0,
+        "flapHandleRatio": 0,
+        "flapHandleIndex": 0,
+        "flapHandlePositions": 5,
+        "leftFlapDegrees": 0,
+        "rightFlapDegrees": 0,
+        "leftSlatDegrees": 0,
+        "rightSlatDegrees": 0,
+        "engineDataValid": false,
+        "engineReadings": [
+          {
+            "Index": 1,
+            "Combustion": 0,
+            "FuelFlowPph": 367.9367565203555,
+            "N1Percent": 11.63327182788399,
+            "N2Percent": 41.79409582148976,
+            "Starter": 0,
+            "OilPressurePsf": 7412.044991887014
+          },
+          {
+            "Index": 2,
+            "Combustion": 0,
+            "FuelFlowPph": 377.1071494315125,
+            "N1Percent": 11.923285042971319,
+            "N2Percent": 42.40517227240177,
+            "Starter": 0,
+            "OilPressurePsf": 8806.74264467883
+          }
+        ],
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 4,
+            "Source": "combustion loss / spool decay"
+          },
+          {
+            "Index": 2,
+            "Condition": 4,
+            "Source": "combustion loss / spool decay"
+          }
+        ],
+        "pitchDegrees": -0.06132198081518247,
+        "bankDegrees": 0.015525637600686865,
+        "fuelTotalWeightPounds": 10698.533032837673,
+        "runningEngineCount": null,
+        "runningEngineMask": null,
+        "parkingBrake": true,
+        "enginesRunning": false,
+        "paused": false,
+        "slewing": false,
+        "latitude": -34.94031647802868,
+        "longitude": 138.5369847399402,
+        "altitudeFeet": 27.19647479819887,
+        "pressureAltitudeFeet": 27.149999618530273,
+        "altitudeAboveGroundFeet": 9.161347101810797,
+        "headingDegrees": 320.2353412632748,
+        "routeProgress": null
+      },
+      "toEffectiveInSeconds": "51.9952545",
+      "toCompleteSampleSeconds": "55.992363",
+      "toRecordedCompleteWallSeconds": "56.1489015",
+      "toPirepCloseoutWallSeconds": "62.9203618"
+    }
+  },
+  "terminalEvents": [
+    {
+      "sequence": 11411,
+      "kind": "flight_milestone",
+      "recordedAtUtc": "2026-09-28T15:30:50.091836+00:00",
+      "simulatorUtc": "2026-09-27T22:19:56.2668685+00:00",
+      "detail": {
+        "phase": "TaxiIn",
+        "label": "Landing / taxi in"
+      }
+    },
+    {
+      "sequence": 11412,
+      "kind": "tracking_event",
+      "recordedAtUtc": "2026-09-28T15:30:50.0922409+00:00",
+      "simulatorUtc": "2026-09-27T22:19:56.2668685+00:00",
+      "detail": {
+        "Title": "Touchdown",
+        "Summary": "Touchdown at 130 kt \u2022 -316 ft/min \u2022 fuel burn 537 lb below plan",
+        "Detail": "Touchdown at 130 kt \u2022 -316 ft/min \u2022 fuel burn 537 lb below plan\nGS 117 KT  \u2022  2 ENGINES RUNNING  \u2022  FUEL 10953 LB",
+        "Kind": "operation"
+      }
+    },
+    {
+      "sequence": 11471,
+      "kind": "tracking_event",
+      "recordedAtUtc": "2026-09-28T15:31:19.0406806+00:00",
+      "simulatorUtc": "2026-09-27T22:20:28.2760314+00:00",
+      "detail": {
+        "Title": "Landing rollout slowed",
+        "Summary": "Groundspeed reduced to 29 kt",
+        "Detail": "Groundspeed reduced to 29 kt\nGS 29 KT  \u2022  2 ENGINES RUNNING",
+        "Kind": "operation"
+      }
+    },
+    {
+      "sequence": 11504,
+      "kind": "tracking_event",
+      "recordedAtUtc": "2026-09-28T15:31:35.0641834+00:00",
+      "simulatorUtc": "2026-09-27T22:20:44.285324+00:00",
+      "detail": {
+        "Title": "Taxi-in",
+        "Summary": "Taxiing to gate at 23 kt",
+        "Detail": "Taxiing to gate at 23 kt\nGS 23 KT  \u2022  2 ENGINES RUNNING",
+        "Kind": "operation"
+      }
+    },
+    {
+      "sequence": 11601,
+      "kind": "tracking_event",
+      "recordedAtUtc": "2026-09-28T15:32:23.0342312+00:00",
+      "simulatorUtc": "2026-09-27T22:21:32.2853927+00:00",
+      "detail": {
+        "Title": "Flaps 3 selected",
+        "Summary": "Flaps 3",
+        "Detail": "Flaps 3\nGS 16 KT  \u2022  2 ENGINES RUNNING",
+        "Kind": "operation"
+      }
+    },
+    {
+      "sequence": 11608,
+      "kind": "tracking_event",
+      "recordedAtUtc": "2026-09-28T15:32:26.0627475+00:00",
+      "simulatorUtc": "2026-09-27T22:21:35.281929+00:00",
+      "detail": {
+        "Title": "Flaps 2 selected",
+        "Summary": "Flaps 2",
+        "Detail": "Flaps 2\nGS 16 KT  \u2022  2 ENGINES RUNNING",
+        "Kind": "operation"
+      }
+    },
+    {
+      "sequence": 11625,
+      "kind": "tracking_event",
+      "recordedAtUtc": "2026-09-28T15:32:34.0658404+00:00",
+      "simulatorUtc": "2026-09-27T22:21:43.2714843+00:00",
+      "detail": {
+        "Title": "Flaps 1+F selected",
+        "Summary": "Flaps 1+F",
+        "Detail": "Flaps 1+F\nGS 17 KT  \u2022  2 ENGINES RUNNING",
+        "Kind": "operation"
+      }
+    },
+    {
+      "sequence": 11630,
+      "kind": "tracking_event",
+      "recordedAtUtc": "2026-09-28T15:32:36.0677036+00:00",
+      "simulatorUtc": "2026-09-27T22:21:45.2930831+00:00",
+      "detail": {
+        "Title": "Flaps 1 selected",
+        "Summary": "Flaps 1",
+        "Detail": "Flaps 1\nGS 18 KT  \u2022  2 ENGINES RUNNING",
+        "Kind": "operation"
+      }
+    },
+    {
+      "sequence": 11649,
+      "kind": "tracking_event",
+      "recordedAtUtc": "2026-09-28T15:32:45.0915748+00:00",
+      "simulatorUtc": "2026-09-27T22:21:54.2718124+00:00",
+      "detail": {
+        "Title": "Flaps UP selected",
+        "Summary": "Flaps UP",
+        "Detail": "Flaps UP\nGS 18 KT  \u2022  2 ENGINES RUNNING",
+        "Kind": "operation"
+      }
+    },
+    {
+      "sequence": 12194,
+      "kind": "tracking_event",
+      "recordedAtUtc": "2026-09-28T15:37:17.036617+00:00",
+      "simulatorUtc": "2026-09-27T22:26:26.2914733+00:00",
+      "detail": {
+        "Title": "Parking brake set",
+        "Summary": "Parking brake set at stand",
+        "Detail": "Parking brake set at stand\nGS 0 KT  \u2022  BRAKE SET  \u2022  2 ENGINES RUNNING",
+        "Kind": "operation"
+      }
+    },
+    {
+      "sequence": 12215,
+      "kind": "tracking_event",
+      "recordedAtUtc": "2026-09-28T15:37:27.0753345+00:00",
+      "simulatorUtc": "2026-09-27T22:26:36.2872009+00:00",
+      "detail": {
+        "Title": "Engine 1 shutdown",
+        "Summary": "Engine 1 spool-down detected \u2022 combustion loss / spool decay",
+        "Detail": "Engine 1 spool-down detected \u2022 combustion loss / spool decay\nGS 0 KT  \u2022  FUEL 10699 LB",
+        "Kind": "operation"
+      }
+    },
+    {
+      "sequence": 12216,
+      "kind": "tracking_event",
+      "recordedAtUtc": "2026-09-28T15:37:27.0837149+00:00",
+      "simulatorUtc": "2026-09-27T22:26:36.2872009+00:00",
+      "detail": {
+        "Title": "Engine 2 shutdown",
+        "Summary": "Engine 2 spool-down detected \u2022 combustion loss / spool decay",
+        "Detail": "Engine 2 spool-down detected \u2022 combustion loss / spool decay\nGS 0 KT  \u2022  FUEL 10699 LB",
+        "Kind": "operation"
+      }
+    },
+    {
+      "sequence": 12323,
+      "kind": "tracking_event",
+      "recordedAtUtc": "2026-09-28T15:38:20.0428015+00:00",
+      "simulatorUtc": "2026-09-27T22:27:29.2802352+00:00",
+      "detail": {
+        "Title": "Engine 1 shut down",
+        "Summary": "Engine 1 shutdown confirmed \u2022 N1 / N2 spool",
+        "Detail": "Engine 1 shutdown confirmed \u2022 N1 / N2 spool\nGS 0 KT  \u2022  FUEL 10694 LB",
+        "Kind": "operation"
+      }
+    },
+    {
+      "sequence": 12324,
+      "kind": "tracking_event",
+      "recordedAtUtc": "2026-09-28T15:38:20.7256134+00:00",
+      "simulatorUtc": "2026-09-27T22:27:29.2802352+00:00",
+      "detail": {
+        "Title": "Engine 2 shut down",
+        "Summary": "Engine 2 shutdown confirmed \u2022 N1 / N2 spool",
+        "Detail": "Engine 2 shutdown confirmed \u2022 N1 / N2 spool\nGS 0 KT  \u2022  FUEL 10694 LB",
+        "Kind": "operation"
+      }
+    },
+    {
+      "sequence": 12333,
+      "kind": "flight_milestone",
+      "recordedAtUtc": "2026-09-28T15:38:24.0441713+00:00",
+      "simulatorUtc": "2026-09-27T22:27:29.2802352+00:00",
+      "detail": {
+        "phase": "Complete",
+        "label": "Block-in / complete"
+      }
+    },
+    {
+      "sequence": 12334,
+      "kind": "tracking_event",
+      "recordedAtUtc": "2026-09-28T15:38:24.214145+00:00",
+      "simulatorUtc": "2026-09-27T22:27:29.2802352+00:00",
+      "detail": {
+        "Title": "Block-in / flight complete",
+        "Summary": "Stopped at gate with parking brake set and engines shut down",
+        "Detail": "Stopped at gate with parking brake set and engines shut down\nGS 0 KT  \u2022  BRAKE SET  \u2022  ENGINES OFF  \u2022  FUEL 10694 LB",
+        "Kind": "operation"
+      }
+    }
+  ],
+  "on": {
+    "sequence": 11411,
+    "kind": "flight_milestone",
+    "recordedAtUtc": "2026-09-28T15:30:50.091836+00:00",
+    "simulatorUtc": "2026-09-27T22:19:56.2668685+00:00",
+    "detail": {
+      "phase": "TaxiIn",
+      "label": "Landing / taxi in"
+    }
+  },
+  "in": {
+    "sequence": 12333,
+    "kind": "flight_milestone",
+    "recordedAtUtc": "2026-09-28T15:38:24.0441713+00:00",
+    "simulatorUtc": "2026-09-27T22:27:29.2802352+00:00",
+    "detail": {
+      "phase": "Complete",
+      "label": "Block-in / complete"
+    }
+  },
+  "firstCompleteState": {
+    "sequence": 12335,
+    "kind": "tracking_state",
+    "recordedAtUtc": "2026-09-28T15:38:24.2252931+00:00",
+    "simulatorUtc": "2026-09-27T22:27:33.2773437+00:00",
+    "detail": {
+      "progress": 1,
+      "remainingNm": 0,
+      "routeReliable": true,
+      "crossTrackNm": 0.4233010068004492,
+      "estimatedIn": "2026-09-27T22:27:29.2802352+00:00",
+      "phase": "Complete"
+    }
+  },
+  "closeout": {
+    "sequence": 12348,
+    "kind": "pirep_closeout_complete",
+    "recordedAtUtc": "2026-09-28T15:38:30.9967534+00:00",
+    "simulatorUtc": null,
+    "detail": {
+      "FlightNumber": "JST776"
+    }
+  },
+  "pirep": {
+    "FlightNumber": "JST776",
+    "Origin": "YMML",
+    "Destination": "YPAD",
+    "AircraftType": "FENIX A321",
+    "Route": "YMML/34 PEDNI1 PEDNI H345 MAVTO INTOG1V YPAD/05",
+    "actualOut": "2026-09-27T21:04:45.6519165+00:00",
+    "actualOff": "2026-09-27T21:16:14.6521759+00:00",
+    "actualOn": "2026-09-27T22:19:56.2668685+00:00",
+    "actualIn": "2026-09-27T22:27:29.2802352+00:00",
+    "actualSource": "Observed simulator milestones",
+    "pilotConfirmedBlockIn": false,
+    "submittedUtc": "2026-09-28T15:38:30.9904582+00:00",
+    "status": "Completed",
+    "eventCount": 48
+  },
+  "durableFlightId": "4bd22e4aee0a4f3dbcd33b9774a0c6ba",
+  "pirepCount": 1,
+  "completeHistoryRecordedUtc": "2026-09-28T15:38:24.2257749+00:00",
+  "firstSampleAfterComplete": {
+    "sequence": 12336,
+    "kind": "telemetry",
+    "recordedAtUtc": "2026-09-28T15:38:25.0554726+00:00",
+    "simulatorUtc": "2026-09-27T22:27:34.2835083+00:00",
+    "detail": {
+      "aircraft": "FenixA321 IAE WF SC",
+      "onGround": true,
+      "groundSpeedKnots": 8.628305423949749e-07,
+      "indicatedAirspeedKnots": 0,
+      "verticalSpeedFeetPerMinute": -0.0001965732553799167,
+      "gearExtendedRatio": 1,
+      "flapsExtendedRatio": 0,
+      "flapHandleRatio": 0,
+      "flapHandleIndex": 0,
+      "flapHandlePositions": 5,
+      "leftFlapDegrees": 0,
+      "rightFlapDegrees": 0,
+      "leftSlatDegrees": 0,
+      "rightSlatDegrees": 0,
+      "engineDataValid": true,
+      "engineReadings": [
+        {
+          "Index": 1,
+          "Combustion": 0,
+          "FuelFlowPph": 0.40388282555899885,
+          "N1Percent": 0.017089648234465474,
+          "N2Percent": 0.13940694529798617,
+          "Starter": 0,
+          "OilPressurePsf": 10.69973913610396
+        },
+        {
+          "Index": 2,
+          "Combustion": 0,
+          "FuelFlowPph": 0.4118643698069429,
+          "N1Percent": 0.01733951801595453,
+          "N2Percent": 0.14144523084264793,
+          "Starter": 0,
+          "OilPressurePsf": 12.015374932266058
+        }
+      ],
+      "engineStates": [
+        {
+          "Index": 1,
+          "Condition": 1,
+          "Source": "N1 / N2 spool"
+        },
+        {
+          "Index": 2,
+          "Condition": 1,
+          "Source": "N1 / N2 spool"
+        }
+      ],
+      "pitchDegrees": -0.06602883417650478,
+      "bankDegrees": 0.015782629279561526,
+      "fuelTotalWeightPounds": 10693.926782968803,
+      "runningEngineCount": 0,
+      "runningEngineMask": 0,
+      "parkingBrake": true,
+      "enginesRunning": false,
+      "paused": false,
+      "slewing": false,
+      "latitude": -34.94031647968147,
+      "longitude": 138.536984741445,
+      "altitudeFeet": 27.196631184308355,
+      "pressureAltitudeFeet": 27.149999618530273,
+      "altitudeAboveGroundFeet": 9.161503717084301,
+      "headingDegrees": 320.2353433140989,
+      "routeProgress": null
+    }
+  },
+  "brakeToInSeconds": "62.9887619",
+  "combustionLossToInSeconds": "57.0014953",
+  "combustionLossToCompleteSampleSeconds": "60.9986038",
+  "combustionLossToPirepSubmissionWallSeconds": "67.9457099",
+  "completionConfirmationSeconds": "3.9971085",
+  "fuelCriterionConfirmationSeconds": "2.0103988",
+  "brakePosition": [
+    -34.9403164738887,
+    138.53698473615077
+  ],
+  "brakeDistanceFromFiledAirportNm": 0.4233010431422215,
+  "maximumDisplacementFromBrakeMeters": 0.0008057121425241527,
+  "engineClassifierMatchingSamples": 6145,
+  "phaseReconstructionMatchingSamples": 6145,
+  "milestonesReconstructed": [
+    {
+      "phase": "TaxiOut",
+      "effectiveTicks": 17905430856519165,
+      "confirmedSimulatorUtc": "2026-09-27T21:04:49.6609115+00:00"
+    },
+    {
+      "phase": "Airborne",
+      "effectiveTicks": 17905437746521759,
+      "confirmedSimulatorUtc": "2026-09-27T21:16:17.6569519+00:00"
+    },
+    {
+      "phase": "TaxiIn",
+      "effectiveTicks": 17905475962668685,
+      "confirmedSimulatorUtc": "2026-09-27T22:19:59.2692184+00:00"
+    },
+    {
+      "phase": "Complete",
+      "effectiveTicks": 17905480492802352,
+      "confirmedSimulatorUtc": "2026-09-27T22:27:33.2773437+00:00"
+    }
+  ],
+  "reconstructionScope": "Independent Python transcription against immutable journal; not execution of production runtime or substitute for regression tests.",
+  "r3AndCurrentUnchanged": {
+    "src/Alpha6Ops.Core/Operations.cs": true,
+    "src/Alpha6Ops.Core/EngineEvidence.cs": true,
+    "src/Alpha6Ops.Desktop/SimConnectSource.cs": true,
+    "coordinatorBlockInGate": true
+  },
+  "limits": [
+    "No shutdown-command/master/fuel-valve signal or raw shaft RPM channel is recorded.",
+    "No PIREP eligibility/UI-paint event timestamp; eligibility is inferred from code at the Complete update.",
+    "No policy change is safe from this one positive flight alone.",
+    "Sustained failure and commanded shutdown cannot be distinguished from combustion=false alone."
+  ]
+}

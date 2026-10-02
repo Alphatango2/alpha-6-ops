@@ -1,0 +1,264 @@
+{
+  "checkpoint": "7.24C",
+  "gate": "NO-GO",
+  "build": "PASS; zero warnings/errors",
+  "candidate": "S4-7.24C-C1-20260928-64e864462ace",
+  "counts": {
+    "executed": 2434,
+    "passed": 2433,
+    "failed": 1,
+    "skipped": 2
+  },
+  "countConvention": "Selected final assertion executions; recorded replay counts once per flight. Earlier RED/superseded runs, negative replay proof, standalone duplicate pump run, builds, hash guards and investigative priority arms are excluded.",
+  "groups": [
+    {
+      "name": "Core",
+      "executed": 140,
+      "passed": 140,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "desktop-smoke",
+      "executed": 18,
+      "passed": 18,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "dashboard-smoke",
+      "executed": 538,
+      "passed": 538,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "refresh-smoke",
+      "executed": 1010,
+      "passed": 1010,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "live-identity-smoke",
+      "executed": 24,
+      "passed": 24,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "diagnostic-index-smoke",
+      "executed": 19,
+      "passed": 19,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "monitor-lifecycle-smoke",
+      "executed": 22,
+      "passed": 22,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "tracking-integration",
+      "executed": 47,
+      "passed": 47,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "single-instance activation",
+      "executed": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "recorded-flight validations",
+      "executed": 9,
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "migration contracts and compatibility",
+      "executed": 31,
+      "passed": 31,
+      "failed": 0,
+      "skipped": 2
+    },
+    {
+      "name": "explicit large diagnostic-index suite",
+      "executed": 35,
+      "passed": 35,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "fleet import",
+      "executed": 6,
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "Published full Map V2 suite",
+      "executed": 193,
+      "passed": 192,
+      "failed": 1,
+      "skipped": 0
+    },
+    {
+      "name": "contracts",
+      "executed": 22,
+      "passed": 22,
+      "failed": 0,
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\final-followup-20260928-121238\\contracts\\summary.json",
+      "skipped": 0
+    },
+    {
+      "name": "interaction-contract",
+      "executed": 13,
+      "passed": 13,
+      "failed": 0,
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\final-followup-20260928-121238\\interaction-contract\\summary.json",
+      "skipped": 0
+    },
+    {
+      "name": "restoration-verify",
+      "executed": 157,
+      "passed": 157,
+      "failed": 0,
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\final-followup-20260928-121238\\restoration-verify\\summary.json",
+      "skipped": 0
+    },
+    {
+      "name": "JST776 current replay",
+      "executed": 1,
+      "passed": 1,
+      "failed": 0,
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\final-followup-20260928-121238\\jst776\\summary.json",
+      "skipped": 0
+    },
+    {
+      "name": "recovery persistence guard",
+      "executed": 21,
+      "passed": 21,
+      "failed": 0,
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\final-followup-20260928-121238\\recovery-guard\\summary.json",
+      "skipped": 0
+    },
+    {
+      "name": "active flight restart",
+      "executed": 69,
+      "passed": 69,
+      "failed": 0,
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\final-followup-20260928-121238\\active-restart\\summary.json",
+      "skipped": 0
+    },
+    {
+      "name": "Map mailbox",
+      "executed": 7,
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "Browser math",
+      "executed": 7,
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "Performance policy",
+      "executed": 5,
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "Responsiveness policy",
+      "executed": 27,
+      "passed": 27,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "Scheduling policy",
+      "executed": 12,
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0
+    }
+  ],
+  "failures": [
+    {
+      "passed": false,
+      "name": "Contention: dispatcher heartbeat maximum below 500ms and within 100ms of baseline (150ms floor)."
+    }
+  ],
+  "skipped": [
+    {
+      "Id": "NATIVE_CONNECTION_LIFECYCLE",
+      "Status": "Skipped",
+      "Detail": "No real SimConnect open/close was exercised. Synthetic tests do not prove native handles or worker disposal."
+    },
+    {
+      "Id": "NATIVE_RECONNECT",
+      "Status": "Skipped",
+      "Detail": "Rapid queued callbacks were tested below the native boundary; an actual simulator disconnect/reconnect remains a hardware validation."
+    }
+  ],
+  "historical": {
+    "flights": 9,
+    "raw": 91366,
+    "processed": 91366,
+    "passed": 9
+  },
+  "current": {
+    "flight": "JST776",
+    "raw": 6145,
+    "processed": 6145,
+    "passed": true
+  },
+  "separateInvestigation": {
+    "inputArm": {
+      "executed": 12,
+      "passed": 10,
+      "failed": 2,
+      "telemetry": 120
+    },
+    "diagnosticNormalArm": {
+      "executed": 12,
+      "passed": 12,
+      "failed": 0,
+      "telemetry": 120
+    },
+    "sensitivityFixture": {
+      "telemetry": 12,
+      "intentionalStalls": true
+    }
+  },
+  "nativePhysical": "Pending; no installed candidate or native MSFS pass asserted",
+  "changedSourceFileCount": 35,
+  "navigation": {
+    "coldMs": 1774.7276,
+    "returns": 18,
+    "correctVisibleMs": {
+      "count": 18,
+      "min": 311.802,
+      "p50": 325.1867,
+      "p95": 330.9181,
+      "max": 331.9136
+    },
+    "diagnosticInclusiveMs": {
+      "count": 18,
+      "min": 326.553,
+      "p50": 339.0204,
+      "p95": 342.5877,
+      "max": 342.8389
+    }
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "executed": 21,
+  "passed": 21,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "TRANSIENT_DESTINATION_LOCK_RECOVERS",
+      "passed": true,
+      "milliseconds": 69.8019,
+      "error": null
+    },
+    {
+      "name": "FAILED_SAVE_PRESERVES_OLD_AND_CLEANS_TEMP",
+      "passed": true,
+      "milliseconds": 177.1263,
+      "error": null
+    },
+    {
+      "name": "INCOMPLETE_JSON_REJECTED",
+      "passed": true,
+      "milliseconds": 11.9954,
+      "error": null
+    },
+    {
+      "name": "MALFORMED_MONITOR_REJECTED_WITHOUT_STARTUP_CRASH",
+      "passed": true,
+      "milliseconds": 198.2996,
+      "error": null
+    },
+    {
+      "name": "HISTORICAL_SCHEMA_NAN_AND_NULL_OPTIONALS",
+      "passed": true,
+      "milliseconds": 160.5831,
+      "error": null
+    },
+    {
+      "name": "MISMATCHED_FLIGHT_AND_DATE_NOT_RESTORED",
+      "passed": true,
+      "milliseconds": 1.3806,
+      "error": null
+    },
+    {
+      "name": "CORRUPT_NULL_AND_MISSING_MEMBERS_REJECTED",
+      "passed": true,
+      "milliseconds": 9.8744,
+      "error": null
+    },
+    {
+      "name": "INVALID_SAVE_CANNOT_REPLACE_VALID_STATE",
+      "passed": true,
+      "milliseconds": 1.1976,
+      "error": null
+    },
+    {
+      "name": "READONLY_TARGET_FAILS_WITHOUT_RETRY_OR_DATA_LOSS",
+      "passed": true,
+      "milliseconds": 6.5579,
+      "error": null
+    },
+    {
+      "name": "INVALID_DIRECTORY_FAILS_AND_REMAINS_A_FILE",
+      "passed": true,
+      "milliseconds": 0.639,
+      "error": null
+    },
+    {
+      "name": "LOCKED_STAGE_FAILURE_IS_BOUNDED_AND_LEFTOVER_IS_MANAGED",
+      "passed": true,
+      "milliseconds": 367.8784,
+      "error": null
+    },
+    {
+      "name": "SEQUENTIAL_5000_COMPLETE_REPLACEMENTS",
+      "passed": true,
+      "milliseconds": 10798.8632,
+      "error": null
+    },
+    {
+      "name": "CONCURRENT_WRITERS_AND_READERS_RETURN_WHOLE_STATES",
+      "passed": true,
+      "milliseconds": 14362.9863,
+      "error": null
+    },
+    {
+      "name": "SAVE_DELETE_LOAD_OVERLAP_AND_FINAL_DELETE",
+      "passed": true,
+      "milliseconds": 227.8036,
+      "error": null
+    },
+    {
+      "name": "EXTERNAL_READ_HANDLE_CANNOT_CAUSE_PARTIAL_PUBLICATION",
+      "passed": true,
+      "milliseconds": 182.7687,
+      "error": null
+    },
+    {
+      "name": "PARTIAL_OR_VALID_ORPHAN_NEVER_OVERRIDES_AUTHORITATIVE_FILE",
+      "passed": true,
+      "milliseconds": 281.6756,
+      "error": null
+    },
+    {
+      "name": "PROCESS_EXIT_BEFORE_REPLACE_PRESERVES_OLD_CHECKPOINT",
+      "passed": true,
+      "milliseconds": 317.4935,
+      "error": null
+    },
+    {
+      "name": "PROCESS_EXIT_AFTER_REPLACE_REOPENS_NEW_CHECKPOINT",
+      "passed": true,
+      "milliseconds": 309.6662,
+      "error": null
+    },
+    {
+      "name": "INDEPENDENT_PROFILE_SAVES_DO_NOT_SHARE_TRANSACTION_LOCK",
+      "passed": true,
+      "milliseconds": 185.0166,
+      "error": null
+    },
+    {
+      "name": "COORDINATOR_PERMANENT_FAILURE_REMAINS_DIAGNOSTIC_AND_RECOVERS",
+      "passed": true,
+      "milliseconds": 443.676,
+      "error": null
+    },
+    {
+      "name": "FLUSH_COST_IS_MEASURED_WITH_REAL_WRITES",
+      "passed": true,
+      "milliseconds": 765.4451,
+      "error": null
+    }
+  ],
+  "metrics": {
+    "sequential": {
+      "replacements": 5000,
+      "roundTrips": 5000,
+      "milliseconds": 10797.6409,
+      "saveP50Ms": 1.793,
+      "saveP95Ms": 4.3875,
+      "saveP99Ms": 5.0208,
+      "saveMaxMs": 24.6016
+    },
+    "concurrent": {
+      "replacements": 1001,
+      "overlappingReads": 176488
+    },
+    "externalDeleteSharedHandle": {
+      "replacementSucceededWhileHeld": false,
+      "hresult": -2147024891
+    },
+    "flushCost": [
+      {
+        "durable": false,
+        "writes": 500,
+        "p50Ms": 0.1713,
+        "p95Ms": 0.2062,
+        "maxMs": 0.2944
+      },
+      {
+        "durable": true,
+        "writes": 500,
+        "p50Ms": 1.2297,
+        "p95Ms": 1.6121,
+        "maxMs": 5.7928
+      }
+    ]
+  }
+}

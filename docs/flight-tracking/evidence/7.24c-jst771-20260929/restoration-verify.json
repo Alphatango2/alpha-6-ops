@@ -1,0 +1,637 @@
+{
+  "passed": true,
+  "executed": 157,
+  "failed": 0,
+  "mode": "restoration-verify",
+  "requestedMinutes": 0,
+  "checks": [
+    {
+      "passed": true,
+      "name": "Owned original process handle reports live child"
+    },
+    {
+      "passed": true,
+      "name": "Original process handle reports termination after child exit"
+    },
+    {
+      "passed": true,
+      "name": "Repeated exit checks retain original identity without reopening stale process IDs"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 1: retained hidden browser reaches native suspension"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 1: hidden telemetry produces no visual snapshots"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 1: late browser ACK cannot reveal hidden map"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 1: latest hidden telemetry reaches restored aircraft"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 1: hidden gap does not create an observed trail segment"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 1: camera and selection survive"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 1: layer and reduced-motion preferences survive"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 1: visible frame uses current snapshot solar state"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 2: retained hidden browser reaches native suspension"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 2: hidden telemetry produces no visual snapshots"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 2: late browser ACK cannot reveal hidden map"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 2: latest hidden telemetry reaches restored aircraft"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 2: hidden gap does not create an observed trail segment"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 2: camera and selection survive"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 2: layer and reduced-motion preferences survive"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 2: visible frame uses current snapshot solar state"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 3: retained hidden browser reaches native suspension"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 3: hidden telemetry produces no visual snapshots"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 3: late browser ACK cannot reveal hidden map"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 3: latest hidden telemetry reaches restored aircraft"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 3: hidden gap does not create an observed trail segment"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 3: camera and selection survive"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 3: layer and reduced-motion preferences survive"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 3: visible frame uses current snapshot solar state"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 4: retained hidden browser reaches native suspension"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 4: hidden telemetry produces no visual snapshots"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 4: late browser ACK cannot reveal hidden map"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 4: latest hidden telemetry reaches restored aircraft"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 4: hidden gap does not create an observed trail segment"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 4: camera and selection survive"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 4: layer and reduced-motion preferences survive"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 4: visible frame uses current snapshot solar state"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 5: retained hidden browser reaches native suspension"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 5: hidden telemetry produces no visual snapshots"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 5: late browser ACK cannot reveal hidden map"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 5: latest hidden telemetry reaches restored aircraft"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 5: hidden gap does not create an observed trail segment"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 5: camera and selection survive"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 5: layer and reduced-motion preferences survive"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 5: visible frame uses current snapshot solar state"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 6: retained hidden browser reaches native suspension"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 6: hidden telemetry produces no visual snapshots"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 6: late browser ACK cannot reveal hidden map"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 6: latest hidden telemetry reaches restored aircraft"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 6: hidden gap does not create an observed trail segment"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 6: camera and selection survive"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 6: layer and reduced-motion preferences survive"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 6: visible frame uses current snapshot solar state"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 7: retained hidden browser reaches native suspension"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 7: hidden telemetry produces no visual snapshots"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 7: late browser ACK cannot reveal hidden map"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 7: latest hidden telemetry reaches restored aircraft"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 7: hidden gap does not create an observed trail segment"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 7: camera and selection survive"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 7: layer and reduced-motion preferences survive"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 7: visible frame uses current snapshot solar state"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 8: retained hidden browser reaches native suspension"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 8: hidden telemetry produces no visual snapshots"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 8: late browser ACK cannot reveal hidden map"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 8: latest hidden telemetry reaches restored aircraft"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 8: hidden gap does not create an observed trail segment"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 8: camera and selection survive"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 8: layer and reduced-motion preferences survive"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 8: visible frame uses current snapshot solar state"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 9: retained hidden browser reaches native suspension"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 9: hidden telemetry produces no visual snapshots"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 9: late browser ACK cannot reveal hidden map"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 9: latest hidden telemetry reaches restored aircraft"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 9: hidden gap does not create an observed trail segment"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 9: camera and selection survive"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 9: layer and reduced-motion preferences survive"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 9: visible frame uses current snapshot solar state"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 10: retained hidden browser reaches native suspension"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 10: hidden telemetry produces no visual snapshots"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 10: late browser ACK cannot reveal hidden map"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 10: latest hidden telemetry reaches restored aircraft"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 10: hidden gap does not create an observed trail segment"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 10: camera and selection survive"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 10: layer and reduced-motion preferences survive"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 10: visible frame uses current snapshot solar state"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 11: retained hidden browser reaches native suspension"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 11: hidden telemetry produces no visual snapshots"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 11: late browser ACK cannot reveal hidden map"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 11: latest hidden telemetry reaches restored aircraft"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 11: hidden gap does not create an observed trail segment"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 11: camera and selection survive"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 11: layer and reduced-motion preferences survive"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 11: visible frame uses current snapshot solar state"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 12: retained hidden browser reaches native suspension"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 12: hidden telemetry produces no visual snapshots"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 12: late browser ACK cannot reveal hidden map"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 12: latest hidden telemetry reaches restored aircraft"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 12: hidden gap does not create an observed trail segment"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 12: camera and selection survive"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 12: layer and reduced-motion preferences survive"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 12: visible frame uses current snapshot solar state"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 13: retained hidden browser reaches native suspension"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 13: hidden telemetry produces no visual snapshots"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 13: late browser ACK cannot reveal hidden map"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 13: latest hidden telemetry reaches restored aircraft"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 13: hidden gap does not create an observed trail segment"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 13: camera and selection survive"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 13: layer and reduced-motion preferences survive"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 13: visible frame uses current snapshot solar state"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 14: retained hidden browser reaches native suspension"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 14: hidden telemetry produces no visual snapshots"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 14: late browser ACK cannot reveal hidden map"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 14: latest hidden telemetry reaches restored aircraft"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 14: hidden gap does not create an observed trail segment"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 14: camera and selection survive"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 14: layer and reduced-motion preferences survive"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 14: visible frame uses current snapshot solar state"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 15: retained hidden browser reaches native suspension"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 15: hidden telemetry produces no visual snapshots"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 15: late browser ACK cannot reveal hidden map"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 15: latest hidden telemetry reaches restored aircraft"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 15: hidden gap does not create an observed trail segment"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 15: camera and selection survive"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 15: layer and reduced-motion preferences survive"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 15: visible frame uses current snapshot solar state"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 16: retained hidden browser reaches native suspension"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 16: hidden telemetry produces no visual snapshots"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 16: late browser ACK cannot reveal hidden map"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 16: latest hidden telemetry reaches restored aircraft"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 16: hidden gap does not create an observed trail segment"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 16: camera and selection survive"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 16: layer and reduced-motion preferences survive"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 16: visible frame uses current snapshot solar state"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 17: retained hidden browser reaches native suspension"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 17: hidden telemetry produces no visual snapshots"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 17: late browser ACK cannot reveal hidden map"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 17: latest hidden telemetry reaches restored aircraft"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 17: hidden gap does not create an observed trail segment"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 17: camera and selection survive"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 17: layer and reduced-motion preferences survive"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 17: visible frame uses current snapshot solar state"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 18: retained hidden browser reaches native suspension"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 18: hidden telemetry produces no visual snapshots"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 18: late browser ACK cannot reveal hidden map"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 18: latest hidden telemetry reaches restored aircraft"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 18: hidden gap does not create an observed trail segment"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 18: camera and selection survive"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 18: layer and reduced-motion preferences survive"
+    },
+    {
+      "passed": true,
+      "name": "Navigation 18: visible frame uses current snapshot solar state"
+    },
+    {
+      "passed": true,
+      "name": "Workspace navigation retains the same renderer and bridge epoch"
+    },
+    {
+      "passed": true,
+      "name": "Map navigation does not reconnect the authoritative simulator source"
+    },
+    {
+      "passed": true,
+      "name": "Rapid hide/show requests cannot create duplicate renderers or leave stale suspension"
+    },
+    {
+      "passed": true,
+      "name": "Hide and return with a delayed in-flight browser ACK cancels obsolete work without restart or timeout"
+    },
+    {
+      "passed": true,
+      "name": "Minimize retains the same paused map"
+    },
+    {
+      "passed": true,
+      "name": "Restore resumes the same map after minimization"
+    },
+    {
+      "passed": true,
+      "name": "Dormant expiry releases the renderer and a later return creates a fresh epoch"
+    },
+    {
+      "passed": true,
+      "name": "Classic selection explicitly releases retained WebView ownership"
+    },
+    {
+      "passed": true,
+      "name": "Explicit Classic to V2 switch initializes a fresh renderer"
+    },
+    {
+      "passed": true,
+      "name": "No owned browser processes after final renderer disposal"
+    }
+  ]
+}

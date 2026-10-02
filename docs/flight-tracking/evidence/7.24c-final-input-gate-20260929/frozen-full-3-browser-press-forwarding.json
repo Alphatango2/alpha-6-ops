@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "before": {
+    "point": {
+      "x": 1114,
+      "y": 400
+    },
+    "origin": {
+      "x": 247,
+      "y": 396
+    },
+    "actualWidth": 1283,
+    "actualHeight": 316,
+    "isVisible": true,
+    "isKeyboardFocusWithin": false,
+    "opacity": 1,
+    "paused": false,
+    "nativeSuspended": false,
+    "windowActive": true
+  },
+  "elapsedMs": 1.8664,
+  "result": {
+    "at": 7983.799999952316,
+    "button": 0,
+    "trusted": true,
+    "x": 641,
+    "y": 158
+  },
+  "browser": {
+    "event": {
+      "at": 7983.799999952316,
+      "button": 0,
+      "trusted": true,
+      "x": 641,
+      "y": 158
+    },
+    "hasFocus": true,
+    "height": 316,
+    "hidden": false,
+    "width": 1283
+  },
+  "scope": "Programmatically raised WPF input using current Mouse.PrimaryDevice coordinates; no global pointer movement"
+}

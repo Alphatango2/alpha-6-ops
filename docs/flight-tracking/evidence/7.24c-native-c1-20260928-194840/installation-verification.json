@@ -1,0 +1,20 @@
+{
+  "verifiedAtUtc": "2026-09-28T18:25:12.8198022+00:00",
+  "validationBuildId": "S4-7.24C-C1-20260928-64e864462ace",
+  "installDirectory": "C:\\Users\\DanniBaLs\\AppData\\Local\\Alpha6Designs\\Alpha6OPSPreview",
+  "payloadManifestSha256": "0B91E5AE26DB7F0BB213FAAD6F86BD872A2A76118DAE2FED3EEA32F94F5042DA",
+  "expectedFiles": 514,
+  "filesChecked": 514,
+  "passed": 514,
+  "failed": 0,
+  "installationIdentityPass": true,
+  "screenshot": {
+    "originalPath": "C:/Users/DANNIB~1/AppData/Local/Temp/codex-clipboard-fba83155-a25a-4fb7-adab-fda4f4bcc3ba.png",
+    "preservedPath": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\installed-C1-20260928-132512-b670d807\\user-upgrade-complete.png",
+    "sha256": "7AEE47C943CEADAE65008C66D83A29EE30DAD800CCDD0EAD403CF47A5ED143D1"
+  },
+  "preservationEvidence": "Installer reports existing logs and settings preserved; this check does not independently establish a before/after profile comparison.",
+  "nativeValidation": "Pending; no application or simulator launched by this verification",
+  "frozenPackage": "Unmodified",
+  "evidenceDirectory": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\installed-C1-20260928-132512-b670d807"
+}

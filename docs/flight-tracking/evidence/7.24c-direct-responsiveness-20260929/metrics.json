@@ -1,0 +1,602 @@
+{
+  "suites": {
+    "direct": {
+      "passed": true,
+      "checks": 49,
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\review-green"
+    },
+    "operations": {
+      "passed": true,
+      "checks": 199,
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\raw-move-full-1"
+    },
+    "presentation": {
+      "passed": true,
+      "checks": 22,
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\contracts"
+    },
+    "restoration": {
+      "passed": true,
+      "checks": 157,
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\restoration-verify"
+    },
+    "interaction-control": {
+      "passed": true,
+      "checks": 13,
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\direct-acceptance-20260929\\interaction-contract"
+    },
+    "delivery": {
+      "passed": true,
+      "checks": 4
+    },
+    "scheduling": {
+      "passed": true,
+      "checks": 15
+    },
+    "terminal-recovery": {
+      "passed": true,
+      "checks": 293
+    },
+    "regression": {
+      "passed": true,
+      "checks": 1958
+    },
+    "replay": {
+      "passed": true,
+      "checks": 11,
+      "samples": 100632
+    }
+  },
+  "regressionCounts": {
+    "executed": 1958,
+    "passed": 1958,
+    "failed": 0,
+    "skipped": 2
+  },
+  "replays": 11,
+  "samples": 100632,
+  "directRecords": [
+    {
+      "kind": "out-of-bounds-negative",
+      "bad": {
+        "delivered": false,
+        "trusted": false,
+        "inBounds": false,
+        "elapsedMs": 1501.7652
+      }
+    },
+    {
+      "kind": "late-response-negative",
+      "late": {
+        "delivered": true,
+        "trusted": true,
+        "inBounds": true,
+        "elapsedMs": 1602.167
+      }
+    },
+    {
+      "kind": "trusted-wpf-positive",
+      "good": {
+        "delivered": true,
+        "trusted": true,
+        "inBounds": true,
+        "elapsedMs": 0.5213
+      }
+    },
+    {
+      "kind": "drag",
+      "cameraChanged": true,
+      "cdpRoundTripMs": [
+        5.3088,
+        2.4358,
+        2.4249,
+        2.4277,
+        2.4192,
+        2.7768,
+        3.3145,
+        2.7696,
+        3.2428,
+        2.7282,
+        3.262,
+        2.7162
+      ]
+    },
+    {
+      "kind": "selection",
+      "selected": true,
+      "selectionObservationMs": 102.3522,
+      "selections": [
+        "current-aircraft"
+      ]
+    },
+    {
+      "kind": "navigation",
+      "elapsedMs": 1637.1497
+    },
+    {
+      "kind": "dashboard-pressure",
+      "pressureBeganMs": 18421.0674,
+      "pressureEndedMs": 19921.0863,
+      "pressureTicks": 18,
+      "ticksAtEnd": 18,
+      "intervalMs": 1000,
+      "deferred": true
+    }
+  ],
+  "sourceSamples": 24,
+  "sourceToIngestMs": {
+    "count": 24,
+    "min": 0.0033000000003085006,
+    "median": 0.00794999999970969,
+    "p95": 0.9893000000001848,
+    "max": 2.272500000000001
+  },
+  "sourceToProcessedMs": {
+    "count": 24,
+    "min": 22.601700000001074,
+    "median": 25.430600000000595,
+    "p95": 37.54120000000012,
+    "max": 182.7817
+  },
+  "stages": {
+    "dashboard-pressure": {
+      "count": 3,
+      "min": 23.367600000001403,
+      "median": 24.68029999999999,
+      "p95": 24.906299999998737,
+      "max": 24.906299999998737
+    },
+    "interaction": {
+      "count": 8,
+      "min": 24.669799999999668,
+      "median": 25.79175000000032,
+      "p95": 27.811999999999898,
+      "max": 27.811999999999898
+    },
+    "navigation": {
+      "count": 4,
+      "min": 24.813300000001618,
+      "median": 26.34400000000005,
+      "p95": 32.894500000000335,
+      "max": 32.894500000000335
+    },
+    "normal": {
+      "count": 4,
+      "min": 26.652799999999843,
+      "median": 26.999649999999974,
+      "p95": 37.54120000000012,
+      "max": 37.54120000000012
+    },
+    "reconnected": {
+      "count": 4,
+      "min": 22.601700000001074,
+      "median": 24.59820000000127,
+      "p95": 24.799599999998463,
+      "max": 24.799599999998463
+    },
+    "warmup": {
+      "count": 1,
+      "min": 182.7817,
+      "median": 182.7817,
+      "p95": 182.7817,
+      "max": 182.7817
+    }
+  },
+  "directBridge": {
+    "produced": 27,
+    "offered": 14,
+    "coalesced": 0,
+    "acknowledged": 14,
+    "pending": false,
+    "rejected": 0,
+    "lastPayloadBytes": 3041,
+    "readyMs": 926.0176,
+    "projectionQueue": {
+      "offered": 71,
+      "coalesced": 43,
+      "consumed": 28,
+      "pending": false
+    },
+    "projectionMs": {
+      "count": 27,
+      "mean": 0.7273777777777779,
+      "p50": 0.0868,
+      "p95": 0.2897,
+      "p99": 1.324,
+      "max": 15.8938
+    },
+    "serializationMs": {
+      "count": 27,
+      "mean": 1.4251999999999998,
+      "p50": 0.1176,
+      "p95": 0.1638,
+      "p99": 0.1925,
+      "max": 35.5697
+    },
+    "dispatcherQueueMs": {
+      "count": 27,
+      "mean": 0.3334962962962963,
+      "p50": 0.0418,
+      "p95": 0.3026,
+      "p99": 1.5678,
+      "max": 5.8291
+    },
+    "postMs": {
+      "count": 27,
+      "mean": 0.11266666666666668,
+      "p50": 0.1114,
+      "p95": 0.132,
+      "p99": 0.1395,
+      "max": 0.2224
+    },
+    "acknowledgmentMs": {
+      "count": 27,
+      "mean": 64.14523333333334,
+      "p50": 0.6336,
+      "p95": 116.882,
+      "p99": 634.4312,
+      "max": 930.3524
+    },
+    "postToAcknowledgmentMs": {
+      "count": 27,
+      "mean": 63.81196666666666,
+      "p50": 0.5688,
+      "p95": 116.8082,
+      "p99": 634.1288,
+      "max": 930.3156
+    }
+  },
+  "mapEmissionToFirstAckMs": {
+    "count": 18,
+    "min": 24.431799999998475,
+    "median": 203.9126500000002,
+    "p95": 1135.7002000000002,
+    "max": 1135.7002000000002
+  },
+  "allEmissionAckPairs": [
+    {
+      "sequence": 3,
+      "at": "2026-09-24T02:00:02+00:00",
+      "emissionToAckMs": 207.17360000000008
+    },
+    {
+      "sequence": 4,
+      "at": "2026-09-24T02:00:02+00:00",
+      "emissionToAckMs": 765.5431000000003
+    },
+    {
+      "sequence": 5,
+      "at": "2026-09-24T02:00:03+00:00",
+      "emissionToAckMs": 204.55099999999993
+    },
+    {
+      "sequence": 6,
+      "at": "2026-09-24T02:00:04+00:00",
+      "emissionToAckMs": 48.776700000000346
+    },
+    {
+      "sequence": 7,
+      "at": "2026-09-24T02:00:06+00:00",
+      "emissionToAckMs": 38.00929999999971
+    },
+    {
+      "sequence": 8,
+      "at": "2026-09-24T02:00:07+00:00",
+      "emissionToAckMs": 148.28479999999945
+    },
+    {
+      "sequence": 9,
+      "at": "2026-09-24T02:00:08+00:00",
+      "emissionToAckMs": 1135.7002000000002
+    },
+    {
+      "sequence": 10,
+      "at": "2026-09-24T02:00:09+00:00",
+      "emissionToAckMs": 204.44460000000072
+    },
+    {
+      "sequence": 11,
+      "at": "2026-09-24T02:00:10+00:00",
+      "emissionToAckMs": 216.40149999999994
+    },
+    {
+      "sequence": 12,
+      "at": "2026-09-24T02:00:11+00:00",
+      "emissionToAckMs": 203.8184000000001
+    },
+    {
+      "sequence": 13,
+      "at": "2026-09-24T02:00:12+00:00",
+      "emissionToAckMs": 203.60630000000128
+    },
+    {
+      "sequence": 14,
+      "at": "2026-09-24T02:00:15+00:00",
+      "emissionToAckMs": 630.8024000000005
+    },
+    {
+      "sequence": 15,
+      "at": "2026-09-24T02:00:16+00:00",
+      "emissionToAckMs": 204.00690000000031
+    },
+    {
+      "sequence": 16,
+      "at": "2026-09-24T02:00:16+00:00",
+      "emissionToAckMs": 404.4501
+    },
+    {
+      "sequence": 17,
+      "at": "2026-09-24T02:00:18+00:00",
+      "emissionToAckMs": 72.73010000000068
+    },
+    {
+      "sequence": 18,
+      "at": "2026-09-24T02:00:18+00:00",
+      "emissionToAckMs": 273.6001000000015
+    },
+    {
+      "sequence": 19,
+      "at": "2026-09-24T02:00:19+00:00",
+      "emissionToAckMs": 204.53510000000097
+    },
+    {
+      "sequence": 20,
+      "at": "2026-09-24T02:00:20+00:00",
+      "emissionToAckMs": 203.6303999999982
+    },
+    {
+      "sequence": 21,
+      "at": "2026-09-24T02:00:22+00:00",
+      "emissionToAckMs": 24.431799999998475
+    },
+    {
+      "sequence": 22,
+      "at": "2026-09-24T02:00:22+00:00",
+      "emissionToAckMs": 218.6248999999989
+    },
+    {
+      "sequence": 23,
+      "at": "2026-09-24T02:00:23+00:00",
+      "emissionToAckMs": 203.74730000000272
+    },
+    {
+      "sequence": 24,
+      "at": "2026-09-24T02:00:23+00:00",
+      "emissionToAckMs": 734.1141000000025
+    },
+    {
+      "sequence": 25,
+      "at": "2026-09-24T02:00:24+00:00",
+      "emissionToAckMs": 204.2574999999997
+    },
+    {
+      "sequence": 26,
+      "at": "2026-09-24T02:00:24+00:00",
+      "emissionToAckMs": 714.0077999999994
+    },
+    {
+      "sequence": 27,
+      "at": "2026-09-24T02:00:24+00:00",
+      "emissionToAckMs": 1717.8640999999989
+    }
+  ],
+  "dashboardTicks": 21,
+  "dashboardTickIntervalMs": {
+    "count": 20,
+    "min": 985.4766000000002,
+    "median": 1008.9855999999995,
+    "p95": 1283.3768,
+    "max": 1542.2204999999994
+  },
+  "timerPostedToBeginMs_includesIntentionalWait": {
+    "count": 0
+  },
+  "delivery": {
+    "renderTurns": 82767,
+    "pressureMs": 750,
+    "probes": [
+      {
+        "priority": "Normal",
+        "waitMs": 0.2554
+      },
+      {
+        "priority": "DataBind",
+        "waitMs": 0.3163
+      },
+      {
+        "priority": "Render",
+        "waitMs": 0.42269999999999996
+      },
+      {
+        "priority": "Loaded",
+        "waitMs": 749.9599
+      }
+    ],
+    "deliveryQueueMaxMs": 0.4161,
+    "acknowledgedDuringPressureAt": 1.159,
+    "bridge": {
+      "produced": 0,
+      "offered": 2,
+      "coalesced": 0,
+      "acknowledged": 2,
+      "pending": false,
+      "rejected": 0,
+      "lastPayloadBytes": 2795,
+      "readyMs": 673.1641,
+      "projectionQueue": null,
+      "projectionMs": {
+        "count": 0,
+        "mean": 0,
+        "p50": 0,
+        "p95": 0,
+        "p99": 0,
+        "max": 0
+      },
+      "serializationMs": {
+        "count": 2,
+        "mean": 0.07264999999999999,
+        "p50": 0.0716,
+        "p95": 0.0716,
+        "p99": 0.0716,
+        "max": 0.0737
+      },
+      "dispatcherQueueMs": {
+        "count": 2,
+        "mean": 0.355,
+        "p50": 0.2939,
+        "p95": 0.2939,
+        "p99": 0.2939,
+        "max": 0.4161
+      },
+      "postMs": {
+        "count": 2,
+        "mean": 0.09665,
+        "p50": 0.0921,
+        "p95": 0.0921,
+        "p99": 0.0921,
+        "max": 0.1012
+      },
+      "acknowledgmentMs": {
+        "count": 2,
+        "mean": 318.3002,
+        "p50": 0.7939,
+        "p95": 0.7939,
+        "p99": 0.7939,
+        "max": 635.8065
+      },
+      "postToAcknowledgmentMs": {
+        "count": 2,
+        "mean": 317.94554999999997,
+        "p50": 0.5001,
+        "p95": 0.5001,
+        "p99": 0.5001,
+        "max": 635.391
+      }
+    },
+    "browser": {
+      "camera": {
+        "bearing": 0,
+        "followId": null,
+        "latitude": -38.37684298739486,
+        "longitude": 149.34500000000003,
+        "zoom": 4.777742716965107
+      },
+      "counts": {
+        "aircraft": 1,
+        "airports": 2,
+        "labels": 5,
+        "routes": 2
+      },
+      "frameIntervals": [
+        83.29999999999995,
+        50,
+        50.10000000000002,
+        54.10000000000002,
+        50,
+        70.79999999999995,
+        50,
+        50,
+        50.10000000000002,
+        54.10000000000002,
+        50,
+        50,
+        50,
+        50.09999999999991,
+        54.100000000000136,
+        50,
+        54.200000000000045,
+        50,
+        54.09999999999991,
+        50.09999999999991,
+        54.200000000000045,
+        54,
+        50,
+        50,
+        50.100000000000136,
+        54.09999999999991
+      ],
+      "lastSequence": 2,
+      "points": [
+        {
+          "id": "current-aircraft",
+          "kind": "Aircraft",
+          "x": 596.4549494136655,
+          "y": 195.84410302084302
+        },
+        {
+          "id": "YSSY",
+          "kind": "Airport",
+          "x": 638.5891816875185,
+          "y": 116.99999999999778
+        },
+        {
+          "id": "YMHB",
+          "kind": "Airport",
+          "x": 495.4108183124793,
+          "y": 560.9999999999977
+        },
+        {
+          "id": "planned-route",
+          "kind": "Route",
+          "x": 570.304363565967,
+          "y": 235.3088724622575
+        },
+        {
+          "id": "completed-plan",
+          "kind": "Route",
+          "x": 604.3424814836692,
+          "y": 176.93649469347883
+        }
+      ],
+      "selection": null,
+      "selectionFilters": {
+        "airport": [
+          "==",
+          [
+            "get",
+            "id"
+          ],
+          ""
+        ],
+        "route": [
+          "==",
+          [
+            "get",
+            "id"
+          ],
+          ""
+        ]
+      },
+      "solarSignature": "-0.772,0.636,0.000",
+      "sourceIDs": [
+        {
+          "id": "current-aircraft",
+          "source": "Observed"
+        }
+      ],
+      "sourceUpdates": 8
+    },
+    "limitation": "Deterministic dispatcher-order regression; not physical input latency or GPU frame latency. Existing heartbeat gate is unchanged and runs separately."
+  },
+  "heartbeat": {
+    "passed": true,
+    "role": "diagnostic",
+    "releaseBlocking": false,
+    "thresholdsChanged": false,
+    "baselineMaxMs": 330.0657,
+    "stressedMaxMs": 362.6237,
+    "absoluteLimitMs": 500,
+    "relativeAllowanceMs": 100,
+    "floorMs": 150,
+    "relativeLimitMs": 430.0657,
+    "condition": "maximum <500ms and <=max(150ms, baseline maximum+100ms)",
+    "disposition": "Historical predicate passed"
+  },
+  "injectedStalls": {
+    "injectedInputDelayMs": 687.7476999999999,
+    "frameMaxMs": 645.8999999999996,
+    "emitted": 12,
+    "consumed": 12
+  },
+  "notes": "ACK pairs cover observed streamed updates; warmup/hidden coalesced frames need not have a receipt. All telemetry still required exactly. Browser render/source checks are not GPU pixels. Tick callbacks are sampled after real production refresh."
+}

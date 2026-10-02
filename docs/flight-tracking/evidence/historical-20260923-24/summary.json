@@ -1,0 +1,3453 @@
+{
+  "classification": "HISTORICAL REFERENCE ONLY — not current validation/replay evidence",
+  "analyzedAtUtc": "2026-09-28T13:24:01.251462+00:00",
+  "provenance": "User supplied as pre-migration reference. Both journals state appVersion 0.22.0; exact binary/source identity cannot be established from these files.",
+  "sourceFiles": [
+    {
+      "path": "C:\\Users\\DanniBaLs\\AppData\\Local\\Alpha6Designs\\Alpha6OPS\\TestLogs\\Alpha6OPS-20260923-133450-66b8b1cbbdc941b89cd3762beec4e440.json",
+      "bytes": 31282154,
+      "sha256": "6B1E6E29D7170B57514BEEF804F4577636B7A30C005782034456C75F4A2A77B5"
+    },
+    {
+      "path": "C:\\Users\\DanniBaLs\\AppData\\Local\\Alpha6Designs\\Alpha6OPS\\TestLogs\\Alpha6OPS-20260923-133450-66b8b1cbbdc941b89cd3762beec4e440.jsonl",
+      "bytes": 20172395,
+      "sha256": "206B05846E8C75EA673C0907E1BD1CC1D0FFAF8814F6A87CF343EBE4F43F27CB"
+    },
+    {
+      "path": "C:\\Users\\DanniBaLs\\AppData\\Local\\Alpha6Designs\\Alpha6OPS\\TestLogs\\Alpha6OPS-20260924-142104-8e78fc8d558c4b41a32438d4d1ccea32.json",
+      "bytes": 38898922,
+      "sha256": "C35F39F3132212CD065EC44CCFB8F05BD864C5190E3550A107572368F5DB2A37"
+    },
+    {
+      "path": "C:\\Users\\DanniBaLs\\AppData\\Local\\Alpha6Designs\\Alpha6OPS\\TestLogs\\Alpha6OPS-20260924-142104-8e78fc8d558c4b41a32438d4d1ccea32.jsonl",
+      "bytes": 25080714,
+      "sha256": "E2D23B8BA9E5D0C841A33A9737F5BC1579E33F075B34F0A3213154252D7219C9"
+    }
+  ],
+  "distinctFlights": 2,
+  "distinctTelemetrySamples": 24981,
+  "distinctJournalRecords": 50074,
+  "flights": [
+    {
+      "flight": "JST928",
+      "sourceStem": "Alpha6OPS-20260923-133450-66b8b1cbbdc941b89cd3762beec4e440",
+      "assignment": {
+        "FlightNumber": "JST928",
+        "Registration": "G-FENX",
+        "Origin": "YBBN",
+        "Destination": "YBCS",
+        "PlannedDepartureUtc": "2026-09-22T20:00:00+00:00",
+        "PlannedArrivalUtc": "2026-09-22T22:35:00+00:00",
+        "Source": "SimBrief",
+        "ImportedAtUtc": "2026-09-23T13:34:12+00:00",
+        "DepartureGate": "30",
+        "ArrivalGate": "T2",
+        "GateAssignmentSource": "Dispatch",
+        "GateAssignmentConfidence": "Assigned",
+        "Route": "YBBN/19L BIXAD2 BIXAD Q67 RUMKA DCT ZANEY CODIE2A YBCS/15",
+        "RoutePoints": [
+          {
+            "Ident": "YBBN",
+            "Latitude": -27.384167,
+            "Longitude": 153.1175,
+            "Kind": "Departure"
+          },
+          {
+            "Ident": "CITEE",
+            "Latitude": -27.470028,
+            "Longitude": 153.079361,
+            "Kind": "wpt"
+          },
+          {
+            "Ident": "TOGIN",
+            "Latitude": -27.480111,
+            "Longitude": 152.942944,
+            "Kind": "wpt"
+          },
+          {
+            "Ident": "ALBUB",
+            "Latitude": -27.415583,
+            "Longitude": 152.900056,
+            "Kind": "wpt"
+          },
+          {
+            "Ident": "AMBLE",
+            "Latitude": -27.293333,
+            "Longitude": 153.095,
+            "Kind": "wpt"
+          },
+          {
+            "Ident": "DEBAY",
+            "Latitude": -27.213528,
+            "Longitude": 153.173,
+            "Kind": "wpt"
+          },
+          {
+            "Ident": "BUKBU",
+            "Latitude": -27.026806,
+            "Longitude": 153.238944,
+            "Kind": "wpt"
+          },
+          {
+            "Ident": "BIXAD",
+            "Latitude": -26.691,
+            "Longitude": 153.24625,
+            "Kind": "wpt"
+          },
+          {
+            "Ident": "GUDSO",
+            "Latitude": -26.279111,
+            "Longitude": 153.103972,
+            "Kind": "wpt"
+          },
+          {
+            "Ident": "TAPET",
+            "Latitude": -26.109083,
+            "Longitude": 152.964972,
+            "Kind": "wpt"
+          },
+          {
+            "Ident": "TOC",
+            "Latitude": -25.35166,
+            "Longitude": 152.360772,
+            "Kind": "ltlg"
+          },
+          {
+            "Ident": "LOAFA",
+            "Latitude": -25.034639,
+            "Longitude": 152.110711,
+            "Kind": "wpt"
+          },
+          {
+            "Ident": "GLA",
+            "Latitude": -23.865261,
+            "Longitude": 151.204408,
+            "Kind": "vor"
+          },
+          {
+            "Ident": "RUNLA",
+            "Latitude": -22.266667,
+            "Longitude": 150.19,
+            "Kind": "wpt"
+          },
+          {
+            "Ident": "OVRON",
+            "Latitude": -20.351169,
+            "Longitude": 148.955881,
+            "Kind": "wpt"
+          },
+          {
+            "Ident": "RUMKA",
+            "Latitude": -17.786806,
+            "Longitude": 146.827583,
+            "Kind": "wpt"
+          },
+          {
+            "Ident": "TOD",
+            "Latitude": -16.639462,
+            "Longitude": 146.227708,
+            "Kind": "ltlg"
+          },
+          {
+            "Ident": "ZANEY",
+            "Latitude": -16.028972,
+            "Longitude": 145.911833,
+            "Kind": "wpt"
+          },
+          {
+            "Ident": "CODIE",
+            "Latitude": -16.545,
+            "Longitude": 145.598333,
+            "Kind": "wpt"
+          },
+          {
+            "Ident": "GUNRO",
+            "Latitude": -16.59725,
+            "Longitude": 145.622361,
+            "Kind": "wpt"
+          },
+          {
+            "Ident": "YBCS",
+            "Latitude": -16.885833,
+            "Longitude": 145.755278,
+            "Kind": "apt"
+          }
+        ],
+        "AircraftType": "FENIX A320",
+        "PlannedTripFuel": 6035,
+        "FuelUnits": "KGS",
+        "OfpCacheKey": "1790170452",
+        "CruiseAltitudeFeet": 36000,
+        "DepartureUtcOffsetMinutes": 600,
+        "ArrivalUtcOffsetMinutes": 600,
+        "DispatchEstimatedArrivalUtc": "2026-09-22T22:47:51+00:00"
+      },
+      "exportMetadata": {
+        "schemaVersion": 1,
+        "exportedAtUtc": "2026-09-23T16:40:23.8813538+00:00",
+        "incompleteLastLine": false,
+        "sessionEnded": true,
+        "eventCount": 22326
+      },
+      "eventCount": 22326,
+      "eventKinds": {
+        "session_started": 1,
+        "flight_assignment": 1,
+        "connection_opened": 1,
+        "telemetry": 11134,
+        "flight_identification": 2,
+        "monitor_armed": 1,
+        "tracking_event": 45,
+        "tracking_state": 11134,
+        "flight_milestone": 4,
+        "block_in_confirmation": 1,
+        "pirep_closeout_complete": 1,
+        "session_ended": 1
+      },
+      "jsonMatchesJsonl": true,
+      "contiguousSequence": true,
+      "envelopeSchema": {
+        "$": {
+          "dict": 22326
+        },
+        "kind": {
+          "str": 22326
+        },
+        "recordedAtUtc": {
+          "str": 22326
+        },
+        "sequence": {
+          "int": 22326
+        },
+        "simulatorUtc": {
+          "NoneType": 5,
+          "str": 22321
+        }
+      },
+      "sessionStarted": {
+        "sequence": 1,
+        "kind": "session_started",
+        "recordedAtUtc": "2026-09-23T13:34:50.0689044+00:00",
+        "simulatorUtc": null,
+        "detail": {
+          "appVersion": "0.22.0",
+          "mode": "live_simconnect",
+          "schemaVersion": 1,
+          "timing": "simulatorUtc is the in-sim clock; recordedAtUtc is the computer UTC clock"
+        }
+      },
+      "sessionEnded": {
+        "sequence": 22326,
+        "kind": "session_ended",
+        "recordedAtUtc": "2026-09-23T16:40:23.7633063+00:00",
+        "simulatorUtc": null,
+        "detail": {
+          "reason": "pirep_submitted"
+        }
+      },
+      "telemetrySamples": 11134,
+      "firstTelemetry": {
+        "sequence": 4,
+        "kind": "telemetry",
+        "recordedAtUtc": "2026-09-23T13:34:50.3338763+00:00",
+        "simulatorUtc": "2026-09-22T19:32:22.9514389+00:00",
+        "detail": {
+          "aircraft": "FenixA320 IAE SL",
+          "onGround": true,
+          "groundSpeedKnots": 2.406228040271691e-07,
+          "indicatedAirspeedKnots": 0,
+          "verticalSpeedFeetPerMinute": 3.0968233204475776e-05,
+          "gearExtendedRatio": 1,
+          "flapsExtendedRatio": 0,
+          "flapHandleRatio": 0,
+          "flapHandleIndex": -1,
+          "flapHandlePositions": -1,
+          "leftFlapDegrees": null,
+          "rightFlapDegrees": null,
+          "leftSlatDegrees": null,
+          "rightSlatDegrees": null,
+          "engineDataValid": false,
+          "engineReadings": [],
+          "engineStates": [],
+          "pitchDegrees": 0.04615436731655761,
+          "bankDegrees": 0.004435751215936813,
+          "fuelTotalWeightPounds": 6603.298823248479,
+          "runningEngineCount": null,
+          "runningEngineMask": null,
+          "parkingBrake": true,
+          "enginesRunning": false,
+          "paused": false,
+          "slewing": false,
+          "latitude": -27.386807986907268,
+          "longitude": 153.12220001450765,
+          "altitudeFeet": 21.658096471521855,
+          "pressureAltitudeFeet": 21.616052627563477,
+          "altitudeAboveGroundFeet": 9.336396257854176,
+          "headingDegrees": 323.30314678466954,
+          "routeProgress": null
+        }
+      },
+      "lastTelemetry": {
+        "sequence": 22323,
+        "kind": "telemetry",
+        "recordedAtUtc": "2026-09-23T16:40:23.3571218+00:00",
+        "simulatorUtc": "2026-09-22T22:37:55.936119+00:00",
+        "detail": {
+          "aircraft": "FenixA320 IAE SL",
+          "onGround": true,
+          "groundSpeedKnots": 2.641176984617875e-06,
+          "indicatedAirspeedKnots": 0,
+          "verticalSpeedFeetPerMinute": 0.0003370400918356602,
+          "gearExtendedRatio": 1,
+          "flapsExtendedRatio": 0,
+          "flapHandleRatio": 0,
+          "flapHandleIndex": 0,
+          "flapHandlePositions": 5,
+          "leftFlapDegrees": 0,
+          "rightFlapDegrees": 0,
+          "leftSlatDegrees": 0,
+          "rightSlatDegrees": 0,
+          "engineDataValid": false,
+          "engineReadings": [
+            {
+              "Index": 1,
+              "Combustion": 0,
+              "FuelFlowPph": 615.662523198914,
+              "N1Percent": 1.9045174102283856e-08,
+              "N2Percent": 1.7202070051253815e-07,
+              "Starter": 0,
+              "OilPressurePsf": 1.3198142359511293e-05
+            },
+            {
+              "Index": 2,
+              "Combustion": 0,
+              "FuelFlowPph": 615.662523198914,
+              "N1Percent": 2.3250286881761283e-08,
+              "N2Percent": 2.1000231423657279e-07,
+              "Starter": 0,
+              "OilPressurePsf": 1.611224946104143e-05
+            }
+          ],
+          "engineStates": [
+            {
+              "Index": 1,
+              "Condition": 0,
+              "Source": "N1 / N2 spool"
+            },
+            {
+              "Index": 2,
+              "Condition": 0,
+              "Source": "N1 / N2 spool"
+            }
+          ],
+          "pitchDegrees": -0.41665069199910765,
+          "bankDegrees": -0.007869143843338096,
+          "fuelTotalWeightPounds": 7284.6843873469625,
+          "runningEngineCount": null,
+          "runningEngineMask": null,
+          "parkingBrake": true,
+          "enginesRunning": false,
+          "paused": false,
+          "slewing": false,
+          "latitude": -16.876168423956827,
+          "longitude": 145.7522826922169,
+          "altitudeFeet": 16.445200025557273,
+          "pressureAltitudeFeet": 17.671823501586914,
+          "altitudeAboveGroundFeet": 9.06937454672261,
+          "headingDegrees": 66.85787038181667,
+          "routeProgress": null
+        }
+      },
+      "telemetryFieldStats": {
+        "aircraft": {
+          "present": 11134,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "str": 11134
+          },
+          "values": {
+            "FenixA320 IAE SL": 11134
+          }
+        },
+        "altitudeAboveGroundFeet": {
+          "present": 11134,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "float": 11134
+          },
+          "range": [
+            8.944347327939145,
+            37532.612204652716
+          ]
+        },
+        "altitudeFeet": {
+          "present": 11134,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "float": 11134
+          },
+          "range": [
+            14.480772453532794,
+            37532.61449151102
+          ]
+        },
+        "bankDegrees": {
+          "present": 11134,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "float": 11134
+          },
+          "range": [
+            -26.420892110180322,
+            25.00873517348318
+          ]
+        },
+        "engineDataValid": {
+          "present": 11134,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "bool": 11134
+          },
+          "values": {
+            "False": 1896,
+            "True": 9238
+          }
+        },
+        "engineReadings": {
+          "present": 11134,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "list": 11134
+          }
+        },
+        "engineStates": {
+          "present": 11134,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "list": 11134
+          }
+        },
+        "enginesRunning": {
+          "present": 11134,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "bool": 11134
+          },
+          "values": {
+            "False": 1799,
+            "True": 9335
+          }
+        },
+        "flapHandleIndex": {
+          "present": 11134,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "int": 11134
+          },
+          "range": [
+            -1,
+            5
+          ],
+          "values": {
+            "-1": 1,
+            "0": 10152,
+            "2": 458,
+            "1": 120,
+            "3": 62,
+            "4": 25,
+            "5": 316
+          }
+        },
+        "flapHandlePositions": {
+          "present": 11134,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "int": 11134
+          },
+          "range": [
+            -1,
+            5
+          ],
+          "values": {
+            "-1": 1,
+            "5": 11133
+          }
+        },
+        "flapHandleRatio": {
+          "present": 11134,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "int": 10469,
+            "float": 665
+          },
+          "range": [
+            0,
+            1
+          ],
+          "values": {
+            "0": 10153,
+            "0.4": 458,
+            "0.2": 120,
+            "0.6": 62,
+            "0.8": 25,
+            "1": 316
+          }
+        },
+        "flapsExtendedRatio": {
+          "present": 11134,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "int": 10469,
+            "float": 665
+          },
+          "range": [
+            0,
+            1
+          ],
+          "values": {
+            "0": 10153,
+            "0.4": 458,
+            "0.2": 120,
+            "0.6": 62,
+            "0.8": 25,
+            "1": 316
+          }
+        },
+        "fuelTotalWeightPounds": {
+          "present": 11134,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "float": 11134
+          },
+          "range": [
+            6595.855378636159,
+            20629.548045532778
+          ]
+        },
+        "gearExtendedRatio": {
+          "present": 11134,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "int": 11114,
+            "float": 20
+          },
+          "range": [
+            0,
+            1
+          ]
+        },
+        "groundSpeedKnots": {
+          "present": 11134,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "float": 11134
+          },
+          "range": [
+            2.224429201546733e-08,
+            446.176783791476
+          ]
+        },
+        "headingDegrees": {
+          "present": 11134,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "float": 11134
+          },
+          "range": [
+            0.04488849079726322,
+            359.9905223599556
+          ]
+        },
+        "indicatedAirspeedKnots": {
+          "present": 11134,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "int": 1902,
+            "float": 9232
+          },
+          "range": [
+            0,
+            318.7820129394531
+          ]
+        },
+        "latitude": {
+          "present": 11134,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "float": 11134
+          },
+          "range": [
+            -27.46239053200798,
+            -16.094068104881377
+          ]
+        },
+        "leftFlapDegrees": {
+          "present": 11134,
+          "missing": 0,
+          "null": 1,
+          "types": {
+            "NoneType": 1,
+            "int": 10136,
+            "float": 997
+          },
+          "range": [
+            0,
+            21.99999999999999
+          ]
+        },
+        "leftSlatDegrees": {
+          "present": 11134,
+          "missing": 0,
+          "null": 1,
+          "types": {
+            "NoneType": 1,
+            "int": 11133
+          },
+          "range": [
+            0,
+            0
+          ],
+          "values": {
+            "None": 1,
+            "0": 11133
+          }
+        },
+        "longitude": {
+          "present": 11134,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "float": 11134
+          },
+          "range": [
+            145.60533418993893,
+            153.4095810688554
+          ]
+        },
+        "onGround": {
+          "present": 11134,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "bool": 11134
+          },
+          "values": {
+            "True": 2583,
+            "False": 8551
+          }
+        },
+        "parkingBrake": {
+          "present": 11134,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "bool": 11134
+          },
+          "values": {
+            "True": 1975,
+            "False": 9159
+          }
+        },
+        "paused": {
+          "present": 11134,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "bool": 11134
+          },
+          "values": {
+            "False": 11110,
+            "True": 24
+          }
+        },
+        "pitchDegrees": {
+          "present": 11134,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "float": 11134
+          },
+          "range": [
+            -19.432740158396097,
+            3.0801269666391793
+          ]
+        },
+        "pressureAltitudeFeet": {
+          "present": 11134,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "float": 11100,
+            "int": 34
+          },
+          "range": [
+            -18.16585350036621,
+            36028.76171875
+          ]
+        },
+        "rightFlapDegrees": {
+          "present": 11134,
+          "missing": 0,
+          "null": 1,
+          "types": {
+            "NoneType": 1,
+            "int": 10136,
+            "float": 997
+          },
+          "range": [
+            0,
+            21.99999999999999
+          ]
+        },
+        "rightSlatDegrees": {
+          "present": 11134,
+          "missing": 0,
+          "null": 1,
+          "types": {
+            "NoneType": 1,
+            "int": 11133
+          },
+          "range": [
+            0,
+            0
+          ],
+          "values": {
+            "None": 1,
+            "0": 11133
+          }
+        },
+        "routeProgress": {
+          "present": 11134,
+          "missing": 0,
+          "null": 11134,
+          "types": {
+            "NoneType": 11134
+          },
+          "values": {
+            "None": 11134
+          }
+        },
+        "runningEngineCount": {
+          "present": 11134,
+          "missing": 0,
+          "null": 1896,
+          "types": {
+            "NoneType": 1896,
+            "int": 9238
+          },
+          "range": [
+            2,
+            2
+          ],
+          "values": {
+            "None": 1896,
+            "2": 9238
+          }
+        },
+        "runningEngineMask": {
+          "present": 11134,
+          "missing": 0,
+          "null": 1896,
+          "types": {
+            "NoneType": 1896,
+            "int": 9238
+          },
+          "range": [
+            3,
+            3
+          ],
+          "values": {
+            "None": 1896,
+            "3": 9238
+          }
+        },
+        "slewing": {
+          "present": 11134,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "bool": 11134
+          },
+          "values": {
+            "False": 11134
+          }
+        },
+        "verticalSpeedFeetPerMinute": {
+          "present": 11134,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "float": 11134
+          },
+          "range": [
+            -4492.924804687491,
+            3514.6755981445244
+          ]
+        }
+      },
+      "clockIntervalSeconds": {
+        "recordedAtUtc": {
+          "minimum": 0.709176,
+          "maximum": 1.350222,
+          "median": 1.012893,
+          "backwards": 0,
+          "equal": 0,
+          "overTwoSeconds": 0
+        },
+        "simulatorUtc": {
+          "minimum": 0.758858,
+          "maximum": 1.226723,
+          "median": 1.000511,
+          "backwards": 0,
+          "equal": 0,
+          "overTwoSeconds": 0
+        }
+      },
+      "recordingMinusSimulatorSeconds": {
+        "minimum": 64947.342576,
+        "maximum": 64947.55575,
+        "median": 64947.3985635
+      },
+      "milestones": [
+        {
+          "sequence": 3134,
+          "kind": "flight_milestone",
+          "recordedAtUtc": "2026-09-23T14:00:49.3260552+00:00",
+          "simulatorUtc": "2026-09-22T19:58:18.9385223+00:00",
+          "detail": {
+            "phase": "TaxiOut",
+            "label": "Block-out / taxi out"
+          }
+        },
+        {
+          "sequence": 4313,
+          "kind": "flight_milestone",
+          "recordedAtUtc": "2026-09-23T14:10:34.3722222+00:00",
+          "simulatorUtc": "2026-09-22T20:08:02.9369888+00:00",
+          "detail": {
+            "phase": "Airborne",
+            "label": "Takeoff / airborne"
+          }
+        },
+        {
+          "sequence": 21431,
+          "kind": "flight_milestone",
+          "recordedAtUtc": "2026-09-23T16:33:04.3882636+00:00",
+          "simulatorUtc": "2026-09-22T22:30:33.9401168+00:00",
+          "detail": {
+            "phase": "TaxiIn",
+            "label": "Landing / taxi in"
+          }
+        },
+        {
+          "sequence": 22264,
+          "kind": "flight_milestone",
+          "recordedAtUtc": "2026-09-23T16:39:54.2958133+00:00",
+          "simulatorUtc": "2026-09-22T22:37:22.9405593+00:00",
+          "detail": {
+            "phase": "Complete",
+            "label": "Block-in / complete"
+          }
+        }
+      ],
+      "phaseTransitions": [
+        {
+          "sequence": 10,
+          "kind": "tracking_state",
+          "recordedAtUtc": "2026-09-23T13:34:50.3647889+00:00",
+          "simulatorUtc": "2026-09-22T19:32:22.9514389+00:00",
+          "detail": {
+            "progress": 0,
+            "remainingNm": 889.2759714361921,
+            "routeReliable": true,
+            "crossTrackNm": 0.2912536249429005,
+            "estimatedIn": null,
+            "phase": "AtGate"
+          }
+        },
+        {
+          "sequence": 3136,
+          "kind": "tracking_state",
+          "recordedAtUtc": "2026-09-23T14:00:49.351121+00:00",
+          "simulatorUtc": "2026-09-22T19:58:21.9559249+00:00",
+          "detail": {
+            "progress": 6.37237919224548e-05,
+            "remainingNm": 889.2193033992266,
+            "routeReliable": true,
+            "crossTrackNm": 0.2927907977875751,
+            "estimatedIn": null,
+            "phase": "TaxiOut"
+          }
+        },
+        {
+          "sequence": 4315,
+          "kind": "tracking_state",
+          "recordedAtUtc": "2026-09-23T14:10:34.375114+00:00",
+          "simulatorUtc": "2026-09-22T20:08:06.9336318+00:00",
+          "detail": {
+            "progress": 0.0012115723435746685,
+            "remainingNm": 888.1985492633945,
+            "routeReliable": true,
+            "crossTrackNm": 0.6948515868711334,
+            "estimatedIn": "2026-09-22T22:46:00+00:00",
+            "phase": "Airborne"
+          }
+        },
+        {
+          "sequence": 21433,
+          "kind": "tracking_state",
+          "recordedAtUtc": "2026-09-23T16:33:04.3943071+00:00",
+          "simulatorUtc": "2026-09-22T22:30:36.9437255+00:00",
+          "detail": {
+            "progress": 0.9988477122054239,
+            "remainingNm": 1.0247018478957297,
+            "routeReliable": true,
+            "crossTrackNm": 0.13392479439059435,
+            "estimatedIn": "2026-09-22T22:35:00+00:00",
+            "phase": "TaxiIn"
+          }
+        },
+        {
+          "sequence": 22266,
+          "kind": "tracking_state",
+          "recordedAtUtc": "2026-09-23T16:39:54.6295443+00:00",
+          "simulatorUtc": "2026-09-22T22:37:26.9389724+00:00",
+          "detail": {
+            "progress": 1,
+            "remainingNm": 0,
+            "routeReliable": true,
+            "crossTrackNm": 0.0769091241527714,
+            "estimatedIn": "2026-09-22T22:37:22.9405593+00:00",
+            "phase": "Complete"
+          }
+        }
+      ],
+      "durationsSeconds": {
+        "taxiOut": 583.998466,
+        "airborne": 8551.003128,
+        "taxiIn": 409.000443,
+        "block": 9544.002037
+      },
+      "tracking": {
+        "phaseCounts": {
+          "AtGate": 1559,
+          "TaxiOut": 585,
+          "Airborne": 8550,
+          "TaxiIn": 410,
+          "Complete": 30
+        },
+        "progressDecreasesOver1eMinus9": 0,
+        "progressRange": [
+          0,
+          1
+        ],
+        "routeReliableCounts": {
+          "True": 11129,
+          "False": 5
+        },
+        "routeUnreliableRecords": [
+          {
+            "sequence": 5398,
+            "kind": "tracking_state",
+            "recordedAtUtc": "2026-09-23T14:19:33.3559043+00:00",
+            "simulatorUtc": "2026-09-22T20:17:05.9457855+00:00",
+            "detail": {
+              "progress": 0.006834123903047187,
+              "remainingNm": null,
+              "routeReliable": false,
+              "crossTrackNm": 4.264144426786871,
+              "estimatedIn": null,
+              "phase": "Airborne"
+            }
+          },
+          {
+            "sequence": 5400,
+            "kind": "tracking_state",
+            "recordedAtUtc": "2026-09-23T14:19:34.3842549+00:00",
+            "simulatorUtc": "2026-09-22T20:17:06.9381484+00:00",
+            "detail": {
+              "progress": 0.012456675462519703,
+              "remainingNm": null,
+              "routeReliable": false,
+              "crossTrackNm": 4.1916934130076156,
+              "estimatedIn": null,
+              "phase": "Airborne"
+            }
+          },
+          {
+            "sequence": 5402,
+            "kind": "tracking_state",
+            "recordedAtUtc": "2026-09-23T14:19:35.302523+00:00",
+            "simulatorUtc": "2026-09-22T20:17:07.9420013+00:00",
+            "detail": {
+              "progress": 0.01807922702199222,
+              "remainingNm": null,
+              "routeReliable": false,
+              "crossTrackNm": 4.118825692106868,
+              "estimatedIn": null,
+              "phase": "Airborne"
+            }
+          },
+          {
+            "sequence": 5404,
+            "kind": "tracking_state",
+            "recordedAtUtc": "2026-09-23T14:19:36.3029094+00:00",
+            "simulatorUtc": "2026-09-22T20:17:08.949234+00:00",
+            "detail": {
+              "progress": 0.023701778581464737,
+              "remainingNm": null,
+              "routeReliable": false,
+              "crossTrackNm": 4.0455947431069665,
+              "estimatedIn": null,
+              "phase": "Airborne"
+            }
+          },
+          {
+            "sequence": 5406,
+            "kind": "tracking_state",
+            "recordedAtUtc": "2026-09-23T14:19:37.3293777+00:00",
+            "simulatorUtc": "2026-09-22T20:17:09.9564819+00:00",
+            "detail": {
+              "progress": 0.029324330140937258,
+              "remainingNm": null,
+              "routeReliable": false,
+              "crossTrackNm": 3.9730900281448953,
+              "estimatedIn": null,
+              "phase": "Airborne"
+            }
+          }
+        ],
+        "maxCrossTrackNm": 15.914397908458804,
+        "etaNullByPhase": {
+          "AtGate": 1559,
+          "TaxiOut": 585,
+          "Airborne": 5
+        },
+        "first": {
+          "sequence": 10,
+          "kind": "tracking_state",
+          "recordedAtUtc": "2026-09-23T13:34:50.3647889+00:00",
+          "simulatorUtc": "2026-09-22T19:32:22.9514389+00:00",
+          "detail": {
+            "progress": 0,
+            "remainingNm": 889.2759714361921,
+            "routeReliable": true,
+            "crossTrackNm": 0.2912536249429005,
+            "estimatedIn": null,
+            "phase": "AtGate"
+          }
+        },
+        "last": {
+          "sequence": 22324,
+          "kind": "tracking_state",
+          "recordedAtUtc": "2026-09-23T16:40:23.357312+00:00",
+          "simulatorUtc": "2026-09-22T22:37:55.936119+00:00",
+          "detail": {
+            "progress": 1,
+            "remainingNm": 0,
+            "routeReliable": true,
+            "crossTrackNm": 0.0769091320288958,
+            "estimatedIn": "2026-09-22T22:37:22.9405593+00:00",
+            "phase": "Complete"
+          }
+        }
+      },
+      "engineConditionCounts": {
+        "0": 3594,
+        "2": 45,
+        "3": 18573,
+        "4": 54
+      },
+      "engineEvidenceSources": {
+        "N1 / N2 spool": 3592,
+        "starter": 46,
+        "combustion": 18569,
+        "combustion loss / spool decay": 59
+      },
+      "lifecycleAndTrackingEvents": [
+        {
+          "sequence": 1,
+          "kind": "session_started",
+          "recordedAtUtc": "2026-09-23T13:34:50.0689044+00:00",
+          "simulatorUtc": null,
+          "detail": {
+            "appVersion": "0.22.0",
+            "mode": "live_simconnect",
+            "schemaVersion": 1,
+            "timing": "simulatorUtc is the in-sim clock; recordedAtUtc is the computer UTC clock"
+          }
+        },
+        {
+          "sequence": 3,
+          "kind": "connection_opened",
+          "recordedAtUtc": "2026-09-23T13:34:50.2168748+00:00",
+          "simulatorUtc": null,
+          "detail": {
+            "message": "Connected to SunRise. Waiting for aircraft data.",
+            "source": "MSFS 2024",
+            "attempt": 1
+          }
+        },
+        {
+          "sequence": 5,
+          "kind": "flight_identification",
+          "recordedAtUtc": "2026-09-23T13:34:50.3414164+00:00",
+          "simulatorUtc": "2026-09-22T19:32:22.9514389+00:00",
+          "detail": {
+            "Mode": "FREE FLIGHT",
+            "Accepted": false,
+            "Issues": [
+              "Assignment unverified: waiting for active simulation and a valid live position."
+            ],
+            "Registration": null,
+            "Route": null,
+            "position": null,
+            "nearby": null,
+            "PlanStatus": "No simulator flight plan"
+          }
+        },
+        {
+          "sequence": 6,
+          "kind": "monitor_armed",
+          "recordedAtUtc": "2026-09-23T13:34:50.3443767+00:00",
+          "simulatorUtc": "2026-09-22T19:32:22.9514389+00:00",
+          "detail": {
+            "aircraft": "FenixA320 IAE SL",
+            "initialPhase": 0,
+            "departureObserved": true,
+            "joinedInProgress": false
+          }
+        },
+        {
+          "sequence": 7,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T13:34:50.3464261+00:00",
+          "simulatorUtc": "2026-09-22T19:32:22.9514389+00:00",
+          "detail": {
+            "Title": "Aircraft identified",
+            "Summary": "Airbus A320",
+            "Detail": "Airbus A320",
+            "Kind": "system"
+          }
+        },
+        {
+          "sequence": 8,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T13:34:50.3545922+00:00",
+          "simulatorUtc": "2026-09-22T19:32:22.9514389+00:00",
+          "detail": {
+            "Title": "Preflight at gate",
+            "Summary": "Gate 30 • Parking brake set",
+            "Detail": "Gate 30 • Parking brake set",
+            "Kind": "system"
+          }
+        },
+        {
+          "sequence": 9,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T13:34:50.3556663+00:00",
+          "simulatorUtc": "2026-09-22T19:32:22.9514389+00:00",
+          "detail": {
+            "Title": "Flight monitoring armed",
+            "Summary": "Airbus A320 • joined in at gate",
+            "Detail": "Airbus A320 • joined in at gate",
+            "Kind": "system"
+          }
+        },
+        {
+          "sequence": 12,
+          "kind": "flight_identification",
+          "recordedAtUtc": "2026-09-23T13:34:51.308536+00:00",
+          "simulatorUtc": "2026-09-22T19:32:23.9465026+00:00",
+          "detail": {
+            "Mode": "ASSIGNMENT WITH ADVISORY",
+            "Accepted": true,
+            "Issues": [
+              "Aircraft registration differs: simulator VH-YXV, assignment G-FENX. Tracking the assigned flight with the observed aircraft."
+            ],
+            "Registration": "VH-YXV",
+            "Route": null,
+            "position": {
+              "Latitude": -27.386807986907268,
+              "Longitude": 153.12220001450765,
+              "IsValid": true
+            },
+            "nearby": {
+              "Airport": {
+                "Ident": "YBBN",
+                "Name": "Brisbane International Airport",
+                "City": "Brisbane",
+                "Position": {
+                  "Latitude": -27.384166829288006,
+                  "Longitude": 153.1174997985363,
+                  "IsValid": true
+                },
+                "Source": "MSFS airport facilities"
+              },
+              "DistanceNm": 0.29653898114940125
+            },
+            "PlanStatus": "No simulator flight plan"
+          }
+        },
+        {
+          "sequence": 1013,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T13:43:11.5570422+00:00",
+          "simulatorUtc": "2026-09-22T19:40:44.149826+00:00",
+          "detail": {
+            "Title": "Simulator paused",
+            "Summary": "Operational detection suspended",
+            "Detail": "Operational detection suspended",
+            "Kind": "system"
+          }
+        },
+        {
+          "sequence": 1022,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T13:43:15.5939685+00:00",
+          "simulatorUtc": "2026-09-22T19:40:48.0367355+00:00",
+          "detail": {
+            "Title": "Simulator resumed",
+            "Summary": "Telemetry phase advancement resumed",
+            "Detail": "Telemetry phase advancement resumed\nGS 0 KT  •  ENGINE DATA UNAVAILABLE",
+            "Kind": "system"
+          }
+        },
+        {
+          "sequence": 1031,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T13:43:19.5184629+00:00",
+          "simulatorUtc": "2026-09-22T19:40:52.0882415+00:00",
+          "detail": {
+            "Title": "Simulator paused",
+            "Summary": "Operational detection suspended",
+            "Detail": "Operational detection suspended",
+            "Kind": "system"
+          }
+        },
+        {
+          "sequence": 1098,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T13:43:52.3801213+00:00",
+          "simulatorUtc": "2026-09-22T19:41:24.9638824+00:00",
+          "detail": {
+            "Title": "Simulator paused",
+            "Summary": "Operational detection suspended",
+            "Detail": "Operational detection suspended",
+            "Kind": "system"
+          }
+        },
+        {
+          "sequence": 3131,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T14:00:48.343944+00:00",
+          "simulatorUtc": "2026-09-22T19:58:20.9471893+00:00",
+          "detail": {
+            "Title": "Pushback / initial movement",
+            "Summary": "Ground movement began at 2 kt",
+            "Detail": "Ground movement began at 2 kt\nGS 2 KT  •  BRAKE RELEASED  •  ENGINE DATA UNAVAILABLE",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 3134,
+          "kind": "flight_milestone",
+          "recordedAtUtc": "2026-09-23T14:00:49.3260552+00:00",
+          "simulatorUtc": "2026-09-22T19:58:18.9385223+00:00",
+          "detail": {
+            "phase": "TaxiOut",
+            "label": "Block-out / taxi out"
+          }
+        },
+        {
+          "sequence": 3135,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T14:00:49.3273743+00:00",
+          "simulatorUtc": "2026-09-22T19:58:18.9385223+00:00",
+          "detail": {
+            "Title": "Block-out / taxi out",
+            "Summary": "Parking brake released and sustained ground movement confirmed",
+            "Detail": "Parking brake released and sustained ground movement confirmed\nGS 3 KT  •  BRAKE RELEASED  •  ENGINE DATA UNAVAILABLE  •  FUEL 20513 LB",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 3188,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T14:01:15.3173596+00:00",
+          "simulatorUtc": "2026-09-22T19:58:47.9469833+00:00",
+          "detail": {
+            "Title": "Engine 2 starting",
+            "Summary": "Engine 2 start sequence detected • starter",
+            "Detail": "Engine 2 start sequence detected • starter\nGS 0 KT  •  FUEL 20511 LB",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 3233,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T14:01:37.3675146+00:00",
+          "simulatorUtc": "2026-09-22T19:59:09.9491806+00:00",
+          "detail": {
+            "Title": "Engine 2 running",
+            "Summary": "Engine 2 running confirmed • combustion",
+            "Detail": "Engine 2 running confirmed • combustion\nGS 0 KT  •  FUEL 20509 LB",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 3376,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T14:02:48.376126+00:00",
+          "simulatorUtc": "2026-09-22T20:00:20.961853+00:00",
+          "detail": {
+            "Title": "Engine 1 starting",
+            "Summary": "Engine 1 start sequence detected • starter",
+            "Detail": "Engine 1 start sequence detected • starter\nGS 0 KT  •  FUEL 20489 LB",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 3423,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T14:03:11.3917078+00:00",
+          "simulatorUtc": "2026-09-22T20:00:43.9709091+00:00",
+          "detail": {
+            "Title": "Engine 1 running",
+            "Summary": "Engine 1 running confirmed • combustion",
+            "Detail": "Engine 1 running confirmed • combustion\nGS 0 KT  •  FUEL 20481 LB",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 3536,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T14:04:07.3484536+00:00",
+          "simulatorUtc": "2026-09-22T20:01:39.9571075+00:00",
+          "detail": {
+            "Title": "Flaps 1+F selected",
+            "Summary": "Flaps 1+F",
+            "Detail": "Flaps 1+F\nGS 0 KT  •  2 ENGINES RUNNING",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 3763,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T14:06:00.3681072+00:00",
+          "simulatorUtc": "2026-09-22T20:03:32.9579315+00:00",
+          "detail": {
+            "Title": "Taxi started",
+            "Summary": "Groundspeed 10 kt",
+            "Detail": "Groundspeed 10 kt\nGS 10 KT  •  2 ENGINES RUNNING",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 4244,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T14:10:00.3390988+00:00",
+          "simulatorUtc": "2026-09-22T20:07:32.9556808+00:00",
+          "detail": {
+            "Title": "Takeoff roll",
+            "Summary": "Acceleration through 68 kt",
+            "Detail": "Acceleration through 68 kt\nGS 68 KT  •  2 ENGINES RUNNING",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 4313,
+          "kind": "flight_milestone",
+          "recordedAtUtc": "2026-09-23T14:10:34.3722222+00:00",
+          "simulatorUtc": "2026-09-22T20:08:02.9369888+00:00",
+          "detail": {
+            "phase": "Airborne",
+            "label": "Takeoff / airborne"
+          }
+        },
+        {
+          "sequence": 4314,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T14:10:34.3726478+00:00",
+          "simulatorUtc": "2026-09-22T20:08:02.9369888+00:00",
+          "detail": {
+            "Title": "Liftoff",
+            "Summary": "Airborne at 170 kt",
+            "Detail": "Airborne at 170 kt\nALT 67 FT  •  AGL 54 FT  •  IAS 170 KT  •  VS +952 FPM  •  HDG 027°  •  PITCH -14°  •  BANK -0°",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 4319,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T14:10:36.3348956+00:00",
+          "simulatorUtc": "2026-09-22T20:08:08.9364547+00:00",
+          "detail": {
+            "Title": "Initial climb",
+            "Summary": "Climbing at 1721 ft/min",
+            "Detail": "Climbing at 1721 ft/min\nALT 125 FT  •  AGL 112 FT  •  IAS 171 KT  •  VS +1721 FPM  •  HDG 027°  •  PITCH -15°  •  BANK -0°",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 4342,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T14:10:47.3519016+00:00",
+          "simulatorUtc": "2026-09-22T20:08:19.9491348+00:00",
+          "detail": {
+            "Title": "Landing gear retracted",
+            "Summary": "Gear indicates up",
+            "Detail": "Gear indicates up\nALT 590 FT  •  AGL 578 FT  •  IAS 169 KT  •  VS +2825 FPM  •  HDG 032°  •  PITCH -17°  •  BANK -10°",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 4441,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T14:11:36.3275291+00:00",
+          "simulatorUtc": "2026-09-22T20:09:08.9421386+00:00",
+          "detail": {
+            "Title": "Flaps 1 selected",
+            "Summary": "Flaps 1",
+            "Detail": "Flaps 1\nALT 2241 FT  •  AGL 2241 FT  •  IAS 195 KT  •  VS +830 FPM  •  HDG 052°  •  PITCH -7°  •  BANK -0°",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 4460,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T14:11:45.3811138+00:00",
+          "simulatorUtc": "2026-09-22T20:09:17.9642028+00:00",
+          "detail": {
+            "Title": "Flaps UP selected",
+            "Summary": "Flaps UP",
+            "Detail": "Flaps UP\nALT 2375 FT  •  AGL 2375 FT  •  IAS 208 KT  •  VS +1117 FPM  •  HDG 053°  •  PITCH -8°  •  BANK 0°",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 4769,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T14:14:19.3988271+00:00",
+          "simulatorUtc": "2026-09-22T20:11:51.958908+00:00",
+          "detail": {
+            "Title": "10,000 feet crossed",
+            "Summary": "Climbing through 10,000 ft",
+            "Detail": "Climbing through 10,000 ft\nALT 10010 FT  •  IAS 242 KT  •  VS +3217 FPM  •  HDG 089°  •  PITCH -10°  •  BANK 0°",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 6764,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T14:30:56.3693034+00:00",
+          "simulatorUtc": "2026-09-22T20:28:28.9540405+00:00",
+          "detail": {
+            "Title": "Top of climb / cruise established",
+            "Summary": "Established at FL360",
+            "Detail": "Established at FL360\nALT 37081 FT  •  IAS 255 KT  •  VS 0 FPM  •  HDG 317°  •  PITCH -3°  •  BANK -0°  •  ETA 22:41Z • 6 MIN LATE",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 18733,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T16:10:40.2937648+00:00",
+          "simulatorUtc": "2026-09-22T22:08:12.9443969+00:00",
+          "detail": {
+            "Title": "Top of descent",
+            "Summary": "Descending at -997 ft/min",
+            "Detail": "Descending at -997 ft/min\nALT 37018 FT  •  IAS 264 KT  •  VS -997 FPM  •  HDG 330°  •  PITCH -2°  •  BANK -0°  •  ETA 22:31Z • 4 MIN EARLY",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 20290,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T16:23:38.3138819+00:00",
+          "simulatorUtc": "2026-09-22T22:21:10.9437103+00:00",
+          "detail": {
+            "Title": "10,000 feet crossed",
+            "Summary": "Descending through 10,000 ft",
+            "Detail": "Descending through 10,000 ft\nALT 9975 FT  •  AGL 9975 FT  •  IAS 253 KT  •  VS -2589 FPM  •  HDG 209°  •  PITCH 2°  •  BANK -0°",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 20593,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T16:26:09.360491+00:00",
+          "simulatorUtc": "2026-09-22T22:23:41.9628448+00:00",
+          "detail": {
+            "Title": "Approach started",
+            "Summary": "Descending through 5940 ft AGL",
+            "Detail": "Descending through 5940 ft AGL\nALT 5940 FT  •  AGL 5940 FT  •  IAS 235 KT  •  VS -402 FPM  •  HDG 152°  •  PITCH -3°  •  BANK 3°  •  21 NM TO GO  •  ETA 22:33Z • 2 MIN EARLY",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 20660,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T16:26:42.3442612+00:00",
+          "simulatorUtc": "2026-09-22T22:24:14.9477996+00:00",
+          "detail": {
+            "Title": "Flaps 1 selected",
+            "Summary": "Flaps 1",
+            "Detail": "Flaps 1\nALT 5501 FT  •  AGL 5501 FT  •  IAS 221 KT  •  VS -2431 FPM  •  HDG 152°  •  PITCH 1°  •  BANK -0°",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 20865,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T16:28:24.347684+00:00",
+          "simulatorUtc": "2026-09-22T22:25:56.9446258+00:00",
+          "detail": {
+            "Title": "Flaps 1+F selected",
+            "Summary": "Flaps 1+F",
+            "Detail": "Flaps 1+F\nALT 3604 FT  •  AGL 3604 FT  •  IAS 204 KT  •  VS -980 FPM  •  HDG 152°  •  PITCH -3°  •  BANK -0°",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 20880,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T16:28:31.3441531+00:00",
+          "simulatorUtc": "2026-09-22T22:26:03.9393997+00:00",
+          "detail": {
+            "Title": "Flaps 2 selected",
+            "Summary": "Flaps 2",
+            "Detail": "Flaps 2\nALT 3505 FT  •  AGL 3505 FT  •  IAS 199 KT  •  VS -1035 FPM  •  HDG 152°  •  PITCH -1°  •  BANK 0°",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 20989,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T16:29:25.4156127+00:00",
+          "simulatorUtc": "2026-09-22T22:26:57.9604492+00:00",
+          "detail": {
+            "Title": "Flaps 3 selected",
+            "Summary": "Flaps 3",
+            "Detail": "Flaps 3\nALT 2583 FT  •  AGL 2583 FT  •  IAS 177 KT  •  VS -911 FPM  •  HDG 153°  •  PITCH -1°  •  BANK 0°",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 20994,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T16:29:27.3367063+00:00",
+          "simulatorUtc": "2026-09-22T22:26:59.9538116+00:00",
+          "detail": {
+            "Title": "Landing gear extended",
+            "Summary": "Gear indicates down",
+            "Detail": "Gear indicates down\nALT 2557 FT  •  AGL 2557 FT  •  IAS 174 KT  •  VS -789 FPM  •  HDG 153°  •  PITCH -1°  •  BANK 0°",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 21013,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T16:29:36.3444167+00:00",
+          "simulatorUtc": "2026-09-22T22:27:08.9361648+00:00",
+          "detail": {
+            "Title": "Final approach",
+            "Summary": "2425 ft AGL • 165 kt",
+            "Detail": "2425 ft AGL • 165 kt\nALT 2425 FT  •  AGL 2425 FT  •  IAS 165 KT  •  VS -909 FPM  •  HDG 152°  •  PITCH -1°  •  BANK 0°  •  9 NM TO GO  •  ETA 22:35Z • ON TIME",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 21036,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T16:29:47.311153+00:00",
+          "simulatorUtc": "2026-09-22T22:27:19.9572753+00:00",
+          "detail": {
+            "Title": "Flaps FULL selected",
+            "Summary": "Flaps FULL",
+            "Detail": "Flaps FULL\nALT 2274 FT  •  AGL 2274 FT  •  IAS 156 KT  •  VS -731 FPM  •  HDG 153°  •  PITCH -2°  •  BANK 0°",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 21431,
+          "kind": "flight_milestone",
+          "recordedAtUtc": "2026-09-23T16:33:04.3882636+00:00",
+          "simulatorUtc": "2026-09-22T22:30:33.9401168+00:00",
+          "detail": {
+            "phase": "TaxiIn",
+            "label": "Landing / taxi in"
+          }
+        },
+        {
+          "sequence": 21432,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T16:33:04.3886249+00:00",
+          "simulatorUtc": "2026-09-22T22:30:33.9401168+00:00",
+          "detail": {
+            "Title": "Touchdown",
+            "Summary": "Touchdown at 126 kt • -257 ft/min • fuel burn 712 lb below plan",
+            "Detail": "Touchdown at 126 kt • -257 ft/min • fuel burn 712 lb below plan\nGS 113 KT  •  2 ENGINES RUNNING  •  FUEL 7469 LB",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 21531,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T16:33:53.3577151+00:00",
+          "simulatorUtc": "2026-09-22T22:31:25.9601669+00:00",
+          "detail": {
+            "Title": "Landing rollout slowed",
+            "Summary": "Groundspeed reduced to 28 kt",
+            "Detail": "Groundspeed reduced to 28 kt\nGS 28 KT  •  2 ENGINES RUNNING",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 21546,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T16:34:00.3386051+00:00",
+          "simulatorUtc": "2026-09-22T22:31:32.9621124+00:00",
+          "detail": {
+            "Title": "Taxi-in",
+            "Summary": "Taxiing to gate at 14 kt",
+            "Detail": "Taxiing to gate at 14 kt\nGS 14 KT  •  2 ENGINES RUNNING",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 21673,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T16:35:03.3854009+00:00",
+          "simulatorUtc": "2026-09-22T22:32:35.9450836+00:00",
+          "detail": {
+            "Title": "Flaps 3 selected",
+            "Summary": "Flaps 3",
+            "Detail": "Flaps 3\nGS 17 KT  •  2 ENGINES RUNNING",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 21680,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T16:35:06.3304297+00:00",
+          "simulatorUtc": "2026-09-22T22:32:38.9690093+00:00",
+          "detail": {
+            "Title": "Flaps 2 selected",
+            "Summary": "Flaps 2",
+            "Detail": "Flaps 2\nGS 17 KT  •  2 ENGINES RUNNING",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 21697,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T16:35:14.4023753+00:00",
+          "simulatorUtc": "2026-09-22T22:32:46.9507217+00:00",
+          "detail": {
+            "Title": "Flaps 1+F selected",
+            "Summary": "Flaps 1+F",
+            "Detail": "Flaps 1+F\nGS 15 KT  •  2 ENGINES RUNNING",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 21702,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T16:35:16.3655938+00:00",
+          "simulatorUtc": "2026-09-22T22:32:48.9351654+00:00",
+          "detail": {
+            "Title": "Flaps 1 selected",
+            "Summary": "Flaps 1",
+            "Detail": "Flaps 1\nGS 15 KT  •  2 ENGINES RUNNING",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 21721,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T16:35:25.3100431+00:00",
+          "simulatorUtc": "2026-09-22T22:32:57.947792+00:00",
+          "detail": {
+            "Title": "Flaps UP selected",
+            "Summary": "Flaps UP",
+            "Detail": "Flaps UP\nGS 13 KT  •  2 ENGINES RUNNING",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 21912,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T16:37:00.3183839+00:00",
+          "simulatorUtc": "2026-09-22T22:34:32.9384307+00:00",
+          "detail": {
+            "Title": "Parking brake set",
+            "Summary": "Parking brake set at stand",
+            "Detail": "Parking brake set at stand\nGS 0 KT  •  BRAKE SET  •  2 ENGINES RUNNING",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 21931,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T16:37:09.3706656+00:00",
+          "simulatorUtc": "2026-09-22T22:34:41.9552688+00:00",
+          "detail": {
+            "Title": "Engine 1 shutdown",
+            "Summary": "Engine 1 spool-down detected • combustion loss / spool decay",
+            "Detail": "Engine 1 spool-down detected • combustion loss / spool decay\nGS 0 KT  •  FUEL 7300 LB",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 21938,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T16:37:12.3157813+00:00",
+          "simulatorUtc": "2026-09-22T22:34:44.9491424+00:00",
+          "detail": {
+            "Title": "Engine 2 shutdown",
+            "Summary": "Engine 2 spool-down detected • combustion loss / spool decay",
+            "Detail": "Engine 2 spool-down detected • combustion loss / spool decay\nGS 0 KT  •  FUEL 7300 LB",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 22254,
+          "kind": "block_in_confirmation",
+          "recordedAtUtc": "2026-09-23T16:39:50.0336307+00:00",
+          "simulatorUtc": "2026-09-22T22:37:21.9319152+00:00",
+          "detail": {
+            "source": "Pilot",
+            "destination": "YBCS"
+          }
+        },
+        {
+          "sequence": 22264,
+          "kind": "flight_milestone",
+          "recordedAtUtc": "2026-09-23T16:39:54.2958133+00:00",
+          "simulatorUtc": "2026-09-22T22:37:22.9405593+00:00",
+          "detail": {
+            "phase": "Complete",
+            "label": "Block-in / complete"
+          }
+        },
+        {
+          "sequence": 22265,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-23T16:39:54.6261802+00:00",
+          "simulatorUtc": "2026-09-22T22:37:22.9405593+00:00",
+          "detail": {
+            "Title": "Block-in / flight complete",
+            "Summary": "Stopped at gate with parking brake set • engine data unavailable",
+            "Detail": "Stopped at gate with parking brake set • engine data unavailable\nGS 0 KT  •  BRAKE SET  •  ENGINE DATA UNAVAILABLE  •  FUEL 7287 LB",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 22325,
+          "kind": "pirep_closeout_complete",
+          "recordedAtUtc": "2026-09-23T16:40:23.7626121+00:00",
+          "simulatorUtc": null,
+          "detail": {
+            "FlightNumber": "JST928"
+          }
+        },
+        {
+          "sequence": 22326,
+          "kind": "session_ended",
+          "recordedAtUtc": "2026-09-23T16:40:23.7633063+00:00",
+          "simulatorUtc": null,
+          "detail": {
+            "reason": "pirep_submitted"
+          }
+        }
+      ],
+      "loggedErrors": []
+    },
+    {
+      "flight": "JST941",
+      "sourceStem": "Alpha6OPS-20260924-142104-8e78fc8d558c4b41a32438d4d1ccea32",
+      "assignment": {
+        "FlightNumber": "JST941",
+        "Registration": "G-FENX",
+        "Origin": "YBCS",
+        "Destination": "YMML",
+        "PlannedDepartureUtc": "2026-09-23T21:00:00+00:00",
+        "PlannedArrivalUtc": "2026-09-24T00:40:00+00:00",
+        "Source": "SimBrief",
+        "ImportedAtUtc": "2026-09-24T14:20:02+00:00",
+        "DepartureGate": "20",
+        "ArrivalGate": "41",
+        "GateAssignmentSource": "Dispatch",
+        "GateAssignmentConfidence": "Assigned",
+        "Route": "YBCS/15 AKROM1 AKROM R346 TL Q30 MATAR Y33 DUBED Q35 DORSU H119 ARBEY ARBEY8A YMML/34",
+        "RoutePoints": [
+          {
+            "Ident": "YBCS",
+            "Latitude": -16.885833,
+            "Longitude": 145.755278,
+            "Kind": "Departure"
+          },
+          {
+            "Ident": "CS",
+            "Latitude": -16.850028,
+            "Longitude": 145.743889,
+            "Kind": "vor"
+          },
+          {
+            "Ident": "AKROM",
+            "Latitude": -18.353806,
+            "Longitude": 146.800278,
+            "Kind": "wpt"
+          },
+          {
+            "Ident": "TL",
+            "Latitude": -19.244194,
+            "Longitude": 146.758083,
+            "Kind": "vor"
+          },
+          {
+            "Ident": "TOC",
+            "Latitude": -19.95876,
+            "Longitude": 146.707026,
+            "Kind": "ltlg"
+          },
+          {
+            "Ident": "ANRUB",
+            "Latitude": -19.989306,
+            "Longitude": 146.704833,
+            "Kind": "wpt"
+          },
+          {
+            "Ident": "MATAR",
+            "Latitude": -22.105139,
+            "Longitude": 146.31375,
+            "Kind": "wpt"
+          },
+          {
+            "Ident": "MIMIB",
+            "Latitude": -27.754239,
+            "Longitude": 146.205211,
+            "Kind": "wpt"
+          },
+          {
+            "Ident": "SAPNO",
+            "Latitude": -29.000003,
+            "Longitude": 146.179811,
+            "Kind": "wpt"
+          },
+          {
+            "Ident": "BORLI",
+            "Latitude": -34.249444,
+            "Longitude": 146.065361,
+            "Kind": "wpt"
+          },
+          {
+            "Ident": "DUBED",
+            "Latitude": -35.608361,
+            "Longitude": 145.86825,
+            "Kind": "wpt"
+          },
+          {
+            "Ident": "TOD",
+            "Latitude": -36.460014,
+            "Longitude": 145.008761,
+            "Kind": "ltlg"
+          },
+          {
+            "Ident": "ORINO",
+            "Latitude": -36.663128,
+            "Longitude": 144.800056,
+            "Kind": "wpt"
+          },
+          {
+            "Ident": "DORSU",
+            "Latitude": -36.806667,
+            "Longitude": 144.651667,
+            "Kind": "wpt"
+          },
+          {
+            "Ident": "ARBEY",
+            "Latitude": -37.168333,
+            "Longitude": 144.731667,
+            "Kind": "wpt"
+          },
+          {
+            "Ident": "TUNKA",
+            "Latitude": -37.332306,
+            "Longitude": 144.775306,
+            "Kind": "wpt"
+          },
+          {
+            "Ident": "BELTA",
+            "Latitude": -37.462194,
+            "Longitude": 144.798222,
+            "Kind": "wpt"
+          },
+          {
+            "Ident": "OVNER",
+            "Latitude": -37.588611,
+            "Longitude": 144.738333,
+            "Kind": "wpt"
+          },
+          {
+            "Ident": "RENER",
+            "Latitude": -37.705528,
+            "Longitude": 144.729972,
+            "Kind": "wpt"
+          },
+          {
+            "Ident": "GOSKO",
+            "Latitude": -37.753194,
+            "Longitude": 144.729278,
+            "Kind": "wpt"
+          },
+          {
+            "Ident": "DUDAB",
+            "Latitude": -37.819944,
+            "Longitude": 144.728333,
+            "Kind": "wpt"
+          },
+          {
+            "Ident": "OBGAL",
+            "Latitude": -37.844194,
+            "Longitude": 144.785583,
+            "Kind": "wpt"
+          },
+          {
+            "Ident": "AKDEL",
+            "Latitude": -37.834333,
+            "Longitude": 144.868833,
+            "Kind": "wpt"
+          },
+          {
+            "Ident": "YMML",
+            "Latitude": -37.673333,
+            "Longitude": 144.843333,
+            "Kind": "apt"
+          }
+        ],
+        "AircraftType": "FENIX A320",
+        "PlannedTripFuel": 7732,
+        "FuelUnits": "KGS",
+        "OfpCacheKey": "1790259602",
+        "CruiseAltitudeFeet": 35000,
+        "DepartureUtcOffsetMinutes": 600,
+        "ArrivalUtcOffsetMinutes": 600,
+        "DispatchEstimatedArrivalUtc": "2026-09-24T00:34:28+00:00"
+      },
+      "exportMetadata": {
+        "schemaVersion": 1,
+        "exportedAtUtc": "2026-09-24T18:11:51.3686934+00:00",
+        "incompleteLastLine": false,
+        "sessionEnded": true,
+        "eventCount": 27748
+      },
+      "eventCount": 27748,
+      "eventKinds": {
+        "session_started": 1,
+        "flight_assignment": 1,
+        "connection_opened": 1,
+        "telemetry": 13847,
+        "flight_identification": 1,
+        "monitor_armed": 1,
+        "tracking_event": 42,
+        "tracking_state": 13847,
+        "flight_milestone": 4,
+        "block_in_confirmation": 1,
+        "pirep_closeout_complete": 1,
+        "session_ended": 1
+      },
+      "jsonMatchesJsonl": true,
+      "contiguousSequence": true,
+      "envelopeSchema": {
+        "$": {
+          "dict": 27748
+        },
+        "kind": {
+          "str": 27748
+        },
+        "recordedAtUtc": {
+          "str": 27748
+        },
+        "sequence": {
+          "int": 27748
+        },
+        "simulatorUtc": {
+          "NoneType": 5,
+          "str": 27743
+        }
+      },
+      "sessionStarted": {
+        "sequence": 1,
+        "kind": "session_started",
+        "recordedAtUtc": "2026-09-24T14:21:04.3602263+00:00",
+        "simulatorUtc": null,
+        "detail": {
+          "appVersion": "0.22.0",
+          "mode": "live_simconnect",
+          "schemaVersion": 1,
+          "timing": "simulatorUtc is the in-sim clock; recordedAtUtc is the computer UTC clock"
+        }
+      },
+      "sessionEnded": {
+        "sequence": 27748,
+        "kind": "session_ended",
+        "recordedAtUtc": "2026-09-24T18:11:51.2246434+00:00",
+        "simulatorUtc": null,
+        "detail": {
+          "reason": "pirep_submitted"
+        }
+      },
+      "telemetrySamples": 13847,
+      "firstTelemetry": {
+        "sequence": 4,
+        "kind": "telemetry",
+        "recordedAtUtc": "2026-09-24T14:21:04.8461203+00:00",
+        "simulatorUtc": "2026-09-23T20:33:21.7805023+00:00",
+        "detail": {
+          "aircraft": "FenixA320 IAE SL",
+          "onGround": true,
+          "groundSpeedKnots": 1.1377284425959013e-05,
+          "indicatedAirspeedKnots": 0,
+          "verticalSpeedFeetPerMinute": -0.0007247376561281257,
+          "gearExtendedRatio": 1,
+          "flapsExtendedRatio": 0,
+          "flapHandleRatio": 0,
+          "flapHandleIndex": -1,
+          "flapHandlePositions": 5,
+          "leftFlapDegrees": 0,
+          "rightFlapDegrees": 0,
+          "leftSlatDegrees": 0,
+          "rightSlatDegrees": 0,
+          "engineDataValid": false,
+          "engineReadings": [
+            {
+              "Index": 1,
+              "Combustion": 0,
+              "FuelFlowPph": 595.3129744219378,
+              "N1Percent": 1.0940740324346667,
+              "N2Percent": null,
+              "Starter": 0,
+              "OilPressurePsf": null
+            },
+            {
+              "Index": 2,
+              "Combustion": 0,
+              "FuelFlowPph": 595.3129744219378,
+              "N1Percent": 1.0940740324346667,
+              "N2Percent": 9.870749623146155,
+              "Starter": 0,
+              "OilPressurePsf": null
+            }
+          ],
+          "engineStates": [
+            {
+              "Index": 1,
+              "Condition": 0,
+              "Source": "N1 / N2 spool"
+            },
+            {
+              "Index": 2,
+              "Condition": 0,
+              "Source": "N1 / N2 spool"
+            }
+          ],
+          "pitchDegrees": 0.03763683998806433,
+          "bankDegrees": -0.0005149996320789051,
+          "fuelTotalWeightPounds": 6612.891633033985,
+          "runningEngineCount": null,
+          "runningEngineMask": null,
+          "parkingBrake": true,
+          "enginesRunning": false,
+          "paused": false,
+          "slewing": false,
+          "latitude": -16.87778188519298,
+          "longitude": 145.7529963153554,
+          "altitudeFeet": 16.663758204375725,
+          "pressureAltitudeFeet": -203.53758239746094,
+          "altitudeAboveGroundFeet": 9.333169861846692,
+          "headingDegrees": 66.74055552375314,
+          "routeProgress": null
+        }
+      },
+      "lastTelemetry": {
+        "sequence": 27745,
+        "kind": "telemetry",
+        "recordedAtUtc": "2026-09-24T18:11:50.7246754+00:00",
+        "simulatorUtc": "2026-09-24T00:24:07.7179641+00:00",
+        "detail": {
+          "aircraft": "FenixA320 IAE SL",
+          "onGround": true,
+          "groundSpeedKnots": 3.490920226702327e-06,
+          "indicatedAirspeedKnots": 15.866385459899902,
+          "verticalSpeedFeetPerMinute": -0.00036424703466764115,
+          "gearExtendedRatio": 1,
+          "flapsExtendedRatio": 0,
+          "flapHandleRatio": 0,
+          "flapHandleIndex": 0,
+          "flapHandlePositions": 5,
+          "leftFlapDegrees": 0,
+          "rightFlapDegrees": 0,
+          "leftSlatDegrees": 0,
+          "rightSlatDegrees": 0,
+          "engineDataValid": false,
+          "engineReadings": [
+            {
+              "Index": 1,
+              "Combustion": 0,
+              "FuelFlowPph": 721.685870492592,
+              "N1Percent": 7.369912935633384e-06,
+              "N2Percent": 7.369532468996314e-05,
+              "Starter": 0,
+              "OilPressurePsf": 0.005643937117756435
+            },
+            {
+              "Index": 2,
+              "Combustion": 0,
+              "FuelFlowPph": 721.6859339890433,
+              "N1Percent": 7.991469293454234e-06,
+              "N2Percent": 7.23134438300637e-05,
+              "Starter": 0,
+              "OilPressurePsf": 0.006119929850549985
+            }
+          ],
+          "engineStates": [
+            {
+              "Index": 1,
+              "Condition": 0,
+              "Source": "N1 / N2 spool"
+            },
+            {
+              "Index": 2,
+              "Condition": 0,
+              "Source": "N1 / N2 spool"
+            }
+          ],
+          "pitchDegrees": -0.5980161407619258,
+          "bankDegrees": 0.26160425720534874,
+          "fuelTotalWeightPounds": 9653.10160507937,
+          "runningEngineCount": null,
+          "runningEngineMask": null,
+          "parkingBrake": true,
+          "enginesRunning": false,
+          "paused": false,
+          "slewing": false,
+          "latitude": -37.67354798236498,
+          "longitude": 144.84582786167937,
+          "altitudeFeet": 382.5648552349083,
+          "pressureAltitudeFeet": 382.5360107421875,
+          "altitudeAboveGroundFeet": 9.001878732679131,
+          "headingDegrees": 351.72882815308566,
+          "routeProgress": null
+        }
+      },
+      "telemetryFieldStats": {
+        "aircraft": {
+          "present": 13847,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "str": 13847
+          },
+          "values": {
+            "FenixA320 IAE SL": 13847
+          }
+        },
+        "altitudeAboveGroundFeet": {
+          "present": 13847,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "float": 13847
+          },
+          "range": [
+            8.891789082948312,
+            36322.55598785615
+          ]
+        },
+        "altitudeFeet": {
+          "present": 13847,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "float": 13847
+          },
+          "range": [
+            13.91776522920433,
+            36324.63800359954
+          ]
+        },
+        "bankDegrees": {
+          "present": 13847,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "float": 13847
+          },
+          "range": [
+            -30.56732227138,
+            30.519826449388795
+          ]
+        },
+        "engineDataValid": {
+          "present": 13847,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "bool": 13847
+          },
+          "values": {
+            "False": 1709,
+            "True": 12138
+          }
+        },
+        "engineReadings": {
+          "present": 13847,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "list": 13847
+          }
+        },
+        "engineStates": {
+          "present": 13847,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "list": 13847
+          }
+        },
+        "enginesRunning": {
+          "present": 13847,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "bool": 13847
+          },
+          "values": {
+            "False": 1636,
+            "True": 12211
+          }
+        },
+        "flapHandleIndex": {
+          "present": 13847,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "int": 13847
+          },
+          "range": [
+            -1,
+            5
+          ],
+          "values": {
+            "-1": 1,
+            "0": 12873,
+            "2": 526,
+            "1": 40,
+            "3": 59,
+            "4": 10,
+            "5": 338
+          }
+        },
+        "flapHandlePositions": {
+          "present": 13847,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "int": 13847
+          },
+          "range": [
+            5,
+            5
+          ],
+          "values": {
+            "5": 13847
+          }
+        },
+        "flapHandleRatio": {
+          "present": 13847,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "int": 13212,
+            "float": 635
+          },
+          "range": [
+            0,
+            1
+          ],
+          "values": {
+            "0": 12874,
+            "0.4": 526,
+            "0.2": 40,
+            "0.6": 59,
+            "0.8": 10,
+            "1": 338
+          }
+        },
+        "flapsExtendedRatio": {
+          "present": 13847,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "int": 13212,
+            "float": 635
+          },
+          "range": [
+            0,
+            1
+          ],
+          "values": {
+            "0": 12874,
+            "0.4": 526,
+            "0.2": 40,
+            "0.6": 59,
+            "0.8": 10,
+            "1": 338
+          }
+        },
+        "fuelTotalWeightPounds": {
+          "present": 13847,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "float": 13847
+          },
+          "range": [
+            6608.772425387579,
+            26968.143714695703
+          ]
+        },
+        "gearExtendedRatio": {
+          "present": 13847,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "int": 13826,
+            "float": 21
+          },
+          "range": [
+            0,
+            1
+          ]
+        },
+        "groundSpeedKnots": {
+          "present": 13847,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "float": 13847
+          },
+          "range": [
+            2.3745133245829243e-07,
+            497.1582282950516
+          ]
+        },
+        "headingDegrees": {
+          "present": 13847,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "float": 13847
+          },
+          "range": [
+            0.47549508076262953,
+            359.7983038118706
+          ]
+        },
+        "indicatedAirspeedKnots": {
+          "present": 13847,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "int": 1708,
+            "float": 12139
+          },
+          "range": [
+            0,
+            292.4481506347656
+          ]
+        },
+        "latitude": {
+          "present": 13847,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "float": 13847
+          },
+          "range": [
+            -37.8421415122474,
+            -16.84516357323948
+          ]
+        },
+        "leftFlapDegrees": {
+          "present": 13847,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "int": 12858,
+            "float": 989
+          },
+          "range": [
+            0,
+            21.99999999999999
+          ]
+        },
+        "leftSlatDegrees": {
+          "present": 13847,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "int": 13847
+          },
+          "range": [
+            0,
+            0
+          ],
+          "values": {
+            "0": 13847
+          }
+        },
+        "longitude": {
+          "present": 13847,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "float": 13847
+          },
+          "range": [
+            144.6584353984496,
+            146.79764140248753
+          ]
+        },
+        "onGround": {
+          "present": 13847,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "bool": 13847
+          },
+          "values": {
+            "True": 2428,
+            "False": 11419
+          }
+        },
+        "parkingBrake": {
+          "present": 13847,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "bool": 13847
+          },
+          "values": {
+            "True": 1743,
+            "False": 12104
+          }
+        },
+        "paused": {
+          "present": 13847,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "bool": 13847
+          },
+          "values": {
+            "False": 13847
+          }
+        },
+        "pitchDegrees": {
+          "present": 13847,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "float": 13847
+          },
+          "range": [
+            -16.498587433599482,
+            3.5127199584090256
+          ]
+        },
+        "pressureAltitudeFeet": {
+          "present": 13847,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "float": 13808,
+            "int": 39
+          },
+          "range": [
+            -203.53758239746094,
+            35060.31640625
+          ]
+        },
+        "rightFlapDegrees": {
+          "present": 13847,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "int": 12858,
+            "float": 989
+          },
+          "range": [
+            0,
+            21.99999999999999
+          ]
+        },
+        "rightSlatDegrees": {
+          "present": 13847,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "int": 13847
+          },
+          "range": [
+            0,
+            0
+          ],
+          "values": {
+            "0": 13847
+          }
+        },
+        "routeProgress": {
+          "present": 13847,
+          "missing": 0,
+          "null": 13847,
+          "types": {
+            "NoneType": 13847
+          },
+          "values": {
+            "None": 13847
+          }
+        },
+        "runningEngineCount": {
+          "present": 13847,
+          "missing": 0,
+          "null": 1709,
+          "types": {
+            "NoneType": 1709,
+            "int": 12138
+          },
+          "range": [
+            2,
+            2
+          ],
+          "values": {
+            "None": 1709,
+            "2": 12138
+          }
+        },
+        "runningEngineMask": {
+          "present": 13847,
+          "missing": 0,
+          "null": 1709,
+          "types": {
+            "NoneType": 1709,
+            "int": 12138
+          },
+          "range": [
+            3,
+            3
+          ],
+          "values": {
+            "None": 1709,
+            "3": 12138
+          }
+        },
+        "slewing": {
+          "present": 13847,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "bool": 13847
+          },
+          "values": {
+            "False": 13847
+          }
+        },
+        "verticalSpeedFeetPerMinute": {
+          "present": 13847,
+          "missing": 0,
+          "null": 0,
+          "types": {
+            "float": 13847
+          },
+          "range": [
+            -3376.5822601318296,
+            2974.1301727294867
+          ]
+        }
+      },
+      "clockIntervalSeconds": {
+        "recordedAtUtc": {
+          "minimum": 0.618057,
+          "maximum": 1.340168,
+          "median": 1.012858,
+          "backwards": 0,
+          "equal": 0,
+          "overTwoSeconds": 0
+        },
+        "simulatorUtc": {
+          "minimum": 0.693947,
+          "maximum": 1.29322,
+          "median": 1.000953,
+          "backwards": 0,
+          "equal": 0,
+          "overTwoSeconds": 0
+        }
+      },
+      "recordingMinusSimulatorSeconds": {
+        "minimum": 64062.952582,
+        "maximum": 64063.363383,
+        "median": 64063.01626
+      },
+      "milestones": [
+        {
+          "sequence": 2910,
+          "kind": "flight_milestone",
+          "recordedAtUtc": "2026-09-24T14:45:13.7628555+00:00",
+          "simulatorUtc": "2026-09-23T20:57:27.7703094+00:00",
+          "detail": {
+            "phase": "TaxiOut",
+            "label": "Block-out / taxi out"
+          }
+        },
+        {
+          "sequence": 4021,
+          "kind": "flight_milestone",
+          "recordedAtUtc": "2026-09-24T14:54:24.7596587+00:00",
+          "simulatorUtc": "2026-09-23T21:06:38.7645721+00:00",
+          "detail": {
+            "phase": "Airborne",
+            "label": "Takeoff / airborne"
+          }
+        },
+        {
+          "sequence": 26877,
+          "kind": "flight_milestone",
+          "recordedAtUtc": "2026-09-24T18:04:43.785725+00:00",
+          "simulatorUtc": "2026-09-24T00:16:57.7304382+00:00",
+          "detail": {
+            "phase": "TaxiIn",
+            "label": "Landing / taxi in"
+          }
+        },
+        {
+          "sequence": 27514,
+          "kind": "flight_milestone",
+          "recordedAtUtc": "2026-09-24T18:09:55.7574181+00:00",
+          "simulatorUtc": "2026-09-24T00:22:09.7140045+00:00",
+          "detail": {
+            "phase": "Complete",
+            "label": "Block-in / complete"
+          }
+        }
+      ],
+      "phaseTransitions": [
+        {
+          "sequence": 11,
+          "kind": "tracking_state",
+          "recordedAtUtc": "2026-09-24T14:21:04.8975104+00:00",
+          "simulatorUtc": "2026-09-23T20:33:21.7805023+00:00",
+          "detail": {
+            "progress": 0,
+            "remainingNm": 1321.416208012297,
+            "routeReliable": true,
+            "crossTrackNm": 0.015370141691544222,
+            "estimatedIn": null,
+            "phase": "AtGate"
+          }
+        },
+        {
+          "sequence": 2912,
+          "kind": "tracking_state",
+          "recordedAtUtc": "2026-09-24T14:45:13.7842009+00:00",
+          "simulatorUtc": "2026-09-23T20:57:30.7755966+00:00",
+          "detail": {
+            "progress": 0.00037884835484844147,
+            "remainingNm": 1320.9155916558213,
+            "routeReliable": true,
+            "crossTrackNm": 0.013502607495907948,
+            "estimatedIn": null,
+            "phase": "TaxiOut"
+          }
+        },
+        {
+          "sequence": 4023,
+          "kind": "tracking_state",
+          "recordedAtUtc": "2026-09-24T14:54:24.7623861+00:00",
+          "simulatorUtc": "2026-09-23T21:06:41.7840728+00:00",
+          "detail": {
+            "progress": 0.001015229236122306,
+            "remainingNm": 1320.074667644837,
+            "routeReliable": true,
+            "crossTrackNm": 0.1518855425205077,
+            "estimatedIn": "2026-09-24T00:32:00+00:00",
+            "phase": "Airborne"
+          }
+        },
+        {
+          "sequence": 26879,
+          "kind": "tracking_state",
+          "recordedAtUtc": "2026-09-24T18:04:43.8042526+00:00",
+          "simulatorUtc": "2026-09-24T00:17:00.7365188+00:00",
+          "detail": {
+            "progress": 0.999819847106958,
+            "remainingNm": 0.23805695278595526,
+            "routeReliable": true,
+            "crossTrackNm": 0.21508702479765282,
+            "estimatedIn": "2026-09-24T00:22:00+00:00",
+            "phase": "TaxiIn"
+          }
+        },
+        {
+          "sequence": 27516,
+          "kind": "tracking_state",
+          "recordedAtUtc": "2026-09-24T18:09:56.2809268+00:00",
+          "simulatorUtc": "2026-09-24T00:22:12.7374343+00:00",
+          "detail": {
+            "progress": 1,
+            "remainingNm": 0,
+            "routeReliable": true,
+            "crossTrackNm": 0.11604251343954655,
+            "estimatedIn": "2026-09-24T00:22:09.7140045+00:00",
+            "phase": "Complete"
+          }
+        }
+      ],
+      "durationsSeconds": {
+        "taxiOut": 550.994263,
+        "airborne": 11418.965866,
+        "taxiIn": 311.983566,
+        "block": 12281.943695
+      },
+      "tracking": {
+        "phaseCounts": {
+          "AtGate": 1449,
+          "TaxiOut": 551,
+          "Airborne": 11419,
+          "TaxiIn": 312,
+          "Complete": 116
+        },
+        "progressDecreasesOver1eMinus9": 0,
+        "progressRange": [
+          0,
+          1
+        ],
+        "routeReliableCounts": {
+          "True": 13847
+        },
+        "routeUnreliableRecords": [],
+        "maxCrossTrackNm": 5.181083026467932,
+        "etaNullByPhase": {
+          "AtGate": 1449,
+          "TaxiOut": 551
+        },
+        "first": {
+          "sequence": 11,
+          "kind": "tracking_state",
+          "recordedAtUtc": "2026-09-24T14:21:04.8975104+00:00",
+          "simulatorUtc": "2026-09-23T20:33:21.7805023+00:00",
+          "detail": {
+            "progress": 0,
+            "remainingNm": 1321.416208012297,
+            "routeReliable": true,
+            "crossTrackNm": 0.015370141691544222,
+            "estimatedIn": null,
+            "phase": "AtGate"
+          }
+        },
+        "last": {
+          "sequence": 27746,
+          "kind": "tracking_state",
+          "recordedAtUtc": "2026-09-24T18:11:50.7249613+00:00",
+          "simulatorUtc": "2026-09-24T00:24:07.7179641+00:00",
+          "detail": {
+            "progress": 1,
+            "remainingNm": 0,
+            "routeReliable": true,
+            "crossTrackNm": 0.11604260236293686,
+            "estimatedIn": "2026-09-24T00:22:09.7140045+00:00",
+            "phase": "Complete"
+          }
+        }
+      },
+      "engineConditionCounts": {
+        "0": 3240,
+        "2": 48,
+        "3": 24349,
+        "4": 57
+      },
+      "engineEvidenceSources": {
+        "N1 / N2 spool": 3237,
+        "starter": 47,
+        "combustion": 24349,
+        "combustion loss / spool decay": 61
+      },
+      "lifecycleAndTrackingEvents": [
+        {
+          "sequence": 1,
+          "kind": "session_started",
+          "recordedAtUtc": "2026-09-24T14:21:04.3602263+00:00",
+          "simulatorUtc": null,
+          "detail": {
+            "appVersion": "0.22.0",
+            "mode": "live_simconnect",
+            "schemaVersion": 1,
+            "timing": "simulatorUtc is the in-sim clock; recordedAtUtc is the computer UTC clock"
+          }
+        },
+        {
+          "sequence": 3,
+          "kind": "connection_opened",
+          "recordedAtUtc": "2026-09-24T14:21:04.5107908+00:00",
+          "simulatorUtc": null,
+          "detail": {
+            "message": "Connected to SunRise. Waiting for aircraft data.",
+            "source": "MSFS 2024",
+            "attempt": 1
+          }
+        },
+        {
+          "sequence": 5,
+          "kind": "flight_identification",
+          "recordedAtUtc": "2026-09-24T14:21:04.8624497+00:00",
+          "simulatorUtc": "2026-09-23T20:33:21.7805023+00:00",
+          "detail": {
+            "Mode": "ASSIGNMENT WITH ADVISORY",
+            "Accepted": true,
+            "Issues": [
+              "Aircraft registration differs: simulator VH-YXV, assignment G-FENX. Tracking the assigned flight with the observed aircraft."
+            ],
+            "Registration": "VH-YXV",
+            "Route": null,
+            "position": {
+              "Latitude": -16.87778188519298,
+              "Longitude": 145.7529963153554,
+              "IsValid": true
+            },
+            "nearby": {
+              "Airport": {
+                "Ident": "YBCS",
+                "Name": "Cairns International Airport",
+                "City": "Cairns",
+                "Position": {
+                  "Latitude": -16.88583344221115,
+                  "Longitude": 145.75527772307396,
+                  "IsValid": true
+                },
+                "Source": "MSFS airport facilities"
+              },
+              "DistanceNm": 0.5008737125182803
+            },
+            "PlanStatus": "No simulator flight plan"
+          }
+        },
+        {
+          "sequence": 6,
+          "kind": "monitor_armed",
+          "recordedAtUtc": "2026-09-24T14:21:04.8667143+00:00",
+          "simulatorUtc": "2026-09-23T20:33:21.7805023+00:00",
+          "detail": {
+            "aircraft": "FenixA320 IAE SL",
+            "initialPhase": 0,
+            "departureObserved": true,
+            "joinedInProgress": false
+          }
+        },
+        {
+          "sequence": 7,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-24T14:21:04.8716833+00:00",
+          "simulatorUtc": "2026-09-23T20:33:21.7805023+00:00",
+          "detail": {
+            "Title": "Assignment loaded",
+            "Summary": "JST941 • YBCS to YMML",
+            "Detail": "JST941 • YBCS to YMML",
+            "Kind": "system"
+          }
+        },
+        {
+          "sequence": 8,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-24T14:21:04.8856309+00:00",
+          "simulatorUtc": "2026-09-23T20:33:21.7805023+00:00",
+          "detail": {
+            "Title": "Aircraft identified",
+            "Summary": "Airbus A320 • VH-YXV",
+            "Detail": "Airbus A320 • VH-YXV",
+            "Kind": "system"
+          }
+        },
+        {
+          "sequence": 9,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-24T14:21:04.8866968+00:00",
+          "simulatorUtc": "2026-09-23T20:33:21.7805023+00:00",
+          "detail": {
+            "Title": "Preflight at gate",
+            "Summary": "Gate 20 • Parking brake set",
+            "Detail": "Gate 20 • Parking brake set",
+            "Kind": "system"
+          }
+        },
+        {
+          "sequence": 10,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-24T14:21:04.8874098+00:00",
+          "simulatorUtc": "2026-09-23T20:33:21.7805023+00:00",
+          "detail": {
+            "Title": "Flight monitoring armed",
+            "Summary": "Airbus A320 • joined in at gate",
+            "Detail": "Airbus A320 • joined in at gate",
+            "Kind": "system"
+          }
+        },
+        {
+          "sequence": 2905,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-24T14:45:11.7995737+00:00",
+          "simulatorUtc": "2026-09-23T20:57:28.779663+00:00",
+          "detail": {
+            "Title": "Pushback / initial movement",
+            "Summary": "Ground movement began at 2 kt",
+            "Detail": "Ground movement began at 2 kt\nGS 2 KT  •  BRAKE RELEASED  •  ENGINE DATA UNAVAILABLE",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 2910,
+          "kind": "flight_milestone",
+          "recordedAtUtc": "2026-09-24T14:45:13.7628555+00:00",
+          "simulatorUtc": "2026-09-23T20:57:27.7703094+00:00",
+          "detail": {
+            "phase": "TaxiOut",
+            "label": "Block-out / taxi out"
+          }
+        },
+        {
+          "sequence": 2911,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-24T14:45:13.7646598+00:00",
+          "simulatorUtc": "2026-09-23T20:57:27.7703094+00:00",
+          "detail": {
+            "Title": "Block-out / taxi out",
+            "Summary": "Parking brake released and sustained ground movement confirmed",
+            "Detail": "Parking brake released and sustained ground movement confirmed\nGS 3 KT  •  BRAKE RELEASED  •  ENGINE DATA UNAVAILABLE  •  FUEL 26855 LB",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 2970,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-24T14:45:42.8227885+00:00",
+          "simulatorUtc": "2026-09-23T20:57:59.7753295+00:00",
+          "detail": {
+            "Title": "Engine 2 starting",
+            "Summary": "Engine 2 start sequence detected • starter",
+            "Detail": "Engine 2 start sequence detected • starter\nGS 4 KT  •  FUEL 26853 LB",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 3017,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-24T14:46:05.7307776+00:00",
+          "simulatorUtc": "2026-09-23T20:58:22.768898+00:00",
+          "detail": {
+            "Title": "Engine 2 running",
+            "Summary": "Engine 2 running confirmed • combustion",
+            "Detail": "Engine 2 running confirmed • combustion\nGS 4 KT  •  FUEL 26851 LB",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 3114,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-24T14:46:53.8318593+00:00",
+          "simulatorUtc": "2026-09-23T20:59:10.8069686+00:00",
+          "detail": {
+            "Title": "Engine 1 starting",
+            "Summary": "Engine 1 start sequence detected • starter",
+            "Detail": "Engine 1 start sequence detected • starter\nGS 0 KT  •  FUEL 26838 LB",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 3165,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-24T14:47:18.8109688+00:00",
+          "simulatorUtc": "2026-09-23T20:59:35.7930297+00:00",
+          "detail": {
+            "Title": "Engine 1 running",
+            "Summary": "Engine 1 running confirmed • combustion",
+            "Detail": "Engine 1 running confirmed • combustion\nGS 0 KT  •  FUEL 26829 LB",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 3272,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-24T14:48:11.8253182+00:00",
+          "simulatorUtc": "2026-09-23T21:00:28.8007278+00:00",
+          "detail": {
+            "Title": "Flaps 1+F selected",
+            "Summary": "Flaps 1+F",
+            "Detail": "Flaps 1+F\nGS 0 KT  •  2 ENGINES RUNNING",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 3421,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-24T14:49:25.886481+00:00",
+          "simulatorUtc": "2026-09-23T21:01:42.8940811+00:00",
+          "detail": {
+            "Title": "Taxi started",
+            "Summary": "Groundspeed 11 kt",
+            "Detail": "Groundspeed 11 kt\nGS 11 KT  •  2 ENGINES RUNNING",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 3956,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-24T14:53:52.7997026+00:00",
+          "simulatorUtc": "2026-09-23T21:06:09.7695846+00:00",
+          "detail": {
+            "Title": "Takeoff roll",
+            "Summary": "Acceleration through 67 kt",
+            "Detail": "Acceleration through 67 kt\nGS 67 KT  •  2 ENGINES RUNNING",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 4021,
+          "kind": "flight_milestone",
+          "recordedAtUtc": "2026-09-24T14:54:24.7596587+00:00",
+          "simulatorUtc": "2026-09-23T21:06:38.7645721+00:00",
+          "detail": {
+            "phase": "Airborne",
+            "label": "Takeoff / airborne"
+          }
+        },
+        {
+          "sequence": 4022,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-24T14:54:24.7600652+00:00",
+          "simulatorUtc": "2026-09-23T21:06:38.7645721+00:00",
+          "detail": {
+            "Title": "Liftoff",
+            "Summary": "Airborne at 172 kt",
+            "Detail": "Airborne at 172 kt\nALT 48 FT  •  AGL 38 FT  •  IAS 172 KT  •  VS +686 FPM  •  HDG 157°  •  PITCH -12°  •  BANK 0°",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 4027,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-24T14:54:26.8319653+00:00",
+          "simulatorUtc": "2026-09-23T21:06:43.7858428+00:00",
+          "detail": {
+            "Title": "Initial climb",
+            "Summary": "Climbing at 1393 ft/min",
+            "Detail": "Climbing at 1393 ft/min\nALT 94 FT  •  AGL 84 FT  •  IAS 174 KT  •  VS +1393 FPM  •  HDG 158°  •  PITCH -15°  •  BANK -1°",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 4050,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-24T14:54:37.8487819+00:00",
+          "simulatorUtc": "2026-09-23T21:06:54.78833+00:00",
+          "detail": {
+            "Title": "Landing gear retracted",
+            "Summary": "Gear indicates up",
+            "Detail": "Gear indicates up\nALT 598 FT  •  AGL 587 FT  •  IAS 173 KT  •  VS +2917 FPM  •  HDG 158°  •  PITCH -16°  •  BANK 2°",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 4313,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-24T14:56:48.7729382+00:00",
+          "simulatorUtc": "2026-09-23T21:09:05.7798156+00:00",
+          "detail": {
+            "Title": "Flaps 1 selected",
+            "Summary": "Flaps 1",
+            "Detail": "Flaps 1\nALT 5350 FT  •  AGL 5350 FT  •  IAS 206 KT  •  VS +797 FPM  •  HDG 110°  •  PITCH -6°  •  BANK -30°",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 4330,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-24T14:56:56.7356689+00:00",
+          "simulatorUtc": "2026-09-23T21:09:13.7732543+00:00",
+          "detail": {
+            "Title": "Flaps UP selected",
+            "Summary": "Flaps UP",
+            "Detail": "Flaps UP\nALT 5461 FT  •  AGL 5461 FT  •  IAS 214 KT  •  VS +1035 FPM  •  HDG 132°  •  PITCH -8°  •  BANK -27°",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 4553,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-24T14:58:47.7922816+00:00",
+          "simulatorUtc": "2026-09-23T21:11:04.7843551+00:00",
+          "detail": {
+            "Title": "10,000 feet crossed",
+            "Summary": "Climbing through 10,000 ft",
+            "Detail": "Climbing through 10,000 ft\nALT 10025 FT  •  IAS 249 KT  •  VS +2431 FPM  •  HDG 149°  •  PITCH -8°  •  BANK 0°",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 6968,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-24T15:18:54.7550446+00:00",
+          "simulatorUtc": "2026-09-23T21:31:11.7651443+00:00",
+          "detail": {
+            "Title": "Top of climb / cruise established",
+            "Summary": "Established at FL350",
+            "Detail": "Established at FL350\nALT 36322 FT  •  IAS 257 KT  •  VS -15 FPM  •  HDG 192°  •  PITCH -4°  •  BANK 0°  •  ETA 00:08Z • 32 MIN EARLY",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 23031,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-24T17:32:45.8116987+00:00",
+          "simulatorUtc": "2026-09-23T23:45:02.7361297+00:00",
+          "detail": {
+            "Title": "Top of descent",
+            "Summary": "Descending at -998 ft/min",
+            "Detail": "Descending at -998 ft/min\nALT 34879 FT  •  IAS 254 KT  •  VS -998 FPM  •  HDG 220°  •  PITCH -2°  •  BANK -0°  •  ETA 00:14Z • 26 MIN EARLY",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 25338,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-24T17:51:58.8027934+00:00",
+          "simulatorUtc": "2026-09-24T00:04:15.7277145+00:00",
+          "detail": {
+            "Title": "10,000 feet crossed",
+            "Summary": "Descending through 10,000 ft",
+            "Detail": "Descending through 10,000 ft\nALT 9997 FT  •  AGL 8513 FT  •  IAS 256 KT  •  VS -2154 FPM  •  HDG 169°  •  PITCH 0°  •  BANK -0°",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 25707,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-24T17:55:02.7762319+00:00",
+          "simulatorUtc": "2026-09-24T00:07:19.7472457+00:00",
+          "detail": {
+            "Title": "Approach started",
+            "Summary": "Descending through 5825 ft AGL",
+            "Detail": "Descending through 5825 ft AGL\nALT 6734 FT  •  AGL 5825 FT  •  IAS 252 KT  •  VS -955 FPM  •  HDG 203°  •  PITCH -1°  •  BANK 0°  •  34 NM TO GO  •  ETA 00:18Z • 22 MIN EARLY",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 26222,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-24T17:59:19.7625103+00:00",
+          "simulatorUtc": "2026-09-24T00:11:36.7246093+00:00",
+          "detail": {
+            "Title": "Flaps 1 selected",
+            "Summary": "Flaps 1",
+            "Detail": "Flaps 1\nALT 3252 FT  •  AGL 3196 FT  •  IAS 211 KT  •  VS -712 FPM  •  HDG 095°  •  PITCH -4°  •  BANK 14°",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 26269,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-24T17:59:42.7777966+00:00",
+          "simulatorUtc": "2026-09-24T00:11:59.7354812+00:00",
+          "detail": {
+            "Title": "Flaps 1+F selected",
+            "Summary": "Flaps 1+F",
+            "Detail": "Flaps 1+F\nALT 2991 FT  •  AGL 2957 FT  •  IAS 193 KT  •  VS -612 FPM  •  HDG 074°  •  PITCH -5°  •  BANK -1°",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 26284,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-24T17:59:49.7553108+00:00",
+          "simulatorUtc": "2026-09-24T00:12:06.7345886+00:00",
+          "detail": {
+            "Title": "Flaps 2 selected",
+            "Summary": "Flaps 2",
+            "Detail": "Flaps 2\nALT 2937 FT  •  AGL 2904 FT  •  IAS 186 KT  •  VS -468 FPM  •  HDG 074°  •  PITCH -4°  •  BANK 0°",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 26355,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-24T18:00:24.7883199+00:00",
+          "simulatorUtc": "2026-09-24T00:12:41.7367477+00:00",
+          "detail": {
+            "Title": "Landing gear extended",
+            "Summary": "Gear indicates down",
+            "Detail": "Gear indicates down\nALT 2591 FT  •  AGL 2537 FT  •  IAS 165 KT  •  VS -529 FPM  •  HDG 043°  •  PITCH -5°  •  BANK 17°",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 26368,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-24T18:00:30.7564439+00:00",
+          "simulatorUtc": "2026-09-24T00:12:47.7294921+00:00",
+          "detail": {
+            "Title": "Final approach",
+            "Summary": "2482 ft AGL • 161 kt",
+            "Detail": "2482 ft AGL • 161 kt\nALT 2543 FT  •  AGL 2482 FT  •  IAS 161 KT  •  VS -462 FPM  •  HDG 032°  •  PITCH -5°  •  BANK 15°  •  10 NM TO GO  •  ETA 00:22Z • 18 MIN EARLY",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 26389,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-24T18:00:40.8071982+00:00",
+          "simulatorUtc": "2026-09-24T00:12:57.7255401+00:00",
+          "detail": {
+            "Title": "Flaps 3 selected",
+            "Summary": "Flaps 3",
+            "Detail": "Flaps 3\nALT 2474 FT  •  AGL 2418 FT  •  IAS 157 KT  •  VS -360 FPM  •  HDG 015°  •  PITCH -5°  •  BANK 14°",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 26404,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-24T18:00:47.7882786+00:00",
+          "simulatorUtc": "2026-09-24T00:13:04.7298583+00:00",
+          "detail": {
+            "Title": "Flaps FULL selected",
+            "Summary": "Flaps FULL",
+            "Detail": "Flaps FULL\nALT 2439 FT  •  AGL 2391 FT  •  IAS 154 KT  •  VS -319 FPM  •  HDG 004°  •  PITCH -3°  •  BANK 13°",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 26877,
+          "kind": "flight_milestone",
+          "recordedAtUtc": "2026-09-24T18:04:43.785725+00:00",
+          "simulatorUtc": "2026-09-24T00:16:57.7304382+00:00",
+          "detail": {
+            "phase": "TaxiIn",
+            "label": "Landing / taxi in"
+          }
+        },
+        {
+          "sequence": 26878,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-24T18:04:43.7860273+00:00",
+          "simulatorUtc": "2026-09-24T00:16:57.7304382+00:00",
+          "detail": {
+            "Title": "Touchdown",
+            "Summary": "Touchdown at 132 kt • -61 ft/min • fuel burn 497 lb below plan",
+            "Detail": "Touchdown at 132 kt • -61 ft/min • fuel burn 497 lb below plan\nGS 110 KT  •  2 ENGINES RUNNING  •  FUEL 9858 LB",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 26925,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-24T18:05:06.7952644+00:00",
+          "simulatorUtc": "2026-09-24T00:17:23.7298355+00:00",
+          "detail": {
+            "Title": "Landing rollout slowed",
+            "Summary": "Groundspeed reduced to 29 kt",
+            "Detail": "Groundspeed reduced to 29 kt\nGS 29 KT  •  2 ENGINES RUNNING",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 26948,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-24T18:05:17.8124608+00:00",
+          "simulatorUtc": "2026-09-24T00:17:34.7255706+00:00",
+          "detail": {
+            "Title": "Taxi-in",
+            "Summary": "Taxiing to gate at 20 kt",
+            "Detail": "Taxiing to gate at 20 kt\nGS 20 KT  •  2 ENGINES RUNNING",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 27085,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-24T18:06:25.7827927+00:00",
+          "simulatorUtc": "2026-09-24T00:18:42.7386016+00:00",
+          "detail": {
+            "Title": "Flaps 3 selected",
+            "Summary": "Flaps 3",
+            "Detail": "Flaps 3\nGS 10 KT  •  2 ENGINES RUNNING",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 27092,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-24T18:06:28.7286595+00:00",
+          "simulatorUtc": "2026-09-24T00:18:45.7204284+00:00",
+          "detail": {
+            "Title": "Flaps 2 selected",
+            "Summary": "Flaps 2",
+            "Detail": "Flaps 2\nGS 10 KT  •  2 ENGINES RUNNING",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 27109,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-24T18:06:36.799671+00:00",
+          "simulatorUtc": "2026-09-24T00:18:53.7353591+00:00",
+          "detail": {
+            "Title": "Flaps 1+F selected",
+            "Summary": "Flaps 1+F",
+            "Detail": "Flaps 1+F\nGS 12 KT  •  2 ENGINES RUNNING",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 27114,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-24T18:06:38.7629169+00:00",
+          "simulatorUtc": "2026-09-24T00:18:55.7329864+00:00",
+          "detail": {
+            "Title": "Flaps 1 selected",
+            "Summary": "Flaps 1",
+            "Detail": "Flaps 1\nGS 13 KT  •  2 ENGINES RUNNING",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 27133,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-24T18:06:47.8186494+00:00",
+          "simulatorUtc": "2026-09-24T00:19:04.7326431+00:00",
+          "detail": {
+            "Title": "Flaps UP selected",
+            "Summary": "Flaps UP",
+            "Detail": "Flaps UP\nGS 15 KT  •  2 ENGINES RUNNING",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 27456,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-24T18:09:28.8154063+00:00",
+          "simulatorUtc": "2026-09-24T00:21:45.7128143+00:00",
+          "detail": {
+            "Title": "Parking brake set",
+            "Summary": "Parking brake set at stand",
+            "Detail": "Parking brake set at stand\nGS 0 KT  •  BRAKE SET  •  2 ENGINES RUNNING",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 27473,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-24T18:09:36.7778394+00:00",
+          "simulatorUtc": "2026-09-24T00:21:53.7328567+00:00",
+          "detail": {
+            "Title": "Engine 1 shutdown",
+            "Summary": "Engine 1 spool-down detected • combustion loss / spool decay",
+            "Detail": "Engine 1 spool-down detected • combustion loss / spool decay\nGS 0 KT  •  FUEL 9664 LB",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 27474,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-24T18:09:36.793343+00:00",
+          "simulatorUtc": "2026-09-24T00:21:53.7328567+00:00",
+          "detail": {
+            "Title": "Engine 2 shutdown",
+            "Summary": "Engine 2 spool-down detected • combustion loss / spool decay",
+            "Detail": "Engine 2 spool-down detected • combustion loss / spool decay\nGS 0 KT  •  FUEL 9664 LB",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 27506,
+          "kind": "block_in_confirmation",
+          "recordedAtUtc": "2026-09-24T18:09:51.8325137+00:00",
+          "simulatorUtc": "2026-09-24T00:22:08.7223968+00:00",
+          "detail": {
+            "source": "Pilot",
+            "destination": "YMML"
+          }
+        },
+        {
+          "sequence": 27514,
+          "kind": "flight_milestone",
+          "recordedAtUtc": "2026-09-24T18:09:55.7574181+00:00",
+          "simulatorUtc": "2026-09-24T00:22:09.7140045+00:00",
+          "detail": {
+            "phase": "Complete",
+            "label": "Block-in / complete"
+          }
+        },
+        {
+          "sequence": 27515,
+          "kind": "tracking_event",
+          "recordedAtUtc": "2026-09-24T18:09:56.2736306+00:00",
+          "simulatorUtc": "2026-09-24T00:22:09.7140045+00:00",
+          "detail": {
+            "Title": "Block-in / flight complete",
+            "Summary": "Stopped at gate with parking brake set • engine data unavailable",
+            "Detail": "Stopped at gate with parking brake set • engine data unavailable\nGS 0 KT  •  BRAKE SET  •  ENGINE SHUTDOWN IN PROGRESS  •  FUEL 9662 LB",
+            "Kind": "operation"
+          }
+        },
+        {
+          "sequence": 27747,
+          "kind": "pirep_closeout_complete",
+          "recordedAtUtc": "2026-09-24T18:11:51.2237922+00:00",
+          "simulatorUtc": null,
+          "detail": {
+            "FlightNumber": "JST941"
+          }
+        },
+        {
+          "sequence": 27748,
+          "kind": "session_ended",
+          "recordedAtUtc": "2026-09-24T18:11:51.2246434+00:00",
+          "simulatorUtc": null,
+          "detail": {
+            "reason": "pirep_submitted"
+          }
+        }
+      ],
+      "loggedErrors": []
+    }
+  ]
+}

@@ -47,6 +47,8 @@ internal sealed partial class FlightSessionCoordinator
     }
     private void ResetObservedSession(string reason)
     {
+        ResetTerminalConfirmation();
+        pendingCompletedFlightHistoryId=null;
         routeTracker.Reset();arrivalEstimator.Reset();estimatedArrival=null;liveRouteProgress=null;
         RecordLog("observed_session_reset", liveLast, new { reason });
         if(liveFlightHistoryId is not null){RecordFlightEvent(liveFlightHistoryId,"invalidated",liveLast,new{reason});EndFlightHistory(liveFlightHistoryId,"Invalid");liveFlightHistoryId=null;}
@@ -103,6 +105,7 @@ internal sealed partial class FlightSessionCoordinator
     }
     internal void MarkLiveUnavailable()
     {
+        ResetTerminalConfirmation();
         liveDataCurrent = false;
         if (currentLiveReading is not null) trackingStatus="Telemetry unavailable. Waiting for reconnection.";
         PublishSnapshot();

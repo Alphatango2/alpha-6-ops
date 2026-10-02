@@ -56,7 +56,8 @@ internal sealed partial class FlightSessionCoordinator
     internal void ConfirmBlockIn()
     {
         dispatcher.VerifyAccess();
-        if(liveRecorder?.Phase!=FlightPhase.TaxiIn)return;
+        if(currentLiveReading is null||blockInContext is null||!blockInPolicy.TryConfirm(CurrentBlockInContext(currentLiveReading),DateTimeOffset.UtcNow))return;
+        canConfirmBlockIn=false;
         pilotConfirmedBlockIn=true;RecordLog("block_in_confirmation",liveLast,new{source="Pilot",destination=activePlan?.Destination});
         PublishSnapshot();
     }
@@ -65,7 +66,9 @@ internal sealed partial class FlightSessionCoordinator
     {
         dispatcher.VerifyAccess();
         if(activePlan is null||flightHistory is null||liveRecorder?.Phase!=FlightPhase.Complete||ActualFlightIn is null)return false;
-        var flightId=completedFlightHistoryId??flightHistory.ReadRecentFlights(100).FirstOrDefault(f=>string.Equals(f.FinalPhase,"Complete",StringComparison.OrdinalIgnoreCase)&&string.Equals(f.FlightNumber,activePlan.FlightNumber,StringComparison.OrdinalIgnoreCase))?.Id;
+        // A flight number can recur. Only the exact live/recovered history
+        // identity is authority to submit; legacy checkpoints without it stay open.
+        var flightId=completedFlightHistoryId;
         if(flightId is null)return false;
         try
         {

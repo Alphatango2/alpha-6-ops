@@ -1,5 +1,8 @@
 namespace Alpha6Ops.Core;
 
+// Geographical route estimate, not OUT/OFF/ON/IN lifecycle completion. Remaining
+// distance is never less than the direct distance to the filed endpoint. Fraction
+// may decrease during vectors/overshoots; unreliable values are last-known only.
 public sealed record RouteProgress(double Fraction, double RemainingNm, double CrossTrackNm, bool IsReliable = true, DateTimeOffset? At = null);
 
 /// <summary>Distance-weighted route projection, independent of any view or rendering mesh.</summary>
@@ -59,8 +62,14 @@ public sealed class RouteProgressTracker
         // can reacquire a later segment; the aircraft marker always uses actual coordinates.
         if (bestCross <= 25) along = continuous ? Math.Max(along, Math.Min(bestAlong, along + allowance)) : bestAlong;
         previous = position; lastAt = at;
-        Current = new(Math.Clamp(along / total, 0, 1), Math.Max(0, total - along), bestCross,
-            bestCross <= 25 && Math.Abs(bestAlong - along) <= allowance, at);
+        var reliable = bestCross <= 25 && Math.Abs(bestAlong - along) <= allowance;
+        // A projected endpoint is not evidence that the aircraft reached it. Keep
+        // the continuity cursor, but include the real distance still to fly after
+        // vectors, a reversed arrival or a go-around. Only actual endpoint geometry
+        // yields 100%; a coordinator may separately close a confirmed Complete leg.
+        var remaining = reliable ? Math.Max(total - along, position.DistanceNm(route[^1])) : Current?.RemainingNm ?? total;
+        var fraction = reliable ? Math.Clamp(1 - remaining / total, 0, 1) : Current?.Fraction ?? 0;
+        Current = new(fraction, remaining, bestCross, reliable, at);
         return Current;
     }
 

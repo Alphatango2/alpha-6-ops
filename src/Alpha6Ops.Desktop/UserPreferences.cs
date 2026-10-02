@@ -8,7 +8,7 @@ internal sealed record UserPreferences(double Width, double Height, bool Maximiz
 
 internal static class UserPreferencesStore
 {
-    private static string PathName(string? directory) => Path.Combine(directory ?? CrashReporter.RootDirectory, "preferences.json");
+    private static string PathName(string? directory) => Path.Combine(directory ?? ProductStorage.Current.Settings, "preferences.json");
 
     internal static UserPreferences? Load()
     {

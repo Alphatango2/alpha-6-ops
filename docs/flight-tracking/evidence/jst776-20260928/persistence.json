@@ -1,0 +1,38 @@
+{
+  "databaseSnapshotSha256": "2AEB21A330C86EBA470CF89C80D8A902F7C4CE8E7681507578C877733FAAA0C5",
+  "quickCheck": "ok",
+  "flight": {
+    "id": "4bd22e4aee0a4f3dbcd33b9774a0c6ba",
+    "source": "live",
+    "aircraft": "Airbus A321",
+    "origin": "YMML",
+    "destination": "YPAD",
+    "flight_number": "JST776",
+    "started_utc": "2026-09-28T14:15:40.4841092+00:00",
+    "ended_utc": "2026-09-28T15:38:24.2257749+00:00",
+    "final_phase": "Complete",
+    "app_version": "0.22.0"
+  },
+  "journalName": "Alpha6OPS-20260928-135604-e35f29af4dec42b2b0e0d46be26c22c8",
+  "trackingEvents": 48,
+  "pirepEvents": 1,
+  "pirep": {
+    "FlightNumber": "JST776",
+    "Origin": "YMML",
+    "Destination": "YPAD",
+    "AircraftType": "FENIX A321",
+    "Route": "YMML/34 PEDNI1 PEDNI H345 MAVTO INTOG1V YPAD/05",
+    "actualOut": "2026-09-27T21:04:45.6519165+00:00",
+    "actualOff": "2026-09-27T21:16:14.6521759+00:00",
+    "actualOn": "2026-09-27T22:19:56.2668685+00:00",
+    "actualIn": "2026-09-27T22:27:29.2802352+00:00",
+    "actualSource": "Observed simulator milestones",
+    "pilotConfirmedBlockIn": false,
+    "submittedUtc": "2026-09-28T15:38:30.9904582+00:00",
+    "status": "Completed",
+    "eventCount": 48
+  },
+  "historyTrackingEventsEqualJournal": true,
+  "activeFlightFilesPresentAtAudit": [],
+  "scope": "Actual local database read via consistent SQLite backup; not an external airline submission receipt."
+}

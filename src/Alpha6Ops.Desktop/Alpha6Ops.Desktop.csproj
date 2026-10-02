@@ -8,13 +8,23 @@
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>disable</ImplicitUsings>
-    <AssemblyName>Alpha6OPS</AssemblyName>
-    <Version>0.22.0</Version>
+    <AssemblyName>Sierra4</AssemblyName>
+    <Version>0.23.0</Version>
     <ApplicationIcon>Assets\Alpha6OPS.ico</ApplicationIcon>
     <Company>Alpha 6 Designs</Company>
-    <Product>Alpha 6 OPS</Product>
+    <Product>Sierra 4</Product>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <IncludeDiagnosticHarnesses Condition="'$(IncludeDiagnosticHarnesses)' == ''">true</IncludeDiagnosticHarnesses>
+    <DefineConstants Condition="'$(IncludeDiagnosticHarnesses)' == 'true'">$(DefineConstants);DIAGNOSTIC_HARNESSES</DefineConstants>
   </PropertyGroup>
+  <ItemGroup Condition="'$(IncludeDiagnosticHarnesses)' != 'true'">
+    <Compile Remove="*SmokeTest.cs" />
+    <Compile Remove="OperationsLayoutChecks.cs" />
+    <Compile Remove="ObservedCruiseNativeProfileChecks.cs" />
+    <Compile Remove="RecordedFlightReplay.cs" />
+    <Compile Remove="SimConnectProbe.cs" />
+    <Compile Remove="MapV2\*Checks*.cs" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4191.47" />
     <Content Include="MapV2/Web/**/*" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />

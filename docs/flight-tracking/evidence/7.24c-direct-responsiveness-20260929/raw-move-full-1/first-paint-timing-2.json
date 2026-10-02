@@ -1,0 +1,5 @@
+{
+  "duringLoad": "{\u0022loads\u0022:1,\u0022map\u0022:{\u0022camera\u0022:{\u0022bearing\u0022:0,\u0022followId\u0022:null,\u0022latitude\u0022:20,\u0022longitude\u0022:0,\u0022zoom\u0022:0.6},\u0022counts\u0022:{\u0022aircraft\u0022:0,\u0022airports\u0022:0,\u0022labels\u0022:0,\u0022routes\u0022:0},\u0022frameIntervals\u0022:[],\u0022lastSequence\u0022:1,\u0022points\u0022:[],\u0022selection\u0022:null,\u0022selectionFilters\u0022:{\u0022airport\u0022:[\u0022==\u0022,[\u0022get\u0022,\u0022id\u0022],\u0022\u0022],\u0022route\u0022:[\u0022==\u0022,[\u0022get\u0022,\u0022id\u0022],\u0022\u0022]},\u0022solarSignature\u0022:\u00220.000,1.000,0.000\u0022,\u0022sourceIDs\u0022:[],\u0022sourceUpdates\u0022:6}}",
+  "opacity": 0,
+  "readyCount": 0
+}

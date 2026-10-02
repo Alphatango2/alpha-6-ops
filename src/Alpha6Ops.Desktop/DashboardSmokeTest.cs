@@ -104,6 +104,53 @@ internal static class DashboardSmokeTest
         evidenceEvents.AddRange(evidenceMonitor.Observe(new(eventTime.AddSeconds(4),true,0,true,true,FuelTotalWeightPounds:6196,RunningEngineCount:-1,RunningEngineMask:-1,EngineDataValid:false,EngineStates:[E(1,EngineCondition.Stopping),E(2,EngineCondition.Running)]),FlightPhase.AtGate,null,0,evidencePlan,null));
         evidenceEvents.AddRange(evidenceMonitor.Observe(new(eventTime.AddSeconds(5),true,0,true,true,FuelTotalWeightPounds:6195,RunningEngineCount:1,RunningEngineMask:2,EngineDataValid:true,EngineStates:[E(1,EngineCondition.Off),E(2,EngineCondition.Running)]),FlightPhase.AtGate,null,0,evidencePlan,null));
         Check(evidenceEvents.Select(x=>x.Title).SequenceEqual(["Engine 2 starting","Engine 2 running","Engine 1 starting","Engine 1 running","Engine 1 shutdown","Engine 1 shut down"])&&!evidenceEvents.Any(x=>x.Detail.Contains("ENGINE DATA UNAVAILABLE")),"Per-engine evidence stays ordered with operational shutdown wording and no contradictory unavailable label");
+        var enhancedCompletionMonitor=new FlightTrackingEventMonitor();
+        var enhancedShutdown=new TerminalShutdownEvidence(ShutdownIntentSupport.Enhanced,"validated test adapter","presentation-enhanced",2,
+            [new(1,true,false,eventTime),new(2,true,false,eventTime)],eventTime,eventTime,true,true);
+        var enhancedCompletionSample=new Telemetry(eventTime,true,0,true,false,FuelTotalWeightPounds:6100,EngineDataValid:false,
+            EngineStates:[E(1,EngineCondition.Unknown),E(2,EngineCondition.Stopping)],TerminalShutdown:enhancedShutdown,TerminalBlockInEligible:true);
+        var enhancedCompletionMilestone=new FlightEvent(FlightPhase.Complete,eventTime);
+        var enhancedCompletionEvents=enhancedCompletionMonitor.Observe(enhancedCompletionSample,FlightPhase.Complete,enhancedCompletionMilestone,1,trackingPlan,null);
+        var enhancedCompletion=enhancedCompletionEvents.Single(entry=>entry.Title=="Block-in / flight complete");
+        Check(enhancedCompletionSample.TerminalShutdown==enhancedShutdown&&enhancedCompletionSample.TerminalBlockInEligible==true
+            &&enhancedCompletionSample.EngineStates![0].Condition==EngineCondition.Unknown&&enhancedCompletionSample.EngineStates[1].Condition==EngineCondition.Stopping
+            &&enhancedCompletionMilestone.Phase==FlightPhase.Complete,
+            "Enhanced completion wording does not mutate terminal authority, mechanics or the Complete milestone");
+
+        var manualCompletionMonitor=new FlightTrackingEventMonitor();
+        var manualShutdown=new TerminalShutdownEvidence(ShutdownIntentSupport.Limited,"unsupported","presentation-manual",0,[],eventTime,eventTime,true,false);
+        var manualCompletionSample=new Telemetry(eventTime.AddSeconds(1),true,0,true,false,FuelTotalWeightPounds:6099,EngineDataValid:false,
+            PilotConfirmedBlockIn:true,TerminalShutdown:manualShutdown,TerminalBlockInEligible:true);
+        var manualCompletionMilestone=new FlightEvent(FlightPhase.Complete,eventTime.AddSeconds(1));
+        var manualCompletionEvents=manualCompletionMonitor.Observe(manualCompletionSample,FlightPhase.Complete,manualCompletionMilestone,1,trackingPlan,null);
+        var manualCompletion=manualCompletionEvents.Single(entry=>entry.Title=="Block-in / flight complete");
+        File.WriteAllText(Path.Combine(outputDirectory,"completion-wording-evidence.json"),JsonSerializer.Serialize(new
+        {
+            enhanced=new{input=new{enhancedCompletionSample.EngineDataValid,enhancedCompletionSample.TerminalBlockInEligible,enhancedCompletionSample.PilotConfirmedBlockIn,
+                support=enhancedCompletionSample.TerminalShutdown?.Support.ToString(),mechanics=enhancedCompletionSample.EngineStates?.Select(x=>x.Condition.ToString()).ToArray(),
+                milestone=enhancedCompletionMilestone.Phase.ToString()},output=new{enhancedCompletion.Title,enhancedCompletion.Summary,enhancedCompletion.Detail}},
+            manual=new{input=new{manualCompletionSample.EngineDataValid,manualCompletionSample.TerminalBlockInEligible,manualCompletionSample.PilotConfirmedBlockIn,
+                support=manualCompletionSample.TerminalShutdown?.Support.ToString(),milestone=manualCompletionMilestone.Phase.ToString()},output=new{manualCompletion.Title,manualCompletion.Summary,manualCompletion.Detail}}
+        },new JsonSerializerOptions{WriteIndented=true}));
+        Check(manualCompletion.Summary.Contains("pilot-confirmed Block In",StringComparison.OrdinalIgnoreCase)
+            &&manualCompletion.Detail.Contains("PILOT-CONFIRMED BLOCK IN",StringComparison.Ordinal),
+            "Manual completion identifies the pilot-confirmed Block In authority");
+        Check(manualCompletionSample.PilotConfirmedBlockIn&&manualCompletionSample.TerminalBlockInEligible==true
+            &&manualCompletionSample.TerminalShutdown==manualShutdown&&manualCompletionMilestone.Phase==FlightPhase.Complete,
+            "Manual completion wording does not mutate terminal authority or the Complete milestone");
+        Check(enhancedCompletion.Summary.Contains("terminal shutdown confirmed",StringComparison.OrdinalIgnoreCase)
+            &&enhancedCompletion.Detail.Contains("mechanical spool-down continues",StringComparison.OrdinalIgnoreCase)
+            &&enhancedCompletion.Detail.Contains("partial mechanical engine data",StringComparison.OrdinalIgnoreCase),
+            "Enhanced completion reports verified terminal shutdown separately from continuing or partial mechanical evidence");
+
+        var genericCompletionMonitor=new FlightTrackingEventMonitor();
+        var genericTaxiIn=new Telemetry(eventTime.AddSeconds(2),true,3,false,false,EngineDataValid:false,EngineStates:[E(1,EngineCondition.Unknown),E(2,EngineCondition.Unknown)]);
+        genericCompletionMonitor.Observe(genericTaxiIn,FlightPhase.TaxiIn,new(FlightPhase.TaxiIn,eventTime.AddSeconds(2)),.98,trackingPlan,null);
+        var genericStopped=genericTaxiIn with{At=eventTime.AddSeconds(3),GroundSpeedKnots=0,ParkingBrake=true};
+        var genericEvents=genericCompletionMonitor.Observe(genericStopped,FlightPhase.TaxiIn,null,.99,trackingPlan,null);
+        Check(genericEvents.Any(entry=>entry.Title=="Parking brake set"&&entry.Detail.Contains("ENGINE DATA UNAVAILABLE",StringComparison.Ordinal))
+            &&genericEvents.All(entry=>entry.Title!="Block-in / flight complete")&&genericStopped.TerminalBlockInEligible is null,
+            "Unsupported noncompletion samples retain conservative mechanical wording and cannot imply completion");
         Check(Math.Abs(SimConnectSource.NormalizeGear(.01)-1)<.001,"MSFS gear percentage is normalized to the recorder's zero-to-one range");
         Check(AirportCatalog.Find("YSSY")?.Name.Contains("Sydney",StringComparison.OrdinalIgnoreCase)==true&&AirportCatalog.Find("NZQN")?.Name.Contains("Queenstown",StringComparison.OrdinalIgnoreCase)==true,"international airport names are available for the hero");
         var cruiseMonitor=new FlightTrackingEventMonitor();var cruiseEvents=new List<TrackingEventEntry>();for(var second=0;second<35;second++)cruiseEvents.AddRange(cruiseMonitor.Observe(new(eventTime.AddSeconds(second),false,440,false,true,AltitudeFeet:36900-Math.Min(second,8)*50,VerticalSpeedFeetPerMinute:0),FlightPhase.Airborne,null,.5,trackingPlan with{CruiseAltitudeFeet=37000},null));for(var second=35;second<40;second++)cruiseEvents.AddRange(cruiseMonitor.Observe(new(eventTime.AddSeconds(second),false,440,false,true,AltitudeFeet:36500,VerticalSpeedFeetPerMinute:0),FlightPhase.Airborne,null,.5,trackingPlan with{CruiseAltitudeFeet=37000},null));
@@ -112,6 +159,61 @@ internal static class DashboardSmokeTest
         for(var second=0;second<35;second++)profileEvents.AddRange(profileMonitor.Observe(new(eventTime.AddSeconds(second),false,390,false,true,AltitudeFeet:23900,PressureAltitudeFeet:25000,VerticalSpeedFeetPerMinute:0,FlapsExtendedRatio:0),FlightPhase.Airborne,null,.25,profilePlan,null));
         for(var second=35;second<70;second++)profileEvents.AddRange(profileMonitor.Observe(new(eventTime.AddSeconds(second),false,430,false,true,AltitudeFeet:30600,PressureAltitudeFeet:32000,VerticalSpeedFeetPerMinute:0,FlapsExtendedRatio:0),FlightPhase.Airborne,null,.45,profilePlan,null));
         Check(profileEvents.Count(entry=>entry.Title=="Top of climb / cruise established")==1&&profileEvents.Any(entry=>entry.Summary.Contains("FL320"))&&!profileEvents.Any(entry=>entry.Title is "Step climb started" or "Top of descent"),"SimBrief cruise and pressure altitude keep a procedural FL250 level-off in climb and establish cruise at FL320");
+        var mismatchPlan=trackingPlan with{CruiseAltitudeFeet=35000};var mismatchMonitor=new FlightTrackingEventMonitor();var mismatchEvents=new List<TrackingEventEntry>();
+        mismatchMonitor.Observe(new(eventTime,false,420,false,true,AltitudeFeet:32500,PressureAltitudeFeet:32500,VerticalSpeedFeetPerMinute:1200),FlightPhase.Airborne,null,.42,mismatchPlan,null);
+        for(var second=1;second<=240;second++)mismatchEvents.AddRange(mismatchMonitor.Observe(new(eventTime.AddSeconds(second),false,440,false,true,AltitudeFeet:33020,PressureAltitudeFeet:33020,VerticalSpeedFeetPerMinute:20),FlightPhase.Airborne,null,.55,mismatchPlan,null));
+        for(var second=241;second<=271;second++)mismatchEvents.AddRange(mismatchMonitor.Observe(new(eventTime.AddSeconds(second),false,420,false,true,AltitudeFeet:32200,PressureAltitudeFeet:32200,VerticalSpeedFeetPerMinute:-850),FlightPhase.Airborne,null,.68,mismatchPlan,null));
+        Check(mismatchPlan.CruiseAltitudeFeet==35000&&mismatchEvents.Count(entry=>entry.Title=="Top of climb / cruise established")==1&&mismatchEvents.Any(entry=>entry.Summary.Contains("FL330")&&entry.Summary.Contains("filed FL350",StringComparison.OrdinalIgnoreCase))&&mismatchEvents.Count(entry=>entry.Title=="Top of descent")==1,"Observed FL330 cruise and TOD are established without mutating filed FL350");
+
+        var recoveryMonitor=new FlightTrackingEventMonitor();var recoveryBefore=new List<TrackingEventEntry>();
+        recoveryMonitor.Observe(new(eventTime.AddSeconds(-1),false,410,false,true,AltitudeFeet:32500,PressureAltitudeFeet:32500,VerticalSpeedFeetPerMinute:1000),FlightPhase.Airborne,null,.4,mismatchPlan,null);
+        for(var second=0;second<=120;second++)recoveryBefore.AddRange(recoveryMonitor.Observe(new(eventTime.AddSeconds(second),false,430,false,true,AltitudeFeet:33000,PressureAltitudeFeet:33000,VerticalSpeedFeetPerMinute:0),FlightPhase.Airborne,null,.5,mismatchPlan,null));
+        var recoveryRestored=new FlightTrackingEventMonitor(recoveryMonitor.CaptureState());var recoveryAfter=new List<TrackingEventEntry>();
+        recoveryAfter.AddRange(recoveryRestored.Observe(new(eventTime.AddSeconds(210),false,430,false,true,AltitudeFeet:33000,PressureAltitudeFeet:33000,VerticalSpeedFeetPerMinute:0),FlightPhase.Airborne,null,.52,mismatchPlan,null));
+        for(var second=211;second<=270;second++)recoveryAfter.AddRange(recoveryRestored.Observe(new(eventTime.AddSeconds(second),false,430,false,true,AltitudeFeet:33000,PressureAltitudeFeet:33000,VerticalSpeedFeetPerMinute:0),FlightPhase.Airborne,null,.54,mismatchPlan,null));
+        Check(!recoveryBefore.Any(entry=>entry.Title=="Top of climb / cruise established")&&recoveryAfter.Count(entry=>entry.Title=="Top of climb / cruise established")==1,"Observed cruise recovery counts 180 telemetry seconds but excludes 90 seconds of restart downtime");
+
+        var matchedMonitor=new FlightTrackingEventMonitor();var matchedEvents=new List<TrackingEventEntry>();var matchedPlan=trackingPlan with{CruiseAltitudeFeet=33000};
+        matchedMonitor.Observe(new(eventTime.AddSeconds(-1),false,410,false,true,PressureAltitudeFeet:32500,AltitudeFeet:32500,VerticalSpeedFeetPerMinute:1000),FlightPhase.Airborne,null,.4,matchedPlan,null);
+        for(var second=0;second<=30;second++)matchedEvents.AddRange(matchedMonitor.Observe(new(eventTime.AddSeconds(second),false,430,false,true,PressureAltitudeFeet:33000,AltitudeFeet:33000,VerticalSpeedFeetPerMinute:0),FlightPhase.Airborne,null,.5,matchedPlan,null));
+        Check(matchedEvents.Count(entry=>entry.Title=="Top of climb / cruise established")==1,"Observed cruise matching the filed level qualifies after 30 observed seconds");
+
+        var highMismatchMonitor=new FlightTrackingEventMonitor();var highMismatchEvents=new List<TrackingEventEntry>();
+        highMismatchMonitor.Observe(new(eventTime.AddSeconds(-1),false,410,false,true,PressureAltitudeFeet:34200,AltitudeFeet:34200,VerticalSpeedFeetPerMinute:1000),FlightPhase.Airborne,null,.4,matchedPlan,null);
+        for(var second=0;second<=180;second++)highMismatchEvents.AddRange(highMismatchMonitor.Observe(new(eventTime.AddSeconds(second),false,430,false,true,PressureAltitudeFeet:35000,AltitudeFeet:35000,VerticalSpeedFeetPerMinute:0),FlightPhase.Airborne,null,.55,matchedPlan,null));
+        Check(highMismatchEvents.Count(entry=>entry.Title=="Top of climb / cruise established")==1&&highMismatchEvents.Any(entry=>entry.Summary.Contains("FL350")&&entry.Summary.Contains("filed FL330",StringComparison.OrdinalIgnoreCase)),"Observed FL350 qualifies independently after 180 seconds while filed FL330 is preserved");
+
+        var rejectedMonitor=new FlightTrackingEventMonitor();var rejectedEvents=new List<TrackingEventEntry>();
+        rejectedMonitor.Observe(new(eventTime.AddSeconds(-1),false,410,false,true,PressureAltitudeFeet:32200,AltitudeFeet:32200,VerticalSpeedFeetPerMinute:1000),FlightPhase.Airborne,null,.35,mismatchPlan,null);
+        for(var second=0;second<=179;second++)rejectedEvents.AddRange(rejectedMonitor.Observe(new(eventTime.AddSeconds(second),false,430,false,true,PressureAltitudeFeet:33000,AltitudeFeet:33000,VerticalSpeedFeetPerMinute:0),FlightPhase.Airborne,null,.5,mismatchPlan,null));
+        rejectedEvents.AddRange(rejectedMonitor.Observe(new(eventTime.AddSeconds(180),false,430,false,true,PressureAltitudeFeet:33600,AltitudeFeet:33600,VerticalSpeedFeetPerMinute:900),FlightPhase.Airborne,null,.52,mismatchPlan,null));
+        Check(!rejectedEvents.Any(entry=>entry.Title=="Top of climb / cruise established"),"A 179-second mismatched level-off followed by continued climb is not cruise");
+
+        var invalidMonitor=new FlightTrackingEventMonitor();var invalidEvents=new List<TrackingEventEntry>();
+        invalidMonitor.Observe(new(eventTime,false,410,false,true,PressureAltitudeFeet:32200,AltitudeFeet:32200,VerticalSpeedFeetPerMinute:1000),FlightPhase.Airborne,null,.35,mismatchPlan,null);
+        for(var second=1;second<=80;second++)invalidEvents.AddRange(invalidMonitor.Observe(new(eventTime.AddSeconds(second),false,430,false,true,PressureAltitudeFeet:33000+(second%2==0?350:-350),AltitudeFeet:33000,VerticalSpeedFeetPerMinute:0),FlightPhase.Airborne,null,.5,mismatchPlan,null));
+        invalidEvents.AddRange(invalidMonitor.Observe(new(eventTime.AddSeconds(81),false,430,false,true,Paused:true,PressureAltitudeFeet:33000,AltitudeFeet:33000,VerticalSpeedFeetPerMinute:0),FlightPhase.Airborne,null,.5,mismatchPlan,null));
+        invalidEvents.AddRange(invalidMonitor.Observe(new(eventTime.AddSeconds(82),false,430,false,true,Slewing:true,PressureAltitudeFeet:33000,AltitudeFeet:33000,VerticalSpeedFeetPerMinute:0),FlightPhase.Airborne,null,.5,mismatchPlan,null));
+        for(var second=90;second<180;second+=5)invalidEvents.AddRange(invalidMonitor.Observe(new(eventTime.AddSeconds(second),false,430,false,true,PressureAltitudeFeet:33000,AltitudeFeet:33000,VerticalSpeedFeetPerMinute:0),FlightPhase.Airborne,null,.5,mismatchPlan,null));
+        Check(!invalidEvents.Any(entry=>entry.Title=="Top of climb / cruise established"),"Turbulence, pause, slew and telemetry gaps contribute no observed cruise qualification time");
+
+        var stepMonitor=new FlightTrackingEventMonitor();var stepEvents=new List<TrackingEventEntry>();
+        stepMonitor.Observe(new(eventTime.AddSeconds(-1),false,410,false,true,PressureAltitudeFeet:32500,AltitudeFeet:32500,VerticalSpeedFeetPerMinute:1000),FlightPhase.Airborne,null,.42,matchedPlan,null);
+        for(var second=0;second<=30;second++)stepEvents.AddRange(stepMonitor.Observe(new(eventTime.AddSeconds(second),false,430,false,true,PressureAltitudeFeet:33000,AltitudeFeet:33000,VerticalSpeedFeetPerMinute:0),FlightPhase.Airborne,null,.5,matchedPlan,null));
+        for(var second=31;second<=60;second++)stepEvents.AddRange(stepMonitor.Observe(new(eventTime.AddSeconds(second),false,430,false,true,PressureAltitudeFeet:34200+(second-31)*28,AltitudeFeet:34200,VerticalSpeedFeetPerMinute:700),FlightPhase.Airborne,null,.56,matchedPlan,null));
+        for(var second=61;second<=121;second++)stepEvents.AddRange(stepMonitor.Observe(new(eventTime.AddSeconds(second),false,430,false,true,PressureAltitudeFeet:35000,AltitudeFeet:35000,VerticalSpeedFeetPerMinute:0),FlightPhase.Airborne,null,.62,matchedPlan,null));
+        Check(stepEvents.Count(entry=>entry.Title=="Top of climb / cruise established")==1&&stepEvents.Count(entry=>entry.Title=="Step climb started")==1&&stepEvents.Count(entry=>entry.Title=="Cruise altitude changed")==1&&stepEvents.FindIndex(entry=>entry.Title=="Top of climb / cruise established")<stepEvents.FindIndex(entry=>entry.Title=="Cruise altitude changed"),"Step climb preserves the original observed cruise event and records the new observed level");
+
+        var descentMonitor=new FlightTrackingEventMonitor();var descentEvents=new List<TrackingEventEntry>();
+        descentMonitor.Observe(new(eventTime.AddSeconds(-1),false,410,false,true,PressureAltitudeFeet:32500,AltitudeFeet:32500,VerticalSpeedFeetPerMinute:1000),FlightPhase.Airborne,null,.42,matchedPlan,null);
+        for(var second=0;second<=30;second++)descentEvents.AddRange(descentMonitor.Observe(new(eventTime.AddSeconds(second),false,430,false,true,PressureAltitudeFeet:33000,AltitudeFeet:33000,VerticalSpeedFeetPerMinute:0),FlightPhase.Airborne,null,.5,matchedPlan,null));
+        for(var second=31;second<=61;second++)descentEvents.AddRange(descentMonitor.Observe(new(eventTime.AddSeconds(second),false,410,false,true,PressureAltitudeFeet:32100,AltitudeFeet:32100,VerticalSpeedFeetPerMinute:-700),FlightPhase.Airborne,null,.65,matchedPlan,null));
+        for(var second=62;second<=100;second++)descentEvents.AddRange(descentMonitor.Observe(new(eventTime.AddSeconds(second),false,410,false,true,PressureAltitudeFeet:31000,AltitudeFeet:31000,VerticalSpeedFeetPerMinute:0),FlightPhase.Airborne,null,.7,matchedPlan,null));
+        Check(descentEvents.Count(entry=>entry.Title=="Top of descent")==1&&descentMonitor.AirbornePhase=="Descent","A descent level-off retains the observed Descent presentation stage");
+        descentMonitor.Observe(new(eventTime.AddSeconds(101),true,20,false,true,PressureAltitudeFeet:0,AltitudeFeet:0,VerticalSpeedFeetPerMinute:-200),FlightPhase.TaxiIn,new(FlightPhase.TaxiIn,eventTime.AddSeconds(101)),.98,matchedPlan,null);
+        var goAroundEvents=descentMonitor.Observe(new(eventTime.AddSeconds(102),false,150,false,true,PressureAltitudeFeet:500,AltitudeFeet:500,VerticalSpeedFeetPerMinute:1200),FlightPhase.Airborne,new(FlightPhase.Airborne,eventTime.AddSeconds(102)),.98,matchedPlan,null);
+        Check(descentMonitor.AirbornePhase=="Climb"&&goAroundEvents.Count(entry=>entry.Title=="Go-around")==1&&descentEvents.Count(entry=>entry.Title=="Top of descent")==1,"Go-around resets the current observed stage to Climb without deleting historical TOD");
+        File.WriteAllText(Path.Combine(outputDirectory,"cruise-provenance.json"),JsonSerializer.Serialize(new{filedCruise=mismatchPlan.CruiseAltitudeFeet,events=mismatchEvents.Concat(stepEvents).Select(entry=>new{entry.At,entry.Title,entry.Summary}),recoveredPhase=recoveryRestored.AirbornePhase},new JsonSerializerOptions{WriteIndented=true}));
         var boeingMonitor=new FlightTrackingEventMonitor();var boeingEvents=new List<TrackingEventEntry>();boeingMonitor.Observe(new(eventTime,true,0,true,false,FlapsExtendedRatio:0),FlightPhase.AtGate,null,0,profilePlan,null);for(var second=1;second<=2;second++)boeingEvents.AddRange(boeingMonitor.Observe(new(eventTime.AddSeconds(second),true,0,true,false,FlapsExtendedRatio:.6),FlightPhase.AtGate,null,0,profilePlan,null));
         Check(boeingEvents.Any(entry=>entry.Summary=="Flaps 15"),"Boeing 737 normalized flap telemetry is presented as a real handle detent");
         var fenixPlan=trackingPlan with{AircraftType="FENIX A320"};var fenixMonitor=new FlightTrackingEventMonitor();var fenixEvents=new List<TrackingEventEntry>();fenixMonitor.Observe(new(eventTime,true,0,true,false,FlapsExtendedRatio:0),FlightPhase.AtGate,null,0,fenixPlan,null);for(var second=1;second<=2;second++)fenixEvents.AddRange(fenixMonitor.Observe(new(eventTime.AddSeconds(second),true,0,true,false,FlapsExtendedRatio:.6),FlightPhase.AtGate,null,0,fenixPlan,null));

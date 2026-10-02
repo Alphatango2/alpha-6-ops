@@ -136,5 +136,6 @@ internal static class MapModelChecks
         check(MapSolar.SunVector(now.AddHours(12))[0] < 0 && summer[0] > 0, "UTC midnight shifts illumination toward dateline.");
         check(MapSolar.SunVector(now.ToOffset(TimeSpan.FromHours(9))).SequenceEqual(summer), "Solar time uses UTC independent of caller offset.");
         check(MapSnapshotValidator.SerializeValidated(first).Length < MapSnapshotValidator.MaxPayloadBytes, "Valid snapshot serializes inside payload budget.");
+        FlightTrackPresentationChecks.Run(check);
     }
 }

@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Renderer construction failure",
+    "restartCount": 1,
+    "lastFailure": "System.InvalidOperationException: Injected constructor failure\r\n   at Alpha6Ops.Desktop.MapV2.MapV2Checks.\u003C\u003Ec.\u003CFailureCases\u003Eb__23_14()\r\n   at Alpha6Ops.Desktop.OperationsMapHost.ActivateAsync()"
+  },
+  {
+    "name": "Missing runtime (injected detection)",
+    "restartCount": 1,
+    "lastFailure": "System.InvalidOperationException: WebView2 runtime unavailable\r\n   at Alpha6Ops.Desktop.MapV2.WebMapRenderer.InitializeAsync(CancellationToken cancellationToken)\r\n   at Alpha6Ops.Desktop.OperationsMapHost.ActivateAsync()"
+  },
+  {
+    "name": "Missing local assets",
+    "restartCount": 1,
+    "lastFailure": "System.IO.FileNotFoundException: Bundled map resource unavailable\r\n   at Alpha6Ops.Desktop.MapV2.WebMapRenderer.InitializeAsync(CancellationToken cancellationToken)\r\n   at Alpha6Ops.Desktop.OperationsMapHost.ActivateAsync()"
+  },
+  {
+    "name": "WebGL context loss",
+    "restartCount": 1,
+    "lastFailure": "renderer-error: renderer-error"
+  },
+  {
+    "name": "Renderer process crash",
+    "restartCount": 1,
+    "lastFailure": "process-failed: "
+  },
+  {
+    "name": "Invalid map payload",
+    "restartCount": 1,
+    "lastFailure": "bridge-failed: "
+  },
+  {
+    "name": "Initialization timeout",
+    "restartCount": 1,
+    "lastFailure": "initialization-failed: "
+  },
+  {
+    "name": "JavaScript initialization failure",
+    "restartCount": 1,
+    "lastFailure": "renderer-error: Injected JavaScript initialization failure"
+  }
+]

@@ -1,0 +1,178 @@
+{
+  "checkpoint": "7.24C JST771 review and T2 capability correction",
+  "build": "S4-7.24C-T2-20260929-f421af15530c",
+  "counts": {
+    "skipped": 2,
+    "executed": 2740,
+    "failed": 1,
+    "passed": 2739
+  },
+  "groups": [
+    {
+      "name": "Full baseline",
+      "executed": 1953,
+      "passed": 1953,
+      "failed": 0,
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\full-20260929-103356-2cb4f4e5\\summary.json"
+    },
+    {
+      "name": "terminal-verified",
+      "executed": 203,
+      "passed": 203,
+      "failed": 0,
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\jst771-review-20260929\\terminal-verified\\summary.json"
+    },
+    {
+      "name": "map-full-recheck",
+      "executed": 197,
+      "passed": 196,
+      "failed": 1,
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\jst771-review-20260929\\map-full-recheck\\summary.json"
+    },
+    {
+      "name": "contracts",
+      "executed": 22,
+      "passed": 22,
+      "failed": 0,
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\jst771-review-20260929\\contracts\\summary.json"
+    },
+    {
+      "name": "interaction-contract",
+      "executed": 13,
+      "passed": 13,
+      "failed": 0,
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\jst771-review-20260929\\interaction-contract\\summary.json"
+    },
+    {
+      "name": "restoration-verify",
+      "executed": 157,
+      "passed": 157,
+      "failed": 0,
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\jst771-review-20260929\\restoration-verify\\summary.json"
+    },
+    {
+      "name": "active-recovery",
+      "executed": 69,
+      "passed": 69,
+      "failed": 0,
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\jst771-review-20260929\\active-recovery\\summary.json"
+    },
+    {
+      "name": "recovery-guard",
+      "executed": 21,
+      "passed": 21,
+      "failed": 0,
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\jst771-review-20260929\\recovery-guard\\summary.json"
+    },
+    {
+      "name": "mailbox",
+      "executed": 7,
+      "passed": 7,
+      "failed": 0,
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\jst771-review-20260929\\map-full-recheck\\mailbox.log"
+    },
+    {
+      "name": "browser-math",
+      "executed": 7,
+      "passed": 7,
+      "failed": 0,
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\jst771-review-20260929\\map-full-recheck\\browser-math.log"
+    },
+    {
+      "name": "jst776",
+      "executed": 1,
+      "passed": 1,
+      "failed": 0,
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\jst771-review-20260929\\jst776\\summary.json"
+    },
+    {
+      "name": "jst771-replay",
+      "executed": 1,
+      "passed": 1,
+      "failed": 0,
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\jst771-review-20260929\\jst771-replay\\summary.json"
+    },
+    {
+      "name": "JST771 historical assertions",
+      "executed": 69,
+      "passed": 69,
+      "failed": 0,
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\jst771-review-20260929\\jst771-evidence.json"
+    },
+    {
+      "name": "Installed Fenix configuration recognition (not native authority)",
+      "executed": 20,
+      "passed": 20,
+      "failed": 0,
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\jst771-review-20260929\\fenix-capability-review\\tdd-tuning-green\\installed-config-only.json"
+    }
+  ],
+  "builds": [
+    {
+      "name": "production solution Release",
+      "exitCode": 0
+    },
+    {
+      "name": "normal production packaging",
+      "exitCode": 0
+    },
+    {
+      "name": "test-only migration harness",
+      "exitCode": 0
+    }
+  ],
+  "historicalReplays": 9,
+  "historicalSamples": 91366,
+  "jst776Samples": 6145,
+  "jst771ReplayedSamples": 3121,
+  "totalReplayedSamples": 100632,
+  "jst771HistoricalAssertionSamples": 5998,
+  "allFourJst771ConnectionSamples": 6425,
+  "terminalCorrectionChecks": 203,
+  "installedConfigurationCandidates": 20,
+  "newNativeValidation": false,
+  "sourceFilesVerifiedAfterFreeze": 231,
+  "packageFilesVerified": 514,
+  "installerPayloadMatchesPortableZip": true,
+  "T1andOriginalFlightPreserved": true,
+  "protectedOperationalSourcesUnchanged": true,
+  "mapFirstAttempt": {
+    "stressedHeartbeatMs": 513.2116,
+    "executed": 197,
+    "failed": 2,
+    "failures": [
+      {
+        "passed": false,
+        "name": "Contained WPF left press still reaches initialized browser"
+      },
+      {
+        "passed": false,
+        "name": "Contention: dispatcher heartbeat maximum below 500ms and within 100ms of baseline (150ms floor)."
+      }
+    ],
+    "baselineHeartbeatMs": 288.1277
+  },
+  "mapUnchangedRecheck": {
+    "stressedHeartbeatMs": 285.0577,
+    "executed": 197,
+    "failed": 1,
+    "failures": [
+      {
+        "passed": false,
+        "name": "Contained WPF left press still reaches initialized browser"
+      }
+    ],
+    "baselineHeartbeatMs": 330.2327
+  },
+  "isolatedInputProbe": "Same existing synthetic press accepted in isolated renderer outside/inside/outside; full Operations lifecycle assertion still fails. Position alone does not explain failure. Not substituted for the failed full-suite gate.",
+  "originalNativeOutcome": "Recovery and manual PIREP PASS; enhanced adapter NEVER ACTIVE; automatic completion FAIL; final post-submission cold restart NOT PROVEN.",
+  "countConvention": "Latest selected acceptance assertion executions, including 20 read-only installed configuration observations. Initial Map run, RED/development/probe attempts and duplicate successful executions are excluded from totals but preserved separately. Two native boundary checks remain skipped.",
+  "status": "NO-GO; T2 frozen locally, not installed or cleared for installation. Complete browser input/lifecycle gate disposition before parked native test.",
+  "remaining": [
+    "Full Operations synthetic browser press/lifecycle check",
+    "Corrected A320 native qualification/reconnect/restart/staged shutdown",
+    "Post-submission cold-start no-resurrection evidence",
+    "Direct native automatic destination IN remains unobserved on T2",
+    "Separate observed-cruise/TOD and ETA restart findings; SimBrief revisions remain future design"
+  ]
+}

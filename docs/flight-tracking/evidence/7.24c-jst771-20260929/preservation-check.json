@@ -1,0 +1,39 @@
+{
+  "originalT1PayloadFiles": 514,
+  "originalT1PayloadFailures": [],
+  "originalT1ArchivesFailures": [],
+  "originalJst771ZipUnchanged": true,
+  "protectedProductionSourcesUnchanged": true,
+  "changedExistingFiles": [
+    {
+      "path": "src\\Alpha6Ops.Desktop\\ShutdownIntentAdapters.cs",
+      "before": "6C13F1F1C302FFDBCB060A8D0A2ECE674D99D71C10CAB3D1F819742853666B30",
+      "after": "08E8F371C39F22C342D4CD483D99D7C23744B96A4E798D9E81C9C3D3375E3154"
+    },
+    {
+      "path": "src\\Alpha6Ops.Desktop\\SimConnectSource.cs",
+      "before": "FBC6BFD53CBE7FAA471E8B2B2AAA43B26E1115E4FE2B32FE7BFE80F2AC96AC96",
+      "after": "9EB84A8F07FDB61BCA55F301A304124DF66B91A7FA994ACC85209FCB0F6FD381"
+    },
+    {
+      "path": "src\\Alpha6Ops.Desktop\\SimConnectSource.TerminalShutdown.cs",
+      "before": "D5FD8041BF253FDBFA281E26308069B99624B62467AE74AEE32248EA072E66D4",
+      "after": "B9FFC2C8D878DDD5636C6A2F810FC0B94077C34716DBD0E17036FEE0C5740A3B"
+    },
+    {
+      "path": "tests\\Alpha6Ops.RecoveryChecks\\TerminalShutdownChecks.cs",
+      "before": "DA6759D6B4B6CD0E634C67FF9F194760E3110CD97E260505F9B6FCCAB380EE37",
+      "after": "DCC8C0D7F378EB186D9AB849A96BA0ADBD06CFB29D51A363C71C847FD3E7F3FD"
+    },
+    {
+      "path": "packaging\\Desktop-Quick-Start.txt",
+      "before": "5FE84D25543AB96599668828F5202FEFC900BD7056E422EBE2569B709858F8F0",
+      "after": "A8BAD6BA1BA6D4890D077C1262851268622001FB6E0A6F7215B8AA5C573001B5"
+    },
+    {
+      "path": "packaging\\PreviewSetup.cs",
+      "before": "83C4BB50B1F7D76AD4EB0606574766BEA185B125D736644D689DE5D40F49C68D",
+      "after": "33BE4511C5767EA783158D7B31E5F689D5F5486232F3EC8661A50CB5CD97D639"
+    }
+  ]
+}

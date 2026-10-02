@@ -1,0 +1,77 @@
+[
+  {
+    "scale": 1,
+    "windowWidth": 1920,
+    "windowHeight": 1080,
+    "mapWidth": 1283,
+    "mapHeight": 348,
+    "dpi": {
+      "dpiScaleX": 1,
+      "dpiScaleY": 1,
+      "pixelsPerDip": 1,
+      "pixelsPerInchX": 96,
+      "pixelsPerInchY": 96
+    },
+    "method": "Controlled Operations LayoutTransform; not physical monitor DPI transition"
+  },
+  {
+    "scale": 1.25,
+    "windowWidth": 1920,
+    "windowHeight": 1080,
+    "mapWidth": 949,
+    "mapHeight": 348,
+    "dpi": {
+      "dpiScaleX": 1,
+      "dpiScaleY": 1,
+      "pixelsPerDip": 1,
+      "pixelsPerInchX": 96,
+      "pixelsPerInchY": 96
+    },
+    "method": "Controlled Operations LayoutTransform; not physical monitor DPI transition"
+  },
+  {
+    "scale": 1.5,
+    "windowWidth": 1920,
+    "windowHeight": 1080,
+    "mapWidth": 726,
+    "mapHeight": 348,
+    "dpi": {
+      "dpiScaleX": 1,
+      "dpiScaleY": 1,
+      "pixelsPerDip": 1,
+      "pixelsPerInchX": 96,
+      "pixelsPerInchY": 96
+    },
+    "method": "Controlled Operations LayoutTransform; not physical monitor DPI transition"
+  },
+  {
+    "scale": 1.75,
+    "windowWidth": 1920,
+    "windowHeight": 1080,
+    "mapWidth": 900,
+    "mapHeight": 348,
+    "dpi": {
+      "dpiScaleX": 1,
+      "dpiScaleY": 1,
+      "pixelsPerDip": 1,
+      "pixelsPerInchX": 96,
+      "pixelsPerInchY": 96
+    },
+    "method": "Controlled Operations LayoutTransform; not physical monitor DPI transition"
+  },
+  {
+    "scale": 2,
+    "windowWidth": 1920,
+    "windowHeight": 1080,
+    "mapWidth": 781,
+    "mapHeight": 348,
+    "dpi": {
+      "dpiScaleX": 1,
+      "dpiScaleY": 1,
+      "pixelsPerDip": 1,
+      "pixelsPerInchX": 96,
+      "pixelsPerInchY": 96
+    },
+    "method": "Controlled Operations LayoutTransform; not physical monitor DPI transition"
+  }
+]

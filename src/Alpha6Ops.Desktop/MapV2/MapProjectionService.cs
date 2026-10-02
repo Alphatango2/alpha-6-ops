@@ -25,6 +25,11 @@ internal sealed class MapProjectionService
     internal void Reset()
     {
         trail.Clear();
+        BreakContinuity();
+    }
+
+    internal void BreakContinuity()
+    {
         previousAt = null;
         previousCapture = null;
         previousPosition = null;
@@ -33,6 +38,9 @@ internal sealed class MapProjectionService
     }
 
     internal MapSnapshot Project(FlightSessionSnapshot state, bool demo, long generation, long sequence, DateTimeOffset now)
+        =>Project(state,null,demo,generation,sequence,now);
+
+    internal MapSnapshot Project(FlightSessionSnapshot state, FlightTrackPresentation? presentationTrack, bool demo, long generation, long sequence, DateTimeOffset now)
     {
         now = now.ToUniversalTime();
         if (demo)
@@ -101,7 +109,8 @@ internal sealed class MapProjectionService
         var routes = ImmutableArray.CreateBuilder<MapRoute>();
         var airports = ImmutableArray.CreateBuilder<MapAirport>();
         AddPlan(state, routes, airports);
-        var segments = trail.SelectMany(segment => MapGeography.SplitDateline(segment)).ToImmutableArray();
+        var sourceSegments=presentationTrack?.MaterializeSegments()??trail.Select(segment=>segment.ToImmutableArray()).ToImmutableArray();
+        var segments = sourceSegments.SelectMany(segment => MapGeography.SplitDateline(segment)).ToImmutableArray();
         if (segments.Length > 0)
             routes.Add(new("observed-track", null, null, null, null, MapRouteKind.ObservedTrack,
                 source, segments, [], sample?.At.ToUniversalTime(), allowed ? MapReliability.Current : MapReliability.Stale));

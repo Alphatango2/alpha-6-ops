@@ -1,0 +1,273 @@
+CHECKPOINT 7.24A.1 — MAP V2 RESPONSIVENESS GATE CHARACTERIZATION
+
+Checkpoint 7.24A is complete.
+
+The only failed readiness gate was:
+
+Steady visible Input-priority heartbeat p95 < 100 ms
+
+Observed maximum steady-window p95:
+
+100.0243 ms
+
+This occurred in one of 47 steady visible windows during the accepted one-hour soak.
+
+All functional and operational validation remained green:
+
+- 2,126 / 2,126 functional/regression checks passed
+- 5 / 6 performance gates passed
+- 9 / 9 recorded-flight replays passed
+- 91,366 / 91,366 replay telemetry samples processed
+- 3,941 / 3,941 independent one-hour soak inputs retained
+- recovery remained clean
+- flight milestones remained correct
+- durable completed PIREP succeeded
+- browser disposal succeeded
+- unexpected-report guard remained clean
+
+OBJECTIVE
+
+Characterize the narrow 100.0243 ms responsiveness-gate miss and determine whether:
+
+A. a measurable production scheduling issue remains that should be corrected
+
+or
+
+B. the original strict <100.0000 ms single-window threshold lacks sufficient tolerance for normal Windows/WPF scheduling variability and should be replaced with a documented, reproducible acceptance policy.
+
+DO NOT simply round 100.0243 down.
+
+DO NOT silently change the existing 7.24A result.
+
+DO NOT declare the original failed gate passed retroactively.
+
+The historical 7.24A result remains:
+
+NOT READY FOR 7.24B.
+
+This checkpoint creates new evidence for a NEW readiness decision.
+
+
+PART 1 — INVESTIGATE THE FAILED WINDOW
+
+Analyze the retained window ending at approximately 900.09 seconds.
+
+Review:
+
+- heartbeat distribution
+- p50
+- p95
+- p99
+- maximum
+- Dispatcher queue behavior
+- presentation-handler timing
+- recovery-save timing
+- resource-sampling timing
+- layout activity
+- map updates
+- browser acknowledgements
+- navigation/interaction activity
+- recovery contention
+- any renderer recreation or state transition near the window
+
+Determine whether the miss correlates with an identifiable production workload.
+
+Do not infer causation from LayoutUpdated count alone.
+
+
+PART 2 — REPEATABILITY TEST
+
+Run multiple fresh steady-state Map V2 responsiveness trials.
+
+Use the same production implementation and comparable workload.
+
+Target enough repeated observation windows to characterize natural variation.
+
+At minimum collect:
+
+- per-window p50
+- per-window p95
+- per-window p99
+- maximum
+- sample count
+- Dispatcher queue metrics
+- presentation-handler timing
+- resource-sampling timing
+
+Report:
+
+- median window p95
+- maximum window p95
+- distribution of window p95 values
+- number/percentage of windows exceeding 100 ms
+- magnitude of exceedances
+
+Do not select only favorable runs.
+
+
+PART 3 — DIAGNOSTIC-OVERHEAD ABLATION
+
+The 7.24A evidence indicates diagnostic resource collection and presentation handling can each consume approximately 20–30 ms p95.
+
+Determine how much the verification instrumentation itself affects the responsiveness metric.
+
+Compare equivalent workloads with:
+
+A. full diagnostic instrumentation
+
+B. reduced/passive instrumentation that preserves enough evidence to evaluate responsiveness
+
+Do not remove production work.
+
+Do not use the lighter diagnostic mode to hide a production latency problem.
+
+The purpose is to distinguish application responsiveness from measurement overhead.
+
+
+PART 4 — TARGETED OPTIMIZATION ONLY IF JUSTIFIED
+
+If a repeatable production contributor is identified, make the smallest safe optimization.
+
+Do not:
+
+- rewrite Map V2
+- change renderer technology
+- weaken recovery durability
+- alter flight algorithms
+- coalesce authoritative flight input
+- change operational semantics
+- introduce speculative performance work
+
+Any optimization must have before/after evidence.
+
+
+PART 5 — DEFINE ACCEPTANCE POLICY
+
+Evaluate whether the original rule:
+
+EVERY steady visible window p95 < 100.0000 ms
+
+is statistically and operationally appropriate for Windows/WPF scheduling.
+
+If evidence supports changing the policy, propose a NEW explicit policy.
+
+The policy must:
+
+- be defined before the final acceptance run
+- preserve a meaningful responsiveness requirement
+- reject genuine sustained UI stalls
+- tolerate only justified measurement/scheduler variance
+- include p99 or maximum safeguards where appropriate
+- require sufficient observations
+- not be designed around the specific 100.0243 result
+
+Examples may include a combination such as:
+
+- median steady-window p95 budget
+- percentile-of-windows budget
+- bounded isolated exceedance tolerance
+- p99 safeguard
+- maximum-stall safeguard
+
+These are examples only.
+
+Derive the actual policy from evidence.
+
+Document why the new policy better represents user-visible responsiveness than the original single-window hard cutoff.
+
+
+PART 6 — FREEZE POLICY BEFORE FINAL RUN
+
+If proposing a new acceptance policy:
+
+1. document it
+2. commit/store it in the verification specification
+3. ensure the verification tooling evaluates it automatically
+4. THEN perform the final readiness run
+
+Do not tune the policy after seeing the final run.
+
+
+PART 7 — FINAL READINESS RUN
+
+Run the required bounded responsiveness/performance verification using the frozen acceptance policy.
+
+Also verify:
+
+- authoritative flight inputs remain complete
+- recovery remains clean
+- map lifecycle remains clean
+- unexpected-report guard remains clean
+- no operational regression occurs
+
+The full one-hour soak does not need to be repeated unless investigation shows it is necessary.
+
+If a shorter run is used, justify why the retained 7.24A one-hour soak plus the new characterization provides sufficient evidence.
+
+
+PART 8 — REGRESSION
+
+Run all tests affected by any production or verification changes.
+
+If production code changes:
+
+run the complete Sierra 4 regression suite.
+
+If only diagnostic/acceptance tooling changes:
+
+run all relevant Map V2/performance checks plus enough baseline verification to establish no production modification occurred.
+
+Clearly report which case applies.
+
+
+PART 9 — DECISION
+
+At completion classify:
+
+READY FOR 7.24B
+
+or
+
+NOT READY FOR 7.24B
+
+READY requires:
+
+- a frozen defensible responsiveness policy
+- final verification satisfying that policy
+- no unresolved repeatable production scheduling defect
+- authoritative flight processing remains complete
+- recovery remains clean
+- lifecycle remains clean
+- unexpected-report guard remains clean
+
+Do not enable Map V2 by default.
+
+7.24B remains the installed/native MSFS validation checkpoint.
+
+
+PART 10 — COMPLETION REPORT
+
+Provide:
+
+1. Analysis of the original 100.0243 ms window
+2. Repeatability-test results
+3. Window-p95 distribution
+4. Diagnostic-overhead findings
+5. Production issue identified: YES/NO
+6. Any production optimization made
+7. Original acceptance policy
+8. Proposed/frozen new policy, if changed
+9. Rationale for policy change
+10. Final readiness-run results
+11. Regression results
+12. Unexpected-report guard result
+13. Known remaining risks
+14. READY or NOT READY for 7.24B
+15. Exact evidence supporting the decision
+
+STOP AFTER 7.24A.1.
+
+Do not begin 7.24B.
+Do not enable Map V2 by default.
+Do not implement globe projection.
+Do not begin another workspace migration.

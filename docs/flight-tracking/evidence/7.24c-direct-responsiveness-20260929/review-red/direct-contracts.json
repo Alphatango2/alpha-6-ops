@@ -1,0 +1,37 @@
+{
+  "dashboard": {
+    "passed": true,
+    "checks": 23,
+    "boundary": "Real timer callback/current WPF text and latest Operations overview"
+  },
+  "map": {
+    "passed": true,
+    "checks": 4,
+    "boundary": "Receipt/ACK and loaded MapLibre source/render; not GPU presentation"
+  },
+  "input": {
+    "passed": false,
+    "checks": 6,
+    "boundary": "WPF/browser handling and injected camera/selection response; not physical pixels"
+  },
+  "liveness": {
+    "passed": true,
+    "checks": 2,
+    "boundary": "Progress of actual input, browser and authoritative work"
+  },
+  "restoration": {
+    "passed": true,
+    "checks": 2,
+    "boundary": "Retained renderer usable after navigation; supplemental full resource suite required"
+  },
+  "telemetry": {
+    "passed": true,
+    "checks": 3,
+    "boundary": "Independent emission through connection ingestion to authoritative completion"
+  },
+  "integrity": {
+    "passed": true,
+    "checks": 3,
+    "boundary": "Exact emitted/ingested/processed/recorded identity and order"
+  }
+}

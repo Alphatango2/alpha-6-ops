@@ -15,7 +15,8 @@ public partial class SettingsWindow : Window
     private readonly Action exportLog;
     private readonly Action minimizeToTray;
     private readonly Action<GeneralSettings> applyGeneralSettings;
-    private static string DataDirectory => CrashReporter.RootDirectory;
+    private static string DataDirectory => CrashReporter.DiagnosticMode ? CrashReporter.RootDirectory : ProductStorage.Current.Root;
+    private static string CrashDirectory => CrashReporter.DiagnosticMode ? Path.Combine(CrashReporter.RootDirectory, "CrashReports") : Path.Combine(ProductStorage.Current.Diagnostics, "CrashReports");
 
     internal SettingsWindow(string simulatorStatus, string pilotName, Action showFlightTools,
         Action? showFlightHistory = null, Action? showLogDatabase = null, Action? exportTestLog = null,
@@ -42,7 +43,7 @@ public partial class SettingsWindow : Window
         DataPathText.Text = DataDirectory;
         ProgramHealthText.Text = string.IsNullOrWhiteSpace(programHealth) ? "PROGRAM MONITOR STARTING" : programHealth;
         LoggingStatusText.Text = string.IsNullOrWhiteSpace(loggingStatus) ? "Test logs save automatically when you connect." : loggingStatus;
-        VersionText.Text = $"ALPHA 6 OPS v{version}";
+        VersionText.Text = $"SIERRA 4 v{version}";
         StateChanged += (_, _) => UpdateWindowStateIcon();
     }
 
@@ -105,7 +106,7 @@ public partial class SettingsWindow : Window
         Application.Current.Dispatcher.BeginInvoke(action);
     }
     private void OpenDataFolder_Click(object sender, RoutedEventArgs e) => OpenFolder(DataDirectory);
-    private void OpenCrashReports_Click(object sender, RoutedEventArgs e) => OpenFolder(Path.Combine(DataDirectory, "CrashReports"));
+    private void OpenCrashReports_Click(object sender, RoutedEventArgs e) => OpenFolder(CrashDirectory);
     private static void OpenFolder(string path)
     {
         Directory.CreateDirectory(path);

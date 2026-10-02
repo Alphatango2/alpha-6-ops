@@ -1,0 +1,43 @@
+using System.Reflection;
+using System.IO;
+using System.Runtime.Loader;
+using System.Text.Json;
+using System.Windows;
+using System.Windows.Input;
+using Alpha6Ops.Desktop.MapV2;
+
+internal static class Program
+{
+    [STAThread] private static int Main(string[] args)
+    {
+        if(args.Length!=2 || args[0]!="--map-v2-checks") throw new ArgumentException("Only the isolated full map diagnostic is allowed");
+        var rows=new List<object>();
+        System.Runtime.InteropServices.NativeLibrary.Load(Path.Combine(AppContext.BaseDirectory,"runtimes","win-x64","native","WebView2Loader.dll"));
+        AssemblyLoadContext.Default.Resolving+=(_,name)=>File.Exists(Path.Combine(AppContext.BaseDirectory,name.Name+".dll"))?AssemblyLoadContext.Default.LoadFromAssemblyPath(Path.Combine(AppContext.BaseDirectory,name.Name+".dll")):null;
+        var frozen=Assembly.LoadFrom(Path.Combine(AppContext.BaseDirectory,"Alpha6OPS.dll"));
+        var guarded=frozen.GetType("Alpha6Ops.Desktop.MapV2.WebMapRenderer+GuardedCompositionControl",true)!;
+        EventManager.RegisterClassHandler(guarded,UIElement.MouseDownEvent,new MouseButtonEventHandler((sender,e)=>
+        {
+            var view=(FrameworkElement)sender;
+            // Exactly the original programmatic initialized-browser check. No
+            // physical input or uninitialized routed-event unit tests are changed.
+            if(e.Timestamp!=0 || e.ChangedButton!=MouseButton.Left || !view.IsLoaded || PresentationSource.FromVisual(view) is null)return;
+            var old=Mouse.GetPosition(view);
+            SyntheticMapPointer.Move(view,new(view.ActualWidth/2,view.ActualHeight/2));
+            var at=Mouse.GetPosition(view);
+            var valid=at.X>=0&&at.X<view.ActualWidth&&at.Y>=0&&at.Y<view.ActualHeight;
+            rows.Add(new{old,at,view.ActualWidth,view.ActualHeight,valid});
+            if(!valid)throw new InvalidOperationException("Synthetic pointer precondition failed");
+            view.RaiseEvent(new MouseEventArgs(Mouse.PrimaryDevice,0){RoutedEvent=UIElement.MouseMoveEvent});
+            MouseButtonEventHandler? cleanup=null;
+            cleanup=(_,up)=>{if(up.ChangedButton!=MouseButton.Left)return;view.RemoveHandler(UIElement.MouseUpEvent,cleanup);SyntheticMapPointer.Move(view,old);};
+            view.AddHandler(UIElement.MouseUpEvent,cleanup,true);
+        }));
+        // Runs the frozen application entry point and its unchanged full suite.
+        // The only test correction is the missing coordinate-bearing move above.
+        frozen.EntryPoint!.Invoke(null,null);
+        Directory.CreateDirectory(args[1]);
+        File.WriteAllText(Path.Combine(args[1],"synthetic-input-preconditions.json"),JsonSerializer.Serialize(rows,new JsonSerializerOptions{WriteIndented=true}));
+        return Environment.ExitCode;
+    }
+}

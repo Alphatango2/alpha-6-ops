@@ -1,0 +1,904 @@
+[
+  {
+    "path": "work\\checkpoint-7.24c\\input-gate-20260929\\contention-2-T2\\contention.json",
+    "sha256": "d77110627d683af965ce9218ed9d3d2197ab1bd70b3b66ed525a7f11ad26dd41",
+    "baseline": 245.4435,
+    "stress": 400.1605,
+    "limit": 345.4435,
+    "passed": false,
+    "sampleCounts": [
+      395,
+      395
+    ],
+    "traced": true,
+    "raw": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\input-gate-20260929\\contention-2-T2\\contention-0c3cefaf9f414c3aa0beff5a5be2e4c5",
+    "bridge": {
+      "produced": 41,
+      "offered": 41,
+      "coalesced": 6,
+      "acknowledged": 35,
+      "pending": false,
+      "rejected": 0,
+      "lastPayloadBytes": 2113,
+      "readyMs": 606.8769,
+      "projectionQueue": {
+        "offered": 395,
+        "coalesced": 354,
+        "consumed": 41,
+        "pending": false
+      },
+      "projectionMs": {
+        "count": 41,
+        "mean": 0.055709756097560965,
+        "p50": 0.0535,
+        "p95": 0.0816,
+        "p99": 0.1113,
+        "max": 0.154
+      },
+      "serializationMs": {
+        "count": 35,
+        "mean": 0.072,
+        "p50": 0.0696,
+        "p95": 0.0832,
+        "p99": 0.1068,
+        "max": 0.179
+      },
+      "dispatcherQueueMs": {
+        "count": 35,
+        "mean": 0.7350057142857143,
+        "p50": 0.0379,
+        "p95": 1.9968,
+        "p99": 7.8827,
+        "max": 10.6543
+      },
+      "postMs": {
+        "count": 35,
+        "mean": 0.09149714285714286,
+        "p50": 0.0868,
+        "p95": 0.1104,
+        "p99": 0.1173,
+        "max": 0.1272
+      },
+      "acknowledgmentMs": {
+        "count": 35,
+        "mean": 41.992219999999996,
+        "p50": 0.4576,
+        "p95": 9.7906,
+        "p99": 11.0283,
+        "max": 1421.2058
+      },
+      "postToAcknowledgmentMs": {
+        "count": 35,
+        "mean": 41.25722285714286,
+        "p50": 0.3775,
+        "p95": 1.0522,
+        "p99": 9.7451,
+        "max": 1421.1678
+      }
+    },
+    "sameTimeline": true,
+    "sameEvents": true,
+    "samePirep": true,
+    "stats": {
+      "count": 116,
+      "min": 17.5913,
+      "median": 44.6171,
+      "p95": 205.0515,
+      "p99": 247.9228,
+      "max": 400.1605
+    },
+    "relativeExceedances": 1,
+    "absoluteExceedances": 0,
+    "detail": {
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\input-gate-20260929\\contention-2-T2\\contention-0c3cefaf9f414c3aa0beff5a5be2e4c5\\stressed\\scheduling-trace.json",
+      "dropped": 0,
+      "hookCostMs": 5.7368,
+      "events": 12799,
+      "nativeObserverCost": [],
+      "windows": [
+        {
+          "startMs": 2271.6718,
+          "endMs": 2671.8323,
+          "intervalMs": 400.1605,
+          "relativeLimitMs": 345.4435,
+          "relativeExceeded": true,
+          "absoluteExceeded": false,
+          "timerPostMs": 2271.674,
+          "promotedMs": 2304.1184,
+          "readyWaitMs": 367.7126000000003,
+          "completedCallbackUnionMs": 52.90960000000405,
+          "longestCallbackMs": 8.008700000000317,
+          "longestCallback": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+          "callbackNames": {
+            "System.Windows.Media.MediaContext.RenderMessageHandler": 95,
+            "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4": 19,
+            "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0": 2,
+            "System.Windows.Input.InputManager.HitTestInvalidatedAsyncCallback": 1,
+            "System.Windows.Input.InputManager.ContinueProcessingStagingArea": 1,
+            "System.Windows.Threading.DispatcherTimer+<>c.<Restart>b__21_0/timer-20ms": 1
+          },
+          "kindCounts": {
+            "posted": 119,
+            "end": 119,
+            "begin": 119,
+            "layout-notification": 95,
+            "sample-emitted": 19,
+            "activity-begin": 19,
+            "activity-end": 19,
+            "sample-processed": 19,
+            "priority": 1,
+            "heartbeat": 1
+          },
+          "nativeMessageTypes": {},
+          "nativePendingMasks": {},
+          "activities": [
+            {
+              "t": 2285.8211,
+              "kind": "activity-end",
+              "id": 0,
+              "name": "Alpha6Ops.Recovery/Save",
+              "priority": 0,
+              "value": 2.5673,
+              "thread": 2
+            },
+            {
+              "t": 2306.5364,
+              "kind": "activity-end",
+              "id": 0,
+              "name": "Alpha6Ops.Recovery/Save",
+              "priority": 0,
+              "value": 2.3589,
+              "thread": 2
+            },
+            {
+              "t": 2327.1216,
+              "kind": "activity-end",
+              "id": 0,
+              "name": "Alpha6Ops.Recovery/Save",
+              "priority": 0,
+              "value": 1.9654,
+              "thread": 2
+            },
+            {
+              "t": 2347.935,
+              "kind": "activity-end",
+              "id": 0,
+              "name": "Alpha6Ops.Recovery/Save",
+              "priority": 0,
+              "value": 1.9386,
+              "thread": 2
+            },
+            {
+              "t": 2368.8929,
+              "kind": "activity-end",
+              "id": 0,
+              "name": "Alpha6Ops.Recovery/Save",
+              "priority": 0,
+              "value": 2.0316,
+              "thread": 2
+            },
+            {
+              "t": 2392.6159,
+              "kind": "activity-end",
+              "id": 0,
+              "name": "Alpha6Ops.Recovery/Save",
+              "priority": 0,
+              "value": 4.9263,
+              "thread": 2
+            },
+            {
+              "t": 2410.7237,
+              "kind": "activity-end",
+              "id": 0,
+              "name": "Alpha6Ops.Recovery/Save",
+              "priority": 0,
+              "value": 2.234,
+              "thread": 2
+            },
+            {
+              "t": 2431.3842,
+              "kind": "activity-end",
+              "id": 0,
+              "name": "Alpha6Ops.Recovery/Save",
+              "priority": 0,
+              "value": 2.0572,
+              "thread": 2
+            },
+            {
+              "t": 2452.2905,
+              "kind": "activity-end",
+              "id": 0,
+              "name": "Alpha6Ops.Recovery/Save",
+              "priority": 0,
+              "value": 2.0936,
+              "thread": 2
+            },
+            {
+              "t": 2473.0287,
+              "kind": "activity-end",
+              "id": 0,
+              "name": "Alpha6Ops.Recovery/Save",
+              "priority": 0,
+              "value": 2.0055,
+              "thread": 2
+            },
+            {
+              "t": 2499.7929,
+              "kind": "activity-end",
+              "id": 0,
+              "name": "Alpha6Ops.Recovery/Save",
+              "priority": 0,
+              "value": 7.9328,
+              "thread": 2
+            },
+            {
+              "t": 2514.6674,
+              "kind": "activity-end",
+              "id": 0,
+              "name": "Alpha6Ops.Recovery/Save",
+              "priority": 0,
+              "value": 2.0068,
+              "thread": 2
+            },
+            {
+              "t": 2535.5941,
+              "kind": "activity-end",
+              "id": 0,
+              "name": "Alpha6Ops.Recovery/Save",
+              "priority": 0,
+              "value": 2.0741,
+              "thread": 2
+            },
+            {
+              "t": 2556.3241,
+              "kind": "activity-end",
+              "id": 0,
+              "name": "Alpha6Ops.Recovery/Save",
+              "priority": 0,
+              "value": 1.9629,
+              "thread": 2
+            },
+            {
+              "t": 2577.6004,
+              "kind": "activity-end",
+              "id": 0,
+              "name": "Alpha6Ops.Recovery/Save",
+              "priority": 0,
+              "value": 2.415,
+              "thread": 2
+            },
+            {
+              "t": 2597.9862,
+              "kind": "activity-end",
+              "id": 0,
+              "name": "Alpha6Ops.Recovery/Save",
+              "priority": 0,
+              "value": 2.1414,
+              "thread": 2
+            },
+            {
+              "t": 2619.0874,
+              "kind": "activity-end",
+              "id": 0,
+              "name": "Alpha6Ops.Recovery/Save",
+              "priority": 0,
+              "value": 2.2602,
+              "thread": 2
+            },
+            {
+              "t": 2639.5467,
+              "kind": "activity-end",
+              "id": 0,
+              "name": "Alpha6Ops.Recovery/Save",
+              "priority": 0,
+              "value": 1.8852,
+              "thread": 2
+            },
+            {
+              "t": 2660.4435,
+              "kind": "activity-end",
+              "id": 0,
+              "name": "Alpha6Ops.Recovery/Save",
+              "priority": 0,
+              "value": 2.0137,
+              "thread": 2
+            }
+          ],
+          "os": [
+            {
+              "t": 2031.8213,
+              "hostCpuMs": 8187.5,
+              "uiCpuMs": 3265.625,
+              "uiState": "Wait",
+              "waitReason": "UserRequest",
+              "allocatedBytes": 362283384,
+              "gen0": 10,
+              "gen1": 8,
+              "gen2": 5,
+              "gcIndex": 10,
+              "gcPausesMs": [
+                12.838,
+                0
+              ],
+              "heapBytes": 74964760,
+              "lohBytes": 41955744,
+              "browser": [],
+              "samplerMs": 3.5928
+            },
+            {
+              "t": 2284.4532,
+              "hostCpuMs": 8281.25,
+              "uiCpuMs": 3281.25,
+              "uiState": "Wait",
+              "waitReason": "Executive",
+              "allocatedBytes": 362988760,
+              "gen0": 10,
+              "gen1": 8,
+              "gen2": 5,
+              "gcIndex": 10,
+              "gcPausesMs": [
+                12.838,
+                0
+              ],
+              "heapBytes": 74964760,
+              "lohBytes": 41955744,
+              "browser": [],
+              "samplerMs": 3.2889
+            },
+            {
+              "t": 2538.5893,
+              "hostCpuMs": 8390.625,
+              "uiCpuMs": 3296.875,
+              "uiState": "Wait",
+              "waitReason": "UserRequest",
+              "allocatedBytes": 364046824,
+              "gen0": 10,
+              "gen1": 8,
+              "gen2": 5,
+              "gcIndex": 10,
+              "gcPausesMs": [
+                12.838,
+                0
+              ],
+              "heapBytes": 74964760,
+              "lohBytes": 41955744,
+              "browser": [],
+              "samplerMs": 4.1883
+            },
+            {
+              "t": 2791.077,
+              "hostCpuMs": 8453.125,
+              "uiCpuMs": 3296.875,
+              "uiState": "Wait",
+              "waitReason": "UserRequest",
+              "allocatedBytes": 364701736,
+              "gen0": 10,
+              "gen1": 8,
+              "gen2": 5,
+              "gcIndex": 10,
+              "gcPausesMs": [
+                12.838,
+                0
+              ],
+              "heapBytes": 74964760,
+              "lohBytes": 41955744,
+              "browser": [],
+              "samplerMs": 3.0004
+            }
+          ],
+          "unclosedOperations": []
+        }
+      ]
+    }
+  },
+  {
+    "path": "work\\checkpoint-7.24c\\jst771-review-20260929\\map-full\\contention.json",
+    "sha256": "d85c9cacbd99c57355736ca1bb1b6a56a21d74c52693f3c43aa6d376dec0da1a",
+    "baseline": 288.1277,
+    "stress": 513.2116,
+    "limit": 388.1277,
+    "passed": false,
+    "sampleCounts": [
+      395,
+      395
+    ],
+    "traced": false,
+    "raw": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\jst771-review-20260929\\map-full\\contention-01956041acde459598d88801389d2e5d",
+    "bridge": {
+      "produced": 41,
+      "offered": 41,
+      "coalesced": 6,
+      "acknowledged": 35,
+      "pending": false,
+      "rejected": 0,
+      "lastPayloadBytes": 2436,
+      "readyMs": 614.8865,
+      "projectionQueue": {
+        "offered": 395,
+        "coalesced": 354,
+        "consumed": 41,
+        "pending": false
+      },
+      "projectionMs": {
+        "count": 41,
+        "mean": 0.05070243902439025,
+        "p50": 0.0436,
+        "p95": 0.0942,
+        "p99": 0.1,
+        "max": 0.1155
+      },
+      "serializationMs": {
+        "count": 35,
+        "mean": 0.050311428571428556,
+        "p50": 0.0503,
+        "p95": 0.0602,
+        "p99": 0.0669,
+        "max": 0.077
+      },
+      "dispatcherQueueMs": {
+        "count": 35,
+        "mean": 0.25316857142857147,
+        "p50": 0.0397,
+        "p95": 1.8609,
+        "p99": 2.0109,
+        "max": 3.226
+      },
+      "postMs": {
+        "count": 35,
+        "mean": 0.09755428571428572,
+        "p50": 0.0926,
+        "p95": 0.1165,
+        "p99": 0.12,
+        "max": 0.2077
+      },
+      "acknowledgmentMs": {
+        "count": 35,
+        "mean": 41.610197142857146,
+        "p50": 0.5425,
+        "p95": 3.5684,
+        "p99": 9.5182,
+        "max": 1422.4074
+      },
+      "postToAcknowledgmentMs": {
+        "count": 35,
+        "mean": 41.35717142857143,
+        "p50": 0.4713,
+        "p95": 0.6688,
+        "p99": 9.4879,
+        "max": 1422.3658
+      }
+    },
+    "sameTimeline": true,
+    "sameEvents": true,
+    "samePirep": true,
+    "stats": {
+      "count": 98,
+      "min": 16.5838,
+      "median": 54.5812,
+      "p95": 233.3712,
+      "p99": 513.2116,
+      "max": 513.2116
+    },
+    "relativeExceedances": 1,
+    "absoluteExceedances": 1,
+    "detail": null
+  },
+  {
+    "path": "work\\checkpoint-7.24c\\map-restoration\\full-map-published\\contention.json",
+    "sha256": "4f3ea94569d812af6f1e1b6050e244f8f1af93d242dd23a358666819b902cd19",
+    "baseline": 183.8978,
+    "stress": 350.4527,
+    "limit": 283.89779999999996,
+    "passed": false,
+    "sampleCounts": [
+      395,
+      395
+    ],
+    "traced": false,
+    "raw": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\map-restoration\\full-map-published\\contention-a6b3ea27781248b388680bfbe4ff1830",
+    "bridge": {
+      "produced": 41,
+      "offered": 41,
+      "coalesced": 6,
+      "acknowledged": 35,
+      "pending": false,
+      "rejected": 0,
+      "lastPayloadBytes": 2438,
+      "readyMs": 651.8229,
+      "projectionQueue": {
+        "offered": 395,
+        "coalesced": 354,
+        "consumed": 41,
+        "pending": false
+      },
+      "projectionMs": {
+        "count": 41,
+        "mean": 0.05434390243902438,
+        "p50": 0.0488,
+        "p95": 0.1019,
+        "p99": 0.1029,
+        "max": 0.1268
+      },
+      "serializationMs": {
+        "count": 35,
+        "mean": 0.05383428571428572,
+        "p50": 0.0538,
+        "p95": 0.062,
+        "p99": 0.0646,
+        "max": 0.0819
+      },
+      "dispatcherQueueMs": {
+        "count": 35,
+        "mean": 38.2662,
+        "p50": 20.0173,
+        "p95": 120.8522,
+        "p99": 130.3739,
+        "max": 222.1847
+      },
+      "postMs": {
+        "count": 35,
+        "mean": 0.09663428571428569,
+        "p50": 0.0933,
+        "p95": 0.1156,
+        "p99": 0.1271,
+        "max": 0.1673
+      },
+      "acknowledgmentMs": {
+        "count": 35,
+        "mean": 79.03307714285714,
+        "p50": 23.7336,
+        "p95": 131.324,
+        "p99": 222.5962,
+        "max": 1423.5562
+      },
+      "postToAcknowledgmentMs": {
+        "count": 35,
+        "mean": 40.767920000000004,
+        "p50": 0.4195,
+        "p95": 0.9054,
+        "p99": 0.9505,
+        "max": 1410.5443
+      }
+    },
+    "sameTimeline": true,
+    "sameEvents": true,
+    "samePirep": true,
+    "stats": {
+      "count": 127,
+      "min": 19.9556,
+      "median": 41.3549,
+      "p95": 163.3407,
+      "p99": 291.931,
+      "max": 350.4527
+    },
+    "relativeExceedances": 2,
+    "absoluteExceedances": 0,
+    "detail": null
+  },
+  {
+    "path": "work\\checkpoint-7.24c\\scheduling-continuation-20260928-152808\\before-traced\\contention.json",
+    "sha256": "14e0ed77b39644f6fae35f0c9d745f0f346c8117b87f232f844e132fbc2d7d06",
+    "baseline": 185.5019,
+    "stress": 287.2381,
+    "limit": 285.5019,
+    "passed": false,
+    "sampleCounts": [
+      395,
+      395
+    ],
+    "traced": true,
+    "raw": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\scheduling-continuation-20260928-152808\\before-traced\\contention-660498802ca34796a34204832017d10e",
+    "bridge": {
+      "produced": 40,
+      "offered": 40,
+      "coalesced": 6,
+      "acknowledged": 34,
+      "pending": false,
+      "rejected": 0,
+      "lastPayloadBytes": 2113,
+      "readyMs": 652.5023,
+      "projectionQueue": {
+        "offered": 395,
+        "coalesced": 355,
+        "consumed": 40,
+        "pending": false
+      },
+      "projectionMs": {
+        "count": 40,
+        "mean": 0.07622,
+        "p50": 0.074,
+        "p95": 0.133,
+        "p99": 0.1338,
+        "max": 0.1616
+      },
+      "serializationMs": {
+        "count": 34,
+        "mean": 0.08353529411764707,
+        "p50": 0.0809,
+        "p95": 0.1261,
+        "p99": 0.1312,
+        "max": 0.1369
+      },
+      "dispatcherQueueMs": {
+        "count": 34,
+        "mean": 41.84818529411765,
+        "p50": 20.7946,
+        "p95": 119.8353,
+        "p99": 155.33,
+        "max": 164.6933
+      },
+      "postMs": {
+        "count": 34,
+        "mean": 0.10264411764705883,
+        "p50": 0.0973,
+        "p95": 0.1315,
+        "p99": 0.1338,
+        "max": 0.1964
+      },
+      "acknowledgmentMs": {
+        "count": 34,
+        "mean": 83.47926470588236,
+        "p50": 26.7283,
+        "p95": 157.7498,
+        "p99": 165.1356,
+        "max": 1418.4541
+      },
+      "postToAcknowledgmentMs": {
+        "count": 34,
+        "mean": 41.631035294117645,
+        "p50": 0.4491,
+        "p95": 0.797,
+        "p99": 2.4196,
+        "max": 1397.6596
+      }
+    },
+    "sameTimeline": true,
+    "sameEvents": true,
+    "samePirep": true,
+    "stats": {
+      "count": 131,
+      "min": 15.9421,
+      "median": 41.3215,
+      "p95": 162.5733,
+      "p99": 205.0685,
+      "max": 287.2381
+    },
+    "relativeExceedances": 1,
+    "absoluteExceedances": 0,
+    "detail": {
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\scheduling-continuation-20260928-152808\\before-traced\\contention-660498802ca34796a34204832017d10e\\stressed\\scheduling-trace.json",
+      "dropped": 0,
+      "hookCostMs": 5.3623,
+      "events": 12163,
+      "nativeObserverCost": [],
+      "windows": [
+        {
+          "startMs": 5882.877200000001,
+          "endMs": 6170.1153,
+          "intervalMs": 287.2381,
+          "relativeLimitMs": 285.5019,
+          "relativeExceeded": true,
+          "absoluteExceeded": false,
+          "timerPostMs": 5882.8801,
+          "promotedMs": 5912.4485,
+          "readyWaitMs": 257.66579999999976,
+          "completedCallbackUnionMs": 38.590900000003785,
+          "longestCallbackMs": 5.387200000000121,
+          "longestCallback": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+          "callbackNames": {
+            "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0": 1,
+            "System.Windows.Media.MediaContext.RenderMessageHandler": 69,
+            "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4": 14,
+            "System.Windows.Input.InputManager.HitTestInvalidatedAsyncCallback": 2,
+            "System.Windows.Threading.DispatcherTimer+<>c.<Restart>b__21_0/timer-20ms": 1
+          },
+          "kindCounts": {
+            "posted": 87,
+            "end": 87,
+            "begin": 87,
+            "layout-notification": 69,
+            "sample-emitted": 14,
+            "activity-begin": 14,
+            "activity-end": 14,
+            "sample-processed": 14,
+            "priority": 1,
+            "heartbeat": 1
+          },
+          "nativeMessageTypes": {},
+          "nativePendingMasks": {},
+          "activities": [
+            {
+              "t": 5902.7947,
+              "kind": "activity-end",
+              "id": 0,
+              "name": "Alpha6Ops.Recovery/Save",
+              "priority": 0,
+              "value": 2.0177,
+              "thread": 2
+            },
+            {
+              "t": 5923.1042,
+              "kind": "activity-end",
+              "id": 0,
+              "name": "Alpha6Ops.Recovery/Save",
+              "priority": 0,
+              "value": 2.2159,
+              "thread": 2
+            },
+            {
+              "t": 5943.947,
+              "kind": "activity-end",
+              "id": 0,
+              "name": "Alpha6Ops.Recovery/Save",
+              "priority": 0,
+              "value": 2.2443,
+              "thread": 2
+            },
+            {
+              "t": 5963.7582,
+              "kind": "activity-end",
+              "id": 0,
+              "name": "Alpha6Ops.Recovery/Save",
+              "priority": 0,
+              "value": 2.0822,
+              "thread": 2
+            },
+            {
+              "t": 5984.8949,
+              "kind": "activity-end",
+              "id": 0,
+              "name": "Alpha6Ops.Recovery/Save",
+              "priority": 0,
+              "value": 2.2734,
+              "thread": 2
+            },
+            {
+              "t": 6005.2499,
+              "kind": "activity-end",
+              "id": 0,
+              "name": "Alpha6Ops.Recovery/Save",
+              "priority": 0,
+              "value": 1.9805,
+              "thread": 2
+            },
+            {
+              "t": 6025.2627,
+              "kind": "activity-end",
+              "id": 0,
+              "name": "Alpha6Ops.Recovery/Save",
+              "priority": 0,
+              "value": 1.9655,
+              "thread": 2
+            },
+            {
+              "t": 6048.9054,
+              "kind": "activity-end",
+              "id": 0,
+              "name": "Alpha6Ops.Recovery/Save",
+              "priority": 0,
+              "value": 4.8193,
+              "thread": 2
+            },
+            {
+              "t": 6067.3397,
+              "kind": "activity-end",
+              "id": 0,
+              "name": "Alpha6Ops.Recovery/Save",
+              "priority": 0,
+              "value": 2.3683,
+              "thread": 2
+            },
+            {
+              "t": 6087.9255,
+              "kind": "activity-end",
+              "id": 0,
+              "name": "Alpha6Ops.Recovery/Save",
+              "priority": 0,
+              "value": 2.1287,
+              "thread": 2
+            },
+            {
+              "t": 6109.067,
+              "kind": "activity-end",
+              "id": 0,
+              "name": "Alpha6Ops.Recovery/Save",
+              "priority": 0,
+              "value": 1.9559,
+              "thread": 2
+            },
+            {
+              "t": 6132.4579,
+              "kind": "activity-end",
+              "id": 0,
+              "name": "Alpha6Ops.Recovery/Save",
+              "priority": 0,
+              "value": 5.317,
+              "thread": 2
+            },
+            {
+              "t": 6149.9418,
+              "kind": "activity-end",
+              "id": 0,
+              "name": "Alpha6Ops.Recovery/Save",
+              "priority": 0,
+              "value": 2.2137,
+              "thread": 2
+            },
+            {
+              "t": 6170.0718,
+              "kind": "activity-end",
+              "id": 0,
+              "name": "Alpha6Ops.Recovery/Save",
+              "priority": 0,
+              "value": 2.2932,
+              "thread": 2
+            }
+          ],
+          "os": [
+            {
+              "t": 5845.4884,
+              "hostCpuMs": 9125,
+              "uiCpuMs": 3625,
+              "uiState": "Wait",
+              "waitReason": "UserRequest",
+              "allocatedBytes": 359132728,
+              "gen0": 10,
+              "gen1": 8,
+              "gen2": 5,
+              "gcIndex": 10,
+              "gcPausesMs": [
+                15.895,
+                0
+              ],
+              "heapBytes": 74771416,
+              "lohBytes": 41860648,
+              "browser": [],
+              "samplerMs": 3.8303
+            },
+            {
+              "t": 6099.1787,
+              "hostCpuMs": 9265.625,
+              "uiCpuMs": 3640.625,
+              "uiState": "Wait",
+              "waitReason": "UserRequest",
+              "allocatedBytes": 359804408,
+              "gen0": 10,
+              "gen1": 8,
+              "gen2": 5,
+              "gcIndex": 10,
+              "gcPausesMs": [
+                15.895,
+                0
+              ],
+              "heapBytes": 74771416,
+              "lohBytes": 41860648,
+              "browser": [],
+              "samplerMs": 4.1767
+            },
+            {
+              "t": 6352.7283,
+              "hostCpuMs": 9296.875,
+              "uiCpuMs": 3656.25,
+              "uiState": "Wait",
+              "waitReason": "UserRequest",
+              "allocatedBytes": 360458304,
+              "gen0": 10,
+              "gen1": 8,
+              "gen2": 5,
+              "gcIndex": 10,
+              "gcPausesMs": [
+                15.895,
+                0
+              ],
+              "heapBytes": 74771416,
+              "lohBytes": 41860648,
+              "browser": [],
+              "samplerMs": 3.5464
+            }
+          ],
+          "unclosedOperations": []
+        }
+      ]
+    }
+  }
+]

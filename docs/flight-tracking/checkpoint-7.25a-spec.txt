@@ -1,0 +1,31 @@
+CHECKPOINT 7.25A — A350 ENDURANCE NATIVE FINDINGS
+
+Baseline: S4-7.25-TRACKING-20260930-e7ee5c18d8ae
+
+Scope is limited to the two defects demonstrated by DAL40 YSSY-KLAX:
+
+1. Replace renderer-owned, visibility-scoped observed-track retention with a bounded
+   flight-scoped presentation history. It must observe valid authoritative positions
+   independently of Operations visibility, preserve endpoints and meaningful shape,
+   retain discontinuity segments, survive renderer recreation, and have no operational
+   authority. It must remain bounded for 20-24 hour flights without an enormous FIFO.
+
+2. Separate step-climb intent from the +750-foot displacement requirement. Thirty
+   observed seconds at or above +500 ft/min while departing the current observed
+   cruise establishes intent. Intent alone cannot commit a level. The existing
+   +750-foot displacement and 60 observed seconds of stable new-level evidence remain.
+   Pending evidence cancels safely on return, descent, invalid data, pause, slew,
+   excessive gaps and go-around. Filed cruise and sequential observed provenance remain.
+
+No independent TOD change is authorized. OOOI, PIREP, terminal shutdown, A350 guarded
+Block In, identity, recovery authority, ETA, health-marker, scheduling, responsiveness
+and Logbook semantics are protected.
+
+DAL40 supplies authoritative deterministic profiles for FL350-FL370, FL370-FL390 and
+FL390-FL410. Native validation after automated acceptance requires one realistic shallow
+A350 step transition, a session exceeding the old 2,048-point trail window, Operations
+hidden for more than five minutes, renderer recreation, latest-level TOD and the complete
+sampled trail. A second natural step climb is not required unless implementation evidence
+identifies a property that one transition plus the preserved DAL40 profiles cannot prove.
+
+Do not install automatically. Do not begin 7.26 or premium UI work.

@@ -1,0 +1,1012 @@
+{
+  "build": "S4-7.24C-T1-20260928-00e3f628b90e",
+  "evidence": [
+    {
+      "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\outputs\\Alpha6OPS-Desktop-S4-7.24C-T1-20260928-00e3f628b90e\\native-input-20260928-195009-d40cb07e\\record.json",
+      "preservedPath": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\docs\\flight-tracking\\evidence\\7.24c-terminal-t1-native-20260928-195009\\record.json",
+      "bytes": 298,
+      "sha256": "13BC4776E665E29B1FAD2EFE20310E5BEFFF20DD936606A6C50B0928684F9D83"
+    },
+    {
+      "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\outputs\\Alpha6OPS-Desktop-S4-7.24C-T1-20260928-00e3f628b90e\\native-input-20260928-195009-d40cb07e\\trace.json",
+      "preservedPath": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\docs\\flight-tracking\\evidence\\7.24c-terminal-t1-native-20260928-195009\\trace.json",
+      "bytes": 24636256,
+      "sha256": "BDC1EEFC0BB234AC4A0F4CEA919EBC3A12194F09272B4F42D666C3337F46FD68"
+    },
+    {
+      "source": "C:\\Users\\DanniBaLs\\AppData\\Local\\Alpha6Designs\\Alpha6OPS\\TestLogs\\Alpha6OPS-20260929-005019-249327d130104a6880dff5112b739233.jsonl",
+      "preservedPath": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\docs\\flight-tracking\\evidence\\7.24c-terminal-t1-native-20260928-195009\\Alpha6OPS-20260929-005019-249327d130104a6880dff5112b739233.jsonl",
+      "bytes": 394220,
+      "sha256": "66E2367945319EA42222040FB5775DB75A8C89AAD317DE949864DF963676FABC"
+    },
+    {
+      "source": "C:\\Users\\DanniBaLs\\AppData\\Local\\Alpha6Designs\\Alpha6OPS\\TestLogs\\Alpha6OPS-20260929-005019-249327d130104a6880dff5112b739233.json",
+      "preservedPath": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\docs\\flight-tracking\\evidence\\7.24c-terminal-t1-native-20260928-195009\\Alpha6OPS-20260929-005019-249327d130104a6880dff5112b739233.json",
+      "bytes": 624820,
+      "sha256": "48F3D74D32AC05820E12BA6B273F3165A0EDE025C8DD6F8F5108E5ACFE8007DC"
+    }
+  ],
+  "userObservation": {
+    "hitchingOrFlickering": "None observed",
+    "F9": "Not pressed",
+    "shutdownOrder": [
+      1,
+      2
+    ],
+    "scrollbarInitial": "User observed a right-side Operations scrollbar during the test.",
+    "scrollbarFollowUp": "User reports no right-side scrollbar in the build just started; suggests it might have been in the test environment.",
+    "scrollbarDisposition": "Transient observation, cause unconfirmed. No layout changes made."
+  },
+  "journal": {
+    "events": 335,
+    "sequenceContinuous": true,
+    "exportExactlyMatches": true,
+    "sessionEnded": true,
+    "kinds": {
+      "session_started": 1,
+      "connection_opened": 1,
+      "telemetry": 159,
+      "monitor_armed": 1,
+      "tracking_event": 9,
+      "terminal_block_in": 4,
+      "tracking_state": 159,
+      "session_ended": 1
+    },
+    "start": "2026-09-29T00:50:19.2869207+00:00",
+    "end": "2026-09-29T00:52:58.2750869+00:00",
+    "telemetrySamples": 159,
+    "firstSample": "2026-09-29T00:50:19.8429183+00:00",
+    "lastSample": "2026-09-29T00:52:57.8432693+00:00",
+    "aircraft": [
+      "FenixA321 IAE WF SC"
+    ],
+    "phaseCounts": {
+      "AtGate": 159
+    },
+    "allStationaryBrakedUnpaused": true,
+    "decisions": [
+      {
+        "sequence": 8,
+        "kind": "terminal_block_in",
+        "recordedAtUtc": "2026-09-29T00:50:19.9716662+00:00",
+        "simulatorUtc": "2026-09-29T00:50:19.8429183+00:00",
+        "detail": {
+          "policyVersion": 1,
+          "decision": {
+            "TerminalEligible": false,
+            "CanConfirm": false,
+            "PilotConfirmed": false,
+            "Reason": "Invalid shutdown evidence"
+          },
+          "evidence": {
+            "Support": 1,
+            "Provider": "fenix-a321-iae/2.4.0.4720/v1",
+            "ConnectionId": "4838549205fb4fe5903721485649514b",
+            "ExpectedEngineCount": 2,
+            "Engines": [
+              {
+                "Index": 1,
+                "Cutoff": null,
+                "Combustion": true,
+                "ReceivedUtc": "0001-01-01T00:00:00+00:00"
+              },
+              {
+                "Index": 2,
+                "Cutoff": null,
+                "Combustion": true,
+                "ReceivedUtc": "0001-01-01T00:00:00+00:00"
+              }
+            ],
+            "SimulatorUtc": "2026-09-29T00:50:19.8429183+00:00",
+            "ReceivedUtc": "2026-09-29T00:50:19.9255316+00:00",
+            "Valid": false,
+            "Qualified": false,
+            "OperatingEvidence": false
+          },
+          "HasOn": false,
+          "AtDestination": false,
+          "SessionValid": false,
+          "connectionGeneration": 1
+        }
+      },
+      {
+        "sequence": 11,
+        "kind": "terminal_block_in",
+        "recordedAtUtc": "2026-09-29T00:50:20.9406369+00:00",
+        "simulatorUtc": "2026-09-29T00:50:20.8375778+00:00",
+        "detail": {
+          "policyVersion": 1,
+          "decision": {
+            "TerminalEligible": false,
+            "CanConfirm": false,
+            "PilotConfirmed": false,
+            "Reason": "Terminal parking conditions not met"
+          },
+          "evidence": {
+            "Support": 1,
+            "Provider": "fenix-a321-iae/2.4.0.4720/v1",
+            "ConnectionId": "4838549205fb4fe5903721485649514b",
+            "ExpectedEngineCount": 2,
+            "Engines": [
+              {
+                "Index": 1,
+                "Cutoff": false,
+                "Combustion": true,
+                "ReceivedUtc": "2026-09-29T00:50:19.9328202+00:00"
+              },
+              {
+                "Index": 2,
+                "Cutoff": false,
+                "Combustion": true,
+                "ReceivedUtc": "2026-09-29T00:50:19.9328251+00:00"
+              }
+            ],
+            "SimulatorUtc": "2026-09-29T00:50:20.8375778+00:00",
+            "ReceivedUtc": "2026-09-29T00:50:20.9345745+00:00",
+            "Valid": true,
+            "Qualified": true,
+            "OperatingEvidence": false
+          },
+          "HasOn": false,
+          "AtDestination": false,
+          "SessionValid": false,
+          "connectionGeneration": 1
+        }
+      },
+      {
+        "sequence": 82,
+        "kind": "terminal_block_in",
+        "recordedAtUtc": "2026-09-29T00:50:54.8685961+00:00",
+        "simulatorUtc": "2026-09-29T00:50:54.834938+00:00",
+        "detail": {
+          "policyVersion": 1,
+          "decision": {
+            "TerminalEligible": false,
+            "CanConfirm": false,
+            "PilotConfirmed": false,
+            "Reason": "Invalid shutdown evidence"
+          },
+          "evidence": {
+            "Support": 1,
+            "Provider": "fenix-a321-iae/2.4.0.4720/v1",
+            "ConnectionId": "4838549205fb4fe5903721485649514b",
+            "ExpectedEngineCount": 2,
+            "Engines": [
+              {
+                "Index": 1,
+                "Cutoff": true,
+                "Combustion": true,
+                "ReceivedUtc": "2026-09-29T00:50:53.8678635+00:00"
+              },
+              {
+                "Index": 2,
+                "Cutoff": false,
+                "Combustion": true,
+                "ReceivedUtc": "2026-09-29T00:50:53.8678668+00:00"
+              }
+            ],
+            "SimulatorUtc": "2026-09-29T00:50:54.834938+00:00",
+            "ReceivedUtc": "2026-09-29T00:50:54.8682732+00:00",
+            "Valid": true,
+            "Qualified": true,
+            "OperatingEvidence": false
+          },
+          "HasOn": false,
+          "AtDestination": false,
+          "SessionValid": false,
+          "connectionGeneration": 1
+        }
+      },
+      {
+        "sequence": 85,
+        "kind": "terminal_block_in",
+        "recordedAtUtc": "2026-09-29T00:50:55.8703388+00:00",
+        "simulatorUtc": "2026-09-29T00:50:55.8336334+00:00",
+        "detail": {
+          "policyVersion": 1,
+          "decision": {
+            "TerminalEligible": false,
+            "CanConfirm": false,
+            "PilotConfirmed": false,
+            "Reason": "Terminal parking conditions not met"
+          },
+          "evidence": {
+            "Support": 1,
+            "Provider": "fenix-a321-iae/2.4.0.4720/v1",
+            "ConnectionId": "4838549205fb4fe5903721485649514b",
+            "ExpectedEngineCount": 2,
+            "Engines": [
+              {
+                "Index": 1,
+                "Cutoff": true,
+                "Combustion": false,
+                "ReceivedUtc": "2026-09-29T00:50:54.8684583+00:00"
+              },
+              {
+                "Index": 2,
+                "Cutoff": false,
+                "Combustion": true,
+                "ReceivedUtc": "2026-09-29T00:50:54.8684634+00:00"
+              }
+            ],
+            "SimulatorUtc": "2026-09-29T00:50:55.8336334+00:00",
+            "ReceivedUtc": "2026-09-29T00:50:55.8701589+00:00",
+            "Valid": true,
+            "Qualified": true,
+            "OperatingEvidence": false
+          },
+          "HasOn": false,
+          "AtDestination": false,
+          "SessionValid": false,
+          "connectionGeneration": 1
+        }
+      }
+    ],
+    "anyTerminalEligible": false,
+    "trackingEvents": [
+      {
+        "sequence": 5,
+        "kind": "tracking_event",
+        "recordedAtUtc": "2026-09-29T00:50:19.9676955+00:00",
+        "simulatorUtc": "2026-09-29T00:50:19.8429183+00:00",
+        "detail": {
+          "Title": "Aircraft identified",
+          "Summary": "Airbus A321",
+          "Detail": "Airbus A321",
+          "Kind": "system"
+        }
+      },
+      {
+        "sequence": 6,
+        "kind": "tracking_event",
+        "recordedAtUtc": "2026-09-29T00:50:19.9690054+00:00",
+        "simulatorUtc": "2026-09-29T00:50:19.8429183+00:00",
+        "detail": {
+          "Title": "Preflight at gate",
+          "Summary": "Departure gate unassigned \u2022 Parking brake set",
+          "Detail": "Departure gate unassigned \u2022 Parking brake set",
+          "Kind": "system"
+        }
+      },
+      {
+        "sequence": 7,
+        "kind": "tracking_event",
+        "recordedAtUtc": "2026-09-29T00:50:19.9692591+00:00",
+        "simulatorUtc": "2026-09-29T00:50:19.8429183+00:00",
+        "detail": {
+          "Title": "Flight monitoring armed",
+          "Summary": "Airbus A321 \u2022 joined in at gate",
+          "Detail": "Airbus A321 \u2022 joined in at gate",
+          "Kind": "system"
+        }
+      },
+      {
+        "sequence": 16,
+        "kind": "tracking_event",
+        "recordedAtUtc": "2026-09-29T00:50:22.9375971+00:00",
+        "simulatorUtc": "2026-09-29T00:50:22.8449172+00:00",
+        "detail": {
+          "Title": "Engine 1 running",
+          "Summary": "Engine 1 running confirmed \u2022 combustion",
+          "Detail": "Engine 1 running confirmed \u2022 combustion\nGS 0 KT  \u2022  FUEL 6528 LB",
+          "Kind": "operation"
+        }
+      },
+      {
+        "sequence": 17,
+        "kind": "tracking_event",
+        "recordedAtUtc": "2026-09-29T00:50:22.9376658+00:00",
+        "simulatorUtc": "2026-09-29T00:50:22.8449172+00:00",
+        "detail": {
+          "Title": "Engine 2 running",
+          "Summary": "Engine 2 running confirmed \u2022 combustion",
+          "Detail": "Engine 2 running confirmed \u2022 combustion\nGS 0 KT  \u2022  FUEL 6528 LB",
+          "Kind": "operation"
+        }
+      },
+      {
+        "sequence": 92,
+        "kind": "tracking_event",
+        "recordedAtUtc": "2026-09-29T00:50:58.872705+00:00",
+        "simulatorUtc": "2026-09-29T00:50:58.8413772+00:00",
+        "detail": {
+          "Title": "Engine 1 shutdown",
+          "Summary": "Engine 1 spool-down detected \u2022 combustion loss / spool decay",
+          "Detail": "Engine 1 spool-down detected \u2022 combustion loss / spool decay\nGS 0 KT  \u2022  FUEL 6507 LB",
+          "Kind": "operation"
+        }
+      },
+      {
+        "sequence": 131,
+        "kind": "tracking_event",
+        "recordedAtUtc": "2026-09-29T00:51:17.8872686+00:00",
+        "simulatorUtc": "2026-09-29T00:51:17.8233947+00:00",
+        "detail": {
+          "Title": "Engine 2 shutdown",
+          "Summary": "Engine 2 spool-down detected \u2022 combustion loss / spool decay",
+          "Detail": "Engine 2 spool-down detected \u2022 combustion loss / spool decay\nGS 0 KT  \u2022  FUEL 6502 LB",
+          "Kind": "operation"
+        }
+      },
+      {
+        "sequence": 190,
+        "kind": "tracking_event",
+        "recordedAtUtc": "2026-09-29T00:51:46.9003995+00:00",
+        "simulatorUtc": "2026-09-29T00:51:46.8316497+00:00",
+        "detail": {
+          "Title": "Engine 1 shut down",
+          "Summary": "Engine 1 shutdown confirmed \u2022 N1 / N2 spool",
+          "Detail": "Engine 1 shutdown confirmed \u2022 N1 / N2 spool\nGS 0 KT  \u2022  FUEL 6499 LB",
+          "Kind": "operation"
+        }
+      },
+      {
+        "sequence": 227,
+        "kind": "tracking_event",
+        "recordedAtUtc": "2026-09-29T00:52:04.9059444+00:00",
+        "simulatorUtc": "2026-09-29T00:52:04.830986+00:00",
+        "detail": {
+          "Title": "Engine 2 shut down",
+          "Summary": "Engine 2 shutdown confirmed \u2022 N1 / N2 spool",
+          "Detail": "Engine 2 shutdown confirmed \u2022 N1 / N2 spool\nGS 0 KT  \u2022  FUEL 6498 LB",
+          "Kind": "operation"
+        }
+      }
+    ]
+  },
+  "shutdown": {
+    "statusCounts": {
+      "Invalid": 2,
+      "Operating": 52,
+      "Confirmed": 105
+    },
+    "transitions": [
+      {
+        "simulatorUtc": "2026-09-29T00:50:19.8429183+00:00",
+        "recordedAtUtc": "2026-09-29T00:50:19.937195+00:00",
+        "shutdownStatusAtReceipt": "Invalid",
+        "terminal": {
+          "Support": 1,
+          "Provider": "fenix-a321-iae/2.4.0.4720/v1",
+          "ConnectionId": "4838549205fb4fe5903721485649514b",
+          "ExpectedEngineCount": 2,
+          "Engines": [
+            {
+              "Index": 1,
+              "Cutoff": null,
+              "Combustion": true,
+              "ReceivedUtc": "0001-01-01T00:00:00+00:00"
+            },
+            {
+              "Index": 2,
+              "Cutoff": null,
+              "Combustion": true,
+              "ReceivedUtc": "0001-01-01T00:00:00+00:00"
+            }
+          ],
+          "SimulatorUtc": "2026-09-29T00:50:19.8429183+00:00",
+          "ReceivedUtc": "2026-09-29T00:50:19.9255316+00:00",
+          "Valid": false,
+          "Qualified": false,
+          "OperatingEvidence": false
+        },
+        "engineDataValid": false,
+        "engineStates": [],
+        "engineReadings": [],
+        "enginesRunning": false,
+        "runningEngineCount": null
+      },
+      {
+        "simulatorUtc": "2026-09-29T00:50:20.8375778+00:00",
+        "recordedAtUtc": "2026-09-29T00:50:20.9347383+00:00",
+        "shutdownStatusAtReceipt": "Operating",
+        "terminal": {
+          "Support": 1,
+          "Provider": "fenix-a321-iae/2.4.0.4720/v1",
+          "ConnectionId": "4838549205fb4fe5903721485649514b",
+          "ExpectedEngineCount": 2,
+          "Engines": [
+            {
+              "Index": 1,
+              "Cutoff": false,
+              "Combustion": true,
+              "ReceivedUtc": "2026-09-29T00:50:19.9328202+00:00"
+            },
+            {
+              "Index": 2,
+              "Cutoff": false,
+              "Combustion": true,
+              "ReceivedUtc": "2026-09-29T00:50:19.9328251+00:00"
+            }
+          ],
+          "SimulatorUtc": "2026-09-29T00:50:20.8375778+00:00",
+          "ReceivedUtc": "2026-09-29T00:50:20.9345745+00:00",
+          "Valid": true,
+          "Qualified": true,
+          "OperatingEvidence": false
+        },
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "combustion"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "combustion"
+          }
+        ],
+        "engineReadings": [
+          {
+            "Index": 1,
+            "Combustion": 1,
+            "FuelFlowPph": 1116.1106443359095,
+            "N1Percent": 34.61246994009673,
+            "N2Percent": 76.26727880131665,
+            "Starter": 0,
+            "OilPressurePsf": 11031.320122262685
+          },
+          {
+            "Index": 2,
+            "Combustion": 1,
+            "FuelFlowPph": 1115.9869385948791,
+            "N1Percent": 34.60968319347037,
+            "N2Percent": 76.26491940274695,
+            "Starter": 0,
+            "OilPressurePsf": 11031.30066111119
+          }
+        ],
+        "enginesRunning": false,
+        "runningEngineCount": null
+      },
+      {
+        "simulatorUtc": "2026-09-29T00:50:54.834938+00:00",
+        "recordedAtUtc": "2026-09-29T00:50:54.8684318+00:00",
+        "shutdownStatusAtReceipt": "Invalid",
+        "terminal": {
+          "Support": 1,
+          "Provider": "fenix-a321-iae/2.4.0.4720/v1",
+          "ConnectionId": "4838549205fb4fe5903721485649514b",
+          "ExpectedEngineCount": 2,
+          "Engines": [
+            {
+              "Index": 1,
+              "Cutoff": true,
+              "Combustion": true,
+              "ReceivedUtc": "2026-09-29T00:50:53.8678635+00:00"
+            },
+            {
+              "Index": 2,
+              "Cutoff": false,
+              "Combustion": true,
+              "ReceivedUtc": "2026-09-29T00:50:53.8678668+00:00"
+            }
+          ],
+          "SimulatorUtc": "2026-09-29T00:50:54.834938+00:00",
+          "ReceivedUtc": "2026-09-29T00:50:54.8682732+00:00",
+          "Valid": true,
+          "Qualified": true,
+          "OperatingEvidence": false
+        },
+        "engineDataValid": true,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 3,
+            "Source": "combustion"
+          },
+          {
+            "Index": 2,
+            "Condition": 3,
+            "Source": "combustion"
+          }
+        ],
+        "engineReadings": [
+          {
+            "Index": 1,
+            "Combustion": 1,
+            "FuelFlowPph": 1116.1413523200602,
+            "N1Percent": 35.234840690544935,
+            "N2Percent": 76.76765498054273,
+            "Starter": 0,
+            "OilPressurePsf": 11035.151794373174
+          },
+          {
+            "Index": 2,
+            "Combustion": 1,
+            "FuelFlowPph": 1116.1088967270553,
+            "N1Percent": 35.233801749051224,
+            "N2Percent": 76.76256714656887,
+            "Starter": 0,
+            "OilPressurePsf": 11035.148606115
+          }
+        ],
+        "enginesRunning": true,
+        "runningEngineCount": 2
+      },
+      {
+        "simulatorUtc": "2026-09-29T00:50:55.8336334+00:00",
+        "recordedAtUtc": "2026-09-29T00:50:55.8702388+00:00",
+        "shutdownStatusAtReceipt": "Operating",
+        "terminal": {
+          "Support": 1,
+          "Provider": "fenix-a321-iae/2.4.0.4720/v1",
+          "ConnectionId": "4838549205fb4fe5903721485649514b",
+          "ExpectedEngineCount": 2,
+          "Engines": [
+            {
+              "Index": 1,
+              "Cutoff": true,
+              "Combustion": false,
+              "ReceivedUtc": "2026-09-29T00:50:54.8684583+00:00"
+            },
+            {
+              "Index": 2,
+              "Cutoff": false,
+              "Combustion": true,
+              "ReceivedUtc": "2026-09-29T00:50:54.8684634+00:00"
+            }
+          ],
+          "SimulatorUtc": "2026-09-29T00:50:55.8336334+00:00",
+          "ReceivedUtc": "2026-09-29T00:50:55.8701589+00:00",
+          "Valid": true,
+          "Qualified": true,
+          "OperatingEvidence": false
+        },
+        "engineDataValid": true,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 3,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 3,
+            "Source": "combustion"
+          }
+        ],
+        "engineReadings": [
+          {
+            "Index": 1,
+            "Combustion": 0,
+            "FuelFlowPph": 1141.3574756468129,
+            "N1Percent": 35.76146535572254,
+            "N2Percent": 77.0048117489073,
+            "Starter": 0,
+            "OilPressurePsf": 11037.240905918192
+          },
+          {
+            "Index": 2,
+            "Combustion": 1,
+            "FuelFlowPph": 1121.0792211373487,
+            "N1Percent": 35.3062432861328,
+            "N2Percent": 76.8387197704782,
+            "Starter": 0,
+            "OilPressurePsf": 11035.208654112805
+          }
+        ],
+        "enginesRunning": true,
+        "runningEngineCount": 2
+      },
+      {
+        "simulatorUtc": "2026-09-29T00:51:13.8372573+00:00",
+        "recordedAtUtc": "2026-09-29T00:51:13.8839372+00:00",
+        "shutdownStatusAtReceipt": "Confirmed",
+        "terminal": {
+          "Support": 1,
+          "Provider": "fenix-a321-iae/2.4.0.4720/v1",
+          "ConnectionId": "4838549205fb4fe5903721485649514b",
+          "ExpectedEngineCount": 2,
+          "Engines": [
+            {
+              "Index": 1,
+              "Cutoff": true,
+              "Combustion": false,
+              "ReceivedUtc": "2026-09-29T00:51:12.8820818+00:00"
+            },
+            {
+              "Index": 2,
+              "Cutoff": true,
+              "Combustion": false,
+              "ReceivedUtc": "2026-09-29T00:51:12.882085+00:00"
+            }
+          ],
+          "SimulatorUtc": "2026-09-29T00:51:13.8372573+00:00",
+          "ReceivedUtc": "2026-09-29T00:51:13.8838268+00:00",
+          "Valid": true,
+          "Qualified": true,
+          "OperatingEvidence": false
+        },
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 4,
+            "Source": "combustion loss / spool decay"
+          },
+          {
+            "Index": 2,
+            "Condition": 3,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "engineReadings": [
+          {
+            "Index": 1,
+            "Combustion": 0,
+            "FuelFlowPph": 36.2080212876887,
+            "N1Percent": 1.5381094190546354,
+            "N2Percent": 13.086487615516637,
+            "Starter": 0,
+            "OilPressurePsf": 1113.667464142334
+          },
+          {
+            "Index": 2,
+            "Combustion": 0,
+            "FuelFlowPph": 1146.6919268447805,
+            "N1Percent": 35.704989183649104,
+            "N2Percent": 77.16803291880605,
+            "Starter": 0,
+            "OilPressurePsf": 11035.23150248442
+          }
+        ],
+        "enginesRunning": true,
+        "runningEngineCount": null
+      }
+    ],
+    "engines": [
+      {
+        "engine": 1,
+        "cutoffFirstObservedUtc": "2026-09-29T00:50:54.834938+00:00",
+        "combustionOffFirstObservedUtc": "2026-09-29T00:50:55.8336334+00:00",
+        "mechanicalOffFirstObservedUtc": "2026-09-29T00:51:46.8316497+00:00",
+        "cutoffToCombustionOffSeconds": 0.998695
+      },
+      {
+        "engine": 2,
+        "cutoffFirstObservedUtc": "2026-09-29T00:51:13.8372573+00:00",
+        "combustionOffFirstObservedUtc": "2026-09-29T00:51:13.8372573+00:00",
+        "mechanicalOffFirstObservedUtc": "2026-09-29T00:52:04.830986+00:00",
+        "cutoffToCombustionOffSeconds": 0.0
+      }
+    ],
+    "firstConfirmed": {
+      "simulatorUtc": "2026-09-29T00:51:13.8372573+00:00",
+      "recordedAtUtc": "2026-09-29T00:51:13.8839372+00:00",
+      "shutdownStatusAtReceipt": "Confirmed",
+      "terminal": {
+        "Support": 1,
+        "Provider": "fenix-a321-iae/2.4.0.4720/v1",
+        "ConnectionId": "4838549205fb4fe5903721485649514b",
+        "ExpectedEngineCount": 2,
+        "Engines": [
+          {
+            "Index": 1,
+            "Cutoff": true,
+            "Combustion": false,
+            "ReceivedUtc": "2026-09-29T00:51:12.8820818+00:00"
+          },
+          {
+            "Index": 2,
+            "Cutoff": true,
+            "Combustion": false,
+            "ReceivedUtc": "2026-09-29T00:51:12.882085+00:00"
+          }
+        ],
+        "SimulatorUtc": "2026-09-29T00:51:13.8372573+00:00",
+        "ReceivedUtc": "2026-09-29T00:51:13.8838268+00:00",
+        "Valid": true,
+        "Qualified": true,
+        "OperatingEvidence": false
+      },
+      "engineDataValid": false,
+      "engineStates": [
+        {
+          "Index": 1,
+          "Condition": 4,
+          "Source": "combustion loss / spool decay"
+        },
+        {
+          "Index": 2,
+          "Condition": 3,
+          "Source": "N1 / N2 spool"
+        }
+      ],
+      "engineReadings": [
+        {
+          "Index": 1,
+          "Combustion": 0,
+          "FuelFlowPph": 36.2080212876887,
+          "N1Percent": 1.5381094190546354,
+          "N2Percent": 13.086487615516637,
+          "Starter": 0,
+          "OilPressurePsf": 1113.667464142334
+        },
+        {
+          "Index": 2,
+          "Combustion": 0,
+          "FuelFlowPph": 1146.6919268447805,
+          "N1Percent": 35.704989183649104,
+          "N2Percent": 77.16803291880605,
+          "Starter": 0,
+          "OilPressurePsf": 11035.23150248442
+        }
+      ],
+      "enginesRunning": true,
+      "runningEngineCount": null
+    },
+    "afterFinalCutoffSeconds": 0.0,
+    "note": "Status reconstructed at each telemetry receipt using the frozen evidence contract. First sample observations are not raw pilot-command timestamps."
+  },
+  "trace": {
+    "events": 168942,
+    "dropped": 0,
+    "osSamples": 468,
+    "eventKinds": {
+      "posted": 52488,
+      "native-trace-start": 1,
+      "begin": 28680,
+      "end": 28679,
+      "layout-notification": 25449,
+      "aborted": 23825,
+      "priority": 126,
+      "physical-button": 40,
+      "physical-drag": 9017,
+      "gc": 184,
+      "activity-begin": 114,
+      "activity-end": 114,
+      "native-telemetry-arrival": 112,
+      "native-telemetry-processed": 112,
+      "native-trace-end": 1
+    },
+    "hookCostMs": 126.7197,
+    "liveWindowMs": [
+      8836.8437,
+      119812.7071
+    ],
+    "arrived": 112,
+    "processed": 112,
+    "arrivalProcessedTimestampsMatch": true,
+    "traceTelemetryAllFoundInJournal": true,
+    "arrivalToProcessedMs": {
+      "count": 112,
+      "p50": 0.5108,
+      "p95": 1.2259,
+      "p99": 3.5301,
+      "max": 56.6843
+    },
+    "liveDragNotifications": 9015,
+    "liveDragWpfMessageAgeMs": {
+      "count": 9015,
+      "p50": 0,
+      "p95": 0,
+      "p99": 16,
+      "max": 16
+    },
+    "userStallMarkers": 0,
+    "resizeEvents": [],
+    "liveNonTimerQueueMs": {
+      "count": 27468,
+      "p50": 0.15209999999933643,
+      "p95": 14.762199999997392,
+      "p99": 149.81930000000284,
+      "max": 1483.3782999999967
+    },
+    "longestNonTimerQueue": [
+      {
+        "name": "System.Threading.Tasks.SynchronizationContextAwaitTaskContinuation+<>c.<.cctor>b__8_0",
+        "priority": 4,
+        "ms": 1483.3782999999967,
+        "postedMs": 90233.9139
+      },
+      {
+        "name": "System.Windows.Input.InputManager.HitTestInvalidatedAsyncCallback",
+        "priority": 5,
+        "ms": 1423.2556000000004,
+        "postedMs": 23236.3471
+      },
+      {
+        "name": "System.Windows.Input.InputManager.ContinueProcessingStagingArea",
+        "priority": 5,
+        "ms": 1406.1777000000002,
+        "postedMs": 78498.5103
+      },
+      {
+        "name": "System.Windows.Input.InputManager.HitTestInvalidatedAsyncCallback",
+        "priority": 5,
+        "ms": 1404.9169999999867,
+        "postedMs": 78499.7918
+      },
+      {
+        "name": "System.Windows.Input.InputManager.HitTestInvalidatedAsyncCallback",
+        "priority": 5,
+        "ms": 1374.5503000000026,
+        "postedMs": 115845.5364
+      },
+      {
+        "name": "System.Windows.Input.InputManager.HitTestInvalidatedAsyncCallback",
+        "priority": 5,
+        "ms": 1308.8003999999928,
+        "postedMs": 34361.4676
+      },
+      {
+        "name": "MS.Internal.WeakEventTable.CleanupOperation",
+        "priority": 3,
+        "ms": 1092.9983999999968,
+        "postedMs": 113811.6352
+      },
+      {
+        "name": "MS.Internal.Data.DataBindEngine.CleanupOperation",
+        "priority": 3,
+        "ms": 1092.9530999999988,
+        "postedMs": 113811.5456
+      },
+      {
+        "name": "System.Windows.Input.InputManager.HitTestInvalidatedAsyncCallback",
+        "priority": 5,
+        "ms": 1046.1512000000002,
+        "postedMs": 45311.5253
+      },
+      {
+        "name": "System.Windows.Input.CommandManager.RaiseRequerySuggested",
+        "priority": 4,
+        "ms": 1000.2249999999913,
+        "postedMs": 90204.0586
+      }
+    ],
+    "liveMapQueueMs": {
+      "count": 163,
+      "p50": 0.016800000001239823,
+      "p95": 0.30710000000544824,
+      "p99": 0.47950000000128057,
+      "max": 1.3469999999979336
+    },
+    "longestMapQueue": [
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 7,
+        "ms": 1.3469999999979336,
+        "postedMs": 24859.8342
+      },
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 7,
+        "ms": 0.5812000000005355,
+        "postedMs": 71195.3426
+      },
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 7,
+        "ms": 0.47950000000128057,
+        "postedMs": 66994.0459
+      },
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 7,
+        "ms": 0.4161000000021886,
+        "postedMs": 59985.9836
+      },
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 7,
+        "ms": 0.34860000000480795,
+        "postedMs": 38964.6591
+      },
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 7,
+        "ms": 0.3404999999984284,
+        "postedMs": 36972.0273
+      },
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 7,
+        "ms": 0.3386999999929685,
+        "postedMs": 89003.7246
+      },
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 7,
+        "ms": 0.32559999999648426,
+        "postedMs": 83001.394
+      },
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 7,
+        "ms": 0.3222000000096159,
+        "postedMs": 116012.1831
+      },
+      {
+        "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+        "priority": 7,
+        "ms": 0.30710000000544824,
+        "postedMs": 55983.2412
+      }
+    ],
+    "liveActivityMs": {
+      "Alpha6Ops.Presentation/RuntimeChanged": {
+        "count": 111,
+        "p50": 0.2247,
+        "p95": 0.5113,
+        "p99": 1.1786,
+        "max": 6.5025
+      }
+    },
+    "longestOperationEnvelopes": [
+      {
+        "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+        "priority": 9,
+        "ms": 56.5559000000012,
+        "startedMs": 8836.8869
+      },
+      {
+        "name": "System.Windows.Media.MediaContext.RenderMessageHandler",
+        "priority": 7,
+        "ms": 21.491900000000896,
+        "startedMs": 8893.4767
+      },
+      {
+        "name": "System.Windows.Media.MediaContext.RenderMessageHandler",
+        "priority": 7,
+        "ms": 18.63169999999991,
+        "startedMs": 11844.1668
+      },
+      {
+        "name": "System.Windows.Media.MediaContext.RenderMessageHandler",
+        "priority": 7,
+        "ms": 13.378700000001118,
+        "startedMs": 98127.3106
+      },
+      {
+        "name": "System.Windows.Media.MediaContext.RenderMessageHandler",
+        "priority": 7,
+        "ms": 10.561699999991106,
+        "startedMs": 97285.9419
+      },
+      {
+        "name": "System.Windows.Media.MediaContext.RenderMessageHandler",
+        "priority": 7,
+        "ms": 10.530899999997928,
+        "startedMs": 51616.2643
+      },
+      {
+        "name": "System.Windows.Media.MediaContext.RenderMessageHandler",
+        "priority": 7,
+        "ms": 9.951100000002043,
+        "startedMs": 24649.1085
+      },
+      {
+        "name": "System.Windows.Input.InputManager.HitTestInvalidatedAsyncCallback",
+        "priority": 5,
+        "ms": 8.271399999997811,
+        "startedMs": 75198.0917
+      },
+      {
+        "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+        "priority": 9,
+        "ms": 7.852699999999459,
+        "startedMs": 9839.9932
+      },
+      {
+        "name": "System.Windows.Media.MediaContext.RenderMessageHandler",
+        "priority": 7,
+        "ms": 7.705700000005891,
+        "startedMs": 113812.5835
+      }
+    ],
+    "limitations": "Instrumented diagnostic workload. Dispatcher callback envelopes include nested work; union intervals avoid double counting. Rendering/LayoutUpdated notifications are not GPU/layout cost. CPU/state snapshots every250ms cannot prove context-switch causality. Allocation totals include this bounded trace. GC events and latest-pause data are correlated, not assumed causal."
+  },
+  "limitations": [
+    "Parked/no-ON session cannot measure destination IN or PIREP eligibility latency.",
+    "All arrival guards are false together; this does not isolate each individual guard.",
+    "Native WPF notification timing is not browser/GPU frame-presentation latency.",
+    "No ScrollViewer extent/viewport/scrollbar snapshots are recorded by this trace.",
+    "Native trace is shorter than the closed journal; their counts describe different windows.",
+    "No independent simulator source sequence counter or native heartbeat gate is available.",
+    "Physical observation is authoritative for this run only; automated gates remain separate.",
+    "Dispatcher timer queue waits include intentional inactive time; they are excluded from non-timer queue statistics."
+  ]
+}

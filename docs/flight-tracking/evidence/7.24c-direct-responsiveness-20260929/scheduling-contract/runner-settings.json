@@ -1,0 +1,5 @@
+{
+  "arm": "contract",
+  "timeoutSeconds": 150.0,
+  "requestedSeconds": 30.0
+}

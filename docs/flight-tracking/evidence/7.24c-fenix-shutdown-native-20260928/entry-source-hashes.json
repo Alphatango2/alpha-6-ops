@@ -1,0 +1,886 @@
+[
+  {
+    "path": "packaging\\PreviewSetup.cs",
+    "sha256": "FE966FF0F41C6795E35C2150CCBF879C5074FFAF43092C323F6A9EBD484087FC"
+  },
+  {
+    "path": "packaging\\Desktop-Quick-Start.txt",
+    "sha256": "EAA4B9543F1C614D4BFDFD7B7772212B8FE737FFA78ECD611890611B69356A10"
+  },
+  {
+    "path": "packaging\\build-desktop.ps1",
+    "sha256": "EECF6823CF2A95BC55994B1BA96DA4EDCDA2E547E9EF20A9A0146393BE295FAC"
+  },
+  {
+    "path": "tests\\test_fleet_import.py",
+    "sha256": "868D3C6BAD897A733208BE7B25CCCB158BF78F11806518A90992200E21388773"
+  },
+  {
+    "path": "tests\\test_fenix_shutdown_capture.py",
+    "sha256": "BCAE66191DD443B819621807F5AEE0F99D36A38D2321AA46777998525E526613"
+  },
+  {
+    "path": "scripts\\verify-migration-baseline.ps1",
+    "sha256": "B3A5F5AACFABE855D233CF9D241703750D589840EB4E5A6D5E009996D34A9FDA"
+  },
+  {
+    "path": "scripts\\verify-map-v2.ps1",
+    "sha256": "29688082042A640D94737F92A8B0FCF5411527EE53C93AF3FBC1D890084A7565"
+  },
+  {
+    "path": "scripts\\verify-map-scheduling.ps1",
+    "sha256": "24F9357007F68319B40CED2D5C4410305346CC5658CE8364B77CAB524943BF08"
+  },
+  {
+    "path": "scripts\\verify-map-performance.ps1",
+    "sha256": "2162B849A59BE220998ABB9977560F519BE8D8A55A079BE25C9779C6D3F5BCA7"
+  },
+  {
+    "path": "scripts\\verify-flight-recovery.ps1",
+    "sha256": "7106B53DF617F565D3F2A2C2FA11018871196A65ED239E728DA63847A837F515"
+  },
+  {
+    "path": "scripts\\verify-desktop.ps1",
+    "sha256": "50F9A932FD34956FB1AF0CA21B68BCE43BC030CB2390125CB8654B4A48E61A65"
+  },
+  {
+    "path": "scripts\\test-scheduling-trace.ps1",
+    "sha256": "F9A7489674287F531558626E8AFE2483664882B417B466CC13721A937DE40014"
+  },
+  {
+    "path": "scripts\\test-map-responsiveness-policy.ps1",
+    "sha256": "C47F1A2D00396ADA232D1F45A60E31F848E5AB147D824F303AD2551B7921D2BA"
+  },
+  {
+    "path": "scripts\\test-map-performance-summary.ps1",
+    "sha256": "2F5CACBF6C42987B4E62C74EF361B9030CFEE0AA26EADE4A754462C6C19A5A6D"
+  },
+  {
+    "path": "scripts\\summarize-map-scheduling.ps1",
+    "sha256": "88F827620E4985FABE4DFD88F6078D668D74BB35FBEED840CD864B179BAFEF36"
+  },
+  {
+    "path": "scripts\\summarize-map-responsiveness.ps1",
+    "sha256": "4E1A602BE11A6C3D8EA5A392BC237183A840AA63087ED57CD0C68D75DAF2FBDC"
+  },
+  {
+    "path": "scripts\\summarize-map-performance.ps1",
+    "sha256": "019D947ACF0372FCE94169B269779B9F6B1D5184BF29DFEBF324FCA8423AA422"
+  },
+  {
+    "path": "scripts\\SchedulingTraceAnalysis.psm1",
+    "sha256": "D19B3876E7F12034B80597CCC80E3271415AD491AB4018B7F97E8E105F6B6410"
+  },
+  {
+    "path": "scripts\\prepare-map-v2.ps1",
+    "sha256": "E1A6C051237589418409240453ABD68FA9F7E2891BD565ED7CA22C41E63D74B6"
+  },
+  {
+    "path": "scripts\\MapResponsivenessPolicy.psm1",
+    "sha256": "AAEE9EDAA392BD02A599919ABE72AB5CC6079AE7B1E2C9C528CC2CB1865ED866"
+  },
+  {
+    "path": "scripts\\capture_fenix_shutdown.py",
+    "sha256": "678DEE4C8EB3B64735A4F1EC4055AEC55743E7B913942C75E7E798756F4BB520"
+  },
+  {
+    "path": "scripts\\build_fleet_database.py",
+    "sha256": "B700FC98766B93FD0EB656B5C27B040855F1CB92193D392E6147DC4176A6CE48"
+  },
+  {
+    "path": "scripts\\build-airport-reference.ps1",
+    "sha256": "A76F56610E24A48664E489F3608D50A0281C0ED3933680DDA3210BEAB534D2E5"
+  },
+  {
+    "path": "src\\Alpha6Ops.Pilot\\Program.cs",
+    "sha256": "3A4AABAC037B872613F51E0AA9E45429FBC754232F1F5F7381767F099AA07244"
+  },
+  {
+    "path": "src\\Alpha6Ops.Pilot\\Alpha6Ops.Pilot.csproj",
+    "sha256": "974F68E10B01A02C61DFD0D95480EBF39ADCF4220CD89515F4F8C1066A53D817"
+  },
+  {
+    "path": "tests\\map-v2\\browser.test.mjs",
+    "sha256": "A3E659AA66911ED54CA439F52E83B56287E5B090309084A0BE4D5B6FF22AE1F8"
+  },
+  {
+    "path": "src\\Alpha6Ops.Core\\Timeline.cs",
+    "sha256": "7A19432FB64B4E5C259D2D7CE2EFE28FF3D8625A9109C215C990B26C2B4E27C0"
+  },
+  {
+    "path": "src\\Alpha6Ops.Core\\TestFlightLog.cs",
+    "sha256": "23672A5BA3AED90C89EC40699E449428EF26B93D11EEE65F9E9BC5DFF6E437EE"
+  },
+  {
+    "path": "src\\Alpha6Ops.Core\\RouteProgressTracker.cs",
+    "sha256": "128C70B8795707924A8CEBEC1F02E64FFB6229D5E159AC5D53CCC4117BC87742"
+  },
+  {
+    "path": "src\\Alpha6Ops.Core\\Replay.cs",
+    "sha256": "6EA752F21303629F3920A7D32DF9C960491F1467BCC4412DF99D39E657883091"
+  },
+  {
+    "path": "src\\Alpha6Ops.Core\\Operations.cs",
+    "sha256": "42C7A2388AAD22A54766567035612C72802DDAD4AC39AFCCA510BDDB8B741F61"
+  },
+  {
+    "path": "src\\Alpha6Ops.Core\\Integrations.cs",
+    "sha256": "1AD14A453D4CA067FC014C2769B60F17FACA50F5319C456E4C9B661DDBFCFAC5"
+  },
+  {
+    "path": "src\\Alpha6Ops.Core\\FlightIdentity.cs",
+    "sha256": "1D43C832920D32DD5B04137AB3D382D361B6C2BA23190634C5A931BA0B126CD4"
+  },
+  {
+    "path": "src\\Alpha6Ops.Core\\EngineEvidence.cs",
+    "sha256": "7E6D4A964AC5EA734D7D1F7805B2832BE51D850871DAF141F72813A059CD7BA5"
+  },
+  {
+    "path": "src\\Alpha6Ops.Core\\Debrief.cs",
+    "sha256": "10473E6AC6C2D633E4C8E5FC4C6BC7BCE93D88F60A0708B7DD35796F64A4F0BD"
+  },
+  {
+    "path": "src\\Alpha6Ops.Core\\ArrivalEstimator.cs",
+    "sha256": "DDA7195BA3C17AF96A61294C5730693D922921F10D6EA9C4E25D1F4BB05C5179"
+  },
+  {
+    "path": "src\\Alpha6Ops.Core\\Alpha6Ops.Core.csproj",
+    "sha256": "8D654C44B7BEBB6B31A9F2F606927F45B5072193ADC4EEF8CCE3F3CF3B278DF3"
+  },
+  {
+    "path": "tests\\Alpha6Ops.Tests\\TrackingTests.cs",
+    "sha256": "2F075B2FB056E9289FC15AC961C540D36413A3F7526052B65C0554E2994727DA"
+  },
+  {
+    "path": "tests\\Alpha6Ops.Tests\\Program.cs",
+    "sha256": "AA9B01969BF64A14749537AD68205933D783BDD4486A57F4185762204475F7FF"
+  },
+  {
+    "path": "tests\\Alpha6Ops.Tests\\FlightIdentityTests.cs",
+    "sha256": "400BDF5F51D632368C4DDBF3987A1900538766EDBB3393C7A8A6A92159F6DA70"
+  },
+  {
+    "path": "tests\\Alpha6Ops.Tests\\EngineEvidenceTests.cs",
+    "sha256": "E06B5B94E79C67EA88040DB9FFF3F8D872531DD238CCAA099B3E7BF2D321B4A0"
+  },
+  {
+    "path": "tests\\Alpha6Ops.Tests\\Alpha6Ops.Tests.csproj",
+    "sha256": "AC49A8286E37FDA92369C4AD9753E4F211396680E75CFC43D2EA080B9C7DF467"
+  },
+  {
+    "path": "src\\Alpha6Ops.FlightLab\\Assets\\A6FL.png",
+    "sha256": "55C82968757BAAED4ED34B98F68A822DB7CE2B53C19180BE5C3B97AEB2DC5A86"
+  },
+  {
+    "path": "src\\Alpha6Ops.FlightLab\\Assets\\A6FL.ico",
+    "sha256": "CEC52655138EEBC58D78DE76463CC18997B3625A0F1E8F701086BB6B8BBC63E3"
+  },
+  {
+    "path": "tests\\Alpha6Ops.RecoveryChecks\\Program.cs",
+    "sha256": "BBE1F46867414E1D962B9167075CF0F735E1DDC849CA91F08662991E90E9D038"
+  },
+  {
+    "path": "tests\\Alpha6Ops.RecoveryChecks\\Alpha6Ops.RecoveryChecks.csproj",
+    "sha256": "6C8848982257068DDDCF192D9EF302C8FFA9BBC26936C926DEC56C26FF421183"
+  },
+  {
+    "path": "tests\\Alpha6Ops.RecoveryChecks\\ActiveFlightRecoveryChecks.cs",
+    "sha256": "AA9BFA14E14E4D6219DC3BF17784A82569FEA7C59D562585C40AABBD07A86FE4"
+  },
+  {
+    "path": "src\\Alpha6Ops.Api\\Properties\\launchSettings.json",
+    "sha256": "0A1083F47291C63CCAC6145450DE73BCD7457ACBFCCC05D1EC0E7D48A8C90373"
+  },
+  {
+    "path": "src\\Alpha6Ops.Api\\Program.cs",
+    "sha256": "80C159B87632239F175D1BC2602A6F360E664F2B48656B57141E187763B77533"
+  },
+  {
+    "path": "src\\Alpha6Ops.Api\\appsettings.json",
+    "sha256": "463D7B317190D4B4059D53E51513C0941B8D9B0794E9A318BB365F075F5B809D"
+  },
+  {
+    "path": "src\\Alpha6Ops.Api\\Alpha6Ops.Api.csproj",
+    "sha256": "2753D32B36A6F234B935ED53A4145D05E6E770FC8B704E1538C8BBE1ED5BD9F8"
+  },
+  {
+    "path": "tests\\Alpha6Ops.MigrationChecks\\Program.cs",
+    "sha256": "5210EABCEC5F735C57AA0288C592D55DB9B020636EE9DFD994210DB0D479CCA5"
+  },
+  {
+    "path": "tests\\Alpha6Ops.MigrationChecks\\Alpha6Ops.MigrationChecks.csproj",
+    "sha256": "66F19EB9021831B8235566FA2B4E9E7B4790AADB7199FE454B40663619B01018"
+  },
+  {
+    "path": "tests\\Alpha6Ops.MapBridgeChecks\\Program.cs",
+    "sha256": "D379A93F3D9A31C9D44E484865E64109668E065ADAAC6ABDBD180D1132705C9D"
+  },
+  {
+    "path": "tests\\Alpha6Ops.MapBridgeChecks\\Alpha6Ops.MapBridgeChecks.csproj",
+    "sha256": "FE37F9CBB9D4EF98D4893C2DF07236FD6D217F56DE42B4FA424AC0B26C487ABF"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\ActiveFlightWindow.xaml",
+    "sha256": "9998D479ABD002BF2510EC73E57B5E79D2C94C90DDE6755D3F70664D6307D4FB"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\ActiveFlightPlan.cs",
+    "sha256": "FE61441EC44FCFB0B531D84006559EADCF1870CD7E2BD0FCA3BB461B984C00E6"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\ActiveFlightWindow.xaml.cs",
+    "sha256": "5012799115315AB3A5AA579F9C351CA40BAF474AE98B1EEF31DF1CFEF8639AB2"
+  },
+  {
+    "path": "tests\\Alpha6Ops.MigrationChecks\\Fixtures\\history.sql",
+    "sha256": "4D0CF3F9A6D9BA940EEFF295FF32F04476825E408F8EFE03968CF98712ABF924"
+  },
+  {
+    "path": "tests\\Alpha6Ops.MigrationChecks\\Fixtures\\active-flight.json",
+    "sha256": "6BEBDBD3F0CDFA3DDA9611D827EA8AA3DC3E119C426EEB257B8B92A0E2452BFC"
+  },
+  {
+    "path": "tests\\Alpha6Ops.MigrationChecks\\Fixtures\\active-flight-state.json",
+    "sha256": "C9C59609E5A4A03FD1F7A28E576B5B2FE2947887B0C28D26561B30560A3847C8"
+  },
+  {
+    "path": "tests\\Alpha6Ops.MigrationChecks\\Fixtures\\gate-history.json",
+    "sha256": "C8B742F3DC70F28C74BB34ADA96C71E27D60D2BEE387DD026E6E4C6FC8F5F0B9"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\AircraftIdentity.cs",
+    "sha256": "450B616A704097D0747E580FD7C9AEF6E863A9491B704C4AD11425899CB3D10F"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\WindowCaptionButton.cs",
+    "sha256": "AB32409C866B74ADE5D38DCDEA2BD1C75A35B8A9EAA1AACF94EEFC6568D516FB"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\WeatherConditionIcon.cs",
+    "sha256": "DC1C26581909DEE748D204EF3052F58D8C5BF80165B3459AEB8D1CCEE251B85E"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\UserPreferences.cs",
+    "sha256": "2504D358F8E9CEFE269D22CC48929B00DE7DE71A88E2309C8CC621166BE8775B"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\TrackingIntegrationSmokeTest.cs",
+    "sha256": "46962C8FB7A3AB227A4F66B5CF59656877188B96D629E2BE4E210CA739DCDD4C"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\TimelineWindow.xaml.cs",
+    "sha256": "D564826C598C8DE346B04FA985E8E71678F9A74B81CFD97634E69A4D2809AC0E"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\TimelineWindow.xaml",
+    "sha256": "4300CA9124C0582873049132449C772A4157A970FAA0D89B80E8034EBDF8009A"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\SingleInstance.cs",
+    "sha256": "807987A43FDFB44DF78B95A04B67B500DC77202E80CA8E8DB964ADA7FC175398"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\SimulatorLauncher.cs",
+    "sha256": "FEBBE55392E46950C073F2B4A853A86E1E85C9116CB7082678E0F2A836F96D65"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\SimulatorFlightPlan.cs",
+    "sha256": "C698B434AC61B7823652BA981E1824A2F803E9B1C3DACE2EBC51D6EC1CE7FA94"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\SimulatorConnection.cs",
+    "sha256": "BC4ADFCA18EF34D76741797CCE053FB456FE745BD08053A0B2D6C9F471DCE9A7"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\SimConnectSource.cs",
+    "sha256": "FCDD5E65255D319B02E476CBE19D12A22BD9DADDB9B466B26758570D353B22DD"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\SimConnectProbe.cs",
+    "sha256": "AA0C4151D29BDD4096D522C92113B9A4748AF32FFD52B3317C40AF3F5062F920"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\SimConnectContext.cs",
+    "sha256": "DB03E681BA023EF70355C2DE481E0617537B6429D272FAD697365EB882AF04F2"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\SimBriefImporter.cs",
+    "sha256": "422B54C2AB3C0DF0081FD1E0F98CEC445744D1FD4ADE44862E0AD59B64115517"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\SierraStatePanel.cs",
+    "sha256": "D9BFA19F5190633B5A70BA17057A39B2EA07FF92BDCECD7712EACCEB5F91591E"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\SierraShellSmokeTest.cs",
+    "sha256": "5FC0538A10D57778BF0A944910164213BE2BE725A309FA97187F51668D31E8E9"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\SierraShell.xaml.cs",
+    "sha256": "334CDD95DEAA453A684A17140550290473B1A7BE14123BFE92EB41F900FC8B10"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\SierraShell.xaml",
+    "sha256": "B1847BC2432353E7D2BAEA38C7CEA0CFD8469108BFFD42B19F26DEE8BF5EEF85"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\SierraDesignTokens.xaml",
+    "sha256": "73B17C75923F63187DF796E632EBCCFFD8DFAB441190E786B6D7501A71D00849"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\SierraComponents.xaml",
+    "sha256": "6DC7B0486F3C7CE495E8B47B1DB824A532DCEE7D168702F9F57F7B21068663D7"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\ShellNavigation.cs",
+    "sha256": "65214B80C1BDE09E1ACAE4D05D196C6FB10CEBA3D43484624B019104E8BB5932"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\SettingsWindow.xaml.cs",
+    "sha256": "F12D2B2DAA645B72BD6EA00E31BE88BEBA37D0F7D90FAECAF86FA024D2BF7B70"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\SettingsWindow.xaml",
+    "sha256": "494B239FD2AF3A59E0E5FF6B072DB9F884DAB436E6BB793157A303A7FE64A9C1"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\ResponsiveSmokeTest.cs",
+    "sha256": "656BA97AE91BC01E142A98F9FC1FE56AAC47F0585A70FF36954033AF8A4C5143"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\RefreshSmokeTest.cs",
+    "sha256": "CB7E16D62C3D8E6199888B47A950C80C4BA3414906F351FA374FC3635A98A3F8"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\RecordedFlightReplay.cs",
+    "sha256": "DF629CF8136FE4E13EAB53E0AA6D03A92F20EA423EB843794A8EF0F123539505"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\ProgramMonitorSmokeTest.cs",
+    "sha256": "59B943C0FFBC520561FCB4C2D7AFBEB3B5D3C404E210EA6B82F9798940ED632E"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\ProgramMonitor.cs",
+    "sha256": "744F06784E6717657F534E06C2756383D047EEB5A409B739B06EC760D75894D9"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\PilotLogbookWorkspace.xaml.cs",
+    "sha256": "AF04D56F11EB7E41FA8E22F15D4E84251131E17E7D3AE4E1FE4F50830229CA18"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\PilotLogbookWorkspace.xaml",
+    "sha256": "6936163BBAD7F3A7193E75EBD90DA3DDEB1FA916C865315630CA5FF9A7AB7868"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\packages.lock.json",
+    "sha256": "D3B73E5424D788817024E0D64EC0DC1F1A15AE62EEF5841F66A05C2549A1E57B"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\OperationsWorkspaceWindow.cs",
+    "sha256": "31A5705AD79F991397F21F46A3D1A2CEC4468FA7793E34B57192B6A1027713E7"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\OperationsWorkspace.xaml.cs",
+    "sha256": "01555CBF85731A68760C2BA60D080580F64E20A22B496CDBAB6FB4ADD5FF491D"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\OperationsWorkspace.xaml",
+    "sha256": "9AF33884D91EC9AFD90713794401131858B3E9359E4D98902546C8E05D25748C"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\OperationsSmokeTest.cs",
+    "sha256": "0F58296CAB4F251ED9640DF608E520DFA91F4C6AB55AF3B58C27417F87B7C5A8"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\OperationsOverview.cs",
+    "sha256": "654DFBBDAF42C77B7BDC7A93706B9C88A37A8EE7AB9D80AC181D412DF7B2599A"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\OperationsMapHost.cs",
+    "sha256": "1BFDD36654E6F9ABD61AFC8F6F99B65CF84E324508F7301E94B0C98FB28721B3"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\OperationsLayoutChecks.cs",
+    "sha256": "D44F3B520E199B5464DF5BAFE24F3099FE7B32F9D2ACD2C2E703F0C65E8E0F35"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\OfpViewerWindow.xaml.cs",
+    "sha256": "AE4662CBDFF1058A1DCD4A4EA7F2EB715EA9CEA8200D096651CAAAB41D67B88B"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\OfpViewerWindow.xaml",
+    "sha256": "853B3C9C6394ABC80EFC0A7162AA7E1C97022DE6F52506722CD43BC13E486817"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\NetworkMap.cs",
+    "sha256": "C1B49F3B48AAAA53784954B5F5D533A927FC94FCA83F0E5EBBA58A13DA8D8569"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MonitorSmokeTest.cs",
+    "sha256": "B1999D79789D8FD56255B4A93E988D3C5C1C23E80647CF3412659839113630EA"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MapV2\\WebMapRenderer.cs",
+    "sha256": "622E481FBBE57FCEDAE64DED874BEBEB8C2604C99FAE03ABD9597C382D506063"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MapV2\\Web\\vendor\\NOTICE.webview2.txt",
+    "sha256": "106423785C5B7EBA0A8E61D1837F2132E9C828E20AD530F565D981C1DF60DD90"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MapV2\\Web\\vendor\\maplibre-gl.mjs",
+    "sha256": "3F55566295583644617FE17D008A36C580414B8C71DD2E1FCFF1309DE6FDEE5D"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MapV2\\Web\\vendor\\maplibre-gl-worker.mjs",
+    "sha256": "01AD197AA7F4CEC258A890FEBD71B7515E96309881B036A7095BEFC01A45296E"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MapV2\\Web\\vendor\\maplibre-gl-shared.mjs",
+    "sha256": "76B5F55BDEE928C65D592684AAFF2B913D50B6B17B0EC6334E88B09B6AA47960"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MapV2\\Web\\vendor\\LICENSE.webview2.txt",
+    "sha256": "0AF8F1B807512AAE39C2AC1AA4D0CAE65CABECB6FD554B8439A5162A0D6ECA55"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MapV2\\Web\\vendor\\LICENSE.maplibre.txt",
+    "sha256": "EE5FC05A0677EAF69601D2C7DB0D9ECD6CC27C3ABC1D0733BC9ED34707CF8EF2"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MapV2\\Web\\theme.json",
+    "sha256": "236EF036B18D7580C4D22237F91C10783DCC8D6BD9578E8AD97087C2F995D465"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MapV2\\Web\\NOTICES.txt",
+    "sha256": "9A055D61641BAC53FF37B38F1A1E5597D83CEA88540C5EADBA2B8CE889D1EC3E"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MapV2\\Web\\map.mjs",
+    "sha256": "618653A56E1DDB7FADCDC5AEC3D0623CCF39DC5F34E292D7E1593814A20EB5D5"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MapV2\\Web\\map.css",
+    "sha256": "347F4FE43159973647342868726C4D4552C18D2E76DD44D85C768DC3476BE1A9"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MapV2\\Web\\map-math.mjs",
+    "sha256": "E942930EAE555FB3879CF4A365B00ADE1DDD0A2BD6878082D3C9108798FEB8BD"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MapV2\\Web\\land.geojson",
+    "sha256": "2107631799E2492BB27C0F977C195362A230C7654EA31EBE21589791B4D4C9EE"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MapV2\\Web\\index.html",
+    "sha256": "7FED5DB988C9A53BA6EA60C9192627168AA74030E4DD16101A2840408ECE63EC"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MapV2\\Web\\assets-manifest.json",
+    "sha256": "37BF38FE64BE3BFE7AC44458E44A5DF970199E805476F04EAFF2D657F09F3A5B"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MapV2\\NativeMapInputTrace.cs",
+    "sha256": "2101A32CE1F79FC71EE8C12E366371CC311AB0426A33CDF7ABE59A1EAB02724A"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MapV2\\MapV2Checks.Restoration.cs",
+    "sha256": "79591874D448C71CF5558468965132029498A5B3608B3553B7FF5962861C328B"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MapV2\\MapV2Checks.FirstPaint.cs",
+    "sha256": "8FCDF7F524D97667C665DD8F88E2822E5612A6AA431FBE9192DB26C7385A8FC0"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MapV2\\MapV2Checks.Delivery.cs",
+    "sha256": "D9121CB04688B3B7D92A509C21FF27473C8112E2111E945B02BE974587EA0C19"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MapV2\\MapV2Checks.cs",
+    "sha256": "DCC58220D690FCA6706E9C392C74F293342564A3D4133C5DDAF59DC8D05755A4"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MapV2\\MapSolar.cs",
+    "sha256": "087AF750726620ED6280AF548949ADBABD6E6C61F2110BDE740FA1DD77F7F554"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MapV2\\MapSchedulingChecks.cs",
+    "sha256": "D26D586103D9CAD3B104CAD72D7C46EB021B05F2FB940A61A8041E4A86370308"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MapV2\\MapResponsivenessChecks.cs",
+    "sha256": "896028CA05C2B3C958DB5214C711BAAA3C2B02D40853590AC726024CADB457A4"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MapV2\\MapProjectionService.cs",
+    "sha256": "A74FF2B729AEF8B7E36C7775A220F735AF8A334CA3CBEE66203E7A8759318F39"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MapV2\\MapProjectionPump.cs",
+    "sha256": "A3A5BB40CE3ABFA63EFF25A6F58E6622869B8E16CDD6704DA33987F66B2DA7DA"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MapV2\\MapPerformanceChecks.Restoration.cs",
+    "sha256": "4241A76EAA74AC4ECE0FF062A9BCDE5B23B6E1114C2ADA47E3DAA752B4731451"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MapV2\\MapPerformanceChecks.cs",
+    "sha256": "6703E07D64D39A05E241C8210BD51A5CD18FF1E94CEFEB80D847B3511969B1B1"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MapV2\\MapModelChecks.cs",
+    "sha256": "789AC9EC0DAA7FB4DD10F2ABD712C9651890CF0865FB68BEA8ECA8EC6A633945"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MapV2\\MapInteractionChecks.cs",
+    "sha256": "80E88267F5E805D2BB339B945164713FD9F24F9D2DC6DF690A55CC3CBE22165A"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MapV2\\MapGeography.cs",
+    "sha256": "22D718CF8A56B19F59086C47B1ACD8E42B9A03A806AB28AC8BEF854F50D237EC"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MapV2\\MapContracts.cs",
+    "sha256": "99292E213E27ACD9A38734C9A5DBE3F8F2FBAEEB42039537EFCE8566299637CD"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MapV2\\MapContentionChecks.cs",
+    "sha256": "C567960E12B09D12F90832BFF1D0D2243E02C056CADF34C6D47CC976412D4443"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MapV2\\MapBridgeMetrics.cs",
+    "sha256": "C9B22F1982F23374CF66F22D55D1F969712AC2E4810742BB90FC16896D50774A"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MapV2\\LatestMapMailbox.cs",
+    "sha256": "3382049388CC929C747DC1BD6EAF004A7745E17935D6DF517BE8FA6192A87E30"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MapV2\\IMapRenderer.cs",
+    "sha256": "4B257E1EFB3031D49310244B219CD7C3155F0CDDE41AC59325E53F7182418876"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MapV2\\DispatcherSchedulingTrace.cs",
+    "sha256": "046FBCC63CE467DD313365C08B299DB266A8C1FDE319F679AA328731B37244EC"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MainWindow.xaml.cs",
+    "sha256": "A43F75244B957C23CCF737A43B2B4D91A30F65385C1CA45DBB0B88105DF45D02"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MainWindow.xaml",
+    "sha256": "98A30B15A142D770C079AE42A39D0C8185B765027CB9002B7FC170D2C723D809"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MainWindow.Shell.cs",
+    "sha256": "B6D5293155F53D28CE78728FEBD6B9AFABC8E78ED766CCB7D63FB214974B32FF"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MainWindow.Schedule.cs",
+    "sha256": "6FD87CB87BE2B1A22EE8FB5B7456E3C5300299D49384C82409A1938889C7D65F"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MainWindow.Responsive.cs",
+    "sha256": "6D332E113E1B61A82222AAAD9B420D0848F6D125922C885474094108B834324C"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MainWindow.Operations.cs",
+    "sha256": "83DF1738B4F5177DF358541B0DC15BF88A46ABDEB426660457B6E2660E579532"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MainWindow.LiveIdentity.cs",
+    "sha256": "2FFD1D923844FBB4B1AFCA881A51C6E190A50C53B06A20A53D0A56A3BB732AAA"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MainWindow.Header.cs",
+    "sha256": "728BF57AE69345E5188CFA7152EC24C86DB07926DEA95C17258A1AD3CD4641C9"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MainWindow.Gates.cs",
+    "sha256": "76C5DEACF75A3E89F697A818ABAE8D53CC68B6854CA61B183C3218DCEB9D914D"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MainWindow.FlightSession.cs",
+    "sha256": "703CEA958A7B389FE9A3788F1F0096684D9E179DAC18C55E8565050CEE611E71"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MainWindow.Display.cs",
+    "sha256": "32012D00C6B62CDA43FBD13769D201589F77075C0F941A540E88B9C55F72641B"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\MainWindow.Dashboard.cs",
+    "sha256": "97BA71B4739FD6CCAF69223F082445915546BD51D4D4FFF76B1E60B6C5B174C5"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\LogFileDatabase.cs",
+    "sha256": "EF400AD903F4133DF80EB77FECA0056A97A984989E6B715E7B1EE9694B49A4F3"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\LogDatabaseWindow.xaml.cs",
+    "sha256": "E41CAFB09CFEB1116DC4D5F88970621943CFF156732CC4FA899630E7741CB696"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\LogDatabaseWindow.xaml",
+    "sha256": "6F57406DDFCAA65719FA5EECBD7EBC695A3271D667FF1541C2B5D82AFFF6167D"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\LocalWeatherService.cs",
+    "sha256": "BDCCB36D0354F563F6DF136713877D59216BFF275DE123BE2BE591AB3831170A"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\LiveIdentitySmokeTest.cs",
+    "sha256": "7D55EA9668A2788437693F35F7998E0F3D7CA6E080F0F18ADC50ABC55A22B58B"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\HeaderSmokeTest.cs",
+    "sha256": "A9736DD6EB2665C54579A3D87B8B804C064E00B3E56273142F5DB4D18E24CE30"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\GeneralSettings.cs",
+    "sha256": "7AE28C4C1AD22B683648BCBB975C00B4BFA08C4E4E0E1965D257EEA74476424C"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\GateAssignmentWindow.cs",
+    "sha256": "4F4D11B33F6F5EE639E731F4883310A577C811C48DBDC807D7FD7E803E844186"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\GateAssignment.cs",
+    "sha256": "B5CAB411764D9594A48F8B37DC15CE94B9693DE4EC53E4CFA81E4747BD255303"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\FlightTrackingWorkspace.xaml.cs",
+    "sha256": "A8819C845991BB4B3EEE3ABCC9922BD498DAA098F8B93B7EEB6C57F80EEDD57A"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\FlightTrackingWorkspace.xaml",
+    "sha256": "68F1A8A7BCF43423E51CAE8C83CEBCC773F38FE5DD965EB951833ECA083AB07E"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\FlightTrackingEvents.cs",
+    "sha256": "649430E60A55F0D554B78EEC2FD95E403456DA1AD34AF0E8AF1320EEB362F416"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\FlightSessionSnapshot.cs",
+    "sha256": "F1922D2F6A3EAC9577D7AD19D695EA94601EA0FEFCDF4300DF6030E1649A01B1"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\FlightSessionDiagnosticAccess.cs",
+    "sha256": "F308B90ADAC33784A1F362A4C8C7C60636BF1B6FD5CC01C1420E514F4B0C9504"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\FlightSessionCoordinator.Tracking.cs",
+    "sha256": "058F983C771EC9F5BF968714D9DC2B20CC5AECE2E52727A6AB47CC7C7F172DC2"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\FlightSessionCoordinator.Identity.cs",
+    "sha256": "46C5C21F4483814F1D1FF71DEE21772060BD2EBB301BAC0B2B16FCFCC4D7ECEB"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\FlightSessionCoordinator.cs",
+    "sha256": "0D7FC54B6853D2BFEC16F56F48830E2B069508DB62716B15DD7193D7F04AD0AF"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\FlightSessionCoordinator.Connection.cs",
+    "sha256": "07A721A1A8562CF6715D99A16E151254B588047EA77EFB6D31952D0E55DA5EED"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\FlightSessionCoordinator.Commands.cs",
+    "sha256": "1D368CD8E0B943F56C29AED692F28CDFB6A0F9B15C23D2CE1B48EFB476428082"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\FlightRouteMap.cs",
+    "sha256": "64007B3BD052AA20E5BEC69E34A9FDE95C27EA38A1DB6F0FEAD29B6FD49308C5"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\FlightRecovery.cs",
+    "sha256": "325422D579BCA7496415B7F7A2FFB123C3D0E672D1CADB84EE95294AA83B52B8"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\FlightHistoryWindow.xaml.cs",
+    "sha256": "177B7AC4E377082AA91D9739CE4E8D39A62F30A8D050440CFB634AD303B807F4"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\FlightHistoryWindow.xaml",
+    "sha256": "DD9C804426B4A674BC1F09174118F8E6AC46B7F43D9199DD4DA95E5BEEB831E4"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\FlightHistoryDatabase.cs",
+    "sha256": "53A03FF3A844FCD658376B91CCCDC39FAC0400BCAD16977F3EA20F7E5F3B0347"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\FlightClock.cs",
+    "sha256": "EC01250A36AF1C848CFB328EFEA06481ABC0BF8385B3A701A93ED49B858C588B"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\FleetWindow.xaml.cs",
+    "sha256": "4681E1FE82079D53EAA4C189117AFC61F09D95588860891D67F3ED4351D74B7D"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\FleetWindow.xaml",
+    "sha256": "5D2F4DC00992E88819BD34E3271C6D95B1B0955EC2A0120FE079384A9C671F63"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\FleetDatabase.cs",
+    "sha256": "47FA6E2BDCDCE08C3DA857E8A9B65005A4127CA2FB21986C7003900D4572B4F4"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\EmbeddedReplay.cs",
+    "sha256": "70727C82F1B164FFCA7BA96FC48E39CF13D62A8CE499720EE7C0FC998267AD63"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\DispatchWorkspace.xaml.cs",
+    "sha256": "43211AE40B4F4A5DFF2AED5AB7338B2F3402CAE651E9D3C37A0064A73E30DF41"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\DispatchWorkspace.xaml",
+    "sha256": "5866A3378275B2264B29E5B3DF141094B3F07396B63D52BBD2C4330F547BEE53"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\DispatchGateEditor.cs",
+    "sha256": "FFFF12D5349C26A8020274EAC71ACB3AB0FE3F5DED45A5A1981DA6A4A8FF2693"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\DiagnosticIndexSmokeTest.cs",
+    "sha256": "F00E96DAB6A8571FB346FA0FDCA08F9FCD2707B1C5E6A407F750AEF1CCB9F852"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\DesktopSmokeTest.cs",
+    "sha256": "2212B9AB24DE5097029C9E43AB4CAD5B2BC6ADD9288D04C280BCAB1272A9D457"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\DebriefWindow.xaml.cs",
+    "sha256": "D4401AEA634095FE232C27AAACD79687241F189FB240C20B96A33EFC7318237E"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\DebriefWindow.xaml",
+    "sha256": "03E5CF10AA23DE61D149CBEB44550B0A4C3FA9D27A8323651CA01AB87B48E091"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\DashboardTilePanel.cs",
+    "sha256": "8871FF90669413DBDFE332828B3A71E2FD6D9CBCFD743FF992F62A8916187228"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\DashboardStyles.xaml",
+    "sha256": "7E256DB0B23C7C091164AF482EE33EB44E03FAF1E584DA8E987C5D494E2FB655"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\DashboardSmokeTest.cs",
+    "sha256": "3EFAE22E5425057FF18C23F624956DE471A7FC14609D2A4740B5A3044264C0FB"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\DashboardData.cs",
+    "sha256": "3D89CFB58CCC13FA7F80F129419C42A3CBFC0F962577741797C593159DF3C0E0"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\DashboardBodyPanel.cs",
+    "sha256": "CD95FEBCCE6E739C8C93A980580440A8C69D560BAB92BC4B701825905A6253FA"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\CrashReporter.cs",
+    "sha256": "22CBE3C71E1A295D9E6E3673B8A13ABFD7CCFB1BA5C5782981C7D19BF2B4C7EF"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\Assets\\Sierra4\\s4-mark.png",
+    "sha256": "868D9F707257FFA005BFE16A3731518058332283E01DF4AB0D41940A8C9A5479"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\Assets\\Map\\provenance.json",
+    "sha256": "3331393FA0DFE4A9B343A9D5635F1E335CE20D89F793122919EEFBA3D98DF3DF"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\Assets\\Map\\ne_50m_land.geojson",
+    "sha256": "2107631799E2492BB27C0F977C195362A230C7654EA31EBE21589791B4D4C9EE"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\Assets\\Map\\ne_110m_land.geojson",
+    "sha256": "9E0729EE253CA7D7A5C4AE9395FB1902264C5377C52E224D13DD85010E2835D9"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\Assets\\Map\\ne_110m_land-mask.png",
+    "sha256": "C57EB32B0CC5D48DB5662E456C3D86477D32ED5960E03E5B13776E4E9D3908AB"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\Assets\\Dashboard\\weather.png",
+    "sha256": "AE35CAE70776E72BEE9CBF46D66A231AE6CC85BE2405192DE7177CC0B946ACC1"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\Assets\\Dashboard\\pilot-logbook.png",
+    "sha256": "E28AEF4F574D3756C24ACF88038AE05F91AB229C418C369AFD52ECC9E842156E"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\Assets\\Dashboard\\passengers.png",
+    "sha256": "A97D92A7F1458FC38EF7499B7F84EF389DEC5960B6B45379F7801AC9E3BCCB26"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\Assets\\Dashboard\\operations.png",
+    "sha256": "45865C8CB1EB056B6834C9AC9753A0C94A3597E96ED0309C7A2F15FF5C228A04"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\Assets\\Dashboard\\occ.png",
+    "sha256": "09C2BE2F182628E3B7D9FD9E814E0FA5F5A480494A02CDCEC252AA7ED8313B94"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\Assets\\Dashboard\\maintenance.png",
+    "sha256": "D5E848A18A8F01EE1E0E09C5B14590DCF00084C8D47331C3347C7646CCA0B99B"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\Assets\\Dashboard\\hero-unbranded.png",
+    "sha256": "61379702CB44F00326A95EDDA505F89C55FD4BFC05B7EBCAEFF9D9AE901E39FD"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\Assets\\Dashboard\\flights-unbranded.png",
+    "sha256": "3D911EDF9DF5ED55D898D24A6B48E3E3B02657012334DCAC25816FC1C30C1759"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\Assets\\Dashboard\\crews.png",
+    "sha256": "39F6AFF5945A78D980828285277CAF3FCA4390F5830873446C3807477D8C573C"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\Assets\\Dashboard\\alpha6-ops-logo.png",
+    "sha256": "C5345ECBBEC15164DB2F057A9C56A4F642F79CB68673A78996CB91735357809C"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\Assets\\Dashboard\\alpha6-designs-logo.png",
+    "sha256": "8391A089B945AE1FC52681DB2CAF590E63A245D056C75B77D462271636F76875"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\Assets\\Dashboard\\aircraft.png",
+    "sha256": "0E07EAD21F7867A9C31FE031BE4707F0603C9C69B2A93B2341435C2818D831C4"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\Assets\\Alpha6OPS.ico",
+    "sha256": "AE2E30331855F337437FA9A3C47603AC5E5E5C7E7F277BF1EBF89C7696C8472F"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\Assets\\Alpha6OPS-icon.png",
+    "sha256": "EEAA71EC158FB763FBCA047AEDA5BB9672E359DBF2980B5FDD948C6A50A300A9"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\Assets\\alpha6.ico",
+    "sha256": "335869E6F4A87E711CD9DA35B3C68F7E1146E2E9DD247A5F13BC1D1657472A9E"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\Assets\\alpha6-mark.png",
+    "sha256": "6A67F899A8C639FC65CDCFE4D6ED817D6412942395675B9BEF512C799FACC10E"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\App.xaml.cs",
+    "sha256": "E549CC1713A6B2D966906F98EA9CD73097F3A6AFA8080ABE55B6FD0C49341D1A"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\App.xaml",
+    "sha256": "625BD09899990CC4BAE5ABAF75CB3223FA410067247D36AF0ECFCBBA38ABA421"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\app.manifest",
+    "sha256": "AA3DEAC3234963A827B4E8E33537CDFAB7CF9419D0310B07A10BC2798D3A93E3"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\Alpha6Ops.Desktop.csproj",
+    "sha256": "A5EFCC7F88CE79926C68C3B0EB75B6935584D9315F56E9803020C7CAB7E4BFC9"
+  },
+  {
+    "path": "src\\Alpha6Ops.Desktop\\AirportCatalog.cs",
+    "sha256": "928B66B5C6878297FAA56331BDD834E2C4E28B6523D78BFC38C779691F9EA27B"
+  }
+]

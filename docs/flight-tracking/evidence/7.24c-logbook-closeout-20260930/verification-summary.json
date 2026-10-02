@@ -1,0 +1,83 @@
+{
+  "checkpoint": "7.24C",
+  "status": "PASS / CLOSED",
+  "groups": [
+    {
+      "name": "Full baseline",
+      "executed": 1958,
+      "passed": 1958,
+      "failed": 0,
+      "skipped": 2
+    },
+    {
+      "name": "Logbook final package",
+      "executed": 40,
+      "passed": 40,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "Terminal",
+      "executed": 203,
+      "passed": 203,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "Active recovery",
+      "executed": 69,
+      "passed": 69,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "Recovery confirmation",
+      "executed": 21,
+      "passed": 21,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "Map V2",
+      "executed": 199,
+      "passed": 199,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "Additional replays",
+      "executed": 2,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0
+    }
+  ],
+  "closingSet": {
+    "executed": 2492.0,
+    "passed": 2492.0,
+    "skipped": 2.0,
+    "failed": 0.0
+  },
+  "replays": 11,
+  "historicalSamples": 100632.0,
+  "preservedFinalNativeSamples": 6197,
+  "newLogbookChecks": 40,
+  "initialRecoveryWrapperFailed": true,
+  "initialFailurePreserved": true,
+  "unchangedT2Control": {
+    "unexpectedDiagnosticReports": 2,
+    "deniedHealthWrites": 4,
+    "focusedCases": 30
+  },
+  "correctedControl": {
+    "unexpectedDiagnosticReports": 1,
+    "deniedHealthWrites": 2,
+    "focusedCases": 20
+  },
+  "productionMonitorChanged": false,
+  "nativeConnected": false,
+  "installed": false,
+  "frozenT2Replaced": false,
+  "additionalFlightRequired": false,
+  "note": "Closing set counts one final run per group, not red/development/probe repetitions. Health status-marker limitation is retained in report; native flight evidence belongs to unchanged frozen T2."
+}

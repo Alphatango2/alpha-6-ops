@@ -1,0 +1,27 @@
+[
+  {
+    "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\docs\\flight-tracking\\evidence\\7.24c-shutdown-20260928\\analysis.json",
+    "bytes": 41507,
+    "sha256": "5423533197359BAC4C909204B652B7735EA64CC2AD968BF57FB369D365F2B8EA"
+  },
+  {
+    "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\docs\\flight-tracking\\evidence\\7.24c-shutdown-20260928\\preservation.json",
+    "bytes": 315,
+    "sha256": "820FBC39A579F6A4C7016DE2DF870F3A56E5726B18124F129788346B1AD326A2"
+  },
+  {
+    "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\docs\\flight-tracking\\evidence\\7.24c-shutdown-20260928\\terminal-telemetry.csv",
+    "bytes": 166396,
+    "sha256": "0EE9985C3AFC7480E17F869975CA44389C4DC90BE5BF6EB866DD92F5690876F0"
+  },
+  {
+    "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\docs\\flight-tracking\\7.24c-engine-shutdown-pirep-analysis.md",
+    "bytes": 18241,
+    "sha256": "5F24270819BD03E4B53C4D31CDC641F1CBF2A35E8E89D7548B213110E270B89A"
+  },
+  {
+    "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\analyze-jst776-shutdown.py",
+    "bytes": 13430,
+    "sha256": "62A3649A7B03C4B52B3A3D360D1BED615CD0B4D517FE89140B8A00B07C8C57B0"
+  }
+]

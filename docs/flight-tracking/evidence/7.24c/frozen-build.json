@@ -1,0 +1,50 @@
+{
+  "validationBuildId": "S4-7.24C-C1-20260928-64e864462ace",
+  "version": "0.22.0",
+  "label": "7.24C VALIDATION C1",
+  "sourceCommit": "020bda9f7d1dd7e16c6ecfeec67c4e4e007c6215",
+  "sourceIsDirty": true,
+  "sourceContentManifestSha256": "64E864462ACEE1D3847B7BF7CA52F225FC72A4D9235E369F3885F2DA04AE3709",
+  "sourceSnapshotSha256": "DC0BECC74DCAD45994C82E37DEA66E03994715091D71821FF760479CF93AA1C5",
+  "frozenAtUtc": "2026-09-28T17:15:29.7226978+00:00",
+  "packageDirectory": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\outputs\\Alpha6OPS-Desktop-S4-7.24C-C1-20260928-64e864462ace",
+  "installerPath": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\outputs\\Alpha6OPS-Desktop-S4-7.24C-C1-20260928-64e864462ace\\Alpha6OPS-Setup-0.22.0-7.24C-C1.exe",
+  "portableZipPath": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\outputs\\Alpha6OPS-Desktop-S4-7.24C-C1-20260928-64e864462ace\\Alpha6OPS-Desktop-0.22.0-7.24C-C1-win-x64.zip",
+  "primaryBinaries": [
+    {
+      "path": "Alpha6Ops.Core.dll",
+      "bytes": 98816,
+      "sha256": "D9BE8BA87161EF92957E6D64DBE443099BDB895E9DC7BF1078E961479BF354D4"
+    },
+    {
+      "path": "Alpha6OPS.dll",
+      "bytes": 26463744,
+      "sha256": "005591611C3C73822D3B913260C3067EA53F96E60FA78AC53D9A9A5BFCBEBF46"
+    },
+    {
+      "path": "Alpha6OPS.exe",
+      "bytes": 305664,
+      "sha256": "766046B7277B30E53E93A545A282366DC5F60A720EC0A8C3D8B83355CD6B3D9E"
+    }
+  ],
+  "packageHashes": [
+    {
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\outputs\\Alpha6OPS-Desktop-S4-7.24C-C1-20260928-64e864462ace\\Alpha6OPS-Setup-0.22.0-7.24C-C1.exe",
+      "sha256": "1B1B5FB4C7FF240455BB73E5C916A57C89C7359739F71A17C80E78F96E5DB266",
+      "bytes": 107792384
+    },
+    {
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\outputs\\Alpha6OPS-Desktop-S4-7.24C-C1-20260928-64e864462ace\\Alpha6OPS-Desktop-0.22.0-7.24C-C1-win-x64.zip",
+      "sha256": "42351D03F55A7B66D45CA93A6CBD41CCCB9F8B2D557BB9E3A6AE1829EEEF21E5",
+      "bytes": 106856112
+    }
+  ],
+  "payloadFileCount": 514,
+  "portableZipFilesVerified": 514,
+  "embeddedPayloadSha256": "42351D03F55A7B66D45CA93A6CBD41CCCB9F8B2D557BB9E3A6AE1829EEEF21E5",
+  "payloadManifestSha256": "0B91E5AE26DB7F0BB213FAAD6F86BD872A2A76118DAE2FED3EEA32F94F5042DA",
+  "defaultRenderer": "classic",
+  "mapV2": "session opt-in",
+  "installed": false,
+  "closure": "NO-GO: physical drag attribution/correction and native active restart pending"
+}

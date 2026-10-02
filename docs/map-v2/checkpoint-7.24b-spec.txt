@@ -1,0 +1,689 @@
+CHECKPOINT 7.24B — INSTALLED NATIVE MSFS PILOT VALIDATION
+
+PURPOSE
+
+The automated 7.24A investigation series is complete.
+
+Historical decisions remain:
+
+7.24A:
+NOT READY
+
+7.24A.1:
+NOT READY
+
+7.24A.2:
+NOT READY under the automated/root-cause prerequisite.
+
+However, 7.24A.2 established that:
+
+- the frozen final numerical responsiveness assessment passed
+- authoritative flight processing remained intact
+- Map V2 remains presentation-only
+- recovery remained intact
+- PIREP behavior remained intact
+- lifecycle/disposal remained intact
+- the unresolved issue is intermittent WPF/WebView2CompositionControl scheduling delay
+- no safely remediable production defect was identified
+- no production fix was justified
+- Map V2 remains opt-in
+- classic map remains default/fallback
+
+Checkpoint 7.24B is therefore authorized as a CONTROLLED INSTALLED PILOT VALIDATION.
+
+This is NOT approval to make Map V2 default.
+
+This checkpoint exists to determine how Sierra 4 behaves when:
+
+- installed normally
+- connected to real Microsoft Flight Simulator
+- receiving real SimConnect data
+- operated by a real user
+- used during an actual flight
+- using actual physical mouse/keyboard/display/DPI behavior
+
+This checkpoint should close as much of the native/manual validation gap as possible.
+
+DO NOT attempt to solve the Composition scheduling issue during the validation flight.
+
+FIRST CAPTURE REAL-WORLD EVIDENCE.
+
+
+============================================================
+PART 1 — FREEZE AND ARCHIVE THE VALIDATION BUILD
+============================================================
+
+Before building or installing anything:
+
+1. Record the exact source commit.
+2. Archive the source manifest.
+3. Archive the exact production DLL/executable binaries used for validation.
+4. Record SHA-256 hashes for:
+   - executable
+   - primary application DLL
+   - installer
+   - portable ZIP if produced
+   - Map V2 browser assets
+5. Record configuration relevant to Map V2.
+6. Record the exact validation version/build identifier.
+
+Do this BEFORE subsequent rebuilds.
+
+This explicitly addresses the historical binary-retention limitation identified during 7.24A.2.
+
+The validation build must be reproducible and identifiable after testing.
+
+
+============================================================
+PART 2 — BUILD AND PACKAGE
+============================================================
+
+Create the normal production Sierra 4 migration build using the existing packaging process.
+
+Do not perform final distribution rebranding yet.
+
+The existing Alpha6OPS-compatible package/storage identity may remain for this validation build.
+
+Requirements:
+
+- Release build
+- zero build errors
+- zero build warnings where currently expected
+- normal installer generated
+- portable package generated where normally supported
+- Map V2 assets included correctly
+- WebView2 runtime detection retained
+- classic map retained
+- Map V2 remains opt-in
+
+Do not silently change Map V2 default settings.
+
+
+============================================================
+PART 3 — PRE-INSTALL REGRESSION
+============================================================
+
+Before asking the user to install the build, run the appropriate automated verification.
+
+At minimum verify:
+
+- Core
+- Desktop
+- Dashboard/Operations
+- FlightSession isolation
+- Recovery
+- Map V2
+- Map lifecycle/fallback
+- persistence compatibility
+- existing recorded-flight replays where appropriate
+- unexpected-report guards
+
+Verify that the build intended for installation is the same build whose hashes were archived.
+
+Do not install an unverified rebuild.
+
+
+============================================================
+PART 4 — INSTALLATION CHECKPOINT
+============================================================
+
+STOP and instruct the user to install the frozen validation build.
+
+Do not continue automatically past installation-dependent steps.
+
+Provide concise instructions for:
+
+1. closing any existing Sierra 4 / Alpha6OPS process
+2. installing the validation build
+3. launching the installed application
+4. confirming the expected validation version/build identity
+
+After launch verify with the user:
+
+- application starts normally
+- existing profile data is readable
+- historical flights remain present
+- saved gates/settings remain present
+- no unexpected migration/data loss occurs
+- Operations loads
+- classic map loads
+- Map V2 can be enabled manually
+- no startup crash report appears
+
+Do not modify the user's existing profile files merely for testing.
+
+
+============================================================
+PART 5 — INSTALLED APPLICATION BASELINE
+============================================================
+
+Before starting MSFS, collect an installed-client baseline.
+
+Record where practical:
+
+- application startup time
+- Map V2 initialization time
+- browser process count
+- memory/resource baseline
+- unexpected reports
+- WebView2 runtime/version
+- display resolution
+- Windows scaling
+- monitor configuration
+- application window size
+
+Confirm:
+
+CLASSIC MAP = DEFAULT
+
+MAP V2 = OPT-IN
+
+Do not change this policy during 7.24B.
+
+
+============================================================
+PART 6 — PHYSICAL MAP INPUT VALIDATION
+============================================================
+
+With Map V2 manually enabled, ask the user to physically exercise:
+
+- mouse pan
+- mouse wheel zoom
+- aircraft selection
+- origin airport selection
+- destination airport selection
+- route selection where available
+- Follow
+- Unfollow
+- World/Home
+- Focus
+- Layers
+- keyboard navigation
+- Escape focus bypass
+- switching between Sierra shell navigation and the map
+
+Ask the user to report:
+
+- smooth
+- minor hitch
+- obvious freeze
+- input ignored
+- incorrect focus
+- other visible issue
+
+Do not infer physical input success from browser automation.
+
+
+============================================================
+PART 7 — PHYSICAL WINDOW / DPI VALIDATION
+============================================================
+
+Ask the user to exercise the real installed application with actual Windows behavior.
+
+Where available:
+
+- resize window
+- maximize
+- restore
+- minimize
+- restore
+- move between monitors
+- test different monitor scaling if practical
+- verify WPF overlays above Map V2
+- open search over the map
+- open dropdowns/tooltips/dialogs around the map
+- verify text remains readable
+- verify map controls remain clickable
+
+Record actual:
+
+- resolution
+- scaling percentage
+- monitor used
+
+Do not treat previous LayoutTransform captures as physical DPI evidence.
+
+
+============================================================
+PART 8 — NATIVE MSFS CONNECTION LIFECYCLE
+============================================================
+
+Launch Microsoft Flight Simulator normally.
+
+Test the previously unavailable native gate:
+
+NATIVE_CONNECTION_LIFECYCLE
+
+Validate:
+
+1. Sierra 4 initially disconnected.
+2. Connect Sierra 4 to the running simulator.
+3. Native SimConnect connection succeeds.
+4. Real telemetry begins arriving.
+5. Sierra 4 reports the correct connection state.
+6. Aircraft identity/telemetry appear where expected.
+7. Disconnect intentionally.
+8. Verify native connection closes cleanly.
+9. Verify the flight/application does not create duplicate sessions.
+10. Reconnect where appropriate.
+
+Collect diagnostic evidence sufficient to distinguish:
+
+- successful native connection
+- successful native disposal
+- duplicate connection
+- stale callback
+- unexpected reconnect
+- failure
+
+
+============================================================
+PART 9 — NATIVE RAPID RECONNECT
+============================================================
+
+Test the second historically unavailable gate:
+
+NATIVE_RECONNECT
+
+Perform a controlled native disconnect/reconnect sequence.
+
+Verify:
+
+- obsolete callbacks are rejected
+- new connection generation becomes authoritative
+- no duplicate telemetry stream appears
+- no duplicate flight session appears
+- no stale aircraft state overwrites current state
+- no crash
+- no hung connection worker
+- no orphan native connection
+- Map V2 does not initiate or control reconnect
+
+If a rapid reconnect procedure could interfere with an active real flight, perform this before the validation flight.
+
+Do not endanger an in-progress validation flight merely to satisfy the test.
+
+
+============================================================
+PART 10 — REAL FLIGHT SETUP
+============================================================
+
+Prepare one real MSFS validation flight using the normal Sierra 4 workflow.
+
+Use real application functionality.
+
+Where applicable:
+
+- import/select flight
+- review assignment
+- verify origin/destination
+- verify aircraft
+- verify schedule
+- verify gates
+- accept assignment
+- open Dispatch
+- connect simulator
+
+Do not use synthetic telemetry for this portion.
+
+
+============================================================
+PART 11 — MAP V2 REAL TELEMETRY VALIDATION
+============================================================
+
+Enable Map V2 manually for the real flight.
+
+Validate that real SimConnect telemetry produces:
+
+- correct aircraft position
+- correct heading
+- appropriate aircraft movement
+- correct route
+- correct origin/destination
+- observed track
+- appropriate planned/completed route semantics
+- selection
+- Follow behavior
+- World/Home behavior
+- day/night presentation
+- correct stale handling if connection is interrupted
+
+INTERPOLATION REMAINS PRESENTATION ONLY.
+
+Verify no map position feeds back into authoritative flight state.
+
+
+============================================================
+PART 12 — HUMAN-PERCEIVED RESPONSIVENESS OBSERVATION
+============================================================
+
+This is a major objective of 7.24B.
+
+The user must actively observe Map V2 during real operation.
+
+During the flight, periodically perform:
+
+- map pan
+- zoom
+- aircraft selection
+- Follow/Unfollow
+- shell navigation
+- Operations → another workspace → Operations
+- resize where safe
+- minimize/restore where safe
+
+Record any user-visible responsiveness event approximately as:
+
+A. NO NOTICEABLE HITCH
+
+B. MINOR HITCH
+   visible but not disruptive
+
+C. MAJOR HITCH
+   obvious pause / roughly 0.5–1 second
+
+D. SEVERE FREEZE
+   roughly 1+ second or clearly disruptive
+
+For each noticeable event record where practical:
+
+- approximate time
+- flight phase
+- action being performed
+- whether Map V2 was visible
+- whether map was moving
+- whether surrounding WPF UI also froze
+- whether flight telemetry continued
+- whether the application recovered automatically
+
+Do not claim a Dispatcher heartbeat measurement equals a user-visible freeze.
+
+Do not dismiss a user-visible freeze merely because flight telemetry remains intact.
+
+
+============================================================
+PART 13 — COMPLETE REAL FLIGHT
+============================================================
+
+Where practical, complete the entire flight.
+
+Validate:
+
+- preflight
+- taxi out
+- OUT
+- takeoff
+- OFF
+- climb
+- cruise
+- descent
+- approach
+- landing
+- ON
+- taxi in
+- IN / block-in
+- flight completion
+- PIREP eligibility
+- PIREP submission
+- durable history
+
+Verify Sierra 4 records the expected operational events from real SimConnect telemetry.
+
+
+============================================================
+PART 14 — REAL RECOVERY VALIDATION
+============================================================
+
+Perform a controlled recovery test at an appropriate safe point.
+
+Do NOT jeopardize an important flight unnecessarily.
+
+Preferred options:
+
+A. separate short validation flight/session
+
+or
+
+B. a deliberately chosen safe point during the validation flight
+
+Test:
+
+1. active flight exists
+2. real telemetry has been processed
+3. recovery state has been saved
+4. close Sierra 4 normally
+5. relaunch Sierra 4
+6. verify active-flight recovery
+7. reconnect to MSFS
+8. verify session continuity
+9. verify no duplicate session
+10. verify tracking continues
+
+If application shutdown/restart during the primary flight is considered too risky, use a dedicated short native validation session instead.
+
+
+============================================================
+PART 15 — MAP FAILURE / CLASSIC FALLBACK
+============================================================
+
+Where safe, verify the user can manually return from Map V2 to the classic map.
+
+Confirm:
+
+- flight session continues
+- SimConnect does not reconnect
+- authoritative state remains unchanged
+- Operations remains usable
+
+Do not deliberately crash the browser during a real flight unless a safe isolated validation session is used.
+
+Automated failure/fallback coverage from previous checkpoints remains valid evidence.
+
+
+============================================================
+PART 16 — LONGER REAL MAP OBSERVATION
+============================================================
+
+Keep Map V2 visible for a meaningful portion of the real flight.
+
+Preferably include cruise.
+
+Record:
+
+- approximate duration
+- memory trend where practical
+- browser process behavior
+- any visible degradation
+- any map freeze/hitch
+- any WPF freeze/hitch
+- any fallback/restart
+- any unexpected report
+
+This is real-pilot observational evidence, not a replacement for automated profiling.
+
+
+============================================================
+PART 17 — POST-FLIGHT DATA VALIDATION
+============================================================
+
+After completion:
+
+verify:
+
+- flight appears in history/logbook
+- expected operational events exist
+- PIREP persisted
+- recovery was cleaned appropriately after completion
+- no duplicate flight exists
+- no duplicate PIREP exists
+- no unexpected connection generation exists
+- no stale active assignment remains unless existing workflow requires it
+- saved profile data remains readable
+
+Do not modify production data merely to make validation pass.
+
+
+============================================================
+PART 18 — REPORT / LOG AUDIT
+============================================================
+
+Audit the installed validation session for:
+
+- crash reports
+- unobserved-task reports
+- recovery reports
+- map renderer reports
+- SimConnect errors
+- stale callback diagnostics
+- browser failure/restart
+- unexpected fallback
+- duplicate connection/session evidence
+
+Distinguish expected test-induced reports from unexpected production reports.
+
+Do not whitelist a new unexpected error after the fact.
+
+
+============================================================
+PART 19 — MAP V2 DECISION
+============================================================
+
+At the end of 7.24B classify Map V2 as:
+
+A. CANDIDATE FOR DEFAULT
+
+B. REMAIN OPT-IN
+
+C. DISABLE FOR NORMAL USE
+
+Do NOT automatically change the default setting during this checkpoint.
+
+CANDIDATE FOR DEFAULT requires:
+
+- native connection lifecycle passes
+- native reconnect passes
+- physical map input is acceptable
+- actual DPI/window behavior is acceptable
+- real flight completes correctly
+- recovery validation passes
+- PIREP/history persist correctly
+- no serious user-visible Map V2 freeze occurs
+- no critical unexpected reports occur
+- operational flight truth remains unaffected
+
+If user-visible freezes occur but flight truth remains intact:
+
+REMAIN OPT-IN.
+
+If Map V2 destabilizes the application or flight workflow:
+
+DISABLE FOR NORMAL USE.
+
+Changing the actual default requires a separate explicit decision after reviewing this report.
+
+
+============================================================
+PART 20 — GLOBE READINESS
+============================================================
+
+Do NOT implement globe projection in 7.24B.
+
+However, preserve any real-world observations relevant to the upcoming globe prototype:
+
+- map interaction feel
+- Follow behavior
+- zoom behavior
+- World/Home behavior
+- route visibility
+- day/night appearance
+- map size/proportion
+- user preference for global presentation
+
+Checkpoint 7.25 is intended to evaluate:
+
+FLAT MAP
+
+vs
+
+3D GLOBE
+
+vs
+
+ADAPTIVE GLOBE → FLAT
+
+using the validated Map V2 architecture.
+
+
+============================================================
+PART 21 — DO NOT DO IN 7.24B
+============================================================
+
+Do NOT:
+
+- enable Map V2 by default
+- fix unrelated UI issues during the validation run
+- implement globe projection
+- add city lights
+- replace MapLibre
+- change CompositionControl
+- alter responsiveness thresholds
+- migrate Flight Tracking
+- migrate Dispatch
+- redesign Operations
+- begin broad visual refinement
+- integrate authentication/profile work
+- build persistent airline-world simulation
+- rebrand storage/profile paths
+- change flight algorithms
+- weaken recovery durability
+
+Capture evidence first.
+
+Do not modify production code midway through the validation flight.
+
+
+============================================================
+PART 22 — COMPLETION REPORT
+============================================================
+
+At completion provide:
+
+1. Exact validation source commit
+2. Archived binary hashes
+3. Installer/package hashes
+4. Installed validation version
+5. Installation result
+6. Existing-profile compatibility result
+7. Installed startup result
+8. Physical map-input results
+9. Physical DPI/window/monitor results
+10. Native connection lifecycle result
+11. Native reconnect result
+12. Real flight used for validation
+13. Real telemetry/map result
+14. Human-perceived responsiveness observations
+15. Any visible hitch/freeze timeline
+16. Flight phase/milestone result
+17. Recovery/restart result
+18. PIREP result
+19. History/logbook result
+20. Classic fallback result
+21. Longer Map V2 observation result
+22. Post-flight data validation
+23. Report/log audit
+24. Unexpected errors
+25. Native checks now closed/open
+26. Known remaining risks
+27. Map V2 classification:
+    CANDIDATE FOR DEFAULT / REMAIN OPT-IN / DISABLE FOR NORMAL USE
+28. Exact evidence supporting classification
+29. Globe-relevant observations
+30. Recommendation for Checkpoint 7.25
+
+STOP AFTER CHECKPOINT 7.24B.
+
+Do not change the Map V2 default automatically.
+
+Do not begin globe implementation.
+
+Do not begin another workspace migration.

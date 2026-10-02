@@ -1,0 +1,600 @@
+CHECKPOINT 7.26B — ARCHIVE, CLEANUP, IDENTITY FOUNDATION & PRE-UI BASELINE
+
+The read-only 7.26 audit is complete.
+
+Audit report:
+
+F:\Sierra4-Development\docs\
+checkpoint-7.26-release-architecture-storage-legacy-audit.md
+
+Authoritative workspace:
+
+F:\Sierra4-Development
+
+The audit found:
+
+Current workspace:
+43.137734 GiB
+
+Active product/development:
+1.263791 GiB
+
+Regression/replay:
+1.000998 GiB
+
+Irreplaceable native evidence:
+0.049612 GiB
+
+Historical provenance:
+28.152573 GiB
+
+Frozen releases:
+1.324634 GiB
+
+Superseded releases:
+8.268411 GiB
+
+Reproducible:
+0.811824 GiB
+
+Temporary/diagnostic:
+2.065831 GiB
+
+Duplicate:
+0.200045 GiB
+
+Potential archive/cleanup pool:
+40.431304 GiB
+
+Practical recoverable:
+38–40 GiB
+
+Frozen baseline:
+
+S4-7.25A-A350-20261001-6020896a402b
+
+Before making changes, READ THE COMPLETE 7.26 AUDIT.
+
+Use its evidence and exact file-level classifications as the authority for
+archive/delete/retain decisions.
+
+Do NOT reclassify material merely from the summary above.
+
+============================================================
+OBJECTIVE
+============================================================
+
+Complete the implementation half of 7.26 so Sierra 4 enters the premium UI
+phase with:
+
+1. A compact active development workspace.
+2. Historical evidence safely archived outside the active workspace.
+3. Superseded/reproducible/temp material safely removed where approved by
+   the audit.
+4. Required regression/replay material retained.
+5. Required frozen baselines retained.
+6. Clean production storage/retention architecture.
+7. Sierra 4-native identity/storage foundation where the audit determined
+   migration is safe.
+8. Clean Git/source-control hygiene.
+9. A committed and pushed-ready PRE-PREMIUM-UI baseline.
+10. No regression to the validated flight-tracking foundation.
+
+============================================================
+STAGE 1 — PRE-MUTATION SAFETY LEDGER
+============================================================
+
+Before deleting, moving, renaming or modifying anything:
+
+Verify:
+
+- repository root = F:\Sierra4-Development
+- branch
+- HEAD
+- complete Git status
+- frozen 7.25A installer hash
+- portable package hash
+- 531/531 frozen manifest
+- current workspace size
+- current archive destination availability
+
+Record the exact 43 tracked modifications and existing untracked files.
+
+Do not lose or normalize them.
+
+Create a machine-readable pre-mutation ledger sufficient to verify that
+every archive/delete operation was intentional.
+
+============================================================
+STAGE 2 — CREATE LONG-TERM ARCHIVE
+============================================================
+
+Use:
+
+F:\Sierra4-Archive
+
+as the proposed long-term historical archive unless the 7.26 audit
+documents a reason another location is preferable.
+
+Archive ONLY material classified by the audit as appropriate for long-term
+archive.
+
+Preserve:
+
+- historical checkpoint provenance
+- irreplaceable native evidence
+- historically important frozen packages
+- validation reports
+- hashes/manifests needed to establish provenance
+- native telemetry specifically retained by the audit
+- historical databases/screenshots/traces classified as valuable
+
+Prefer a checkpoint-oriented archive structure.
+
+For example:
+
+F:\Sierra4-Archive\
+    checkpoints\
+    native-evidence\
+    frozen-releases\
+    historical-traces\
+
+but follow the audit's actual classification.
+
+Do not blindly preserve temporary/reproducible junk simply because it is
+large.
+
+============================================================
+STAGE 3 — ARCHIVE VERIFICATION
+============================================================
+
+Before deleting any archived source material from the active workspace:
+
+Verify the archive.
+
+At minimum:
+
+- file counts
+- byte counts
+- hashes for critical evidence
+- frozen package hashes
+- representative archive integrity
+- no missing unique evidence
+
+Create an archive manifest.
+
+If verification fails:
+
+STOP.
+
+Do not delete the source material.
+
+============================================================
+STAGE 4 — ACTIVE WORKSPACE CLEANUP
+============================================================
+
+Only after archive verification succeeds:
+
+Remove material classified by the audit as:
+
+- successfully archived historical provenance no longer needed active
+- superseded release artifacts approved for removal
+- reproducible build output
+- temporary diagnostics
+- duplicate data
+- other explicit safe-deletion candidates
+
+Do NOT remove:
+
+- active product source
+- active development dependencies
+- current tests
+- required replay/regression fixtures
+- irreplaceable evidence not safely archived
+- current frozen baseline
+- material classified UNKNOWN
+- anything newly discovered to have an active dependency
+
+Record every deletion/move.
+
+Do not use broad wildcard cleanup where file-level classification is
+required.
+
+============================================================
+STAGE 5 — POST-CLEANUP WORKSPACE VERIFICATION
+============================================================
+
+Recalculate:
+
+- total workspace size
+- file count
+- directory count
+- work size
+- outputs size
+- .work size
+- active source size
+- test/replay size
+
+Compare against the audit's expected recoverable range.
+
+Explain any substantial discrepancy.
+
+============================================================
+STAGE 6 — PRODUCTION RETENTION FOUNDATION
+============================================================
+
+Implement ONLY the production storage/retention changes explicitly
+recommended and approved by the 7.26 audit.
+
+Goals include preventing ordinary Sierra 4 installations from accumulating
+unbounded operational evidence.
+
+Where justified by the audit, implement:
+
+- bounded log retention
+- telemetry/evidence rotation
+- compression
+- cache quotas
+- cleanup of temporary diagnostic data
+- crash/interrupted-flight preservation
+- explicit diagnostic export support/foundation
+
+Preserve flight history, PIREPs and authoritative operational databases.
+
+Never treat diagnostic cleanup as authority over lifecycle data.
+
+Add regression coverage for retention behavior.
+
+============================================================
+STAGE 7 — SIERRA 4 IDENTITY / STORAGE FOUNDATION
+============================================================
+
+Follow the audit's recommended staged identity-migration strategy.
+
+Where the audit concluded migration is safe, establish Sierra 4-native
+paths/identity for future operation.
+
+Requirements:
+
+- existing user data must remain readable
+- migration must be one-time and idempotent
+- history/PIREP/profile data must not be lost
+- failed migration must fail safely
+- rollback/compatibility behavior must be documented
+- do not blindly rename internal assemblies/namespaces where doing so adds
+  risk without user benefit
+
+Prioritize USER-VISIBLE identity.
+
+The eventual application should expose Sierra 4 rather than unnecessary
+Alpha 6 legacy naming.
+
+Do not perform broad source namespace churn solely for cosmetic purity.
+
+============================================================
+STAGE 8 — INSTALL / UPGRADE CLEANLINESS
+============================================================
+
+Implement or verify the audit-approved packaging improvements required
+before 7.27.
+
+Confirm:
+
+- clean install contains only required runtime material
+- tests/dev evidence are not shipped
+- upgrade replaces superseded binaries
+- obsolete package files do not accumulate
+- user data survives upgrades
+- operational databases survive upgrades
+- settings survive upgrades
+- rollback/migration behavior is documented
+
+Measure final clean install footprint.
+
+============================================================
+STAGE 9 — GIT HYGIENE
+============================================================
+
+Resolve the source-control state deliberately.
+
+The 7.26 audit found:
+
+43 existing tracked modifications
+
+Do NOT discard them.
+
+Determine their checkpoint provenance.
+
+Ensure all intended production/test/documentation changes through:
+
+7.24C
+7.25
+7.25A
+7.26
+
+are represented coherently in Git.
+
+Update .gitignore where justified by the audit so future:
+
+- build outputs
+- temporary diagnostics
+- large generated evidence
+- installers
+- local databases
+- caches
+
+do not pollute normal Git status.
+
+Do not ignore required regression fixtures.
+
+Do not rewrite Git history.
+
+============================================================
+STAGE 10 — FULL REGRESSION
+============================================================
+
+After cleanup/architecture changes run the appropriate complete acceptance
+suite.
+
+At minimum preserve verification of:
+
+- flight lifecycle
+- OOOI
+- PIREP
+- recovery
+- observed cruise
+- step climbs
+- TOD
+- ETA continuity
+- Map V2 flight-scoped history
+- map scheduling
+- map restoration
+- direct responsiveness
+- terminal shutdown
+- generic Block In
+- Logbook
+- historical replays
+- DAL40 replay
+
+Keep synthetic/replay/native counts distinct.
+
+No native flight is required unless a production behavior changed that
+cannot be established safely through automation.
+
+============================================================
+STAGE 11 — CLEAN RELEASE BUILD
+============================================================
+
+Produce a new PRE-PREMIUM-UI release candidate only after all gates pass.
+
+This candidate should represent:
+
+VALIDATED TRACKING FOUNDATION
++
+7.26 STORAGE/IDENTITY/RELEASE FOUNDATION
+
+It must be separate from the preserved frozen 7.25A candidate.
+
+Record:
+
+- source commit
+- source dirty state
+- installer hash
+- portable hash
+- manifest
+- installed footprint
+
+Do NOT install automatically.
+
+============================================================
+STAGE 12 — PRE-UI GIT BASELINE
+============================================================
+
+Prepare the repository for cousin merge and development pause.
+
+The desired state is:
+
+- intentional changes documented
+- no unexplained tracked modifications
+- no accidental large generated artifacts
+- clean/understood Git status
+- 7.26 report committed
+- current architecture documented
+- known limitations documented
+- 7.27 explicitly NOT STARTED
+
+Create a concise handoff document containing:
+
+- current build identity
+- branch/commit
+- build instructions
+- architecture overview
+- checkpoint history through 7.26
+- validated flight-tracking guarantees
+- known limitations
+- storage/data migration behavior
+- packaging behavior
+- files/directories intentionally excluded from Git
+- cousin merge notes
+- next planned checkpoint = 7.27 Premium UI Foundation
+
+Do NOT begin 7.27.
+
+============================================================
+STAGE 13 — DESTRUCTIVE ACTION SAFETY
+============================================================
+
+If the implementation plan requires deleting or moving anything NOT already
+explicitly classified by the approved 7.26 audit:
+
+STOP and request approval.
+
+Do not broaden destructive scope during execution.
+
+If the audit classification is ambiguous:
+
+retain the material.
+
+Storage recovery is secondary to evidence integrity.
+
+============================================================
+FINAL ACCEPTANCE
+============================================================
+
+7.26 can close only if:
+
+- archive created
+- archive verified
+- cleanup completed only within approved scope
+- current regression/replay material preserved
+- current frozen baseline preserved
+- production retention architecture passes
+- identity/storage migration passes
+- packaging passes
+- full regression passes
+- clean release candidate created
+- Git state is clean or completely explained
+- cousin handoff document exists
+- 7.27 has not begun
+
+============================================================
+RETURN FORMAT
+============================================================
+
+7.26 — FINAL IMPLEMENTATION / PRE-UI BASELINE
+
+ARCHIVE
+
+Location:
+[value]
+
+Archived:
+[size]
+
+Archive manifest:
+PASS / FAIL
+
+Unique evidence preserved:
+PASS / FAIL
+
+CLEANUP
+
+Before:
+43.137734 GiB
+
+After:
+[size]
+
+Recovered from active workspace:
+[size]
+
+work:
+[before → after]
+
+outputs:
+[before → after]
+
+.work:
+[before → after]
+
+Unexpected deletions:
+NONE / list
+
+PRODUCTION STORAGE
+
+Retention:
+PASS / FAIL
+
+Compression/rotation:
+[summary]
+
+History/PIREP preservation:
+PASS / FAIL
+
+IDENTITY
+
+Sierra 4 user-visible identity:
+[status]
+
+Legacy compatibility:
+PASS / FAIL
+
+Existing profile migration:
+PASS / FAIL / NOT IMPLEMENTED WITH REASON
+
+PACKAGING
+
+Installer:
+[size]
+
+Clean installed footprint:
+[size]
+
+Dev/test material shipped:
+YES / NO
+
+Upgrade preservation:
+PASS / FAIL
+
+GIT
+
+Tracked modifications before:
+43
+
+Final status:
+[answer]
+
+.gitignore:
+[changes]
+
+Large accidental artifacts:
+NONE / list
+
+REGRESSION
+
+Full suite:
+[result]
+
+Historical replays:
+[result]
+
+DAL40:
+[result]
+
+Native flight required:
+YES / NO
+
+RELEASE
+
+Candidate:
+[identity]
+
+Installer SHA:
+[value]
+
+Portable SHA:
+[value]
+
+Manifest:
+[result]
+
+HANDOFF
+
+Cousin merge readiness:
+YES / NO
+
+Handoff document:
+[path]
+
+7.26:
+PASS / CLOSED
+or
+NO-GO
+
+Remaining blockers:
+[list/NONE]
+
+7.27:
+CLEARED / BLOCKED
+
+Do NOT begin 7.27 automatically.

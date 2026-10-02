@@ -1,0 +1,119 @@
+{
+  "binaryIdentity": {
+    "verifiedAtUtc": "2026-09-28T15:48:23.6054484+00:00",
+    "buildId": "S4-7.24B-LAYOUT-R3-20260927-666f495dce7e",
+    "expectedVersion": "0.22.0",
+    "sourceCommit": "666f495dce7efb3ccd70b99939501144d91ab606",
+    "directory": "C:\\Users\\DanniBaLs\\AppData\\Local\\Alpha6Designs\\Alpha6OPSPreview",
+    "expectedFiles": 514,
+    "matchedFiles": 514,
+    "missing": [],
+    "mismatched": [],
+    "passed": true,
+    "scope": "Expected immutable payload files only; installer marker/uninstaller and runtime-generated files are not payload identity."
+  },
+  "executedAtReview": true,
+  "scope": "Existing production replay entry point from untouched frozen R3 portable executable; isolated output, no SimConnect, no profile writes",
+  "baseline": {
+    "flights": 9,
+    "samples": 91366,
+    "passed": true
+  },
+  "current": {
+    "flights": 1,
+    "samples": 6145,
+    "passed": true
+  },
+  "results": [
+    {
+      "flight": "JST221",
+      "samples": 11965,
+      "passed": true,
+      "failures": [],
+      "maximumJump": 0.004683947365074603,
+      "maxAirborne": 1,
+      "actualIn": "2026-09-16T01:15:42.056961+00:00"
+    },
+    {
+      "flight": "QFA124",
+      "samples": 11535,
+      "passed": true,
+      "failures": [],
+      "maximumJump": 0.012854201846685698,
+      "maxAirborne": 0.9999179882538987,
+      "actualIn": "2026-09-17T00:28:34.8592605+00:00"
+    },
+    {
+      "flight": "JST786",
+      "samples": 6952,
+      "passed": true,
+      "failures": [],
+      "maximumJump": 0.0009217611361513133,
+      "maxAirborne": 0.9980796526987968,
+      "actualIn": "2026-09-16T05:11:50.5067749+00:00"
+    },
+    {
+      "flight": "QLK1579",
+      "samples": 9040,
+      "passed": true,
+      "failures": [],
+      "maximumJump": 0.0035698379189552237,
+      "maxAirborne": 1,
+      "actualIn": "2026-09-16T23:02:41.8768081+00:00"
+    },
+    {
+      "flight": "JST721",
+      "samples": 7650,
+      "passed": true,
+      "failures": [],
+      "maximumJump": 0.0005221463325615665,
+      "maxAirborne": 0.9990035753172937,
+      "actualIn": "2026-09-17T03:57:30.3814468+00:00"
+    },
+    {
+      "flight": "JST724",
+      "samples": 7459,
+      "passed": true,
+      "failures": [],
+      "maximumJump": 0.00628685148965924,
+      "maxAirborne": 0.9986088588609451,
+      "actualIn": "2026-09-17T11:16:56.0249252+00:00"
+    },
+    {
+      "flight": "JST760",
+      "samples": 10552,
+      "passed": true,
+      "failures": [],
+      "maximumJump": 0.0021685147328746935,
+      "maxAirborne": 0.9984796180913673,
+      "actualIn": "2026-09-20T23:06:32.2464599+00:00"
+    },
+    {
+      "flight": "QLK1274",
+      "samples": 10519,
+      "passed": true,
+      "failures": [],
+      "maximumJump": 0.005371181491578784,
+      "maxAirborne": 0.9992126022558081,
+      "actualIn": "2026-09-21T23:22:22.7371215+00:00"
+    },
+    {
+      "flight": "ANG2",
+      "samples": 15694,
+      "passed": true,
+      "failures": [],
+      "maximumJump": 0.0009202330415903903,
+      "maxAirborne": 0.9998596105890234,
+      "actualIn": "2026-09-18T01:27:53.3417434+00:00"
+    },
+    {
+      "flight": "JST776",
+      "samples": 6145,
+      "passed": true,
+      "failures": [],
+      "maximumJump": 0.013684671296842033,
+      "maxAirborne": 1,
+      "actualIn": "2026-09-27T22:27:29.2802352+00:00"
+    }
+  ]
+}

@@ -1,0 +1,369 @@
+CONTINUE 7.24C — FINAL HEARTBEAT STABILITY INVESTIGATION
+
+7.24C is now blocked by ONE unresolved automated gate:
+
+Dispatcher heartbeat stability.
+
+Do NOT install T2.
+Do NOT modify frozen T2.
+Do NOT change thresholds.
+Do NOT add retries.
+Do NOT increase timeouts.
+Do NOT begin 7.25 or premium UI work.
+
+CURRENT VERIFIED STATE
+
+Operations browser/input/lifecycle:
+PASS
+
+Map scheduling:
+PASS
+
+Map restoration/resources:
+PASS — 157 checks
+
+Terminal/recovery:
+PASS — 293 checks
+
+Full regression:
+1,953 passed / 0 failed / 2 native-only skipped
+
+Replays:
+11/11 passed
+
+Telemetry:
+100,632 samples processed
+
+The previous browser-input failure was proven to be a TEST issue:
+the synthetic test clicked using stale cached coordinates without first
+moving the pointer into the map.
+
+That test preparation is corrected.
+
+The ONLY remaining blocker is intermittent heartbeat scheduling.
+
+Preserved heartbeat evidence includes:
+
+- one earlier result reaching 513.21 ms
+- subsequent passing runs
+- one failure in the six-run comparison:
+  400.16 ms against a 345.44 ms relative comparison limit
+
+The absolute and relative acceptance criteria must remain unchanged during
+this investigation.
+
+============================================================
+OBJECTIVE
+============================================================
+
+Determine exactly what the heartbeat measures, why it occasionally exceeds
+the existing acceptance limit, and whether the cause is:
+
+A. a production scheduling defect
+B. a deterministic interaction with S4 workload
+C. WPF/dispatcher behavior that S4 can safely improve
+D. native OS/runtime scheduling variance
+E. measurement/test methodology
+F. another measurable cause
+
+Do not classify the result until evidence supports it.
+
+============================================================
+PHASE 1 — DEFINE THE HEARTBEAT
+============================================================
+
+Document precisely:
+
+- where the heartbeat is scheduled
+- DispatcherPriority used
+- expected cadence
+- timestamp source
+- how latency is calculated
+- what the relative comparison limit represents
+- why that limit was originally selected
+- what production behavior the heartbeat is intended to protect
+- whether the heartbeat corresponds to a real user-visible interaction or
+  is a synthetic scheduling sentinel
+
+Trace:
+
+heartbeat scheduled
+→ dispatcher queue
+→ competing dispatcher work
+→ callback begins
+→ latency recorded
+
+Identify everything that can legitimately execute ahead of it.
+
+============================================================
+PHASE 2 — CORRELATE FAILURES
+============================================================
+
+For every preserved heartbeat failure, correlate the timing against:
+
+- pointer/input activity
+- WPF rendering
+- composition
+- map snapshot delivery
+- WebView2 messages
+- browser ACKs
+- telemetry processing
+- route projection
+- serialization
+- workspace navigation
+- garbage collection
+- file/database activity
+- logging
+- test harness activity
+- process/thread scheduling
+- CPU utilization where evidence exists
+
+Determine whether the 400–513 ms waits correspond to any specific S4
+operation.
+
+Do not infer causation from temporal proximity alone.
+
+============================================================
+PHASE 3 — MEASURE DISPATCHER QUEUE BEHAVIOR
+============================================================
+
+Add diagnostic instrumentation only if required.
+
+We need to know whether a failing heartbeat is:
+
+1. waiting behind one long callback
+
+2. waiting behind many individually short higher-priority callbacks
+
+3. descheduled by the OS/runtime
+
+4. delayed by rendering/composition behavior
+
+5. affected by test instrumentation itself
+
+6. another mechanism
+
+Measure callback durations and queue/scheduling behavior sufficiently to
+distinguish these cases.
+
+Do not change production scheduling yet.
+
+============================================================
+PHASE 4 — TEST PRIORITY SEMANTICS
+============================================================
+
+The heartbeat has previously been described as low priority.
+
+Establish whether its DispatcherPriority accurately represents the
+production responsiveness requirement it is supposed to guard.
+
+IMPORTANT:
+
+Do NOT change the heartbeat priority to make the test pass.
+
+Instead answer:
+
+If normal input/render work is intentionally allowed to execute ahead of
+this heartbeat, what does a delayed heartbeat actually imply about user
+responsiveness?
+
+Conversely, could a delayed heartbeat expose genuine starvation that would
+eventually affect production behavior?
+
+Compare heartbeat timing with the already collected physical evidence:
+
+- original airborne map hitch
+- C1 parked drag capture
+- responsive native panning
+- continued telemetry processing
+- corrected map-data handoff
+- subsequent no-hitch/no-flicker observations
+
+Use these as evidence, not as automatic justification for changing the
+gate.
+
+============================================================
+PHASE 5 — CONTROLLED STABILITY RUN
+============================================================
+
+Run a sufficiently long controlled series to characterize the distribution
+rather than relying on one pass/fail retry.
+
+Preserve every run.
+
+Do not retry failures away.
+
+Report at minimum:
+
+- number of runs
+- number of heartbeat observations
+- minimum
+- median
+- p95
+- p99 if sample count supports it
+- maximum
+- number exceeding relative limit
+- number exceeding absolute limit
+- conditions associated with each exceedance
+
+Compare idle, normal map activity and stressed activity if the harness
+supports those modes without altering production behavior.
+
+============================================================
+PHASE 6 — DECISION
+============================================================
+
+After evidence collection, classify the heartbeat instability as one of:
+
+PRODUCTION DEFECT
+
+A specific S4 scheduling mechanism causes unacceptable starvation.
+
+If so:
+- identify root cause
+- propose smallest safe correction
+- implement only after root cause is established
+- preserve telemetry fidelity and current map scheduling semantics
+
+TEST/METRIC DEFECT
+
+The heartbeat or its calculation does not validly measure the production
+behavior it claims to protect.
+
+If so:
+- explain exactly why
+- propose a corrected metric/test based on product behavior
+- do NOT simply loosen its threshold
+
+ENVIRONMENTAL/NATIVE VARIANCE
+
+The measurement is valid, but observed excursions originate outside S4's
+controllable scheduling behavior and do not correlate with a production
+responsiveness failure.
+
+If so:
+- provide strong evidence
+- do not silently delete the gate
+- recommend how this should be represented in future acceptance testing
+
+UNRESOLVED
+
+Evidence is insufficient.
+
+If unresolved, 7.24C remains NO-GO.
+
+============================================================
+PHASE 7 — IF A PRODUCTION FIX IS REQUIRED
+============================================================
+
+Only if evidence demonstrates a production defect:
+
+Implement the smallest safe correction.
+
+Then rerun:
+
+- heartbeat stability characterization
+- dispatcher responsiveness
+- browser/input/lifecycle
+- Map V2 scheduling
+- map restoration/resources
+- terminal/recovery
+- full regression
+- 11/11 replays
+- telemetry validation
+
+Do not modify T2 terminal-shutdown behavior unless directly implicated.
+
+============================================================
+RETURN FORMAT
+============================================================
+
+7.24C — HEARTBEAT ROOT-CAUSE REVIEW
+
+Heartbeat purpose:
+[answer]
+
+Dispatcher priority:
+[answer]
+
+Acceptance-limit origin:
+[answer]
+
+What a heartbeat failure means:
+[answer]
+
+Failure mechanism:
+[one long callback / many callbacks / OS scheduling / rendering /
+instrumentation / other]
+
+Correlation with user-visible stalls:
+[answer]
+
+Correlation with telemetry:
+[answer]
+
+Controlled stability sample:
+Runs:
+Observations:
+Min:
+Median:
+P95:
+P99:
+Max:
+
+Relative-limit exceedances:
+[count]
+
+Absolute-limit exceedances:
+[count]
+
+Root cause:
+[answer]
+
+Classification:
+PRODUCTION DEFECT /
+TEST-METRIC DEFECT /
+ENVIRONMENTAL-NATIVE VARIANCE /
+UNRESOLVED
+
+Production change required:
+YES / NO
+
+If YES:
+[smallest justified correction]
+
+If NO:
+[why no production change is justified]
+
+Existing threshold changed:
+NO
+
+Browser/input/lifecycle:
+[result]
+
+Map scheduling:
+[result]
+
+Map restoration:
+[result]
+
+Terminal/recovery:
+[result]
+
+Full regression:
+[result]
+
+Replays:
+[result]
+
+T2 cleared for native parked validation:
+YES / NO
+
+7.24C:
+GO / NO-GO
+
+Remaining gates:
+[list]
+
+Do NOT install T2 automatically.
+Do NOT begin 7.25.

@@ -30,11 +30,10 @@ internal sealed partial class FlightSessionCoordinator : IDisposable
     private string liveSource = "MSFS 2024";
     private Telemetry? liveTelemetry;
     private double? liveRouteProgress;
-    private DateTimeOffset? blockInStoppedSince;
     private bool pilotConfirmedBlockIn, joinedInProgress, liveNeedsBaseline, exiting, canConfirmBlockIn;
     private FlightTrackingEventMonitor? trackingEventMonitor;
     private TestFlightLog? flightLog;
-    private string? lastJournal, liveFlightHistoryId, completedFlightHistoryId;
+    private string? lastJournal, liveFlightHistoryId, completedFlightHistoryId, pendingCompletedFlightHistoryId;
     private ActiveFlightPlan? activePlan;
     private AircraftRotation? liveRotation;
     private DateTimeOffset? estimatedArrival;
@@ -42,7 +41,7 @@ internal sealed partial class FlightSessionCoordinator : IDisposable
     private SimulatorConnectionState connectionState;
     private string PilotName="Unspecified";
     private string programHealth="";
-    private string LogDirectory => Path.Combine(stateDirectory,"TestLogs");
+    private string LogDirectory => diagnosticMode ? Path.Combine(stateDirectory,"TestLogs") : Path.Combine(ProductStorage.Current.Diagnostics,"TestLogs");
     private DateTimeOffset? ActualFlightOut => liveRecorder?.Events.FirstOrDefault(e=>e.Phase==FlightPhase.TaxiOut)?.At;
     private DateTimeOffset? ActualFlightIn => liveRecorder?.Events.LastOrDefault(e=>e.Phase==FlightPhase.Complete)?.At;
     private bool ScheduleTrusted => activePlan is not null && (ActualFlightOut is {} at
@@ -52,7 +51,7 @@ internal sealed partial class FlightSessionCoordinator : IDisposable
         liveDataCurrent&&(liveRecorder?.Phase==FlightPhase.AtGate ||
         routeTracker.Current is{IsReliable:true} current&&liveTelemetry is{} sample&&(current.At==sample.At||sample.Paused||sample.Slewing));
     private double? LiveRemainingDistance => LiveRouteReliable&&activePlan is not null&&liveRouteProgress is{} fraction&&
-        FlightMetrics.RemainingDistanceNm(activePlan.RoutePoints,fraction) is var distance&&double.IsFinite(distance)?distance:null;
+        FlightMetrics.RemainingDistanceNm(activePlan.RoutePoints,fraction,liveTelemetry,liveRecorder?.Phase==FlightPhase.Complete&&arrivalMismatch is null) is var distance&&double.IsFinite(distance)?distance:null;
 
     internal FlightSessionSnapshot Snapshot { get; private set; } = new();
     public event EventHandler? SnapshotChanged;
@@ -71,8 +70,8 @@ internal sealed partial class FlightSessionCoordinator : IDisposable
         catch(Exception error){CrashReporter.Write("flight_history_startup",error,directory:directory);}
         activePlan=Freeze(ActiveFlightPlanStore.Load(directory));
         if(activePlan is not null)RestoreFlightRecovery(FlightRecoveryStore.Load(activePlan,directory));
-        if(activePlan is not null)trackingStatus="Assignment ready. Connect at the gate to begin tracking.";
-        try { programMonitor=new ProgramMonitor(LogDirectory,status=>{if(exiting)return;programHealth=status;Notify(DiagnosticsChanged);},directory); }
+        if(activePlan is not null)trackingStatus=liveRecorder?.Phase==FlightPhase.Complete?"Recovered completed flight. Review and submit the PIREP.":liveRecorder is not null?"Recovered flight. Reconnect to continue tracking.":"Assignment ready. Connect at the gate to begin tracking.";
+        try { programMonitor=new ProgramMonitor(LogDirectory,status=>{if(exiting)return;programHealth=status;Notify(DiagnosticsChanged);},diagnostic?directory:null); }
         catch(Exception error){CrashReporter.Write("program_monitor_startup",error,directory:directory);programHealth="PROGRAM MONITOR UNAVAILABLE • "+error.GetBaseException().Message;}
         PublishSnapshot();
     }
@@ -84,17 +83,18 @@ internal sealed partial class FlightSessionCoordinator : IDisposable
         dispatcher.VerifyAccess();
         var phase=liveRecorder?.Phase;
         var complete=phase==FlightPhase.Complete;
+        var historyNeedsReview=complete&&ActualFlightIn is not null&&(flightHistory is null||completedFlightHistoryId is null);
         var rotation=liveRotation??(activePlan is null?null:BuildLiveRotation(activePlan,liveAircraft,AircraftGroundProfile.Default));
         Snapshot=new()
         {
             Assignment=Freeze(activePlan), Connection=connectionState, ConnectionGeneration=connectionGeneration, ConnectionActive=liveCancellation is not null,
             Connected=liveDataCurrent&&liveCancellation is {IsCancellationRequested:false}, ConnectionMessage=connectionMessage,
-            TrackingStatus=trackingStatus, LiveDescription=liveDescription, LogStatus=logStatus, LastJournal=lastJournal,
+            TrackingStatus=historyNeedsReview?"Completed flight needs review: its history identity could not be verified. Recorded flight data is retained.":trackingStatus, LiveDescription=liveDescription, LogStatus=logStatus, LastJournal=lastJournal,
             Aircraft=liveAircraft, Source=liveSource, Telemetry=Freeze(liveTelemetry), Reading=currentLiveReading is null?null:Freeze(currentLiveReading),
             SimulatorUtc=liveLast, Phase=phase, PhaseLabel=phase is null?"Ready":DisplayPhase(phase.Value),
             RouteProgress=liveRouteProgress, RouteReliable=LiveRouteReliable, RemainingDistanceNm=LiveRemainingDistance,
             EstimatedArrival=ActualFlightIn??(liveDataCurrent&&currentLiveReading?.Evidence?.SimulationRunning!=false?estimatedArrival:null),
-            ActualOut=ActualFlightOut, ActualIn=ActualFlightIn, Complete=complete, PirepEligible=complete&&ActualFlightIn is not null,
+            ActualOut=ActualFlightOut, ActualIn=ActualFlightIn, Complete=complete, PirepEligible=complete&&ActualFlightIn is not null&&!historyNeedsReview,
             CanConfirmBlockIn=canConfirmBlockIn, JoinedInProgress=joinedInProgress, ScheduleTrusted=ScheduleTrusted,
             DataCurrent=liveDataCurrent, CanRenderAssignment=CanRenderAssignedFlight, CanPresentCandidate=CanPresentCandidate,
             SuppressObservedFlight=suppressObservedFlightAfterCloseout, ArrivalMismatch=arrivalMismatch, ObservedSessionStart=observedSessionStart,

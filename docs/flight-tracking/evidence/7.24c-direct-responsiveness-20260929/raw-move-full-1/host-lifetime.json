@@ -1,0 +1,8 @@
+{
+  "useV2": false,
+  "isLoaded": true,
+  "isVisible": true,
+  "recreationCount": 22,
+  "restartCount": 0,
+  "lastFailure": "System.InvalidOperationException: renderer-error\r\n   at Alpha6Ops.Desktop.MapV2.WebMapRenderer.InitializeAsync(CancellationToken cancellationToken)\r\n   at Alpha6Ops.Desktop.OperationsMapHost.ActivateAsync()"
+}

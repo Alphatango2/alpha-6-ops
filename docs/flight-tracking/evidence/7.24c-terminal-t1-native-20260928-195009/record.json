@@ -1,0 +1,1 @@
+{"startedUtc":"2026-09-29T00:50:11.0903777+00:00","durationSeconds":120,"process":27560,"source":"Explicit --trace-map-input normal installed session","limits":"No synthetic input. F9 adds a user stall marker. Timing instrumentation may affect scheduling. Does not itself assert physical success."}

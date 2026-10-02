@@ -1,0 +1,197 @@
+{
+  "renderTurns": 78458,
+  "pressureMs": 750,
+  "probes": [
+    {
+      "priority": "Normal",
+      "waitMs": 0.3194
+    },
+    {
+      "priority": "DataBind",
+      "waitMs": 0.5203000000000001
+    },
+    {
+      "priority": "Render",
+      "waitMs": 0.6403000000000001
+    },
+    {
+      "priority": "Loaded",
+      "waitMs": 749.9712
+    },
+    {
+      "priority": "Input",
+      "waitMs": 776.4214000000001
+    },
+    {
+      "priority": "Background",
+      "waitMs": 776.438
+    }
+  ],
+  "deliveryQueueMaxMs": 776.1483,
+  "acknowledgedDuringPressureAt": 777.3375,
+  "bridge": {
+    "produced": 0,
+    "offered": 2,
+    "coalesced": 0,
+    "acknowledged": 2,
+    "pending": false,
+    "rejected": 0,
+    "lastPayloadBytes": 2795,
+    "readyMs": 796.7506,
+    "projectionQueue": null,
+    "projectionMs": {
+      "count": 0,
+      "mean": 0,
+      "p50": 0,
+      "p95": 0,
+      "p99": 0,
+      "max": 0
+    },
+    "serializationMs": {
+      "count": 2,
+      "mean": 2.5195,
+      "p50": 0.1574,
+      "p95": 0.1574,
+      "p99": 0.1574,
+      "max": 4.8816
+    },
+    "dispatcherQueueMs": {
+      "count": 2,
+      "mean": 399.53884999999997,
+      "p50": 22.9294,
+      "p95": 22.9294,
+      "p99": 22.9294,
+      "max": 776.1483
+    },
+    "postMs": {
+      "count": 2,
+      "mean": 0.11305,
+      "p50": 0.1103,
+      "p95": 0.1103,
+      "p99": 0.1103,
+      "max": 0.1158
+    },
+    "acknowledgmentMs": {
+      "count": 2,
+      "mean": 717.2092,
+      "p50": 657.5926,
+      "p95": 657.5926,
+      "p99": 657.5926,
+      "max": 776.8258
+    },
+    "postToAcknowledgmentMs": {
+      "count": 2,
+      "mean": 317.6703,
+      "p50": 0.6781,
+      "p95": 0.6781,
+      "p99": 0.6781,
+      "max": 634.6625
+    }
+  },
+  "browser": {
+    "camera": {
+      "bearing": 0,
+      "followId": null,
+      "latitude": -38.37684298739486,
+      "longitude": 149.34500000000003,
+      "zoom": 4.777742716965107
+    },
+    "counts": {
+      "aircraft": 1,
+      "airports": 2,
+      "labels": 5,
+      "routes": 2
+    },
+    "frameIntervals": [
+      58.299999999999955,
+      70.79999999999995,
+      50.10000000000002,
+      50,
+      54.10000000000002,
+      50.10000000000002,
+      54.10000000000002,
+      50.09999999999991,
+      50,
+      50,
+      54.100000000000136,
+      50,
+      54.09999999999991,
+      50,
+      50,
+      50.09999999999991,
+      50,
+      54.100000000000136,
+      50.09999999999991,
+      54.100000000000136,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      54.09999999999991,
+      50
+    ],
+    "lastSequence": 2,
+    "points": [
+      {
+        "id": "current-aircraft",
+        "kind": "Aircraft",
+        "x": 596.4549494136655,
+        "y": 195.84410302084302
+      },
+      {
+        "id": "YSSY",
+        "kind": "Airport",
+        "x": 638.5891816875185,
+        "y": 116.99999999999778
+      },
+      {
+        "id": "YMHB",
+        "kind": "Airport",
+        "x": 495.4108183124793,
+        "y": 560.9999999999977
+      },
+      {
+        "id": "planned-route",
+        "kind": "Route",
+        "x": 570.304363565967,
+        "y": 235.3088724622575
+      },
+      {
+        "id": "completed-plan",
+        "kind": "Route",
+        "x": 604.3424814836692,
+        "y": 176.93649469347883
+      }
+    ],
+    "selection": null,
+    "selectionFilters": {
+      "airport": [
+        "==",
+        [
+          "get",
+          "id"
+        ],
+        ""
+      ],
+      "route": [
+        "==",
+        [
+          "get",
+          "id"
+        ],
+        ""
+      ]
+    },
+    "solarSignature": "-0.772,0.636,0.000",
+    "sourceIDs": [
+      {
+        "id": "current-aircraft",
+        "source": "Observed"
+      }
+    ],
+    "sourceUpdates": 8
+  },
+  "limitation": "Deterministic dispatcher-order regression; not physical input latency or GPU frame latency. Existing heartbeat gate is unchanged and runs separately."
+}

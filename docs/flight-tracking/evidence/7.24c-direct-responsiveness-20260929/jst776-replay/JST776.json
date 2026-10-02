@@ -1,0 +1,1723 @@
+{
+  "flight": "JST776",
+  "samples": 6145,
+  "passed": true,
+  "failures": [],
+  "maximumJump": 0.041054013890525876,
+  "maxAirborne": 0.9986898702275115,
+  "actualIn": "2026-09-27T22:27:29.2802352+00:00",
+  "calculationChecks": {
+    "prematureEndpointSamples": 0,
+    "understatedRemainingSamples": 0,
+    "expiredEstimateSamples": 0,
+    "completionMismatchSamples": 0,
+    "maximumRemainingShortfallNm": 0,
+    "maximumExpiredSeconds": 0
+  },
+  "calculationFailures": [],
+  "milestones": [
+    {
+      "Phase": 1,
+      "At": "2026-09-27T21:04:45.6519165+00:00"
+    },
+    {
+      "Phase": 2,
+      "At": "2026-09-27T21:16:14.6521759+00:00"
+    },
+    {
+      "Phase": 3,
+      "At": "2026-09-27T22:19:56.2668685+00:00"
+    },
+    {
+      "Phase": 4,
+      "At": "2026-09-27T22:27:29.2802352+00:00"
+    }
+  ],
+  "events": [
+    {
+      "At": "2026-09-27T21:04:46.6638107+00:00",
+      "Title": "Pushback / initial movement",
+      "Summary": "Ground movement began at 2 kt",
+      "Detail": "Ground movement began at 2 kt\nGS 2 KT  \u2022  BRAKE RELEASED  \u2022  ENGINE DATA UNAVAILABLE",
+      "Kind": "operation",
+      "Code": 0,
+      "Time": "21:04:46Z"
+    },
+    {
+      "At": "2026-09-27T21:04:45.6519165+00:00",
+      "Title": "Block-out / taxi out",
+      "Summary": "Parking brake released and sustained ground movement confirmed",
+      "Detail": "Parking brake released and sustained ground movement confirmed\nGS 3 KT  \u2022  BRAKE RELEASED  \u2022  ENGINE DATA UNAVAILABLE  \u2022  FUEL 17726 LB",
+      "Kind": "operation",
+      "Code": 1,
+      "Time": "21:04:45Z"
+    },
+    {
+      "At": "2026-09-27T21:05:09.6577453+00:00",
+      "Title": "Engine 2 starting",
+      "Summary": "Engine 2 start sequence detected \u2022 starter",
+      "Detail": "Engine 2 start sequence detected \u2022 starter\nGS 4 KT  \u2022  FUEL 17724 LB",
+      "Kind": "operation",
+      "Code": 0,
+      "Time": "21:05:09Z"
+    },
+    {
+      "At": "2026-09-27T21:05:34.6423797+00:00",
+      "Title": "Engine 2 running",
+      "Summary": "Engine 2 running confirmed \u2022 combustion",
+      "Detail": "Engine 2 running confirmed \u2022 combustion\nGS 4 KT  \u2022  FUEL 17722 LB",
+      "Kind": "operation",
+      "Code": 0,
+      "Time": "21:05:34Z"
+    },
+    {
+      "At": "2026-09-27T21:06:19.6595458+00:00",
+      "Title": "Engine 1 starting",
+      "Summary": "Engine 1 start sequence detected \u2022 starter",
+      "Detail": "Engine 1 start sequence detected \u2022 starter\nGS 1 KT  \u2022  FUEL 17710 LB",
+      "Kind": "operation",
+      "Code": 0,
+      "Time": "21:06:19Z"
+    },
+    {
+      "At": "2026-09-27T21:06:43.659317+00:00",
+      "Title": "Engine 1 running",
+      "Summary": "Engine 1 running confirmed \u2022 combustion",
+      "Detail": "Engine 1 running confirmed \u2022 combustion\nGS 0 KT  \u2022  FUEL 17702 LB",
+      "Kind": "operation",
+      "Code": 0,
+      "Time": "21:06:43Z"
+    },
+    {
+      "At": "2026-09-27T21:07:38.6637878+00:00",
+      "Title": "Flaps 1\u002BF selected",
+      "Summary": "Flaps 1\u002BF",
+      "Detail": "Flaps 1\u002BF\nGS 0 KT  \u2022  2 ENGINES RUNNING",
+      "Kind": "operation",
+      "Code": 0,
+      "Time": "21:07:38Z"
+    },
+    {
+      "At": "2026-09-27T21:07:47.6559295+00:00",
+      "Title": "Flaps 2 selected",
+      "Summary": "Flaps 2",
+      "Detail": "Flaps 2\nGS 0 KT  \u2022  2 ENGINES RUNNING",
+      "Kind": "operation",
+      "Code": 0,
+      "Time": "21:07:47Z"
+    },
+    {
+      "At": "2026-09-27T21:09:09.6493835+00:00",
+      "Title": "Taxi started",
+      "Summary": "Groundspeed 11 kt",
+      "Detail": "Groundspeed 11 kt\nGS 11 KT  \u2022  2 ENGINES RUNNING",
+      "Kind": "operation",
+      "Code": 0,
+      "Time": "21:09:09Z"
+    },
+    {
+      "At": "2026-09-27T21:15:54.6581802+00:00",
+      "Title": "Takeoff roll",
+      "Summary": "Acceleration through 69 kt",
+      "Detail": "Acceleration through 69 kt\nGS 69 KT  \u2022  2 ENGINES RUNNING",
+      "Kind": "operation",
+      "Code": 0,
+      "Time": "21:15:54Z"
+    },
+    {
+      "At": "2026-09-27T21:16:14.6521759+00:00",
+      "Title": "Liftoff",
+      "Summary": "Airborne at 166 kt",
+      "Detail": "Airborne at 166 kt\nALT 416 FT  \u2022  AGL 38 FT  \u2022  IAS 166 KT  \u2022  VS \u002B728 FPM  \u2022  HDG 349\u00B0  \u2022  PITCH -8\u00B0  \u2022  BANK -1\u00B0",
+      "Kind": "operation",
+      "Code": 2,
+      "Time": "21:16:14Z"
+    },
+    {
+      "At": "2026-09-27T21:16:19.65242+00:00",
+      "Title": "Initial climb",
+      "Summary": "Climbing at 1279 ft/min",
+      "Detail": "Climbing at 1279 ft/min\nALT 458 FT  \u2022  AGL 73 FT  \u2022  IAS 169 KT  \u2022  VS \u002B1279 FPM  \u2022  HDG 350\u00B0  \u2022  PITCH -11\u00B0  \u2022  BANK -1\u00B0",
+      "Kind": "operation",
+      "Code": 0,
+      "Time": "21:16:19Z"
+    },
+    {
+      "At": "2026-09-27T21:16:30.6527557+00:00",
+      "Title": "Landing gear retracted",
+      "Summary": "Gear indicates up",
+      "Detail": "Gear indicates up\nALT 914 FT  \u2022  AGL 503 FT  \u2022  IAS 175 KT  \u2022  VS \u002B2725 FPM  \u2022  HDG 351\u00B0  \u2022  PITCH -12\u00B0  \u2022  BANK -1\u00B0",
+      "Kind": "operation",
+      "Code": 0,
+      "Time": "21:16:30Z"
+    },
+    {
+      "At": "2026-09-27T21:17:14.6383666+00:00",
+      "Title": "Flaps 1\u002BF selected",
+      "Summary": "Flaps 1\u002BF",
+      "Detail": "Flaps 1\u002BF\nALT 2654 FT  \u2022  AGL 2195 FT  \u2022  IAS 191 KT  \u2022  VS \u002B1167 FPM  \u2022  HDG 351\u00B0  \u2022  PITCH -5\u00B0  \u2022  BANK -0\u00B0",
+      "Kind": "operation",
+      "Code": 0,
+      "Time": "21:17:14Z"
+    },
+    {
+      "At": "2026-09-27T21:17:23.6359024+00:00",
+      "Title": "Flaps 1 selected",
+      "Summary": "Flaps 1",
+      "Detail": "Flaps 1\nALT 2807 FT  \u2022  AGL 2319 FT  \u2022  IAS 205 KT  \u2022  VS \u002B1056 FPM  \u2022  HDG 351\u00B0  \u2022  PITCH -5\u00B0  \u2022  BANK -0\u00B0",
+      "Kind": "operation",
+      "Code": 0,
+      "Time": "21:17:23Z"
+    },
+    {
+      "At": "2026-09-27T21:17:32.6465988+00:00",
+      "Title": "Flaps UP selected",
+      "Summary": "Flaps UP",
+      "Detail": "Flaps UP\nALT 2957 FT  \u2022  AGL 2382 FT  \u2022  IAS 220 KT  \u2022  VS \u002B1033 FPM  \u2022  HDG 352\u00B0  \u2022  PITCH -5\u00B0  \u2022  BANK -0\u00B0",
+      "Kind": "operation",
+      "Code": 0,
+      "Time": "21:17:32Z"
+    },
+    {
+      "At": "2026-09-27T21:20:05.6646575+00:00",
+      "Title": "10,000 feet crossed",
+      "Summary": "Climbing through 10,000 ft",
+      "Detail": "Climbing through 10,000 ft\nALT 10032 FT  \u2022  AGL 8598 FT  \u2022  IAS 252 KT  \u2022  VS \u002B2681 FPM  \u2022  HDG 284\u00B0  \u2022  PITCH -7\u00B0  \u2022  BANK -0\u00B0",
+      "Kind": "operation",
+      "Code": 0,
+      "Time": "21:20:05Z"
+    },
+    {
+      "At": "2026-09-27T21:37:21.2941436+00:00",
+      "Title": "Top of climb / cruise established",
+      "Summary": "Established at FL360",
+      "Detail": "Established at FL360\nALT 36194 FT  \u2022  IAS 256 KT  \u2022  VS \u002B13 FPM  \u2022  HDG 284\u00B0  \u2022  PITCH -3\u00B0  \u2022  BANK 0\u00B0  \u2022  ETA 22:18Z \u2022 27 MIN EARLY",
+      "Kind": "operation",
+      "Code": 0,
+      "Time": "21:37:21Z"
+    },
+    {
+      "At": "2026-09-27T21:52:55.2710876+00:00",
+      "Title": "Top of descent",
+      "Summary": "Descending at -1001 ft/min",
+      "Detail": "Descending at -1001 ft/min\nALT 35794 FT  \u2022  IAS 257 KT  \u2022  VS -1001 FPM  \u2022  HDG 303\u00B0  \u2022  PITCH -2\u00B0  \u2022  BANK -0\u00B0  \u2022  ETA 22:18Z \u2022 27 MIN EARLY",
+      "Kind": "operation",
+      "Code": 0,
+      "Time": "21:52:55Z"
+    },
+    {
+      "At": "2026-09-27T22:10:06.2854766+00:00",
+      "Title": "Off planned route",
+      "Summary": "25 NM from the SimBrief route \u2022 vectors or route changes may explain this",
+      "Detail": "25 NM from the SimBrief route \u2022 vectors or route changes may explain this\nALT 10936 FT  \u2022  IAS 251 KT  \u2022  VS -1641 FPM  \u2022  HDG 313\u00B0  \u2022  PITCH 0\u00B0  \u2022  BANK 0\u00B0  \u2022  POS -35.0464, 139.0468",
+      "Kind": "operation",
+      "Code": 0,
+      "Time": "22:10:06Z"
+    },
+    {
+      "At": "2026-09-27T22:10:39.2645797+00:00",
+      "Title": "10,000 feet crossed",
+      "Summary": "Descending through 10,000 ft",
+      "Detail": "Descending through 10,000 ft\nALT 9965 FT  \u2022  AGL 9294 FT  \u2022  IAS 255 KT  \u2022  VS -3116 FPM  \u2022  HDG 314\u00B0  \u2022  PITCH 3\u00B0  \u2022  BANK -0\u00B0",
+      "Kind": "operation",
+      "Code": 0,
+      "Time": "22:10:39Z"
+    },
+    {
+      "At": "2026-09-27T22:12:17.2719421+00:00",
+      "Title": "Approach started",
+      "Summary": "Descending through 5889 ft AGL",
+      "Detail": "Descending through 5889 ft AGL\nALT 7258 FT  \u2022  AGL 5889 FT  \u2022  IAS 245 KT  \u2022  VS -1474 FPM  \u2022  HDG 314\u00B0  \u2022  PITCH -0\u00B0  \u2022  BANK 0\u00B0  \u2022  19 NM TO GO  \u2022  ETA 22:21Z \u2022 24 MIN EARLY",
+      "Kind": "operation",
+      "Code": 0,
+      "Time": "22:12:17Z"
+    },
+    {
+      "At": "2026-09-27T22:13:30.2871398+00:00",
+      "Title": "Flaps 1 selected",
+      "Summary": "Flaps 1",
+      "Detail": "Flaps 1\nALT 6155 FT  \u2022  AGL 4737 FT  \u2022  IAS 220 KT  \u2022  VS -529 FPM  \u2022  HDG 315\u00B0  \u2022  PITCH -3\u00B0  \u2022  BANK 0\u00B0",
+      "Kind": "operation",
+      "Code": 0,
+      "Time": "22:13:30Z"
+    },
+    {
+      "At": "2026-09-27T22:14:57.2754669+00:00",
+      "Title": "Flaps 1\u002BF selected",
+      "Summary": "Flaps 1\u002BF",
+      "Detail": "Flaps 1\u002BF\nALT 4235 FT  \u2022  AGL 2984 FT  \u2022  IAS 202 KT  \u2022  VS -997 FPM  \u2022  HDG 269\u00B0  \u2022  PITCH -1\u00B0  \u2022  BANK 14\u00B0",
+      "Kind": "operation",
+      "Code": 0,
+      "Time": "22:14:57Z"
+    },
+    {
+      "At": "2026-09-27T22:15:05.27285+00:00",
+      "Title": "Flaps 2 selected",
+      "Summary": "Flaps 2",
+      "Detail": "Flaps 2\nALT 4119 FT  \u2022  AGL 2871 FT  \u2022  IAS 196 KT  \u2022  VS -901 FPM  \u2022  HDG 259\u00B0  \u2022  PITCH -0\u00B0  \u2022  BANK 14\u00B0",
+      "Kind": "operation",
+      "Code": 0,
+      "Time": "22:15:05Z"
+    },
+    {
+      "At": "2026-09-27T22:16:15.2688751+00:00",
+      "Title": "Route rejoined",
+      "Summary": "Aircraft returned within 10 NM of the SimBrief route",
+      "Detail": "Aircraft returned within 10 NM of the SimBrief route\nALT 3018 FT  \u2022  AGL 2672 FT  \u2022  IAS 160 KT  \u2022  VS -895 FPM  \u2022  HDG 231\u00B0  \u2022  PITCH -1\u00B0  \u2022  BANK 0\u00B0  \u2022  POS -34.8416, 138.6870",
+      "Kind": "operation",
+      "Code": 0,
+      "Time": "22:16:15Z"
+    },
+    {
+      "At": "2026-09-27T22:16:30.2671737+00:00",
+      "Title": "Final approach",
+      "Summary": "2441 ft AGL \u2022 155 kt",
+      "Detail": "2441 ft AGL \u2022 155 kt\nALT 2791 FT  \u2022  AGL 2441 FT  \u2022  IAS 155 KT  \u2022  VS -861 FPM  \u2022  HDG 231\u00B0  \u2022  PITCH -2\u00B0  \u2022  BANK -0\u00B0  \u2022  9 NM TO GO  \u2022  ETA 22:25Z \u2022 20 MIN EARLY",
+      "Kind": "operation",
+      "Code": 0,
+      "Time": "22:16:30Z"
+    },
+    {
+      "At": "2026-09-27T22:16:30.2671737+00:00",
+      "Title": "Flaps 3 selected",
+      "Summary": "Flaps 3",
+      "Detail": "Flaps 3\nALT 2791 FT  \u2022  AGL 2441 FT  \u2022  IAS 155 KT  \u2022  VS -861 FPM  \u2022  HDG 231\u00B0  \u2022  PITCH -2\u00B0  \u2022  BANK -0\u00B0",
+      "Kind": "operation",
+      "Code": 0,
+      "Time": "22:16:30Z"
+    },
+    {
+      "At": "2026-09-27T22:16:42.2803726+00:00",
+      "Title": "Landing gear extended",
+      "Summary": "Gear indicates down",
+      "Detail": "Gear indicates down\nALT 2622 FT  \u2022  AGL 2285 FT  \u2022  IAS 146 KT  \u2022  VS -1081 FPM  \u2022  HDG 231\u00B0  \u2022  PITCH -1\u00B0  \u2022  BANK 0\u00B0",
+      "Kind": "operation",
+      "Code": 0,
+      "Time": "22:16:42Z"
+    },
+    {
+      "At": "2026-09-27T22:16:43.2894515+00:00",
+      "Title": "Flaps FULL selected",
+      "Summary": "Flaps FULL",
+      "Detail": "Flaps FULL\nALT 2605 FT  \u2022  AGL 2268 FT  \u2022  IAS 146 KT  \u2022  VS -1060 FPM  \u2022  HDG 231\u00B0  \u2022  PITCH -1\u00B0  \u2022  BANK -0\u00B0",
+      "Kind": "operation",
+      "Code": 0,
+      "Time": "22:16:43Z"
+    },
+    {
+      "At": "2026-09-27T22:19:56.2668685+00:00",
+      "Title": "Touchdown",
+      "Summary": "Touchdown at 130 kt \u2022 -316 ft/min \u2022 fuel burn 537 lb below plan",
+      "Detail": "Touchdown at 130 kt \u2022 -316 ft/min \u2022 fuel burn 537 lb below plan\nGS 117 KT  \u2022  2 ENGINES RUNNING  \u2022  FUEL 10953 LB",
+      "Kind": "operation",
+      "Code": 0,
+      "Time": "22:19:56Z"
+    },
+    {
+      "At": "2026-09-27T22:20:28.2760314+00:00",
+      "Title": "Landing rollout slowed",
+      "Summary": "Groundspeed reduced to 29 kt",
+      "Detail": "Groundspeed reduced to 29 kt\nGS 29 KT  \u2022  2 ENGINES RUNNING",
+      "Kind": "operation",
+      "Code": 0,
+      "Time": "22:20:28Z"
+    },
+    {
+      "At": "2026-09-27T22:20:44.285324+00:00",
+      "Title": "Taxi-in",
+      "Summary": "Taxiing to gate at 23 kt",
+      "Detail": "Taxiing to gate at 23 kt\nGS 23 KT  \u2022  2 ENGINES RUNNING",
+      "Kind": "operation",
+      "Code": 0,
+      "Time": "22:20:44Z"
+    },
+    {
+      "At": "2026-09-27T22:21:32.2853927+00:00",
+      "Title": "Flaps 3 selected",
+      "Summary": "Flaps 3",
+      "Detail": "Flaps 3\nGS 16 KT  \u2022  2 ENGINES RUNNING",
+      "Kind": "operation",
+      "Code": 0,
+      "Time": "22:21:32Z"
+    },
+    {
+      "At": "2026-09-27T22:21:35.281929+00:00",
+      "Title": "Flaps 2 selected",
+      "Summary": "Flaps 2",
+      "Detail": "Flaps 2\nGS 16 KT  \u2022  2 ENGINES RUNNING",
+      "Kind": "operation",
+      "Code": 0,
+      "Time": "22:21:35Z"
+    },
+    {
+      "At": "2026-09-27T22:21:43.2714843+00:00",
+      "Title": "Flaps 1\u002BF selected",
+      "Summary": "Flaps 1\u002BF",
+      "Detail": "Flaps 1\u002BF\nGS 17 KT  \u2022  2 ENGINES RUNNING",
+      "Kind": "operation",
+      "Code": 0,
+      "Time": "22:21:43Z"
+    },
+    {
+      "At": "2026-09-27T22:21:45.2930831+00:00",
+      "Title": "Flaps 1 selected",
+      "Summary": "Flaps 1",
+      "Detail": "Flaps 1\nGS 18 KT  \u2022  2 ENGINES RUNNING",
+      "Kind": "operation",
+      "Code": 0,
+      "Time": "22:21:45Z"
+    },
+    {
+      "At": "2026-09-27T22:21:54.2718124+00:00",
+      "Title": "Flaps UP selected",
+      "Summary": "Flaps UP",
+      "Detail": "Flaps UP\nGS 18 KT  \u2022  2 ENGINES RUNNING",
+      "Kind": "operation",
+      "Code": 0,
+      "Time": "22:21:54Z"
+    },
+    {
+      "At": "2026-09-27T22:26:26.2914733+00:00",
+      "Title": "Parking brake set",
+      "Summary": "Parking brake set at stand",
+      "Detail": "Parking brake set at stand\nGS 0 KT  \u2022  BRAKE SET  \u2022  2 ENGINES RUNNING",
+      "Kind": "operation",
+      "Code": 0,
+      "Time": "22:26:26Z"
+    },
+    {
+      "At": "2026-09-27T22:26:36.2872009+00:00",
+      "Title": "Engine 1 shutdown",
+      "Summary": "Engine 1 spool-down detected \u2022 combustion loss / spool decay",
+      "Detail": "Engine 1 spool-down detected \u2022 combustion loss / spool decay\nGS 0 KT  \u2022  FUEL 10699 LB",
+      "Kind": "operation",
+      "Code": 0,
+      "Time": "22:26:36Z"
+    },
+    {
+      "At": "2026-09-27T22:26:36.2872009+00:00",
+      "Title": "Engine 2 shutdown",
+      "Summary": "Engine 2 spool-down detected \u2022 combustion loss / spool decay",
+      "Detail": "Engine 2 spool-down detected \u2022 combustion loss / spool decay\nGS 0 KT  \u2022  FUEL 10699 LB",
+      "Kind": "operation",
+      "Code": 0,
+      "Time": "22:26:36Z"
+    },
+    {
+      "At": "2026-09-27T22:27:29.2802352+00:00",
+      "Title": "Engine 1 shut down",
+      "Summary": "Engine 1 shutdown confirmed \u2022 N1 / N2 spool",
+      "Detail": "Engine 1 shutdown confirmed \u2022 N1 / N2 spool\nGS 0 KT  \u2022  FUEL 10694 LB",
+      "Kind": "operation",
+      "Code": 0,
+      "Time": "22:27:29Z"
+    },
+    {
+      "At": "2026-09-27T22:27:29.2802352+00:00",
+      "Title": "Engine 2 shut down",
+      "Summary": "Engine 2 shutdown confirmed \u2022 N1 / N2 spool",
+      "Detail": "Engine 2 shutdown confirmed \u2022 N1 / N2 spool\nGS 0 KT  \u2022  FUEL 10694 LB",
+      "Kind": "operation",
+      "Code": 0,
+      "Time": "22:27:29Z"
+    },
+    {
+      "At": "2026-09-27T22:27:29.2802352+00:00",
+      "Title": "Block-in / flight complete",
+      "Summary": "Stopped at gate with parking brake set and engines shut down",
+      "Detail": "Stopped at gate with parking brake set and engines shut down\nGS 0 KT  \u2022  BRAKE SET  \u2022  ENGINES OFF  \u2022  FUEL 10694 LB",
+      "Kind": "operation",
+      "Code": 0,
+      "Time": "22:27:29Z"
+    }
+  ],
+  "snapshots": [
+    {
+      "at": "2026-09-27T20:45:13.6433715+00:00",
+      "phase": "AtGate",
+      "fraction": 0,
+      "remaining": 365.3723126805289,
+      "destinationDistance": 346.69341743837845,
+      "reliable": true,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T20:46:13.6391906+00:00",
+      "phase": "AtGate",
+      "fraction": 0,
+      "remaining": 365.3723126805289,
+      "destinationDistance": 346.6934175076745,
+      "reliable": true,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T20:47:13.6371841+00:00",
+      "phase": "AtGate",
+      "fraction": 0,
+      "remaining": 365.3723126805289,
+      "destinationDistance": 346.6934175055791,
+      "reliable": true,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T20:48:13.632904+00:00",
+      "phase": "AtGate",
+      "fraction": 0,
+      "remaining": 365.3723126805289,
+      "destinationDistance": 346.69341750370825,
+      "reliable": true,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T20:49:13.6486663+00:00",
+      "phase": "AtGate",
+      "fraction": 0,
+      "remaining": 365.3723126805289,
+      "destinationDistance": 346.6934175016027,
+      "reliable": true,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T20:50:13.6388473+00:00",
+      "phase": "AtGate",
+      "fraction": 0,
+      "remaining": 365.3723126805289,
+      "destinationDistance": 346.693417499864,
+      "reliable": true,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T20:51:13.6590805+00:00",
+      "phase": "AtGate",
+      "fraction": 0,
+      "remaining": 365.3723126805289,
+      "destinationDistance": 346.69341749833416,
+      "reliable": true,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T20:52:13.6631622+00:00",
+      "phase": "AtGate",
+      "fraction": 0,
+      "remaining": 365.3723126805289,
+      "destinationDistance": 346.6934174932611,
+      "reliable": true,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T20:53:13.6605987+00:00",
+      "phase": "AtGate",
+      "fraction": 0,
+      "remaining": 365.3723126805289,
+      "destinationDistance": 346.6934174907969,
+      "reliable": true,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T20:54:13.6702499+00:00",
+      "phase": "AtGate",
+      "fraction": 0,
+      "remaining": 365.3723126805289,
+      "destinationDistance": 346.6934174884084,
+      "reliable": true,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T20:55:13.6539764+00:00",
+      "phase": "AtGate",
+      "fraction": 0,
+      "remaining": 365.3723126805289,
+      "destinationDistance": 346.69341748600874,
+      "reliable": true,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T20:56:13.6620483+00:00",
+      "phase": "AtGate",
+      "fraction": 0,
+      "remaining": 365.3723126805289,
+      "destinationDistance": 346.6934174836412,
+      "reliable": true,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T20:57:13.6571502+00:00",
+      "phase": "AtGate",
+      "fraction": 0,
+      "remaining": 365.3723126805289,
+      "destinationDistance": 346.6934174817211,
+      "reliable": true,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T20:58:13.657936+00:00",
+      "phase": "AtGate",
+      "fraction": 0,
+      "remaining": 365.3723126805289,
+      "destinationDistance": 346.69341747931276,
+      "reliable": true,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T20:59:13.6562042+00:00",
+      "phase": "AtGate",
+      "fraction": 0,
+      "remaining": 365.3723126805289,
+      "destinationDistance": 346.69341747755226,
+      "reliable": true,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T21:00:13.6525802+00:00",
+      "phase": "AtGate",
+      "fraction": 0,
+      "remaining": 365.3723126805289,
+      "destinationDistance": 346.69341747532854,
+      "reliable": true,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T21:01:13.659172+00:00",
+      "phase": "AtGate",
+      "fraction": 0,
+      "remaining": 365.3723126805289,
+      "destinationDistance": 346.693417473273,
+      "reliable": true,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T21:02:13.6608581+00:00",
+      "phase": "AtGate",
+      "fraction": 0,
+      "remaining": 365.3723126805289,
+      "destinationDistance": 346.6934174706678,
+      "reliable": true,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T21:03:13.6503448+00:00",
+      "phase": "AtGate",
+      "fraction": 0,
+      "remaining": 365.3723126805289,
+      "destinationDistance": 346.69341746863716,
+      "reliable": true,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T21:04:13.6565551+00:00",
+      "phase": "AtGate",
+      "fraction": 0,
+      "remaining": 365.3723126805289,
+      "destinationDistance": 346.6934174682303,
+      "reliable": true,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T21:04:46.6638107+00:00",
+      "phase": "AtGate",
+      "fraction": 0,
+      "remaining": 365.3723126805289,
+      "destinationDistance": 346.693026764393,
+      "reliable": true,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T21:04:49.6609115+00:00",
+      "phase": "TaxiOut",
+      "fraction": 0,
+      "remaining": 365.3723126805289,
+      "destinationDistance": 346.6918013744766,
+      "reliable": true,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T21:05:09.6577453+00:00",
+      "phase": "TaxiOut",
+      "fraction": 0,
+      "remaining": 365.3723126805289,
+      "destinationDistance": 346.6794979512643,
+      "reliable": true,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T21:05:13.6366043+00:00",
+      "phase": "TaxiOut",
+      "fraction": 0,
+      "remaining": 365.3723126805289,
+      "destinationDistance": 346.677240378141,
+      "reliable": true,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T21:05:34.6423797+00:00",
+      "phase": "TaxiOut",
+      "fraction": 0,
+      "remaining": 365.3723126805289,
+      "destinationDistance": 346.67303722808657,
+      "reliable": true,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T21:06:13.6568908+00:00",
+      "phase": "TaxiOut",
+      "fraction": 0,
+      "remaining": 365.3723126805289,
+      "destinationDistance": 346.6812407212571,
+      "reliable": true,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T21:06:19.6595458+00:00",
+      "phase": "TaxiOut",
+      "fraction": 0,
+      "remaining": 365.3723126805289,
+      "destinationDistance": 346.6812407212571,
+      "reliable": true,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T21:06:43.659317+00:00",
+      "phase": "TaxiOut",
+      "fraction": 0,
+      "remaining": 365.3723126805289,
+      "destinationDistance": 346.681254494728,
+      "reliable": true,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T21:07:13.6585235+00:00",
+      "phase": "TaxiOut",
+      "fraction": 0,
+      "remaining": 365.3723126805289,
+      "destinationDistance": 346.6812544416391,
+      "reliable": true,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T21:07:38.6637878+00:00",
+      "phase": "TaxiOut",
+      "fraction": 0,
+      "remaining": 365.3723126805289,
+      "destinationDistance": 346.6812543417065,
+      "reliable": true,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T21:07:47.6559295+00:00",
+      "phase": "TaxiOut",
+      "fraction": 0,
+      "remaining": 365.3723126805289,
+      "destinationDistance": 346.6812543381149,
+      "reliable": true,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T21:08:13.671379+00:00",
+      "phase": "TaxiOut",
+      "fraction": 0,
+      "remaining": 365.3723126805289,
+      "destinationDistance": 346.6812543340122,
+      "reliable": true,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T21:09:09.6493835+00:00",
+      "phase": "TaxiOut",
+      "fraction": 0,
+      "remaining": 365.3723126805289,
+      "destinationDistance": 346.6381504889519,
+      "reliable": true,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T21:09:13.6622467+00:00",
+      "phase": "TaxiOut",
+      "fraction": 0,
+      "remaining": 365.3723126805289,
+      "destinationDistance": 346.6277330625582,
+      "reliable": true,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T21:10:13.6429672+00:00",
+      "phase": "TaxiOut",
+      "fraction": 0,
+      "remaining": 365.3723126805289,
+      "destinationDistance": 346.57669758945553,
+      "reliable": true,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T21:11:13.6642227+00:00",
+      "phase": "TaxiOut",
+      "fraction": 0,
+      "remaining": 365.3723126805289,
+      "destinationDistance": 346.76167737419513,
+      "reliable": true,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T21:12:13.6614456+00:00",
+      "phase": "TaxiOut",
+      "fraction": 0,
+      "remaining": 365.3723126805289,
+      "destinationDistance": 346.7561722898585,
+      "reliable": true,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T21:13:13.6512985+00:00",
+      "phase": "TaxiOut",
+      "fraction": 0,
+      "remaining": 365.3723126805289,
+      "destinationDistance": 346.676415448049,
+      "reliable": true,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T21:14:13.6649246+00:00",
+      "phase": "TaxiOut",
+      "fraction": 0,
+      "remaining": 365.3723126805289,
+      "destinationDistance": 346.6706238004378,
+      "reliable": true,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T21:15:13.6676864+00:00",
+      "phase": "TaxiOut",
+      "fraction": 0,
+      "remaining": 365.3723126805289,
+      "destinationDistance": 346.66889747051283,
+      "reliable": true,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T21:15:54.6581802+00:00",
+      "phase": "TaxiOut",
+      "fraction": 0,
+      "remaining": 365.3723126805289,
+      "destinationDistance": 346.5884320544878,
+      "reliable": true,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T21:16:13.6555557+00:00",
+      "phase": "TaxiOut",
+      "fraction": 0.00022263979795167366,
+      "remaining": 365.2909662626566,
+      "destinationDistance": 346.2459567758955,
+      "reliable": true,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T21:16:17.6569519+00:00",
+      "phase": "Airborne",
+      "fraction": 0.0007043805788700119,
+      "remaining": 365.11495151941995,
+      "destinationDistance": 346.14579383887997,
+      "reliable": true,
+      "estimate": "2026-09-27T22:36:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:16:19.65242+00:00",
+      "phase": "Airborne",
+      "fraction": 0.0009544014668153578,
+      "remaining": 365.0236008093729,
+      "destinationDistance": 346.09363205035777,
+      "reliable": true,
+      "estimate": "2026-09-27T22:36:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:16:30.6527557+00:00",
+      "phase": "Airborne",
+      "fraction": 0.0023625743708661773,
+      "remaining": 364.5090934187658,
+      "destinationDistance": 345.80369127248946,
+      "reliable": true,
+      "estimate": "2026-09-27T22:36:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:17:13.6364669+00:00",
+      "phase": "Airborne",
+      "fraction": 0.00822999561426252,
+      "remaining": 362.3653001495952,
+      "destinationDistance": 344.5776265771149,
+      "reliable": true,
+      "estimate": "2026-09-27T22:38:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:17:14.6383666+00:00",
+      "phase": "Airborne",
+      "fraction": 0.008381132298298843,
+      "remaining": 362.310078989818,
+      "destinationDistance": 344.54621867739434,
+      "reliable": true,
+      "estimate": "2026-09-27T22:38:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:17:23.6359024+00:00",
+      "phase": "Airborne",
+      "fraction": 0.009790584514570044,
+      "remaining": 361.7951041739463,
+      "destinationDistance": 344.25489853675487,
+      "reliable": true,
+      "estimate": "2026-09-27T22:38:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:17:32.6465988+00:00",
+      "phase": "Airborne",
+      "fraction": 0.011299293707901614,
+      "remaining": 361.2438636068164,
+      "destinationDistance": 343.94518728706174,
+      "reliable": true,
+      "estimate": "2026-09-27T22:38:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:18:13.6338272+00:00",
+      "phase": "Airborne",
+      "fraction": 0.019833859054584346,
+      "remaining": 358.1255697283758,
+      "destinationDistance": 342.0419691341303,
+      "reliable": true,
+      "estimate": "2026-09-27T22:38:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:19:13.6446762+00:00",
+      "phase": "Airborne",
+      "fraction": 0.03226967003207282,
+      "remaining": 353.5818687114729,
+      "destinationDistance": 337.5326950429123,
+      "reliable": true,
+      "estimate": "2026-09-27T22:36:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:20:05.6646575+00:00",
+      "phase": "Airborne",
+      "fraction": 0.0436876815755457,
+      "remaining": 349.41004342762125,
+      "destinationDistance": 333.42502194481835,
+      "reliable": true,
+      "estimate": "2026-09-27T22:36:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:20:13.6620025+00:00",
+      "phase": "Airborne",
+      "fraction": 0.04549253195652203,
+      "remaining": 348.7506010698816,
+      "destinationDistance": 332.7751029950756,
+      "reliable": true,
+      "estimate": "2026-09-27T22:36:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:21:13.6667022+00:00",
+      "phase": "Airborne",
+      "fraction": 0.06032025693752363,
+      "remaining": 343.3329609017822,
+      "destinationDistance": 327.4343249964609,
+      "reliable": true,
+      "estimate": "2026-09-27T22:34:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:22:13.6625366+00:00",
+      "phase": "Airborne",
+      "fraction": 0.0758114275145767,
+      "remaining": 337.67291608191573,
+      "destinationDistance": 321.85703613518695,
+      "reliable": true,
+      "estimate": "2026-09-27T22:34:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:23:13.6479034+00:00",
+      "phase": "Airborne",
+      "fraction": 0.09155420800323189,
+      "remaining": 331.9209399667539,
+      "destinationDistance": 316.19360294740835,
+      "reliable": true,
+      "estimate": "2026-09-27T22:32:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:24:13.6681365+00:00",
+      "phase": "Airborne",
+      "fraction": 0.10779486607600264,
+      "remaining": 325.98705316725193,
+      "destinationDistance": 310.35381544130024,
+      "reliable": true,
+      "estimate": "2026-09-27T22:32:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:25:13.6524353+00:00",
+      "phase": "Airborne",
+      "fraction": 0.12436238394895771,
+      "remaining": 319.93374084663435,
+      "destinationDistance": 304.3995402777816,
+      "reliable": true,
+      "estimate": "2026-09-27T22:30:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:26:13.6648483+00:00",
+      "phase": "Airborne",
+      "fraction": 0.1410845102103343,
+      "remaining": 313.82393890157937,
+      "destinationDistance": 298.3941519517574,
+      "reliable": true,
+      "estimate": "2026-09-27T22:30:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:27:13.6609878+00:00",
+      "phase": "Airborne",
+      "fraction": 0.15802216882629072,
+      "remaining": 307.6353874016741,
+      "destinationDistance": 292.31643012571556,
+      "reliable": true,
+      "estimate": "2026-09-27T22:28:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:28:13.6559448+00:00",
+      "phase": "Airborne",
+      "fraction": 0.17538452259463166,
+      "remaining": 301.2916640517579,
+      "destinationDistance": 286.09086387625763,
+      "reliable": true,
+      "estimate": "2026-09-27T22:28:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:29:13.6621398+00:00",
+      "phase": "Airborne",
+      "fraction": 0.19320818481845325,
+      "remaining": 294.7793913646036,
+      "destinationDistance": 279.70483642703215,
+      "reliable": true,
+      "estimate": "2026-09-27T22:26:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:30:13.6516494+00:00",
+      "phase": "Airborne",
+      "fraction": 0.21147846057103425,
+      "remaining": 288.1039384595721,
+      "destinationDistance": 273.16555899746965,
+      "reliable": true,
+      "estimate": "2026-09-27T22:24:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:31:13.6665878+00:00",
+      "phase": "Airborne",
+      "fraction": 0.2301891532876703,
+      "remaining": 281.26756938984005,
+      "destinationDistance": 266.47299028460276,
+      "reliable": true,
+      "estimate": "2026-09-27T22:22:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:32:13.6710815+00:00",
+      "phase": "Airborne",
+      "fraction": 0.24942701631554276,
+      "remaining": 274.23858688431505,
+      "destinationDistance": 259.5196076288281,
+      "reliable": true,
+      "estimate": "2026-09-27T22:20:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:33:13.6519699+00:00",
+      "phase": "Airborne",
+      "fraction": 0.2688638384300279,
+      "remaining": 267.13691023718553,
+      "destinationDistance": 252.48922541761337,
+      "reliable": true,
+      "estimate": "2026-09-27T22:20:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:34:15.2894439+00:00",
+      "phase": "Airborne",
+      "fraction": 0.28807499333327025,
+      "remaining": 260.11768614092404,
+      "destinationDistance": 245.5529571747955,
+      "reliable": true,
+      "estimate": "2026-09-27T22:18:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:35:15.2790603+00:00",
+      "phase": "Airborne",
+      "fraction": 0.30701860114034907,
+      "remaining": 253.1962163459387,
+      "destinationDistance": 238.7155001997746,
+      "reliable": true,
+      "estimate": "2026-09-27T22:18:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:36:15.2682647+00:00",
+      "phase": "Airborne",
+      "fraction": 0.325878520222067,
+      "remaining": 246.3053240940838,
+      "destinationDistance": 231.9152459313884,
+      "reliable": true,
+      "estimate": "2026-09-27T22:18:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:37:15.2860565+00:00",
+      "phase": "Airborne",
+      "fraction": 0.34470723200959164,
+      "remaining": 239.42583412348077,
+      "destinationDistance": 225.12998815493492,
+      "reliable": true,
+      "estimate": "2026-09-27T22:18:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:37:21.2941436+00:00",
+      "phase": "Airborne",
+      "fraction": 0.3465751354766886,
+      "remaining": 238.74335391384358,
+      "destinationDistance": 224.45705521332053,
+      "reliable": true,
+      "estimate": "2026-09-27T22:18:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:38:15.2876434+00:00",
+      "phase": "Airborne",
+      "fraction": 0.36332228801160604,
+      "remaining": 232.62440806134722,
+      "destinationDistance": 218.42800563481632,
+      "reliable": true,
+      "estimate": "2026-09-27T22:18:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:39:15.2781677+00:00",
+      "phase": "Airborne",
+      "fraction": 0.3819341185307903,
+      "remaining": 225.8241605013348,
+      "destinationDistance": 211.73403409507054,
+      "reliable": true,
+      "estimate": "2026-09-27T22:18:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:40:15.28022+00:00",
+      "phase": "Airborne",
+      "fraction": 0.4005897176496187,
+      "remaining": 219.00792110684765,
+      "destinationDistance": 205.0303073293693,
+      "reliable": true,
+      "estimate": "2026-09-27T22:18:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:41:15.2824478+00:00",
+      "phase": "Airborne",
+      "fraction": 0.41927701180772836,
+      "remaining": 212.18010122255777,
+      "destinationDistance": 198.32246220524456,
+      "reliable": true,
+      "estimate": "2026-09-27T22:18:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:42:15.2765655+00:00",
+      "phase": "Airborne",
+      "fraction": 0.43798903705945713,
+      "remaining": 205.34324528139717,
+      "destinationDistance": 191.6162822774605,
+      "reliable": true,
+      "estimate": "2026-09-27T22:18:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:43:15.2739868+00:00",
+      "phase": "Airborne",
+      "fraction": 0.4567503512316031,
+      "remaining": 198.4883805333942,
+      "destinationDistance": 184.90021759533343,
+      "reliable": true,
+      "estimate": "2026-09-27T22:18:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:44:15.2920761+00:00",
+      "phase": "Airborne",
+      "fraction": 0.47556337388585657,
+      "remaining": 191.61462293769844,
+      "destinationDistance": 178.17675671854133,
+      "reliable": true,
+      "estimate": "2026-09-27T22:18:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:45:15.288681+00:00",
+      "phase": "Airborne",
+      "fraction": 0.494390657290947,
+      "remaining": 184.73565485848883,
+      "destinationDistance": 171.45976487594726,
+      "reliable": true,
+      "estimate": "2026-09-27T22:18:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:46:15.280754+00:00",
+      "phase": "Airborne",
+      "fraction": 0.513209947094472,
+      "remaining": 177.8596074199698,
+      "destinationDistance": 164.75994938313193,
+      "reliable": true,
+      "estimate": "2026-09-27T22:18:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:47:15.259613+00:00",
+      "phase": "Airborne",
+      "fraction": 0.5319971972278739,
+      "remaining": 170.99526638982118,
+      "destinationDistance": 158.08554503361268,
+      "reliable": true,
+      "estimate": "2026-09-27T22:18:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:48:15.2649917+00:00",
+      "phase": "Airborne",
+      "fraction": 0.5507604621060328,
+      "remaining": 164.1396889078509,
+      "destinationDistance": 151.43843984386595,
+      "reliable": true,
+      "estimate": "2026-09-27T22:18:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:49:15.2769012+00:00",
+      "phase": "Airborne",
+      "fraction": 0.5695209521552242,
+      "remaining": 157.28512527155777,
+      "destinationDistance": 144.81030664271398,
+      "reliable": true,
+      "estimate": "2026-09-27T22:18:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:50:15.2739562+00:00",
+      "phase": "Airborne",
+      "fraction": 0.5883500725041784,
+      "remaining": 150.4054860239204,
+      "destinationDistance": 138.16678709668795,
+      "reliable": true,
+      "estimate": "2026-09-27T22:18:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:51:15.2742767+00:00",
+      "phase": "Airborne",
+      "fraction": 0.6075331203030335,
+      "remaining": 143.39653148539156,
+      "destinationDistance": 131.15793455124478,
+      "reliable": true,
+      "estimate": "2026-09-27T22:18:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:52:15.2745437+00:00",
+      "phase": "Airborne",
+      "fraction": 0.6267423219062416,
+      "remaining": 136.37802107088092,
+      "destinationDistance": 124.13945186791877,
+      "reliable": true,
+      "estimate": "2026-09-27T22:18:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:52:55.2710876+00:00",
+      "phase": "Airborne",
+      "fraction": 0.6395458853999916,
+      "remaining": 131.69995346661747,
+      "destinationDistance": 119.4613896093099,
+      "reliable": true,
+      "estimate": "2026-09-27T22:18:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:53:15.2679977+00:00",
+      "phase": "Airborne",
+      "fraction": 0.6459449826584223,
+      "remaining": 129.36190050223703,
+      "destinationDistance": 117.12334629158727,
+      "reliable": true,
+      "estimate": "2026-09-27T22:18:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:54:15.2891464+00:00",
+      "phase": "Airborne",
+      "fraction": 0.6650080761088324,
+      "remaining": 122.39677396141563,
+      "destinationDistance": 110.15821522427245,
+      "reliable": true,
+      "estimate": "2026-09-27T22:18:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:55:15.2593612+00:00",
+      "phase": "Airborne",
+      "fraction": 0.6833820777874401,
+      "remaining": 115.68342247490682,
+      "destinationDistance": 103.28685378979979,
+      "reliable": true,
+      "estimate": "2026-09-27T22:18:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:56:15.2649002+00:00",
+      "phase": "Airborne",
+      "fraction": 0.7012407663505772,
+      "remaining": 109.1583521331521,
+      "destinationDistance": 96.54971824306152,
+      "reliable": true,
+      "estimate": "2026-09-27T22:18:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:57:15.2849578+00:00",
+      "phase": "Airborne",
+      "fraction": 0.7186482737500706,
+      "remaining": 102.7981308965958,
+      "destinationDistance": 89.98041296407001,
+      "reliable": true,
+      "estimate": "2026-09-27T22:18:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:58:15.271202+00:00",
+      "phase": "Airborne",
+      "fraction": 0.7353182213787213,
+      "remaining": 96.70739357925238,
+      "destinationDistance": 83.69056269056865,
+      "reliable": true,
+      "estimate": "2026-09-27T22:18:00+00:00"
+    },
+    {
+      "at": "2026-09-27T21:59:15.2836456+00:00",
+      "phase": "Airborne",
+      "fraction": 0.7511346156517704,
+      "remaining": 90.92852102544134,
+      "destinationDistance": 77.72236370267264,
+      "reliable": true,
+      "estimate": "2026-09-27T22:20:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:00:15.2710037+00:00",
+      "phase": "Airborne",
+      "fraction": 0.7662744097229982,
+      "remaining": 85.39685945212989,
+      "destinationDistance": 72.01072041160785,
+      "reliable": true,
+      "estimate": "2026-09-27T22:20:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:01:15.2663116+00:00",
+      "phase": "Airborne",
+      "fraction": 0.7811496555686921,
+      "remaining": 79.96185647579729,
+      "destinationDistance": 66.39785987847478,
+      "reliable": true,
+      "estimate": "2026-09-27T22:20:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:02:15.2842712+00:00",
+      "phase": "Airborne",
+      "fraction": 0.7957974713924935,
+      "remaining": 74.60995013253653,
+      "destinationDistance": 60.87164753093129,
+      "reliable": true,
+      "estimate": "2026-09-27T22:20:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:03:15.298294+00:00",
+      "phase": "Airborne",
+      "fraction": 0.8101304450479667,
+      "remaining": 69.37307840044717,
+      "destinationDistance": 55.46309990483792,
+      "reliable": true,
+      "estimate": "2026-09-27T22:20:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:04:15.2803115+00:00",
+      "phase": "Airborne",
+      "fraction": 0.8241270833753457,
+      "remaining": 64.25909428501978,
+      "destinationDistance": 50.18219412768156,
+      "reliable": true,
+      "estimate": "2026-09-27T22:22:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:05:15.2742767+00:00",
+      "phase": "Airborne",
+      "fraction": 0.8376989133994917,
+      "remaining": 59.30032336179054,
+      "destinationDistance": 45.0155315661357,
+      "reliable": true,
+      "estimate": "2026-09-27T22:22:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:06:15.2695693+00:00",
+      "phase": "Airborne",
+      "fraction": 0.8423056683644988,
+      "remaining": 57.61714264627336,
+      "destinationDistance": 40.4667301298848,
+      "reliable": true,
+      "estimate": "2026-09-27T22:22:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:07:15.2887878+00:00",
+      "phase": "Airborne",
+      "fraction": 0.8423056683644988,
+      "remaining": 57.61714264627336,
+      "destinationDistance": 36.304545764077005,
+      "reliable": true,
+      "estimate": "2026-09-27T22:24:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:08:15.2723236+00:00",
+      "phase": "Airborne",
+      "fraction": 0.8908933870827653,
+      "remaining": 39.8645354903093,
+      "destinationDistance": 32.502164921036155,
+      "reliable": true,
+      "estimate": "2026-09-27T22:21:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:09:15.2739257+00:00",
+      "phase": "Airborne",
+      "fraction": 0.9032012468531656,
+      "remaining": 35.367584301850506,
+      "destinationDistance": 29.09353600388281,
+      "reliable": true,
+      "estimate": "2026-09-27T22:21:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:10:06.2854766+00:00",
+      "phase": "Airborne",
+      "fraction": 0.9105328059213342,
+      "remaining": null,
+      "destinationDistance": 26.11390173995757,
+      "reliable": false,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T22:10:15.2716217+00:00",
+      "phase": "Airborne",
+      "fraction": 0.9105328059213342,
+      "remaining": null,
+      "destinationDistance": 25.526129623031977,
+      "reliable": false,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T22:10:39.2645797+00:00",
+      "phase": "Airborne",
+      "fraction": 0.9105328059213342,
+      "remaining": null,
+      "destinationDistance": 24.002086526011027,
+      "reliable": false,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T22:11:15.2719268+00:00",
+      "phase": "Airborne",
+      "fraction": 0.9105328059213342,
+      "remaining": null,
+      "destinationDistance": 21.816114423761164,
+      "reliable": false,
+      "estimate": null
+    },
+    {
+      "at": "2026-09-27T22:12:15.2689437+00:00",
+      "phase": "Airborne",
+      "fraction": 0.9489044011500835,
+      "remaining": 18.66891711959058,
+      "destinationDistance": 18.668917119590564,
+      "reliable": true,
+      "estimate": "2026-09-27T22:21:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:12:17.2719421+00:00",
+      "phase": "Airborne",
+      "fraction": 0.9491545830710656,
+      "remaining": 18.57750757253048,
+      "destinationDistance": 18.577507572530475,
+      "reliable": true,
+      "estimate": "2026-09-27T22:21:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:13:15.2781906+00:00",
+      "phase": "Airborne",
+      "fraction": 0.9552414413710691,
+      "remaining": 16.35353807849951,
+      "destinationDistance": 16.353538078499515,
+      "reliable": true,
+      "estimate": "2026-09-27T22:21:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:13:30.2871398+00:00",
+      "phase": "Airborne",
+      "fraction": 0.9563916662295107,
+      "remaining": 15.9332777618681,
+      "destinationDistance": 15.933277761868096,
+      "reliable": true,
+      "estimate": "2026-09-27T22:21:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:14:15.2814254+00:00",
+      "phase": "Airborne",
+      "fraction": 0.9588014820908093,
+      "remaining": 15.0527977674912,
+      "destinationDistance": 15.052797767491194,
+      "reliable": true,
+      "estimate": "2026-09-27T22:23:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:14:57.2754669+00:00",
+      "phase": "Airborne",
+      "fraction": 0.9620765177329772,
+      "remaining": 13.856190420801148,
+      "destinationDistance": 13.856190420801148,
+      "reliable": true,
+      "estimate": "2026-09-27T22:23:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:15:05.27285+00:00",
+      "phase": "Airborne",
+      "fraction": 0.9631550308372565,
+      "remaining": 13.46213159363436,
+      "destinationDistance": 13.462131593634343,
+      "reliable": true,
+      "estimate": "2026-09-27T22:23:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:15:15.2858276+00:00",
+      "phase": "Airborne",
+      "fraction": 0.9645871068936684,
+      "remaining": 12.93889065296872,
+      "destinationDistance": 12.938890652968718,
+      "reliable": true,
+      "estimate": "2026-09-27T22:23:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:16:15.2688751+00:00",
+      "phase": "Airborne",
+      "fraction": 0.9729139333395522,
+      "remaining": 9.89649881714679,
+      "destinationDistance": 9.896498817146789,
+      "reliable": true,
+      "estimate": "2026-09-27T22:25:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:16:30.2671737+00:00",
+      "phase": "Airborne",
+      "fraction": 0.9748632662190803,
+      "remaining": 9.18426655476942,
+      "destinationDistance": 9.184266554769414,
+      "reliable": true,
+      "estimate": "2026-09-27T22:25:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:16:42.2803726+00:00",
+      "phase": "Airborne",
+      "fraction": 0.9763831501464818,
+      "remaining": 8.628943049208761,
+      "destinationDistance": 8.628943049208761,
+      "reliable": true,
+      "estimate": "2026-09-27T22:25:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:16:43.2894515+00:00",
+      "phase": "Airborne",
+      "fraction": 0.9765099473646429,
+      "remaining": 8.58261485636777,
+      "destinationDistance": 8.582614856367769,
+      "reliable": true,
+      "estimate": "2026-09-27T22:25:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:17:15.2837371+00:00",
+      "phase": "Airborne",
+      "fraction": 0.9805333400430745,
+      "remaining": 7.112578568627339,
+      "destinationDistance": 7.112578568627339,
+      "reliable": true,
+      "estimate": "2026-09-27T22:25:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:18:15.2975158+00:00",
+      "phase": "Airborne",
+      "fraction": 0.9878256699897172,
+      "remaining": 4.448163111192989,
+      "destinationDistance": 4.448163111192983,
+      "reliable": true,
+      "estimate": "2026-09-27T22:25:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:19:15.2924346+00:00",
+      "phase": "Airborne",
+      "fraction": 0.9946808039565292,
+      "remaining": 1.9434869600040343,
+      "destinationDistance": 1.9434869600040343,
+      "reliable": true,
+      "estimate": "2026-09-27T22:25:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:19:59.2692184+00:00",
+      "phase": "TaxiIn",
+      "fraction": 0.9990085270237344,
+      "remaining": 0.3622567742983954,
+      "destinationDistance": 0.3622567742983953,
+      "reliable": true,
+      "estimate": "2026-09-27T22:25:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:20:15.2902221+00:00",
+      "phase": "TaxiIn",
+      "fraction": 0.9993603081421668,
+      "remaining": 0.2337256934994172,
+      "destinationDistance": 0.23372569349940345,
+      "reliable": true,
+      "estimate": "2026-09-27T22:25:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:20:28.2760314+00:00",
+      "phase": "TaxiIn",
+      "fraction": 0.9990385952969597,
+      "remaining": 0.3512706597717685,
+      "destinationDistance": 0.35127065977176214,
+      "reliable": true,
+      "estimate": "2026-09-27T22:25:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:20:44.285324+00:00",
+      "phase": "TaxiIn",
+      "fraction": 0.9987343110424938,
+      "remaining": 0.4624477015382642,
+      "destinationDistance": 0.46244770153826426,
+      "reliable": true,
+      "estimate": "2026-09-27T22:25:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:21:15.2682495+00:00",
+      "phase": "TaxiIn",
+      "fraction": 0.9986958407771516,
+      "remaining": 0.47650367135577737,
+      "destinationDistance": 0.47650367135577737,
+      "reliable": true,
+      "estimate": "2026-09-27T22:25:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:21:32.2853927+00:00",
+      "phase": "TaxiIn",
+      "fraction": 0.998850669757764,
+      "remaining": 0.4199334486394287,
+      "destinationDistance": 0.4199334486394287,
+      "reliable": true,
+      "estimate": "2026-09-27T22:25:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:21:35.281929+00:00",
+      "phase": "TaxiIn",
+      "fraction": 0.9988860851241304,
+      "remaining": 0.40699365432573764,
+      "destinationDistance": 0.40699365432573364,
+      "reliable": true,
+      "estimate": "2026-09-27T22:25:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:21:43.2714843+00:00",
+      "phase": "TaxiIn",
+      "fraction": 0.9989862962178446,
+      "remaining": 0.3703792952591128,
+      "destinationDistance": 0.3703792952591128,
+      "reliable": true,
+      "estimate": "2026-09-27T22:25:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:21:45.2930831+00:00",
+      "phase": "TaxiIn",
+      "fraction": 0.9990128404703748,
+      "remaining": 0.36068076032379986,
+      "destinationDistance": 0.3606807603237936,
+      "reliable": true,
+      "estimate": "2026-09-27T22:25:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:21:54.2718124+00:00",
+      "phase": "TaxiIn",
+      "fraction": 0.9991351285561056,
+      "remaining": 0.3160000796270288,
+      "destinationDistance": 0.3160000796270265,
+      "reliable": true,
+      "estimate": "2026-09-27T22:25:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:22:15.2746963+00:00",
+      "phase": "TaxiIn",
+      "fraction": 0.9994439260243515,
+      "remaining": 0.20317403450414737,
+      "destinationDistance": 0.20317403450413998,
+      "reliable": true,
+      "estimate": "2026-09-27T22:25:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:23:15.2704925+00:00",
+      "phase": "TaxiIn",
+      "fraction": 0.9999009939709024,
+      "remaining": 0.03617406182073199,
+      "destinationDistance": 0.03617406182073199,
+      "reliable": true,
+      "estimate": "2026-09-27T22:25:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:24:15.2895584+00:00",
+      "phase": "TaxiIn",
+      "fraction": 0.9993209296825128,
+      "remaining": 0.24811349237298158,
+      "destinationDistance": 0.24811349237297406,
+      "reliable": true,
+      "estimate": "2026-09-27T22:25:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:25:15.2876739+00:00",
+      "phase": "TaxiIn",
+      "fraction": 0.9986829128291425,
+      "remaining": 0.48122718561809574,
+      "destinationDistance": 0.48122718561809574,
+      "reliable": true,
+      "estimate": "2026-09-27T22:26:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:26:15.282341+00:00",
+      "phase": "TaxiIn",
+      "fraction": 0.9988417363207399,
+      "remaining": 0.42319747918511574,
+      "destinationDistance": 0.42319747918511136,
+      "reliable": true,
+      "estimate": "2026-09-27T22:27:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:26:26.2914733+00:00",
+      "phase": "TaxiIn",
+      "fraction": 0.9988414528729972,
+      "remaining": 0.423301043142398,
+      "destinationDistance": 0.4233010431423835,
+      "reliable": true,
+      "estimate": "2026-09-27T22:27:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:26:36.2872009+00:00",
+      "phase": "TaxiIn",
+      "fraction": 0.9988414529418822,
+      "remaining": 0.42330101797372305,
+      "destinationDistance": 0.4233010179737056,
+      "reliable": true,
+      "estimate": "2026-09-27T22:27:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:27:15.2992095+00:00",
+      "phase": "TaxiIn",
+      "fraction": 0.9988414529759654,
+      "remaining": 0.4233010055206813,
+      "destinationDistance": 0.4233010055206813,
+      "reliable": true,
+      "estimate": "2026-09-27T22:28:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:27:29.2802352+00:00",
+      "phase": "TaxiIn",
+      "fraction": 0.9988414529739045,
+      "remaining": 0.42330100627367084,
+      "destinationDistance": 0.4233010062736644,
+      "reliable": true,
+      "estimate": "2026-09-27T22:28:00+00:00"
+    },
+    {
+      "at": "2026-09-27T22:27:33.2773437+00:00",
+      "phase": "Complete",
+      "fraction": 1,
+      "remaining": 0,
+      "destinationDistance": 0.4233010068004492,
+      "reliable": true,
+      "estimate": "2026-09-27T22:27:29.2802352+00:00"
+    }
+  ]
+}

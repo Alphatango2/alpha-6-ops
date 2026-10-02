@@ -13,7 +13,7 @@ namespace Alpha6Ops.Desktop;
 
 internal static class OperationsSmokeTest
 {
-    internal static Task RunAsync(MainWindow window,string directory,Action<bool,string> check)
+    internal static async Task RunAsync(MainWindow window,string directory,Action<bool,string> check)
     {
         var at=new DateTimeOffset(2026,9,24,2,30,0,TimeSpan.Zero);
         var plan=new ActiveFlightPlan("JST721","VH-VGF","YSSY","YMHB",at.AddMinutes(-25),at.AddMinutes(87),"Diagnostic fixture",DepartureGate:"54",ArrivalGate:"3",AircraftType:"A320",
@@ -95,7 +95,7 @@ internal static class OperationsSmokeTest
         for(var i=0;i<texts.Length;i++)texts[i].Text=values[i];window.DashboardFlightsGrid.ItemsSource=oldItems;
         window.HeroFlightDetailsButton.Content=oldAction;window.AssignedFlightsTab.Content=oldAssigned;window.OperationsFootnote.Text=oldFootnote;
         window.Width=width;window.Height=height;window.OperationsView.Present(saved);window.UpdateLayout();
-        return Task.CompletedTask;
+        await OperationsLayoutChecks.RunAsync(window,check);
     }
     private static IEnumerable<DependencyObject> Descendants(DependencyObject parent)
     {

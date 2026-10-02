@@ -10,6 +10,9 @@ namespace Alpha6Ops.Desktop;
 public partial class App : Application
 {
     private FlightSessionCoordinator? flightSession;
+#if DIAGNOSTIC_HARNESSES
+    private MapV2.NativeMapInputTrace? nativeMapTrace;
+#endif
     private readonly System.Collections.Generic.List<FlightSessionCoordinator> diagnosticSessions=[];
 
     internal static FlightSessionCoordinator GetFlightSession(string? diagnosticDirectory)
@@ -32,9 +35,14 @@ public partial class App : Application
     protected override async void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
-        if(e.Args.Length==2&&e.Args[0] is "--map-v2-checks" or "--map-contention-checks")
+#if DIAGNOSTIC_HARNESSES
+        if(e.Args.Length==4&&e.Args[0]=="--map-performance-checks")
         {
-            CrashReporter.Install(this,e.Args[1]);var result=await MapV2.MapV2Checks.RunAsync(e.Args[1],e.Args[0]=="--map-contention-checks");Shutdown(result);return;
+            CrashReporter.Install(this,e.Args[1]);var result=await MapV2.MapPerformanceChecks.RunAsync(e.Args[1],e.Args[2],double.Parse(e.Args[3],System.Globalization.CultureInfo.InvariantCulture));Shutdown(result);return;
+        }
+        if(e.Args.Length==2&&e.Args[0] is "--map-v2-checks" or "--map-contention-checks" or "--map-delivery-checks")
+        {
+            CrashReporter.Install(this,e.Args[1]);var result=await MapV2.MapV2Checks.RunAsync(e.Args[1],e.Args[0]=="--map-contention-checks",e.Args[0]=="--map-delivery-checks");Shutdown(result);return;
         }
         if(e.Args.Length==2&&e.Args[0]=="--map-model-checks")
         {
@@ -42,6 +50,10 @@ public partial class App : Application
             try { void Record(bool passed,string name){checks.Add(new{passed,name});if(!passed)failed++;} MapV2.MapModelChecks.Run(Record);await MapV2.MapV2Checks.PumpChecks(Record); }
             catch(Exception error){checks.Add(new{passed=false,name=error.ToString()});failed++;}
             File.WriteAllText(Path.Combine(e.Args[1],"model.json"),JsonSerializer.Serialize(new{passed=failed==0,failed,checks}));Shutdown(failed==0?0:1);return;
+        }
+        if(e.Args.Length==2&&e.Args[0]=="--observed-cruise-native-checks")
+        {
+            Shutdown(ObservedCruiseNativeProfileChecks.Run(e.Args[1]));return;
         }
         if(e.Args.Length==3&&e.Args[0]=="--replay-journals")
         {
@@ -70,8 +82,15 @@ public partial class App : Application
             Shutdown();
             return;
         }
+#else
+        string? diagnosticOutput=null;
+        CrashReporter.Install(this);
+#endif
         if (diagnosticOutput is null)
         {
+            ProductStorage.Initialize();
+            var retention=ProductionRetention.Apply(ProductStorage.Current,DateTimeOffset.UtcNow);
+            if(retention.Errors.Count>0)CrashReporter.Write("production_retention",null,new{errors=retention.Errors});
             if (!SingleInstance.TryAcquire()) { Shutdown(); return; }
         }
         var window = diagnosticOutput is not null ? new MainWindow(diagnosticOutput) : new MainWindow();
@@ -79,14 +98,26 @@ public partial class App : Application
         if(diagnosticOutput is null)SingleInstance.Listen(()=>window.Dispatcher.BeginInvoke(window.RestoreWindow));
         if (diagnosticOutput is not null)
         {
+#if DIAGNOSTIC_HARNESSES
             await DesktopSmokeTest.RunAsync(window, diagnosticOutput);
+#endif
             return;
         }
         window.Show();
+#if DIAGNOSTIC_HARNESSES
+        if(e.Args.Length==2&&e.Args[0]=="--trace-map-input")
+        {
+            try{nativeMapTrace=new(window,e.Args[1]);}
+            catch(Exception error){CrashReporter.Write("map_input_trace_start",error);}
+        }
+#endif
     }
 
     protected override void OnExit(ExitEventArgs e)
     {
+#if DIAGNOSTIC_HARNESSES
+        nativeMapTrace?.Dispose();
+#endif
         flightSession?.Dispose();
         foreach(var session in diagnosticSessions)session.Dispose();
         SingleInstance.Release();

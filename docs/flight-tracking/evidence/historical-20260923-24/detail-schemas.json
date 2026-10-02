@@ -1,0 +1,912 @@
+{
+  "block_in_confirmation": {
+    "JST928": {
+      "$": {
+        "dict": 1
+      },
+      "destination": {
+        "str": 1
+      },
+      "source": {
+        "str": 1
+      }
+    },
+    "JST941": {
+      "$": {
+        "dict": 1
+      },
+      "destination": {
+        "str": 1
+      },
+      "source": {
+        "str": 1
+      }
+    }
+  },
+  "connection_opened": {
+    "JST928": {
+      "$": {
+        "dict": 1
+      },
+      "attempt": {
+        "int": 1
+      },
+      "message": {
+        "str": 1
+      },
+      "source": {
+        "str": 1
+      }
+    },
+    "JST941": {
+      "$": {
+        "dict": 1
+      },
+      "attempt": {
+        "int": 1
+      },
+      "message": {
+        "str": 1
+      },
+      "source": {
+        "str": 1
+      }
+    }
+  },
+  "flight_assignment": {
+    "JST928": {
+      "$": {
+        "dict": 1
+      },
+      "AircraftType": {
+        "str": 1
+      },
+      "ArrivalGate": {
+        "str": 1
+      },
+      "ArrivalUtcOffsetMinutes": {
+        "int": 1
+      },
+      "CruiseAltitudeFeet": {
+        "int": 1
+      },
+      "DepartureGate": {
+        "str": 1
+      },
+      "DepartureUtcOffsetMinutes": {
+        "int": 1
+      },
+      "Destination": {
+        "str": 1
+      },
+      "DispatchEstimatedArrivalUtc": {
+        "str": 1
+      },
+      "FlightNumber": {
+        "str": 1
+      },
+      "FuelUnits": {
+        "str": 1
+      },
+      "GateAssignmentConfidence": {
+        "str": 1
+      },
+      "GateAssignmentSource": {
+        "str": 1
+      },
+      "ImportedAtUtc": {
+        "str": 1
+      },
+      "OfpCacheKey": {
+        "str": 1
+      },
+      "Origin": {
+        "str": 1
+      },
+      "PlannedArrivalUtc": {
+        "str": 1
+      },
+      "PlannedDepartureUtc": {
+        "str": 1
+      },
+      "PlannedTripFuel": {
+        "int": 1
+      },
+      "Registration": {
+        "str": 1
+      },
+      "Route": {
+        "str": 1
+      },
+      "RoutePoints": {
+        "list": 1
+      },
+      "RoutePoints[]": {
+        "dict": 21
+      },
+      "RoutePoints[].Ident": {
+        "str": 21
+      },
+      "RoutePoints[].Kind": {
+        "str": 21
+      },
+      "RoutePoints[].Latitude": {
+        "float": 21
+      },
+      "RoutePoints[].Longitude": {
+        "float": 21
+      },
+      "SimBriefUsername": {
+        "str": 1
+      },
+      "Source": {
+        "str": 1
+      }
+    },
+    "JST941": {
+      "$": {
+        "dict": 1
+      },
+      "AircraftType": {
+        "str": 1
+      },
+      "ArrivalGate": {
+        "str": 1
+      },
+      "ArrivalUtcOffsetMinutes": {
+        "int": 1
+      },
+      "CruiseAltitudeFeet": {
+        "int": 1
+      },
+      "DepartureGate": {
+        "str": 1
+      },
+      "DepartureUtcOffsetMinutes": {
+        "int": 1
+      },
+      "Destination": {
+        "str": 1
+      },
+      "DispatchEstimatedArrivalUtc": {
+        "str": 1
+      },
+      "FlightNumber": {
+        "str": 1
+      },
+      "FuelUnits": {
+        "str": 1
+      },
+      "GateAssignmentConfidence": {
+        "str": 1
+      },
+      "GateAssignmentSource": {
+        "str": 1
+      },
+      "ImportedAtUtc": {
+        "str": 1
+      },
+      "OfpCacheKey": {
+        "str": 1
+      },
+      "Origin": {
+        "str": 1
+      },
+      "PlannedArrivalUtc": {
+        "str": 1
+      },
+      "PlannedDepartureUtc": {
+        "str": 1
+      },
+      "PlannedTripFuel": {
+        "int": 1
+      },
+      "Registration": {
+        "str": 1
+      },
+      "Route": {
+        "str": 1
+      },
+      "RoutePoints": {
+        "list": 1
+      },
+      "RoutePoints[]": {
+        "dict": 24
+      },
+      "RoutePoints[].Ident": {
+        "str": 24
+      },
+      "RoutePoints[].Kind": {
+        "str": 24
+      },
+      "RoutePoints[].Latitude": {
+        "float": 24
+      },
+      "RoutePoints[].Longitude": {
+        "float": 24
+      },
+      "SimBriefUsername": {
+        "str": 1
+      },
+      "Source": {
+        "str": 1
+      }
+    }
+  },
+  "flight_identification": {
+    "JST928": {
+      "$": {
+        "dict": 2
+      },
+      "Accepted": {
+        "bool": 2
+      },
+      "Issues": {
+        "list": 2
+      },
+      "Issues[]": {
+        "str": 2
+      },
+      "Mode": {
+        "str": 2
+      },
+      "PlanStatus": {
+        "str": 2
+      },
+      "Registration": {
+        "NoneType": 1,
+        "str": 1
+      },
+      "Route": {
+        "NoneType": 2
+      },
+      "nearby": {
+        "NoneType": 1,
+        "dict": 1
+      },
+      "nearby.Airport": {
+        "dict": 1
+      },
+      "nearby.Airport.City": {
+        "str": 1
+      },
+      "nearby.Airport.Ident": {
+        "str": 1
+      },
+      "nearby.Airport.Name": {
+        "str": 1
+      },
+      "nearby.Airport.Position": {
+        "dict": 1
+      },
+      "nearby.Airport.Position.IsValid": {
+        "bool": 1
+      },
+      "nearby.Airport.Position.Latitude": {
+        "float": 1
+      },
+      "nearby.Airport.Position.Longitude": {
+        "float": 1
+      },
+      "nearby.Airport.Source": {
+        "str": 1
+      },
+      "nearby.DistanceNm": {
+        "float": 1
+      },
+      "position": {
+        "NoneType": 1,
+        "dict": 1
+      },
+      "position.IsValid": {
+        "bool": 1
+      },
+      "position.Latitude": {
+        "float": 1
+      },
+      "position.Longitude": {
+        "float": 1
+      }
+    },
+    "JST941": {
+      "$": {
+        "dict": 1
+      },
+      "Accepted": {
+        "bool": 1
+      },
+      "Issues": {
+        "list": 1
+      },
+      "Issues[]": {
+        "str": 1
+      },
+      "Mode": {
+        "str": 1
+      },
+      "PlanStatus": {
+        "str": 1
+      },
+      "Registration": {
+        "str": 1
+      },
+      "Route": {
+        "NoneType": 1
+      },
+      "nearby": {
+        "dict": 1
+      },
+      "nearby.Airport": {
+        "dict": 1
+      },
+      "nearby.Airport.City": {
+        "str": 1
+      },
+      "nearby.Airport.Ident": {
+        "str": 1
+      },
+      "nearby.Airport.Name": {
+        "str": 1
+      },
+      "nearby.Airport.Position": {
+        "dict": 1
+      },
+      "nearby.Airport.Position.IsValid": {
+        "bool": 1
+      },
+      "nearby.Airport.Position.Latitude": {
+        "float": 1
+      },
+      "nearby.Airport.Position.Longitude": {
+        "float": 1
+      },
+      "nearby.Airport.Source": {
+        "str": 1
+      },
+      "nearby.DistanceNm": {
+        "float": 1
+      },
+      "position": {
+        "dict": 1
+      },
+      "position.IsValid": {
+        "bool": 1
+      },
+      "position.Latitude": {
+        "float": 1
+      },
+      "position.Longitude": {
+        "float": 1
+      }
+    }
+  },
+  "flight_milestone": {
+    "JST928": {
+      "$": {
+        "dict": 4
+      },
+      "label": {
+        "str": 4
+      },
+      "phase": {
+        "str": 4
+      }
+    },
+    "JST941": {
+      "$": {
+        "dict": 4
+      },
+      "label": {
+        "str": 4
+      },
+      "phase": {
+        "str": 4
+      }
+    }
+  },
+  "monitor_armed": {
+    "JST928": {
+      "$": {
+        "dict": 1
+      },
+      "aircraft": {
+        "str": 1
+      },
+      "departureObserved": {
+        "bool": 1
+      },
+      "initialPhase": {
+        "int": 1
+      },
+      "joinedInProgress": {
+        "bool": 1
+      }
+    },
+    "JST941": {
+      "$": {
+        "dict": 1
+      },
+      "aircraft": {
+        "str": 1
+      },
+      "departureObserved": {
+        "bool": 1
+      },
+      "initialPhase": {
+        "int": 1
+      },
+      "joinedInProgress": {
+        "bool": 1
+      }
+    }
+  },
+  "pirep_closeout_complete": {
+    "JST928": {
+      "$": {
+        "dict": 1
+      },
+      "FlightNumber": {
+        "str": 1
+      }
+    },
+    "JST941": {
+      "$": {
+        "dict": 1
+      },
+      "FlightNumber": {
+        "str": 1
+      }
+    }
+  },
+  "session_ended": {
+    "JST928": {
+      "$": {
+        "dict": 1
+      },
+      "reason": {
+        "str": 1
+      }
+    },
+    "JST941": {
+      "$": {
+        "dict": 1
+      },
+      "reason": {
+        "str": 1
+      }
+    }
+  },
+  "session_started": {
+    "JST928": {
+      "$": {
+        "dict": 1
+      },
+      "appVersion": {
+        "str": 1
+      },
+      "mode": {
+        "str": 1
+      },
+      "schemaVersion": {
+        "int": 1
+      },
+      "timing": {
+        "str": 1
+      }
+    },
+    "JST941": {
+      "$": {
+        "dict": 1
+      },
+      "appVersion": {
+        "str": 1
+      },
+      "mode": {
+        "str": 1
+      },
+      "schemaVersion": {
+        "int": 1
+      },
+      "timing": {
+        "str": 1
+      }
+    }
+  },
+  "telemetry": {
+    "JST928": {
+      "$": {
+        "dict": 11134
+      },
+      "aircraft": {
+        "str": 11134
+      },
+      "altitudeAboveGroundFeet": {
+        "float": 11134
+      },
+      "altitudeFeet": {
+        "float": 11134
+      },
+      "bankDegrees": {
+        "float": 11134
+      },
+      "engineDataValid": {
+        "bool": 11134
+      },
+      "engineReadings": {
+        "list": 11134
+      },
+      "engineReadings[]": {
+        "dict": 22266
+      },
+      "engineReadings[].Combustion": {
+        "int": 22266
+      },
+      "engineReadings[].FuelFlowPph": {
+        "float": 22266
+      },
+      "engineReadings[].Index": {
+        "int": 22266
+      },
+      "engineReadings[].N1Percent": {
+        "float": 22266
+      },
+      "engineReadings[].N2Percent": {
+        "float": 22266
+      },
+      "engineReadings[].OilPressurePsf": {
+        "float": 22266
+      },
+      "engineReadings[].Starter": {
+        "int": 22266
+      },
+      "engineStates": {
+        "list": 11134
+      },
+      "engineStates[]": {
+        "dict": 22266
+      },
+      "engineStates[].Condition": {
+        "int": 22266
+      },
+      "engineStates[].Index": {
+        "int": 22266
+      },
+      "engineStates[].Source": {
+        "str": 22266
+      },
+      "enginesRunning": {
+        "bool": 11134
+      },
+      "flapHandleIndex": {
+        "int": 11134
+      },
+      "flapHandlePositions": {
+        "int": 11134
+      },
+      "flapHandleRatio": {
+        "int": 10469,
+        "float": 665
+      },
+      "flapsExtendedRatio": {
+        "int": 10469,
+        "float": 665
+      },
+      "fuelTotalWeightPounds": {
+        "float": 11134
+      },
+      "gearExtendedRatio": {
+        "int": 11114,
+        "float": 20
+      },
+      "groundSpeedKnots": {
+        "float": 11134
+      },
+      "headingDegrees": {
+        "float": 11134
+      },
+      "indicatedAirspeedKnots": {
+        "int": 1902,
+        "float": 9232
+      },
+      "latitude": {
+        "float": 11134
+      },
+      "leftFlapDegrees": {
+        "NoneType": 1,
+        "int": 10136,
+        "float": 997
+      },
+      "leftSlatDegrees": {
+        "NoneType": 1,
+        "int": 11133
+      },
+      "longitude": {
+        "float": 11134
+      },
+      "onGround": {
+        "bool": 11134
+      },
+      "parkingBrake": {
+        "bool": 11134
+      },
+      "paused": {
+        "bool": 11134
+      },
+      "pitchDegrees": {
+        "float": 11134
+      },
+      "pressureAltitudeFeet": {
+        "float": 11100,
+        "int": 34
+      },
+      "rightFlapDegrees": {
+        "NoneType": 1,
+        "int": 10136,
+        "float": 997
+      },
+      "rightSlatDegrees": {
+        "NoneType": 1,
+        "int": 11133
+      },
+      "routeProgress": {
+        "NoneType": 11134
+      },
+      "runningEngineCount": {
+        "NoneType": 1896,
+        "int": 9238
+      },
+      "runningEngineMask": {
+        "NoneType": 1896,
+        "int": 9238
+      },
+      "slewing": {
+        "bool": 11134
+      },
+      "verticalSpeedFeetPerMinute": {
+        "float": 11134
+      }
+    },
+    "JST941": {
+      "$": {
+        "dict": 13847
+      },
+      "aircraft": {
+        "str": 13847
+      },
+      "altitudeAboveGroundFeet": {
+        "float": 13847
+      },
+      "altitudeFeet": {
+        "float": 13847
+      },
+      "bankDegrees": {
+        "float": 13847
+      },
+      "engineDataValid": {
+        "bool": 13847
+      },
+      "engineReadings": {
+        "list": 13847
+      },
+      "engineReadings[]": {
+        "dict": 27694
+      },
+      "engineReadings[].Combustion": {
+        "int": 27694
+      },
+      "engineReadings[].FuelFlowPph": {
+        "float": 27694
+      },
+      "engineReadings[].Index": {
+        "int": 27694
+      },
+      "engineReadings[].N1Percent": {
+        "float": 27694
+      },
+      "engineReadings[].N2Percent": {
+        "NoneType": 1,
+        "float": 27693
+      },
+      "engineReadings[].OilPressurePsf": {
+        "NoneType": 2,
+        "float": 27692
+      },
+      "engineReadings[].Starter": {
+        "int": 27694
+      },
+      "engineStates": {
+        "list": 13847
+      },
+      "engineStates[]": {
+        "dict": 27694
+      },
+      "engineStates[].Condition": {
+        "int": 27694
+      },
+      "engineStates[].Index": {
+        "int": 27694
+      },
+      "engineStates[].Source": {
+        "str": 27694
+      },
+      "enginesRunning": {
+        "bool": 13847
+      },
+      "flapHandleIndex": {
+        "int": 13847
+      },
+      "flapHandlePositions": {
+        "int": 13847
+      },
+      "flapHandleRatio": {
+        "int": 13212,
+        "float": 635
+      },
+      "flapsExtendedRatio": {
+        "int": 13212,
+        "float": 635
+      },
+      "fuelTotalWeightPounds": {
+        "float": 13847
+      },
+      "gearExtendedRatio": {
+        "int": 13826,
+        "float": 21
+      },
+      "groundSpeedKnots": {
+        "float": 13847
+      },
+      "headingDegrees": {
+        "float": 13847
+      },
+      "indicatedAirspeedKnots": {
+        "int": 1708,
+        "float": 12139
+      },
+      "latitude": {
+        "float": 13847
+      },
+      "leftFlapDegrees": {
+        "int": 12858,
+        "float": 989
+      },
+      "leftSlatDegrees": {
+        "int": 13847
+      },
+      "longitude": {
+        "float": 13847
+      },
+      "onGround": {
+        "bool": 13847
+      },
+      "parkingBrake": {
+        "bool": 13847
+      },
+      "paused": {
+        "bool": 13847
+      },
+      "pitchDegrees": {
+        "float": 13847
+      },
+      "pressureAltitudeFeet": {
+        "float": 13808,
+        "int": 39
+      },
+      "rightFlapDegrees": {
+        "int": 12858,
+        "float": 989
+      },
+      "rightSlatDegrees": {
+        "int": 13847
+      },
+      "routeProgress": {
+        "NoneType": 13847
+      },
+      "runningEngineCount": {
+        "NoneType": 1709,
+        "int": 12138
+      },
+      "runningEngineMask": {
+        "NoneType": 1709,
+        "int": 12138
+      },
+      "slewing": {
+        "bool": 13847
+      },
+      "verticalSpeedFeetPerMinute": {
+        "float": 13847
+      }
+    }
+  },
+  "tracking_event": {
+    "JST928": {
+      "$": {
+        "dict": 45
+      },
+      "Detail": {
+        "str": 45
+      },
+      "Kind": {
+        "str": 45
+      },
+      "Summary": {
+        "str": 45
+      },
+      "Title": {
+        "str": 45
+      }
+    },
+    "JST941": {
+      "$": {
+        "dict": 42
+      },
+      "Detail": {
+        "str": 42
+      },
+      "Kind": {
+        "str": 42
+      },
+      "Summary": {
+        "str": 42
+      },
+      "Title": {
+        "str": 42
+      }
+    }
+  },
+  "tracking_state": {
+    "JST928": {
+      "$": {
+        "dict": 11134
+      },
+      "crossTrackNm": {
+        "float": 11134
+      },
+      "estimatedIn": {
+        "NoneType": 2149,
+        "str": 8985
+      },
+      "phase": {
+        "str": 11134
+      },
+      "progress": {
+        "int": 1589,
+        "float": 9545
+      },
+      "remainingNm": {
+        "float": 11099,
+        "NoneType": 5,
+        "int": 30
+      },
+      "routeReliable": {
+        "bool": 11134
+      }
+    },
+    "JST941": {
+      "$": {
+        "dict": 13847
+      },
+      "crossTrackNm": {
+        "float": 13847
+      },
+      "estimatedIn": {
+        "NoneType": 2000,
+        "str": 11847
+      },
+      "phase": {
+        "str": 13847
+      },
+      "progress": {
+        "int": 1868,
+        "float": 11979
+      },
+      "remainingNm": {
+        "float": 13428,
+        "int": 419
+      },
+      "routeReliable": {
+        "bool": 13847
+      }
+    }
+  }
+}

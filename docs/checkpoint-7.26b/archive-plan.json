@@ -1,0 +1,2575 @@
+{
+  "schema": "sierra4.checkpoint-7.26b.archive-plan.v1",
+  "createdAt": "2026-10-02T09:01:04.5510154-05:00",
+  "repository": "F:\\Sierra4-Development",
+  "archiveRoot": "F:\\Sierra4-Archive\\checkpoint-7.26b-20261002",
+  "authority": "docs/checkpoint-7.26-release-architecture-storage-legacy-audit.md",
+  "retained": [
+    "work/dotnet",
+    "work/dotnet-home",
+    "work/fleet",
+    "work/regression-fixtures/flight-tracking-v1",
+    "outputs/Alpha6OPS-Desktop-S4-7.25A-A350-20261001-6020896a402b",
+    "outputs/Alpha6OPS-Desktop-0.22.0",
+    "outputs/Alpha6OPS-Setup-0.22.0.exe",
+    "outputs/Alpha6OPS-Desktop-0.22.0-win-x64.zip",
+    "outputs tracked reference files",
+    ".superpowers unknown retained"
+  ],
+  "archiveUnits": [
+    {
+      "source": "work/activation-smoke-e1647150ab4e473eae2cac829a1ef152",
+      "destination": "checkpoints/work/activation-smoke-e1647150ab4e473eae2cac829a1ef152",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 41605,
+      "files": 5,
+      "directories": 0
+    },
+    {
+      "source": "work/activation-smoke-eab2e8a4fc5f4168b3f4492112392210",
+      "destination": "checkpoints/work/activation-smoke-eab2e8a4fc5f4168b3f4492112392210",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 41605,
+      "files": 5,
+      "directories": 0
+    },
+    {
+      "source": "work/ANG2-review-20260919-210735",
+      "destination": "checkpoints/work/ANG2-review-20260919-210735",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 44737518,
+      "files": 23,
+      "directories": 1
+    },
+    {
+      "source": "work/checkpoint-7.18a",
+      "destination": "checkpoints/work/checkpoint-7.18a",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 388193386,
+      "files": 19546,
+      "directories": 591
+    },
+    {
+      "source": "work/checkpoint-7.18b",
+      "destination": "checkpoints/work/checkpoint-7.18b",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 12822513,
+      "files": 8720,
+      "directories": 183
+    },
+    {
+      "source": "work/checkpoint-7.19",
+      "destination": "checkpoints/work/checkpoint-7.19",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 83491454,
+      "files": 2457,
+      "directories": 82
+    },
+    {
+      "source": "work/checkpoint-7.20",
+      "destination": "checkpoints/work/checkpoint-7.20",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 34923317,
+      "files": 303,
+      "directories": 31
+    },
+    {
+      "source": "work/checkpoint-7.21",
+      "destination": "checkpoints/work/checkpoint-7.21",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 143683694,
+      "files": 2102,
+      "directories": 509
+    },
+    {
+      "source": "work/checkpoint-7.22",
+      "destination": "checkpoints/work/checkpoint-7.22",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 748743736,
+      "files": 7800,
+      "directories": 2666
+    },
+    {
+      "source": "work/checkpoint-7.23",
+      "destination": "checkpoints/work/checkpoint-7.23",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 168536705,
+      "files": 1898,
+      "directories": 734
+    },
+    {
+      "source": "work/checkpoint-7.24a",
+      "destination": "checkpoints/work/checkpoint-7.24a",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 1371046705,
+      "files": 9960,
+      "directories": 3335
+    },
+    {
+      "source": "work/checkpoint-7.24a.1",
+      "destination": "checkpoints/work/checkpoint-7.24a.1",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 729347099,
+      "files": 7081,
+      "directories": 2385
+    },
+    {
+      "source": "work/checkpoint-7.24a.2",
+      "destination": "checkpoints/work/checkpoint-7.24a.2",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 1323285766,
+      "files": 7746,
+      "directories": 2732
+    },
+    {
+      "source": "work/checkpoint-7.24b",
+      "destination": "checkpoints/work/checkpoint-7.24b",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 743178323,
+      "files": 3558,
+      "directories": 752
+    },
+    {
+      "source": "work/checkpoint-7.24b-first-paint",
+      "destination": "checkpoints/work/checkpoint-7.24b-first-paint",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 643527463,
+      "files": 4784,
+      "directories": 1188
+    },
+    {
+      "source": "work/checkpoint-7.24b-first-paint-r2a",
+      "destination": "checkpoints/work/checkpoint-7.24b-first-paint-r2a",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 972185102,
+      "files": 4317,
+      "directories": 922
+    },
+    {
+      "source": "work/checkpoint-7.24b-input-correction",
+      "destination": "checkpoints/work/checkpoint-7.24b-input-correction",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 997791024,
+      "files": 4055,
+      "directories": 832
+    },
+    {
+      "source": "work/checkpoint-7.24b-installation-gate",
+      "destination": "checkpoints/work/checkpoint-7.24b-installation-gate",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 651964297,
+      "files": 721,
+      "directories": 31
+    },
+    {
+      "source": "work/checkpoint-7.24b-installed-baseline",
+      "destination": "checkpoints/work/checkpoint-7.24b-installed-baseline",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 90146,
+      "files": 15,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.24b-layout-oscillation",
+      "destination": "checkpoints/work/checkpoint-7.24b-layout-oscillation",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 1044653112,
+      "files": 4473,
+      "directories": 955
+    },
+    {
+      "source": "work/checkpoint-7.24b-physical-input",
+      "destination": "checkpoints/work/checkpoint-7.24b-physical-input",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 67201289,
+      "files": 360,
+      "directories": 111
+    },
+    {
+      "source": "work/checkpoint-7.24c",
+      "destination": "checkpoints/work/checkpoint-7.24c",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 8309661380,
+      "files": 104880,
+      "directories": 46680
+    },
+    {
+      "source": "work/checkpoint-7.25",
+      "destination": "checkpoints/work/checkpoint-7.25",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 1973526996,
+      "files": 27423,
+      "directories": 12600
+    },
+    {
+      "source": "work/checkpoint-7.25a",
+      "destination": "checkpoints/work/checkpoint-7.25a",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 2507879203,
+      "files": 24540,
+      "directories": 11377
+    },
+    {
+      "source": "work/checkpoint1-20260909-145012",
+      "destination": "checkpoints/work/checkpoint1-20260909-145012",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 16971692,
+      "files": 49,
+      "directories": 3
+    },
+    {
+      "source": "work/checkpoint1-extract-20260909-145341",
+      "destination": "checkpoints/work/checkpoint1-extract-20260909-145341",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 0,
+      "files": 0,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint1-extract-ok-20260909-145450",
+      "destination": "checkpoints/work/checkpoint1-extract-ok-20260909-145450",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 200647042,
+      "files": 494,
+      "directories": 25
+    },
+    {
+      "source": "work/checkpoint1-extract-verified-20260909-145426",
+      "destination": "checkpoints/work/checkpoint1-extract-verified-20260909-145426",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 0,
+      "files": 0,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint1-final-20260909-145142",
+      "destination": "checkpoints/work/checkpoint1-final-20260909-145142",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 17128335,
+      "files": 50,
+      "directories": 3
+    },
+    {
+      "source": "work/checkpoint1-package-20260909-145324",
+      "destination": "checkpoints/work/checkpoint1-package-20260909-145324",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 17137739,
+      "files": 50,
+      "directories": 3
+    },
+    {
+      "source": "work/checkpoint1-resolution-20260909-145603",
+      "destination": "checkpoints/work/checkpoint1-resolution-20260909-145603",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 17948038,
+      "files": 52,
+      "directories": 3
+    },
+    {
+      "source": "work/desktop-03-test",
+      "destination": "checkpoints/work/desktop-03-test",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 44631,
+      "files": 2,
+      "directories": 0
+    },
+    {
+      "source": "work/desktop-04-final",
+      "destination": "checkpoints/work/desktop-04-final",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 97235,
+      "files": 3,
+      "directories": 0
+    },
+    {
+      "source": "work/desktop-04-test",
+      "destination": "checkpoints/work/desktop-04-test",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 94107,
+      "files": 3,
+      "directories": 0
+    },
+    {
+      "source": "work/desktop-05-final",
+      "destination": "checkpoints/work/desktop-05-final",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 94818,
+      "files": 3,
+      "directories": 0
+    },
+    {
+      "source": "work/desktop-05-test",
+      "destination": "checkpoints/work/desktop-05-test",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 94603,
+      "files": 3,
+      "directories": 0
+    },
+    {
+      "source": "work/desktop-06-test",
+      "destination": "checkpoints/work/desktop-06-test",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 97407,
+      "files": 3,
+      "directories": 0
+    },
+    {
+      "source": "work/desktop-test",
+      "destination": "checkpoints/work/desktop-test",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 45413,
+      "files": 2,
+      "directories": 0
+    },
+    {
+      "source": "work/flight-lab-package-20260908-120915",
+      "destination": "checkpoints/work/flight-lab-package-20260908-120915",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 76973,
+      "files": 2,
+      "directories": 0
+    },
+    {
+      "source": "work/flight-lab-packaged-20260908-123326",
+      "destination": "checkpoints/work/flight-lab-packaged-20260908-123326",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 80620,
+      "files": 2,
+      "directories": 0
+    },
+    {
+      "source": "work/flight-lab-packaged-20260908-123354",
+      "destination": "checkpoints/work/flight-lab-packaged-20260908-123354",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 80412,
+      "files": 2,
+      "directories": 0
+    },
+    {
+      "source": "work/flight-lab-review-20260908-120137",
+      "destination": "checkpoints/work/flight-lab-review-20260908-120137",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 76908,
+      "files": 2,
+      "directories": 0
+    },
+    {
+      "source": "work/flight-lab-review-20260908-120605",
+      "destination": "checkpoints/work/flight-lab-review-20260908-120605",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 77028,
+      "files": 2,
+      "directories": 0
+    },
+    {
+      "source": "work/flight-lab-review-20260908-123225",
+      "destination": "checkpoints/work/flight-lab-review-20260908-123225",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 80501,
+      "files": 2,
+      "directories": 0
+    },
+    {
+      "source": "work/flight-lab-review-current",
+      "destination": "checkpoints/work/flight-lab-review-current",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 79844,
+      "files": 2,
+      "directories": 0
+    },
+    {
+      "source": "work/flight-lab-stop-review-20260908-132554",
+      "destination": "checkpoints/work/flight-lab-stop-review-20260908-132554",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 80548,
+      "files": 2,
+      "directories": 0
+    },
+    {
+      "source": "work/flight-test-JST221-20260915",
+      "destination": "checkpoints/work/flight-test-JST221-20260915",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 23489966,
+      "files": 12,
+      "directories": 1
+    },
+    {
+      "source": "work/flight-test-JST786-20260916-review",
+      "destination": "checkpoints/work/flight-test-JST786-20260916-review",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 15661996,
+      "files": 24,
+      "directories": 1
+    },
+    {
+      "source": "work/flight-test-QFA124-20260916-review",
+      "destination": "checkpoints/work/flight-test-QFA124-20260916-review",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 23442079,
+      "files": 18,
+      "directories": 1
+    },
+    {
+      "source": "work/flight-test-QLK1579-20260917-review-2",
+      "destination": "checkpoints/work/flight-test-QLK1579-20260917-review-2",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 19141332,
+      "files": 15,
+      "directories": 1
+    },
+    {
+      "source": "work/git-auth",
+      "destination": "checkpoints/work/git-auth",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 0,
+      "files": 0,
+      "directories": 0
+    },
+    {
+      "source": "work/git-publish-20260916",
+      "destination": "checkpoints/work/git-publish-20260916",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 29468066,
+      "files": 1050,
+      "directories": 270
+    },
+    {
+      "source": "work/historical-flight-reference-20260923-24",
+      "destination": "checkpoints/work/historical-flight-reference-20260923-24",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 8018,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/icon-smoke-28e3400a19154c93955c4fcd79694b8a",
+      "destination": "checkpoints/work/icon-smoke-28e3400a19154c93955c4fcd79694b8a",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 138284,
+      "files": 8,
+      "directories": 3
+    },
+    {
+      "source": "work/import",
+      "destination": "checkpoints/work/import",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 38822,
+      "files": 4,
+      "directories": 0
+    },
+    {
+      "source": "work/install-7.14-check",
+      "destination": "checkpoints/work/install-7.14-check",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 205606393,
+      "files": 489,
+      "directories": 24
+    },
+    {
+      "source": "work/installer-7.15-extract",
+      "destination": "checkpoints/work/installer-7.15-extract",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 205659143,
+      "files": 489,
+      "directories": 24
+    },
+    {
+      "source": "work/installer-check-f4a77a8624404b7e9cdd28a254e1c1bd",
+      "destination": "checkpoints/work/installer-check-f4a77a8624404b7e9cdd28a254e1c1bd",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 179488984,
+      "files": 486,
+      "directories": 22
+    },
+    {
+      "source": "work/installer-checkpoint2-20260909-151724",
+      "destination": "checkpoints/work/installer-checkpoint2-20260909-151724",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 0,
+      "files": 0,
+      "directories": 0
+    },
+    {
+      "source": "work/installer-checkpoint2-20260909-151746",
+      "destination": "checkpoints/work/installer-checkpoint2-20260909-151746",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 200663938,
+      "files": 494,
+      "directories": 25
+    },
+    {
+      "source": "work/installer-checkpoint2-20260909-151802",
+      "destination": "checkpoints/work/installer-checkpoint2-20260909-151802",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 200663938,
+      "files": 494,
+      "directories": 25
+    },
+    {
+      "source": "work/installer-checkpoint3-20260910-085721",
+      "destination": "checkpoints/work/installer-checkpoint3-20260910-085721",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 200865154,
+      "files": 494,
+      "directories": 25
+    },
+    {
+      "source": "work/installer-checkpoint3-final-20260910-085901",
+      "destination": "checkpoints/work/installer-checkpoint3-final-20260910-085901",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 200865154,
+      "files": 494,
+      "directories": 25
+    },
+    {
+      "source": "work/installer-globe-20260909-153552",
+      "destination": "checkpoints/work/installer-globe-20260909-153552",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 200807298,
+      "files": 494,
+      "directories": 25
+    },
+    {
+      "source": "work/installer-raster-globe-20260909-160109",
+      "destination": "checkpoints/work/installer-raster-globe-20260909-160109",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 200851330,
+      "files": 494,
+      "directories": 25
+    },
+    {
+      "source": "work/installer-test",
+      "destination": "checkpoints/work/installer-test",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 394962034,
+      "files": 978,
+      "directories": 50
+    },
+    {
+      "source": "work/JST721-review",
+      "destination": "checkpoints/work/JST721-review",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 17384399,
+      "files": 19,
+      "directories": 1
+    },
+    {
+      "source": "work/JST724-review",
+      "destination": "checkpoints/work/JST724-review",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 21718493,
+      "files": 17,
+      "directories": 1
+    },
+    {
+      "source": "work/jst776-review",
+      "destination": "checkpoints/work/jst776-review",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 37748280,
+      "files": 56,
+      "directories": 8
+    },
+    {
+      "source": "work/log-tests",
+      "destination": "checkpoints/work/log-tests",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 336918,
+      "files": 540,
+      "directories": 134
+    },
+    {
+      "source": "work/mingit-2.55",
+      "destination": "checkpoints/work/mingit-2.55",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 0,
+      "files": 0,
+      "directories": 0
+    },
+    {
+      "source": "work/package-0.10-f998ab275b9247ae8c91ebcf967a189e",
+      "destination": "checkpoints/work/package-0.10-f998ab275b9247ae8c91ebcf967a189e",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 180088123,
+      "files": 496,
+      "directories": 27
+    },
+    {
+      "source": "work/package-0.18.2-hotfix",
+      "destination": "checkpoints/work/package-0.18.2-hotfix",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 205601066,
+      "files": 489,
+      "directories": 24
+    },
+    {
+      "source": "work/package-0.8-c592efb85b554f64a2e922a5e021bc52",
+      "destination": "checkpoints/work/package-0.8-c592efb85b554f64a2e922a5e021bc52",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 180037975,
+      "files": 494,
+      "directories": 27
+    },
+    {
+      "source": "work/package-0.9-c1e5acbd59b74d1d9520fe46a9600586",
+      "destination": "checkpoints/work/package-0.9-c1e5acbd59b74d1d9520fe46a9600586",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 180070005,
+      "files": 496,
+      "directories": 27
+    },
+    {
+      "source": "work/package-7.13-final",
+      "destination": "checkpoints/work/package-7.13-final",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 206040567,
+      "files": 493,
+      "directories": 25
+    },
+    {
+      "source": "work/package-final-0.8-d0d2f1fd8d3140eb88977231e500ab14",
+      "destination": "checkpoints/work/package-final-0.8-d0d2f1fd8d3140eb88977231e500ab14",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 180039801,
+      "files": 495,
+      "directories": 27
+    },
+    {
+      "source": "work/packaged-desktop-test",
+      "destination": "checkpoints/work/packaged-desktop-test",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 45471,
+      "files": 2,
+      "directories": 0
+    },
+    {
+      "source": "work/packaged-smoke-7.14",
+      "destination": "checkpoints/work/packaged-smoke-7.14",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 38111260,
+      "files": 122,
+      "directories": 13
+    },
+    {
+      "source": "work/release-0.12.0-8185fe90",
+      "destination": "checkpoints/work/release-0.12.0-8185fe90",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 420,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/replay-0.18.1-packaged",
+      "destination": "checkpoints/work/replay-0.18.1-packaged",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 274953,
+      "files": 6,
+      "directories": 0
+    },
+    {
+      "source": "work/replay-0.18.2-packaged",
+      "destination": "checkpoints/work/replay-0.18.2-packaged",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 274953,
+      "files": 6,
+      "directories": 0
+    },
+    {
+      "source": "work/replay-7.13",
+      "destination": "checkpoints/work/replay-7.13",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 275792,
+      "files": 6,
+      "directories": 0
+    },
+    {
+      "source": "work/replay-7.13-final",
+      "destination": "checkpoints/work/replay-7.13-final",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 274953,
+      "files": 6,
+      "directories": 0
+    },
+    {
+      "source": "work/replay-7.13-packaged",
+      "destination": "checkpoints/work/replay-7.13-packaged",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 274953,
+      "files": 6,
+      "directories": 0
+    },
+    {
+      "source": "work/replay-7.14",
+      "destination": "checkpoints/work/replay-7.14",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 321047,
+      "files": 7,
+      "directories": 0
+    },
+    {
+      "source": "work/replay-7.15",
+      "destination": "checkpoints/work/replay-7.15",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 393382,
+      "files": 8,
+      "directories": 0
+    },
+    {
+      "source": "work/replay-7.15-release",
+      "destination": "checkpoints/work/replay-7.15-release",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 401134,
+      "files": 8,
+      "directories": 0
+    },
+    {
+      "source": "work/setup-regression",
+      "destination": "checkpoints/work/setup-regression",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 898,
+      "files": 3,
+      "directories": 2
+    },
+    {
+      "source": "work/simbrief-smoke-cd272d889f204c5ab0917bca4926caca",
+      "destination": "checkpoints/work/simbrief-smoke-cd272d889f204c5ab0917bca4926caca",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 137545,
+      "files": 8,
+      "directories": 3
+    },
+    {
+      "source": "work/smoke-0.18.1-packaged",
+      "destination": "checkpoints/work/smoke-0.18.1-packaged",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 37995893,
+      "files": 121,
+      "directories": 12
+    },
+    {
+      "source": "work/smoke-0.18.2-dev",
+      "destination": "checkpoints/work/smoke-0.18.2-dev",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 42191,
+      "files": 6,
+      "directories": 1
+    },
+    {
+      "source": "work/smoke-0.18.2-dev2",
+      "destination": "checkpoints/work/smoke-0.18.2-dev2",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 38064399,
+      "files": 125,
+      "directories": 13
+    },
+    {
+      "source": "work/smoke-0.18.2-packaged",
+      "destination": "checkpoints/work/smoke-0.18.2-packaged",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 38046622,
+      "files": 126,
+      "directories": 13
+    },
+    {
+      "source": "work/smoke-0.8-cf038e69f25d497884ab9e2ff07c451f",
+      "destination": "checkpoints/work/smoke-0.8-cf038e69f25d497884ab9e2ff07c451f",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 114665,
+      "files": 6,
+      "directories": 3
+    },
+    {
+      "source": "work/smoke-7.12",
+      "destination": "checkpoints/work/smoke-7.12",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 12823084,
+      "files": 25,
+      "directories": 0
+    },
+    {
+      "source": "work/smoke-7.12b",
+      "destination": "checkpoints/work/smoke-7.12b",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 37407180,
+      "files": 112,
+      "directories": 12
+    },
+    {
+      "source": "work/smoke-7.13-final",
+      "destination": "checkpoints/work/smoke-7.13-final",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 38043396,
+      "files": 117,
+      "directories": 12
+    },
+    {
+      "source": "work/smoke-7.13-initial",
+      "destination": "checkpoints/work/smoke-7.13-initial",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 14182264,
+      "files": 28,
+      "directories": 0
+    },
+    {
+      "source": "work/smoke-7.13-integrated",
+      "destination": "checkpoints/work/smoke-7.13-integrated",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 38047932,
+      "files": 120,
+      "directories": 12
+    },
+    {
+      "source": "work/smoke-7.13-packaged",
+      "destination": "checkpoints/work/smoke-7.13-packaged",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 38068821,
+      "files": 119,
+      "directories": 12
+    },
+    {
+      "source": "work/smoke-7.13-second",
+      "destination": "checkpoints/work/smoke-7.13-second",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 37003248,
+      "files": 116,
+      "directories": 12
+    },
+    {
+      "source": "work/smoke-7.14",
+      "destination": "checkpoints/work/smoke-7.14",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 38114401,
+      "files": 120,
+      "directories": 13
+    },
+    {
+      "source": "work/smoke-7.15-a",
+      "destination": "checkpoints/work/smoke-7.15-a",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 27846850,
+      "files": 76,
+      "directories": 6
+    },
+    {
+      "source": "work/smoke-7.15-b",
+      "destination": "checkpoints/work/smoke-7.15-b",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 32757073,
+      "files": 80,
+      "directories": 6
+    },
+    {
+      "source": "work/smoke-7.15-c",
+      "destination": "checkpoints/work/smoke-7.15-c",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 38541890,
+      "files": 125,
+      "directories": 13
+    },
+    {
+      "source": "work/smoke-7.15-d",
+      "destination": "checkpoints/work/smoke-7.15-d",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 38531660,
+      "files": 125,
+      "directories": 13
+    },
+    {
+      "source": "work/smoke-7.15-release",
+      "destination": "checkpoints/work/smoke-7.15-release",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 38555027,
+      "files": 124,
+      "directories": 13
+    },
+    {
+      "source": "work/smoke-final-ffd8ca17a746485d8391b6b02b550144",
+      "destination": "checkpoints/work/smoke-final-ffd8ca17a746485d8391b6b02b550144",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 115492,
+      "files": 7,
+      "directories": 3
+    },
+    {
+      "source": "work/tracker-final-37d971c000794cf68844d8fca2249cd2",
+      "destination": "checkpoints/work/tracker-final-37d971c000794cf68844d8fca2249cd2",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 132688,
+      "files": 8,
+      "directories": 3
+    },
+    {
+      "source": "work/tracker-smoke-c02441e6fccb46e6a3b1f0f0f6af1e28",
+      "destination": "checkpoints/work/tracker-smoke-c02441e6fccb46e6a3b1f0f0f6af1e28",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 116597,
+      "files": 7,
+      "directories": 3
+    },
+    {
+      "source": "work/upgrade-0.18.1",
+      "destination": "checkpoints/work/upgrade-0.18.1",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 205599035,
+      "files": 490,
+      "directories": 25
+    },
+    {
+      "source": "work/upgrade-0.18.2",
+      "destination": "checkpoints/work/upgrade-0.18.2",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 205601098,
+      "files": 490,
+      "directories": 25
+    },
+    {
+      "source": "work/upgrade-debug-b962e53fc24c49409d534e3ffe8853b7",
+      "destination": "checkpoints/work/upgrade-debug-b962e53fc24c49409d534e3ffe8853b7",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 630,
+      "files": 3,
+      "directories": 1
+    },
+    {
+      "source": "work/upgrade-tests-0f7be9355cea4c178f767c8d4eb1daf0",
+      "destination": "checkpoints/work/upgrade-tests-0f7be9355cea4c178f767c8d4eb1daf0",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 41,
+      "files": 3,
+      "directories": 2
+    },
+    {
+      "source": "work/workspace-relocation",
+      "destination": "checkpoints/work/workspace-relocation",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 136793176,
+      "files": 509,
+      "directories": 93
+    },
+    {
+      "source": "work/analyze_jst724_metrics.py",
+      "destination": "checkpoints/work/analyze_jst724_metrics.py",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 3374,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/analyze_jst724_schema.py",
+      "destination": "checkpoints/work/analyze_jst724_schema.py",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 786,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/analyze_logs.py",
+      "destination": "checkpoints/work/analyze_logs.py",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 2885,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.18b-attachment-build.log",
+      "destination": "checkpoints/work/checkpoint-7.18b-attachment-build.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 627,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.18b-attachment-green.log",
+      "destination": "checkpoints/work/checkpoint-7.18b-attachment-green.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 4042,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.18b-build.log",
+      "destination": "checkpoints/work/checkpoint-7.18b-build.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 863,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.18b-complete.log",
+      "destination": "checkpoints/work/checkpoint-7.18b-complete.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 3790,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.18b-core.log",
+      "destination": "checkpoints/work/checkpoint-7.18b-core.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 6961,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.18b-first.log",
+      "destination": "checkpoints/work/checkpoint-7.18b-first.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 3689,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.18b-full-final.log",
+      "destination": "checkpoints/work/checkpoint-7.18b-full-final.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 3790,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.18b-full-first.log",
+      "destination": "checkpoints/work/checkpoint-7.18b-full-first.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 98,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.18b-full-second.log",
+      "destination": "checkpoints/work/checkpoint-7.18b-full-second.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 3790,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.18b-palette-build.log",
+      "destination": "checkpoints/work/checkpoint-7.18b-palette-build.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 627,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.18b-palette-green.log",
+      "destination": "checkpoints/work/checkpoint-7.18b-palette-green.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 4042,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.18b-pending-green-build.log",
+      "destination": "checkpoints/work/checkpoint-7.18b-pending-green-build.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 627,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.18b-pending-green.log",
+      "destination": "checkpoints/work/checkpoint-7.18b-pending-green.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 4042,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.18b-pending-red-build.log",
+      "destination": "checkpoints/work/checkpoint-7.18b-pending-red-build.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 627,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.18b-pending-red.log",
+      "destination": "checkpoints/work/checkpoint-7.18b-pending-red.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 4042,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.18b-reattach-green.log",
+      "destination": "checkpoints/work/checkpoint-7.18b-reattach-green.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 3885,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.18b-reattach-red.log",
+      "destination": "checkpoints/work/checkpoint-7.18b-reattach-red.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 3885,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.18b-red.log",
+      "destination": "checkpoints/work/checkpoint-7.18b-red.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 3541,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.18b-reviewed-final.log",
+      "destination": "checkpoints/work/checkpoint-7.18b-reviewed-final.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 98,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.18b-verified.log",
+      "destination": "checkpoints/work/checkpoint-7.18b-verified.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 98,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.19-final-suite.log",
+      "destination": "checkpoints/work/checkpoint-7.19-final-suite.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 467,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.19-full-suite.log",
+      "destination": "checkpoints/work/checkpoint-7.19-full-suite.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 98,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.19-migration-build.log",
+      "destination": "checkpoints/work/checkpoint-7.19-migration-build.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 545,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.19-migration-final.log",
+      "destination": "checkpoints/work/checkpoint-7.19-migration-final.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 4301,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.19-red-build.log",
+      "destination": "checkpoints/work/checkpoint-7.19-red-build.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 627,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.19-red.log",
+      "destination": "checkpoints/work/checkpoint-7.19-red.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 4158,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.19-resume-build.log",
+      "destination": "checkpoints/work/checkpoint-7.19-resume-build.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 627,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.19-shell-build.log",
+      "destination": "checkpoints/work/checkpoint-7.19-shell-build.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 545,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.19-smoke-1.log",
+      "destination": "checkpoints/work/checkpoint-7.19-smoke-1.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 0,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.19-verified-suite.log",
+      "destination": "checkpoints/work/checkpoint-7.19-verified-suite.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 3863,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.20-build-1.log",
+      "destination": "checkpoints/work/checkpoint-7.20-build-1.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 21981,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.20-build-2.log",
+      "destination": "checkpoints/work/checkpoint-7.20-build-2.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 863,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.20-build-3.log",
+      "destination": "checkpoints/work/checkpoint-7.20-build-3.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 863,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.20-build-final.log",
+      "destination": "checkpoints/work/checkpoint-7.20-build-final.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 863,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.20-final-suite.log",
+      "destination": "checkpoints/work/checkpoint-7.20-final-suite.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 3863,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.20-full-suite.log",
+      "destination": "checkpoints/work/checkpoint-7.20-full-suite.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 3863,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.20-integrate.py",
+      "destination": "checkpoints/work/checkpoint-7.20-integrate.py",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 5533,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.20-polish-2-build.log",
+      "destination": "checkpoints/work/checkpoint-7.20-polish-2-build.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 1358,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.20-polish-build.log",
+      "destination": "checkpoints/work/checkpoint-7.20-polish-build.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 863,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.20-red-build.log",
+      "destination": "checkpoints/work/checkpoint-7.20-red-build.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 863,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.20-tests.py",
+      "destination": "checkpoints/work/checkpoint-7.20-tests.py",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 4883,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint-7.20-verified-suite.log",
+      "destination": "checkpoints/work/checkpoint-7.20-verified-suite.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 3863,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint1-extract-20260909-145341.setup-error.txt",
+      "destination": "checkpoints/work/checkpoint1-extract-20260909-145341.setup-error.txt",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 169,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/checkpoint1-extract-verified-20260909-145426.setup-error.txt",
+      "destination": "checkpoints/work/checkpoint1-extract-verified-20260909-145426.setup-error.txt",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 169,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/compiled-a6-icon.png",
+      "destination": "checkpoints/work/compiled-a6-icon.png",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 1811,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/compose-sierra-shell.py",
+      "destination": "checkpoints/work/compose-sierra-shell.py",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 2543,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/dotnet-install.ps1",
+      "destination": "checkpoints/work/dotnet-install.ps1",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 76676,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/dump_jst724_events.py",
+      "destination": "checkpoints/work/dump_jst724_events.py",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 485,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/dump_jst724_states.py",
+      "destination": "checkpoints/work/dump_jst724_states.py",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 345,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/engines715.py",
+      "destination": "checkpoints/work/engines715.py",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 6607,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/extract-718b.py",
+      "destination": "checkpoints/work/extract-718b.py",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 13650,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/finish715.py",
+      "destination": "checkpoints/work/finish715.py",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 6146,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/finish715b.py",
+      "destination": "checkpoints/work/finish715b.py",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 2565,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/gates715.py",
+      "destination": "checkpoints/work/gates715.py",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 3474,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/icon-layer-0.png",
+      "destination": "checkpoints/work/icon-layer-0.png",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 40634,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/icon-layer-1.png",
+      "destination": "checkpoints/work/icon-layer-1.png",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 12491,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/icon-layer-2.png",
+      "destination": "checkpoints/work/icon-layer-2.png",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 4651,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/icon-layer-3.png",
+      "destination": "checkpoints/work/icon-layer-3.png",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 3193,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/icon-layer-4.png",
+      "destination": "checkpoints/work/icon-layer-4.png",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 1980,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/icon-layer-5.png",
+      "destination": "checkpoints/work/icon-layer-5.png",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 1466,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/icon-layer-6.png",
+      "destination": "checkpoints/work/icon-layer-6.png",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 930,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/implement715.py",
+      "destination": "checkpoints/work/implement715.py",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 4613,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/installer-checkpoint2-20260909-151724.setup-error.txt",
+      "destination": "checkpoints/work/installer-checkpoint2-20260909-151724.setup-error.txt",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 169,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/jst724_eta_timeline.py",
+      "destination": "checkpoints/work/jst724_eta_timeline.py",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 703,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/make_jst724_sheets.py",
+      "destination": "checkpoints/work/make_jst724_sheets.py",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 889,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/package-0.18.2-hotfix-probe.json",
+      "destination": "checkpoints/work/package-0.18.2-hotfix-probe.json",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 5920,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/probe-7.15",
+      "destination": "checkpoints/work/probe-7.15",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 149,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/replay-7.13-input.json",
+      "destination": "checkpoints/work/replay-7.13-input.json",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 1000,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/replay-7.14-input.json",
+      "destination": "checkpoints/work/replay-7.14-input.json",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 1182,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/replay-7.15-input.json",
+      "destination": "checkpoints/work/replay-7.15-input.json",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 1350,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/review_ang2.py",
+      "destination": "checkpoints/work/review_ang2.py",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 3631,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/simconnect-7.14.json",
+      "destination": "checkpoints/work/simconnect-7.14.json",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 149,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/simconnect-probe.json",
+      "destination": "checkpoints/work/simconnect-probe.json",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 149,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/tests715.py",
+      "destination": "checkpoints/work/tests715.py",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 5217,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "work/dashboard-review/20260930-141916-6cd35877",
+      "destination": "historical-traces/dashboard-review/20260930-141916-6cd35877",
+      "auditClass": "I-representative",
+      "disposition": "archive-copy",
+      "bytes": 13257411,
+      "files": 136,
+      "directories": 20
+    },
+    {
+      "source": ".work/jst760-7.16",
+      "destination": "native-evidence/jst760-7.16",
+      "auditClass": "D/E",
+      "disposition": "archive-copy",
+      "bytes": 50013757,
+      "files": 27,
+      "directories": 1
+    },
+    {
+      "source": ".work/qlk1274-review-20260922",
+      "destination": "native-evidence/qlk1274-review-20260922",
+      "auditClass": "D/E",
+      "disposition": "archive-copy",
+      "bytes": 48559001,
+      "files": 26,
+      "directories": 2
+    },
+    {
+      "source": ".work/replay-7.17-manifest.json",
+      "destination": "native-evidence/replay-7.17-manifest.json",
+      "auditClass": "D/E",
+      "disposition": "archive-copy",
+      "bytes": 1734,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop",
+      "destination": "frozen-releases/Alpha6OPS-Desktop",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 206015362,
+      "files": 494,
+      "directories": 25
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.18.0",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.18.0",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 206040567,
+      "files": 493,
+      "directories": 25
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.18.1",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.18.1",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 205598982,
+      "files": 488,
+      "directories": 24
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.18.2",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.18.2",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 205601066,
+      "files": 489,
+      "directories": 24
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.19.0",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.19.0",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 205606393,
+      "files": 489,
+      "directories": 24
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.20.0",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.20.0",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 205659425,
+      "files": 489,
+      "directories": 24
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.20.1",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.20.1",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 205659941,
+      "files": 489,
+      "directories": 24
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.20.2",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.20.2",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 205664549,
+      "files": 489,
+      "directories": 24
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.20.3",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.20.3",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 205664549,
+      "files": 489,
+      "directories": 24
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.21.0",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.21.0",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 205682123,
+      "files": 489,
+      "directories": 24
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-S4-7.24B-20260925-46a1b304c3d6",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-S4-7.24B-20260925-46a1b304c3d6",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 451638511,
+      "files": 523,
+      "directories": 35
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-S4-7.24B-INPUT-R1-20260925-62b8c871dd05",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-S4-7.24B-INPUT-R1-20260925-62b8c871dd05",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 507184624,
+      "files": 529,
+      "directories": 36
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-S4-7.24B-LAYOUT-R3-20260927-666f495dce7e",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-S4-7.24B-LAYOUT-R3-20260927-666f495dce7e",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 507242486,
+      "files": 529,
+      "directories": 36
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-S4-7.24B-VISUAL-R2-20260925-acc4f98f3a08",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-S4-7.24B-VISUAL-R2-20260925-acc4f98f3a08",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 451649984,
+      "files": 518,
+      "directories": 35
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-S4-7.24B-VISUAL-R2A-20260927-87fa792a7c29",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-S4-7.24B-VISUAL-R2A-20260927-87fa792a7c29",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 507237079,
+      "files": 529,
+      "directories": 36
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-S4-7.24C-C1-20260928-64e864462ace",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-S4-7.24C-C1-20260928-64e864462ace",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 473567625,
+      "files": 520,
+      "directories": 35
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-S4-7.24C-FINAL-L1-20260930-318659425b88",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-S4-7.24C-FINAL-L1-20260930-318659425b88",
+      "auditClass": "F",
+      "disposition": "archive-then-remove",
+      "bytes": 473996936,
+      "files": 525,
+      "directories": 35
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-S4-7.24C-T1-20260928-00e3f628b90e",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-S4-7.24C-T1-20260928-00e3f628b90e",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 498332474,
+      "files": 526,
+      "directories": 36
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-S4-7.24C-T2-20260929-f421af15530c",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-S4-7.24C-T2-20260929-f421af15530c",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 473735425,
+      "files": 524,
+      "directories": 35
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-S4-7.25-TRACKING-20260930-e7ee5c18d8ae",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-S4-7.25-TRACKING-20260930-e7ee5c18d8ae",
+      "auditClass": "F",
+      "disposition": "archive-then-remove",
+      "bytes": 474126031,
+      "files": 525,
+      "directories": 35
+    },
+    {
+      "source": "outputs/S4-Fenix-Shutdown-Capture-7.24C-20260928",
+      "destination": "frozen-releases/S4-Fenix-Shutdown-Capture-7.24C-20260928",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 16779,
+      "files": 4,
+      "directories": 0
+    },
+    {
+      "source": "outputs/Alpha6OPS-0.12.1-SHA256.txt",
+      "destination": "frozen-releases/Alpha6OPS-0.12.1-SHA256.txt",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 198,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "outputs/Alpha6OPS-0.13.0-SHA256.txt",
+      "destination": "frozen-releases/Alpha6OPS-0.13.0-SHA256.txt",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 198,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "outputs/Alpha6OPS-0.18.0-SHA256.txt",
+      "destination": "frozen-releases/Alpha6OPS-0.18.0-SHA256.txt",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 198,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "outputs/Alpha6OPS-0.18.1-SHA256.txt",
+      "destination": "frozen-releases/Alpha6OPS-0.18.1-SHA256.txt",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 198,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "outputs/Alpha6OPS-0.18.2-SHA256.txt",
+      "destination": "frozen-releases/Alpha6OPS-0.18.2-SHA256.txt",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 198,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "outputs/Alpha6OPS-0.19.0-SHA256.txt",
+      "destination": "frozen-releases/Alpha6OPS-0.19.0-SHA256.txt",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 198,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "outputs/Alpha6OPS-0.20.0-SHA256.txt",
+      "destination": "frozen-releases/Alpha6OPS-0.20.0-SHA256.txt",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 198,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "outputs/Alpha6OPS-0.22.0-SHA256.txt",
+      "destination": "frozen-releases/Alpha6OPS-0.22.0-SHA256.txt",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 198,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.12.1-win-x64.zip",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.12.1-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 94637688,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.13.0-win-x64.zip",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.13.0-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 94955758,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.14.0-win-x64.zip",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.14.0-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 95532751,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.15.0-win-x64.zip",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.15.0-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 95534744,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.16.0-win-x64.zip",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.16.0-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 97923598,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.17.0-win-x64.zip",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.17.0-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 97926480,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.18.0-win-x64.zip",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.18.0-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 97936295,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.18.1-win-x64.zip",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.18.1-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 97793576,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.18.2-win-x64.zip",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.18.2-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 97794347,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.19.0-win-x64.zip",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.19.0-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 97796873,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.20.0-win-x64.zip",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.20.0-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 95432598,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.20.1-win-x64.zip",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.20.1-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 97815176,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.20.2-win-x64.zip",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.20.2-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 97816168,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.20.3-win-x64.zip",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.20.3-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 97816155,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.21.0-win-x64.zip",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.21.0-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 97822471,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "outputs/Alpha6OPS-Setup-0.12.1.exe",
+      "destination": "frozen-releases/Alpha6OPS-Setup-0.12.1.exe",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 95574016,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "outputs/Alpha6OPS-Setup-0.13.0.exe",
+      "destination": "frozen-releases/Alpha6OPS-Setup-0.13.0.exe",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 95891968,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "outputs/Alpha6OPS-Setup-0.14.0.exe",
+      "destination": "frozen-releases/Alpha6OPS-Setup-0.14.0.exe",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 96468992,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "outputs/Alpha6OPS-Setup-0.15.0.exe",
+      "destination": "frozen-releases/Alpha6OPS-Setup-0.15.0.exe",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 96471040,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "outputs/Alpha6OPS-Setup-0.16.0.exe",
+      "destination": "frozen-releases/Alpha6OPS-Setup-0.16.0.exe",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 98860032,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "outputs/Alpha6OPS-Setup-0.17.0.exe",
+      "destination": "frozen-releases/Alpha6OPS-Setup-0.17.0.exe",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 98862592,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "outputs/Alpha6OPS-Setup-0.18.0.exe",
+      "destination": "frozen-releases/Alpha6OPS-Setup-0.18.0.exe",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 98872832,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "outputs/Alpha6OPS-Setup-0.18.1.exe",
+      "destination": "frozen-releases/Alpha6OPS-Setup-0.18.1.exe",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 98729472,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "outputs/Alpha6OPS-Setup-0.18.2.exe",
+      "destination": "frozen-releases/Alpha6OPS-Setup-0.18.2.exe",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 98730496,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "outputs/Alpha6OPS-Setup-0.19.0.exe",
+      "destination": "frozen-releases/Alpha6OPS-Setup-0.19.0.exe",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 98733056,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "outputs/Alpha6OPS-Setup-0.20.0.exe",
+      "destination": "frozen-releases/Alpha6OPS-Setup-0.20.0.exe",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 96368640,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "outputs/Alpha6OPS-Setup-0.20.1.exe",
+      "destination": "frozen-releases/Alpha6OPS-Setup-0.20.1.exe",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 98751488,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "outputs/Alpha6OPS-Setup-0.20.2.exe",
+      "destination": "frozen-releases/Alpha6OPS-Setup-0.20.2.exe",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 98752512,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "outputs/Alpha6OPS-Setup-0.20.3.exe",
+      "destination": "frozen-releases/Alpha6OPS-Setup-0.20.3.exe",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 98752512,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "outputs/Alpha6OPS-Setup-0.21.0.exe",
+      "destination": "frozen-releases/Alpha6OPS-Setup-0.21.0.exe",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 98758656,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "outputs/Alpha6OPS-v0.16.0-checkpoint-7.11.bundle",
+      "destination": "frozen-releases/Alpha6OPS-v0.16.0-checkpoint-7.11.bundle",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "bytes": 27217925,
+      "files": 1,
+      "directories": 0
+    },
+    {
+      "source": "docs/map-v2/evidence",
+      "destination": "checkpoints/documentation/map-v2-evidence",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "bytes": 7972110,
+      "files": 338,
+      "directories": 32
+    }
+  ],
+  "cleanupCandidates": [
+    {
+      "path": ".work",
+      "auditClass": "H/I after D/E selection",
+      "reason": "Delete temporary worktree content after its unique native evidence and manifest units are confirmed in the archive.",
+      "requiresArchiveVerification": "native-evidence"
+    },
+    {
+      "path": "apps/ops-web/dist",
+      "auditClass": "H",
+      "reason": "Generated dependency or web build output; reproducible from lockfile and source.",
+      "requiresArchiveVerification": null
+    },
+    {
+      "path": "apps/ops-web/node_modules",
+      "auditClass": "H",
+      "reason": "Generated dependency or web build output; reproducible from lockfile and source.",
+      "requiresArchiveVerification": null
+    },
+    {
+      "path": "prototypes/Sierra4.MapPrototype/bin",
+      "auditClass": "H",
+      "reason": "Generated build output; reproducible from committed source.",
+      "requiresArchiveVerification": null
+    },
+    {
+      "path": "prototypes/Sierra4.MapPrototype/obj",
+      "auditClass": "H",
+      "reason": "Generated build output; reproducible from committed source.",
+      "requiresArchiveVerification": null
+    },
+    {
+      "path": "src/Alpha6Ops.Api/bin",
+      "auditClass": "H",
+      "reason": "Generated build output; reproducible from committed source.",
+      "requiresArchiveVerification": null
+    },
+    {
+      "path": "src/Alpha6Ops.Api/obj",
+      "auditClass": "H",
+      "reason": "Generated build output; reproducible from committed source.",
+      "requiresArchiveVerification": null
+    },
+    {
+      "path": "src/Alpha6Ops.Core/bin",
+      "auditClass": "H",
+      "reason": "Generated build output; reproducible from committed source.",
+      "requiresArchiveVerification": null
+    },
+    {
+      "path": "src/Alpha6Ops.Core/obj",
+      "auditClass": "H",
+      "reason": "Generated build output; reproducible from committed source.",
+      "requiresArchiveVerification": null
+    },
+    {
+      "path": "src/Alpha6Ops.Desktop/bin",
+      "auditClass": "H",
+      "reason": "Generated build output; reproducible from committed source.",
+      "requiresArchiveVerification": null
+    },
+    {
+      "path": "src/Alpha6Ops.Desktop/obj",
+      "auditClass": "H",
+      "reason": "Generated build output; reproducible from committed source.",
+      "requiresArchiveVerification": null
+    },
+    {
+      "path": "src/Alpha6Ops.FlightLab/bin",
+      "auditClass": "H",
+      "reason": "Generated build output; reproducible from committed source.",
+      "requiresArchiveVerification": null
+    },
+    {
+      "path": "src/Alpha6Ops.FlightLab/obj",
+      "auditClass": "H",
+      "reason": "Generated build output; reproducible from committed source.",
+      "requiresArchiveVerification": null
+    },
+    {
+      "path": "src/Alpha6Ops.Pilot/bin",
+      "auditClass": "H",
+      "reason": "Generated build output; reproducible from committed source.",
+      "requiresArchiveVerification": null
+    },
+    {
+      "path": "src/Alpha6Ops.Pilot/obj",
+      "auditClass": "H",
+      "reason": "Generated build output; reproducible from committed source.",
+      "requiresArchiveVerification": null
+    },
+    {
+      "path": "tests/Alpha6Ops.MapBridgeChecks/bin",
+      "auditClass": "H",
+      "reason": "Generated build output; reproducible from committed source.",
+      "requiresArchiveVerification": null
+    },
+    {
+      "path": "tests/Alpha6Ops.MapBridgeChecks/obj",
+      "auditClass": "H",
+      "reason": "Generated build output; reproducible from committed source.",
+      "requiresArchiveVerification": null
+    },
+    {
+      "path": "tests/Alpha6Ops.MigrationChecks/bin",
+      "auditClass": "H",
+      "reason": "Generated build output; reproducible from committed source.",
+      "requiresArchiveVerification": null
+    },
+    {
+      "path": "tests/Alpha6Ops.MigrationChecks/obj",
+      "auditClass": "H",
+      "reason": "Generated build output; reproducible from committed source.",
+      "requiresArchiveVerification": null
+    },
+    {
+      "path": "tests/Alpha6Ops.RecoveryChecks/bin",
+      "auditClass": "H",
+      "reason": "Generated build output; reproducible from committed source.",
+      "requiresArchiveVerification": null
+    },
+    {
+      "path": "tests/Alpha6Ops.RecoveryChecks/obj",
+      "auditClass": "H",
+      "reason": "Generated build output; reproducible from committed source.",
+      "requiresArchiveVerification": null
+    },
+    {
+      "path": "tests/Alpha6Ops.Tests/bin",
+      "auditClass": "H",
+      "reason": "Generated build output; reproducible from committed source.",
+      "requiresArchiveVerification": null
+    },
+    {
+      "path": "tests/Alpha6Ops.Tests/obj",
+      "auditClass": "H",
+      "reason": "Generated build output; reproducible from committed source.",
+      "requiresArchiveVerification": null
+    },
+    {
+      "path": "work/checkpoint-7.26b-baseline-20261002",
+      "auditClass": "I",
+      "reason": "Checkpoint 7.26B baseline or focused diagnostic output created during this run; reproducible and no longer needed.",
+      "requiresArchiveVerification": null
+    },
+    {
+      "path": "work/checkpoint-7.26b-baseline-portable-20261002",
+      "auditClass": "I",
+      "reason": "Checkpoint 7.26B baseline or focused diagnostic output created during this run; reproducible and no longer needed.",
+      "requiresArchiveVerification": null
+    },
+    {
+      "path": "work/checkpoint-7.26b-debug-recovery-1",
+      "auditClass": "I",
+      "reason": "Checkpoint 7.26B baseline or focused diagnostic output created during this run; reproducible and no longer needed.",
+      "requiresArchiveVerification": null
+    },
+    {
+      "path": "work/checkpoint-7.26b-debug-recovery-10",
+      "auditClass": "I",
+      "reason": "Checkpoint 7.26B baseline or focused diagnostic output created during this run; reproducible and no longer needed.",
+      "requiresArchiveVerification": null
+    },
+    {
+      "path": "work/checkpoint-7.26b-debug-recovery-11",
+      "auditClass": "I",
+      "reason": "Checkpoint 7.26B baseline or focused diagnostic output created during this run; reproducible and no longer needed.",
+      "requiresArchiveVerification": null
+    },
+    {
+      "path": "work/checkpoint-7.26b-debug-recovery-2",
+      "auditClass": "I",
+      "reason": "Checkpoint 7.26B baseline or focused diagnostic output created during this run; reproducible and no longer needed.",
+      "requiresArchiveVerification": null
+    },
+    {
+      "path": "work/checkpoint-7.26b-debug-recovery-3",
+      "auditClass": "I",
+      "reason": "Checkpoint 7.26B baseline or focused diagnostic output created during this run; reproducible and no longer needed.",
+      "requiresArchiveVerification": null
+    },
+    {
+      "path": "work/checkpoint-7.26b-debug-recovery-4",
+      "auditClass": "I",
+      "reason": "Checkpoint 7.26B baseline or focused diagnostic output created during this run; reproducible and no longer needed.",
+      "requiresArchiveVerification": null
+    },
+    {
+      "path": "work/checkpoint-7.26b-debug-recovery-5",
+      "auditClass": "I",
+      "reason": "Checkpoint 7.26B baseline or focused diagnostic output created during this run; reproducible and no longer needed.",
+      "requiresArchiveVerification": null
+    },
+    {
+      "path": "work/checkpoint-7.26b-debug-recovery-6",
+      "auditClass": "I",
+      "reason": "Checkpoint 7.26B baseline or focused diagnostic output created during this run; reproducible and no longer needed.",
+      "requiresArchiveVerification": null
+    },
+    {
+      "path": "work/checkpoint-7.26b-debug-recovery-7",
+      "auditClass": "I",
+      "reason": "Checkpoint 7.26B baseline or focused diagnostic output created during this run; reproducible and no longer needed.",
+      "requiresArchiveVerification": null
+    },
+    {
+      "path": "work/checkpoint-7.26b-debug-recovery-8",
+      "auditClass": "I",
+      "reason": "Checkpoint 7.26B baseline or focused diagnostic output created during this run; reproducible and no longer needed.",
+      "requiresArchiveVerification": null
+    },
+    {
+      "path": "work/checkpoint-7.26b-debug-recovery-9",
+      "auditClass": "I",
+      "reason": "Checkpoint 7.26B baseline or focused diagnostic output created during this run; reproducible and no longer needed.",
+      "requiresArchiveVerification": null
+    },
+    {
+      "path": "work/dashboard-review",
+      "auditClass": "I",
+      "reason": "Delete all dashboard review copies after the representative audited trace is confirmed in the archive.",
+      "requiresArchiveVerification": "historical-traces/dashboard-review/20260930-141916-6cd35877"
+    }
+  ],
+  "archiveTotals": {
+    "bytes": 37822194622,
+    "files": 271806,
+    "directories": 90572
+  },
+  "notes": [
+    "work/log-tests gained four 2,491-byte test artifacts during the pre-cleanup baseline run; the verified archive and plan totals include them."
+  ]
+}

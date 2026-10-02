@@ -34,6 +34,12 @@ internal static class Program
     [STAThread]
     private static int Main(string[] args)
     {
+        if (args.FirstOrDefault() == "--storage") return ProductStorageChecks.Run(args);
+        if (args.FirstOrDefault() == "--storage-instance-child") return ProductStorageChecks.HoldIdentity(args);
+        if (args.FirstOrDefault() == "--retention") return ProductionRetentionChecks.Run(args);
+        if (args.FirstOrDefault() == "--logbook") return LogbookChecks.Run(args);
+        if (args.FirstOrDefault() == "--terminal") return TerminalShutdownChecks.Run(args);
+        if (args.FirstOrDefault() is "--active-restart" or "--active-child") return ActiveFlightRecoveryChecks.Run(args);
         root = Path.GetFullPath(args.Length > 1 ? args[1] : Path.Combine("work/checkpoint-7.23", Guid.NewGuid().ToString("N")));
         Directory.CreateDirectory(root);
         if (args.FirstOrDefault() == "--probe") { Probe(); return 0; }

@@ -7,31 +7,39 @@ namespace Alpha6Ops.Desktop;
 // taskbar. The primary process owns the mutex and listens for explicit restore requests.
 internal static class SingleInstance
 {
-    private const string MutexName="Local\\Alpha6Designs.Alpha6OPS.SingleInstance";
-    private const string ActivationName="Local\\Alpha6Designs.Alpha6OPS.Activate";
-    private static Mutex? mutex;
-    private static EventWaitHandle? activation;
-    private static RegisteredWaitHandle? listener;
+    private static readonly string[] MutexNames=["Local\\Sierra4.SingleInstance","Local\\Alpha6Designs.Alpha6OPS.SingleInstance"];
+    private static readonly string[] ActivationNames=["Local\\Sierra4.Activate","Local\\Alpha6Designs.Alpha6OPS.Activate"];
+    private static readonly System.Collections.Generic.List<Mutex> mutexes=[];
+    private static readonly System.Collections.Generic.List<EventWaitHandle> activations=[];
+    private static readonly System.Collections.Generic.List<RegisteredWaitHandle> listeners=[];
 
     internal static bool TryAcquire()
     {
-        mutex=new Mutex(true,MutexName,out var createdNew);
-        if(createdNew){activation=new EventWaitHandle(false,EventResetMode.AutoReset,ActivationName);return true;}
-        mutex.Dispose();mutex=null;
-        try{using var signal=EventWaitHandle.OpenExisting(ActivationName);signal.Set();}catch(WaitHandleCannotBeOpenedException){}
-        return false;
+        Release();
+        var ownsAll=true;
+        foreach(var name in MutexNames)
+        {
+            var mutex=new Mutex(true,name,out var createdNew);mutexes.Add(mutex);
+            if(!createdNew)ownsAll=false;
+        }
+        if(ownsAll)
+        {
+            foreach(var name in ActivationNames)activations.Add(new EventWaitHandle(false,EventResetMode.AutoReset,name));
+            return true;
+        }
+        foreach(var name in ActivationNames)try{using var signal=EventWaitHandle.OpenExisting(name);signal.Set();}catch(WaitHandleCannotBeOpenedException){}
+        Release();return false;
     }
 
     internal static void Listen(Action restore)
     {
-        if(activation is null)return;
-        listener=ThreadPool.RegisterWaitForSingleObject(activation,(_,_)=>restore(),null,Timeout.Infinite,true);
+        foreach(var activation in activations)listeners.Add(ThreadPool.RegisterWaitForSingleObject(activation,(_,_)=>restore(),null,Timeout.Infinite,true));
     }
 
     internal static void Release()
     {
-        listener?.Unregister(null);listener=null;activation?.Dispose();activation=null;
-        try{mutex?.ReleaseMutex();}catch(ApplicationException){}
-        mutex?.Dispose();mutex=null;
+        foreach(var listener in listeners)listener.Unregister(null);listeners.Clear();
+        foreach(var activation in activations)activation.Dispose();activations.Clear();
+        foreach(var mutex in mutexes){try{mutex.ReleaseMutex();}catch(ApplicationException){}mutex.Dispose();}mutexes.Clear();
     }
 }

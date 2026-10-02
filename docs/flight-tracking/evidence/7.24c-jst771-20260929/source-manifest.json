@@ -1,0 +1,63 @@
+{
+  "source": "C:\\Users\\DanniBaLs\\Desktop\\JST771 - S4TF - 9-29.zip",
+  "preserved": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\docs\\flight-tracking\\evidence\\7.24c-jst771-20260929\\JST771 - S4TF - 9-29.zip",
+  "sha256": "C5D0A0CC05EB358865EEE2BB67CA38E3B9358E7D4821E8224B204F9A5703EC1C",
+  "bytes": 3318598,
+  "files": [
+    {
+      "path": "JST771 - S4TF - 9-29/Alpha6OPS-20260929-140838-d803e26c9d8b4aec8cac7c52986c89b2.json",
+      "bytes": 10968722,
+      "sha256": "EEAAAA58210314453E1E14E5811E7532F48A97B1C9591020C865B49B1D25F137"
+    },
+    {
+      "path": "JST771 - S4TF - 9-29/Alpha6OPS-20260929-140838-d803e26c9d8b4aec8cac7c52986c89b2.jsonl",
+      "bytes": 7156842,
+      "sha256": "28E0E81CE112AC92B347D60F24900D3A3007A51AA46321095E7BD99A042A138A"
+    },
+    {
+      "path": "JST771 - S4TF - 9-29/latest-ofp.json",
+      "bytes": 446813,
+      "sha256": "11B28104DB8B72AEE7BEA52FF560BAA76D03E5BCEF6EE2FA7A17684060A54A0A"
+    },
+    {
+      "path": "JST771 - S4TF - 9-29/ofp-1790687981.pdf",
+      "bytes": 523528,
+      "sha256": "3C7794D6937B2BB7E5E8873FA0E17515823AACC541A4E466B1902525A34FFE40"
+    },
+    {
+      "path": "JST771 - S4TF - 9-29/ofp-1790687981.txt",
+      "bytes": 64499,
+      "sha256": "1D800DF239038421E0B30BD72A773AE741C52DFC37D2984F32F89A51EDE2B70F"
+    },
+    {
+      "path": "JST771 - S4TF - 9-29/S4FT - 1 - Disconnect Reconnect.JPG",
+      "bytes": 193476,
+      "sha256": "BBA109642E363002BE23E988784A7445A34911B017C3698A73410BAC7EC52956"
+    },
+    {
+      "path": "JST771 - S4TF - 9-29/S4FT - 2 - Exit and Restart - Reconnect.JPG",
+      "bytes": 198113,
+      "sha256": "6AED5ED858708B22820DAAF19CB87310F0FDB8BC38344FDD4FAB0B9165132647"
+    },
+    {
+      "path": "JST771 - S4TF - 9-29/S4FT - 2 - Not recognizing Top of Descent.JPG",
+      "bytes": 198862,
+      "sha256": "C15CCED25BEE92FB2A8E469841511C81790F5C10DD917AC0BA94075A6B8682BA"
+    },
+    {
+      "path": "JST771 - S4TF - 9-29/S4FT - 3 - 10k ft captured.JPG",
+      "bytes": 198582,
+      "sha256": "E9702A29276BBFECB8CA52D2B6ED78BB4E5724B1069C188C0814330BA3BF54A8"
+    },
+    {
+      "path": "JST771 - S4TF - 9-29/S4FT - 4 - 99.9 complete no submit after 3 to 4 seconds..JPG",
+      "bytes": 222616,
+      "sha256": "D7A2F9675C951BDF724DF2D2F2B69B8334C22DBEF61A7D309E5E97A3921E3B58"
+    },
+    {
+      "path": "JST771 - S4TF - 9-29/S4FT - 5 - Manually clicked confirmed parked.JPG",
+      "bytes": 220921,
+      "sha256": "02F86620AB64660F0C9CED93EB6666A424331D864D1AA13FD0D779F6EE2560FD"
+    }
+  ]
+}

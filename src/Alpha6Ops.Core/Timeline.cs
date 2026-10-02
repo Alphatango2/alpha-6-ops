@@ -20,6 +20,8 @@ public sealed class TimelineRecorder
     public FlightPhase Phase => detector.Phase;
     public IReadOnlyList<TimelineSnapshot> Snapshots => snapshots;
     public IReadOnlyList<FlightEvent> Events => events;
+    public void ResetPendingTransition() => detector.ResetPendingTransition();
+    public void ResetPendingCompletion() => detector.ResetPendingCompletion();
 
     public FlightEvent? Observe(Telemetry sample)
     {

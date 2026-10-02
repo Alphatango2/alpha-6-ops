@@ -1,0 +1,142 @@
+[
+  {
+    "path": "active-restart.json",
+    "sha256": "9E52C44E2B89B4F1F2A2459DE5DDE2BF8C2F2CF7F4D06BA600A082754EEB2A09",
+    "bytes": 13376
+  },
+  {
+    "path": "baseline-summary.json",
+    "sha256": "FEE4A45A73341DD662378115DB0990573BC6BB3C09522A204C1B45D3B12B6A88",
+    "bytes": 3256
+  },
+  {
+    "path": "changed-source-files.json",
+    "sha256": "D53A543D72EC9A3DEC5E22FA2E1F0F8403918860B421B142565FDAAC8F13F106",
+    "bytes": 6441
+  },
+  {
+    "path": "current-coverage.json",
+    "sha256": "B8206463DBEEB11A20CA779297BD8A77E72406FAE1223A41FB0C3583B2E3FAC2",
+    "bytes": 816
+  },
+  {
+    "path": "current-replay.json",
+    "sha256": "77E11D27B54E68A61FA3333359080FE3B1401F5D220C33C922A9BBAF1B262964",
+    "bytes": 503
+  },
+  {
+    "path": "current-source-preservation.json",
+    "sha256": "485CAC2BABEAE9A58359CA51FE017B64D835489F241ECFF0D4B1A4E5BB309AFF",
+    "bytes": 185
+  },
+  {
+    "path": "followup-groups.json",
+    "sha256": "A05575844990CF6134744E2FB2EF56DFEABC9EAE6302404A8F113094505ACB3A",
+    "bytes": 1623
+  },
+  {
+    "path": "frozen-build.json",
+    "sha256": "DD2F25B2F2002E85AA17A094882650AE0A53B412BB35E0BB11DFFB5DC2374DB5",
+    "bytes": 2590
+  },
+  {
+    "path": "historical-coverage.json",
+    "sha256": "518C8E7B3AEDF72A0205892F7F5AB8114E4D38EB304CEE3470EC5B5BE3B8E9CB",
+    "bytes": 2768
+  },
+  {
+    "path": "historical-input-hashes.json",
+    "sha256": "35FB9E1C03009B6C11E4F6F83A13401DF3839D4BE5F7856D7AB72493F5E82F01",
+    "bytes": 2643
+  },
+  {
+    "path": "historical-replays.json",
+    "sha256": "2A66DD5F330937B2BD4BB58280261337662C2EF3F1D2EBF890CB3F1B3EBCE19C",
+    "bytes": 4511
+  },
+  {
+    "path": "interaction-contract.json",
+    "sha256": "E416DC5FBD667F377C70F94981FCD71DEB2CCE595399F5567C45CCB6832ACE7B",
+    "bytes": 1679
+  },
+  {
+    "path": "map-input-probe.json",
+    "sha256": "DC69AD7B116598B037DB906F2EF441C918CBF8BDF597405F5C0AB74283020190",
+    "bytes": 869
+  },
+  {
+    "path": "map-lifecycle-ledger.md",
+    "sha256": "B91CC804CA4A3E927376A7F956AC353E7EFA0A9910177CDDCBDAA8ACA1B7C5CE",
+    "bytes": 14554
+  },
+  {
+    "path": "map-suite.json",
+    "sha256": "DA8D41034AFED8EA0C6EB632019E336CFAA0CAB1AE4161C4B6849300E54CF2D6",
+    "bytes": 22531
+  },
+  {
+    "path": "native-recovery-procedure.md",
+    "sha256": "B71EBAA44EE5F6016EA545D67C0CCBC88DEB9422577A8CCFC809AF04A2829287",
+    "bytes": 4094
+  },
+  {
+    "path": "negative-replay-proof.json",
+    "sha256": "D960D75C568A396014D7AED364594E6F2408314A7531E6BDC965A1264ED94FBF",
+    "bytes": 741
+  },
+  {
+    "path": "performance-analysis.md",
+    "sha256": "DD25B1162C803E9387F859522F7D255C660FD7E55420A8F023ECBB50B39F46CA",
+    "bytes": 4743
+  },
+  {
+    "path": "performance-comparison.json",
+    "sha256": "5CAEECE376F1499F21AF40D8A936C728B916F1DED08E17690CDFB9AA8F51FE47",
+    "bytes": 2631
+  },
+  {
+    "path": "r3-preservation.json",
+    "sha256": "5F746D90EAE5A9F2175F252717AF74D94A02A4192090FDA37794586A1B6B4A10",
+    "bytes": 127
+  },
+  {
+    "path": "recovery-guard.json",
+    "sha256": "0655139B6A58EB20517C3D5B66639AA4E2E1CC46EE25AC983150CD2DD37BFB9F",
+    "bytes": 4131
+  },
+  {
+    "path": "recovery-ledger.md",
+    "sha256": "2D4DC80D6FACB3D1CD460BB44525A4C9AE1037DE2CB76E4DE3D2099BB39B81AE",
+    "bytes": 14208
+  },
+  {
+    "path": "renderer-default.json",
+    "sha256": "1E98391C4293A8DDD23989A1FDE9F1B3963863658B0B4E217D0D0037827E38F0",
+    "bytes": 167
+  },
+  {
+    "path": "restoration-checks.json",
+    "sha256": "762E76B4BD1AFF28D9137A6EE4C47840938B44D533DDE2CAEEAE11BACEE2F875",
+    "bytes": 18250
+  },
+  {
+    "path": "restoration-hidden-resources.json",
+    "sha256": "31478EAB643DB045090DD9B1667BA1D9C3689434F034301368C4C04D4096BE87",
+    "bytes": 1460
+  },
+  {
+    "path": "restoration-timing-summary.json",
+    "sha256": "4CA23F0F7417B28D64B5D2588D206B9C6F227554D51ED7A542C595C6ACD5ED82",
+    "bytes": 320
+  },
+  {
+    "path": "review-findings.md",
+    "sha256": "EB743A7A22D0ED58EFA96C1D22537B60AB0DB09F1BC0C563324610B63FD91858",
+    "bytes": 7573
+  },
+  {
+    "path": "summary.json",
+    "sha256": "56E5035CB085796628A9F195A45A1B832028E40F02577BD8F77F8AF8A2633D00",
+    "bytes": 6673
+  }
+]

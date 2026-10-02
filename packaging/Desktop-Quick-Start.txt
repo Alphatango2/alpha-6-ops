@@ -1,52 +1,41 @@
-ALPHA 6 OPS — CHECKPOINT 7.17 / VERSION 0.22.0
+SIERRA 4 — VERSION 0.23.0 — CHECKPOINT 7.26B PRE-UI BASELINE
 
-LOCAL CHECKPOINT 7.22 — SIERRA 4 OPERATIONS MAP PREVIEW
-The Operations map now offers a Use Map V2 button. This is an opt-in preview;
-the classic map remains the default and is available as an immediate fallback.
-Flight Tracking continues to use its existing map.
-Map V2 uses bundled offline geography and needs no account, map key or tiles.
-Microsoft Edge WebView2 Evergreen Runtime must already be installed. If it is
-unavailable or the renderer fails, the classic map remains usable. This package
-does not silently download/install WebView2 and does not include a Fixed runtime.
-Use classic map switches back. The choice is for the current application session.
-The application/profile names and version remain unchanged during UI migration.
+Sierra 4 now uses its own Windows product identity, executable, installer,
+shortcut, installation directory and per-user storage root. The application is
+installed to %LOCALAPPDATA%\Programs\Sierra 4 and stores user data separately
+under %LOCALAPPDATA%\Sierra 4.
 
-UPDATE
-Exit OPS from its Exit OPS button or tray menu; the window X only hides it.
-Run Alpha6OPS-Setup-0.22.0.exe to update the existing installation.
-Your logs, assignment, settings, gate history and SimBrief cache are preserved.
-Open Alpha 6 OPS from Start and confirm v0.22.0 in the footer.
-Alternatively, fully extract the portable ZIP before starting Alpha6OPS.exe.
+FIRST START AND LEGACY DATA
 
-CHECKPOINT 7.17
-Changed departure procedures and direct routing can rejoin the planned route
-without leaving progress frozen on an old segment. Both progress bars, distance,
-route styling and the diagnostic journal share the computed progress.
-Unreliable route position or unavailable telemetry suspends live ETA and delay
-claims until usable data returns. Recorded actual IN remains unchanged.
+On first ordinary start, Sierra 4 checks the prior
+%LOCALAPPDATA%\Alpha6Designs\Alpha6OPS profile. If one exists, Sierra 4 copies
+it into a staging directory, verifies every copied file with SHA-256, and only
+then promotes the new categorized profile. The legacy profile remains intact.
+If verification or promotion fails, Sierra 4 continues with the legacy profile
+without deleting or partially adopting it.
 
-An unavailable simulator registration is advisory when the live departure
-location or simulator route independently verifies the assignment. Conflicting
-routes, wrong departure locations and implausible dates still require review.
+The Sierra 4 profile separates durable flight data, settings, diagnostics,
+caches and process state. Flight history, PIREPs and active recovery remain
+durable. Diagnostic journals and caches have bounded retention; the active
+flight, newest unresolved interruption and active SimBrief release are
+protected from cleanup.
 
-A220 handle indexes 0–5 display UP, 1, 2, 3, 4 and 5. Flap events identify the
-selected configuration; raw surface measurements remain in diagnostic logs.
-Selected does not mean that the moving surfaces have reached that position.
-Engine shutdown wording identifies the evidence actually available.
+INSTALL OR UPDATE
 
-Scheduled IN now uses SimBrief sched_in. The dispatch est_in is retained
-separately as an initial prediction. Refresh the SimBrief release to obtain both
-values; existing saved releases retain their original imported times.
-Manual schedule corrections clear the older dispatch estimate.
+Exit Sierra 4 from its Exit action or tray menu before running setup. Run
+Sierra4-Setup-0.23.0.exe for a per-user installation. Setup replaces only a
+verified Sierra 4 installation directory and preserves the external profile.
+It creates a Sierra 4 Start menu shortcut and an Installed apps entry.
 
-Dispatch airport names align beneath their ICAO codes in draft and active
-releases. Gate Assignments has a larger heading and yellow section accent.
-Gate suggestions use your local confirmed history, not live availability.
+For portable use, fully extract Sierra4-Desktop-0.23.0-win-x64.zip, then start
+Sierra4.exe. The package includes the required .NET runtime. Microsoft Edge
+WebView2 Evergreen Runtime must already be installed for Map V2; the classic
+map remains available if WebView2 cannot start.
 
-NEXT FLIGHT
-Review the SimBrief departure DATE as well as UTC time before accepting.
-Connect at the gate for a complete OUT-to-IN record.
-Check both progress bars during climb and cruise, then ETA near approach.
-Export JSON and JSONL after the flight and capture any remaining visual issues.
-Nine prior flights covering A32x, A220 and Boeing 737 were replayed successfully.
-A new live simulator flight is still required to validate this update in use.
+CHECKPOINT SCOPE
+
+This is the clean pre-premium-UI baseline after the validated 7.25A A350
+endurance candidate. It preserves lifecycle, OOOI, PIREP, recovery, observed
+cruise, step-climb, TOD, ETA, map-history and terminal-shutdown behavior. Map V2
+remains opt-in for the current session. Checkpoint 7.27 Premium UI Foundation
+has not started.

@@ -1,0 +1,177 @@
+[
+  {
+    "path": "packaging/Desktop-Quick-Start.txt",
+    "status": "modified",
+    "sha256": "EAA4B9543F1C614D4BFDFD7B7772212B8FE737FFA78ECD611890611B69356A10"
+  },
+  {
+    "path": "packaging/PreviewSetup.cs",
+    "status": "modified",
+    "sha256": "FE966FF0F41C6795E35C2150CCBF879C5074FFAF43092C323F6A9EBD484087FC"
+  },
+  {
+    "path": "src/Alpha6Ops.Core/ArrivalEstimator.cs",
+    "status": "modified",
+    "sha256": "DDA7195BA3C17AF96A61294C5730693D922921F10D6EA9C4E25D1F4BB05C5179"
+  },
+  {
+    "path": "src/Alpha6Ops.Core/RouteProgressTracker.cs",
+    "status": "modified",
+    "sha256": "128C70B8795707924A8CEBEC1F02E64FFB6229D5E159AC5D53CCC4117BC87742"
+  },
+  {
+    "path": "src/Alpha6Ops.Desktop/App.xaml.cs",
+    "status": "modified",
+    "sha256": "1C5655FA35E33603A479EDA53F6C2CA9002D9927A56864C82C145C2BA25AF78B"
+  },
+  {
+    "path": "src/Alpha6Ops.Desktop/FlightHistoryDatabase.cs",
+    "status": "modified",
+    "sha256": "53A03FF3A844FCD658376B91CCCDC39FAC0400BCAD16977F3EA20F7E5F3B0347"
+  },
+  {
+    "path": "src/Alpha6Ops.Desktop/FlightRecovery.cs",
+    "status": "modified",
+    "sha256": "325422D579BCA7496415B7F7A2FFB123C3D0E672D1CADB84EE95294AA83B52B8"
+  },
+  {
+    "path": "src/Alpha6Ops.Desktop/FlightSessionCoordinator.Commands.cs",
+    "status": "modified",
+    "sha256": "1D368CD8E0B943F56C29AED692F28CDFB6A0F9B15C23D2CE1B48EFB476428082"
+  },
+  {
+    "path": "src/Alpha6Ops.Desktop/FlightSessionCoordinator.Connection.cs",
+    "status": "modified",
+    "sha256": "07A721A1A8562CF6715D99A16E151254B588047EA77EFB6D31952D0E55DA5EED"
+  },
+  {
+    "path": "src/Alpha6Ops.Desktop/FlightSessionCoordinator.cs",
+    "status": "modified",
+    "sha256": "0D7FC54B6853D2BFEC16F56F48830E2B069508DB62716B15DD7193D7F04AD0AF"
+  },
+  {
+    "path": "src/Alpha6Ops.Desktop/FlightSessionCoordinator.Identity.cs",
+    "status": "modified",
+    "sha256": "46C5C21F4483814F1D1FF71DEE21772060BD2EBB301BAC0B2B16FCFCC4D7ECEB"
+  },
+  {
+    "path": "src/Alpha6Ops.Desktop/FlightSessionCoordinator.Tracking.cs",
+    "status": "modified",
+    "sha256": "058F983C771EC9F5BF968714D9DC2B20CC5AECE2E52727A6AB47CC7C7F172DC2"
+  },
+  {
+    "path": "src/Alpha6Ops.Desktop/FlightTrackingEvents.cs",
+    "status": "modified",
+    "sha256": "649430E60A55F0D554B78EEC2FD95E403456DA1AD34AF0E8AF1320EEB362F416"
+  },
+  {
+    "path": "src/Alpha6Ops.Desktop/FlightTrackingWorkspace.xaml.cs",
+    "status": "modified",
+    "sha256": "A8819C845991BB4B3EEE3ABCC9922BD498DAA098F8B93B7EEB6C57F80EEDD57A"
+  },
+  {
+    "path": "src/Alpha6Ops.Desktop/MapV2/DispatcherSchedulingTrace.cs",
+    "status": "modified",
+    "sha256": "046FBCC63CE467DD313365C08B299DB266A8C1FDE319F679AA328731B37244EC"
+  },
+  {
+    "path": "src/Alpha6Ops.Desktop/MapV2/MapContentionChecks.cs",
+    "status": "modified",
+    "sha256": "EFB17EE4995F58AA32C68392A8C1B5B807605C9725DAB1FD12DBDB8AAE04F23E"
+  },
+  {
+    "path": "src/Alpha6Ops.Desktop/MapV2/MapInteractionChecks.cs",
+    "status": "new",
+    "sha256": "80E88267F5E805D2BB339B945164713FD9F24F9D2DC6DF690A55CC3CBE22165A"
+  },
+  {
+    "path": "src/Alpha6Ops.Desktop/MapV2/MapPerformanceChecks.cs",
+    "status": "modified",
+    "sha256": "6703E07D64D39A05E241C8210BD51A5CD18FF1E94CEFEB80D847B3511969B1B1"
+  },
+  {
+    "path": "src/Alpha6Ops.Desktop/MapV2/MapPerformanceChecks.Restoration.cs",
+    "status": "new",
+    "sha256": "4241A76EAA74AC4ECE0FF062A9BCDE5B23B6E1114C2ADA47E3DAA752B4731451"
+  },
+  {
+    "path": "src/Alpha6Ops.Desktop/MapV2/MapProjectionPump.cs",
+    "status": "modified",
+    "sha256": "A3A5BB40CE3ABFA63EFF25A6F58E6622869B8E16CDD6704DA33987F66B2DA7DA"
+  },
+  {
+    "path": "src/Alpha6Ops.Desktop/MapV2/MapProjectionService.cs",
+    "status": "modified",
+    "sha256": "A74FF2B729AEF8B7E36C7775A220F735AF8A334CA3CBEE66203E7A8759318F39"
+  },
+  {
+    "path": "src/Alpha6Ops.Desktop/MapV2/MapSchedulingChecks.cs",
+    "status": "modified",
+    "sha256": "D26D586103D9CAD3B104CAD72D7C46EB021B05F2FB940A61A8041E4A86370308"
+  },
+  {
+    "path": "src/Alpha6Ops.Desktop/MapV2/MapV2Checks.cs",
+    "status": "modified",
+    "sha256": "896E57D7BA8F2DFF6A8E331E81951660EF5FC4024F2EDBDA077636A4849E74DC"
+  },
+  {
+    "path": "src/Alpha6Ops.Desktop/MapV2/MapV2Checks.FirstPaint.cs",
+    "status": "modified",
+    "sha256": "8FCDF7F524D97667C665DD8F88E2822E5612A6AA431FBE9192DB26C7385A8FC0"
+  },
+  {
+    "path": "src/Alpha6Ops.Desktop/MapV2/MapV2Checks.Restoration.cs",
+    "status": "new",
+    "sha256": "79591874D448C71CF5558468965132029498A5B3608B3553B7FF5962861C328B"
+  },
+  {
+    "path": "src/Alpha6Ops.Desktop/MapV2/NativeMapInputTrace.cs",
+    "status": "new",
+    "sha256": "2101A32CE1F79FC71EE8C12E366371CC311AB0426A33CDF7ABE59A1EAB02724A"
+  },
+  {
+    "path": "src/Alpha6Ops.Desktop/MapV2/Web/map.mjs",
+    "status": "modified",
+    "sha256": "618653A56E1DDB7FADCDC5AEC3D0623CCF39DC5F34E292D7E1593814A20EB5D5"
+  },
+  {
+    "path": "src/Alpha6Ops.Desktop/MapV2/WebMapRenderer.cs",
+    "status": "modified",
+    "sha256": "B9C1C6CEDC1C6F449CCF4979C04530BCF021B714536E5E5FAEF44BF0C5493B5E"
+  },
+  {
+    "path": "src/Alpha6Ops.Desktop/OperationsMapHost.cs",
+    "status": "modified",
+    "sha256": "1BFDD36654E6F9ABD61AFC8F6F99B65CF84E324508F7301E94B0C98FB28721B3"
+  },
+  {
+    "path": "src/Alpha6Ops.Desktop/OperationsWorkspace.xaml.cs",
+    "status": "modified",
+    "sha256": "01555CBF85731A68760C2BA60D080580F64E20A22B496CDBAB6FB4ADD5FF491D"
+  },
+  {
+    "path": "src/Alpha6Ops.Desktop/RecordedFlightReplay.cs",
+    "status": "modified",
+    "sha256": "DF629CF8136FE4E13EAB53E0AA6D03A92F20EA423EB843794A8EF0F123539505"
+  },
+  {
+    "path": "src/Alpha6Ops.Desktop/TrackingIntegrationSmokeTest.cs",
+    "status": "modified",
+    "sha256": "46962C8FB7A3AB227A4F66B5CF59656877188B96D629E2BE4E210CA739DCDD4C"
+  },
+  {
+    "path": "tests/Alpha6Ops.RecoveryChecks/ActiveFlightRecoveryChecks.cs",
+    "status": "new",
+    "sha256": "AA9BFA14E14E4D6219DC3BF17784A82569FEA7C59D562585C40AABBD07A86FE4"
+  },
+  {
+    "path": "tests/Alpha6Ops.RecoveryChecks/Program.cs",
+    "status": "modified",
+    "sha256": "BBE1F46867414E1D962B9167075CF0F735E1DDC849CA91F08662991E90E9D038"
+  },
+  {
+    "path": "tests/Alpha6Ops.Tests/TrackingTests.cs",
+    "status": "modified",
+    "sha256": "2F075B2FB056E9289FC15AC961C540D36413A3F7526052B65C0554E2994727DA"
+  }
+]

@@ -8,6 +8,7 @@ let map, epoch=0, snapshot=null, sequence=0, initialized=false, failed=false;
 let selected=null, followId=null, restored=false, fitted=false, reducedMotion=false;
 let tracks=new Map(), labelImages=[], labelRecords=[], labelSignature='', routeSignature='', solarSignature='', lastArrival=null;
 let sourceUpdates=0, frameIntervals=[], previousFrame=0, lastRender=0, cameraTimer;
+let presentationVisible=true, animationFrame=0, awaitingVisiblePaint=false, pendingPaint=null;
 const enabled=new Set(['Basemap','DayNight','Airports','Routes','Aircraft','Selection','Labels']);
 const media=matchMedia('(prefers-reduced-motion: reduce)');
 const send = (type,body={}) => bridge?.postMessage({type,schemaVersion:1,epoch,...body});
@@ -30,6 +31,7 @@ function camera() {
 }
 function reportCamera() {
   clearTimeout(cameraTimer);
+  if(!presentationVisible || document.hidden) return;
   cameraTimer=setTimeout(()=>{ if(initialized) send('camera',camera()); },120);
 }
 function move(options) {
@@ -70,7 +72,7 @@ function select(kind,id) {
 }
 function layerVisibility() {
   const groups={DayNight:['night'],Airports:['airports','airport-selected'],Routes:['planned','completed','observed','inferred','route-selected','waypoints'],Aircraft:['aircraft'],Labels:['labels']};
-  for (const [group,layers] of Object.entries(groups)) for (const layer of layers) map.setLayoutProperty(layer,'visibility',enabled.has(group)?'visible':'none');
+  for (const [group,layers] of Object.entries(groups)) for (const layer of layers) if(map.getLayer(layer)) map.setLayoutProperty(layer,'visibility',enabled.has(group)?'visible':'none');
   for (const input of document.querySelectorAll('[data-layer]')) input.checked=enabled.has(input.dataset.layer);
 }
 
@@ -130,10 +132,13 @@ function updateSolar(sun) {
 }
 
 function renderAircraft(now) {
-  if(!snapshot || document.hidden) return;
+  if(!snapshot || !presentationVisible || document.hidden) return;
   const features=[], positions=new Map();
   for(const a of snapshot.aircraft) {
     const track=tracks.get(a.id); let p=a.position, h=a.headingDegrees??0;
+    // Reduced motion snaps to the newest observation. Do not leave an animation
+    // pending: otherwise the 20 Hz loop resubmits the same sources indefinitely.
+    if(track?.previous && (reducedMotion || media.matches)) track.previous=null;
     if(track?.previous && now-lastArrival<=15000 && !reducedMotion && !media.matches) {
       const t=Math.max(0,Math.min(1,(now-track.at)/track.duration));
       p=interpolate(track.previous.position,a.position,t);
@@ -151,17 +156,28 @@ function renderAircraft(now) {
   })));
 }
 function animate(now) {
-  if(!failed && initialized && !document.hidden && now-lastRender>=50) {
+  animationFrame=0;
+  if(!presentationVisible || document.hidden) return;
+  if(!failed && initialized && now-lastRender>=50) {
     if(previousFrame) { frameIntervals.push(now-previousFrame); if(frameIntervals.length>300) frameIntervals.shift(); }
     previousFrame=now; lastRender=now;
     if(now-lastArrival<=15000 && [...tracks.values()].some(t=>t.previous)) renderAircraft(now);
   }
-  requestAnimationFrame(animate);
+  animationFrame=requestAnimationFrame(animate);
+}
+function setPresentationVisible(visible) {
+  presentationVisible=visible;tracks.clear();previousFrame=0;
+  if(animationFrame)cancelAnimationFrame(animationFrame);animationFrame=0;
+  clearTimeout(cameraTimer);
+  if(pendingPaint){map.off('idle',pendingPaint);pendingPaint=null;}
+  if(!visible)map.stop();
+  else {awaitingVisiblePaint=true;map.resize();animationFrame=requestAnimationFrame(animate);}
 }
 function applySnapshot(next) {
   validateSnapshot(next,epoch,sequence);
+  const firstSnapshot=sequence===0 || awaitingVisiblePaint;
   const now=performance.now(), nextTracks=new Map();
-  const continuous=!document.hidden && continuousCapture(snapshot?.capturedAt,next.capturedAt,lastArrival==null?Infinity:now-lastArrival);
+  const continuous=!awaitingVisiblePaint && !document.hidden && continuousCapture(snapshot?.capturedAt,next.capturedAt,lastArrival==null?Infinity:now-lastArrival);
   const oldAircraft=new Map(snapshot?.aircraft.map(a=>[a.id,a])??[]);
   for(const a of next.aircraft) {
     const old=oldAircraft.get(a.id);
@@ -183,7 +199,19 @@ function applySnapshot(next) {
   if(followId && !next.aircraft.some(a=>a.id===followId)) { followId=null; updateFollow(); }
   selectionText();
   if(!restored && !fitted) fitted=fitRoute();
-  send('ack',{generation:next.generation,sequence});
+  const acknowledge=()=>send('ack',{generation:next.generation,sequence:next.sequence});
+  if(firstSnapshot) {
+    // Image loading and source updates are asynchronous. Only the initial
+    // reveal waits for a completed frame; normal streaming keeps its cadence.
+    const firstPaint=()=>{
+      if(failed || !presentationVisible || !map.getSource('night')?.loaded()) return;
+      map.off('idle',firstPaint);
+      pendingPaint=null;awaitingVisiblePaint=false;
+      acknowledge();
+    };
+    pendingPaint=firstPaint;
+    map.on('idle',firstPaint);
+  } else acknowledge();
 }
 
 async function initialize(message) {
@@ -208,7 +236,6 @@ async function initialize(message) {
   map.addImage('position',positionImage(),{sdf:true,pixelRatio:2});
   map.addLayer({id:'aircraft',type:'symbol',source:'aircraft',layout:{'icon-image':['get','symbol'],'icon-size':0.8,'icon-rotate':['get','heading'],'icon-rotation-alignment':'map','icon-allow-overlap':true,'icon-ignore-placement':true},paint:{'icon-color':['case',['get','selected'],palette['S4.SierraYellow'],['==',['get','source'],'Inferred'],palette['S4.Warning'],palette['S4.TextPrimary']],'icon-opacity':['case',['get','stale'],0.45,1],'icon-halo-color':palette['S4.AppBackground'],'icon-halo-width':1}});
   map.addLayer({id:'labels',type:'symbol',source:'labels',layout:{'icon-image':['get','image'],'icon-anchor':'left','icon-offset':[9,0],'icon-allow-overlap':false,'icon-padding':8}});
-  updateSolar([1,0,0]);
   applyPresentation(message.presentation);
   layerVisibility(); updateFollow();
   map.on('moveend',reportCamera);
@@ -217,7 +244,7 @@ async function initialize(message) {
     const feature=map.queryRenderedFeatures(event.point,{layers:['aircraft','airports','planned','completed','observed','inferred']})[0];
     if(feature) select(feature.layer.id==='aircraft'?'Aircraft':feature.layer.id==='airports'?'Airport':'Route',feature.properties.id);
   });
-  initialized=true; send('initialized'); requestAnimationFrame(animate);
+  initialized=true; send('initialized'); animationFrame=requestAnimationFrame(animate);
 }
 
 function applyPresentation(p) {
@@ -243,7 +270,8 @@ bridge?.addEventListener('message',event=>{
     if(!m || m.schemaVersion!==1) throw Error();
     if(m.type==='initialize') { initialize(m).catch(fail); return; }
     if(m.epoch!==epoch) return;
-    if(m.type==='snapshot' && initialized && !failed) applySnapshot(m.snapshot);
+    if(m.type==='visibility' && initialized && !failed) setPresentationVisible(m.visible===true);
+    if(m.type==='snapshot' && initialized && !failed && presentationVisible) applySnapshot(m.snapshot);
     if(m.type==='presentation' && initialized && !failed) applyPresentation(m.presentation);
   } catch(error) { tracks.clear(); fail(error); }
 });
@@ -261,7 +289,22 @@ const reportPreferences=()=>{if(initialized)send('presentationPreferences',{enab
 for(const input of document.querySelectorAll('[data-layer]')) input.onchange=()=>{if(input.checked)enabled.add(input.dataset.layer);else enabled.delete(input.dataset.layer);if(map&&initialized)layerVisibility();reportPreferences();};
 $('reduced-motion').onchange=()=>{reducedMotion=$('reduced-motion').checked;tracks.clear();if(map)renderAircraft(performance.now());reportPreferences();};
 document.addEventListener('keydown',event=>{if(event.key==='Escape'){event.preventDefault();$('layer-panel').hidden=true;send('bypass');}});
-document.addEventListener('visibilitychange',()=>{tracks.clear();previousFrame=0;if(!document.hidden&&map){map.resize();renderAircraft(performance.now());}});
-new ResizeObserver(()=>map?.resize()).observe(document.body);
-window.sierraMapDiagnostics=Object.freeze({read:()=>({counts:{aircraft:snapshot?.aircraft.length??0,airports:snapshot?.airports.length??0,routes:snapshot?.routes.length??0,labels:labelRecords.length},sourceIDs:snapshot?.aircraft.map(a=>({id:a.id,source:a.source}))??[],lastSequence:sequence,frameIntervals:[...frameIntervals],sourceUpdates,selection:selected,selectionFilters:map?{airport:map.getFilter('airport-selected'),route:map.getFilter('route-selected')}:null,camera:map?camera():null})});
+document.addEventListener('visibilitychange',()=>{
+  tracks.clear();previousFrame=0;
+  if(animationFrame)cancelAnimationFrame(animationFrame);animationFrame=0;
+  if(document.hidden){map?.stop();clearTimeout(cameraTimer);}
+  else if(presentationVisible&&map){map.resize();animationFrame=requestAnimationFrame(animate);}
+});
+new ResizeObserver(()=>{if(presentationVisible&&!document.hidden)map?.resize();}).observe(document.body);
+// Read-only coordinates let the explicit desktop diagnostic harness exercise real
+// browser hit testing. No operational commands or mutable map objects are exposed.
+function diagnosticPoints() {
+  if(!map || !snapshot) return [];
+  const rect=$('map').getBoundingClientRect();
+  return [...snapshot.aircraft.map(a=>({kind:'Aircraft',id:a.id,position:a.position})),
+    ...snapshot.airports.map(a=>({kind:'Airport',id:a.id,position:a.position})),
+    ...snapshot.routes.filter(r=>r.segments[0]?.length>1).map(r=>({kind:'Route',id:r.id,position:r.segments[0][Math.floor(r.segments[0].length/2)]}))]
+    .slice(0,80).map(a=>{const p=map.project([a.position.longitude,a.position.latitude]);return {kind:a.kind,id:a.id,x:p.x+rect.left,y:p.y+rect.top};});
+}
+window.sierraMapDiagnostics=Object.freeze({read:()=>({counts:{aircraft:snapshot?.aircraft.length??0,airports:snapshot?.airports.length??0,routes:snapshot?.routes.length??0,labels:labelRecords.length},sourceIDs:snapshot?.aircraft.map(a=>({id:a.id,source:a.source}))??[],lastSequence:sequence,frameIntervals:[...frameIntervals],sourceUpdates,selection:selected,solarSignature,points:diagnosticPoints(),selectionFilters:map?{airport:map.getFilter('airport-selected'),route:map.getFilter('route-selected')}:null,camera:map?camera():null})});
 send('ready');

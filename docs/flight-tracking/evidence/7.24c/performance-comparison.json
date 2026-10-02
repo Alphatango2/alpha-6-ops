@@ -1,0 +1,114 @@
+[
+  {
+    "name": "final-interaction-baseline",
+    "seconds": 120,
+    "emitted": 120,
+    "consumed": 120,
+    "inputQueueAll": {
+      "count": 2160,
+      "p50": 13.330400000000736,
+      "p95": 154.9478999999992,
+      "p99": 285.0517,
+      "max": 1362.698700000008
+    },
+    "cdpAwaitAll": {
+      "count": 2160,
+      "p50": 3.2578000000066822,
+      "p95": 15.802000000000135,
+      "p99": 67.40989999999874,
+      "max": 577.9973999999997
+    },
+    "telemetryAll": {
+      "count": 120,
+      "p50": 25.899199999999837,
+      "p95": 30.429300000003423,
+      "p99": 38.6237000000001,
+      "max": 104.85889999999995
+    },
+    "frames": {
+      "count": 29343,
+      "p50": 4.19999999999709,
+      "p95": 4.299999999995634,
+      "p99": 4.30000000000291,
+      "max": 33.5
+    },
+    "droppedBrowserEvents": 0,
+    "browserKeys": [
+      "dropped",
+      "frames",
+      "longTasks",
+      "messages",
+      "now",
+      "origin",
+      "pointers",
+      "sourceCalls",
+      "state"
+    ],
+    "gapsOver500": [
+      {
+        "step": 2159,
+        "start": 120704.6169,
+        "end": 122067.3156,
+        "ms": 1362.698700000008,
+        "concurrentTelemetry": []
+      }
+    ],
+    "framesCount": 29343,
+    "longTasksCount": 0,
+    "messagesCount": 202,
+    "pointersCount": 2161,
+    "sourceCallsCount": 32605
+  },
+  {
+    "name": "final-interaction-normal",
+    "seconds": 120,
+    "emitted": 120,
+    "consumed": 120,
+    "inputQueueAll": {
+      "count": 6870,
+      "p50": 0.03960000000006403,
+      "p95": 0.05860000000029686,
+      "p99": 13.707599999994272,
+      "max": 29.18709999999919
+    },
+    "cdpAwaitAll": {
+      "count": 6870,
+      "p50": 0.8962999999930616,
+      "p95": 4.357799999997951,
+      "p99": 4.618499999996857,
+      "max": 104.13789999999995
+    },
+    "telemetryAll": {
+      "count": 120,
+      "p50": 25.67740000000049,
+      "p95": 29.0015999999996,
+      "p99": 37.12790000000314,
+      "max": 104.44959999999992
+    },
+    "frames": {
+      "count": 29079,
+      "p50": 4.19999999999709,
+      "p95": 4.299999999995634,
+      "p99": 4.30000000000291,
+      "max": 33.40000000000009
+    },
+    "droppedBrowserEvents": 0,
+    "browserKeys": [
+      "dropped",
+      "frames",
+      "longTasks",
+      "messages",
+      "now",
+      "origin",
+      "pointers",
+      "sourceCalls",
+      "state"
+    ],
+    "gapsOver500": [],
+    "framesCount": 29079,
+    "longTasksCount": 0,
+    "messagesCount": 121,
+    "pointersCount": 6871,
+    "sourceCallsCount": 32405
+  }
+]

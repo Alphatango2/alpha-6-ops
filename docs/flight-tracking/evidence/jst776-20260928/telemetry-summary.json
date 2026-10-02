@@ -1,0 +1,1069 @@
+{
+  "source": {
+    "Alpha6OPS-20260928-135604-e35f29af4dec42b2b0e0d46be26c22c8.json": {
+      "bytes": 17251154,
+      "sha256": "2a12151e58720184cd6e284d9532a36144739513bf6e52ee2c72bc155d01d470"
+    },
+    "Alpha6OPS-20260928-135604-e35f29af4dec42b2b0e0d46be26c22c8.jsonl": {
+      "bytes": 11119794,
+      "sha256": "58c53bc645beb098e991fe4ac42de3a3a748ca83f7091658191a9bf0ccee7d8a"
+    }
+  },
+  "exportMetadata": {
+    "schemaVersion": 1,
+    "exportedAtUtc": "2026-09-28T15:38:31.0887316+00:00",
+    "incompleteLastLine": false,
+    "sessionEnded": true,
+    "eventCount": 12349
+  },
+  "jsonMatchesJsonl": true,
+  "eventCount": 12349,
+  "kindCounts": {
+    "session_started": 1,
+    "flight_assignment": 1,
+    "connection_opened": 1,
+    "telemetry": 6145,
+    "flight_identification": 1,
+    "monitor_armed": 1,
+    "tracking_event": 48,
+    "tracking_state": 6145,
+    "flight_milestone": 4,
+    "pirep_closeout_complete": 1,
+    "session_ended": 1
+  },
+  "sequenceContiguous": true,
+  "recordedMonotonic": true,
+  "telemetryTrackingPairing": true,
+  "simulatorUtcCadence": {
+    "first": "2026-09-27T20:45:13.6433715+00:00",
+    "last": "2026-09-27T22:27:39.2958145+00:00",
+    "intervalSeconds": {
+      "count": 6144,
+      "min": 0.571983,
+      "median": 1.000278,
+      "p95": 1.019371,
+      "p99": 1.02597,
+      "max": 3.025146
+    },
+    "nonpositive": 0,
+    "over2": 1,
+    "over5": 0,
+    "over10": 0,
+    "topGaps": [
+      {
+        "startSequence": 5823,
+        "endSequence": 5825,
+        "start": "2026-09-27T21:33:30.66716+00:00",
+        "end": "2026-09-27T21:33:33.6923065+00:00",
+        "seconds": 3.025146
+      },
+      {
+        "startSequence": 3430,
+        "endSequence": 3432,
+        "start": "2026-09-27T21:13:38.656372+00:00",
+        "end": "2026-09-27T21:13:39.8354187+00:00",
+        "seconds": 1.179046
+      },
+      {
+        "startSequence": 2607,
+        "endSequence": 2609,
+        "start": "2026-09-27T21:06:48.660263+00:00",
+        "end": "2026-09-27T21:06:49.7657852+00:00",
+        "seconds": 1.105522
+      },
+      {
+        "startSequence": 2184,
+        "endSequence": 2186,
+        "start": "2026-09-27T21:03:20.6410827+00:00",
+        "end": "2026-09-27T21:03:21.7288055+00:00",
+        "seconds": 1.087723
+      },
+      {
+        "startSequence": 3008,
+        "endSequence": 3010,
+        "start": "2026-09-27T21:10:07.6562118+00:00",
+        "end": "2026-09-27T21:10:08.7436599+00:00",
+        "seconds": 1.087448
+      },
+      {
+        "startSequence": 11721,
+        "endSequence": 11723,
+        "start": "2026-09-27T22:22:30.2948074+00:00",
+        "end": "2026-09-27T22:22:31.3652648+00:00",
+        "seconds": 1.070457
+      },
+      {
+        "startSequence": 11673,
+        "endSequence": 11675,
+        "start": "2026-09-27T22:22:06.2707138+00:00",
+        "end": "2026-09-27T22:22:07.3373413+00:00",
+        "seconds": 1.066628
+      },
+      {
+        "startSequence": 8445,
+        "endSequence": 8447,
+        "start": "2026-09-27T21:55:22.2732086+00:00",
+        "end": "2026-09-27T21:55:23.3179397+00:00",
+        "seconds": 1.044731
+      },
+      {
+        "startSequence": 2855,
+        "endSequence": 2857,
+        "start": "2026-09-27T21:08:51.6419525+00:00",
+        "end": "2026-09-27T21:08:52.6865768+00:00",
+        "seconds": 1.044624
+      },
+      {
+        "startSequence": 2940,
+        "endSequence": 2942,
+        "start": "2026-09-27T21:09:33.6523284+00:00",
+        "end": "2026-09-27T21:09:34.6946411+00:00",
+        "seconds": 1.042313
+      },
+      {
+        "startSequence": 3636,
+        "endSequence": 3638,
+        "start": "2026-09-27T21:15:21.6517868+00:00",
+        "end": "2026-09-27T21:15:22.6912689+00:00",
+        "seconds": 1.039482
+      },
+      {
+        "startSequence": 11624,
+        "endSequence": 11627,
+        "start": "2026-09-27T22:21:43.2714843+00:00",
+        "end": "2026-09-27T22:21:44.3102874+00:00",
+        "seconds": 1.038803
+      },
+      {
+        "startSequence": 2090,
+        "endSequence": 2092,
+        "start": "2026-09-27T21:02:33.6368865+00:00",
+        "end": "2026-09-27T21:02:34.6751174+00:00",
+        "seconds": 1.038231
+      },
+      {
+        "startSequence": 11636,
+        "endSequence": 11638,
+        "start": "2026-09-27T22:21:48.2667236+00:00",
+        "end": "2026-09-27T22:21:49.3045654+00:00",
+        "seconds": 1.037842
+      },
+      {
+        "startSequence": 10669,
+        "endSequence": 10671,
+        "start": "2026-09-27T22:13:52.2737197+00:00",
+        "end": "2026-09-27T22:13:53.311264+00:00",
+        "seconds": 1.037545
+      }
+    ]
+  },
+  "recordedAtUtcCadence": {
+    "first": "2026-09-28T13:56:04.4651424+00:00",
+    "last": "2026-09-28T15:38:30.0885467+00:00",
+    "intervalSeconds": {
+      "count": 6144,
+      "min": 0.500149,
+      "median": 1.000338,
+      "p95": 1.059955,
+      "p99": 1.10128,
+      "max": 3.100892
+    },
+    "nonpositive": 0,
+    "over2": 1,
+    "over5": 0,
+    "over10": 0,
+    "topGaps": [
+      {
+        "startSequence": 5823,
+        "endSequence": 5825,
+        "start": "2026-09-28T14:44:21.4004214+00:00",
+        "end": "2026-09-28T14:44:24.501313+00:00",
+        "seconds": 3.100892
+      },
+      {
+        "startSequence": 3430,
+        "endSequence": 3432,
+        "start": "2026-09-28T14:24:29.4754721+00:00",
+        "end": "2026-09-28T14:24:30.6773689+00:00",
+        "seconds": 1.201896
+      },
+      {
+        "startSequence": 5609,
+        "endSequence": 5611,
+        "start": "2026-09-28T14:42:34.3774212+00:00",
+        "end": "2026-09-28T14:42:35.4865756+00:00",
+        "seconds": 1.109154
+      },
+      {
+        "startSequence": 8437,
+        "endSequence": 8439,
+        "start": "2026-09-28T15:06:09.0085405+00:00",
+        "end": "2026-09-28T15:06:10.1174149+00:00",
+        "seconds": 1.108874
+      },
+      {
+        "startSequence": 12075,
+        "endSequence": 12077,
+        "start": "2026-09-28T15:36:18.0077324+00:00",
+        "end": "2026-09-28T15:36:19.1165993+00:00",
+        "seconds": 1.108867
+      },
+      {
+        "startSequence": 6940,
+        "endSequence": 6942,
+        "start": "2026-09-28T14:53:41.0055448+00:00",
+        "end": "2026-09-28T14:53:42.1122906+00:00",
+        "seconds": 1.106746
+      },
+      {
+        "startSequence": 11254,
+        "endSequence": 11256,
+        "start": "2026-09-28T15:29:32.0102129+00:00",
+        "end": "2026-09-28T15:29:33.11495+00:00",
+        "seconds": 1.104738
+      },
+      {
+        "startSequence": 6364,
+        "endSequence": 6366,
+        "start": "2026-09-28T14:48:53.0015563+00:00",
+        "end": "2026-09-28T14:48:54.1059502+00:00",
+        "seconds": 1.104394
+      },
+      {
+        "startSequence": 11789,
+        "endSequence": 11791,
+        "start": "2026-09-28T15:33:55.006731+00:00",
+        "end": "2026-09-28T15:33:56.1106104+00:00",
+        "seconds": 1.103879
+      },
+      {
+        "startSequence": 2607,
+        "endSequence": 2609,
+        "start": "2026-09-28T14:17:39.4173192+00:00",
+        "end": "2026-09-28T14:17:40.5211485+00:00",
+        "seconds": 1.103829
+      },
+      {
+        "startSequence": 7140,
+        "endSequence": 7142,
+        "start": "2026-09-28T14:55:21.0070154+00:00",
+        "end": "2026-09-28T14:55:22.1107888+00:00",
+        "seconds": 1.103773
+      },
+      {
+        "startSequence": 3494,
+        "endSequence": 3496,
+        "start": "2026-09-28T14:25:01.3965579+00:00",
+        "end": "2026-09-28T14:25:02.4999859+00:00",
+        "seconds": 1.103428
+      },
+      {
+        "startSequence": 5001,
+        "endSequence": 5003,
+        "start": "2026-09-28T14:37:30.37958+00:00",
+        "end": "2026-09-28T14:37:31.4829399+00:00",
+        "seconds": 1.103359
+      },
+      {
+        "startSequence": 3244,
+        "endSequence": 3246,
+        "start": "2026-09-28T14:22:56.3859598+00:00",
+        "end": "2026-09-28T14:22:57.48897+00:00",
+        "seconds": 1.103011
+      },
+      {
+        "startSequence": 8445,
+        "endSequence": 8447,
+        "start": "2026-09-28T15:06:13.0389117+00:00",
+        "end": "2026-09-28T15:06:14.1418547+00:00",
+        "seconds": 1.102943
+      }
+    ]
+  },
+  "recordedMinusSimulatorSeconds": {
+    "count": 6145,
+    "min": 61850.725294,
+    "median": 61850.776499,
+    "p95": 61850.822828,
+    "p99": 61850.827567,
+    "max": 61850.869741
+  },
+  "simulatorDateCounts": {
+    "2026-09-27": 6145
+  },
+  "numericTelemetry": {
+    "groundSpeedKnots": {
+      "null": 0,
+      "nonfinite": 0,
+      "stats": {
+        "count": 6145,
+        "min": 3.086891302906505e-08,
+        "median": 284.9372099908977,
+        "p95": 420.59225128383235,
+        "p99": 425.43240516840837,
+        "max": 427.68507605960565
+      }
+    },
+    "indicatedAirspeedKnots": {
+      "null": 0,
+      "nonfinite": 0,
+      "stats": {
+        "count": 6145,
+        "min": 0,
+        "median": 238.3498077392578,
+        "p95": 288.5506896972656,
+        "p99": 290.00579833984375,
+        "max": 291.9205322265625
+      }
+    },
+    "verticalSpeedFeetPerMinute": {
+      "null": 0,
+      "nonfinite": 0,
+      "stats": {
+        "count": 6145,
+        "min": -3115.7899475097597,
+        "median": 3.6441954307519996e-05,
+        "p95": 2358.362731933589,
+        "p99": 2995.642776489252,
+        "max": 3144.3715667724546
+      }
+    },
+    "gearExtendedRatio": {
+      "null": 0,
+      "nonfinite": 0,
+      "stats": {
+        "count": 6145,
+        "min": 0,
+        "median": 0,
+        "p95": 1,
+        "p99": 1,
+        "max": 1
+      }
+    },
+    "flapsExtendedRatio": {
+      "null": 0,
+      "nonfinite": 0,
+      "stats": {
+        "count": 6145,
+        "min": 0,
+        "median": 0,
+        "p95": 0.6,
+        "p99": 1,
+        "max": 1
+      }
+    },
+    "flapHandleRatio": {
+      "null": 0,
+      "nonfinite": 0,
+      "stats": {
+        "count": 6145,
+        "min": 0,
+        "median": 0,
+        "p95": 0.6,
+        "p99": 1,
+        "max": 1
+      }
+    },
+    "flapHandleIndex": {
+      "null": 0,
+      "nonfinite": 0,
+      "stats": {
+        "count": 6145,
+        "min": 0,
+        "median": 0,
+        "p95": 3,
+        "p99": 5,
+        "max": 5
+      }
+    },
+    "flapHandlePositions": {
+      "null": 0,
+      "nonfinite": 0,
+      "stats": {
+        "count": 6145,
+        "min": 5,
+        "median": 5,
+        "p95": 5,
+        "p99": 5,
+        "max": 5
+      }
+    },
+    "leftFlapDegrees": {
+      "null": 2,
+      "nonfinite": 0,
+      "stats": {
+        "count": 6143,
+        "min": 0,
+        "median": 0,
+        "p95": 15.90714836803573,
+        "p99": 21.99999999999999,
+        "max": 21.99999999999999
+      }
+    },
+    "rightFlapDegrees": {
+      "null": 2,
+      "nonfinite": 0,
+      "stats": {
+        "count": 6143,
+        "min": 0,
+        "median": 0,
+        "p95": 15.90714836803573,
+        "p99": 21.99999999999999,
+        "max": 21.99999999999999
+      }
+    },
+    "leftSlatDegrees": {
+      "null": 2,
+      "nonfinite": 0,
+      "stats": {
+        "count": 6143,
+        "min": 0,
+        "median": 0,
+        "p95": 0,
+        "p99": 0,
+        "max": 0
+      }
+    },
+    "rightSlatDegrees": {
+      "null": 2,
+      "nonfinite": 0,
+      "stats": {
+        "count": 6143,
+        "min": 0,
+        "median": 0,
+        "p95": 0,
+        "p99": 0,
+        "max": 0
+      }
+    },
+    "pitchDegrees": {
+      "null": 0,
+      "nonfinite": 0,
+      "stats": {
+        "count": 6145,
+        "min": -12.304986323161046,
+        "median": -0.7700806167586561,
+        "p95": 0.49692961906044325,
+        "p99": 0.767872180078335,
+        "max": 3.531668028214398
+      }
+    },
+    "bankDegrees": {
+      "null": 0,
+      "nonfinite": 0,
+      "stats": {
+        "count": 6145,
+        "min": -13.797436397539352,
+        "median": -0.044087105425095995,
+        "p95": 0.6085398900743793,
+        "p99": 14.20947165896697,
+        "max": 30.030391519809015
+      }
+    },
+    "fuelTotalWeightPounds": {
+      "null": 0,
+      "nonfinite": 0,
+      "stats": {
+        "count": 6145,
+        "min": 6613.316925990628,
+        "median": 13397.123165975441,
+        "p95": 17791.687555031618,
+        "p99": 17811.386797634885,
+        "max": 17816.35291077476
+      }
+    },
+    "runningEngineCount": {
+      "null": 1343,
+      "nonfinite": 0,
+      "stats": {
+        "count": 4802,
+        "min": 0,
+        "median": 2.0,
+        "p95": 2,
+        "p99": 2,
+        "max": 2
+      }
+    },
+    "runningEngineMask": {
+      "null": 1343,
+      "nonfinite": 0,
+      "stats": {
+        "count": 4802,
+        "min": 0,
+        "median": 3.0,
+        "p95": 3,
+        "p99": 3,
+        "max": 3
+      }
+    },
+    "latitude": {
+      "null": 0,
+      "nonfinite": 0,
+      "stats": {
+        "count": 6145,
+        "min": -37.68560987985817,
+        "median": -36.97681695193708,
+        "p95": -34.892152000822385,
+        "p99": -34.816694135205545,
+        "max": -34.80642784614705
+      }
+    },
+    "longitude": {
+      "null": 0,
+      "nonfinite": 0,
+      "stats": {
+        "count": 6145,
+        "min": 138.52448180247197,
+        "median": 142.5570129054312,
+        "p95": 144.84741049656165,
+        "p99": 144.8476898232614,
+        "max": 144.84768982737498
+      }
+    },
+    "altitudeFeet": {
+      "null": 0,
+      "nonfinite": 0,
+      "stats": {
+        "count": 6145,
+        "min": 19.687007981810623,
+        "median": 9256.347790228003,
+        "p95": 36272.196692993486,
+        "p99": 36292.94173382218,
+        "max": 36299.588380813686
+      }
+    },
+    "pressureAltitudeFeet": {
+      "null": 0,
+      "nonfinite": 0,
+      "stats": {
+        "count": 6145,
+        "min": 19.95183753967285,
+        "median": 9285.09375,
+        "p95": 36023.11328125,
+        "p99": 36032.2578125,
+        "max": 36033.51171875
+      }
+    },
+    "altitudeAboveGroundFeet": {
+      "null": 0,
+      "nonfinite": 0,
+      "stats": {
+        "count": 6145,
+        "min": 8.997080100479423,
+        "median": 8011.812836489937,
+        "p95": 35872.60735948091,
+        "p99": 36087.057873595644,
+        "max": 36140.0535351255
+      }
+    },
+    "headingDegrees": {
+      "null": 0,
+      "nonfinite": 0,
+      "stats": {
+        "count": 6145,
+        "min": 0.4848300868432422,
+        "median": 283.3157569664803,
+        "p95": 335.54266671483344,
+        "p99": 351.4306214915984,
+        "max": 359.4854716846236
+      }
+    }
+  },
+  "booleanTelemetry": {
+    "onGround": {
+      "True": 2325,
+      "False": 3820
+    },
+    "parkingBrake": {
+      "True": 1412,
+      "False": 4733
+    },
+    "paused": {
+      "False": 6145
+    },
+    "slewing": {
+      "False": 6145
+    },
+    "engineDataValid": {
+      "False": 1343,
+      "True": 4802
+    },
+    "enginesRunning": {
+      "False": 1285,
+      "True": 4860
+    }
+  },
+  "aircraftTitles": {
+    "FenixA321 IAE WF SC": 6145
+  },
+  "engineStates": {
+    "1:0:N1 / N2 spool": 1289,
+    "2:0:N1 / N2 spool": 1218,
+    "2:0:starter": 2,
+    "2:2:starter": 22,
+    "2:2:combustion": 3,
+    "2:3:combustion": 4856,
+    "1:0:starter": 3,
+    "1:2:starter": 21,
+    "1:2:combustion": 3,
+    "1:3:combustion": 4787,
+    "1:3:N1 / N2 spool": 1,
+    "2:3:N1 / N2 spool": 1,
+    "1:3:combustion loss / spool decay": 3,
+    "2:3:combustion loss / spool decay": 3,
+    "1:4:combustion loss / spool decay": 27,
+    "2:4:combustion loss / spool decay": 29,
+    "1:1:N1 / N2 spool": 11,
+    "2:1:N1 / N2 spool": 11
+  },
+  "engineReadings": {
+    "Combustion": {
+      "count": 12290,
+      "min": 0,
+      "median": 1.0,
+      "p95": 1,
+      "p99": 1,
+      "max": 1
+    },
+    "FuelFlowPph": {
+      "count": 12286,
+      "min": 0,
+      "median": 1160.0177594436711,
+      "p95": 6325.5134239696845,
+      "p99": 10646.832491648915,
+      "max": 13836.08951114351
+    },
+    "N1Percent": {
+      "count": 12286,
+      "min": 2.544903776703007e-91,
+      "median": 62.50179286209071,
+      "p95": 79.12533778598728,
+      "p99": 81.19570142144929,
+      "max": 82.85528535867373
+    },
+    "N2Percent": {
+      "count": 12290,
+      "min": 2.2979639900338485e-90,
+      "median": 87.22986971815975,
+      "p95": 95.26238511265178,
+      "p99": 95.82316447909697,
+      "max": 95.97458370625709
+    },
+    "Starter": {
+      "count": 12286,
+      "min": 0,
+      "median": 0.0,
+      "p95": 0,
+      "p99": 0,
+      "max": 1
+    },
+    "OilPressurePsf": {
+      "count": 12288,
+      "min": 1.7636236006647874e-88,
+      "median": 11209.32235355811,
+      "p95": 11315.567392753337,
+      "p99": 11328.738709450226,
+      "max": 11339.214851839903
+    }
+  },
+  "engineReadingsCount": {
+    "2": 6145
+  },
+  "flapHandleIndices": {
+    "0": 5047,
+    "2": 28,
+    "3": 660,
+    "1": 105,
+    "4": 16,
+    "5": 289
+  },
+  "flapPositions": {
+    "5": 6145
+  },
+  "phaseCounts": {
+    "AtGate": 1176,
+    "TaxiOut": 688,
+    "Airborne": 3820,
+    "TaxiIn": 454,
+    "Complete": 7
+  },
+  "phaseTransitions": [
+    {
+      "sequence": 11,
+      "time": "2026-09-27T20:45:13.6433715+00:00",
+      "phase": "AtGate"
+    },
+    {
+      "sequence": 2366,
+      "time": "2026-09-27T21:04:49.6609115+00:00",
+      "phase": "TaxiOut"
+    },
+    {
+      "sequence": 3752,
+      "time": "2026-09-27T21:16:17.6569519+00:00",
+      "phase": "Airborne"
+    },
+    {
+      "sequence": 11413,
+      "time": "2026-09-27T22:19:59.2692184+00:00",
+      "phase": "TaxiIn"
+    },
+    {
+      "sequence": 12335,
+      "time": "2026-09-27T22:27:33.2773437+00:00",
+      "phase": "Complete"
+    }
+  ],
+  "progress": {
+    "stats": {
+      "count": 6145,
+      "min": 0,
+      "median": 0.3296532230617573,
+      "p95": 1,
+      "p99": 1,
+      "max": 1
+    },
+    "decreases": 0,
+    "largestDecrease": 0,
+    "zeroCount": 1859,
+    "oneCount": 955
+  },
+  "remainingNm": {
+    "null": 124,
+    "negative": 0,
+    "stats": {
+      "count": 6021,
+      "min": 0,
+      "median": 252.04766876139144,
+      "p95": 365.3723126805289,
+      "p99": 365.3723126805289,
+      "max": 365.3723126805289
+    }
+  },
+  "crossTrackNm": {
+    "null": 0,
+    "negative": 0,
+    "stats": {
+      "count": 6145,
+      "min": 1.57403144745344e-06,
+      "median": 0.22430558440508924,
+      "p95": 20.654572723478335,
+      "p99": 25.222942390851237,
+      "max": 25.662975253265024
+    }
+  },
+  "routeReliable": {
+    "True": 6021,
+    "False": 124
+  },
+  "estimatedIn": {
+    "null": 1988,
+    "first": {
+      "sequence": 3752,
+      "at": "2026-09-27T21:16:17.6569519+00:00",
+      "eta": "2026-09-27T22:36:00+00:00"
+    },
+    "last": {
+      "sequence": 12347,
+      "at": "2026-09-27T22:27:39.2958145+00:00",
+      "eta": "2026-09-27T22:27:29.2802352+00:00"
+    }
+  },
+  "routeProgressRawNull": 6145,
+  "invalidBounds": {
+    "latitude": [],
+    "longitude": [],
+    "headingDegrees": [],
+    "gearExtendedRatio": [],
+    "flapsExtendedRatio": [],
+    "flapHandleRatio": []
+  },
+  "nonfiniteAny": [],
+  "groundContradictions": {
+    "onGroundAndAltitudeAGLOver100": 0,
+    "airborneWithOnGround": 3,
+    "groundPhaseButNotOnGround": 3
+  },
+  "positionSpeedKnots": {
+    "stats": {
+      "count": 6144,
+      "min": 0.0,
+      "median": 284.8164378414707,
+      "p95": 419.67797562018677,
+      "p99": 425.211917273067,
+      "max": 439.9884661924361
+    },
+    "over700": 0,
+    "top": [
+      {
+        "fromSequence": 5825,
+        "toSequence": 5827,
+        "time": "2026-09-27T21:33:34.2642898+00:00",
+        "computedKnots": 439.9884661924361,
+        "distanceNm": 0.06990720079393005,
+        "intervalSeconds": 0.571983,
+        "reportedGroundSpeedKnots": 422.5455657655292
+      },
+      {
+        "fromSequence": 5729,
+        "toSequence": 5731,
+        "time": "2026-09-27T21:32:44.6698913+00:00",
+        "computedKnots": 428.39595334165585,
+        "distanceNm": 0.12104434760656821,
+        "intervalSeconds": 1.017189,
+        "reportedGroundSpeedKnots": 427.61745751673647
+      },
+      {
+        "fromSequence": 5697,
+        "toSequence": 5699,
+        "time": "2026-09-27T21:32:28.6654663+00:00",
+        "computedKnots": 428.2672052250247,
+        "distanceNm": 0.11998869355590824,
+        "intervalSeconds": 1.008621,
+        "reportedGroundSpeedKnots": 426.90002973227786
+      },
+      {
+        "fromSequence": 5719,
+        "toSequence": 5721,
+        "time": "2026-09-27T21:32:39.6473541+00:00",
+        "computedKnots": 428.2003037114441,
+        "distanceNm": 0.11728299268580526,
+        "intervalSeconds": 0.986031,
+        "reportedGroundSpeedKnots": 427.39120819235217
+      },
+      {
+        "fromSequence": 5689,
+        "toSequence": 5691,
+        "time": "2026-09-27T21:32:24.6616821+00:00",
+        "computedKnots": 428.18000986255987,
+        "distanceNm": 0.1190886356930491,
+        "intervalSeconds": 1.001259,
+        "reportedGroundSpeedKnots": 426.7265346649725
+      },
+      {
+        "fromSequence": 5745,
+        "toSequence": 5747,
+        "time": "2026-09-27T21:32:52.6590576+00:00",
+        "computedKnots": 428.01516325984835,
+        "distanceNm": 0.12087956683544274,
+        "intervalSeconds": 1.016708,
+        "reportedGroundSpeedKnots": 427.24610107154183
+      },
+      {
+        "fromSequence": 5725,
+        "toSequence": 5727,
+        "time": "2026-09-27T21:32:42.6527023+00:00",
+        "computedKnots": 427.99094361034014,
+        "distanceNm": 0.11763378639679489,
+        "intervalSeconds": 0.989464,
+        "reportedGroundSpeedKnots": 427.5282676406724
+      },
+      {
+        "fromSequence": 5739,
+        "toSequence": 5741,
+        "time": "2026-09-27T21:32:49.6483154+00:00",
+        "computedKnots": 427.9133213055013,
+        "distanceNm": 0.11951690382949537,
+        "intervalSeconds": 1.005486,
+        "reportedGroundSpeedKnots": 427.5486043686356
+      },
+      {
+        "fromSequence": 5737,
+        "toSequence": 5739,
+        "time": "2026-09-27T21:32:48.6428298+00:00",
+        "computedKnots": 427.7555566486352,
+        "distanceNm": 0.1168990584777343,
+        "intervalSeconds": 0.983825,
+        "reportedGroundSpeedKnots": 427.62295811184873
+      },
+      {
+        "fromSequence": 5735,
+        "toSequence": 5737,
+        "time": "2026-09-27T21:32:47.6590042+00:00",
+        "computedKnots": 427.73021659336524,
+        "distanceNm": 0.1195292090270159,
+        "intervalSeconds": 1.00602,
+        "reportedGroundSpeedKnots": 427.6718367325539
+      },
+      {
+        "fromSequence": 5701,
+        "toSequence": 5703,
+        "time": "2026-09-27T21:32:30.6496963+00:00",
+        "computedKnots": 427.497316207268,
+        "distanceNm": 0.11901655907390293,
+        "intervalSeconds": 1.002251,
+        "reportedGroundSpeedKnots": 426.97798667269717
+      },
+      {
+        "fromSequence": 5733,
+        "toSequence": 5735,
+        "time": "2026-09-27T21:32:46.6529846+00:00",
+        "computedKnots": 427.4304041131304,
+        "distanceNm": 0.11733748215312971,
+        "intervalSeconds": 0.988266,
+        "reportedGroundSpeedKnots": 427.68507605960565
+      },
+      {
+        "fromSequence": 5743,
+        "toSequence": 5745,
+        "time": "2026-09-27T21:32:51.6423492+00:00",
+        "computedKnots": 427.3082488125765,
+        "distanceNm": 0.1170296401272233,
+        "intervalSeconds": 0.985955,
+        "reportedGroundSpeedKnots": 427.3577489998647
+      },
+      {
+        "fromSequence": 5769,
+        "toSequence": 5771,
+        "time": "2026-09-27T21:33:04.6714782+00:00",
+        "computedKnots": 427.0831372631669,
+        "distanceNm": 0.12116858731236665,
+        "intervalSeconds": 1.021363,
+        "reportedGroundSpeedKnots": 425.7017187123806
+      },
+      {
+        "fromSequence": 5715,
+        "toSequence": 5717,
+        "time": "2026-09-27T21:32:37.6458587+00:00",
+        "computedKnots": 427.04121998785416,
+        "distanceNm": 0.11824961177561454,
+        "intervalSeconds": 0.996856,
+        "reportedGroundSpeedKnots": 427.2948773999472
+      }
+    ]
+  },
+  "fuelRateLbPerSecond": {
+    "stats": {
+      "count": 6144,
+      "min": -11123.588045221932,
+      "median": -0.6208273464620075,
+      "p95": -0.07863820849784417,
+      "p99": -0.07562442535892863,
+      "max": 11205.93832280974
+    },
+    "topIncrease": [
+      {
+        "fromSequence": 102,
+        "toSequence": 104,
+        "rate": 11205.93832280974,
+        "time": "2026-09-27T20:46:00.6524963+00:00"
+      },
+      {
+        "fromSequence": 3715,
+        "toSequence": 3717,
+        "rate": 2.304344806899564,
+        "time": "2026-09-27T21:16:01.6494445+00:00"
+      },
+      {
+        "fromSequence": 3847,
+        "toSequence": 3849,
+        "rate": 0.5553803162196188,
+        "time": "2026-09-27T21:17:05.6340484+00:00"
+      },
+      {
+        "fromSequence": 12206,
+        "toSequence": 12208,
+        "rate": 0.5484068666551487,
+        "time": "2026-09-27T22:26:33.2988281+00:00"
+      },
+      {
+        "fromSequence": 5599,
+        "toSequence": 5601,
+        "rate": 0.2976588256379373,
+        "time": "2026-09-27T21:31:39.6571273+00:00"
+      },
+      {
+        "fromSequence": 5477,
+        "toSequence": 5479,
+        "rate": 0.28478303765114593,
+        "time": "2026-09-27T21:30:38.6448211+00:00"
+      },
+      {
+        "fromSequence": 2853,
+        "toSequence": 2855,
+        "rate": 0.24410616708300795,
+        "time": "2026-09-27T21:08:51.6419525+00:00"
+      },
+      {
+        "fromSequence": 9805,
+        "toSequence": 9807,
+        "rate": 0.17801922652780144,
+        "time": "2026-09-27T22:06:43.2789764+00:00"
+      },
+      {
+        "fromSequence": 9633,
+        "toSequence": 9635,
+        "rate": 0.16993295906796574,
+        "time": "2026-09-27T22:05:17.2876968+00:00"
+      },
+      {
+        "fromSequence": 4615,
+        "toSequence": 4617,
+        "rate": 0.13560619064133714,
+        "time": "2026-09-27T21:23:27.6453628+00:00"
+      }
+    ],
+    "topDecrease": [
+      {
+        "fromSequence": 80,
+        "toSequence": 82,
+        "rate": -11123.588045221932,
+        "time": "2026-09-27T20:45:49.6419448+00:00"
+      },
+      {
+        "fromSequence": 3845,
+        "toSequence": 3847,
+        "rate": -9.446215752314927,
+        "time": "2026-09-27T21:17:04.6444396+00:00"
+      },
+      {
+        "fromSequence": 3849,
+        "toSequence": 3851,
+        "rate": -9.267601529619593,
+        "time": "2026-09-27T21:17:06.6494598+00:00"
+      },
+      {
+        "fromSequence": 5825,
+        "toSequence": 5827,
+        "rate": -8.096020337988698,
+        "time": "2026-09-27T21:33:34.2642898+00:00"
+      },
+      {
+        "fromSequence": 4196,
+        "toSequence": 4198,
+        "rate": -7.22050351766865,
+        "time": "2026-09-27T21:19:58.6533889+00:00"
+      },
+      {
+        "fromSequence": 4301,
+        "toSequence": 4303,
+        "rate": -7.1918828118706095,
+        "time": "2026-09-27T21:20:50.6618423+00:00"
+      },
+      {
+        "fromSequence": 4206,
+        "toSequence": 4208,
+        "rate": -7.09428286014553,
+        "time": "2026-09-27T21:20:03.6649093+00:00"
+      },
+      {
+        "fromSequence": 4725,
+        "toSequence": 4727,
+        "rate": -6.318050509779829,
+        "time": "2026-09-27T21:24:22.6596832+00:00"
+      },
+      {
+        "fromSequence": 3682,
+        "toSequence": 3684,
+        "rate": -5.8130914870898245,
+        "time": "2026-09-27T21:15:45.6521759+00:00"
+      },
+      {
+        "fromSequence": 5063,
+        "toSequence": 5065,
+        "rate": -5.469678971545485,
+        "time": "2026-09-27T21:27:11.6677322+00:00"
+      }
+    ]
+  }
+}

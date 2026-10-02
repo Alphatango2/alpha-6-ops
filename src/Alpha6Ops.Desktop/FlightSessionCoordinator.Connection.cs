@@ -15,10 +15,13 @@ internal sealed partial class FlightSessionCoordinator
         dispatcher.VerifyAccess();
         ObjectDisposedException.ThrowIf(exiting,this);
         if(liveCancellation is not null)return;
+        ResetTerminalConfirmation();
         if(activePlan is null)suppressObservedFlightAfterCloseout=false;
         var cancellation=CancellationTokenSource.CreateLinkedTokenSource(lifetime.Token);
         liveCancellation=cancellation;
-        ResetLiveIdentity();liveNeedsBaseline=liveRecorder is not null;liveSource="MSFS 2024";
+        if(liveRecorder is null)ResetLiveIdentity();
+        else{currentLiveReading=null;liveDataCurrent=false;liveWasInMenu=false;}
+        liveNeedsBaseline=liveRecorder is not null;liveSource="MSFS 2024";
         if(liveRecorder is null){liveLast=null;liveAircraft=null;liveTelemetry=null;liveRouteProgress=null;trackingEventMonitor=new();trackingEvents.Clear();liveRotation=null;milestones.Clear();}
         StartLog("live_simconnect");
         var attempt=0;
@@ -53,7 +56,17 @@ internal sealed partial class FlightSessionCoordinator
                         RecordLog("connection_opened",null,new{message,source=liveSource,attempt=currentAttempt});
                         connectionMessage=message;connectionState=SimulatorConnectionState.Connected;programMonitor?.Update("Connected");PublishSnapshot();
                     });
-                    Action<LiveReading> received=reading=>dispatcher.Post(()=>{if(Current())ObserveLive(reading);});
+                    Action<LiveReading> received=reading=>
+                    {
+                        reading=reading with{ReceivedUtc=reading.ReceivedUtc??DateTimeOffset.UtcNow};
+                        var traceArrival=MapV2.NativeMapInputTrace.Arrival(reading.Telemetry.At);
+                        dispatcher.Post(()=>
+                        {
+                            if(!Current())return;
+                            ObserveLive(reading);
+                            MapV2.NativeMapInputTrace.Processed(reading.Telemetry.At,traceArrival);
+                        });
+                    };
                     await simulator.RunAsync(opened,received,cancellation.Token);
                     break;
                 }
@@ -89,12 +102,13 @@ internal sealed partial class FlightSessionCoordinator
         {
             if(ReferenceEquals(liveCancellation,cancellation))
             {
+                ResetTerminalConfirmation();
                 connectionGeneration++;
                 liveCancellation=null;liveDataCurrent=false;
                 if(!exiting)
                 {
                     FinishLog("connection_closed");
-                    if(liveFlightHistoryId is not null){EndFlightHistory(liveFlightHistoryId,"Interrupted");liveFlightHistoryId=null;}
+                    if(liveFlightHistoryId is not null){EndFlightHistory(liveFlightHistoryId,"Interrupted");SaveFlightRecovery();}
                     if(currentLiveReading is not null)trackingStatus="Telemetry unavailable. Waiting for reconnection.";
                     PublishSnapshot();
                 }

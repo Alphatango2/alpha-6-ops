@@ -1,0 +1,355 @@
+{
+  "scope": "Historical JST771 evidence assertions only; not a replay of changed production code or new native success",
+  "historicalAutomaticT1": "FAIL: provider unsupported; manual fallback required",
+  "fullJournalOOOI": "CHECKED: literal OUT/OFF/ON/IN exactly once across all three flight journals",
+  "databasePersistence": {
+    "historyRows": 1,
+    "trackingEvents": 45,
+    "pirepSubmissions": 1,
+    "flightId": "4208cd32c171441c891cb4429b5f19d8"
+  },
+  "coldStartAfterSubmission": "NOT PROVEN by this evidence check",
+  "inputs": [
+    {
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\docs\\flight-tracking\\evidence\\7.24c-jst771-20260929\\JST771 - S4TF - 9-29.zip",
+      "sha256": "c5d0a0cc05eb358865eee2bb67ca38e3b9358e7d4821e8224b204f9a5703ec1c"
+    },
+    {
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\jst771-review-20260929\\recovery-review\\supplemental\\Alpha6OPS-20260929-132028-8b82910e17c643edb0daaadcaf382fe3.jsonl",
+      "sha256": "4093d595c3ba89b938305d87664b410bbcdaa640e85dd709c866fb5adf2e8842"
+    },
+    {
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\jst771-review-20260929\\recovery-review\\supplemental\\Alpha6OPS-20260929-140712-45a372128d6c48869b91cd6e6a66176e.jsonl",
+      "sha256": "e55bb1e2eab6a3fe0ab9a6a7d718c8b063fa99377126f5611489b1ced0bf6318"
+    },
+    {
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\jst771-review-20260929\\recovery-review\\supplemental\\Alpha6OPS-flights.sqlite",
+      "sha256": "bbd963d58d745afac94d64ffb4613a785ee0c5ccf4eabfb08501d1ff79edefc8"
+    },
+    {
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\jst771-review-20260929\\recovery-review\\supplemental\\Alpha6OPS-flights.sqlite-wal",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\jst771-review-20260929\\recovery-review\\supplemental\\Alpha6OPS-flights.sqlite-shm",
+      "sha256": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb"
+    }
+  ],
+  "journals": [
+    {
+      "stem": "Alpha6OPS-20260929-140838-d803e26c9d8b4aec8cac7c52986c89b2",
+      "eventCount": 6278,
+      "telemetryCount": 3121,
+      "trackingStateCount": 3121,
+      "completeStateCount": 45,
+      "unsupportedSamples": 3121
+    },
+    {
+      "stem": "Alpha6OPS-20260929-132028-8b82910e17c643edb0daaadcaf382fe3",
+      "eventCount": 5630,
+      "telemetryCount": 2800,
+      "trackingStateCount": 2800,
+      "completeStateCount": 0,
+      "unsupportedSamples": 2800
+    },
+    {
+      "stem": "Alpha6OPS-20260929-140712-45a372128d6c48869b91cd6e6a66176e",
+      "eventCount": 160,
+      "telemetryCount": 77,
+      "trackingStateCount": 77,
+      "completeStateCount": 0,
+      "unsupportedSamples": 77
+    }
+  ],
+  "checks": [
+    {
+      "name": "original supplied ZIP SHA256",
+      "passed": true
+    },
+    {
+      "name": "six screenshot members retained",
+      "passed": true
+    },
+    {
+      "name": "supplied JSON and JSONL contain identical events",
+      "passed": true
+    },
+    {
+      "name": "Alpha6OPS-20260929-140838-d803e26c9d8b4aec8cac7c52986c89b2: literal record/sample counts",
+      "passed": true
+    },
+    {
+      "name": "Alpha6OPS-20260929-140838-d803e26c9d8b4aec8cac7c52986c89b2: contiguous integer sequence",
+      "passed": true
+    },
+    {
+      "name": "Alpha6OPS-20260929-140838-d803e26c9d8b4aec8cac7c52986c89b2: literal flown assignment",
+      "passed": true
+    },
+    {
+      "name": "Alpha6OPS-20260929-140838-d803e26c9d8b4aec8cac7c52986c89b2: historical T1 unsupported on every sample",
+      "passed": true
+    },
+    {
+      "name": "Alpha6OPS-20260929-140838-d803e26c9d8b4aec8cac7c52986c89b2: observed intentional aircraft variant",
+      "passed": true
+    },
+    {
+      "name": "Alpha6OPS-20260929-140838-d803e26c9d8b4aec8cac7c52986c89b2: no monitor invalidation or joined reset",
+      "passed": true
+    },
+    {
+      "name": "Alpha6OPS-20260929-140838-d803e26c9d8b4aec8cac7c52986c89b2: geographical progress does not prematurely reach 100",
+      "passed": true
+    },
+    {
+      "name": "Alpha6OPS-20260929-140838-d803e26c9d8b4aec8cac7c52986c89b2: all route states reliable",
+      "passed": true
+    },
+    {
+      "name": "Alpha6OPS-20260929-140838-d803e26c9d8b4aec8cac7c52986c89b2: remaining distance covers actual endpoint offset",
+      "passed": true
+    },
+    {
+      "name": "literal terminal decision sequence",
+      "passed": true
+    },
+    {
+      "name": "manual fallback only after stable destination parking",
+      "passed": true
+    },
+    {
+      "name": "all 11 parking samples in the stable interval retain guards",
+      "passed": true
+    },
+    {
+      "name": "manual fallback fresh physical parking guards",
+      "passed": true
+    },
+    {
+      "name": "literal pilot confirmation",
+      "passed": true
+    },
+    {
+      "name": "both-running and staggered-shutdown intervals never complete automatically",
+      "passed": true
+    },
+    {
+      "name": "literal historical event: Parking brake set",
+      "passed": true
+    },
+    {
+      "name": "literal historical event: Engine 1 shutdown",
+      "passed": true
+    },
+    {
+      "name": "literal historical event: Engine 2 shutdown",
+      "passed": true
+    },
+    {
+      "name": "first complete follows pilot confirmation and closes route",
+      "passed": true
+    },
+    {
+      "name": "known historical descent omission retained",
+      "passed": true
+    },
+    {
+      "name": "independent descent 10000-foot crossing retained",
+      "passed": true
+    },
+    {
+      "name": "exactly one historical PIREP closeout then session end",
+      "passed": true
+    },
+    {
+      "name": "Alpha6OPS-20260929-132028-8b82910e17c643edb0daaadcaf382fe3: literal record/sample counts",
+      "passed": true
+    },
+    {
+      "name": "Alpha6OPS-20260929-132028-8b82910e17c643edb0daaadcaf382fe3: contiguous integer sequence",
+      "passed": true
+    },
+    {
+      "name": "Alpha6OPS-20260929-132028-8b82910e17c643edb0daaadcaf382fe3: literal flown assignment",
+      "passed": true
+    },
+    {
+      "name": "Alpha6OPS-20260929-132028-8b82910e17c643edb0daaadcaf382fe3: historical T1 unsupported on every sample",
+      "passed": true
+    },
+    {
+      "name": "Alpha6OPS-20260929-132028-8b82910e17c643edb0daaadcaf382fe3: observed intentional aircraft variant",
+      "passed": true
+    },
+    {
+      "name": "Alpha6OPS-20260929-132028-8b82910e17c643edb0daaadcaf382fe3: no monitor invalidation or joined reset",
+      "passed": true
+    },
+    {
+      "name": "Alpha6OPS-20260929-132028-8b82910e17c643edb0daaadcaf382fe3: geographical progress does not prematurely reach 100",
+      "passed": true
+    },
+    {
+      "name": "Alpha6OPS-20260929-132028-8b82910e17c643edb0daaadcaf382fe3: all route states reliable",
+      "passed": true
+    },
+    {
+      "name": "Alpha6OPS-20260929-132028-8b82910e17c643edb0daaadcaf382fe3: remaining distance covers actual endpoint offset",
+      "passed": true
+    },
+    {
+      "name": "Alpha6OPS-20260929-140712-45a372128d6c48869b91cd6e6a66176e: literal record/sample counts",
+      "passed": true
+    },
+    {
+      "name": "Alpha6OPS-20260929-140712-45a372128d6c48869b91cd6e6a66176e: contiguous integer sequence",
+      "passed": true
+    },
+    {
+      "name": "Alpha6OPS-20260929-140712-45a372128d6c48869b91cd6e6a66176e: literal flown assignment",
+      "passed": true
+    },
+    {
+      "name": "Alpha6OPS-20260929-140712-45a372128d6c48869b91cd6e6a66176e: historical T1 unsupported on every sample",
+      "passed": true
+    },
+    {
+      "name": "Alpha6OPS-20260929-140712-45a372128d6c48869b91cd6e6a66176e: observed intentional aircraft variant",
+      "passed": true
+    },
+    {
+      "name": "Alpha6OPS-20260929-140712-45a372128d6c48869b91cd6e6a66176e: no monitor invalidation or joined reset",
+      "passed": true
+    },
+    {
+      "name": "Alpha6OPS-20260929-140712-45a372128d6c48869b91cd6e6a66176e: geographical progress does not prematurely reach 100",
+      "passed": true
+    },
+    {
+      "name": "Alpha6OPS-20260929-140712-45a372128d6c48869b91cd6e6a66176e: all route states reliable",
+      "passed": true
+    },
+    {
+      "name": "Alpha6OPS-20260929-140712-45a372128d6c48869b91cd6e6a66176e: remaining distance covers actual endpoint offset",
+      "passed": true
+    },
+    {
+      "name": "full journals exactly four OOOI milestones",
+      "passed": true
+    },
+    {
+      "name": "exactly once milestone TaxiOut",
+      "passed": true
+    },
+    {
+      "name": "exactly once displayed milestone Block-out / taxi out",
+      "passed": true
+    },
+    {
+      "name": "exactly once milestone Airborne",
+      "passed": true
+    },
+    {
+      "name": "exactly once displayed milestone Liftoff",
+      "passed": true
+    },
+    {
+      "name": "exactly once milestone TaxiIn",
+      "passed": true
+    },
+    {
+      "name": "exactly once displayed milestone Touchdown",
+      "passed": true
+    },
+    {
+      "name": "exactly once milestone Complete",
+      "passed": true
+    },
+    {
+      "name": "exactly once displayed milestone Block-in / flight complete",
+      "passed": true
+    },
+    {
+      "name": "copied history database integrity",
+      "passed": true
+    },
+    {
+      "name": "exactly one JST771 history row on test date",
+      "passed": true
+    },
+    {
+      "name": "literal completed operational flight identity",
+      "passed": true
+    },
+    {
+      "name": "exactly one durable PIREP submission",
+      "passed": true
+    },
+    {
+      "name": "literal durable PIREP OOOI and pilot-confirmed completion",
+      "passed": true
+    },
+    {
+      "name": "45 retained operational events plus one PIREP",
+      "passed": true
+    },
+    {
+      "name": "database exactly once Block-out / taxi out",
+      "passed": true
+    },
+    {
+      "name": "database exactly once Liftoff",
+      "passed": true
+    },
+    {
+      "name": "database exactly once Touchdown",
+      "passed": true
+    },
+    {
+      "name": "database exactly once Block-in / flight complete",
+      "passed": true
+    },
+    {
+      "name": "database retains the exact full-journal operational history",
+      "passed": true
+    },
+    {
+      "name": "input unchanged: C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\docs\\flight-tracking\\evidence\\7.24c-jst771-20260929\\JST771 - S4TF - 9-29.zip",
+      "passed": true
+    },
+    {
+      "name": "input unchanged: C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\jst771-review-20260929\\recovery-review\\supplemental\\Alpha6OPS-20260929-132028-8b82910e17c643edb0daaadcaf382fe3.jsonl",
+      "passed": true
+    },
+    {
+      "name": "input unchanged: C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\jst771-review-20260929\\recovery-review\\supplemental\\Alpha6OPS-20260929-140712-45a372128d6c48869b91cd6e6a66176e.jsonl",
+      "passed": true
+    },
+    {
+      "name": "input unchanged: C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\jst771-review-20260929\\recovery-review\\supplemental\\Alpha6OPS-flights.sqlite",
+      "passed": true
+    },
+    {
+      "name": "input unchanged: C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\jst771-review-20260929\\recovery-review\\supplemental\\Alpha6OPS-flights.sqlite-wal",
+      "passed": true
+    },
+    {
+      "name": "input unchanged: C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\jst771-review-20260929\\recovery-review\\supplemental\\Alpha6OPS-flights.sqlite-shm",
+      "passed": true
+    }
+  ],
+  "sampleCounts": {
+    "journalCount": 3,
+    "eventCount": 12068,
+    "telemetryCount": 5998,
+    "trackingStateCount": 5998,
+    "historicalUnsupportedSamples": 5998
+  },
+  "checkCounts": {
+    "total": 69,
+    "passed": 69,
+    "failed": 0
+  },
+  "result": "PASS"
+}

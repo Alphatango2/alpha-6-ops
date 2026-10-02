@@ -1,0 +1,1960 @@
+{
+  "actuals": {
+    "actualOut": "2026-09-27T21:04:45.6519165+00:00",
+    "actualOff": "2026-09-27T21:16:14.6521759+00:00",
+    "actualOn": "2026-09-27T22:19:56.2668685+00:00",
+    "actualIn": "2026-09-27T22:27:29.2802352+00:00"
+  },
+  "durationsSeconds": {
+    "airborne": 3821.614693,
+    "block": 4963.628319,
+    "gateToOut": 1172.008545,
+    "taxiOut": 689.000259,
+    "taxiIn": 453.013367
+  },
+  "scheduleDeltaSeconds": {
+    "outVsPlannedDeparture": -14.348084,
+    "inVsPlannedArrival": -1050.719765,
+    "inVsDispatchEta": -522.719765
+  },
+  "routeReliableRuns": [
+    {
+      "value": false,
+      "count": 12,
+      "first": {
+        "telemetrySequence": 9905,
+        "simulatorUtc": "2026-09-27T22:07:32.2706527+00:00",
+        "recordedAtUtc": "2026-09-28T15:18:23.0820952+00:00",
+        "phase": "Airborne",
+        "position": [
+          -35.23848445117609,
+          139.15057948469467
+        ],
+        "altitudeFeet": 15009.91242579386,
+        "AGLFeet": 14865.685990545226,
+        "groundSpeedKnots": 301.9640670742563,
+        "onGround": false,
+        "fuelLb": 11469.086990393815,
+        "engineDataValid": true,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 3,
+            "Source": "combustion"
+          },
+          {
+            "Index": 2,
+            "Condition": 3,
+            "Source": "combustion"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          1037.145133609766,
+          1037.145133609766
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 0,
+        "slatDegrees": 0,
+        "progress": 0.8423056683644988,
+        "remainingNm": null,
+        "crossTrackNm": 25.003256903389918,
+        "routeReliable": false,
+        "estimatedIn": null
+      },
+      "last": {
+        "telemetrySequence": 9927,
+        "simulatorUtc": "2026-09-27T22:07:43.274002+00:00",
+        "recordedAtUtc": "2026-09-28T15:18:34.0994517+00:00",
+        "phase": "Airborne",
+        "position": [
+          -35.224122605418906,
+          139.1439361266329
+        ],
+        "altitudeFeet": 14718.755674468059,
+        "AGLFeet": 14502.595171286805,
+        "groundSpeedKnots": 300.89234152521306,
+        "onGround": false,
+        "fuelLb": 11464.672940226505,
+        "engineDataValid": true,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 3,
+            "Source": "combustion"
+          },
+          {
+            "Index": 2,
+            "Condition": 3,
+            "Source": "combustion"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          1028.6388195475506,
+          1028.6388195475506
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 0,
+        "slatDegrees": 0,
+        "progress": 0.8696750109581828,
+        "remainingNm": null,
+        "crossTrackNm": 20.754465117709195,
+        "routeReliable": false,
+        "estimatedIn": null
+      }
+    },
+    {
+      "value": false,
+      "count": 112,
+      "first": {
+        "telemetrySequence": 10183,
+        "simulatorUtc": "2026-09-27T22:09:51.2588653+00:00",
+        "recordedAtUtc": "2026-09-28T15:20:42.0743728+00:00",
+        "phase": "Airborne",
+        "position": [
+          -35.06119187671121,
+          139.06315979031106
+        ],
+        "altitudeFeet": 11345.76085430678,
+        "AGLFeet": 10550.8197160977,
+        "groundSpeedKnots": 288.4381709020675,
+        "onGround": false,
+        "fuelLb": 11399.935173514765,
+        "engineDataValid": true,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 3,
+            "Source": "combustion"
+          },
+          {
+            "Index": 2,
+            "Condition": 3,
+            "Source": "combustion"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          864.4818292480747,
+          864.4818292480747
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 0,
+        "slatDegrees": 0,
+        "progress": 0.9105328059213342,
+        "remainingNm": null,
+        "crossTrackNm": 25.00338597777235,
+        "routeReliable": false,
+        "estimatedIn": null
+      },
+      "last": {
+        "telemetrySequence": 10407,
+        "simulatorUtc": "2026-09-27T22:11:42.2789077+00:00",
+        "recordedAtUtc": "2026-09-28T15:22:33.0477759+00:00",
+        "phase": "Airborne",
+        "position": [
+          -34.953997475315255,
+          138.94307442778455
+        ],
+        "altitudeFeet": 8194.745559966033,
+        "AGLFeet": 6724.782084094266,
+        "groundSpeedKnots": 279.44524760434626,
+        "onGround": false,
+        "fuelLb": 11352.851153859054,
+        "engineDataValid": true,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 3,
+            "Source": "combustion"
+          },
+          {
+            "Index": 2,
+            "Condition": 3,
+            "Source": "combustion"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          793.2004376127597,
+          793.2004376127597
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 0,
+        "slatDegrees": 0,
+        "progress": 0.9789561624055441,
+        "remainingNm": null,
+        "crossTrackNm": 20.30827660217607,
+        "routeReliable": false,
+        "estimatedIn": null
+      }
+    }
+  ],
+  "engineDataValidRuns": [
+    {
+      "value": false,
+      "count": 1290,
+      "first": {
+        "telemetrySequence": 4,
+        "simulatorUtc": "2026-09-27T20:45:13.6433715+00:00",
+        "recordedAtUtc": "2026-09-28T13:56:04.4651424+00:00",
+        "phase": "AtGate",
+        "position": [
+          -37.67521484407448,
+          144.84741049609093
+        ],
+        "altitudeFeet": 379.61485132575643,
+        "AGLFeet": 9.112135192527262,
+        "groundSpeedKnots": 3.009511639081257e-07,
+        "onGround": true,
+        "fuelLb": 17651.98372600088,
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          null,
+          null
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": null,
+        "slatDegrees": null,
+        "progress": 0,
+        "remainingNm": 365.3723126805289,
+        "crossTrackNm": 0.2243055435817137,
+        "routeReliable": true,
+        "estimatedIn": null
+      },
+      "last": {
+        "telemetrySequence": 2594,
+        "simulatorUtc": "2026-09-27T21:06:42.6607208+00:00",
+        "recordedAtUtc": "2026-09-28T14:17:33.4155126+00:00",
+        "phase": "TaxiOut",
+        "position": [
+          -37.674310441461486,
+          144.84768982718904
+        ],
+        "altitudeFeet": 382.07351916121996,
+        "AGLFeet": 9.126550362261696,
+        "groundSpeedKnots": 5.4438050930531286e-05,
+        "onGround": true,
+        "fuelLb": 17701.87058981508,
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 2,
+            "Source": "combustion"
+          },
+          {
+            "Index": 2,
+            "Condition": 3,
+            "Source": "combustion"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          925.4290741682053,
+          1140.853109347372
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 0,
+        "slatDegrees": 0,
+        "progress": 0,
+        "remainingNm": 365.3723126805289,
+        "crossTrackNm": 0.21520245181173095,
+        "routeReliable": true,
+        "estimatedIn": null
+      }
+    },
+    {
+      "value": false,
+      "count": 53,
+      "first": {
+        "telemetrySequence": 12214,
+        "simulatorUtc": "2026-09-27T22:26:36.2872009+00:00",
+        "recordedAtUtc": "2026-09-28T15:37:27.0750838+00:00",
+        "phase": "TaxiIn",
+        "position": [
+          -34.9403164777475,
+          138.53698473965048
+        ],
+        "altitudeFeet": 27.19645185904148,
+        "AGLFeet": 9.161324119876124,
+        "groundSpeedKnots": 9.371185505208703e-05,
+        "onGround": true,
+        "fuelLb": 10698.613184202579,
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 4,
+            "Source": "combustion loss / spool decay"
+          },
+          {
+            "Index": 2,
+            "Condition": 4,
+            "Source": "combustion loss / spool decay"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          436.5659681328885,
+          448.3697721121864
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 0,
+        "slatDegrees": 0,
+        "progress": 1,
+        "remainingNm": 0,
+        "crossTrackNm": 0.4233010179737056,
+        "routeReliable": true,
+        "estimatedIn": "2026-09-27T22:28:00+00:00"
+      },
+      "last": {
+        "telemetrySequence": 12320,
+        "simulatorUtc": "2026-09-27T22:27:28.2718048+00:00",
+        "recordedAtUtc": "2026-09-28T15:38:19.0881853+00:00",
+        "phase": "TaxiIn",
+        "position": [
+          -34.940316479685336,
+          138.5369847414307
+        ],
+        "altitudeFeet": 27.1966316917606,
+        "AGLFeet": 9.161504224536547,
+        "groundSpeedKnots": 6.395867658893389e-07,
+        "onGround": true,
+        "fuelLb": 10694.41178051359,
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          0.8573198238899167,
+          0.8718799730383849
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 0,
+        "slatDegrees": 0,
+        "progress": 1,
+        "remainingNm": 0,
+        "crossTrackNm": 0.4233010061702193,
+        "routeReliable": true,
+        "estimatedIn": "2026-09-27T22:28:00+00:00"
+      }
+    }
+  ],
+  "fuelTransient": {
+    "drop": [
+      {
+        "telemetrySequence": 74,
+        "simulatorUtc": "2026-09-27T20:45:45.6444015+00:00",
+        "recordedAtUtc": "2026-09-28T13:56:36.3847421+00:00",
+        "phase": "AtGate",
+        "position": [
+          -37.67521484408398,
+          144.84741049605742
+        ],
+        "altitudeFeet": 379.61486805719375,
+        "AGLFeet": 9.112152296738032,
+        "groundSpeedKnots": 2.761644927694624e-07,
+        "onGround": true,
+        "fuelLb": 17649.43033251888,
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          0,
+          0
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 5.186458687151103,
+        "slatDegrees": 0,
+        "progress": 0,
+        "remainingNm": 365.3723126805289,
+        "crossTrackNm": 0.22430554249337314,
+        "routeReliable": true,
+        "estimatedIn": null
+      },
+      {
+        "telemetrySequence": 76,
+        "simulatorUtc": "2026-09-27T20:45:46.6370925+00:00",
+        "recordedAtUtc": "2026-09-28T13:56:37.385005+00:00",
+        "phase": "AtGate",
+        "position": [
+          -37.67521484408423,
+          144.8474104960561
+        ],
+        "altitudeFeet": 379.6148685660016,
+        "AGLFeet": 9.112152805545861,
+        "groundSpeedKnots": 3.1849370490463307e-07,
+        "onGround": true,
+        "fuelLb": 17649.351816896116,
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          0,
+          0
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 5.186458687151103,
+        "slatDegrees": 0,
+        "progress": 0,
+        "remainingNm": 365.3723126805289,
+        "crossTrackNm": 0.22430554244722198,
+        "routeReliable": true,
+        "estimatedIn": null
+      },
+      {
+        "telemetrySequence": 78,
+        "simulatorUtc": "2026-09-27T20:45:47.6508178+00:00",
+        "recordedAtUtc": "2026-09-28T13:56:38.3853288+00:00",
+        "phase": "AtGate",
+        "position": [
+          -37.67521484408467,
+          144.84741049605472
+        ],
+        "altitudeFeet": 379.6148690701541,
+        "AGLFeet": 9.112153309698385,
+        "groundSpeedKnots": 2.7879790800178085e-07,
+        "onGround": true,
+        "fuelLb": 17649.261851078365,
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          0,
+          0
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 5.186458687151103,
+        "slatDegrees": 0,
+        "progress": 0,
+        "remainingNm": 365.3723126805289,
+        "crossTrackNm": 0.22430554240337225,
+        "routeReliable": true,
+        "estimatedIn": null
+      },
+      {
+        "telemetrySequence": 80,
+        "simulatorUtc": "2026-09-27T20:45:48.6499023+00:00",
+        "recordedAtUtc": "2026-09-28T13:56:39.3856011+00:00",
+        "phase": "AtGate",
+        "position": [
+          -37.675214913352654,
+          144.84741051022763
+        ],
+        "altitudeFeet": 379.86308087999055,
+        "AGLFeet": 9.360538660863426,
+        "groundSpeedKnots": 0.06308390040415383,
+        "onGround": true,
+        "fuelLb": 17649.191514166305,
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          0,
+          0
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 5.186458687151103,
+        "slatDegrees": 0,
+        "progress": 0,
+        "remainingNm": 365.3723126805289,
+        "crossTrackNm": 0.22430821908890192,
+        "routeReliable": true,
+        "estimatedIn": null
+      },
+      {
+        "telemetrySequence": 82,
+        "simulatorUtc": "2026-09-27T20:45:49.6419448+00:00",
+        "recordedAtUtc": "2026-09-28T13:56:40.3859114+00:00",
+        "phase": "AtGate",
+        "position": [
+          -37.67521495611832,
+          144.84741051903978
+        ],
+        "altitudeFeet": 379.9110026337007,
+        "AGLFeet": 9.408574516866565,
+        "groundSpeedKnots": 0.0022832034374013327,
+        "onGround": true,
+        "fuelLb": 6614.124982608249,
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          0,
+          0
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 5.186458687151103,
+        "slatDegrees": 0,
+        "progress": 0,
+        "remainingNm": 365.3723126805289,
+        "crossTrackNm": 0.22430987422314355,
+        "routeReliable": true,
+        "estimatedIn": null
+      },
+      {
+        "telemetrySequence": 84,
+        "simulatorUtc": "2026-09-27T20:45:50.6476745+00:00",
+        "recordedAtUtc": "2026-09-28T13:56:41.3862023+00:00",
+        "phase": "AtGate",
+        "position": [
+          -37.67521496655991,
+          144.84741052056103
+        ],
+        "altitudeFeet": 379.9021289332095,
+        "AGLFeet": 9.39972837716806,
+        "groundSpeedKnots": 0.002107358200484334,
+        "onGround": true,
+        "fuelLb": 6614.044831243344,
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          0,
+          0
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 5.186458687151103,
+        "slatDegrees": 0,
+        "progress": 0,
+        "remainingNm": 365.3723126805289,
+        "crossTrackNm": 0.22431025246500097,
+        "routeReliable": true,
+        "estimatedIn": null
+      },
+      {
+        "telemetrySequence": 86,
+        "simulatorUtc": "2026-09-27T20:45:51.6443252+00:00",
+        "recordedAtUtc": "2026-09-28T13:56:42.3865071+00:00",
+        "phase": "AtGate",
+        "position": [
+          -37.67521496768065,
+          144.84741052093773
+        ],
+        "altitudeFeet": 379.9003350264019,
+        "AGLFeet": 9.397937256994908,
+        "groundSpeedKnots": 0.00031624009972736175,
+        "onGround": true,
+        "fuelLb": 6613.9569101032685,
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          0,
+          0
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 5.186458687151103,
+        "slatDegrees": 0,
+        "progress": 0,
+        "remainingNm": 365.3723126805289,
+        "crossTrackNm": 0.2243103018246366,
+        "routeReliable": true,
+        "estimatedIn": null
+      },
+      {
+        "telemetrySequence": 88,
+        "simulatorUtc": "2026-09-27T20:45:52.6421508+00:00",
+        "recordedAtUtc": "2026-09-28T13:56:43.3869844+00:00",
+        "phase": "AtGate",
+        "position": [
+          -37.67521496733352,
+          144.84741052079409
+        ],
+        "altitudeFeet": 379.90017417599165,
+        "AGLFeet": 9.397775361596757,
+        "groundSpeedKnots": 8.204959193318838e-05,
+        "onGround": true,
+        "fuelLb": 6613.876758738363,
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          0,
+          0
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 5.186458687151103,
+        "slatDegrees": 0,
+        "progress": 0,
+        "remainingNm": 365.3723126805289,
+        "crossTrackNm": 0.2243102854291234,
+        "routeReliable": true,
+        "estimatedIn": null
+      },
+      {
+        "telemetrySequence": 90,
+        "simulatorUtc": "2026-09-27T20:45:53.6508026+00:00",
+        "recordedAtUtc": "2026-09-28T13:56:44.3871248+00:00",
+        "phase": "AtGate",
+        "position": [
+          -37.67521496728482,
+          144.84741052081924
+        ],
+        "altitudeFeet": 379.9002094187475,
+        "AGLFeet": 9.397810595186115,
+        "groundSpeedKnots": 1.3232865826898692e-05,
+        "onGround": true,
+        "fuelLb": 6613.797016308992,
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          0,
+          0
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 5.186458687151103,
+        "slatDegrees": 0,
+        "progress": 0,
+        "remainingNm": 365.3723126805289,
+        "crossTrackNm": 0.2243102849890433,
+        "routeReliable": true,
+        "estimatedIn": null
+      },
+      {
+        "telemetrySequence": 92,
+        "simulatorUtc": "2026-09-27T20:45:54.6488571+00:00",
+        "recordedAtUtc": "2026-09-28T13:56:45.3875538+00:00",
+        "phase": "AtGate",
+        "position": [
+          -37.67521496730482,
+          144.84741052080693
+        ],
+        "altitudeFeet": 379.9002135077717,
+        "AGLFeet": 9.397814687265793,
+        "groundSpeedKnots": 4.852393020350517e-06,
+        "onGround": true,
+        "fuelLb": 6613.717273879622,
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          0,
+          0
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 5.186458687151103,
+        "slatDegrees": 0,
+        "progress": 0,
+        "remainingNm": 365.3723126805289,
+        "crossTrackNm": 0.22431028508854484,
+        "routeReliable": true,
+        "estimatedIn": null
+      },
+      {
+        "telemetrySequence": 94,
+        "simulatorUtc": "2026-09-27T20:45:55.6522216+00:00",
+        "recordedAtUtc": "2026-09-28T13:56:46.3877442+00:00",
+        "phase": "AtGate",
+        "position": [
+          -37.67521496730627,
+          144.84741052081242
+        ],
+        "altitudeFeet": 379.90021211681295,
+        "AGLFeet": 9.397813293251545,
+        "groundSpeedKnots": 1.1416477952189028e-06,
+        "onGround": true,
+        "fuelLb": 6613.637122514716,
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          0,
+          0
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 5.186458687151103,
+        "slatDegrees": 0,
+        "progress": 0,
+        "remainingNm": 365.3723126805289,
+        "crossTrackNm": 0.22431028535756972,
+        "routeReliable": true,
+        "estimatedIn": null
+      },
+      {
+        "telemetrySequence": 96,
+        "simulatorUtc": "2026-09-27T20:45:56.6532135+00:00",
+        "recordedAtUtc": "2026-09-28T13:56:47.3880098+00:00",
+        "phase": "AtGate",
+        "position": [
+          -37.675214967305834,
+          144.84741052080838
+        ],
+        "altitudeFeet": 379.90021250373564,
+        "AGLFeet": 9.397813686285247,
+        "groundSpeedKnots": 3.7925594430227644e-07,
+        "onGround": true,
+        "fuelLb": 6613.556562214275,
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          0,
+          0
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 5.186458687151103,
+        "slatDegrees": 0,
+        "progress": 0,
+        "remainingNm": 365.3723126805289,
+        "crossTrackNm": 0.22431028517878,
+        "routeReliable": true,
+        "estimatedIn": null
+      },
+      {
+        "telemetrySequence": 98,
+        "simulatorUtc": "2026-09-27T20:45:57.6377563+00:00",
+        "recordedAtUtc": "2026-09-28T13:56:48.3882956+00:00",
+        "phase": "AtGate",
+        "position": [
+          -37.67521496730582,
+          144.84741052080898
+        ],
+        "altitudeFeet": 379.9002131473617,
+        "AGLFeet": 9.39781432685578,
+        "groundSpeedKnots": 3.215250314546524e-07,
+        "onGround": true,
+        "fuelLb": 6613.477637655975,
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          0,
+          0
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 5.186458687151103,
+        "slatDegrees": 0,
+        "progress": 0,
+        "remainingNm": 365.3723126805289,
+        "crossTrackNm": 0.22431028520285234,
+        "routeReliable": true,
+        "estimatedIn": null
+      },
+      {
+        "telemetrySequence": 100,
+        "simulatorUtc": "2026-09-27T20:45:58.6441192+00:00",
+        "recordedAtUtc": "2026-09-28T13:56:49.3890963+00:00",
+        "phase": "AtGate",
+        "position": [
+          -37.675214967306204,
+          144.8474105208075
+        ],
+        "altitudeFeet": 379.90021367476925,
+        "AGLFeet": 9.39781485731885,
+        "groundSpeedKnots": 1.699316561848532e-07,
+        "onGround": true,
+        "fuelLb": 6613.397077355534,
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          0,
+          0
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 5.186458687151103,
+        "slatDegrees": 0,
+        "progress": 0,
+        "remainingNm": 365.3723126805289,
+        "crossTrackNm": 0.22431028515378462,
+        "routeReliable": true,
+        "estimatedIn": null
+      },
+      {
+        "telemetrySequence": 102,
+        "simulatorUtc": "2026-09-27T20:45:59.6527557+00:00",
+        "recordedAtUtc": "2026-09-28T13:56:50.3894201+00:00",
+        "phase": "AtGate",
+        "position": [
+          -37.67521496730651,
+          144.8474105208075
+        ],
+        "altitudeFeet": 379.9002141932012,
+        "AGLFeet": 9.397815375750781,
+        "groundSpeedKnots": 2.0258660939673858e-07,
+        "onGround": true,
+        "fuelLb": 6613.316925990628,
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          0,
+          0
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 5.186458687151103,
+        "slatDegrees": 0,
+        "progress": 0,
+        "remainingNm": 365.3723126805289,
+        "crossTrackNm": 0.22431028516302506,
+        "routeReliable": true,
+        "estimatedIn": null
+      },
+      {
+        "telemetrySequence": 104,
+        "simulatorUtc": "2026-09-27T20:46:00.6524963+00:00",
+        "recordedAtUtc": "2026-09-28T13:56:51.389727+00:00",
+        "phase": "AtGate",
+        "position": [
+          -37.675214783606506,
+          144.8474104834208
+        ],
+        "altitudeFeet": 379.60937327198195,
+        "AGLFeet": 9.106501600549564,
+        "groundSpeedKnots": 0.013273031822975645,
+        "onGround": true,
+        "fuelLb": 17816.35291077476,
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          0,
+          0
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 5.186458687151103,
+        "slatDegrees": 0,
+        "progress": 0,
+        "remainingNm": 365.3723126805289,
+        "crossTrackNm": 0.22430319476324065,
+        "routeReliable": true,
+        "estimatedIn": null
+      },
+      {
+        "telemetrySequence": 106,
+        "simulatorUtc": "2026-09-27T20:46:01.6413421+00:00",
+        "recordedAtUtc": "2026-09-28T13:56:52.3899926+00:00",
+        "phase": "AtGate",
+        "position": [
+          -37.67521484419633,
+          144.8474104971417
+        ],
+        "altitudeFeet": 379.62439910646674,
+        "AGLFeet": 9.12168472405068,
+        "groundSpeedKnots": 0.020639163178167805,
+        "onGround": true,
+        "fuelLb": 17816.272759409854,
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          0,
+          0
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 5.186458687151103,
+        "slatDegrees": 0,
+        "progress": 0,
+        "remainingNm": 365.3723126805289,
+        "crossTrackNm": 0.22430559040404296,
+        "routeReliable": true,
+        "estimatedIn": null
+      },
+      {
+        "telemetrySequence": 108,
+        "simulatorUtc": "2026-09-27T20:46:02.6503753+00:00",
+        "recordedAtUtc": "2026-09-28T13:56:53.3902914+00:00",
+        "phase": "AtGate",
+        "position": [
+          -37.67521484773817,
+          144.8474104966762
+        ],
+        "altitudeFeet": 379.6151984797077,
+        "AGLFeet": 9.112492353307402,
+        "groundSpeedKnots": 0.002760366580669343,
+        "onGround": true,
+        "fuelLb": 17816.19260804495,
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          0,
+          0
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 5.186458687151103,
+        "slatDegrees": 0,
+        "progress": 0,
+        "remainingNm": 365.3723126805289,
+        "crossTrackNm": 0.22430567840671684,
+        "routeReliable": true,
+        "estimatedIn": null
+      },
+      {
+        "telemetrySequence": 110,
+        "simulatorUtc": "2026-09-27T20:46:03.644638+00:00",
+        "recordedAtUtc": "2026-09-28T13:56:54.3906107+00:00",
+        "phase": "AtGate",
+        "position": [
+          -37.67521484578206,
+          144.84741049676583
+        ],
+        "altitudeFeet": 379.61345389741575,
+        "AGLFeet": 9.11074226496794,
+        "groundSpeedKnots": 0.0003713832725034621,
+        "onGround": true,
+        "fuelLb": 17816.114092422184,
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          0,
+          0
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 5.186458687151103,
+        "slatDegrees": 0,
+        "progress": 0,
+        "remainingNm": 365.3723126805289,
+        "crossTrackNm": 0.22430562292935285,
+        "routeReliable": true,
+        "estimatedIn": null
+      }
+    ],
+    "rebound": [
+      {
+        "telemetrySequence": 96,
+        "simulatorUtc": "2026-09-27T20:45:56.6532135+00:00",
+        "recordedAtUtc": "2026-09-28T13:56:47.3880098+00:00",
+        "phase": "AtGate",
+        "position": [
+          -37.675214967305834,
+          144.84741052080838
+        ],
+        "altitudeFeet": 379.90021250373564,
+        "AGLFeet": 9.397813686285247,
+        "groundSpeedKnots": 3.7925594430227644e-07,
+        "onGround": true,
+        "fuelLb": 6613.556562214275,
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          0,
+          0
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 5.186458687151103,
+        "slatDegrees": 0,
+        "progress": 0,
+        "remainingNm": 365.3723126805289,
+        "crossTrackNm": 0.22431028517878,
+        "routeReliable": true,
+        "estimatedIn": null
+      },
+      {
+        "telemetrySequence": 98,
+        "simulatorUtc": "2026-09-27T20:45:57.6377563+00:00",
+        "recordedAtUtc": "2026-09-28T13:56:48.3882956+00:00",
+        "phase": "AtGate",
+        "position": [
+          -37.67521496730582,
+          144.84741052080898
+        ],
+        "altitudeFeet": 379.9002131473617,
+        "AGLFeet": 9.39781432685578,
+        "groundSpeedKnots": 3.215250314546524e-07,
+        "onGround": true,
+        "fuelLb": 6613.477637655975,
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          0,
+          0
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 5.186458687151103,
+        "slatDegrees": 0,
+        "progress": 0,
+        "remainingNm": 365.3723126805289,
+        "crossTrackNm": 0.22431028520285234,
+        "routeReliable": true,
+        "estimatedIn": null
+      },
+      {
+        "telemetrySequence": 100,
+        "simulatorUtc": "2026-09-27T20:45:58.6441192+00:00",
+        "recordedAtUtc": "2026-09-28T13:56:49.3890963+00:00",
+        "phase": "AtGate",
+        "position": [
+          -37.675214967306204,
+          144.8474105208075
+        ],
+        "altitudeFeet": 379.90021367476925,
+        "AGLFeet": 9.39781485731885,
+        "groundSpeedKnots": 1.699316561848532e-07,
+        "onGround": true,
+        "fuelLb": 6613.397077355534,
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          0,
+          0
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 5.186458687151103,
+        "slatDegrees": 0,
+        "progress": 0,
+        "remainingNm": 365.3723126805289,
+        "crossTrackNm": 0.22431028515378462,
+        "routeReliable": true,
+        "estimatedIn": null
+      },
+      {
+        "telemetrySequence": 102,
+        "simulatorUtc": "2026-09-27T20:45:59.6527557+00:00",
+        "recordedAtUtc": "2026-09-28T13:56:50.3894201+00:00",
+        "phase": "AtGate",
+        "position": [
+          -37.67521496730651,
+          144.8474105208075
+        ],
+        "altitudeFeet": 379.9002141932012,
+        "AGLFeet": 9.397815375750781,
+        "groundSpeedKnots": 2.0258660939673858e-07,
+        "onGround": true,
+        "fuelLb": 6613.316925990628,
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          0,
+          0
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 5.186458687151103,
+        "slatDegrees": 0,
+        "progress": 0,
+        "remainingNm": 365.3723126805289,
+        "crossTrackNm": 0.22431028516302506,
+        "routeReliable": true,
+        "estimatedIn": null
+      },
+      {
+        "telemetrySequence": 104,
+        "simulatorUtc": "2026-09-27T20:46:00.6524963+00:00",
+        "recordedAtUtc": "2026-09-28T13:56:51.389727+00:00",
+        "phase": "AtGate",
+        "position": [
+          -37.675214783606506,
+          144.8474104834208
+        ],
+        "altitudeFeet": 379.60937327198195,
+        "AGLFeet": 9.106501600549564,
+        "groundSpeedKnots": 0.013273031822975645,
+        "onGround": true,
+        "fuelLb": 17816.35291077476,
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          0,
+          0
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 5.186458687151103,
+        "slatDegrees": 0,
+        "progress": 0,
+        "remainingNm": 365.3723126805289,
+        "crossTrackNm": 0.22430319476324065,
+        "routeReliable": true,
+        "estimatedIn": null
+      },
+      {
+        "telemetrySequence": 106,
+        "simulatorUtc": "2026-09-27T20:46:01.6413421+00:00",
+        "recordedAtUtc": "2026-09-28T13:56:52.3899926+00:00",
+        "phase": "AtGate",
+        "position": [
+          -37.67521484419633,
+          144.8474104971417
+        ],
+        "altitudeFeet": 379.62439910646674,
+        "AGLFeet": 9.12168472405068,
+        "groundSpeedKnots": 0.020639163178167805,
+        "onGround": true,
+        "fuelLb": 17816.272759409854,
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          0,
+          0
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 5.186458687151103,
+        "slatDegrees": 0,
+        "progress": 0,
+        "remainingNm": 365.3723126805289,
+        "crossTrackNm": 0.22430559040404296,
+        "routeReliable": true,
+        "estimatedIn": null
+      },
+      {
+        "telemetrySequence": 108,
+        "simulatorUtc": "2026-09-27T20:46:02.6503753+00:00",
+        "recordedAtUtc": "2026-09-28T13:56:53.3902914+00:00",
+        "phase": "AtGate",
+        "position": [
+          -37.67521484773817,
+          144.8474104966762
+        ],
+        "altitudeFeet": 379.6151984797077,
+        "AGLFeet": 9.112492353307402,
+        "groundSpeedKnots": 0.002760366580669343,
+        "onGround": true,
+        "fuelLb": 17816.19260804495,
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          0,
+          0
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 5.186458687151103,
+        "slatDegrees": 0,
+        "progress": 0,
+        "remainingNm": 365.3723126805289,
+        "crossTrackNm": 0.22430567840671684,
+        "routeReliable": true,
+        "estimatedIn": null
+      },
+      {
+        "telemetrySequence": 110,
+        "simulatorUtc": "2026-09-27T20:46:03.644638+00:00",
+        "recordedAtUtc": "2026-09-28T13:56:54.3906107+00:00",
+        "phase": "AtGate",
+        "position": [
+          -37.67521484578206,
+          144.84741049676583
+        ],
+        "altitudeFeet": 379.61345389741575,
+        "AGLFeet": 9.11074226496794,
+        "groundSpeedKnots": 0.0003713832725034621,
+        "onGround": true,
+        "fuelLb": 17816.114092422184,
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          0,
+          0
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 5.186458687151103,
+        "slatDegrees": 0,
+        "progress": 0,
+        "remainingNm": 365.3723126805289,
+        "crossTrackNm": 0.22430562292935285,
+        "routeReliable": true,
+        "estimatedIn": null
+      },
+      {
+        "telemetrySequence": 112,
+        "simulatorUtc": "2026-09-27T20:46:04.6526336+00:00",
+        "recordedAtUtc": "2026-09-28T13:56:55.3908962+00:00",
+        "phase": "AtGate",
+        "position": [
+          -37.67521484588127,
+          144.84741049662313
+        ],
+        "altitudeFeet": 379.6137317280707,
+        "AGLFeet": 9.111020508118088,
+        "groundSpeedKnots": 0.00020375259545719491,
+        "onGround": true,
+        "fuelLb": 17816.033941057278,
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          0,
+          0
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 5.186458687151103,
+        "slatDegrees": 0,
+        "progress": 0,
+        "remainingNm": 365.3723126805289,
+        "crossTrackNm": 0.22430562007135627,
+        "routeReliable": true,
+        "estimatedIn": null
+      },
+      {
+        "telemetrySequence": 114,
+        "simulatorUtc": "2026-09-27T20:46:05.6578903+00:00",
+        "recordedAtUtc": "2026-09-28T13:56:56.3912669+00:00",
+        "phase": "AtGate",
+        "position": [
+          -37.67521484583618,
+          144.8474104966699
+        ],
+        "altitudeFeet": 379.61375834369693,
+        "AGLFeet": 9.111046747915339,
+        "groundSpeedKnots": 2.914701402879048e-05,
+        "onGround": true,
+        "fuelLb": 17815.953789692372,
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          0,
+          0
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 5.186458687151103,
+        "slatDegrees": 0,
+        "progress": 0,
+        "remainingNm": 365.3723126805289,
+        "crossTrackNm": 0.224305620628227,
+        "routeReliable": true,
+        "estimatedIn": null
+      },
+      {
+        "telemetrySequence": 116,
+        "simulatorUtc": "2026-09-27T20:46:06.6441726+00:00",
+        "recordedAtUtc": "2026-09-28T13:56:57.3915166+00:00",
+        "phase": "AtGate",
+        "position": [
+          -37.6752148458038,
+          144.84741049664706
+        ],
+        "altitudeFeet": 379.6137692532735,
+        "AGLFeet": 9.11105766054743,
+        "groundSpeedKnots": 7.249384077489948e-06,
+        "onGround": true,
+        "fuelLb": 17815.873638327466,
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          0,
+          0
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 5.186458687151103,
+        "slatDegrees": 0,
+        "progress": 0,
+        "remainingNm": 365.3723126805289,
+        "crossTrackNm": 0.22430561871090018,
+        "routeReliable": true,
+        "estimatedIn": null
+      },
+      {
+        "telemetrySequence": 118,
+        "simulatorUtc": "2026-09-27T20:46:07.6480636+00:00",
+        "recordedAtUtc": "2026-09-28T13:56:58.3917842+00:00",
+        "phase": "AtGate",
+        "position": [
+          -37.675214845798834,
+          144.84741049664723
+        ],
+        "altitudeFeet": 379.61377886407223,
+        "AGLFeet": 9.111067271346144,
+        "groundSpeedKnots": 3.0860432413350335e-06,
+        "onGround": true,
+        "fuelLb": 17815.79348696256,
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          0,
+          0
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 5.186458687151103,
+        "slatDegrees": 0,
+        "progress": 0,
+        "remainingNm": 365.3723126805289,
+        "crossTrackNm": 0.22430561856769637,
+        "routeReliable": true,
+        "estimatedIn": null
+      },
+      {
+        "telemetrySequence": 120,
+        "simulatorUtc": "2026-09-27T20:46:08.6613845+00:00",
+        "recordedAtUtc": "2026-09-28T13:56:59.3920964+00:00",
+        "phase": "AtGate",
+        "position": [
+          -37.675214845797804,
+          144.84741049664677
+        ],
+        "altitudeFeet": 379.6137813455294,
+        "AGLFeet": 9.111069752803303,
+        "groundSpeedKnots": 1.7516063133995482e-06,
+        "onGround": true,
+        "fuelLb": 17815.711699855514,
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          0,
+          0
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 5.186458687151103,
+        "slatDegrees": 0,
+        "progress": 0,
+        "remainingNm": 365.3723126805289,
+        "crossTrackNm": 0.22430561851786948,
+        "routeReliable": true,
+        "estimatedIn": null
+      },
+      {
+        "telemetrySequence": 122,
+        "simulatorUtc": "2026-09-27T20:46:09.6448516+00:00",
+        "recordedAtUtc": "2026-09-28T13:57:00.3923803+00:00",
+        "phase": "AtGate",
+        "position": [
+          -37.67521484579783,
+          144.84741049664447
+        ],
+        "altitudeFeet": 379.613782290673,
+        "AGLFeet": 9.111070701002404,
+        "groundSpeedKnots": 5.331750208665795e-07,
+        "onGround": true,
+        "fuelLb": 17815.63318423275,
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          0,
+          0
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 5.186458687151103,
+        "slatDegrees": 0,
+        "progress": 0,
+        "remainingNm": 365.3723126805289,
+        "crossTrackNm": 0.22430561842421928,
+        "routeReliable": true,
+        "estimatedIn": null
+      },
+      {
+        "telemetrySequence": 124,
+        "simulatorUtc": "2026-09-27T20:46:10.6486282+00:00",
+        "recordedAtUtc": "2026-09-28T13:57:01.3927212+00:00",
+        "phase": "AtGate",
+        "position": [
+          -37.675214845798024,
+          144.84741049664407
+        ],
+        "altitudeFeet": 379.6137830658549,
+        "AGLFeet": 9.111071476184293,
+        "groundSpeedKnots": 5.365620518341866e-07,
+        "onGround": true,
+        "fuelLb": 17815.551397125702,
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          0,
+          0
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 5.186458687151103,
+        "slatDegrees": 0,
+        "progress": 0,
+        "remainingNm": 365.3723126805289,
+        "crossTrackNm": 0.22430561841368615,
+        "routeReliable": true,
+        "estimatedIn": null
+      },
+      {
+        "telemetrySequence": 126,
+        "simulatorUtc": "2026-09-27T20:46:11.6546859+00:00",
+        "recordedAtUtc": "2026-09-28T13:57:02.3934851+00:00",
+        "phase": "AtGate",
+        "position": [
+          -37.67521484579832,
+          144.84741049664188
+        ],
+        "altitudeFeet": 379.6137834393283,
+        "AGLFeet": 9.11107184354671,
+        "groundSpeedKnots": 2.0922851652548645e-07,
+        "onGround": true,
+        "fuelLb": 17815.472881502938,
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          0,
+          0
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 5.186458687151103,
+        "slatDegrees": 0,
+        "progress": 0,
+        "remainingNm": 365.3723126805289,
+        "crossTrackNm": 0.22430561833286877,
+        "routeReliable": true,
+        "estimatedIn": null
+      },
+      {
+        "telemetrySequence": 128,
+        "simulatorUtc": "2026-09-27T20:46:12.657196+00:00",
+        "recordedAtUtc": "2026-09-28T13:57:03.3942984+00:00",
+        "phase": "AtGate",
+        "position": [
+          -37.67521484579869,
+          144.84741049664134
+        ],
+        "altitudeFeet": 379.6137839406233,
+        "AGLFeet": 9.111072344841716,
+        "groundSpeedKnots": 2.871156264285449e-07,
+        "onGround": true,
+        "fuelLb": 17815.39109439589,
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          0,
+          0
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 5.186458687151103,
+        "slatDegrees": 0,
+        "progress": 0,
+        "remainingNm": 365.3723126805289,
+        "crossTrackNm": 0.22430561832187387,
+        "routeReliable": true,
+        "estimatedIn": null
+      },
+      {
+        "telemetrySequence": 130,
+        "simulatorUtc": "2026-09-27T20:46:13.6391906+00:00",
+        "recordedAtUtc": "2026-09-28T13:57:04.394733+00:00",
+        "phase": "AtGate",
+        "position": [
+          -37.67521484579904,
+          144.84741049664035
+        ],
+        "altitudeFeet": 379.613784464842,
+        "AGLFeet": 9.111072878226992,
+        "groundSpeedKnots": 2.8281563244744656e-07,
+        "onGround": true,
+        "fuelLb": 17815.312578773126,
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          0,
+          0
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 5.186458687151103,
+        "slatDegrees": 0,
+        "progress": 0,
+        "remainingNm": 365.3723126805289,
+        "crossTrackNm": 0.2243056182915657,
+        "routeReliable": true,
+        "estimatedIn": null
+      },
+      {
+        "telemetrySequence": 132,
+        "simulatorUtc": "2026-09-27T20:46:14.64505+00:00",
+        "recordedAtUtc": "2026-09-28T13:57:05.3948778+00:00",
+        "phase": "AtGate",
+        "position": [
+          -37.675214845799374,
+          144.84741049663975
+        ],
+        "altitudeFeet": 379.6137850076101,
+        "AGLFeet": 9.1110734118285,
+        "groundSpeedKnots": 2.386144921063346e-07,
+        "onGround": true,
+        "fuelLb": 17815.23079166608,
+        "engineDataValid": false,
+        "engineStates": [
+          {
+            "Index": 1,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          },
+          {
+            "Index": 2,
+            "Condition": 0,
+            "Source": "N1 / N2 spool"
+          }
+        ],
+        "engineFuelFlowsPph": [
+          0,
+          0
+        ],
+        "flapHandleIndex": 0,
+        "flapDegrees": 5.186458687151103,
+        "slatDegrees": 0,
+        "progress": 0,
+        "remainingNm": 365.3723126805289,
+        "crossTrackNm": 0.2243056182771628,
+        "routeReliable": true,
+        "estimatedIn": null
+      }
+    ]
+  },
+  "productFindings": [
+    {
+      "id": "JST776-PROGRESS",
+      "status": "FAIL",
+      "scope": "Route presentation, not milestone completion",
+      "simulatorUtc": "2026-09-27T22:11:45.2700805+00:00",
+      "sequence": 10414,
+      "altitudeFeet": 8100.948891021104,
+      "distanceToDestinationNm": 20.1480873986374,
+      "crossTrackNm": 20.148087398637745,
+      "remainingNm": 0,
+      "statesAt100Percent": 955,
+      "secondsBeforeOn": 490.996788,
+      "secondsBeforeIn": 944.010155
+    },
+    {
+      "id": "JST776-ETA",
+      "status": "FAIL",
+      "scope": "Estimate freshness during taxi-in",
+      "count": 90,
+      "phaseCounts": {
+        "TaxiIn": 90
+      },
+      "first": {
+        "sequence": 11902,
+        "kind": "tracking_state",
+        "recordedAtUtc": "2026-09-28T15:34:51.095036+00:00",
+        "simulatorUtc": "2026-09-27T22:24:00.2831039+00:00",
+        "detail": {
+          "progress": 1,
+          "remainingNm": 0,
+          "routeReliable": true,
+          "crossTrackNm": 0.21399715193058003,
+          "estimatedIn": "2026-09-27T22:24:00+00:00",
+          "phase": "TaxiIn"
+        }
+      },
+      "last": {
+        "sequence": 12201,
+        "kind": "tracking_state",
+        "recordedAtUtc": "2026-09-28T15:37:20.0390258+00:00",
+        "simulatorUtc": "2026-09-27T22:26:29.2769165+00:00",
+        "detail": {
+          "progress": 1,
+          "remainingNm": 0,
+          "routeReliable": true,
+          "crossTrackNm": 0.4233010228161521,
+          "estimatedIn": "2026-09-27T22:26:00+00:00",
+          "phase": "TaxiIn"
+        }
+      },
+      "maximumSecondsInPast": 59.267745
+    },
+    {
+      "id": "JST776-CADENCE",
+      "status": "FINDING",
+      "scope": "One 3.025146 s sample gap; gesture correlation unavailable"
+    },
+    {
+      "id": "JST776-FUEL",
+      "status": "FINDING",
+      "scope": "Preflight ~11,000 lb down/up sensor/loading transient; not burn"
+    },
+    {
+      "id": "JST776-MAP-DRAG",
+      "status": "PHYSICAL FAIL",
+      "scope": "User reports >=0.5 s stalls; current-flight cause not isolated"
+    },
+    {
+      "id": "JST776-MAP-RETURN",
+      "status": "PHYSICAL UX FAIL",
+      "scope": "Fresh WebView/MapLibre each Operations return; code path confirmed"
+    }
+  ]
+}

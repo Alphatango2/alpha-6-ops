@@ -21,7 +21,7 @@ try {
     if($LASTEXITCODE -ne 0){throw 'Map mailbox checks failed.'}
     & $NodePath --test tests/map-v2/*.test.mjs *> (Join-Path $run 'browser-math.log')
     if($LASTEXITCODE -ne 0){throw 'Map browser/math checks failed.'}
-    if(!$ApplicationPath){$ApplicationPath=Join-Path $repo 'src/Alpha6Ops.Desktop/bin/Release/net10.0-windows10.0.17763.0/Alpha6OPS.exe'}
+    if(!$ApplicationPath){$ApplicationPath=Join-Path $repo 'src/Alpha6Ops.Desktop/bin/Release/net10.0-windows10.0.17763.0/Sierra4.exe'}
     $child=Start-Process -FilePath $ApplicationPath -ArgumentList @('--map-v2-checks',('"'+$run+'"')) -WorkingDirectory $repo -WindowStyle Hidden -PassThru
     if(!$child.WaitForExit(240000)){Stop-Process -Id $child.Id;throw "Map diagnostics timed out; partial evidence: $run"}
     $child.WaitForExit()

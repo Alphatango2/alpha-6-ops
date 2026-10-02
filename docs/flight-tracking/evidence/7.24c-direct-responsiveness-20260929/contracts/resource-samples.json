@@ -1,0 +1,56 @@
+[
+  {
+    "utc": "2026-09-29T20:59:00.2906295+00:00",
+    "stage": "before-window-hide",
+    "browserProcesses": 5,
+    "hostMiB": 279.9453125,
+    "browserMiB": 389.71484375,
+    "totalMiB": 669.66015625,
+    "cpuPercentMachine": 0
+  },
+  {
+    "utc": "2026-09-29T20:59:00.5275915+00:00",
+    "stage": "restored-window",
+    "browserProcesses": 5,
+    "hostMiB": 280.30859375,
+    "browserMiB": 388.984375,
+    "totalMiB": 669.29296875,
+    "cpuPercentMachine": 0.3714434379958324
+  },
+  {
+    "utc": "2026-09-29T20:59:02.5801842+00:00",
+    "stage": "input-renderer",
+    "browserProcesses": 5,
+    "hostMiB": 284.9609375,
+    "browserMiB": 407.0625,
+    "totalMiB": 692.0234375,
+    "cpuPercentMachine": 3.2282786604685554
+  },
+  {
+    "utc": "2026-09-29T20:59:13.0035641+00:00",
+    "stage": "contracts",
+    "browserProcesses": 5,
+    "hostMiB": 296.484375,
+    "browserMiB": 459.5859375,
+    "totalMiB": 756.0703125,
+    "cpuPercentMachine": 3.4188772610406213
+  },
+  {
+    "utc": "2026-09-29T20:59:13.0764192+00:00",
+    "stage": "before-final-disposal",
+    "browserProcesses": 5,
+    "hostMiB": 282.41015625,
+    "browserMiB": 459.58984375,
+    "totalMiB": 742,
+    "cpuPercentMachine": 3.4288971360024734
+  },
+  {
+    "utc": "2026-09-29T20:59:13.4040582+00:00",
+    "stage": "disposed",
+    "browserProcesses": 0,
+    "hostMiB": 283.11328125,
+    "browserMiB": 0,
+    "totalMiB": 283.11328125,
+    "cpuPercentMachine": 3.4254909524654114
+  }
+]

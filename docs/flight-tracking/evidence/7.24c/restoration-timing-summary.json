@@ -1,0 +1,18 @@
+{
+  "coldMs": 1774.7276,
+  "returns": 18,
+  "correctVisibleMs": {
+    "count": 18,
+    "min": 311.802,
+    "p50": 325.1867,
+    "p95": 330.9181,
+    "max": 331.9136
+  },
+  "diagnosticInclusiveMs": {
+    "count": 18,
+    "min": 326.553,
+    "p50": 339.0204,
+    "p95": 342.5877,
+    "max": 342.8389
+  }
+}

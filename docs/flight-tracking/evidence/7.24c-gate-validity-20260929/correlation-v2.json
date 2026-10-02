@@ -1,0 +1,4297 @@
+{
+  "idle3128": {
+    "startMs": 10418.6322,
+    "endMs": 13546.8256,
+    "kinds": {
+      "posted": 757,
+      "end": 757,
+      "native-message": 2258,
+      "begin": 757,
+      "layout-notification": 750,
+      "native-pending": 250,
+      "wpf-input": 6,
+      "priority": 1,
+      "heartbeat": 1
+    },
+    "renderCallbacks": 750,
+    "renderStartSpacingMs": {
+      "count": 749,
+      "median": 4.166699999999764,
+      "p95": 4.332400000001144,
+      "p99": 4.390999999999622,
+      "max": 4.458200000000943
+    },
+    "wpfInputs": [
+      {
+        "t": 10434.1569,
+        "kind": "wpf-input",
+        "id": 0,
+        "name": "PreviewInputReport",
+        "priority": 0,
+        "value": 0,
+        "thread": 2
+      },
+      {
+        "t": 10434.2327,
+        "kind": "wpf-input",
+        "id": 0,
+        "name": "InputReport",
+        "priority": 0,
+        "value": 0,
+        "thread": 2
+      },
+      {
+        "t": 13484.5585,
+        "kind": "wpf-input",
+        "id": 0,
+        "name": "PreviewInputReport",
+        "priority": 0,
+        "value": 0,
+        "thread": 2
+      },
+      {
+        "t": 13484.6743,
+        "kind": "wpf-input",
+        "id": 0,
+        "name": "InputReport",
+        "priority": 0,
+        "value": 0,
+        "thread": 2
+      },
+      {
+        "t": 13546.7163,
+        "kind": "wpf-input",
+        "id": 0,
+        "name": "PreviewInputReport",
+        "priority": 0,
+        "value": 0,
+        "thread": 2
+      },
+      {
+        "t": 13546.7877,
+        "kind": "wpf-input",
+        "id": 0,
+        "name": "InputReport",
+        "priority": 0,
+        "value": 0,
+        "thread": 2
+      }
+    ],
+    "physicalDragMessageAgeMs": {
+      "count": 0
+    },
+    "telemetryProcessingDelayMs": {
+      "count": 0
+    },
+    "telemetryProcessed": [],
+    "browserMessages": [],
+    "heartbeatIntervalMs": 3128.1934,
+    "priorAttribution": {
+      "startMs": 10418.6322,
+      "endMs": 13546.8256,
+      "intervalMs": 3128.1934,
+      "relativeLimitMs": 3228.1934,
+      "relativeExceeded": false,
+      "absoluteExceeded": true,
+      "timerPostMs": 10418.6337,
+      "promotedMs": 10451.4657,
+      "readyWaitMs": 3095.3584999999985,
+      "completedCallbackUnionMs": 21.498000000015963,
+      "longestCallbackMs": 0.1492999999991298,
+      "longestCallback": "System.Windows.Media.MediaContext.RenderMessageHandler",
+      "callbackNames": {
+        "system.Windows.Media.MediaContext.RenderMessageHandler": 750,
+        "system.Windows.Input.InputManager.HitTestInvalidatedAsyncCallback": 3,
+        "system.Windows.Input.InputManager.ContinueProcessingStagingArea": 3,
+        "system.Windows.Threading.DispatcherTimer+<>c.<Restart>b__21_0/timer-20ms": 1
+      },
+      "kindCounts": {
+        "posted": 757,
+        "end": 757,
+        "native-message": 2258,
+        "begin": 757,
+        "layout-notification": 750,
+        "native-pending": 250,
+        "wpf-input": 6,
+        "priority": 1,
+        "heartbeat": 1
+      },
+      "nativeMessageTypes": {
+        "0x60": 1500,
+        "dispatcherProcessQueue": 755,
+        "0x113": 3
+      },
+      "nativePendingMasks": {
+        "3": 249,
+        "2": 1
+      },
+      "activities": [],
+      "os": [
+        {
+          "t": 10336.3341,
+          "hostCpuMs": 10109.375,
+          "uiCpuMs": 2812.5,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 339306632,
+          "gen0": 11,
+          "gen1": 9,
+          "gen2": 6,
+          "gcIndex": 11,
+          "gcPausesMs": [
+            13.518,
+            0
+          ],
+          "heapBytes": 73974512,
+          "lohBytes": 41860648,
+          "browser": [],
+          "samplerMs": 1.8284
+        },
+        {
+          "t": 10587.6569,
+          "hostCpuMs": 10156.25,
+          "uiCpuMs": 2812.5,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 339626208,
+          "gen0": 11,
+          "gen1": 9,
+          "gen2": 6,
+          "gcIndex": 11,
+          "gcPausesMs": [
+            13.518,
+            0
+          ],
+          "heapBytes": 73974512,
+          "lohBytes": 41860648,
+          "browser": [],
+          "samplerMs": 1.7233
+        },
+        {
+          "t": 10839.7168,
+          "hostCpuMs": 10171.875,
+          "uiCpuMs": 2828.125,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 339929112,
+          "gen0": 11,
+          "gen1": 9,
+          "gen2": 6,
+          "gcIndex": 11,
+          "gcPausesMs": [
+            13.518,
+            0
+          ],
+          "heapBytes": 73974512,
+          "lohBytes": 41860648,
+          "browser": [],
+          "samplerMs": 2.2191
+        },
+        {
+          "t": 11091.9627,
+          "hostCpuMs": 10203.125,
+          "uiCpuMs": 2828.125,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 340224256,
+          "gen0": 11,
+          "gen1": 9,
+          "gen2": 6,
+          "gcIndex": 11,
+          "gcPausesMs": [
+            13.518,
+            0
+          ],
+          "heapBytes": 73974512,
+          "lohBytes": 41860648,
+          "browser": [],
+          "samplerMs": 2.4684
+        },
+        {
+          "t": 11343.4787,
+          "hostCpuMs": 10234.375,
+          "uiCpuMs": 2828.125,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 340535824,
+          "gen0": 11,
+          "gen1": 9,
+          "gen2": 6,
+          "gcIndex": 11,
+          "gcPausesMs": [
+            13.518,
+            0
+          ],
+          "heapBytes": 73974512,
+          "lohBytes": 41860648,
+          "browser": [],
+          "samplerMs": 1.9792
+        },
+        {
+          "t": 11594.2573,
+          "hostCpuMs": 10265.625,
+          "uiCpuMs": 2843.75,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 340838424,
+          "gen0": 11,
+          "gen1": 9,
+          "gen2": 6,
+          "gcIndex": 11,
+          "gcPausesMs": [
+            13.518,
+            0
+          ],
+          "heapBytes": 73974512,
+          "lohBytes": 41860648,
+          "browser": [],
+          "samplerMs": 1.7454
+        },
+        {
+          "t": 11846.4663,
+          "hostCpuMs": 10281.25,
+          "uiCpuMs": 2843.75,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 341133576,
+          "gen0": 11,
+          "gen1": 9,
+          "gen2": 6,
+          "gcIndex": 11,
+          "gcPausesMs": [
+            13.518,
+            0
+          ],
+          "heapBytes": 73974512,
+          "lohBytes": 41860648,
+          "browser": [],
+          "samplerMs": 1.9723
+        },
+        {
+          "t": 12098.4128,
+          "hostCpuMs": 10312.5,
+          "uiCpuMs": 2859.375,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 341436912,
+          "gen0": 11,
+          "gen1": 9,
+          "gen2": 6,
+          "gcIndex": 11,
+          "gcPausesMs": [
+            13.518,
+            0
+          ],
+          "heapBytes": 73974512,
+          "lohBytes": 41860648,
+          "browser": [],
+          "samplerMs": 2.9054
+        },
+        {
+          "t": 12351.0396,
+          "hostCpuMs": 10359.375,
+          "uiCpuMs": 2859.375,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 341739408,
+          "gen0": 11,
+          "gen1": 9,
+          "gen2": 6,
+          "gcIndex": 11,
+          "gcPausesMs": [
+            13.518,
+            0
+          ],
+          "heapBytes": 73974512,
+          "lohBytes": 41860648,
+          "browser": [],
+          "samplerMs": 2.5373
+        },
+        {
+          "t": 12603.7755,
+          "hostCpuMs": 10406.25,
+          "uiCpuMs": 2859.375,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 342034544,
+          "gen0": 11,
+          "gen1": 9,
+          "gen2": 6,
+          "gcIndex": 11,
+          "gcPausesMs": [
+            13.518,
+            0
+          ],
+          "heapBytes": 73974512,
+          "lohBytes": 41860648,
+          "browser": [],
+          "samplerMs": 2.279
+        },
+        {
+          "t": 12855.5097,
+          "hostCpuMs": 10437.5,
+          "uiCpuMs": 2859.375,
+          "uiState": "Running",
+          "waitReason": null,
+          "allocatedBytes": 342337832,
+          "gen0": 11,
+          "gen1": 9,
+          "gen2": 6,
+          "gcIndex": 11,
+          "gcPausesMs": [
+            13.518,
+            0
+          ],
+          "heapBytes": 73974512,
+          "lohBytes": 41860648,
+          "browser": [],
+          "samplerMs": 2.0131
+        },
+        {
+          "t": 13107.6461,
+          "hostCpuMs": 10484.375,
+          "uiCpuMs": 2859.375,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 342639968,
+          "gen0": 11,
+          "gen1": 9,
+          "gen2": 6,
+          "gcIndex": 11,
+          "gcPausesMs": [
+            13.518,
+            0
+          ],
+          "heapBytes": 73974512,
+          "lohBytes": 41860648,
+          "browser": [],
+          "samplerMs": 2.1473
+        },
+        {
+          "t": 13359.1151,
+          "hostCpuMs": 10515.625,
+          "uiCpuMs": 2859.375,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 342935120,
+          "gen0": 11,
+          "gen1": 9,
+          "gen2": 6,
+          "gcIndex": 11,
+          "gcPausesMs": [
+            13.518,
+            0
+          ],
+          "heapBytes": 73974512,
+          "lohBytes": 41860648,
+          "browser": [],
+          "samplerMs": 1.6042
+        },
+        {
+          "t": 13611.2604,
+          "hostCpuMs": 10515.625,
+          "uiCpuMs": 2859.375,
+          "uiState": "Wait",
+          "waitReason": "UserRequest",
+          "allocatedBytes": 343246680,
+          "gen0": 11,
+          "gen1": 9,
+          "gen2": 6,
+          "gcIndex": 11,
+          "gcPausesMs": [
+            13.518,
+            0
+          ],
+          "heapBytes": 73974512,
+          "lohBytes": 41860648,
+          "browser": [],
+          "samplerMs": 1.762
+        }
+      ],
+      "unclosedOperations": []
+    }
+  },
+  "normalContextSummary": {
+    "runs": 12,
+    "offers": 360,
+    "acknowledgments": 360,
+    "mapDispatchMaxMs": 0.2837,
+    "ackMaxMs": 936.3428,
+    "tracedLongHeartbeatWindows": 126,
+    "offersOverlappingLongWindows": {
+      "count": 113,
+      "median": 0.7139999999999418,
+      "p95": 10.135099999999511,
+      "p99": 937.2384,
+      "max": 938.3023
+    },
+    "offersOverlappingLongWindowsExcludingFirst": {
+      "count": 111,
+      "median": 0.7109000000000378,
+      "p95": 9.675000000001091,
+      "p99": 10.795399999999063,
+      "max": 10.880300000000716
+    },
+    "offersOverlappingOneSecondWindows": {
+      "count": 25,
+      "median": 0.800599999998667,
+      "p95": 9.986100000000079,
+      "p99": 10.674200000000383,
+      "max": 10.674200000000383
+    },
+    "allTracedOffersAfterFirst": {
+      "count": 174,
+      "median": 0.7203499999995984,
+      "p95": 9.675000000001091,
+      "p99": 10.880300000000716,
+      "max": 11.926499999999578
+    }
+  },
+  "normalContexts": [
+    {
+      "run": "run-00",
+      "metrics": {
+        "produced": 0,
+        "offered": 30,
+        "coalesced": 0,
+        "acknowledged": 30,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 4646,
+        "readyMs": 1555.7321,
+        "projectionQueue": null,
+        "projectionMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "serializationMs": {
+          "count": 30,
+          "mean": 0.3281166666666666,
+          "p50": 0.134,
+          "p95": 0.7568,
+          "p99": 2.1163,
+          "max": 3.1816
+        },
+        "dispatcherQueueMs": {
+          "count": 30,
+          "mean": 0.05361333333333333,
+          "p50": 0.0406,
+          "p95": 0.1345,
+          "p99": 0.1377,
+          "max": 0.1537
+        },
+        "postMs": {
+          "count": 30,
+          "mean": 0.14479999999999998,
+          "p50": 0.1404,
+          "p95": 0.1685,
+          "p99": 0.1728,
+          "max": 0.1854
+        },
+        "acknowledgmentMs": {
+          "count": 30,
+          "mean": 32.721,
+          "p50": 0.5597,
+          "p95": 9.6874,
+          "p99": 11.1472,
+          "max": 936.3428
+        },
+        "postToAcknowledgmentMs": {
+          "count": 30,
+          "mean": 32.667336666666664,
+          "p50": 0.4967,
+          "p95": 9.6545,
+          "p99": 11.1073,
+          "max": 936.1889
+        }
+      }
+    },
+    {
+      "run": "run-01",
+      "metrics": {
+        "produced": 0,
+        "offered": 30,
+        "coalesced": 0,
+        "acknowledged": 30,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 4646,
+        "readyMs": 745.1822,
+        "projectionQueue": null,
+        "projectionMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "serializationMs": {
+          "count": 30,
+          "mean": 0.26286333333333334,
+          "p50": 0.1226,
+          "p95": 0.1945,
+          "p99": 0.289,
+          "max": 3.9607
+        },
+        "dispatcherQueueMs": {
+          "count": 30,
+          "mean": 0.05985,
+          "p50": 0.0446,
+          "p95": 0.14,
+          "p99": 0.1876,
+          "max": 0.1914
+        },
+        "postMs": {
+          "count": 30,
+          "mean": 0.15378999999999995,
+          "p50": 0.1555,
+          "p95": 0.1718,
+          "p99": 0.1751,
+          "max": 0.199
+        },
+        "acknowledgmentMs": {
+          "count": 30,
+          "mean": 32.36100333333333,
+          "p50": 0.5654,
+          "p95": 9.5174,
+          "p99": 10.7184,
+          "max": 934.9866
+        },
+        "postToAcknowledgmentMs": {
+          "count": 30,
+          "mean": 32.30121,
+          "p50": 0.5126,
+          "p95": 9.326,
+          "p99": 10.6708,
+          "max": 934.7985
+        }
+      },
+      "pairs": [
+        {
+          "index": 0,
+          "offerMs": 13.2479,
+          "ackMs": 953.0366,
+          "elapsedMs": 939.7887000000001
+        },
+        {
+          "index": 1,
+          "offerMs": 1013.7339,
+          "ackMs": 1014.8828,
+          "elapsedMs": 1.148900000000026
+        },
+        {
+          "index": 2,
+          "offerMs": 2012.9844,
+          "ackMs": 2013.7945,
+          "elapsedMs": 0.8100999999999203
+        },
+        {
+          "index": 3,
+          "offerMs": 3013.0384,
+          "ackMs": 3013.8193,
+          "elapsedMs": 0.7809000000002015
+        },
+        {
+          "index": 4,
+          "offerMs": 4013.0485,
+          "ackMs": 4013.8291,
+          "elapsedMs": 0.7806000000000495
+        },
+        {
+          "index": 5,
+          "offerMs": 5013.0384,
+          "ackMs": 5013.7514,
+          "elapsedMs": 0.7129999999997381
+        },
+        {
+          "index": 6,
+          "offerMs": 6013.9467,
+          "ackMs": 6014.7103,
+          "elapsedMs": 0.7635999999993146
+        },
+        {
+          "index": 7,
+          "offerMs": 7013.9601,
+          "ackMs": 7014.5843,
+          "elapsedMs": 0.6242000000002008
+        },
+        {
+          "index": 8,
+          "offerMs": 8014.9677,
+          "ackMs": 8015.8795,
+          "elapsedMs": 0.9117999999998574
+        },
+        {
+          "index": 9,
+          "offerMs": 9015.9565,
+          "ackMs": 9016.6453,
+          "elapsedMs": 0.688799999999901
+        },
+        {
+          "index": 10,
+          "offerMs": 10016.9562,
+          "ackMs": 10017.6735,
+          "elapsedMs": 0.7173000000002503
+        },
+        {
+          "index": 11,
+          "offerMs": 11017.9759,
+          "ackMs": 11018.6999,
+          "elapsedMs": 0.7240000000001601
+        },
+        {
+          "index": 12,
+          "offerMs": 12018.4374,
+          "ackMs": 12019.2706,
+          "elapsedMs": 0.833199999999124
+        },
+        {
+          "index": 13,
+          "offerMs": 13017.9384,
+          "ackMs": 13018.701,
+          "elapsedMs": 0.7626000000000204
+        },
+        {
+          "index": 14,
+          "offerMs": 14017.9666,
+          "ackMs": 14028.8469,
+          "elapsedMs": 10.880300000000716
+        },
+        {
+          "index": 15,
+          "offerMs": 15018.0401,
+          "ackMs": 15018.7662,
+          "elapsedMs": 0.7260999999998603
+        },
+        {
+          "index": 16,
+          "offerMs": 16018.9618,
+          "ackMs": 16028.6368,
+          "elapsedMs": 9.675000000001091
+        },
+        {
+          "index": 17,
+          "offerMs": 17019.479,
+          "ackMs": 17020.0646,
+          "elapsedMs": 0.5856000000021595
+        },
+        {
+          "index": 18,
+          "offerMs": 18018.9585,
+          "ackMs": 18019.7214,
+          "elapsedMs": 0.7628999999978987
+        },
+        {
+          "index": 19,
+          "offerMs": 19018.9942,
+          "ackMs": 19019.7013,
+          "elapsedMs": 0.7070999999996275
+        },
+        {
+          "index": 20,
+          "offerMs": 20019.7433,
+          "ackMs": 20020.2753,
+          "elapsedMs": 0.5320000000028813
+        },
+        {
+          "index": 21,
+          "offerMs": 21020.9517,
+          "ackMs": 21021.5681,
+          "elapsedMs": 0.6163999999989755
+        },
+        {
+          "index": 22,
+          "offerMs": 22022.3696,
+          "ackMs": 22023.0482,
+          "elapsedMs": 0.6785999999992782
+        },
+        {
+          "index": 23,
+          "offerMs": 23022.0507,
+          "ackMs": 23022.6732,
+          "elapsedMs": 0.6225000000013097
+        },
+        {
+          "index": 24,
+          "offerMs": 24021.7049,
+          "ackMs": 24022.3793,
+          "elapsedMs": 0.6743999999998778
+        },
+        {
+          "index": 25,
+          "offerMs": 25021.9017,
+          "ackMs": 25022.5661,
+          "elapsedMs": 0.6644000000014785
+        },
+        {
+          "index": 26,
+          "offerMs": 26022.4095,
+          "ackMs": 26023.0176,
+          "elapsedMs": 0.6080999999976484
+        },
+        {
+          "index": 27,
+          "offerMs": 27022.9567,
+          "ackMs": 27023.7519,
+          "elapsedMs": 0.7952000000004773
+        },
+        {
+          "index": 28,
+          "offerMs": 28023.0129,
+          "ackMs": 28023.697,
+          "elapsedMs": 0.6840999999985797
+        },
+        {
+          "index": 29,
+          "offerMs": 29023.0229,
+          "ackMs": 29023.8401,
+          "elapsedMs": 0.8172000000013213
+        }
+      ],
+      "windows": [
+        {
+          "startMs": 2190.0117,
+          "endMs": 3013.4692,
+          "heartbeatMs": 823.4575,
+          "pairs": [
+            {
+              "index": 3,
+              "offerMs": 3013.0384,
+              "ackMs": 3013.8193,
+              "elapsedMs": 0.7809000000002015
+            }
+          ],
+          "ackCount": 0
+        },
+        {
+          "startMs": 4013.4596999999994,
+          "endMs": 4630.8726,
+          "heartbeatMs": 617.4129,
+          "pairs": [
+            {
+              "index": 4,
+              "offerMs": 4013.0485,
+              "ackMs": 4013.8291,
+              "elapsedMs": 0.7806000000000495
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 7014.286,
+          "endMs": 7738.9515,
+          "heartbeatMs": 724.6655,
+          "pairs": [
+            {
+              "index": 7,
+              "offerMs": 7013.9601,
+              "ackMs": 7014.5843,
+              "elapsedMs": 0.6242000000002008
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 8015.5789,
+          "endMs": 8989.0018,
+          "heartbeatMs": 973.4229,
+          "pairs": [
+            {
+              "index": 8,
+              "offerMs": 8014.9677,
+              "ackMs": 8015.8795,
+              "elapsedMs": 0.9117999999998574
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 9065.453300000001,
+          "endMs": 9879.9601,
+          "heartbeatMs": 814.5068,
+          "pairs": [],
+          "ackCount": 0
+        },
+        {
+          "startMs": 10409.106899999999,
+          "endMs": 11018.3782,
+          "heartbeatMs": 609.2713,
+          "pairs": [
+            {
+              "index": 11,
+              "offerMs": 11017.9759,
+              "ackMs": 11018.6999,
+              "elapsedMs": 0.7240000000001601
+            }
+          ],
+          "ackCount": 0
+        },
+        {
+          "startMs": 11502.932700000001,
+          "endMs": 12018.8641,
+          "heartbeatMs": 515.9314,
+          "pairs": [
+            {
+              "index": 12,
+              "offerMs": 12018.4374,
+              "ackMs": 12019.2706,
+              "elapsedMs": 0.833199999999124
+            }
+          ],
+          "ackCount": 0
+        },
+        {
+          "startMs": 13018.288199999999,
+          "endMs": 13630.7295,
+          "heartbeatMs": 612.4413,
+          "pairs": [
+            {
+              "index": 13,
+              "offerMs": 13017.9384,
+              "ackMs": 13018.701,
+              "elapsedMs": 0.7626000000000204
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 14018.3873,
+          "endMs": 14631.2727,
+          "heartbeatMs": 612.8854,
+          "pairs": [
+            {
+              "index": 14,
+              "offerMs": 14017.9666,
+              "ackMs": 14028.8469,
+              "elapsedMs": 10.880300000000716
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 15158.3149,
+          "endMs": 16193.8242,
+          "heartbeatMs": 1035.5093,
+          "pairs": [
+            {
+              "index": 16,
+              "offerMs": 16018.9618,
+              "ackMs": 16028.6368,
+              "elapsedMs": 9.675000000001091
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 16486.9564,
+          "endMs": 17019.8864,
+          "heartbeatMs": 532.93,
+          "pairs": [
+            {
+              "index": 17,
+              "offerMs": 17019.479,
+              "ackMs": 17020.0646,
+              "elapsedMs": 0.5856000000021595
+            }
+          ],
+          "ackCount": 0
+        },
+        {
+          "startMs": 17019.8868,
+          "endMs": 17802.0524,
+          "heartbeatMs": 782.1656,
+          "pairs": [
+            {
+              "index": 17,
+              "offerMs": 17019.479,
+              "ackMs": 17020.0646,
+              "elapsedMs": 0.5856000000021595
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 18345.7658,
+          "endMs": 19440.2701,
+          "heartbeatMs": 1094.5043,
+          "pairs": [
+            {
+              "index": 19,
+              "offerMs": 19018.9942,
+              "ackMs": 19019.7013,
+              "elapsedMs": 0.7070999999996275
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 19440.2704,
+          "endMs": 20020.0459,
+          "heartbeatMs": 579.7755,
+          "pairs": [
+            {
+              "index": 20,
+              "offerMs": 20019.7433,
+              "ackMs": 20020.2753,
+              "elapsedMs": 0.5320000000028813
+            }
+          ],
+          "ackCount": 0
+        },
+        {
+          "startMs": 20298.997,
+          "endMs": 21021.2945,
+          "heartbeatMs": 722.2975,
+          "pairs": [
+            {
+              "index": 21,
+              "offerMs": 21020.9517,
+              "ackMs": 21021.5681,
+              "elapsedMs": 0.6163999999989755
+            }
+          ],
+          "ackCount": 0
+        },
+        {
+          "startMs": 21021.295,
+          "endMs": 21756.5647,
+          "heartbeatMs": 735.2697,
+          "pairs": [
+            {
+              "index": 21,
+              "offerMs": 21020.9517,
+              "ackMs": 21021.5681,
+              "elapsedMs": 0.6163999999989755
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 22330.2407,
+          "endMs": 23022.4172,
+          "heartbeatMs": 692.1765,
+          "pairs": [
+            {
+              "index": 23,
+              "offerMs": 23022.0507,
+              "ackMs": 23022.6732,
+              "elapsedMs": 0.6225000000013097
+            }
+          ],
+          "ackCount": 0
+        },
+        {
+          "startMs": 23518.051,
+          "endMs": 24022.0781,
+          "heartbeatMs": 504.0271,
+          "pairs": [
+            {
+              "index": 24,
+              "offerMs": 24021.7049,
+              "ackMs": 24022.3793,
+              "elapsedMs": 0.6743999999998778
+            }
+          ],
+          "ackCount": 0
+        },
+        {
+          "startMs": 24022.078400000002,
+          "endMs": 24568.7207,
+          "heartbeatMs": 546.6423,
+          "pairs": [
+            {
+              "index": 24,
+              "offerMs": 24021.7049,
+              "ackMs": 24022.3793,
+              "elapsedMs": 0.6743999999998778
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 25022.2665,
+          "endMs": 26022.7704,
+          "heartbeatMs": 1000.5039,
+          "pairs": [
+            {
+              "index": 25,
+              "offerMs": 25021.9017,
+              "ackMs": 25022.5661,
+              "elapsedMs": 0.6644000000014785
+            },
+            {
+              "index": 26,
+              "offerMs": 26022.4095,
+              "ackMs": 26023.0176,
+              "elapsedMs": 0.6080999999976484
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 26022.7709,
+          "endMs": 26988.9597,
+          "heartbeatMs": 966.1888,
+          "pairs": [
+            {
+              "index": 26,
+              "offerMs": 26022.4095,
+              "ackMs": 26023.0176,
+              "elapsedMs": 0.6080999999976484
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 27486.990999999998,
+          "endMs": 28364.9764,
+          "heartbeatMs": 877.9854,
+          "pairs": [
+            {
+              "index": 28,
+              "offerMs": 28023.0129,
+              "ackMs": 28023.697,
+              "elapsedMs": 0.6840999999985797
+            }
+          ],
+          "ackCount": 1
+        }
+      ]
+    },
+    {
+      "run": "run-02",
+      "metrics": {
+        "produced": 0,
+        "offered": 30,
+        "coalesced": 0,
+        "acknowledged": 30,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 4647,
+        "readyMs": 769.3627,
+        "projectionQueue": null,
+        "projectionMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "serializationMs": {
+          "count": 30,
+          "mean": 0.25554666666666664,
+          "p50": 0.1252,
+          "p95": 0.2699,
+          "p99": 0.2806,
+          "max": 3.0933
+        },
+        "dispatcherQueueMs": {
+          "count": 30,
+          "mean": 0.07031,
+          "p50": 0.0467,
+          "p95": 0.1736,
+          "p99": 0.2213,
+          "max": 0.2716
+        },
+        "postMs": {
+          "count": 30,
+          "mean": 0.14765333333333336,
+          "p50": 0.1418,
+          "p95": 0.1713,
+          "p99": 0.1714,
+          "max": 0.232
+        },
+        "acknowledgmentMs": {
+          "count": 30,
+          "mean": 32.30796,
+          "p50": 0.5515,
+          "p95": 9.4021,
+          "p99": 10.015,
+          "max": 934.0433
+        },
+        "postToAcknowledgmentMs": {
+          "count": 30,
+          "mean": 32.23757666666667,
+          "p50": 0.4956,
+          "p95": 9.3625,
+          "p99": 9.9313,
+          "max": 933.8215
+        }
+      },
+      "pairs": [
+        {
+          "index": 0,
+          "offerMs": 3.4106,
+          "ackMs": 941.7129,
+          "elapsedMs": 938.3023
+        },
+        {
+          "index": 1,
+          "offerMs": 1003.2697,
+          "ackMs": 1004.3796,
+          "elapsedMs": 1.1099000000000387
+        },
+        {
+          "index": 2,
+          "offerMs": 2003.9525,
+          "ackMs": 2004.869,
+          "elapsedMs": 0.9164999999998145
+        },
+        {
+          "index": 3,
+          "offerMs": 3004.3434,
+          "ackMs": 3005.1245,
+          "elapsedMs": 0.7810999999996966
+        },
+        {
+          "index": 4,
+          "offerMs": 4003.6474,
+          "ackMs": 4005.0972,
+          "elapsedMs": 1.449800000000323
+        },
+        {
+          "index": 5,
+          "offerMs": 5004.2236,
+          "ackMs": 5005.0853,
+          "elapsedMs": 0.8616999999994732
+        },
+        {
+          "index": 6,
+          "offerMs": 6003.9256,
+          "ackMs": 6014.1792,
+          "elapsedMs": 10.253600000000006
+        },
+        {
+          "index": 7,
+          "offerMs": 7004.9474,
+          "ackMs": 7005.6863,
+          "elapsedMs": 0.7389000000002852
+        },
+        {
+          "index": 8,
+          "offerMs": 8005.9246,
+          "ackMs": 8006.6803,
+          "elapsedMs": 0.755699999999706
+        },
+        {
+          "index": 9,
+          "offerMs": 9005.5359,
+          "ackMs": 9006.1832,
+          "elapsedMs": 0.6472999999987223
+        },
+        {
+          "index": 10,
+          "offerMs": 10005.9556,
+          "ackMs": 10006.6757,
+          "elapsedMs": 0.7201000000004569
+        },
+        {
+          "index": 11,
+          "offerMs": 11005.9263,
+          "ackMs": 11006.5849,
+          "elapsedMs": 0.6586000000006607
+        },
+        {
+          "index": 12,
+          "offerMs": 12006.4525,
+          "ackMs": 12007.1216,
+          "elapsedMs": 0.6691000000009808
+        },
+        {
+          "index": 13,
+          "offerMs": 13005.9089,
+          "ackMs": 13006.6222,
+          "elapsedMs": 0.7132999999994354
+        },
+        {
+          "index": 14,
+          "offerMs": 14006.2991,
+          "ackMs": 14015.8283,
+          "elapsedMs": 9.529199999999037
+        },
+        {
+          "index": 15,
+          "offerMs": 15006.4756,
+          "ackMs": 15007.1,
+          "elapsedMs": 0.6244000000006054
+        },
+        {
+          "index": 16,
+          "offerMs": 16006.4831,
+          "ackMs": 16007.0358,
+          "elapsedMs": 0.5527000000001863
+        },
+        {
+          "index": 17,
+          "offerMs": 17007.4938,
+          "ackMs": 17008.3405,
+          "elapsedMs": 0.8466999999982363
+        },
+        {
+          "index": 18,
+          "offerMs": 18007.4999,
+          "ackMs": 18008.3781,
+          "elapsedMs": 0.8782000000028347
+        },
+        {
+          "index": 19,
+          "offerMs": 19007.9408,
+          "ackMs": 19008.7605,
+          "elapsedMs": 0.8197000000000116
+        },
+        {
+          "index": 20,
+          "offerMs": 20008.3544,
+          "ackMs": 20009.0611,
+          "elapsedMs": 0.7066999999988184
+        },
+        {
+          "index": 21,
+          "offerMs": 21007.7041,
+          "ackMs": 21008.471,
+          "elapsedMs": 0.7669000000023516
+        },
+        {
+          "index": 22,
+          "offerMs": 22008.4329,
+          "ackMs": 22009.1629,
+          "elapsedMs": 0.7299999999995634
+        },
+        {
+          "index": 23,
+          "offerMs": 23008.4209,
+          "ackMs": 23009.2255,
+          "elapsedMs": 0.804599999999482
+        },
+        {
+          "index": 24,
+          "offerMs": 24008.0801,
+          "ackMs": 24009.0787,
+          "elapsedMs": 0.9985999999989872
+        },
+        {
+          "index": 25,
+          "offerMs": 25009.3899,
+          "ackMs": 25009.9724,
+          "elapsedMs": 0.5825000000004366
+        },
+        {
+          "index": 26,
+          "offerMs": 26008.91,
+          "ackMs": 26009.4712,
+          "elapsedMs": 0.561200000000099
+        },
+        {
+          "index": 27,
+          "offerMs": 27009.5939,
+          "ackMs": 27010.2228,
+          "elapsedMs": 0.6288999999997031
+        },
+        {
+          "index": 28,
+          "offerMs": 28009.7608,
+          "ackMs": 28010.3223,
+          "elapsedMs": 0.5614999999997963
+        },
+        {
+          "index": 29,
+          "offerMs": 29009.7877,
+          "ackMs": 29010.3327,
+          "elapsedMs": 0.5449999999982538
+        }
+      ],
+      "windows": [
+        {
+          "startMs": 515.0452999999999,
+          "endMs": 1250.1499,
+          "heartbeatMs": 735.1046,
+          "pairs": [
+            {
+              "index": 0,
+              "offerMs": 3.4106,
+              "ackMs": 941.7129,
+              "elapsedMs": 938.3023
+            },
+            {
+              "index": 1,
+              "offerMs": 1003.2697,
+              "ackMs": 1004.3796,
+              "elapsedMs": 1.1099000000000387
+            }
+          ],
+          "ackCount": 2
+        },
+        {
+          "startMs": 1250.1505000000002,
+          "endMs": 1765.2234,
+          "heartbeatMs": 515.0729,
+          "pairs": [],
+          "ackCount": 0
+        },
+        {
+          "startMs": 2374.703,
+          "endMs": 3004.9543,
+          "heartbeatMs": 630.2513,
+          "pairs": [
+            {
+              "index": 3,
+              "offerMs": 3004.3434,
+              "ackMs": 3005.1245,
+              "elapsedMs": 0.7810999999996966
+            }
+          ],
+          "ackCount": 0
+        },
+        {
+          "startMs": 8006.4683,
+          "endMs": 8690.8387,
+          "heartbeatMs": 684.3704,
+          "pairs": [
+            {
+              "index": 8,
+              "offerMs": 8005.9246,
+              "ackMs": 8006.6803,
+              "elapsedMs": 0.755699999999706
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 9140.0311,
+          "endMs": 9750.0759,
+          "heartbeatMs": 610.0448,
+          "pairs": [],
+          "ackCount": 0
+        },
+        {
+          "startMs": 12006.9322,
+          "endMs": 13000.0877,
+          "heartbeatMs": 993.1555,
+          "pairs": [
+            {
+              "index": 12,
+              "offerMs": 12006.4525,
+              "ackMs": 12007.1216,
+              "elapsedMs": 0.6691000000009808
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 13187.0559,
+          "endMs": 14006.7627,
+          "heartbeatMs": 819.7068,
+          "pairs": [
+            {
+              "index": 14,
+              "offerMs": 14006.2991,
+              "ackMs": 14015.8283,
+              "elapsedMs": 9.529199999999037
+            }
+          ],
+          "ackCount": 0
+        },
+        {
+          "startMs": 15006.9103,
+          "endMs": 16006.9352,
+          "heartbeatMs": 1000.0249,
+          "pairs": [
+            {
+              "index": 15,
+              "offerMs": 15006.4756,
+              "ackMs": 15007.1,
+              "elapsedMs": 0.6244000000006054
+            },
+            {
+              "index": 16,
+              "offerMs": 16006.4831,
+              "ackMs": 16007.0358,
+              "elapsedMs": 0.5527000000001863
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 16436.980799999998,
+          "endMs": 17007.9881,
+          "heartbeatMs": 571.0073,
+          "pairs": [
+            {
+              "index": 17,
+              "offerMs": 17007.4938,
+              "ackMs": 17008.3405,
+              "elapsedMs": 0.8466999999982363
+            }
+          ],
+          "ackCount": 0
+        },
+        {
+          "startMs": 17007.9884,
+          "endMs": 18008.0313,
+          "heartbeatMs": 1000.0429,
+          "pairs": [
+            {
+              "index": 17,
+              "offerMs": 17007.4938,
+              "ackMs": 17008.3405,
+              "elapsedMs": 0.8466999999982363
+            },
+            {
+              "index": 18,
+              "offerMs": 18007.4999,
+              "ackMs": 18008.3781,
+              "elapsedMs": 0.8782000000028347
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 18515.0183,
+          "endMs": 19736.4932,
+          "heartbeatMs": 1221.4749,
+          "pairs": [
+            {
+              "index": 19,
+              "offerMs": 19007.9408,
+              "ackMs": 19008.7605,
+              "elapsedMs": 0.8197000000000116
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 20008.9034,
+          "endMs": 20736.4355,
+          "heartbeatMs": 727.5321,
+          "pairs": [
+            {
+              "index": 20,
+              "offerMs": 20008.3544,
+              "ackMs": 20009.0611,
+              "elapsedMs": 0.7066999999988184
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 20968.1358,
+          "endMs": 21799.4146,
+          "heartbeatMs": 831.2788,
+          "pairs": [
+            {
+              "index": 21,
+              "offerMs": 21007.7041,
+              "ackMs": 21008.471,
+              "elapsedMs": 0.7669000000023516
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 22000.151700000002,
+          "endMs": 23111.4156,
+          "heartbeatMs": 1111.2639,
+          "pairs": [
+            {
+              "index": 22,
+              "offerMs": 22008.4329,
+              "ackMs": 22009.1629,
+              "elapsedMs": 0.7299999999995634
+            },
+            {
+              "index": 23,
+              "offerMs": 23008.4209,
+              "ackMs": 23009.2255,
+              "elapsedMs": 0.804599999999482
+            }
+          ],
+          "ackCount": 2
+        },
+        {
+          "startMs": 23390.038399999998,
+          "endMs": 24236.1308,
+          "heartbeatMs": 846.0924,
+          "pairs": [
+            {
+              "index": 24,
+              "offerMs": 24008.0801,
+              "ackMs": 24009.0787,
+              "elapsedMs": 0.9985999999989872
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 24390.0644,
+          "endMs": 25009.9888,
+          "heartbeatMs": 619.9244,
+          "pairs": [
+            {
+              "index": 25,
+              "offerMs": 25009.3899,
+              "ackMs": 25009.9724,
+              "elapsedMs": 0.5825000000004366
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 25009.9891,
+          "endMs": 25987.2156,
+          "heartbeatMs": 977.2265,
+          "pairs": [],
+          "ackCount": 0
+        },
+        {
+          "startMs": 27010.0674,
+          "endMs": 27612.1668,
+          "heartbeatMs": 602.0994,
+          "pairs": [
+            {
+              "index": 27,
+              "offerMs": 27009.5939,
+              "ackMs": 27010.2228,
+              "elapsedMs": 0.6288999999997031
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 28010.1725,
+          "endMs": 28658.0691,
+          "heartbeatMs": 647.8966,
+          "pairs": [
+            {
+              "index": 28,
+              "offerMs": 28009.7608,
+              "ackMs": 28010.3223,
+              "elapsedMs": 0.5614999999997963
+            }
+          ],
+          "ackCount": 1
+        }
+      ]
+    },
+    {
+      "run": "run-03",
+      "metrics": {
+        "produced": 0,
+        "offered": 30,
+        "coalesced": 0,
+        "acknowledged": 30,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 4647,
+        "readyMs": 756.3217,
+        "projectionQueue": null,
+        "projectionMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "serializationMs": {
+          "count": 30,
+          "mean": 0.2567933333333333,
+          "p50": 0.1154,
+          "p95": 0.1738,
+          "p99": 0.1878,
+          "max": 4.1284
+        },
+        "dispatcherQueueMs": {
+          "count": 30,
+          "mean": 0.051713333333333326,
+          "p50": 0.04,
+          "p95": 0.1117,
+          "p99": 0.1344,
+          "max": 0.1682
+        },
+        "postMs": {
+          "count": 30,
+          "mean": 0.14385,
+          "p50": 0.1354,
+          "p95": 0.1678,
+          "p99": 0.1854,
+          "max": 0.2332
+        },
+        "acknowledgmentMs": {
+          "count": 30,
+          "mean": 32.630646666666664,
+          "p50": 0.523,
+          "p95": 9.4885,
+          "p99": 10.6897,
+          "max": 935.6056
+        },
+        "postToAcknowledgmentMs": {
+          "count": 30,
+          "mean": 32.57873333333333,
+          "p50": 0.4736,
+          "p95": 9.3766,
+          "p99": 10.6324,
+          "max": 935.437
+        }
+      }
+    },
+    {
+      "run": "run-04",
+      "metrics": {
+        "produced": 0,
+        "offered": 30,
+        "coalesced": 0,
+        "acknowledged": 30,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 4647,
+        "readyMs": 736.6013,
+        "projectionQueue": null,
+        "projectionMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "serializationMs": {
+          "count": 30,
+          "mean": 0.34379333333333334,
+          "p50": 0.1335,
+          "p95": 1.0577,
+          "p99": 2.2023,
+          "max": 3.2572
+        },
+        "dispatcherQueueMs": {
+          "count": 30,
+          "mean": 0.05502666666666666,
+          "p50": 0.0398,
+          "p95": 0.097,
+          "p99": 0.1072,
+          "max": 0.1785
+        },
+        "postMs": {
+          "count": 30,
+          "mean": 0.1461166666666667,
+          "p50": 0.1456,
+          "p95": 0.1699,
+          "p99": 0.1726,
+          "max": 0.1784
+        },
+        "acknowledgmentMs": {
+          "count": 30,
+          "mean": 32.63364333333333,
+          "p50": 0.6036,
+          "p95": 9.3341,
+          "p99": 9.8753,
+          "max": 934.6309
+        },
+        "postToAcknowledgmentMs": {
+          "count": 30,
+          "mean": 32.57857,
+          "p50": 0.5623,
+          "p95": 9.2908,
+          "p99": 9.8322,
+          "max": 934.4523
+        }
+      }
+    },
+    {
+      "run": "run-05",
+      "metrics": {
+        "produced": 0,
+        "offered": 30,
+        "coalesced": 0,
+        "acknowledged": 30,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 4646,
+        "readyMs": 749.2691,
+        "projectionQueue": null,
+        "projectionMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "serializationMs": {
+          "count": 30,
+          "mean": 0.24179666666666666,
+          "p50": 0.1316,
+          "p95": 0.1796,
+          "p99": 0.2106,
+          "max": 3.3364
+        },
+        "dispatcherQueueMs": {
+          "count": 30,
+          "mean": 0.06223,
+          "p50": 0.0383,
+          "p95": 0.1307,
+          "p99": 0.219,
+          "max": 0.2648
+        },
+        "postMs": {
+          "count": 30,
+          "mean": 0.14633000000000002,
+          "p50": 0.1434,
+          "p95": 0.1718,
+          "p99": 0.173,
+          "max": 0.2251
+        },
+        "acknowledgmentMs": {
+          "count": 30,
+          "mean": 32.551590000000004,
+          "p50": 0.5402,
+          "p95": 9.3792,
+          "p99": 9.7532,
+          "max": 933.3649
+        },
+        "postToAcknowledgmentMs": {
+          "count": 30,
+          "mean": 32.489423333333335,
+          "p50": 0.5008,
+          "p95": 9.3237,
+          "p99": 9.6225,
+          "max": 933.0998
+        }
+      },
+      "pairs": [
+        {
+          "index": 0,
+          "offerMs": 10.2947,
+          "ackMs": 947.9832,
+          "elapsedMs": 937.6885
+        },
+        {
+          "index": 1,
+          "offerMs": 1010.2419,
+          "ackMs": 1011.0839,
+          "elapsedMs": 0.8419999999999845
+        },
+        {
+          "index": 2,
+          "offerMs": 2009.8761,
+          "ackMs": 2019.8622,
+          "elapsedMs": 9.986100000000079
+        },
+        {
+          "index": 3,
+          "offerMs": 3009.385,
+          "ackMs": 3010.2834,
+          "elapsedMs": 0.8983999999995831
+        },
+        {
+          "index": 4,
+          "offerMs": 4009.3212,
+          "ackMs": 4010.2901,
+          "elapsedMs": 0.9689000000003034
+        },
+        {
+          "index": 5,
+          "offerMs": 5009.4707,
+          "ackMs": 5010.5674,
+          "elapsedMs": 1.0967000000000553
+        },
+        {
+          "index": 6,
+          "offerMs": 6009.7835,
+          "ackMs": 6010.7514,
+          "elapsedMs": 0.9679000000005544
+        },
+        {
+          "index": 7,
+          "offerMs": 7010.1313,
+          "ackMs": 7011.057,
+          "elapsedMs": 0.9256999999997788
+        },
+        {
+          "index": 8,
+          "offerMs": 8009.9631,
+          "ackMs": 8010.8366,
+          "elapsedMs": 0.8734999999996944
+        },
+        {
+          "index": 9,
+          "offerMs": 9010.135,
+          "ackMs": 9010.8819,
+          "elapsedMs": 0.746900000000096
+        },
+        {
+          "index": 10,
+          "offerMs": 10010.4642,
+          "ackMs": 10011.1233,
+          "elapsedMs": 0.6590999999989435
+        },
+        {
+          "index": 11,
+          "offerMs": 11011.6366,
+          "ackMs": 11012.2426,
+          "elapsedMs": 0.6059999999997672
+        },
+        {
+          "index": 12,
+          "offerMs": 12012.0082,
+          "ackMs": 12012.7191,
+          "elapsedMs": 0.7109000000000378
+        },
+        {
+          "index": 13,
+          "offerMs": 13012.0482,
+          "ackMs": 13012.6663,
+          "elapsedMs": 0.6181000000015047
+        },
+        {
+          "index": 14,
+          "offerMs": 14011.8986,
+          "ackMs": 14012.5232,
+          "elapsedMs": 0.6245999999991909
+        },
+        {
+          "index": 15,
+          "offerMs": 15011.6662,
+          "ackMs": 15012.2599,
+          "elapsedMs": 0.5936999999994441
+        },
+        {
+          "index": 16,
+          "offerMs": 16012.1828,
+          "ackMs": 16012.7688,
+          "elapsedMs": 0.5859999999993306
+        },
+        {
+          "index": 17,
+          "offerMs": 17012.8663,
+          "ackMs": 17013.6102,
+          "elapsedMs": 0.7438999999976659
+        },
+        {
+          "index": 18,
+          "offerMs": 18012.7062,
+          "ackMs": 18022.2386,
+          "elapsedMs": 9.532400000000052
+        },
+        {
+          "index": 19,
+          "offerMs": 19013.0825,
+          "ackMs": 19022.6011,
+          "elapsedMs": 9.518599999999424
+        },
+        {
+          "index": 20,
+          "offerMs": 20012.5466,
+          "ackMs": 20013.2333,
+          "elapsedMs": 0.6866999999983818
+        },
+        {
+          "index": 21,
+          "offerMs": 21013.6823,
+          "ackMs": 21014.2553,
+          "elapsedMs": 0.5730000000003201
+        },
+        {
+          "index": 22,
+          "offerMs": 22014.9577,
+          "ackMs": 22015.5373,
+          "elapsedMs": 0.5796000000009371
+        },
+        {
+          "index": 23,
+          "offerMs": 23014.449,
+          "ackMs": 23015.1565,
+          "elapsedMs": 0.7075000000004366
+        },
+        {
+          "index": 24,
+          "offerMs": 24016.094,
+          "ackMs": 24016.6434,
+          "elapsedMs": 0.5493999999998778
+        },
+        {
+          "index": 25,
+          "offerMs": 25015.4361,
+          "ackMs": 25016.0334,
+          "elapsedMs": 0.5973000000012689
+        },
+        {
+          "index": 26,
+          "offerMs": 26015.9474,
+          "ackMs": 26016.4775,
+          "elapsedMs": 0.5300999999999476
+        },
+        {
+          "index": 27,
+          "offerMs": 27015.6177,
+          "ackMs": 27016.2595,
+          "elapsedMs": 0.6418000000012398
+        },
+        {
+          "index": 28,
+          "offerMs": 28015.7912,
+          "ackMs": 28016.3547,
+          "elapsedMs": 0.5635000000002037
+        },
+        {
+          "index": 29,
+          "offerMs": 29016.7149,
+          "ackMs": 29017.3584,
+          "elapsedMs": 0.64350000000195
+        }
+      ],
+      "windows": [
+        {
+          "startMs": 1970.9446,
+          "endMs": 3189.9389,
+          "heartbeatMs": 1218.9943,
+          "pairs": [
+            {
+              "index": 2,
+              "offerMs": 2009.8761,
+              "ackMs": 2019.8622,
+              "elapsedMs": 9.986100000000079
+            },
+            {
+              "index": 3,
+              "offerMs": 3009.385,
+              "ackMs": 3010.2834,
+              "elapsedMs": 0.8983999999995831
+            }
+          ],
+          "ackCount": 2
+        },
+        {
+          "startMs": 3189.9406,
+          "endMs": 3987.9054,
+          "heartbeatMs": 797.9648,
+          "pairs": [],
+          "ackCount": 0
+        },
+        {
+          "startMs": 4048.6290999999997,
+          "endMs": 4613.5515,
+          "heartbeatMs": 564.9224,
+          "pairs": [],
+          "ackCount": 0
+        },
+        {
+          "startMs": 5705.1789,
+          "endMs": 6863.9115,
+          "heartbeatMs": 1158.7326,
+          "pairs": [
+            {
+              "index": 6,
+              "offerMs": 6009.7835,
+              "ackMs": 6010.7514,
+              "elapsedMs": 0.9679000000005544
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 7204.6653,
+          "endMs": 8238.4869,
+          "heartbeatMs": 1033.8216,
+          "pairs": [
+            {
+              "index": 8,
+              "offerMs": 8009.9631,
+              "ackMs": 8010.8366,
+              "elapsedMs": 0.8734999999996944
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 8486.6577,
+          "endMs": 9114.2423,
+          "heartbeatMs": 627.5846,
+          "pairs": [
+            {
+              "index": 9,
+              "offerMs": 9010.135,
+              "ackMs": 9010.8819,
+              "elapsedMs": 0.746900000000096
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 9407.535300000001,
+          "endMs": 10010.9459,
+          "heartbeatMs": 603.4106,
+          "pairs": [
+            {
+              "index": 10,
+              "offerMs": 10010.4642,
+              "ackMs": 10011.1233,
+              "elapsedMs": 0.6590999999989435
+            }
+          ],
+          "ackCount": 0
+        },
+        {
+          "startMs": 12012.4876,
+          "endMs": 12877.2445,
+          "heartbeatMs": 864.7569,
+          "pairs": [
+            {
+              "index": 12,
+              "offerMs": 12012.0082,
+              "ackMs": 12012.7191,
+              "elapsedMs": 0.7109000000000378
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 13012.5167,
+          "endMs": 13801.334,
+          "heartbeatMs": 788.8173,
+          "pairs": [
+            {
+              "index": 13,
+              "offerMs": 13012.0482,
+              "ackMs": 13012.6663,
+              "elapsedMs": 0.6181000000015047
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 14112.1952,
+          "endMs": 14613.2053,
+          "heartbeatMs": 501.0101,
+          "pairs": [],
+          "ackCount": 0
+        },
+        {
+          "startMs": 15079.6441,
+          "endMs": 16012.6142,
+          "heartbeatMs": 932.9701,
+          "pairs": [
+            {
+              "index": 16,
+              "offerMs": 16012.1828,
+              "ackMs": 16012.7688,
+              "elapsedMs": 0.5859999999993306
+            }
+          ],
+          "ackCount": 0
+        },
+        {
+          "startMs": 16266.993799999998,
+          "endMs": 17013.4452,
+          "heartbeatMs": 746.4514,
+          "pairs": [
+            {
+              "index": 17,
+              "offerMs": 17012.8663,
+              "ackMs": 17013.6102,
+              "elapsedMs": 0.7438999999976659
+            }
+          ],
+          "ackCount": 0
+        },
+        {
+          "startMs": 17013.445499999998,
+          "endMs": 17910.1432,
+          "heartbeatMs": 896.6977,
+          "pairs": [
+            {
+              "index": 17,
+              "offerMs": 17012.8663,
+              "ackMs": 17013.6102,
+              "elapsedMs": 0.7438999999976659
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 18438.9046,
+          "endMs": 19013.5907,
+          "heartbeatMs": 574.6861,
+          "pairs": [
+            {
+              "index": 19,
+              "offerMs": 19013.0825,
+              "ackMs": 19022.6011,
+              "elapsedMs": 9.518599999999424
+            }
+          ],
+          "ackCount": 0
+        },
+        {
+          "startMs": 19455.0788,
+          "endMs": 20013.049,
+          "heartbeatMs": 557.9702,
+          "pairs": [
+            {
+              "index": 20,
+              "offerMs": 20012.5466,
+              "ackMs": 20013.2333,
+              "elapsedMs": 0.6866999999983818
+            }
+          ],
+          "ackCount": 0
+        },
+        {
+          "startMs": 20501.332599999998,
+          "endMs": 21014.0883,
+          "heartbeatMs": 512.7557,
+          "pairs": [
+            {
+              "index": 21,
+              "offerMs": 21013.6823,
+              "ackMs": 21014.2553,
+              "elapsedMs": 0.5730000000003201
+            }
+          ],
+          "ackCount": 0
+        },
+        {
+          "startMs": 21014.0886,
+          "endMs": 21676.804,
+          "heartbeatMs": 662.7154,
+          "pairs": [
+            {
+              "index": 21,
+              "offerMs": 21013.6823,
+              "ackMs": 21014.2553,
+              "elapsedMs": 0.5730000000003201
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 22157.661,
+          "endMs": 23051.1968,
+          "heartbeatMs": 893.5358,
+          "pairs": [
+            {
+              "index": 23,
+              "offerMs": 23014.449,
+              "ackMs": 23015.1565,
+              "elapsedMs": 0.7075000000004366
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 23407.6324,
+          "endMs": 24016.5185,
+          "heartbeatMs": 608.8861,
+          "pairs": [
+            {
+              "index": 24,
+              "offerMs": 24016.094,
+              "ackMs": 24016.6434,
+              "elapsedMs": 0.5493999999998778
+            }
+          ],
+          "ackCount": 0
+        },
+        {
+          "startMs": 24329.889900000002,
+          "endMs": 25015.8865,
+          "heartbeatMs": 685.9966,
+          "pairs": [
+            {
+              "index": 25,
+              "offerMs": 25015.4361,
+              "ackMs": 25016.0334,
+              "elapsedMs": 0.5973000000012689
+            }
+          ],
+          "ackCount": 0
+        },
+        {
+          "startMs": 25015.8869,
+          "endMs": 25801.4424,
+          "heartbeatMs": 785.5555,
+          "pairs": [
+            {
+              "index": 25,
+              "offerMs": 25015.4361,
+              "ackMs": 25016.0334,
+              "elapsedMs": 0.5973000000012689
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 26188.944900000002,
+          "endMs": 27016.0966,
+          "heartbeatMs": 827.1517,
+          "pairs": [
+            {
+              "index": 27,
+              "offerMs": 27015.6177,
+              "ackMs": 27016.2595,
+              "elapsedMs": 0.6418000000012398
+            }
+          ],
+          "ackCount": 0
+        },
+        {
+          "startMs": 28016.2074,
+          "endMs": 28614.4025,
+          "heartbeatMs": 598.1951,
+          "pairs": [
+            {
+              "index": 28,
+              "offerMs": 28015.7912,
+              "ackMs": 28016.3547,
+              "elapsedMs": 0.5635000000002037
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 29017.194300000003,
+          "endMs": 29988.8692,
+          "heartbeatMs": 971.6749,
+          "pairs": [
+            {
+              "index": 29,
+              "offerMs": 29016.7149,
+              "ackMs": 29017.3584,
+              "elapsedMs": 0.64350000000195
+            }
+          ],
+          "ackCount": 1
+        }
+      ]
+    },
+    {
+      "run": "run-06",
+      "metrics": {
+        "produced": 0,
+        "offered": 30,
+        "coalesced": 0,
+        "acknowledged": 30,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 4647,
+        "readyMs": 748.7076,
+        "projectionQueue": null,
+        "projectionMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "serializationMs": {
+          "count": 30,
+          "mean": 0.2564633333333333,
+          "p50": 0.1269,
+          "p95": 0.2363,
+          "p99": 0.2406,
+          "max": 3.2484
+        },
+        "dispatcherQueueMs": {
+          "count": 30,
+          "mean": 0.05771666666666666,
+          "p50": 0.0462,
+          "p95": 0.0771,
+          "p99": 0.1757,
+          "max": 0.2837
+        },
+        "postMs": {
+          "count": 30,
+          "mean": 0.15265333333333328,
+          "p50": 0.1541,
+          "p95": 0.1717,
+          "p99": 0.1831,
+          "max": 0.2597
+        },
+        "acknowledgmentMs": {
+          "count": 30,
+          "mean": 32.584140000000005,
+          "p50": 0.5523,
+          "p95": 9.4733,
+          "p99": 10.4771,
+          "max": 932.9591
+        },
+        "postToAcknowledgmentMs": {
+          "count": 30,
+          "mean": 32.52639,
+          "p50": 0.4925,
+          "p95": 9.4237,
+          "p99": 10.4281,
+          "max": 932.7837
+        }
+      },
+      "pairs": [
+        {
+          "index": 0,
+          "offerMs": 3.8243,
+          "ackMs": 941.0627,
+          "elapsedMs": 937.2384
+        },
+        {
+          "index": 1,
+          "offerMs": 1004.4221,
+          "ackMs": 1014.0231,
+          "elapsedMs": 9.600999999999999
+        },
+        {
+          "index": 2,
+          "offerMs": 2004.8858,
+          "ackMs": 2005.7981,
+          "elapsedMs": 0.9122999999999593
+        },
+        {
+          "index": 3,
+          "offerMs": 3005.5194,
+          "ackMs": 3006.2422,
+          "elapsedMs": 0.7228000000000065
+        },
+        {
+          "index": 4,
+          "offerMs": 4005.0446,
+          "ackMs": 4005.8062,
+          "elapsedMs": 0.7615999999998166
+        },
+        {
+          "index": 5,
+          "offerMs": 5006.0449,
+          "ackMs": 5006.9019,
+          "elapsedMs": 0.8569999999999709
+        },
+        {
+          "index": 6,
+          "offerMs": 6006.2239,
+          "ackMs": 6007.0392,
+          "elapsedMs": 0.8153000000002066
+        },
+        {
+          "index": 7,
+          "offerMs": 7006.2862,
+          "ackMs": 7016.9604,
+          "elapsedMs": 10.674200000000383
+        },
+        {
+          "index": 8,
+          "offerMs": 8006.5874,
+          "ackMs": 8007.9506,
+          "elapsedMs": 1.3631999999997788
+        },
+        {
+          "index": 9,
+          "offerMs": 9006.4444,
+          "ackMs": 9007.4824,
+          "elapsedMs": 1.0380000000004657
+        },
+        {
+          "index": 10,
+          "offerMs": 10005.7802,
+          "ackMs": 10006.4464,
+          "elapsedMs": 0.6662000000014814
+        },
+        {
+          "index": 11,
+          "offerMs": 11006.3893,
+          "ackMs": 11007.1099,
+          "elapsedMs": 0.7205999999987398
+        },
+        {
+          "index": 12,
+          "offerMs": 12005.7713,
+          "ackMs": 12006.4456,
+          "elapsedMs": 0.674299999998766
+        },
+        {
+          "index": 13,
+          "offerMs": 13006.3718,
+          "ackMs": 13007.0788,
+          "elapsedMs": 0.7069999999985157
+        },
+        {
+          "index": 14,
+          "offerMs": 14006.4823,
+          "ackMs": 14007.4679,
+          "elapsedMs": 0.9855999999999767
+        },
+        {
+          "index": 15,
+          "offerMs": 15006.1407,
+          "ackMs": 15006.8296,
+          "elapsedMs": 0.6888999999991938
+        },
+        {
+          "index": 16,
+          "offerMs": 16006.3267,
+          "ackMs": 16006.9951,
+          "elapsedMs": 0.6684000000004744
+        },
+        {
+          "index": 17,
+          "offerMs": 17007.3181,
+          "ackMs": 17016.9353,
+          "elapsedMs": 9.617200000000594
+        },
+        {
+          "index": 18,
+          "offerMs": 18007.9919,
+          "ackMs": 18008.5468,
+          "elapsedMs": 0.5548999999991793
+        },
+        {
+          "index": 19,
+          "offerMs": 19009.1841,
+          "ackMs": 19009.9387,
+          "elapsedMs": 0.7546000000002095
+        },
+        {
+          "index": 20,
+          "offerMs": 20008.8415,
+          "ackMs": 20009.522,
+          "elapsedMs": 0.6805000000022119
+        },
+        {
+          "index": 21,
+          "offerMs": 21009.8586,
+          "ackMs": 21010.546,
+          "elapsedMs": 0.6873999999988882
+        },
+        {
+          "index": 22,
+          "offerMs": 22009.8662,
+          "ackMs": 22010.5388,
+          "elapsedMs": 0.6725999999980559
+        },
+        {
+          "index": 23,
+          "offerMs": 23011.3952,
+          "ackMs": 23012.3893,
+          "elapsedMs": 0.9940999999998894
+        },
+        {
+          "index": 24,
+          "offerMs": 24011.9214,
+          "ackMs": 24012.5104,
+          "elapsedMs": 0.5889999999999418
+        },
+        {
+          "index": 25,
+          "offerMs": 25013.0718,
+          "ackMs": 25013.6414,
+          "elapsedMs": 0.5695999999988999
+        },
+        {
+          "index": 26,
+          "offerMs": 26013.4077,
+          "ackMs": 26013.9676,
+          "elapsedMs": 0.5599000000001979
+        },
+        {
+          "index": 27,
+          "offerMs": 27013.0752,
+          "ackMs": 27013.6262,
+          "elapsedMs": 0.5509999999994761
+        },
+        {
+          "index": 28,
+          "offerMs": 28013.9437,
+          "ackMs": 28014.6314,
+          "elapsedMs": 0.6876999999985856
+        },
+        {
+          "index": 29,
+          "offerMs": 29014.4445,
+          "ackMs": 29015.0926,
+          "elapsedMs": 0.6480999999985215
+        }
+      ],
+      "windows": [
+        {
+          "startMs": 0.5097000000000662,
+          "endMs": 941.4456,
+          "heartbeatMs": 940.9359,
+          "pairs": [
+            {
+              "index": 0,
+              "offerMs": 3.8243,
+              "ackMs": 941.0627,
+              "elapsedMs": 937.2384
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 1004.9035,
+          "endMs": 1581.8369,
+          "heartbeatMs": 576.9334,
+          "pairs": [
+            {
+              "index": 1,
+              "offerMs": 1004.4221,
+              "ackMs": 1014.0231,
+              "elapsedMs": 9.600999999999999
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 2005.5468999999998,
+          "endMs": 2535.5638,
+          "heartbeatMs": 530.0169,
+          "pairs": [
+            {
+              "index": 2,
+              "offerMs": 2004.8858,
+              "ackMs": 2005.7981,
+              "elapsedMs": 0.9122999999999593
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 3157.7181,
+          "endMs": 4005.6033,
+          "heartbeatMs": 847.8852,
+          "pairs": [
+            {
+              "index": 4,
+              "offerMs": 4005.0446,
+              "ackMs": 4005.8062,
+              "elapsedMs": 0.7615999999998166
+            }
+          ],
+          "ackCount": 0
+        },
+        {
+          "startMs": 4313.0946,
+          "endMs": 5006.7074,
+          "heartbeatMs": 693.6128,
+          "pairs": [
+            {
+              "index": 5,
+              "offerMs": 5006.0449,
+              "ackMs": 5006.9019,
+              "elapsedMs": 0.8569999999999709
+            }
+          ],
+          "ackCount": 0
+        },
+        {
+          "startMs": 5006.7078,
+          "endMs": 5535.7251,
+          "heartbeatMs": 529.0173,
+          "pairs": [
+            {
+              "index": 5,
+              "offerMs": 5006.0449,
+              "ackMs": 5006.9019,
+              "elapsedMs": 0.8569999999999709
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 6006.774399999999,
+          "endMs": 6581.8942,
+          "heartbeatMs": 575.1198,
+          "pairs": [
+            {
+              "index": 6,
+              "offerMs": 6006.2239,
+              "ackMs": 6007.0392,
+              "elapsedMs": 0.8153000000002066
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 7006.8655,
+          "endMs": 8082.1108,
+          "heartbeatMs": 1075.2453,
+          "pairs": [
+            {
+              "index": 7,
+              "offerMs": 7006.2862,
+              "ackMs": 7016.9604,
+              "elapsedMs": 10.674200000000383
+            },
+            {
+              "index": 8,
+              "offerMs": 8006.5874,
+              "ackMs": 8007.9506,
+              "elapsedMs": 1.3631999999997788
+            }
+          ],
+          "ackCount": 2
+        },
+        {
+          "startMs": 8234.9553,
+          "endMs": 8956.8014,
+          "heartbeatMs": 721.8461,
+          "pairs": [],
+          "ackCount": 0
+        },
+        {
+          "startMs": 9281.7546,
+          "endMs": 10006.3058,
+          "heartbeatMs": 724.5512,
+          "pairs": [
+            {
+              "index": 10,
+              "offerMs": 10005.7802,
+              "ackMs": 10006.4464,
+              "elapsedMs": 0.6662000000014814
+            }
+          ],
+          "ackCount": 0
+        },
+        {
+          "startMs": 11006.918099999999,
+          "endMs": 12006.2169,
+          "heartbeatMs": 999.2988,
+          "pairs": [
+            {
+              "index": 11,
+              "offerMs": 11006.3893,
+              "ackMs": 11007.1099,
+              "elapsedMs": 0.7205999999987398
+            },
+            {
+              "index": 12,
+              "offerMs": 12005.7713,
+              "ackMs": 12006.4456,
+              "elapsedMs": 0.674299999998766
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 12391.0311,
+          "endMs": 13006.9219,
+          "heartbeatMs": 615.8908,
+          "pairs": [
+            {
+              "index": 13,
+              "offerMs": 13006.3718,
+              "ackMs": 13007.0788,
+              "elapsedMs": 0.7069999999985157
+            }
+          ],
+          "ackCount": 0
+        },
+        {
+          "startMs": 13203.5342,
+          "endMs": 13782.6079,
+          "heartbeatMs": 579.0737,
+          "pairs": [],
+          "ackCount": 0
+        },
+        {
+          "startMs": 15006.7222,
+          "endMs": 15519.345,
+          "heartbeatMs": 512.6228,
+          "pairs": [
+            {
+              "index": 15,
+              "offerMs": 15006.1407,
+              "ackMs": 15006.8296,
+              "elapsedMs": 0.6888999999991938
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 15766.081300000002,
+          "endMs": 16831.022,
+          "heartbeatMs": 1064.9407,
+          "pairs": [
+            {
+              "index": 16,
+              "offerMs": 16006.3267,
+              "ackMs": 16006.9951,
+              "elapsedMs": 0.6684000000004744
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 18008.4135,
+          "endMs": 18766.156,
+          "heartbeatMs": 757.7425,
+          "pairs": [
+            {
+              "index": 18,
+              "offerMs": 18007.9919,
+              "ackMs": 18008.5468,
+              "elapsedMs": 0.5548999999991793
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 19376.878500000003,
+          "endMs": 20009.3663,
+          "heartbeatMs": 632.4878,
+          "pairs": [
+            {
+              "index": 20,
+              "offerMs": 20008.8415,
+              "ackMs": 20009.522,
+              "elapsedMs": 0.6805000000022119
+            }
+          ],
+          "ackCount": 0
+        },
+        {
+          "startMs": 21000.584000000003,
+          "endMs": 21769.3571,
+          "heartbeatMs": 768.7731,
+          "pairs": [
+            {
+              "index": 21,
+              "offerMs": 21009.8586,
+              "ackMs": 21010.546,
+              "elapsedMs": 0.6873999999988882
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 22125.6191,
+          "endMs": 23018.648,
+          "heartbeatMs": 893.0289,
+          "pairs": [
+            {
+              "index": 23,
+              "offerMs": 23011.3952,
+              "ackMs": 23012.3893,
+              "elapsedMs": 0.9940999999998894
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 25013.444300000003,
+          "endMs": 25830.9697,
+          "heartbeatMs": 817.5254,
+          "pairs": [
+            {
+              "index": 25,
+              "offerMs": 25013.0718,
+              "ackMs": 25013.6414,
+              "elapsedMs": 0.5695999999988999
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 26013.7709,
+          "endMs": 27013.4994,
+          "heartbeatMs": 999.7285,
+          "pairs": [
+            {
+              "index": 26,
+              "offerMs": 26013.4077,
+              "ackMs": 26013.9676,
+              "elapsedMs": 0.5599000000001979
+            },
+            {
+              "index": 27,
+              "offerMs": 27013.0752,
+              "ackMs": 27013.6262,
+              "elapsedMs": 0.5509999999994761
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 27203.6473,
+          "endMs": 28014.473,
+          "heartbeatMs": 810.8257,
+          "pairs": [
+            {
+              "index": 28,
+              "offerMs": 28013.9437,
+              "ackMs": 28014.6314,
+              "elapsedMs": 0.6876999999985856
+            }
+          ],
+          "ackCount": 0
+        },
+        {
+          "startMs": 29014.936400000002,
+          "endMs": 29518.8142,
+          "heartbeatMs": 503.8778,
+          "pairs": [
+            {
+              "index": 29,
+              "offerMs": 29014.4445,
+              "ackMs": 29015.0926,
+              "elapsedMs": 0.6480999999985215
+            }
+          ],
+          "ackCount": 1
+        }
+      ]
+    },
+    {
+      "run": "run-07",
+      "metrics": {
+        "produced": 0,
+        "offered": 30,
+        "coalesced": 0,
+        "acknowledged": 30,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 4646,
+        "readyMs": 688.0898,
+        "projectionQueue": null,
+        "projectionMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "serializationMs": {
+          "count": 30,
+          "mean": 0.24404666666666666,
+          "p50": 0.1159,
+          "p95": 0.1993,
+          "p99": 0.2061,
+          "max": 3.6167
+        },
+        "dispatcherQueueMs": {
+          "count": 30,
+          "mean": 0.04392666666666667,
+          "p50": 0.0379,
+          "p95": 0.0569,
+          "p99": 0.0599,
+          "max": 0.1548
+        },
+        "postMs": {
+          "count": 30,
+          "mean": 0.14879666666666666,
+          "p50": 0.1377,
+          "p95": 0.2013,
+          "p99": 0.222,
+          "max": 0.2304
+        },
+        "acknowledgmentMs": {
+          "count": 30,
+          "mean": 32.607663333333335,
+          "p50": 0.5508,
+          "p95": 9.7921,
+          "p99": 9.9995,
+          "max": 932.3404
+        },
+        "postToAcknowledgmentMs": {
+          "count": 30,
+          "mean": 32.563586666666666,
+          "p50": 0.5081,
+          "p95": 9.7576,
+          "p99": 9.9576,
+          "max": 932.1857
+        }
+      }
+    },
+    {
+      "run": "run-08",
+      "metrics": {
+        "produced": 0,
+        "offered": 30,
+        "coalesced": 0,
+        "acknowledged": 30,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 4646,
+        "readyMs": 798.2052,
+        "projectionQueue": null,
+        "projectionMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "serializationMs": {
+          "count": 30,
+          "mean": 0.3377733333333333,
+          "p50": 0.1261,
+          "p95": 1.0999,
+          "p99": 1.9758,
+          "max": 3.0774
+        },
+        "dispatcherQueueMs": {
+          "count": 30,
+          "mean": 0.06131999999999999,
+          "p50": 0.0402,
+          "p95": 0.1557,
+          "p99": 0.1638,
+          "max": 0.1645
+        },
+        "postMs": {
+          "count": 30,
+          "mean": 0.15325666666666665,
+          "p50": 0.1428,
+          "p95": 0.1881,
+          "p99": 0.26,
+          "max": 0.2968
+        },
+        "acknowledgmentMs": {
+          "count": 30,
+          "mean": 32.357256666666665,
+          "p50": 0.6004,
+          "p95": 8.8949,
+          "p99": 9.8793,
+          "max": 935.4725
+        },
+        "postToAcknowledgmentMs": {
+          "count": 30,
+          "mean": 32.29585333333333,
+          "p50": 0.4971,
+          "p95": 8.8298,
+          "p99": 9.8394,
+          "max": 935.3165
+        }
+      }
+    },
+    {
+      "run": "run-09",
+      "metrics": {
+        "produced": 0,
+        "offered": 30,
+        "coalesced": 0,
+        "acknowledged": 30,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 4648,
+        "readyMs": 707.6311,
+        "projectionQueue": null,
+        "projectionMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "serializationMs": {
+          "count": 30,
+          "mean": 0.24026,
+          "p50": 0.1292,
+          "p95": 0.1803,
+          "p99": 0.1849,
+          "max": 3.3533
+        },
+        "dispatcherQueueMs": {
+          "count": 30,
+          "mean": 0.048089999999999994,
+          "p50": 0.042,
+          "p95": 0.0727,
+          "p99": 0.0866,
+          "max": 0.2067
+        },
+        "postMs": {
+          "count": 30,
+          "mean": 0.15427333333333335,
+          "p50": 0.1412,
+          "p95": 0.1716,
+          "p99": 0.2034,
+          "max": 0.3213
+        },
+        "acknowledgmentMs": {
+          "count": 30,
+          "mean": 32.718536666666665,
+          "p50": 0.5474,
+          "p95": 10.6414,
+          "p99": 11.7829,
+          "max": 933.6701
+        },
+        "postToAcknowledgmentMs": {
+          "count": 30,
+          "mean": 32.67040333333333,
+          "p50": 0.4933,
+          "p95": 10.5957,
+          "p99": 11.7387,
+          "max": 933.4633
+        }
+      },
+      "pairs": [
+        {
+          "index": 0,
+          "offerMs": 10.2283,
+          "ackMs": 948.1209,
+          "elapsedMs": 937.8926
+        },
+        {
+          "index": 1,
+          "offerMs": 1010.5742,
+          "ackMs": 1011.5705,
+          "elapsedMs": 0.9963000000000193
+        },
+        {
+          "index": 2,
+          "offerMs": 2010.2226,
+          "ackMs": 2011.1984,
+          "elapsedMs": 0.9757999999999356
+        },
+        {
+          "index": 3,
+          "offerMs": 3010.906,
+          "ackMs": 3011.6342,
+          "elapsedMs": 0.7282000000000153
+        },
+        {
+          "index": 4,
+          "offerMs": 4010.9883,
+          "ackMs": 4011.6695,
+          "elapsedMs": 0.6811999999999898
+        },
+        {
+          "index": 5,
+          "offerMs": 5011.2182,
+          "ackMs": 5011.9651,
+          "elapsedMs": 0.746900000000096
+        },
+        {
+          "index": 6,
+          "offerMs": 6012.1292,
+          "ackMs": 6012.7658,
+          "elapsedMs": 0.6365999999998166
+        },
+        {
+          "index": 7,
+          "offerMs": 7012.1915,
+          "ackMs": 7012.9729,
+          "elapsedMs": 0.7813999999998487
+        },
+        {
+          "index": 8,
+          "offerMs": 8012.1339,
+          "ackMs": 8012.7988,
+          "elapsedMs": 0.6648999999997613
+        },
+        {
+          "index": 9,
+          "offerMs": 9012.4123,
+          "ackMs": 9024.3388,
+          "elapsedMs": 11.926499999999578
+        },
+        {
+          "index": 10,
+          "offerMs": 10012.4207,
+          "ackMs": 10013.1222,
+          "elapsedMs": 0.7014999999992142
+        },
+        {
+          "index": 11,
+          "offerMs": 11012.4678,
+          "ackMs": 11013.1467,
+          "elapsedMs": 0.6788999999989755
+        },
+        {
+          "index": 12,
+          "offerMs": 12013.1332,
+          "ackMs": 12023.9286,
+          "elapsedMs": 10.795399999999063
+        },
+        {
+          "index": 13,
+          "offerMs": 13013.124,
+          "ackMs": 13013.788,
+          "elapsedMs": 0.6640000000006694
+        },
+        {
+          "index": 14,
+          "offerMs": 14013.142,
+          "ackMs": 14014.8062,
+          "elapsedMs": 1.664200000001074
+        },
+        {
+          "index": 15,
+          "offerMs": 15014.1531,
+          "ackMs": 15014.9508,
+          "elapsedMs": 0.7977000000009866
+        },
+        {
+          "index": 16,
+          "offerMs": 16015.1301,
+          "ackMs": 16015.7005,
+          "elapsedMs": 0.570400000000518
+        },
+        {
+          "index": 17,
+          "offerMs": 17016.1336,
+          "ackMs": 17016.7679,
+          "elapsedMs": 0.6342999999978929
+        },
+        {
+          "index": 18,
+          "offerMs": 18016.1295,
+          "ackMs": 18016.7426,
+          "elapsedMs": 0.613100000002305
+        },
+        {
+          "index": 19,
+          "offerMs": 19016.1389,
+          "ackMs": 19016.8005,
+          "elapsedMs": 0.6615999999994528
+        },
+        {
+          "index": 20,
+          "offerMs": 20016.1377,
+          "ackMs": 20016.7717,
+          "elapsedMs": 0.6340000000018335
+        },
+        {
+          "index": 21,
+          "offerMs": 21016.1448,
+          "ackMs": 21016.9015,
+          "elapsedMs": 0.7567000000017288
+        },
+        {
+          "index": 22,
+          "offerMs": 22016.6453,
+          "ackMs": 22017.2685,
+          "elapsedMs": 0.6231999999981781
+        },
+        {
+          "index": 23,
+          "offerMs": 23017.1601,
+          "ackMs": 23017.9128,
+          "elapsedMs": 0.7526999999972759
+        },
+        {
+          "index": 24,
+          "offerMs": 24017.1464,
+          "ackMs": 24017.9067,
+          "elapsedMs": 0.7602999999980966
+        },
+        {
+          "index": 25,
+          "offerMs": 25016.5101,
+          "ackMs": 25026.6452,
+          "elapsedMs": 10.135099999999511
+        },
+        {
+          "index": 26,
+          "offerMs": 26017.1393,
+          "ackMs": 26017.6902,
+          "elapsedMs": 0.5509000000020023
+        },
+        {
+          "index": 27,
+          "offerMs": 27016.5408,
+          "ackMs": 27017.1,
+          "elapsedMs": 0.5591999999996915
+        },
+        {
+          "index": 28,
+          "offerMs": 28016.7006,
+          "ackMs": 28017.4376,
+          "elapsedMs": 0.7370000000009895
+        },
+        {
+          "index": 29,
+          "offerMs": 29016.8726,
+          "ackMs": 29017.5637,
+          "elapsedMs": 0.6911000000000058
+        }
+      ],
+      "windows": [
+        {
+          "startMs": 2011.0816,
+          "endMs": 2563.8467,
+          "heartbeatMs": 552.7651,
+          "pairs": [
+            {
+              "index": 2,
+              "offerMs": 2010.2226,
+              "ackMs": 2011.1984,
+              "elapsedMs": 0.9757999999999356
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 4011.5127,
+          "endMs": 4749.117,
+          "heartbeatMs": 737.6043,
+          "pairs": [
+            {
+              "index": 4,
+              "offerMs": 4010.9883,
+              "ackMs": 4011.6695,
+              "elapsedMs": 0.6811999999999898
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 6170.032899999999,
+          "endMs": 7012.7633,
+          "heartbeatMs": 842.7304,
+          "pairs": [
+            {
+              "index": 7,
+              "offerMs": 7012.1915,
+              "ackMs": 7012.9729,
+              "elapsedMs": 0.7813999999998487
+            }
+          ],
+          "ackCount": 0
+        },
+        {
+          "startMs": 7405.264800000001,
+          "endMs": 8012.5991,
+          "heartbeatMs": 607.3343,
+          "pairs": [
+            {
+              "index": 8,
+              "offerMs": 8012.1339,
+              "ackMs": 8012.7988,
+              "elapsedMs": 0.6648999999997613
+            }
+          ],
+          "ackCount": 0
+        },
+        {
+          "startMs": 8012.600399999999,
+          "endMs": 8688.3059,
+          "heartbeatMs": 675.7055,
+          "pairs": [
+            {
+              "index": 8,
+              "offerMs": 8012.1339,
+              "ackMs": 8012.7988,
+              "elapsedMs": 0.6648999999997613
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 9280.0414,
+          "endMs": 10012.9662,
+          "heartbeatMs": 732.9248,
+          "pairs": [
+            {
+              "index": 10,
+              "offerMs": 10012.4207,
+              "ackMs": 10013.1222,
+              "elapsedMs": 0.7014999999992142
+            }
+          ],
+          "ackCount": 0
+        },
+        {
+          "startMs": 10012.9665,
+          "endMs": 11013.0269,
+          "heartbeatMs": 1000.0604,
+          "pairs": [
+            {
+              "index": 10,
+              "offerMs": 10012.4207,
+              "ackMs": 10013.1222,
+              "elapsedMs": 0.7014999999992142
+            },
+            {
+              "index": 11,
+              "offerMs": 11012.4678,
+              "ackMs": 11013.1467,
+              "elapsedMs": 0.6788999999989755
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 11248.2532,
+          "endMs": 12013.7091,
+          "heartbeatMs": 765.4559,
+          "pairs": [
+            {
+              "index": 12,
+              "offerMs": 12013.1332,
+              "ackMs": 12023.9286,
+              "elapsedMs": 10.795399999999063
+            }
+          ],
+          "ackCount": 0
+        },
+        {
+          "startMs": 13248.2235,
+          "endMs": 14020.7826,
+          "heartbeatMs": 772.5591,
+          "pairs": [
+            {
+              "index": 14,
+              "offerMs": 14013.142,
+              "ackMs": 14014.8062,
+              "elapsedMs": 1.664200000001074
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 14020.783,
+          "endMs": 14767.7861,
+          "heartbeatMs": 747.0031,
+          "pairs": [],
+          "ackCount": 0
+        },
+        {
+          "startMs": 15280.2962,
+          "endMs": 16015.6072,
+          "heartbeatMs": 735.311,
+          "pairs": [
+            {
+              "index": 16,
+              "offerMs": 16015.1301,
+              "ackMs": 16015.7005,
+              "elapsedMs": 0.570400000000518
+            }
+          ],
+          "ackCount": 0
+        },
+        {
+          "startMs": 18016.5587,
+          "endMs": 18751.4836,
+          "heartbeatMs": 734.9249,
+          "pairs": [
+            {
+              "index": 18,
+              "offerMs": 18016.1295,
+              "ackMs": 18016.7426,
+              "elapsedMs": 0.613100000002305
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 19045.215799999998,
+          "endMs": 20016.6034,
+          "heartbeatMs": 971.3876,
+          "pairs": [
+            {
+              "index": 20,
+              "offerMs": 20016.1377,
+              "ackMs": 20016.7717,
+              "elapsedMs": 0.6340000000018335
+            }
+          ],
+          "ackCount": 0
+        },
+        {
+          "startMs": 20498.3152,
+          "endMs": 21016.7792,
+          "heartbeatMs": 518.464,
+          "pairs": [
+            {
+              "index": 21,
+              "offerMs": 21016.1448,
+              "ackMs": 21016.9015,
+              "elapsedMs": 0.7567000000017288
+            }
+          ],
+          "ackCount": 0
+        },
+        {
+          "startMs": 22017.0652,
+          "endMs": 23017.6888,
+          "heartbeatMs": 1000.6236,
+          "pairs": [
+            {
+              "index": 22,
+              "offerMs": 22016.6453,
+              "ackMs": 22017.2685,
+              "elapsedMs": 0.6231999999981781
+            },
+            {
+              "index": 23,
+              "offerMs": 23017.1601,
+              "ackMs": 23017.9128,
+              "elapsedMs": 0.7526999999972759
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 23451.2694,
+          "endMs": 24017.686,
+          "heartbeatMs": 566.4166,
+          "pairs": [
+            {
+              "index": 24,
+              "offerMs": 24017.1464,
+              "ackMs": 24017.9067,
+              "elapsedMs": 0.7602999999980966
+            }
+          ],
+          "ackCount": 0
+        },
+        {
+          "startMs": 25016.9358,
+          "endMs": 26000.2614,
+          "heartbeatMs": 983.3256,
+          "pairs": [
+            {
+              "index": 25,
+              "offerMs": 25016.5101,
+              "ackMs": 25026.6452,
+              "elapsedMs": 10.135099999999511
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 26108.476,
+          "endMs": 26938.7363,
+          "heartbeatMs": 830.2603,
+          "pairs": [],
+          "ackCount": 0
+        },
+        {
+          "startMs": 27374.0739,
+          "endMs": 28017.2852,
+          "heartbeatMs": 643.2113,
+          "pairs": [
+            {
+              "index": 28,
+              "offerMs": 28016.7006,
+              "ackMs": 28017.4376,
+              "elapsedMs": 0.7370000000009895
+            }
+          ],
+          "ackCount": 0
+        },
+        {
+          "startMs": 29327.1417,
+          "endMs": 29891.6015,
+          "heartbeatMs": 564.4598,
+          "pairs": [],
+          "ackCount": 0
+        }
+      ]
+    },
+    {
+      "run": "run-10",
+      "metrics": {
+        "produced": 0,
+        "offered": 30,
+        "coalesced": 0,
+        "acknowledged": 30,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 4647,
+        "readyMs": 710.1612,
+        "projectionQueue": null,
+        "projectionMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "serializationMs": {
+          "count": 30,
+          "mean": 0.25367,
+          "p50": 0.1295,
+          "p95": 0.2374,
+          "p99": 0.3096,
+          "max": 3.0606
+        },
+        "dispatcherQueueMs": {
+          "count": 30,
+          "mean": 0.05510999999999999,
+          "p50": 0.0409,
+          "p95": 0.1106,
+          "p99": 0.1623,
+          "max": 0.2087
+        },
+        "postMs": {
+          "count": 30,
+          "mean": 0.14005,
+          "p50": 0.1328,
+          "p95": 0.17,
+          "p99": 0.1719,
+          "max": 0.179
+        },
+        "acknowledgmentMs": {
+          "count": 30,
+          "mean": 32.51986333333333,
+          "p50": 0.5576,
+          "p95": 9.3277,
+          "p99": 10.2076,
+          "max": 932.8514
+        },
+        "postToAcknowledgmentMs": {
+          "count": 30,
+          "mean": 32.464686666666665,
+          "p50": 0.4945,
+          "p95": 9.2916,
+          "p99": 10.1649,
+          "max": 932.6423
+        }
+      },
+      "pairs": [
+        {
+          "index": 0,
+          "offerMs": 3.9937,
+          "ackMs": 940.9824,
+          "elapsedMs": 936.9887
+        },
+        {
+          "index": 1,
+          "offerMs": 1003.6927,
+          "ackMs": 1004.5472,
+          "elapsedMs": 0.85450000000003
+        },
+        {
+          "index": 2,
+          "offerMs": 2003.2722,
+          "ackMs": 2004.0552,
+          "elapsedMs": 0.7829999999999018
+        },
+        {
+          "index": 3,
+          "offerMs": 3004.291,
+          "ackMs": 3004.9873,
+          "elapsedMs": 0.69629999999961
+        },
+        {
+          "index": 4,
+          "offerMs": 4004.3731,
+          "ackMs": 4005.1425,
+          "elapsedMs": 0.7694000000001324
+        },
+        {
+          "index": 5,
+          "offerMs": 5005.289,
+          "ackMs": 5005.9838,
+          "elapsedMs": 0.6948000000002139
+        },
+        {
+          "index": 6,
+          "offerMs": 6005.2898,
+          "ackMs": 6006.1031,
+          "elapsedMs": 0.8133000000007087
+        },
+        {
+          "index": 7,
+          "offerMs": 7005.6218,
+          "ackMs": 7006.4298,
+          "elapsedMs": 0.8079999999999927
+        },
+        {
+          "index": 8,
+          "offerMs": 8006.3233,
+          "ackMs": 8007.1445,
+          "elapsedMs": 0.8212000000003172
+        },
+        {
+          "index": 9,
+          "offerMs": 9007.3315,
+          "ackMs": 9008.0455,
+          "elapsedMs": 0.7139999999999418
+        },
+        {
+          "index": 10,
+          "offerMs": 10006.9547,
+          "ackMs": 10007.7185,
+          "elapsedMs": 0.7638000000006286
+        },
+        {
+          "index": 11,
+          "offerMs": 11008.441,
+          "ackMs": 11017.8942,
+          "elapsedMs": 9.453199999999924
+        },
+        {
+          "index": 12,
+          "offerMs": 12008.7597,
+          "ackMs": 12009.4935,
+          "elapsedMs": 0.7337999999999738
+        },
+        {
+          "index": 13,
+          "offerMs": 13009.4309,
+          "ackMs": 13010.0859,
+          "elapsedMs": 0.6550000000006548
+        },
+        {
+          "index": 14,
+          "offerMs": 14008.769,
+          "ackMs": 14009.3501,
+          "elapsedMs": 0.5810999999994237
+        },
+        {
+          "index": 15,
+          "offerMs": 15009.7838,
+          "ackMs": 15010.4661,
+          "elapsedMs": 0.6823000000003958
+        },
+        {
+          "index": 16,
+          "offerMs": 16010.7818,
+          "ackMs": 16011.7108,
+          "elapsedMs": 0.9290000000000873
+        },
+        {
+          "index": 17,
+          "offerMs": 17010.7851,
+          "ackMs": 17011.5857,
+          "elapsedMs": 0.800599999998667
+        },
+        {
+          "index": 18,
+          "offerMs": 18011.3167,
+          "ackMs": 18012.0207,
+          "elapsedMs": 0.7040000000015425
+        },
+        {
+          "index": 19,
+          "offerMs": 19011.4383,
+          "ackMs": 19012.188,
+          "elapsedMs": 0.7496999999966647
+        },
+        {
+          "index": 20,
+          "offerMs": 20011.8009,
+          "ackMs": 20012.4906,
+          "elapsedMs": 0.689700000002631
+        },
+        {
+          "index": 21,
+          "offerMs": 21012.396,
+          "ackMs": 21021.4156,
+          "elapsedMs": 9.019599999999627
+        },
+        {
+          "index": 22,
+          "offerMs": 22012.9839,
+          "ackMs": 22014.1123,
+          "elapsedMs": 1.1284000000014203
+        },
+        {
+          "index": 23,
+          "offerMs": 23013.9982,
+          "ackMs": 23014.8545,
+          "elapsedMs": 0.8562999999994645
+        },
+        {
+          "index": 24,
+          "offerMs": 24014.2968,
+          "ackMs": 24014.8513,
+          "elapsedMs": 0.5544999999983702
+        },
+        {
+          "index": 25,
+          "offerMs": 25014.2987,
+          "ackMs": 25014.898,
+          "elapsedMs": 0.5993000000016764
+        },
+        {
+          "index": 26,
+          "offerMs": 26014.4685,
+          "ackMs": 26015.0245,
+          "elapsedMs": 0.5560000000004948
+        },
+        {
+          "index": 27,
+          "offerMs": 27014.5039,
+          "ackMs": 27015.1612,
+          "elapsedMs": 0.6572999999989406
+        },
+        {
+          "index": 28,
+          "offerMs": 28013.8365,
+          "ackMs": 28024.18,
+          "elapsedMs": 10.34349999999904
+        },
+        {
+          "index": 29,
+          "offerMs": 29014.0317,
+          "ackMs": 29014.7105,
+          "elapsedMs": 0.6788000000015018
+        }
+      ],
+      "windows": [
+        {
+          "startMs": 1004.1271,
+          "endMs": 2003.8632,
+          "heartbeatMs": 999.7361,
+          "pairs": [
+            {
+              "index": 1,
+              "offerMs": 1003.6927,
+              "ackMs": 1004.5472,
+              "elapsedMs": 0.85450000000003
+            },
+            {
+              "index": 2,
+              "offerMs": 2003.2722,
+              "ackMs": 2004.0552,
+              "elapsedMs": 0.7829999999999018
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 3004.8274,
+          "endMs": 3553.5659,
+          "heartbeatMs": 548.7385,
+          "pairs": [
+            {
+              "index": 3,
+              "offerMs": 3004.291,
+              "ackMs": 3004.9873,
+              "elapsedMs": 0.69629999999961
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 4053.5937999999996,
+          "endMs": 5005.8105,
+          "heartbeatMs": 952.2167,
+          "pairs": [
+            {
+              "index": 5,
+              "offerMs": 5005.289,
+              "ackMs": 5005.9838,
+              "elapsedMs": 0.6948000000002139
+            }
+          ],
+          "ackCount": 0
+        },
+        {
+          "startMs": 5288.0123,
+          "endMs": 6005.8421,
+          "heartbeatMs": 717.8298,
+          "pairs": [
+            {
+              "index": 6,
+              "offerMs": 6005.2898,
+              "ackMs": 6006.1031,
+              "elapsedMs": 0.8133000000007087
+            }
+          ],
+          "ackCount": 0
+        },
+        {
+          "startMs": 8147.3553999999995,
+          "endMs": 9119.4589,
+          "heartbeatMs": 972.1035,
+          "pairs": [
+            {
+              "index": 9,
+              "offerMs": 9007.3315,
+              "ackMs": 9008.0455,
+              "elapsedMs": 0.7139999999999418
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 9553.520199999999,
+          "endMs": 10806.8504,
+          "heartbeatMs": 1253.3302,
+          "pairs": [
+            {
+              "index": 10,
+              "offerMs": 10006.9547,
+              "ackMs": 10007.7185,
+              "elapsedMs": 0.7638000000006286
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 11147.452000000001,
+          "endMs": 12009.2636,
+          "heartbeatMs": 861.8116,
+          "pairs": [
+            {
+              "index": 12,
+              "offerMs": 12008.7597,
+              "ackMs": 12009.4935,
+              "elapsedMs": 0.7337999999999738
+            }
+          ],
+          "ackCount": 0
+        },
+        {
+          "startMs": 13053.4559,
+          "endMs": 13678.6695,
+          "heartbeatMs": 625.2136,
+          "pairs": [],
+          "ackCount": 0
+        },
+        {
+          "startMs": 15928.878799999999,
+          "endMs": 17119.4374,
+          "heartbeatMs": 1190.5586,
+          "pairs": [
+            {
+              "index": 16,
+              "offerMs": 16010.7818,
+              "ackMs": 16011.7108,
+              "elapsedMs": 0.9290000000000873
+            },
+            {
+              "index": 17,
+              "offerMs": 17010.7851,
+              "ackMs": 17011.5857,
+              "elapsedMs": 0.800599999998667
+            }
+          ],
+          "ackCount": 2
+        },
+        {
+          "startMs": 17678.424499999997,
+          "endMs": 18303.4858,
+          "heartbeatMs": 625.0613,
+          "pairs": [
+            {
+              "index": 18,
+              "offerMs": 18011.3167,
+              "ackMs": 18012.0207,
+              "elapsedMs": 0.7040000000015425
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 19012.0948,
+          "endMs": 19869.4218,
+          "heartbeatMs": 857.327,
+          "pairs": [
+            {
+              "index": 19,
+              "offerMs": 19011.4383,
+              "ackMs": 19012.188,
+              "elapsedMs": 0.7496999999966647
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 20209.7176,
+          "endMs": 21012.9002,
+          "heartbeatMs": 803.1826,
+          "pairs": [
+            {
+              "index": 21,
+              "offerMs": 21012.396,
+              "ackMs": 21021.4156,
+              "elapsedMs": 9.019599999999627
+            }
+          ],
+          "ackCount": 0
+        },
+        {
+          "startMs": 21012.900599999997,
+          "endMs": 21619.4344,
+          "heartbeatMs": 606.5338,
+          "pairs": [
+            {
+              "index": 21,
+              "offerMs": 21012.396,
+              "ackMs": 21021.4156,
+              "elapsedMs": 9.019599999999627
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 22022.4246,
+          "endMs": 22678.5072,
+          "heartbeatMs": 656.0826,
+          "pairs": [],
+          "ackCount": 0
+        },
+        {
+          "startMs": 23014.6266,
+          "endMs": 23678.4604,
+          "heartbeatMs": 663.8338,
+          "pairs": [
+            {
+              "index": 23,
+              "offerMs": 23013.9982,
+              "ackMs": 23014.8545,
+              "elapsedMs": 0.8562999999994645
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 24210.2243,
+          "endMs": 25014.7305,
+          "heartbeatMs": 804.5062,
+          "pairs": [
+            {
+              "index": 25,
+              "offerMs": 25014.2987,
+              "ackMs": 25014.898,
+              "elapsedMs": 0.5993000000016764
+            }
+          ],
+          "ackCount": 0
+        },
+        {
+          "startMs": 27014.985399999998,
+          "endMs": 27931.8844,
+          "heartbeatMs": 916.899,
+          "pairs": [
+            {
+              "index": 27,
+              "offerMs": 27014.5039,
+              "ackMs": 27015.1612,
+              "elapsedMs": 0.6572999999989406
+            }
+          ],
+          "ackCount": 1
+        },
+        {
+          "startMs": 29014.5789,
+          "endMs": 29869.485,
+          "heartbeatMs": 854.9061,
+          "pairs": [
+            {
+              "index": 29,
+              "offerMs": 29014.0317,
+              "ackMs": 29014.7105,
+              "elapsedMs": 0.6788000000015018
+            }
+          ],
+          "ackCount": 1
+        }
+      ]
+    },
+    {
+      "run": "run-11",
+      "metrics": {
+        "produced": 0,
+        "offered": 30,
+        "coalesced": 0,
+        "acknowledged": 30,
+        "pending": false,
+        "rejected": 0,
+        "lastPayloadBytes": 4647,
+        "readyMs": 752.4001,
+        "projectionQueue": null,
+        "projectionMs": {
+          "count": 0,
+          "mean": 0,
+          "p50": 0,
+          "p95": 0,
+          "p99": 0,
+          "max": 0
+        },
+        "serializationMs": {
+          "count": 30,
+          "mean": 0.23491,
+          "p50": 0.1289,
+          "p95": 0.1833,
+          "p99": 0.2045,
+          "max": 3.2608
+        },
+        "dispatcherQueueMs": {
+          "count": 30,
+          "mean": 0.05281333333333334,
+          "p50": 0.0369,
+          "p95": 0.1114,
+          "p99": 0.1787,
+          "max": 0.2155
+        },
+        "postMs": {
+          "count": 30,
+          "mean": 0.14590000000000003,
+          "p50": 0.1364,
+          "p95": 0.1629,
+          "p99": 0.191,
+          "max": 0.2838
+        },
+        "acknowledgmentMs": {
+          "count": 30,
+          "mean": 32.59491333333333,
+          "p50": 0.5591,
+          "p95": 9.8288,
+          "p99": 10.0559,
+          "max": 933.6386
+        },
+        "postToAcknowledgmentMs": {
+          "count": 30,
+          "mean": 32.54203333333333,
+          "p50": 0.4996,
+          "p95": 9.7938,
+          "p99": 10.0324,
+          "max": 933.4221
+        }
+      }
+    }
+  ],
+  "nativeT1LongBackgroundWait": {
+    "startMs": 90233.9139,
+    "endMs": 91717.2922,
+    "kinds": {
+      "posted": 1085,
+      "begin": 371,
+      "layout-notification": 358,
+      "end": 370,
+      "aborted": 718,
+      "native-telemetry-arrival": 1,
+      "activity-begin": 1,
+      "activity-end": 1,
+      "native-telemetry-processed": 1,
+      "physical-button": 2,
+      "physical-drag": 133,
+      "priority": 1
+    },
+    "renderCallbacks": 358,
+    "renderStartSpacingMs": {
+      "count": 357,
+      "median": 4.155799999993178,
+      "p95": 4.784499999994296,
+      "p99": 5.014100000000326,
+      "max": 5.123999999996158
+    },
+    "wpfInputs": [],
+    "physicalDragMessageAgeMs": {
+      "count": 133,
+      "median": 0,
+      "p95": 0,
+      "p99": 15,
+      "max": 16
+    },
+    "telemetryProcessingDelayMs": {
+      "count": 1,
+      "median": 0.3545,
+      "p95": 0.3545,
+      "p99": 0.3545,
+      "max": 0.3545
+    },
+    "telemetryProcessed": [
+      {
+        "t": 90804.3795,
+        "kind": "native-telemetry-processed",
+        "id": 0,
+        "name": "2026-09-29T00:51:41.8222198+00:00",
+        "priority": 0,
+        "value": 0.3545,
+        "thread": 2
+      }
+    ],
+    "browserMessages": [],
+    "queueWaitMs": 1483.3782999999967,
+    "callback": "System.Threading.Tasks.SynchronizationContextAwaitTaskContinuation+<>c.<.cctor>b__8_0",
+    "mapDispatchQueueMs": {
+      "count": 2,
+      "median": 0.027849999998579733,
+      "p95": 0.04110000000218861,
+      "p99": 0.04110000000218861,
+      "max": 0.04110000000218861
+    }
+  },
+  "nativeT1ClockReadyWait": {
+    "startMs": 67908.1137,
+    "endMs": 68994.0197,
+    "kinds": {
+      "priority": 1,
+      "layout-notification": 261,
+      "end": 270,
+      "posted": 1198,
+      "aborted": 931,
+      "physical-drag": 931,
+      "begin": 270,
+      "gc": 6,
+      "native-telemetry-arrival": 1,
+      "activity-begin": 1,
+      "activity-end": 1,
+      "native-telemetry-processed": 1
+    },
+    "renderCallbacks": 260,
+    "renderStartSpacingMs": {
+      "count": 259,
+      "median": 4.163300000000163,
+      "p95": 4.741900000008172,
+      "p99": 5.020500000013271,
+      "max": 9.778800000000047
+    },
+    "wpfInputs": [],
+    "physicalDragMessageAgeMs": {
+      "count": 931,
+      "median": 0,
+      "p95": 0,
+      "p99": 16,
+      "max": 16
+    },
+    "telemetryProcessingDelayMs": {
+      "count": 1,
+      "median": 0.6061,
+      "p95": 0.6061,
+      "p99": 0.6061,
+      "max": 0.6061
+    },
+    "telemetryProcessed": [
+      {
+        "t": 68793.6134,
+        "kind": "native-telemetry-processed",
+        "id": 0,
+        "name": "2026-09-29T00:51:19.8386611+00:00",
+        "priority": 0,
+        "value": 0.6061,
+        "thread": 2
+      }
+    ],
+    "browserMessages": [],
+    "readyWaitMs": 1085.9060000000027,
+    "callback": "System.Windows.Threading.DispatcherTimer+<>c.<Restart>b__21_0/dashboard-clock",
+    "caveat": "Observed late clock callback, not proof of an independently captured stale clock pixel or flight delay."
+  },
+  "tracedStressedFlightTelemetry": [
+    {
+      "run": "run-01",
+      "telemetryDelayMs": {
+        "count": 395,
+        "median": 2.1457000000000335,
+        "p95": 5.0353000000000065,
+        "p99": 10.426199999999994,
+        "max": 19.086499999999432
+      },
+      "maximumHeartbeatMs": 281.0741,
+      "inWorstGap": {
+        "count": 14,
+        "median": 2.127100000000155,
+        "p95": 5.035300000000461,
+        "p99": 5.035300000000461,
+        "max": 5.035300000000461
+      }
+    },
+    {
+      "run": "run-02",
+      "telemetryDelayMs": {
+        "count": 395,
+        "median": 2.152699999999868,
+        "p95": 5.1568999999999505,
+        "p99": 8.331600000000435,
+        "max": 24.745100000000093
+      },
+      "maximumHeartbeatMs": 183.9063,
+      "inWorstGap": {
+        "count": 9,
+        "median": 2.110700000000179,
+        "p95": 2.225800000000163,
+        "p99": 2.225800000000163,
+        "max": 2.225800000000163
+      }
+    },
+    {
+      "run": "run-05",
+      "telemetryDelayMs": {
+        "count": 395,
+        "median": 2.1691000000000713,
+        "p95": 5.117699999999786,
+        "p99": 8.690799999999967,
+        "max": 23.070700000000215
+      },
+      "maximumHeartbeatMs": 404.571,
+      "inWorstGap": {
+        "count": 19,
+        "median": 2.259900000000016,
+        "p95": 6.088300000000345,
+        "p99": 6.088300000000345,
+        "max": 6.088300000000345
+      }
+    },
+    {
+      "run": "run-06",
+      "telemetryDelayMs": {
+        "count": 395,
+        "median": 2.2211999999999534,
+        "p95": 5.206000000000131,
+        "p99": 8.066600000000108,
+        "max": 19.073199999999815
+      },
+      "maximumHeartbeatMs": 239.6727,
+      "inWorstGap": {
+        "count": 11,
+        "median": 2.124200000000201,
+        "p95": 5.252700000000004,
+        "p99": 5.252700000000004,
+        "max": 5.252700000000004
+      }
+    },
+    {
+      "run": "run-09",
+      "telemetryDelayMs": {
+        "count": 395,
+        "median": 2.1699000000003252,
+        "p95": 5.094599999999446,
+        "p99": 10.080300000000001,
+        "max": 19.316200000000208
+      },
+      "maximumHeartbeatMs": 205.4009,
+      "inWorstGap": {
+        "count": 10,
+        "median": 2.3726999999998952,
+        "p95": 4.873600000000124,
+        "p99": 4.873600000000124,
+        "max": 4.873600000000124
+      }
+    },
+    {
+      "run": "run-10",
+      "telemetryDelayMs": {
+        "count": 395,
+        "median": 2.236399999999776,
+        "p95": 6.427300000000287,
+        "p99": 9.783800000000156,
+        "max": 24.13340000000062
+      },
+      "maximumHeartbeatMs": 345.9318,
+      "inWorstGap": {
+        "count": 16,
+        "median": 2.49330000000009,
+        "p95": 7.388100000000122,
+        "p99": 7.388100000000122,
+        "max": 7.388100000000122
+      }
+    }
+  ],
+  "restoration": {
+    "returns": 18,
+    "coldMs": 1754.1208,
+    "correctVisibleMs": {
+      "count": 18,
+      "median": 326.28465,
+      "p95": 332.7414,
+      "p99": 332.7414,
+      "max": 332.7414
+    },
+    "restoreIncludingReadbackMs": {
+      "count": 18,
+      "median": 339.843,
+      "p95": 346.59,
+      "p99": 346.59,
+      "max": 346.59
+    }
+  },
+  "limitations": [
+    "Offline reanalysis only; no new app execution or physical test.",
+    "Render callback spacing is not GPU/frame presentation.",
+    "ACK receipt is not rendered-map latency; normal-context offer/ACK pairs use verified ordinal association.",
+    "No commanded input, telemetry producer, or map offers in the 3.128s idle interval; those response times are unmeasured.",
+    "WPF input notifications are not proof of actual user actions."
+  ]
+}

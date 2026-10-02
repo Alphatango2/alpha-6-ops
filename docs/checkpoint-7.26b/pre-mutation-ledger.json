@@ -1,0 +1,4446 @@
+{
+  "schema": "sierra4.checkpoint-7.26b.pre-mutation-ledger.v1",
+  "capturedAt": "2026-10-02T08:49:19.011148-05:00",
+  "repository": "F:/Sierra4-Development",
+  "branch": "codex/checkpoint-7.24c",
+  "head": "020bda9f7d1dd7e16c6ecfeec67c4e4e007c6215",
+  "git": {
+    "trackedModificationCount": 43,
+    "untrackedFileCount": 820,
+    "trackedModifications": [
+      {
+        "path": "packaging/Desktop-Quick-Start.txt",
+        "workingBytes": 5577,
+        "workingSha256": "088E883AA753C9208EF83795F0ECE8542656ABAF3335ABD8452BFC32B77775C8",
+        "headBlob": "8aaef4ef752bf9f4bf6320daa29f087304bd958b"
+      },
+      {
+        "path": "packaging/PreviewSetup.cs",
+        "workingBytes": 17942,
+        "workingSha256": "7794FAA365212A75AB96C129DFA5CC6C4CF9A23475AE8EE85324F2A8D22CA497",
+        "headBlob": "7d9e8f5857678ef0da2e44165abf757c6c93d351"
+      },
+      {
+        "path": "src/Alpha6Ops.Core/ArrivalEstimator.cs",
+        "workingBytes": 5547,
+        "workingSha256": "468E8742819A9D3B42BA74C7F7BACC067C6901C2F0CC909422E89F526847E51D",
+        "headBlob": "ed52fe29713295dd55c12791945b5a5f786ff9a4"
+      },
+      {
+        "path": "src/Alpha6Ops.Core/Operations.cs",
+        "workingBytes": 10175,
+        "workingSha256": "7931D57360FEEC9F894A40164BB989AA4CD3827E7BDED38DB36A772843FB036C",
+        "headBlob": "51f7895631194baa03b839c6dc24eb84d7c54633"
+      },
+      {
+        "path": "src/Alpha6Ops.Core/RouteProgressTracker.cs",
+        "workingBytes": 4722,
+        "workingSha256": "128C70B8795707924A8CEBEC1F02E64FFB6229D5E159AC5D53CCC4117BC87742",
+        "headBlob": "b519fa97d94b8d559039121d6cf84c19407c338f"
+      },
+      {
+        "path": "src/Alpha6Ops.Core/Timeline.cs",
+        "workingBytes": 2218,
+        "workingSha256": "B02203AD3F58BCDAB31ED740DFB9F64F3EC8B74E16B22C0F08C86DAB6BDD0065",
+        "headBlob": "76aca1f3586e3036ad83fc6ac140019cf0200f66"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/App.xaml.cs",
+        "workingBytes": 5922,
+        "workingSha256": "D85266960C100C62252D05720EBEB992974856399A764BA71A57230C6281FB46",
+        "headBlob": "65c7e17c9a7b425983530d15cef4ee2c8bb2851c"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/DashboardSmokeTest.cs",
+        "workingBytes": 62444,
+        "workingSha256": "54203CBED2DA099077931B167472DFEBED6B84DFBDB9774D548724738852015A",
+        "headBlob": "2907e2982fb5459406d4d145e73e247e9012fa5e"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/FlightHistoryDatabase.cs",
+        "workingBytes": 14798,
+        "workingSha256": "53A03FF3A844FCD658376B91CCCDC39FAC0400BCAD16977F3EA20F7E5F3B0347",
+        "headBlob": "3ffdf779a68690d76c7a49e04976b8af18da56f4"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/FlightRecovery.cs",
+        "workingBytes": 8745,
+        "workingSha256": "A232022853DCF997C3FBD5127E04527FCBADD78F1606BBBD35DF2928958496F9",
+        "headBlob": "6308905862539644dae9337901ed09eb28c6e8ef"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/FlightSessionCoordinator.Commands.cs",
+        "workingBytes": 5879,
+        "workingSha256": "E47098E5B741423CC71F054FC14D5BFAF9B1E13DEC0C020C7A11B8EB9E206312",
+        "headBlob": "4902d4fdf7d4a3e6b0d339637ed11526257af504"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/FlightSessionCoordinator.Connection.cs",
+        "workingBytes": 6925,
+        "workingSha256": "6FA43BB2A083B2C2023052455DD030DE0A5B6261EC339146342C1DB63C122244",
+        "headBlob": "4b6516259ad61182fb3103956a94b8426e2b7376"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/FlightSessionCoordinator.Identity.cs",
+        "workingBytes": 6258,
+        "workingSha256": "4575936D4B40E66C18E2A3DEEC82DA4715F9844C6FF9055B9C1E28F2A49115C3",
+        "headBlob": "2d0d224193f1cb2d674f7fc9ccdad4f5e9173e82"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/FlightSessionCoordinator.Tracking.cs",
+        "workingBytes": 23296,
+        "workingSha256": "E29F63D06CC780A205E2BC989E5EB7BCB0045A3DCF1F14A813DD4812C6CC7235",
+        "headBlob": "c04d778194bbbbdf7d67efb4b7bb078eb4dce250"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/FlightSessionCoordinator.cs",
+        "workingBytes": 9721,
+        "workingSha256": "4F6C9B9529193B305054EECC19D7C9DDE324C45D3C2B063DB45D87641871FAB8",
+        "headBlob": "530d282a3904815ef995e46bb3a3d0ed4d655697"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/FlightSessionDiagnosticAccess.cs",
+        "workingBytes": 2843,
+        "workingSha256": "C2DFA9D115DD13BC41F4A704B72829034AF803AEB40F922124F965B5B192E45F",
+        "headBlob": "cb64150eda9931293310702cb129ab180461d561"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/FlightTrackingEvents.cs",
+        "workingBytes": 32388,
+        "workingSha256": "70EAA9C6F177C4DD2276E4BFE8A347626D1B8CDA8F6E7ABE2116CC4234799FE1",
+        "headBlob": "75c585e849d25bb11c78b28c1aff394eeda8f6be"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/FlightTrackingWorkspace.xaml.cs",
+        "workingBytes": 8806,
+        "workingSha256": "A8819C845991BB4B3EEE3ABCC9922BD498DAA098F8B93B7EEB6C57F80EEDD57A",
+        "headBlob": "3289bc6e510657303ce8af5aaf2596f89f3ace2c"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/MainWindow.Dashboard.cs",
+        "workingBytes": 21028,
+        "workingSha256": "97BA71B4739FD6CCAF69223F082445915546BD51D4D4FFF76B1E60B6C5B174C5",
+        "headBlob": "5eea9ec65dc767b4234d604e331b4fa1872f18ae"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/MainWindow.FlightSession.cs",
+        "workingBytes": 5687,
+        "workingSha256": "703CEA958A7B389FE9A3788F1F0096684D9E179DAC18C55E8565050CEE611E71",
+        "headBlob": "e2077374b9e44ff5d583f53ee5863e088586e57e"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/MainWindow.Operations.cs",
+        "workingBytes": 3602,
+        "workingSha256": "C13DE3693147411F44252CDDDDC3E04D06699430E8F9735CC59C83DC4EE29A4B",
+        "headBlob": "49dfc011571b103f3f7f2a8ad88512925e3b3a69"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/MapV2/MapBridgeMetrics.cs",
+        "workingBytes": 1739,
+        "workingSha256": "C9B22F1982F23374CF66F22D55D1F969712AC2E4810742BB90FC16896D50774A",
+        "headBlob": "8606b5c3bf2fe87fb2a4152cf583cc66819b7f39"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/MapV2/MapContentionChecks.cs",
+        "workingBytes": 21839,
+        "workingSha256": "4EF765BFACD9764403DC6E535714DAD83F2D437A022C25B5DD255240BAB229C6",
+        "headBlob": "6f60b37bea2ac7be1739ee3a293fcb046be71299"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/MapV2/MapModelChecks.cs",
+        "workingBytes": 11102,
+        "workingSha256": "A00F57E797B4F14063E4D0ABCC90437D0F91D1C6D42BCF23044A299920368D9F",
+        "headBlob": "d943e94d87360385b1938915305a505957668092"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/MapV2/MapProjectionPump.cs",
+        "workingBytes": 4628,
+        "workingSha256": "A88AC61262548956FF40C6530E6D035D4A086E41BA78BD8236E82AA9B27B6BC1",
+        "headBlob": "10b4a78d4121d78d815244a7776198ea2025e010"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/MapV2/MapProjectionService.cs",
+        "workingBytes": 10570,
+        "workingSha256": "11E70BE20294CC49A5F344665F1953BCC6BA65192F06AA7AA7082BE4150398F1",
+        "headBlob": "8b1e421f032c9ed8dadac4bd3a80e0a0d4ec3303"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/MapV2/MapV2Checks.cs",
+        "workingBytes": 36277,
+        "workingSha256": "747E2303D74730A9B2B8B27CAEF94711D92DA699243FE1912199D2C3807626E6",
+        "headBlob": "7100d77254180b7f857fb9f722a1e7b345f1b431"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/MapV2/Web/map.mjs",
+        "workingBytes": 21079,
+        "workingSha256": "618653A56E1DDB7FADCDC5AEC3D0623CCF39DC5F34E292D7E1593814A20EB5D5",
+        "headBlob": "5b19f6f9be6c47f0d2aaf5003ca2687447413433"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/MapV2/WebMapRenderer.cs",
+        "workingBytes": 17476,
+        "workingSha256": "622E481FBBE57FCEDAE64DED874BEBEB8C2604C99FAE03ABD9597C382D506063",
+        "headBlob": "8b58cac0363eab51362fd3b73f7376922fd38e5f"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/OperationsMapHost.cs",
+        "workingBytes": 10674,
+        "workingSha256": "839F3A2A4E8756E04DFCAEE6082C25A576A46505EF95B802A746D7CD34C93F85",
+        "headBlob": "f1f28c82fe55c3bfe8b2d1930c4d4e252868d09b"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/OperationsOverview.cs",
+        "workingBytes": 10068,
+        "workingSha256": "991114A303D9C0D891D32267644D3B8AF3D8A1F9BA5F3C6C138BC674A7780242",
+        "headBlob": "0a5687e5d1c7175a7139d1a282503361a87afb42"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/OperationsSmokeTest.cs",
+        "workingBytes": 13284,
+        "workingSha256": "0F58296CAB4F251ED9640DF608E520DFA91F4C6AB55AF3B58C27417F87B7C5A8",
+        "headBlob": "f7aada819c33341c38ab20b466364ad80d4b6d43"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/OperationsWorkspace.xaml.cs",
+        "workingBytes": 5993,
+        "workingSha256": "01555CBF85731A68760C2BA60D080580F64E20A22B496CDBAB6FB4ADD5FF491D",
+        "headBlob": "d12e58131ac5df12a853e0fca4a2720371af66dd"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/PilotLogbookWorkspace.xaml.cs",
+        "workingBytes": 15884,
+        "workingSha256": "244208BCD028DADF40DD5370B8D52F6CA4B02DED39EEB45D19B9F853E5648C69",
+        "headBlob": "c931d9c6214e11145ad0f8e5f527c3a49a7daa12"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/ProgramMonitor.cs",
+        "workingBytes": 7785,
+        "workingSha256": "1BDB8031A4A2BBFFD30E4562274E7378DE7065E25B1E1E86A51532798B3B6D03",
+        "headBlob": "1d0c3037ed315ea741f386c32695fc7b24c7da2a"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/ProgramMonitorSmokeTest.cs",
+        "workingBytes": 12401,
+        "workingSha256": "21A900BD417B561558430BEB5F124CB6B41B4C5C2EFACD269B0ABD4E12019E4D",
+        "headBlob": "9aca72eb9611285819afdfd1fcf06105629607cc"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/RecordedFlightReplay.cs",
+        "workingBytes": 15296,
+        "workingSha256": "44DF870C85DCE9FF4B8315957635271D9EE5E2CD01819B620A28915A6FD11BA5",
+        "headBlob": "df65da74be2754ee97a0f849cbba85c97be40c4c"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/RefreshSmokeTest.cs",
+        "workingBytes": 10658,
+        "workingSha256": "E1C72D6CF6105DC082911A7FC1E745570B01112BE3FBD8A5AE7DEE489976FA8C",
+        "headBlob": "5b163d32165aed8de8590f8a9b4e0f422a5883cb"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/SimConnectSource.cs",
+        "workingBytes": 14596,
+        "workingSha256": "9EB84A8F07FDB61BCA55F301A304124DF66B91A7FA994ACC85209FCB0F6FD381",
+        "headBlob": "fd3bf69c9d381a5fea47f775c85b4d758e89ff38"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/TrackingIntegrationSmokeTest.cs",
+        "workingBytes": 19373,
+        "workingSha256": "D09D3E364F30F2CA108EB01C1789E72BC7276DB5572831FE696F63ED36E64C92",
+        "headBlob": "5b52f5b18d3e8e4ae51c47c780ef469db518a462"
+      },
+      {
+        "path": "tests/Alpha6Ops.RecoveryChecks/Program.cs",
+        "workingBytes": 26404,
+        "workingSha256": "81A88A4611AC9713A3CB45E2A8FF543E809A65702F66E28BED4C7CE35FFDDBC6",
+        "headBlob": "ff3312c8ceb31f91a57d58b596f60bbc60d9a4d3"
+      },
+      {
+        "path": "tests/Alpha6Ops.Tests/Program.cs",
+        "workingBytes": 12913,
+        "workingSha256": "BE674DC7D876428363A4EC0BF52D950694CA4A16231A3F31CC97BE9E0FE634F4",
+        "headBlob": "3089b859dee4aaa123c2bb1710ea65063b1c7012"
+      },
+      {
+        "path": "tests/Alpha6Ops.Tests/TrackingTests.cs",
+        "workingBytes": 14524,
+        "workingSha256": "08B0E2A46C3B1A2DCC5A67B0C2E1D7322030D7A2DEA305FF1EBDABCD47740992",
+        "headBlob": "3ad1f23460cc8a109277fd647e73d4a841cf78fb"
+      }
+    ],
+    "untrackedFiles": [
+      {
+        "path": "docs/checkpoint-7.24a.1.md",
+        "bytes": 20971,
+        "sha256": "AD5B9210091E326902E78D10A399F217EAB1720D3EEA00AD4018E2CAC3402ABF"
+      },
+      {
+        "path": "docs/checkpoint-7.24a.2.md",
+        "bytes": 27455,
+        "sha256": "4D6E1F3D56CEC799FAC53D2B0F418F53935408131CD2F6E57C8CCF0B27A40FFD"
+      },
+      {
+        "path": "docs/checkpoint-7.24a.md",
+        "bytes": 24829,
+        "sha256": "030E8CA26475E1B89494D69D09C8E4EF49C71718F848C2B8D8B968A5E0AEC304"
+      },
+      {
+        "path": "docs/checkpoint-7.24b.md",
+        "bytes": 20489,
+        "sha256": "F9A8EE306C28300D5D1F07791397B63FF246FAFB7CBC202FD8A118B8465AF9FD"
+      },
+      {
+        "path": "docs/checkpoint-7.26-release-architecture-storage-legacy-audit.md",
+        "bytes": 36978,
+        "sha256": "2627B63C02505802836331598140FDDE687CD33CB502EEB03228917491373196"
+      },
+      {
+        "path": "docs/flight-tracking/7.24c-c1-installed-native-input-20260928.md",
+        "bytes": 7410,
+        "sha256": "E098D55402C893E4DA9C6DA5EBFBDAA0AD4D0B3DE2CF5EBF83B3E110F9E6760E"
+      },
+      {
+        "path": "docs/flight-tracking/7.24c-direct-responsiveness-acceptance.md",
+        "bytes": 18634,
+        "sha256": "8BA257B3684F2DDB58734B5DF86663946A419961BA2A12F679FB998F311189FC"
+      },
+      {
+        "path": "docs/flight-tracking/7.24c-engine-shutdown-pirep-analysis.md",
+        "bytes": 18241,
+        "sha256": "5F24270819BD03E4B53C4D31CDC641F1CBF2A35E8E89D7548B213110E270B89A"
+      },
+      {
+        "path": "docs/flight-tracking/7.24c-fenix-shutdown-native-20260928.md",
+        "bytes": 9488,
+        "sha256": "B667CD10E427EE2A69380C27A8CC8C12A1EACEF7E1030EB6E294B602808C7186"
+      },
+      {
+        "path": "docs/flight-tracking/7.24c-final-automated-input-gate.md",
+        "bytes": 12279,
+        "sha256": "BF40BB8A27038E4A9633967289C218ECCF8D7B3B331FC5E01CA93560898B1EE1"
+      },
+      {
+        "path": "docs/flight-tracking/7.24c-final-t2-destination-validation.md",
+        "bytes": 27006,
+        "sha256": "C518DC5EE3D980DDD790F7CFCD17E9CF351FDB8406FC3C6A6C53FD184191B995"
+      },
+      {
+        "path": "docs/flight-tracking/7.24c-heartbeat-root-cause-review.md",
+        "bytes": 25192,
+        "sha256": "FE5D1A56E5AE4FFB32E1BA0EC85F20462F9DA8D2B4B59C8CBDD7FD5B64E2D1A8"
+      },
+      {
+        "path": "docs/flight-tracking/7.24c-jst771-correction-validation.md",
+        "bytes": 10894,
+        "sha256": "DA451D8DB6282BD4935AF7D79393348351B570D203D733B4C2E5FA2BD8F6AB67"
+      },
+      {
+        "path": "docs/flight-tracking/7.24c-jst771-native-review.md",
+        "bytes": 11277,
+        "sha256": "A8002A9644EDC625765707F152C5013C4991BC9479B4A661BF4FA520BDD3A627"
+      },
+      {
+        "path": "docs/flight-tracking/7.24c-jst771-simbrief-revision.md",
+        "bytes": 14436,
+        "sha256": "0773E77E748EC856BB875A197C72114A34E2EFA1D8E41E6B2FAB3B2EB70F588A"
+      },
+      {
+        "path": "docs/flight-tracking/7.24c-logbook-correction-closeout.md",
+        "bytes": 13780,
+        "sha256": "FE5631647E88B2FD3F656080477F60B0B57CBAF1CE162F22B17B13A6417ADEF3"
+      },
+      {
+        "path": "docs/flight-tracking/7.24c-map-route-recovery-validation.md",
+        "bytes": 31603,
+        "sha256": "6775EE3B03F3A289E088E5F97857F2629272D33E58E4A783869B32B47A5E9208"
+      },
+      {
+        "path": "docs/flight-tracking/7.24c-responsiveness-gate-validity-review.md",
+        "bytes": 20850,
+        "sha256": "FDDADA5CF0E075F3641966DD97B6BD653464643D69C4168842706746BE070067"
+      },
+      {
+        "path": "docs/flight-tracking/7.24c-scheduling-shutdown-continuation.md",
+        "bytes": 23596,
+        "sha256": "1FEEE66F5D39BA7CC2EAA7F1DA2B87EEA5E3A789C069D54D2E0A17712B0504FF"
+      },
+      {
+        "path": "docs/flight-tracking/7.24c-terminal-shutdown-implementation.md",
+        "bytes": 15269,
+        "sha256": "73B64D350B37414F2B9D906E96587E2FABDB604443F6EE3D4EFE83693368D132"
+      },
+      {
+        "path": "docs/flight-tracking/7.24c-terminal-t1-installed.md",
+        "bytes": 2129,
+        "sha256": "8A85829B816A1A7BE694587AB78704DC6A91ECB40E37978468DED63B2422D0AE"
+      },
+      {
+        "path": "docs/flight-tracking/7.24c-terminal-t1-native-20260928.md",
+        "bytes": 10205,
+        "sha256": "3E5BB357FBF0790D8FE6FD1240F1C9B8017AF4339D75A5BBA6C2EAED902F7FCD"
+      },
+      {
+        "path": "docs/flight-tracking/7.24c-terminal-t1-native-flight-notes.txt",
+        "bytes": 2670,
+        "sha256": "D2245666AB78A1E2BAB0ACB748846EEF7900FF842D5654303B3C3D2F60832CDB"
+      },
+      {
+        "path": "docs/flight-tracking/7.24c-terminal-t1-parked-retest.md",
+        "bytes": 4026,
+        "sha256": "FD3431FE1C16E5610FE3BA8CE2E309DFE17BCFBD8FD422F97BC3F7A66700673B"
+      },
+      {
+        "path": "docs/flight-tracking/7.24c-terminal-t2-final-flight-checklist.md",
+        "bytes": 12643,
+        "sha256": "87B552C41279F1465FBF799F635C172CD44192627502A62584C2FBB2D9EB7192"
+      },
+      {
+        "path": "docs/flight-tracking/7.24c-terminal-t2-native-20260930.md",
+        "bytes": 9448,
+        "sha256": "EEBD18C2ED13E2BC22A3494CDDC39C078CE285684C699499A9236B8D842B9FD3"
+      },
+      {
+        "path": "docs/flight-tracking/7.24c-terminal-t2-parked-retest.md",
+        "bytes": 5514,
+        "sha256": "A67FC270C1EBB53F4BCDED6AFC2D67A0C3E818E6EA916FC184220117E2B046B7"
+      },
+      {
+        "path": "docs/flight-tracking/checkpoint-7.25-report.md",
+        "bytes": 13328,
+        "sha256": "449607CA828A779F8221ADF8C209141B495C2082B1F9AC1E7E01599D32110D2D"
+      },
+      {
+        "path": "docs/flight-tracking/checkpoint-7.25-spec.md",
+        "bytes": 16393,
+        "sha256": "780E3A2128F5AECEB74E4C7C8768C3A22E6D95A95259F81021DD063CF8CFD854"
+      },
+      {
+        "path": "docs/flight-tracking/checkpoint-7.25a-airframe-substitution.md",
+        "bytes": 2644,
+        "sha256": "467211225FDFFD4A98AD937E50B362DC29069D428976E1192B88CD042AC8AC78"
+      },
+      {
+        "path": "docs/flight-tracking/checkpoint-7.25a-engineering-acceptance.md",
+        "bytes": 9357,
+        "sha256": "4B47A19C391D3E6DD057672CC107B3CA8E271FBA0DB9EA816C74E92F01DC6A52"
+      },
+      {
+        "path": "docs/flight-tracking/checkpoint-7.25a-native-procedure.md",
+        "bytes": 5558,
+        "sha256": "E665758E2AEEA79AECDC677835109CC7ED75C5B095E0B2ED34DC254E8D4A9696"
+      },
+      {
+        "path": "docs/flight-tracking/checkpoint-7.25a-report.md",
+        "bytes": 7104,
+        "sha256": "E4BF9F4B4566272BFF937EF9B561DBCF121F70D645CA1EC5C635BF09513C7332"
+      },
+      {
+        "path": "docs/flight-tracking/checkpoint-7.25a-spec.txt",
+        "bytes": 1913,
+        "sha256": "79F685937EF56E31272BB0B4821B91DCA1F450C03D760A8E791B6C4D27A2E028"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/acceptance-input.json",
+        "bytes": 3196,
+        "sha256": "4896782D1690027D29ADCE675DE11C1DA08083A285CE39A26063E50185ECAFB6"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/acceptance.json",
+        "bytes": 3285,
+        "sha256": "AFB1FE3ED35CDB87B829A1619727E2AC3D67BC632BECF6924C3686AD79619704"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/active-restart/source-hashes.json",
+        "bytes": 497,
+        "sha256": "7AA3ACBBB9F0B9C7955208C27F36663E8813EE94D54D27A85E6D33752AF31FCA"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/active-restart/summary.json",
+        "bytes": 13376,
+        "sha256": "9E52C44E2B89B4F1F2A2459DE5DDE2BF8C2F2CF7F4D06BA600A082754EEB2A09"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/archive.py",
+        "bytes": 2852,
+        "sha256": "8A3C3C788DBEF9F55B9899A49A73F567C195295E9203E8683E7BD93A01AFA454"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/calibration.json",
+        "bytes": 1506,
+        "sha256": "48A4CF4C40E1D2456C07B4DB57C64D283DBF558C02DE74FCD0839B43F449C231"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/contracts/final-resources.json",
+        "bytes": 89,
+        "sha256": "B7C00F83C210C95056F969F12C3DC6BC870FB697505B37C4FBD1EFEB107149A1"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/contracts/input.json",
+        "bytes": 28512,
+        "sha256": "6C2F75EBDF60B55B5BBCA5C397F3D0C2C3B78395CB604F5730D94D947639C71C"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/contracts/preferences.json",
+        "bytes": 143,
+        "sha256": "CC5C41F25EF8A7C2AA0818C38F64E5CEE3890357591047B15796A7F8561028F4"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/contracts/reduced-motion.json",
+        "bytes": 93,
+        "sha256": "0D757D022D7235EC7134E036034AC3B4E993AC61C45A62A9AE00E49D2BAE1858"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/contracts/resource-samples.json",
+        "bytes": 1508,
+        "sha256": "C11B0EE936A40E47C55A795DD4D771005A87B650FE53071619F6F2F90DD00702"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/contracts/scaling.json",
+        "bytes": 1857,
+        "sha256": "3187141AFA3C6C3196DC12AF13A7231831205644EE92DA554635A463AA1D4A26"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/contracts/summary.json",
+        "bytes": 2462,
+        "sha256": "758B14441B21DE4135AC0C07DE924EA31CB2B215B31EFDFA0D3645ADF47C0DC8"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/contracts/view-lifecycle.json",
+        "bytes": 1331,
+        "sha256": "916D8C22AA0CCE28F41F0A183AD163307C495898361C6798195DDB5BA453001B"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/direct-1/direct-contracts.json",
+        "bytes": 924,
+        "sha256": "215F2252622054D773A0A01070315798C13097D31274732D9B7026C001218B66"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/direct-1/direct-trace.json.gz",
+        "bytes": 420615,
+        "sha256": "2C3863E823FBC903DB0F2B91F25E4C38C38E92B92B1611E569BECD8B0B3F4F53"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/direct-1/preferences.json",
+        "bytes": 143,
+        "sha256": "C82F6F9365BEFA6DC9F5D205003EEC3D6D8078C46E8C06072C4518428EBBCD4A"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/direct-1/summary.json",
+        "bytes": 6339,
+        "sha256": "42635D15C87ECEBE0CCADE3BE9293BB05DBEAF597B1ED6702A0E182B7B57E5CA"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/direct-1/view-lifecycle.json",
+        "bytes": 888,
+        "sha256": "E60888211A98C3B8DCCF523710AA62452301226067B7A57BCFD172C6C026D94C"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/direct-2/direct-contracts.json",
+        "bytes": 1068,
+        "sha256": "FFC1B8775FA8B1CC826DBB49B12DF16B40DC93B6B5C713AE26538508DAE863F6"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/direct-2/direct-observations.json",
+        "bytes": 344150,
+        "sha256": "C654E34D61159BC5495C0D99BC65A2565795295EF46560F0B0E5DA539952526C"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/direct-2/direct-trace.json.gz",
+        "bytes": 3610074,
+        "sha256": "F2490B96322ED9CE06B993B614923E035473974F9CA2308B73A877E813FA8364"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/direct-2/final-resources.json",
+        "bytes": 90,
+        "sha256": "41F6FB2D14F8F3EC85866C8A50E32E08B3C5A2DAC40D2BF4A8828270D73FADE4"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/direct-2/partial-observations.json",
+        "bytes": 8828,
+        "sha256": "7457BF5847E0AEF59FE1AF9CD94603ECE3D529FEA754DB8EE4E5A9D3C901D069"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/direct-2/preferences.json",
+        "bytes": 143,
+        "sha256": "C82F6F9365BEFA6DC9F5D205003EEC3D6D8078C46E8C06072C4518428EBBCD4A"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/direct-2/resource-samples.json",
+        "bytes": 749,
+        "sha256": "261AED0444E5A2435492649D9DA1735959425A10D9C2C9E6B541E9F807992453"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/direct-2/summary.json",
+        "bytes": 5897,
+        "sha256": "EC97AF11DBED33696F23EC13453D70B4280E0108BAD604AE6542A4CEAB142418"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/direct-2/view-lifecycle.json",
+        "bytes": 888,
+        "sha256": "D76E5BED595C5DF840186C04ACB5689231A929B9F2D052F524B28EFC52BF1D94"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/direct-3/direct-contracts.json",
+        "bytes": 1067,
+        "sha256": "ECDE4650E62F87A1B886DDF0E940E3056755A4B9CFA114DB06B7DCB856F260D2"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/direct-3/direct-observations.json",
+        "bytes": 852707,
+        "sha256": "0919B138C00257E052AEB7903FC5073C93B340A3BBCB190B187C5B3F9F64ED40"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/direct-3/direct-trace.json.gz",
+        "bytes": 3666709,
+        "sha256": "79F63E2BBE08E1D0293C98A886235DE8C5D9E92EF6C41A1FD278EB998ABC7A24"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/direct-3/final-resources.json",
+        "bytes": 85,
+        "sha256": "F3C6F97F295B767B28A864116BC5C0582F0C466DEE8238FDB70E793BD7D1181D"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/direct-3/partial-observations.json",
+        "bytes": 8837,
+        "sha256": "012EDB8EB122B990ADBFA19AFB98E6ABC465821C4831C1F994BE329C4EE969C9"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/direct-3/preferences.json",
+        "bytes": 143,
+        "sha256": "C82F6F9365BEFA6DC9F5D205003EEC3D6D8078C46E8C06072C4518428EBBCD4A"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/direct-3/resource-samples.json",
+        "bytes": 747,
+        "sha256": "1E40CCFD075A9F25F7FE5CC590A6255FC8984BA9B33C884921CFC5591E14A2A7"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/direct-3/summary.json",
+        "bytes": 5909,
+        "sha256": "9F712A875A328E15E2327E98529A584088C8138977F23BA203349DFBDEBD1E17"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/direct-3/view-lifecycle.json",
+        "bytes": 886,
+        "sha256": "3AA66E820C5CCDF5AB5C6DC904431634581708205950EE681719C444CEC23C86"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/direct-contracts/direct-contracts.json",
+        "bytes": 1067,
+        "sha256": "ECDE4650E62F87A1B886DDF0E940E3056755A4B9CFA114DB06B7DCB856F260D2"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/direct-contracts/direct-observations.json",
+        "bytes": 731865,
+        "sha256": "865B12C45B8145E3A334371DF9E08231516DA4030F7489715571CB0D654DD0F2"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/direct-contracts/direct-trace.json.gz",
+        "bytes": 3640188,
+        "sha256": "743AF992AEA75E2E77BD50B8FBF2857B0346EADB35A3094EAB6AB4A5726865F0"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/direct-contracts/final-resources.json",
+        "bytes": 90,
+        "sha256": "7ACC6CAC071E6443CB5553C64A5F09D02EC1E2B1E90F2D950DB3D95B2EC7B1F4"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/direct-contracts/partial-observations.json",
+        "bytes": 8830,
+        "sha256": "1FEEE946FD16A80EEAB52467B7BDCA33CA5FB21747F577B91E0A135D3CE50AE6"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/direct-contracts/preferences.json",
+        "bytes": 143,
+        "sha256": "C82F6F9365BEFA6DC9F5D205003EEC3D6D8078C46E8C06072C4518428EBBCD4A"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/direct-contracts/resource-samples.json",
+        "bytes": 744,
+        "sha256": "BED0DC2E925CA004F49FB905ECCE6727842B5B95D07B9075ECE3E66088AC1321"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/direct-contracts/summary.json",
+        "bytes": 5909,
+        "sha256": "E0401EDAE79198603481C45D454579B599773B5B35CB967016D63EE48B1852A3"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/direct-contracts/view-lifecycle.json",
+        "bytes": 887,
+        "sha256": "2DFB003C1C40BAAC7B36772E9BE2957344AB4E2B7C21778885F48E2313424B1C"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/full-baseline/build-hashes.json",
+        "bytes": 878,
+        "sha256": "F99E475F6FADD11045AED6C308ED73BF933447E40D12D3B3CEF19A8D1FA78AC3"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/full-baseline/input-hashes.json",
+        "bytes": 2643,
+        "sha256": "35FB9E1C03009B6C11E4F6F83A13401DF3839D4BE5F7856D7AB72493F5E82F01"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/full-baseline/summary.json",
+        "bytes": 3258,
+        "sha256": "F60C469588C48C8BEDCD1E4AE0D3D79AFD51F468DA46925DDAD43327457307B0"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/hashes.json",
+        "bytes": 25569,
+        "sha256": "8196C91EB2B945F12F692F20851EEFEA37A47581F8E7B7E0AA9F986D17A7DF09"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/interaction-contract/final-resources.json",
+        "bytes": 88,
+        "sha256": "9CE51ECA2967D9B95A2648877050C8146C153899B119B3709637E225B599EC14"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/interaction-contract/interaction-trace.json.gz",
+        "bytes": 248713,
+        "sha256": "2F4D2AAFD04E9E768704BB075B919F439FEFE606C415CA5067E7AFC7C164F461"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/interaction-contract/interaction.json",
+        "bytes": 636142,
+        "sha256": "87C434D4767253884E1E458A8206AE2FA8949D200AB68F794617F8E7DA6D5055"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/interaction-contract/preferences.json",
+        "bytes": 143,
+        "sha256": "C82F6F9365BEFA6DC9F5D205003EEC3D6D8078C46E8C06072C4518428EBBCD4A"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/interaction-contract/resource-samples.json",
+        "bytes": 985,
+        "sha256": "0E76BAE0A9A685086A2879A259C6CD8F92B8BCC5725503C11781EA6128A90F0D"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/interaction-contract/summary.json",
+        "bytes": 1679,
+        "sha256": "E416DC5FBD667F377C70F94981FCD71DEB2CCE595399F5567C45CCB6832ACE7B"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/interaction-contract/view-lifecycle.json",
+        "bytes": 441,
+        "sha256": "714C7CB432358751E35BBB6D3E25B9CD0245710AFBB6D3AB30D499E9BACBE846"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/jst771-evidence.json",
+        "bytes": 12592,
+        "sha256": "F2D25C2F4DE219382950812850335E56D20A4B730A5857C1330FC31CFE6BAF6A"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/jst771-replay/JST771.json",
+        "bytes": 31566,
+        "sha256": "11BFF938A30FDF79F473493C927D391CD3A19FB91EAD981FDE20DCDD9CEA104C"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/jst771-replay/summary.json",
+        "bytes": 504,
+        "sha256": "8BAF39FAAC2EB37698114E06EAD060FDAAEA5756D3EBA5F527838BB177A0AE7B"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/jst776-replay/JST776.json",
+        "bytes": 57128,
+        "sha256": "716A72D1787834BC5000FC104025834E615B73AD3EF061151F7FF2374B8C8814"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/jst776-replay/summary.json",
+        "bytes": 503,
+        "sha256": "77E11D27B54E68A61FA3333359080FE3B1401F5D220C33C922A9BBAF1B262964"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/metrics.json",
+        "bytes": 14670,
+        "sha256": "877413353F0DECB3ABB4C95C9201EB0395C9B784F376E0C6744E6AAC6B4AAFE7"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/preservation.json",
+        "bytes": 251008,
+        "sha256": "2221389A7019E3C800FDA83225B29A32E3934D42E9E23E87213AC438A4ED564B"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/preserve.py",
+        "bytes": 2134,
+        "sha256": "AB8D642214DA86E87EBD2DE0D6ED5A4617006D0A9A875E23DF3B064493E43CC9"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/progress.md",
+        "bytes": 3289,
+        "sha256": "C24137D58506EFA7B865718DC3926B23A41FEADE8C759A0F7B2F9E76452686A1"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/raw-move-full-1/benchmark.json",
+        "bytes": 837808,
+        "sha256": "61D502CFA566C79892D297925330A92E7DA2533FFF6104C11FA9FE16A1A0403D"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/raw-move-full-1/browser-press-forwarding.json",
+        "bytes": 996,
+        "sha256": "0A40881F26DC0D7E9835DD401768631B3AB64B6F25D323409C89EE846A4C8180"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/raw-move-full-1/contention.json",
+        "bytes": 4873,
+        "sha256": "F7261B199F8A3D4AC28BCBA89FD45E7E936244B9CCD2F06BB8EEC8C693D13605"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/raw-move-full-1/delivery-pressure.json",
+        "bytes": 3881,
+        "sha256": "1D6B9AAD0238AEBC201817C01F530234ED8E2CAA2745CFD82D8D4FA9BD7DFD96"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/raw-move-full-1/failures-progress.json",
+        "bytes": 1612,
+        "sha256": "E51FE8572AC946FE2AA35A8E4E97BE62D89D5FD3E1B68C8DD089AD9061995CCB"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/raw-move-full-1/failures.json",
+        "bytes": 1612,
+        "sha256": "E51FE8572AC946FE2AA35A8E4E97BE62D89D5FD3E1B68C8DD089AD9061995CCB"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/raw-move-full-1/first-paint-lifecycle.json",
+        "bytes": 9851,
+        "sha256": "6C34C86C9CEF2BEA397B5D327533887461A42B5EC2097838A14BEECE07C4D204"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/raw-move-full-1/first-paint-timing-1.json",
+        "bytes": 758,
+        "sha256": "86A4A4511E33EED913C35D1B5F96084A033476431BF04C24A625B98D66826B0E"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/raw-move-full-1/first-paint-timing-2.json",
+        "bytes": 758,
+        "sha256": "86A4A4511E33EED913C35D1B5F96084A033476431BF04C24A625B98D66826B0E"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/raw-move-full-1/first-paint-timing-3.json",
+        "bytes": 758,
+        "sha256": "86A4A4511E33EED913C35D1B5F96084A033476431BF04C24A625B98D66826B0E"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/raw-move-full-1/first-paint.json",
+        "bytes": 20289,
+        "sha256": "FC82CEBD70F36D5F7A69FC64A8CB51F41586066BAFDBDD19E9E4929DF9706DD6"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/raw-move-full-1/heartbeat-diagnostic.json",
+        "bytes": 415,
+        "sha256": "07C66C5B1EF223C5039C272CE908C6A8C9BFC4B82139E38653A370B48C9EB51A"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/raw-move-full-1/host-lifetime.json",
+        "bytes": 345,
+        "sha256": "25CAA56ECA69127AD8607BF8EF0138DD1EE7684DE12A218B35F4F4C69932C501"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/raw-move-full-1/initial-renderer.json",
+        "bytes": 1786,
+        "sha256": "65F970C5517803A980EEF53A78FEB105ED6E69BDA0621B93C6BCD97756E34AB6"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/raw-move-full-1/keyboard.json",
+        "bytes": 112,
+        "sha256": "98E85F1F01BE3A1933EABE18DF5D0ECE04159513612A9F7300DED08C6584DFC1"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/raw-move-full-1/lifecycle.json",
+        "bytes": 1830,
+        "sha256": "E066EFA3BB7455CA7A81A249DE9AC30B27C02340F1C430AE3F43EBEAA20DC734"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/raw-move-full-1/preferences.json",
+        "bytes": 143,
+        "sha256": "CC5C41F25EF8A7C2AA0818C38F64E5CEE3890357591047B15796A7F8561028F4"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/raw-move-full-1/restored-paint.json",
+        "bytes": 2017,
+        "sha256": "B409B98E2E9061F1DB22D7424E8B9B97D87553E58C3FD51BAB512C9CCACDBD93"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/raw-move-full-1/routed-input.json",
+        "bytes": 457,
+        "sha256": "15F161F26D08F4C75A062B6CA9087271A4F7BFF24C9B837327393B9274C7304A"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/raw-move-full-1/standard-host.json",
+        "bytes": 142,
+        "sha256": "080C76897F489858B45CB86A2E12AB554B4A3ECDE2F053220C8A541D9D293EA8"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/raw-move-full-1/summary.json",
+        "bytes": 23360,
+        "sha256": "D58117624C67448CED0320D1AA1A0BF10DD53BFC02FECB2F146E8FA995D63B9F"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/raw-move-full-1/visual-host.json",
+        "bytes": 183,
+        "sha256": "98BFABF463EA04808939A6C31F0E630F6DF86FD818B0A823B3DA033D3377B740"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/raw-sources.json",
+        "bytes": 52235,
+        "sha256": "449D5A4E94EC4828EAE43CC27CB420CC069ED66B8091A61608AF88388C407543"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/request.txt",
+        "bytes": 10373,
+        "sha256": "B5E2E6F1BC9FBDB7B3EAC771F4F670DBD7ADB19F6F72F7A744946D5E50F7AF15"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/restoration-verify/final-resources.json",
+        "bytes": 89,
+        "sha256": "1C7055192D832F59C190237028EF1AAFE2EAC45E3B693FEC3E6D130FAAC35CDB"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/restoration-verify/preferences.json",
+        "bytes": 141,
+        "sha256": "02843608FFA82CC1F0A2519BC67A4451D88ADD548BE999DC497452263C099E9B"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/restoration-verify/resource-samples.json",
+        "bytes": 10640,
+        "sha256": "336CF9E68F0EECB7169DD7EBE734500C78677A14F1CBC2B5FBA37916BA6AF7FC"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/restoration-verify/restoration-hidden-resources.json",
+        "bytes": 1494,
+        "sha256": "8649EF94C039A6441D0B4DE358209DD73FE9FD7ADDC5590DE41443B09EE430BC"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/restoration-verify/restoration-navigation.json",
+        "bytes": 83158,
+        "sha256": "F19A661F805AEC679ADA778BB63BE855F96AB86D90BBD5DBDF2762E53AC7A827"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/restoration-verify/restoration-result.json",
+        "bytes": 307,
+        "sha256": "D2695217E3B7F1E96F30D91ACE4FCB5B82F78682ADADE9DFD4F4B990D0AF59C5"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/restoration-verify/summary.json",
+        "bytes": 18250,
+        "sha256": "762E76B4BD1AFF28D9137A6EE4C47840938B44D533DDE2CAEEAE11BACEE2F875"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/restoration-verify/view-lifecycle.json",
+        "bytes": 15854,
+        "sha256": "9F71367146860CF2179C684F95CC3EEE231F5C0A2F1D27402755ECE15F5DE550"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/review-green/direct-contracts.json",
+        "bytes": 1067,
+        "sha256": "F9492DB293F1FFF2878A786A7ADC232EE14A2B269876486E233D3699A6BEA7FF"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/review-green/direct-observations.json",
+        "bytes": 718090,
+        "sha256": "483F26CDD343478F9E35A5469137CDEC4EB583831EF5AAB997BC577142AE6A83"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/review-green/direct-trace.json.gz",
+        "bytes": 3654893,
+        "sha256": "301820213211135F80A103FED16A35695DBE132BFD61373A5B951B1096974398"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/review-green/final-resources.json",
+        "bytes": 90,
+        "sha256": "20C879BAF74E6B0EE7EDA573A0119B52B89ED4DBF51DFEBFBA9588E7D10CB186"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/review-green/partial-observations.json",
+        "bytes": 10093,
+        "sha256": "38E488C99AF4CE65F9B29DC45E23594569DA042395CC018B1B94A6FFE626EF17"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/review-green/preferences.json",
+        "bytes": 143,
+        "sha256": "C82F6F9365BEFA6DC9F5D205003EEC3D6D8078C46E8C06072C4518428EBBCD4A"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/review-green/resource-samples.json",
+        "bytes": 749,
+        "sha256": "85D21AA866AE6C742047CFED82816C8B222FF50315D5487AD7B20A57BDFFF6F6"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/review-green/summary.json",
+        "bytes": 6817,
+        "sha256": "39336DDE87DCAC463013B275FCE0EFBC3B10A89E985CB9EC742F035EC199DE23"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/review-green/view-lifecycle.json",
+        "bytes": 888,
+        "sha256": "816DDAEB9EC0FDE600F26945165AF4008ED43A766ED96CF86457C29E0BE90E33"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/review-red/direct-contracts.json",
+        "bytes": 1068,
+        "sha256": "9F204FDD0AF58D347C5F70BAE848C7A79C47153915D21D8C1C3DC4588922A6AC"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/review-red/direct-observations.json",
+        "bytes": 824772,
+        "sha256": "D0A6DF2C20113191037C9538803E92AD2394BCBF61BC65CD91900D69A1345619"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/review-red/direct-trace.json.gz",
+        "bytes": 3644827,
+        "sha256": "9473FEC4717F3C5E35B0AAE9E06073537BA2445B679EE145ED6413F17C268100"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/review-red/final-resources.json",
+        "bytes": 87,
+        "sha256": "42AE785454AE9F4AE82D8EC722C8CFE71D37EB17E32B28207BC9989631523DF9"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/review-red/partial-observations.json",
+        "bytes": 9865,
+        "sha256": "D3B19DC83F8D170B9923D74691413F5FE8475C7C32D9316037DA1D324EA158A6"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/review-red/preferences.json",
+        "bytes": 143,
+        "sha256": "C82F6F9365BEFA6DC9F5D205003EEC3D6D8078C46E8C06072C4518428EBBCD4A"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/review-red/resource-samples.json",
+        "bytes": 747,
+        "sha256": "B0264159A56C09B7348DA61E849A05126988A75585241D025FC5EB1C1733F9B6"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/review-red/summary.json",
+        "bytes": 6495,
+        "sha256": "97599B39BF5BA771C233D70D016606271178430B6DBF71C528B099642626F0D0"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/review-red/view-lifecycle.json",
+        "bytes": 888,
+        "sha256": "01935F0B1A0644AFA81904B4009B10F55A6D397D081C8F58472083797E79BBF3"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/review.md",
+        "bytes": 2133,
+        "sha256": "02A9061A639E7F1324960F4594E61110518F2D0456C5C17A0870375D826C0165"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/run-verification.ps1",
+        "bytes": 3132,
+        "sha256": "9F5A7D80FDD59AE6D3F5C9A49CB8AB3D16D093AF7F9753A41940B387B4B2B4C4"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/scheduling-baseline/application.json",
+        "bytes": 270,
+        "sha256": "928B04BCBA8C7F88B3DD728EE1EBE7F4C684DE856E7BEA215778E298345631BC"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/scheduling-baseline/assembly.json",
+        "bytes": 270,
+        "sha256": "95BBE5453D5D368C2484B05DA4CCE9A29919BBA3AF1EA33441BAE8031EE4A6B1"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/scheduling-baseline/final-resources.json",
+        "bytes": 86,
+        "sha256": "584DC40A90D25B81AA037C9B5D53697C6CB8882ACBC5DC3CBF5423030BD42B90"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/scheduling-baseline/preferences.json",
+        "bytes": 143,
+        "sha256": "C82F6F9365BEFA6DC9F5D205003EEC3D6D8078C46E8C06072C4518428EBBCD4A"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/scheduling-baseline/resource-samples.json",
+        "bytes": 975,
+        "sha256": "6EB5509DBCD6EA5B0B25FE73F4B90314EC45F2AAB4F52386D310320300EF80DE"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/scheduling-baseline/runner-settings.json",
+        "bytes": 84,
+        "sha256": "95821EBA580C088C1DEF91D98B5AA2817352ABBAA03B7EFE40577C5742C957DA"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/scheduling-baseline/scheduling-integrity.json",
+        "bytes": 130,
+        "sha256": "96A7B29F87CA034E53BEE7A88C15D911B23FD175DA77EF4595B8FE4A78DEACF6"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/scheduling-baseline/scheduling-trace.json.gz",
+        "bytes": 762004,
+        "sha256": "0117624F33DFBCCA1B35F519B9D4CB7371D43A42A42D15CF5E80D8DEB1D9B6AE"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/scheduling-baseline/scheduling-window.json",
+        "bytes": 3130,
+        "sha256": "8EC0C93BA648CC0130BC40D5AAD12790BF109AE475ACB30B2B0CC88EA9FFCCE9"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/scheduling-baseline/summary.json",
+        "bytes": 1144,
+        "sha256": "AFEFDB0CF19668A647633BF21D138E698E26DDFFD57B96C7528A231C99087017"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/scheduling-baseline/unexpected-report-guard.json",
+        "bytes": 62,
+        "sha256": "B0F3060AC6B0FC4F7CAEEC6019755D495746633D04448FB1C827ADDD8D7B88A6"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/scheduling-baseline/view-lifecycle.json",
+        "bytes": 441,
+        "sha256": "77D09D815CA67FE9DA77A2436187B4DE6F61C1155C98046674E6C24F7AB022CD"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/scheduling-contract/application.json",
+        "bytes": 270,
+        "sha256": "928B04BCBA8C7F88B3DD728EE1EBE7F4C684DE856E7BEA215778E298345631BC"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/scheduling-contract/assembly.json",
+        "bytes": 270,
+        "sha256": "95BBE5453D5D368C2484B05DA4CCE9A29919BBA3AF1EA33441BAE8031EE4A6B1"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/scheduling-contract/final-resources.json",
+        "bytes": 88,
+        "sha256": "1CE4B85FC9B9BD68F0FFFAEDB03B88747F5260E0868EEA4202EFE687C1D5EC6B"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/scheduling-contract/preferences.json",
+        "bytes": 143,
+        "sha256": "C82F6F9365BEFA6DC9F5D205003EEC3D6D8078C46E8C06072C4518428EBBCD4A"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/scheduling-contract/resource-samples.json",
+        "bytes": 744,
+        "sha256": "8970DF393E5039BF48ECB7123356ECFCCC37A0F9A8D11E9D3D1E6DE51CE71036"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/scheduling-contract/runner-settings.json",
+        "bytes": 84,
+        "sha256": "4558B0932A1C33928D6DBC6A0660483647C9821EA741D060280C951905C79379"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/scheduling-contract/scheduling-trace.json.gz",
+        "bytes": 4829,
+        "sha256": "512DC706106FE4F36B24D7438C66C6E08A4347A87BDCBCD98C1204E84181A5A0"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/scheduling-contract/summary.json",
+        "bytes": 832,
+        "sha256": "9747B9DD49FBB39E52811A8EAB59D2D10D62E86636CA00DB7FDA0190E72D26C5"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/scheduling-contract/unexpected-report-guard.json",
+        "bytes": 62,
+        "sha256": "B0F3060AC6B0FC4F7CAEEC6019755D495746633D04448FB1C827ADDD8D7B88A6"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/scheduling-contract/view-lifecycle.json",
+        "bytes": 441,
+        "sha256": "284056CA608399E79E1AD2E3AD131B6B8EB4B88499DF9CBCB54EEE9401CA7DA6"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/summarize.py",
+        "bytes": 8134,
+        "sha256": "2E7DD63B8F091071E2B3CB7377AC6674095E29CB82C9EBB23CFFC4C3D40398D1"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/terminal/summary.json",
+        "bytes": 22560,
+        "sha256": "A4E0759343435C15A98915E21B372F2417AC59F65869559ED3C650AD538188F2"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-direct-responsiveness-20260929/verify/summary.json",
+        "bytes": 4126,
+        "sha256": "D03C89862C7AE7CAA80CCBF51BCE208EADA1E71F965BDFA649FFF8E9CD1E040C"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-fenix-shutdown-native-20260928/analysis.json",
+        "bytes": 18105,
+        "sha256": "E3F11464A4E21FA7DF4F952FFE43A93FAF3AE149D0550B2FD4185E781AD9E367"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-fenix-shutdown-native-20260928/analyze.py",
+        "bytes": 6982,
+        "sha256": "DC26E4B0ED4821AD913EB07648A0930E8E714EB55640DCF11FF3448004B5C499"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-fenix-shutdown-native-20260928/entry-source-hashes.json",
+        "bytes": 34540,
+        "sha256": "87B3357CC30A9A0BB8DDCC1415B6C55510D7F0450496EE079EDE46BCDE43D13C"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-fenix-shutdown-native-20260928/preservation.json",
+        "bytes": 644,
+        "sha256": "7CF9B8DBB9E5F4B4865EA353A0C62AD686A2805C76DEB07241D2689036B7379E"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-fenix-shutdown-native-20260928/raw/hashes.json",
+        "bytes": 266,
+        "sha256": "170FDED9E4913A45E85E070F47D650E117FAA0AE31BBAB0F0CAD1F2B325E9D17"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-fenix-shutdown-native-20260928/raw/manifest.json",
+        "bytes": 4795,
+        "sha256": "522BF3779444F27A88E31902549D8FD521A1479AF96A49E381731DDEC602C21F"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-fenix-shutdown-native-20260928/raw/signals.jsonl",
+        "bytes": 903467,
+        "sha256": "D0F57E43DB5CAAE52F901EFFD10548912D92146D1CB9BF8F531E7D9D395E08AE"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-fenix-shutdown-native-20260928/raw/summary.json",
+        "bytes": 1120,
+        "sha256": "DDF3CBA533F4D3DBDCBAB0976A8E03BFADD70291D7A916EA84CD239F9F02EC22"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-fenix-shutdown-native-20260928/source-preservation.json",
+        "bytes": 271,
+        "sha256": "2B0C4AEDB4951DCE6733CEB7342E4D470C3834EAE0497DA29EE5D059DFA727FA"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/SyntheticMapPointer.cs.txt",
+        "bytes": 1899,
+        "sha256": "95E457E7EBA5D28497C7469D1DB23E48E8EDEF8A27D0CCBD4A77AC8A74DC64E6"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/active-restart-summary.json",
+        "bytes": 13376,
+        "sha256": "9E52C44E2B89B4F1F2A2459DE5DDE2BF8C2F2CF7F4D06BA600A082754EEB2A09"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/cache-abab.json",
+        "bytes": 1099,
+        "sha256": "07B2C4F7BC11264F374FA022BE9FC6E6F2163F5B359F4143596FA400CA237F73"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/contention-comparison.json",
+        "bytes": 1872,
+        "sha256": "71AE170D3B1FDCE295665D2536A7B6542462EA93B98174551987FC3F7632A47E"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/contracts-summary.json",
+        "bytes": 2462,
+        "sha256": "758B14441B21DE4135AC0C07DE924EA31CB2B215B31EFDFA0D3645ADF47C0DC8"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/evidence-manifest.json",
+        "bytes": 7784,
+        "sha256": "364C653204938E545A1A37FC41474E67F0F69025695BBB21C3F90D8AE3C5AB98"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/final-gate-summary.json",
+        "bytes": 7197,
+        "sha256": "DC046C2C2A26015D964A4CDFCB087B4C2FD4C746DF85C060F8D31C32E536D285"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/frozen-full-3-browser-press-forwarding.json",
+        "bytes": 876,
+        "sha256": "5C2CCFF84859485F0431BAE665E4CD0753887CA95BB1998EC1B2390D187DAA00"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/frozen-full-3-contention.json",
+        "bytes": 4397,
+        "sha256": "DC272EE03DD8E971748AB19240D73E913B946B4ACAE1F8392C6FB5EEAB783B91"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/frozen-full-3-delivery-pressure.json",
+        "bytes": 3832,
+        "sha256": "A98127D6E1001C9DA207389F70BA747D0766E19D5864C14452E84FCC2439C20C"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/frozen-full-3-lifecycle.json",
+        "bytes": 1824,
+        "sha256": "8AE4E5FB220BE25A5A2CA834F167EE6D76F11DE638825EA6768A7D3644DD9978"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/frozen-full-3-summary.json",
+        "bytes": 23121,
+        "sha256": "F6093E2C508D5D79661E2EF6E5F2746FC87EE5E2A7AB9DFB7A9119D8F5607923"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/frozen-input-runner.cs.txt",
+        "bytes": 2819,
+        "sha256": "929DF95B651B9E31B7E783617A1B2E5971FFAA1C50B0A80243F617DB0E2B6C60"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/frozen-preservation.json",
+        "bytes": 94,
+        "sha256": "CC9B78DCEF2499ABF0D744276524960431F75884B80A7EA5CBE472884B00D628"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/full-regression-summary.json",
+        "bytes": 3258,
+        "sha256": "6D14DB1BF32A1FE0DE0B78F07BF770050F165073AE9E7115468F217FA8E583AE"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/heartbeat-attribution.json",
+        "bytes": 29401,
+        "sha256": "EABA1D7D70B42D1130D29AE3F93483B808864D7059E22C0C9FF68043B5E1EE74"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/historic-nine-replay-coverage.json",
+        "bytes": 2768,
+        "sha256": "518C8E7B3AEDF72A0205892F7F5AB8114E4D38EB304CEE3470EC5B5BE3B8E9CB"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/instrumented-original-browser-press-forwarding.json",
+        "bytes": 730,
+        "sha256": "9D64C3FF97CEADB76EBA7E6A700A3D365B9D017F88CA97A976B7F2B71DDE91CE"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/instrumented-original-contention.json",
+        "bytes": 4412,
+        "sha256": "045085BC720329F7AAF6E8C9457E5A58113EEFA6152559897EC7B51536BFEE71"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/instrumented-original-delivery-pressure.json",
+        "bytes": 3722,
+        "sha256": "BE5E9261A7DFD67E7DF06214CA23E54182251A9D413CD0553EA69D4C0866A531"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/instrumented-original-lifecycle.json",
+        "bytes": 1821,
+        "sha256": "029A0AA01B1BE4B0370971BE85593560C3D21A42FA4C8721D9FD145ED7A2CEAB"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/instrumented-original-summary.json",
+        "bytes": 23123,
+        "sha256": "565153B3A4713CD8DCA4725B4C98AC413017F8B1A4C3CA9B91626D8269C5AB9C"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/interaction-contract-summary.json",
+        "bytes": 1679,
+        "sha256": "E416DC5FBD667F377C70F94981FCD71DEB2CCE595399F5567C45CCB6832ACE7B"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/jst771-evidence.json",
+        "bytes": 12592,
+        "sha256": "F2D25C2F4DE219382950812850335E56D20A4B730A5857C1330FC31CFE6BAF6A"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/jst771-replay-summary.json",
+        "bytes": 504,
+        "sha256": "8BAF39FAAC2EB37698114E06EAD060FDAAEA5756D3EBA5F527838BB177A0AE7B"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/jst776-replay-summary.json",
+        "bytes": 503,
+        "sha256": "77E11D27B54E68A61FA3333359080FE3B1401F5D220C33C922A9BBAF1B262964"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/original-map-full-browser-press-forwarding.json",
+        "bytes": 666,
+        "sha256": "00C8F531B4C1946EE93D68FF8F8F08E09C1080997E27140E5FAB32008F0094D6"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/original-map-full-contention.json",
+        "bytes": 4399,
+        "sha256": "D85C9CACBD99C57355736CA1BB1B6A56A21D74C52693F3C43AA6D376DEC0DA1A"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/original-map-full-recheck-browser-press-forwarding.json",
+        "bytes": 666,
+        "sha256": "109D56BDBD5275CB9B1418AC60EB0EAAF864874212E425AA5B27FE5C84A5074A"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/original-map-full-recheck-contention.json",
+        "bytes": 4388,
+        "sha256": "B6296C8829E9F3CB868D0B0CF90264FBBEF1F719324FBD5E669A768B068B785F"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/original-map-full-recheck-summary.json",
+        "bytes": 23123,
+        "sha256": "565153B3A4713CD8DCA4725B4C98AC413017F8B1A4C3CA9B91626D8269C5AB9C"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/original-map-full-summary.json",
+        "bytes": 23124,
+        "sha256": "2C0CC0E194C299EE997140E7FCF9A67653EB81CB2F80CF2BF4AF693A5E3AAC5E"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/profile-preservation.json",
+        "bytes": 685,
+        "sha256": "E8356E36467BCFDA68F23B7156E8B1F557AF85488E0E88AD2152C9729576250A"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/raw-move-full-1-browser-press-forwarding.json",
+        "bytes": 994,
+        "sha256": "F9E7F31C75AC00BE853F07791E03B23425E5186857C75C70249A0D727D481019"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/raw-move-full-1-contention.json",
+        "bytes": 4404,
+        "sha256": "13CE78DA1D9383018D500AB1422355FFBB03DE0441B7855EDB56230B589EECFE"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/raw-move-full-1-delivery-pressure.json",
+        "bytes": 3804,
+        "sha256": "4FA0CEC20B0911C221A239F50C266BE022DC538CC0D53C321A2AC93B852D5981"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/raw-move-full-1-lifecycle.json",
+        "bytes": 1833,
+        "sha256": "5C6A8ADAE73F1E16E884CCD5915B1043FB965047F0417647F8588AAA988C382A"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/raw-move-full-1-summary.json",
+        "bytes": 23352,
+        "sha256": "21168823F03AC8AFA8C697432B8ACB76A51CD1DA7B5CEC96FFE3FD5633AE7DDD"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/raw-move-full-2-browser-press-forwarding.json",
+        "bytes": 995,
+        "sha256": "A4D90DBC3EE7C2435A92B85DD24847B00F17330D5B6025D6BB0500CCC168E7D0"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/raw-move-full-2-contention.json",
+        "bytes": 4395,
+        "sha256": "A81BBFD02092ABBD03097F4AFB913F99FD17975F3A18F08B7B12A7C95B819636"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/raw-move-full-2-delivery-pressure.json",
+        "bytes": 3796,
+        "sha256": "3E7FE659E1F8BD3F21E00F7D0CDAEC4C8028D21CE8D1479268053160A2FF4F14"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/raw-move-full-2-lifecycle.json",
+        "bytes": 1829,
+        "sha256": "A797F24A9F0374933FF02235D93DC18B8C905689F04BC18F58566218C34B7946"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/raw-move-full-2-summary.json",
+        "bytes": 23352,
+        "sha256": "21168823F03AC8AFA8C697432B8ACB76A51CD1DA7B5CEC96FFE3FD5633AE7DDD"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/raw-move-full-3-browser-press-forwarding.json",
+        "bytes": 995,
+        "sha256": "AFE7BA0BF694683AC338479E88FD13549E6FD864FA8C5002D084CD8979C57FEE"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/raw-move-full-3-contention.json",
+        "bytes": 4391,
+        "sha256": "18FB0E511C3AF8D27A1F15FCF9D448B4A5F3D9036E98D8AEAE688C3E1A48C9DB"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/raw-move-full-3-delivery-pressure.json",
+        "bytes": 3918,
+        "sha256": "41A44270F87731B5E38E60049108B9ABC5CDA0E95217C5D4F307096D96B0D2D8"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/raw-move-full-3-lifecycle.json",
+        "bytes": 1831,
+        "sha256": "58A15C1E1FA7F499D4C7F55D21E63E4E03D978819EF52C715C4EE2D03ECE4582"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/raw-move-full-3-summary.json",
+        "bytes": 23352,
+        "sha256": "21168823F03AC8AFA8C697432B8ACB76A51CD1DA7B5CEC96FFE3FD5633AE7DDD"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/record-attribution.py.txt",
+        "bytes": 2983,
+        "sha256": "7D8F41F0046DA7DB6724B885C827199987220A83075B92AB2194EF160EF5CA43"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/restoration-verify-summary.json",
+        "bytes": 18250,
+        "sha256": "762E76B4BD1AFF28D9137A6EE4C47840938B44D533DDE2CAEEAE11BACEE2F875"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/scheduling-baseline-summary.json",
+        "bytes": 1144,
+        "sha256": "AFEFDB0CF19668A647633BF21D138E698E26DDFFD57B96C7528A231C99087017"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/scheduling-contract-summary.json",
+        "bytes": 832,
+        "sha256": "9747B9DD49FBB39E52811A8EAB59D2D10D62E86636CA00DB7FDA0190E72D26C5"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/terminal-summary.json",
+        "bytes": 22560,
+        "sha256": "A4E0759343435C15A98915E21B372F2417AC59F65869559ED3C650AD538188F2"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/turn-source-scope.json",
+        "bytes": 210,
+        "sha256": "4C2630F8476E3B128E7ACE2DD774CFD77C33E2592CA31CA4C34E9FCB2E0A85D1"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/verify-summary.json",
+        "bytes": 4129,
+        "sha256": "CF18DB8E08FB831A4827FB984B17C4FBE4439DFEA315D1736BE58C20E4E90D25"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-input-gate-20260929/wpf-move-abab.json",
+        "bytes": 1093,
+        "sha256": "ED9210767BBB491A2EDFEADB3F5539D2591E1A8C75D1E4FA3626C82CE6CF131B"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-l1-installed-20260930-122844/installation-record.json",
+        "bytes": 965,
+        "sha256": "CCC97FF143CD2A9B906D232761ABF857F398227E9D5B3E4FC4189DFF4628E8EB"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-l1-installed-20260930-122844/installed-payload-verification.json",
+        "bytes": 150836,
+        "sha256": "098D2BC13369F50E9317EDEACB1E6DB231667D3F0E9E74D3233CB24D8D9A949E"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-final-l1-installed-20260930-122844/upgrade-complete.png",
+        "bytes": 60302,
+        "sha256": "003AB9E425A5B432D67E60DF65863C7D9AAAE70E026978850BD2948E2DEA6156"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-gate-validity-20260929/analysis-sources-v2.json",
+        "bytes": 4877,
+        "sha256": "F049297140CF4EBD8D5748D12D3C6F50ECCF8A6517A28A3FA43CA3E52EAD4FA4"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-gate-validity-20260929/analysis-sources.json",
+        "bytes": 4877,
+        "sha256": "F049297140CF4EBD8D5748D12D3C6F50ECCF8A6517A28A3FA43CA3E52EAD4FA4"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-gate-validity-20260929/analyze.py",
+        "bytes": 8677,
+        "sha256": "F8E92A149D1F4A0E30F35CBB974B6171D1854B2B8D0C99C81A074D7AACD8F617"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-gate-validity-20260929/correlation-v2.json",
+        "bytes": 110745,
+        "sha256": "9181A2E671F493FBB04B2DBD4C87AFEB48E62E90B16E53A1250405D43A0A86BB"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-gate-validity-20260929/correlation.json",
+        "bytes": 109445,
+        "sha256": "913E1484BB751990D54AEF9DE5705300AFCE73F322C9F19D70720C5BA3098D3A"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-gate-validity-20260929/finalize.py",
+        "bytes": 3961,
+        "sha256": "89BD8FD404D3B30E380040B7B672B4127E0B5A8ABFA9DE8F44406036A61831E3"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-gate-validity-20260929/hashes.json",
+        "bytes": 1324,
+        "sha256": "593BCC602D8C06D199213D34B8B466079F7901E8BF570901308D173777B718C7"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-gate-validity-20260929/preservation.json",
+        "bytes": 1677,
+        "sha256": "4CC8C76B4413D20ADC261847A847AEBD162B3CDBED6C03688C89CC36193E5005"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-gate-validity-20260929/request.txt",
+        "bytes": 8505,
+        "sha256": "F4124D527FA74B623990C58F44FFAA844E8181F51FE777A781E9162BCF5CE8C5"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-gate-validity-20260929/review-summary.json",
+        "bytes": 675,
+        "sha256": "2B4C4D1EBD7C04C8F9F7FC7DF778087DD1642ABCC0991071D9BB1E0775FD5D23"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-heartbeat-review-20260929/analysis-contracts.json",
+        "bytes": 704,
+        "sha256": "B9F36BB2C2B62F1AC23DF3C8A7FF760BF0FF00E024E5FCD180C2A2EF40F553A5"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-heartbeat-review-20260929/analyze-preserved.py",
+        "bytes": 1034,
+        "sha256": "6B13BBB08C9335799FD3E652138E3705FC19C93B845FB9F288E321188731A0AE"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-heartbeat-review-20260929/analyze.py",
+        "bytes": 6663,
+        "sha256": "A0D9FB34E5288A6DC23475913ABC594299CB4F6FCE61852CAB0F7E8D767C4689"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-heartbeat-review-20260929/archive-verification.json",
+        "bytes": 141,
+        "sha256": "66AA4055A8CB55D59FD14CF499D72C0B433C42B2080E25F9051531AB96DCCC04"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-heartbeat-review-20260929/check-analysis.py",
+        "bytes": 1159,
+        "sha256": "7BB437C2D4DC63E0DF56107711A06234291DC31572CDB7071D453BE0F14639E6"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-heartbeat-review-20260929/current-run.json",
+        "bytes": 249,
+        "sha256": "D42F22AFCDC1443E488CE08C197B4207F272C5054E68D83077B4D30D1EE5A8F1"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-heartbeat-review-20260929/diff-check.txt",
+        "bytes": 4003,
+        "sha256": "C8FE66D99694FE5935DE7B9D66DFC9F5311F94C6422B4F8B892AE3686EBDA6A3"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-heartbeat-review-20260929/earlier-failure-inventory.json",
+        "bytes": 4161,
+        "sha256": "55FEDDB362B9CCAFA4716EFE34E38E4BCCF5116500FC45D7617B84D80341B91B"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-heartbeat-review-20260929/entry-status.txt",
+        "bytes": 6745,
+        "sha256": "CCE0A6954FB742DA848742260833B76301AF4E04C8566679FE487E5DC16F4AAB"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-heartbeat-review-20260929/finalize-evidence.py",
+        "bytes": 4850,
+        "sha256": "AD54D2FDCCFC885D649F013997C3A56D6F8D1EDFAB21D06E54734B97E34B7AC6"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-heartbeat-review-20260929/frozen-before.json",
+        "bytes": 172071,
+        "sha256": "1C3E4660DADE6DE609EC4BEED08A21BD446E7294004281B25E7FE85142D5EE48"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-heartbeat-review-20260929/frozen-preservation.json",
+        "bytes": 94,
+        "sha256": "26D9162E9DEF220A75F7B613BBFA9081066E65A196DCFB80F3B870290ED38E49"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-heartbeat-review-20260929/hashes.json",
+        "bytes": 5413,
+        "sha256": "EC60BD08145FB32BC9EFE887BFF7754DA0A1A9267535E8E10D34C4A1455FECAB"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-heartbeat-review-20260929/inventory-earlier.py",
+        "bytes": 1679,
+        "sha256": "07EED248E6898C533F7C01463A197B91042FAC2F233AACBAE9AD4A8E4EB2CD8E"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-heartbeat-review-20260929/inventory.py",
+        "bytes": 1435,
+        "sha256": "07674D057BC8AD87C32B7884701A777EB69D5B33C827631E3425444CF6B8892C"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-heartbeat-review-20260929/native-module.json",
+        "bytes": 174,
+        "sha256": "8804A879AE973EA6F7FF194FA269C96A2062B529E184C678F6399BDCB4109233"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-heartbeat-review-20260929/native-window-150610.json",
+        "bytes": 362,
+        "sha256": "D1309E549B64BB2065BF01FD8C31C3707514FAC5C0A3977B9156D12CDDB8F704"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-heartbeat-review-20260929/native-window-150642.json",
+        "bytes": 851,
+        "sha256": "C7C4CE87F4D6AD53C335A69C628244A356A864C06215662DA7E8A44850BC5360"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-heartbeat-review-20260929/native-window-observation.json",
+        "bytes": 2,
+        "sha256": "4F53CDA18C2BAA0C0354BB5F9A3ECBE5ED12AB4D8E11BA873C2F11161202B945"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-heartbeat-review-20260929/observe-native-window.py",
+        "bytes": 1873,
+        "sha256": "B5A585F92A7A3B04BD00BF3647C2B1D6DC99437227725A84D7C163809D2EFC14"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-heartbeat-review-20260929/preserved-contention-inventory.json",
+        "bytes": 42965,
+        "sha256": "D12CFC589333F04E45EC23DEAA43D07F2D8A3FEB7107F0DCAFD65994C559BBDF"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-heartbeat-review-20260929/preserved-failure-correlation.json",
+        "bytes": 26585,
+        "sha256": "9DBC4981CD3CB66D5BF4AA29B40251C9C1C300533533CAD7411FF6094F113D12"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-heartbeat-review-20260929/profile-preservation.json",
+        "bytes": 1259,
+        "sha256": "0ECE66B896BBCBAD2320C7F68A1C6241B8063BCBEC6A50BD788C54D9696DA70B"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-heartbeat-review-20260929/raw-observations.zip",
+        "bytes": 7437527,
+        "sha256": "0A9E3AF4FE2E1976326B3CBBCCBB3123E661C7C33F716C32AA07E3C720E3E050"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-heartbeat-review-20260929/remaining-processes.json",
+        "bytes": 4,
+        "sha256": "A5338D955B09046EC0B16F3A9625B7955C763AAE07DC722E474E6078745F932F"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-heartbeat-review-20260929/request.txt",
+        "bytes": 8615,
+        "sha256": "51896A65908F9CDA711B3D43D6810EFFBCAC546A648F86974E0331E4251EA34E"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-heartbeat-review-20260929/review-summary.json",
+        "bytes": 95443,
+        "sha256": "80C646CDDB1F3A9701F06CB26C15C062727B0ACB3CEF26DE8B2A226FB4DA8351"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-heartbeat-review-20260929/run-series.ps1",
+        "bytes": 2076,
+        "sha256": "DD97EAA5994AF25F04AC26D5EC3F047832F938F9277B50501DB16A87E6CC70DF"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-heartbeat-review-20260929/series-complete.json",
+        "bytes": 92,
+        "sha256": "DAA5B28952C14D0E3031BBA5E975F121FABE455FB4057483C1D07FF3023C5A01"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-heartbeat-review-20260929/series-plan.md",
+        "bytes": 2294,
+        "sha256": "57ED82B03D0B34DE39C9AFA6DE259FFF8B0C574B3A7F6C19F756CDB5980C7271"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-heartbeat-review-20260929/series-results-exact.json",
+        "bytes": 3368,
+        "sha256": "6C7FA15EF70DF686E04F6F2BAEC0D70F087424FBB3EC5DF5D1BFFFD499F1AEBE"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-heartbeat-review-20260929/series-results.json",
+        "bytes": 4168,
+        "sha256": "AD5D2E749B035FE0C29459A4C3E9FAF7FE69481CE9388D0E6658586230895854"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-heartbeat-review-20260929/source-scope.json",
+        "bytes": 465,
+        "sha256": "9B75C2AE7E8199902B9CA26D43598402C319F7878638C8C2270952F200B2AC4E"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-heartbeat-review-20260929/stability-statistics.json",
+        "bytes": 82546,
+        "sha256": "E26E4DCA0F9582DE53B95A8AF4F0FC771C34F17E193563B2A8E8037E7C3BFD45"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-heartbeat-review-20260929/trace-attribution.json",
+        "bytes": 1213087,
+        "sha256": "D0D20EE5BF1C57739A98ADCEAA6E81BFD72ACA1577E3FAFD7EE794ECEB48D445"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-jst771-20260929/JST771 - S4TF - 9-29.zip",
+        "bytes": 3318598,
+        "sha256": "C5D0A0CC05EB358865EEE2BB67CA38E3B9358E7D4821E8224B204F9A5703EC1C"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-jst771-20260929/active-recovery.json",
+        "bytes": 13376,
+        "sha256": "9E52C44E2B89B4F1F2A2459DE5DDE2BF8C2F2CF7F4D06BA600A082754EEB2A09"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-jst771-20260929/changed-existing-sources.json",
+        "bytes": 1427,
+        "sha256": "07014A42374434B41611F112999F6366AE35C988133A60557610510E16E3AEBA"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-jst771-20260929/contracts.json",
+        "bytes": 2462,
+        "sha256": "758B14441B21DE4135AC0C07DE924EA31CB2B215B31EFDFA0D3645ADF47C0DC8"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-jst771-20260929/fenix-configuration-review.md",
+        "bytes": 19471,
+        "sha256": "B989D978F91A15FC238519A9D5EADE0728A299DC2E137651209AD29E22828A7C"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-jst771-20260929/fenix-source-hashes.json",
+        "bytes": 49338,
+        "sha256": "178B6CD0404A16C540119FD8A3CA013B6B834A65F352C377FF59EEB88A9942D8"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-jst771-20260929/frozen-build.json",
+        "bytes": 2652,
+        "sha256": "295F20A504A67B1DEE9FBD419F01CC9336560479D1246EB14C06ACEBD68E1617"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-jst771-20260929/full-baseline.json",
+        "bytes": 3258,
+        "sha256": "A2EDC2DE1DA15177E28A4A6353453379E250E815F2802A0DAEF9637402318662"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-jst771-20260929/installed-config-only.json",
+        "bytes": 5043,
+        "sha256": "A0768436C28B75E774058F7119B4AE980721234992C437FFF431200DAE75377A"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-jst771-20260929/installed-fenix-variants.json",
+        "bytes": 45197,
+        "sha256": "68A6545D72CE50780328479B6FC63BF10194FFC0453EF4460C42570FCA14D9A8"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-jst771-20260929/interaction-contract.json",
+        "bytes": 1679,
+        "sha256": "E416DC5FBD667F377C70F94981FCD71DEB2CCE595399F5567C45CCB6832ACE7B"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-jst771-20260929/isolated-input-position-probe.json",
+        "bytes": 553,
+        "sha256": "71B884A3B43A10051B1DCEA8909874D93B4B593002DBBEF55E64B4C829F5688C"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-jst771-20260929/jst771-evidence.json",
+        "bytes": 12592,
+        "sha256": "F2D25C2F4DE219382950812850335E56D20A4B730A5857C1330FC31CFE6BAF6A"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-jst771-20260929/jst771-replay.json",
+        "bytes": 504,
+        "sha256": "8BAF39FAAC2EB37698114E06EAD060FDAAEA5756D3EBA5F527838BB177A0AE7B"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-jst771-20260929/jst776.json",
+        "bytes": 503,
+        "sha256": "77E11D27B54E68A61FA3333359080FE3B1401F5D220C33C922A9BBAF1B262964"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-jst771-20260929/map-first-attempt.json",
+        "bytes": 23124,
+        "sha256": "2C0CC0E194C299EE997140E7FCF9A67653EB81CB2F80CF2BF4AF693A5E3AAC5E"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-jst771-20260929/map-full-recheck.json",
+        "bytes": 23123,
+        "sha256": "565153B3A4713CD8DCA4725B4C98AC413017F8B1A4C3CA9B91626D8269C5AB9C"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-jst771-20260929/preservation-check.json",
+        "bytes": 1715,
+        "sha256": "A0457F473AC04FD939A825A935EB7B639EBDDA7033888D939FD3A5531DEE1BC4"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-jst771-20260929/profile-after-verification.json",
+        "bytes": 615,
+        "sha256": "CA68EF8E3E3C3C13C256F0A4C4DD2537994BB45825101E302048BBF73DDA52FE"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-jst771-20260929/recovery-assertions.json",
+        "bytes": 742,
+        "sha256": "5F2E5BB2774975DBA6A338163BCA377961CC4D819058A7CD42BADE72492195C2"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-jst771-20260929/recovery-guard.json",
+        "bytes": 4132,
+        "sha256": "FEE40E73CE9123EBB5474EAEFC576412F87964692D5A64542F3826A87B13714B"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-jst771-20260929/recovery-review.md",
+        "bytes": 16204,
+        "sha256": "0A455A7A12FF6630B2153F5A67025A1B17F9A5D4334CBD55C719D1620FEC4CDE"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-jst771-20260929/restoration-verify.json",
+        "bytes": 18250,
+        "sha256": "762E76B4BD1AFF28D9137A6EE4C47840938B44D533DDE2CAEEAE11BACEE2F875"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-jst771-20260929/route-descent-review.md",
+        "bytes": 13275,
+        "sha256": "D8B7DF9D95CD0A9CF13347955A66320D9630D9C6761ADD2B3C2D1C7D2EB4BF93"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-jst771-20260929/source-manifest.json",
+        "bytes": 2595,
+        "sha256": "E90E605EA2A69767D7B8B44BA8A6978430235796057E32989C9E55AD8363638F"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-jst771-20260929/supplemental-preservation-manifest.json",
+        "bytes": 24680,
+        "sha256": "125A233B29F0DC3524028DAECCADCD0FD85668F2516BBD5008992D1E1C8D86D6"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-jst771-20260929/supplemental-simbrief/ofp-1790687549.txt",
+        "bytes": 65283,
+        "sha256": "E87D3CF1CF7D0DFBA601346681E492BE71F36D41AAA7CA113BFCB707699FC778"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-jst771-20260929/supplemental-simbrief/source-manifest.json",
+        "bytes": 428,
+        "sha256": "C8DAD13A95DF785B8567875A4CD0C5C293D374F1191D1E117135FFC34E488079"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-jst771-20260929/terminal-correction-checks.json",
+        "bytes": 22560,
+        "sha256": "A4E0759343435C15A98915E21B372F2417AC59F65869559ED3C650AD538188F2"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-jst771-20260929/terminal-verified.json",
+        "bytes": 22560,
+        "sha256": "A4E0759343435C15A98915E21B372F2417AC59F65869559ED3C650AD538188F2"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-jst771-20260929/user-spec.txt",
+        "bytes": 11539,
+        "sha256": "355E28C85F6401C33B17F00A99F60C4EAD39494206A5BE0055D73257B6D354FF"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-jst771-20260929/validation-summary.json",
+        "bytes": 7005,
+        "sha256": "475102FAF10B13C4839AB8CA4F235FA0DA92D501EC6A25426B447344E0F9418D"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-logbook-closeout-20260930/JST500-disconnected-logbook.png",
+        "bytes": 220638,
+        "sha256": "D86732B4B63DF004065ECCCDA2D15E28B711DDF3BB82A37849DF9EF6733A9EA8"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-logbook-closeout-20260930/JST500-interrupted-disconnected-logbook.png",
+        "bytes": 218300,
+        "sha256": "5896FED7FEB87B4E3566202C76519DD6454AD6FA5B6C9508FB1D59B92D3F74EC"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-logbook-closeout-20260930/JST771-disconnected-logbook.png",
+        "bytes": 220944,
+        "sha256": "CA665261108A20368073AADD7DE3F6E28D2214E13096E748450C526F2063374B"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-logbook-closeout-20260930/archive-manifest.json",
+        "bytes": 472517,
+        "sha256": "BDD5B7C02421965CB48FA6E61475C7E2618EEE745E07C6A46E38BE68E7039B1B"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-logbook-closeout-20260930/index.json",
+        "bytes": 2996,
+        "sha256": "C4C6C8B7C552C4ECC197A47E2D75F2483D1BA17EE9C248D98DC899625566452C"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-logbook-closeout-20260930/logbook-closeout-evidence.zip",
+        "bytes": 16577898,
+        "sha256": "0D73ECD64F4F7355111D8EF82F34F593C38812F6782394AC8FDB838F62BD18FE"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-logbook-closeout-20260930/preservation-after.json",
+        "bytes": 126,
+        "sha256": "721EF34910EE60C0998302F3F6B7015DC59DC887FBC6569EB1FA53AF96D99BCE"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-logbook-closeout-20260930/review.md",
+        "bytes": 8617,
+        "sha256": "FFD823C352206E38BFD7F598C02428D69D8F9BAE1D82737AF7F2FD4FC71666B0"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-logbook-closeout-20260930/source-delta.json",
+        "bytes": 1128,
+        "sha256": "D6D7F5E671E7FC08D11C6BB51C40427E7BACC7140E69D5F18AA08FB45062600B"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-logbook-closeout-20260930/verification-summary.json",
+        "bytes": 1939,
+        "sha256": "F261C52D5306A819FC5128ACB1A55B370A1305132281B1F4EC026774D9D5A820"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-native-c1-20260928-194840/evidence-manifest.json",
+        "bytes": 2591,
+        "sha256": "ED685F97900297DEC0138766E4D305F703DCACF3C7805E00A994E2BD4B86FC62"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-native-c1-20260928-194840/installation-verification.json",
+        "bytes": 1285,
+        "sha256": "F2C329C4B73314DFF8493903AA8A031CD77C2E178B1228C1B05F6C773568FD45"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-native-c1-20260928-194840/native-analysis-v2.json",
+        "bytes": 14674,
+        "sha256": "961A4FBA23594FD12498E9A8C2D6EF9CCE1B36B1E9E0F2FD24BB754494037299"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-scheduling-continuation-20260928/README.md",
+        "bytes": 1615,
+        "sha256": "ECB54B6BD86AE270B95A1DB33160C16B549F9D172F0F79D6CFAD37AE0BD2A08E"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-scheduling-continuation-20260928/acceptance-summary.json",
+        "bytes": 1689,
+        "sha256": "F238E01FCA8B947D983239964A2A2EE3C1FC59A22E76EE856C88E7D4C6904B96"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-scheduling-continuation-20260928/after-full-map/contention.json",
+        "bytes": 4428,
+        "sha256": "96CED3ADDEA3E2F7C30FBB0B221C367355D29606DBF69DFE899363760E52A829"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-scheduling-continuation-20260928/after-full-map/delivery-pressure.json",
+        "bytes": 3803,
+        "sha256": "660D4026D026F09B6B608450253A3FDB20C7F8EF600B8DA8A4797ECCACCF012E"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-scheduling-continuation-20260928/after-full-map/summary.json",
+        "bytes": 22959,
+        "sha256": "227BBEA4079CCC9FA6B2390588EBAB6E4616C3EACBBE4952B97F6AA19FE092C9"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-scheduling-continuation-20260928/after-traced/contention.json",
+        "bytes": 4422,
+        "sha256": "05B2687A393ABD1DB9F861023C39AE367A9F5C92AF7182BCAB57B6340EAC73F3"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-scheduling-continuation-20260928/before-traced/contention.json",
+        "bytes": 4420,
+        "sha256": "14E0ED77B39644F6FAE35F0C9D745F0F346C8117B87F232F844E132FBC2D7D06"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-scheduling-continuation-20260928/before-traced/delivery-pressure.json",
+        "bytes": 3931,
+        "sha256": "BFFBDB75E68A583FA76543D7C7A2AF321FA1AA8E6EDB72D84CE1F7D010EF3866"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-scheduling-continuation-20260928/before-traced/trace-analysis.json",
+        "bytes": 135902,
+        "sha256": "EC00A286EA86A62279CA053CC091952EFFB56A1F391017C5BE1786FA9F088769"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-scheduling-continuation-20260928/capture-bundle-manifest.json",
+        "bytes": 707,
+        "sha256": "AF359AE76BDDFA7EF1BA40EEA42D99FC5D54EE2DDA19721186919732708CEFD6"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-scheduling-continuation-20260928/continuation-source-changes.json",
+        "bytes": 952,
+        "sha256": "C00F6C2DF122637C4A3F187578F2A9D854EBE66CA09B1127C75B627EEA56B1FE"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-scheduling-continuation-20260928/contracts/summary.json",
+        "bytes": 2462,
+        "sha256": "758B14441B21DE4135AC0C07DE924EA31CB2B215B31EFDFA0D3645ADF47C0DC8"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-scheduling-continuation-20260928/fenix-local-source-hashes.json",
+        "bytes": 707,
+        "sha256": "0CC06771E06D2B98650F2086ABA905E14021506A359A81E330CEF9265A780CA9"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-scheduling-continuation-20260928/fenix-signal-definitions.json",
+        "bytes": 1780,
+        "sha256": "C618C6D7AD96D0707A9207A64AF8CA47CCEC173A85BB7482AD65CF4B9C9B8D9D"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-scheduling-continuation-20260928/final-integrity.json",
+        "bytes": 477,
+        "sha256": "03FDD28A077E873EEC650FE815B2A49DA1A26B1E8A244B519C1E65331D5F4938"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-scheduling-continuation-20260928/frozen-C1-preservation.json",
+        "bytes": 811,
+        "sha256": "BB44D2D341D6BA809D45E05A6E8BE70D6E9900A3F41CC9DCF98721B1B97F321F"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-scheduling-continuation-20260928/full-baseline-resumed.json",
+        "bytes": 2670,
+        "sha256": "58710C2D469C55D5CAB8852CC4D928F76FF63017F425EBFF80CABE251FB4437B"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-scheduling-continuation-20260928/interaction-contract/summary.json",
+        "bytes": 1679,
+        "sha256": "E416DC5FBD667F377C70F94981FCD71DEB2CCE595399F5567C45CCB6832ACE7B"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-scheduling-continuation-20260928/jst776/summary.json",
+        "bytes": 503,
+        "sha256": "77E11D27B54E68A61FA3333359080FE3B1401F5D220C33C922A9BBAF1B262964"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-scheduling-continuation-20260928/restoration-verify/summary.json",
+        "bytes": 18250,
+        "sha256": "762E76B4BD1AFF28D9137A6EE4C47840938B44D533DDE2CAEEAE11BACEE2F875"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-scheduling-continuation-20260928/review-final-delivery/delivery-pressure.json",
+        "bytes": 3852,
+        "sha256": "BDFF8257BA6D444B5350058DE8ADB767B1EA52AAB8925DBCB6BDDABF4B901091"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-scheduling-continuation-20260928/review-final-delivery/summary.json",
+        "bytes": 9637,
+        "sha256": "023769AA9A575B316531DB16AC49FD081B56C78A3B999A7286A5878EF1E6BC2A"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-scheduling-continuation-20260928/review-negative-background/delivery-pressure.json",
+        "bytes": 4072,
+        "sha256": "41182CB2D4B67FB360C54D97CF870731E3F7A28A6B14C1BC15394670FF8CF86E"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-scheduling-continuation-20260928/review-negative-background/summary.json",
+        "bytes": 9640,
+        "sha256": "E909720CD9B988A448B05EFFDF9CB5282F0FC770BB94090CA48E5A00FBEF2A93"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-shutdown-20260928/analysis.json",
+        "bytes": 41507,
+        "sha256": "5423533197359BAC4C909204B652B7735EA64CC2AD968BF57FB369D365F2B8EA"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-shutdown-20260928/evidence-manifest.json",
+        "bytes": 1322,
+        "sha256": "468CF20717DB5B3F80200413A3AFEEBCECA5B2587F31577F666AC511A3AFFF03"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-shutdown-20260928/preservation.json",
+        "bytes": 315,
+        "sha256": "820FBC39A579F6A4C7016DE2DF870F3A56E5726B18124F129788346B1AD326A2"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-shutdown-20260928/terminal-telemetry.csv",
+        "bytes": 166396,
+        "sha256": "0EE9985C3AFC7480E17F869975CA44389C4DC90BE5BF6EB866DD92F5690876F0"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-t2-final-20260930/archive-manifest.json",
+        "bytes": 4844,
+        "sha256": "BB7D6B1F5DC272744B40E97E047825357145467FBFB16F9F1091E46E5F942088"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-t2-final-20260930/final-t2-review-evidence.zip",
+        "bytes": 6016291,
+        "sha256": "18075E89318C9ADEAF2576228AE9FDBA17B2C3D3D904359001A7530CE36BDD29"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-t2-native-20260930/README.md",
+        "bytes": 2350,
+        "sha256": "CD085373E0FF3641C817BAEF93C80A02572B690106825C92F44EAF69D079085F"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-t2-native-20260930/archive-manifest.json",
+        "bytes": 4729,
+        "sha256": "5D51FB8D3C67CEFFCF41EAACA4582C7F2D287C22F95F3E2AB084BF76973ACF3C"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-t2-native-20260930/t2-native-evidence.zip",
+        "bytes": 561308,
+        "sha256": "A54E9089BBA9786E3C175ECA49F17F8F0E6B00209E3EB9409E85ACF886ED2A5C"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-terminal-20260928/acceptance-summary.json",
+        "bytes": 5556,
+        "sha256": "BE09A4166FCDB83D0F2F49BE83681A2EC915259A26E9AA5433AD5EAB9F3CADA3"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-terminal-20260928/active-final.json",
+        "bytes": 13376,
+        "sha256": "9E52C44E2B89B4F1F2A2459DE5DDE2BF8C2F2CF7F4D06BA600A082754EEB2A09"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-terminal-20260928/changed-existing-files.txt",
+        "bytes": 856,
+        "sha256": "3EFF68976977D34A397E1B9E3104D1461AC286BF9417B4FEF3C2935FBF253F21"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-terminal-20260928/contention.json",
+        "bytes": 4389,
+        "sha256": "BD0D2DC1BEC79688384AD7EC7B6CDF47EA10079A6E3FB590BC8F09994C70F0B7"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-terminal-20260928/contracts.json",
+        "bytes": 2462,
+        "sha256": "758B14441B21DE4135AC0C07DE924EA31CB2B215B31EFDFA0D3645ADF47C0DC8"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-terminal-20260928/delivery-pressure.json",
+        "bytes": 3798,
+        "sha256": "F85B47A4A730558DACEC55EA3DA46FC4793F66F326DFD68B9FDD811B0F279179"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-terminal-20260928/frozen-build.json",
+        "bytes": 2616,
+        "sha256": "F4A46C2FB026076804B196C6CAF18275A57919082834F82529E83FBD464F687F"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-terminal-20260928/full-baseline.json",
+        "bytes": 3258,
+        "sha256": "3B1A625C2DA7D1822B710B46FE6B870125754E9E174566F1375FB0DAE455E575"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-terminal-20260928/interaction-contract.json",
+        "bytes": 1679,
+        "sha256": "E416DC5FBD667F377C70F94981FCD71DEB2CCE595399F5567C45CCB6832ACE7B"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-terminal-20260928/jst776.json",
+        "bytes": 503,
+        "sha256": "77E11D27B54E68A61FA3333359080FE3B1401F5D220C33C922A9BBAF1B262964"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-terminal-20260928/map-full.json",
+        "bytes": 23121,
+        "sha256": "F6093E2C508D5D79661E2EF6E5F2746FC87EE5E2A7AB9DFB7A9119D8F5607923"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-terminal-20260928/preservation-check.json",
+        "bytes": 1389,
+        "sha256": "C1AB01F0F937CC2739184AD41216A8657D5B438071EBA85B3DE25497B01BCF8B"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-terminal-20260928/recovery-guard.json",
+        "bytes": 4126,
+        "sha256": "1BFC9711C10DFA52ADAD99E9DEBC07F398BD8D35F969FCD9B9C720D4427D16F8"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-terminal-20260928/restoration-verify.json",
+        "bytes": 18250,
+        "sha256": "762E76B4BD1AFF28D9137A6EE4C47840938B44D533DDE2CAEEAE11BACEE2F875"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-terminal-20260928/terminal-final.json",
+        "bytes": 13987,
+        "sha256": "00576203994DDF217AC3BB6491A7FC3C09F2C9672521ACBB729A3761B8EA2899"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-terminal-20260928/user-spec.txt",
+        "bytes": 12392,
+        "sha256": "FF84CD5E38E7785E436B1C84AAD9F8F3A3CB3E15BD10BA42B42844A6EF8B9132"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-terminal-t1-installed-20260928-171000/installation-verification.json",
+        "bytes": 1091,
+        "sha256": "7C83BCC3E3260C7E7595D845ACD6F5978A85F9C3AC8F2E1619D9B1D8AB52B2D3"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-terminal-t1-installed-20260928-171000/installed-payload-checks.json",
+        "bytes": 157518,
+        "sha256": "555522AB91AC9F4978705873737E7B076C4F8B21394F8245BC51128A48B42762"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-terminal-t1-installed-20260928-171000/user-upgrade-complete.png",
+        "bytes": 61237,
+        "sha256": "8323757BC002CAC873500AB088802DAE9A8C9CFD5A3DF5311DBB5691E7462F37"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-terminal-t1-native-20260928-195009/Alpha6OPS-20260929-005019-249327d130104a6880dff5112b739233.json",
+        "bytes": 624820,
+        "sha256": "48F3D74D32AC05820E12BA6B273F3165A0EDE025C8DD6F8F5108E5ACFE8007DC"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-terminal-t1-native-20260928-195009/Alpha6OPS-20260929-005019-249327d130104a6880dff5112b739233.jsonl",
+        "bytes": 394220,
+        "sha256": "66E2367945319EA42222040FB5775DB75A8C89AAD317DE949864DF963676FABC"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-terminal-t1-native-20260928-195009/analysis.json",
+        "bytes": 35154,
+        "sha256": "964558673E3C80495230904C3F849BEE6236BBBD8BB3FB7D5FAFD6B268B6213A"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-terminal-t1-native-20260928-195009/analyze-t1-native.py",
+        "bytes": 10502,
+        "sha256": "A259D0FE9D36716BA6609252815B483A7B806122B3224E12F29F896E2A300771"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-terminal-t1-native-20260928-195009/record.json",
+        "bytes": 298,
+        "sha256": "13BC4776E665E29B1FAD2EFE20310E5BEFFF20DD936606A6C50B0928684F9D83"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c-terminal-t1-native-20260928-195009/trace.json",
+        "bytes": 24636256,
+        "sha256": "BDC1EEFC0BB234AC4A0F4CEA919EBC3A12194F09272B4F42D666C3337F46FD68"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c/active-restart.json",
+        "bytes": 13376,
+        "sha256": "9E52C44E2B89B4F1F2A2459DE5DDE2BF8C2F2CF7F4D06BA600A082754EEB2A09"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c/baseline-summary.json",
+        "bytes": 3256,
+        "sha256": "FEE4A45A73341DD662378115DB0990573BC6BB3C09522A204C1B45D3B12B6A88"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c/changed-source-files.json",
+        "bytes": 6441,
+        "sha256": "D53A543D72EC9A3DEC5E22FA2E1F0F8403918860B421B142565FDAAC8F13F106"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c/current-coverage.json",
+        "bytes": 816,
+        "sha256": "B8206463DBEEB11A20CA779297BD8A77E72406FAE1223A41FB0C3583B2E3FAC2"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c/current-replay.json",
+        "bytes": 503,
+        "sha256": "77E11D27B54E68A61FA3333359080FE3B1401F5D220C33C922A9BBAF1B262964"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c/current-source-preservation.json",
+        "bytes": 185,
+        "sha256": "485CAC2BABEAE9A58359CA51FE017B64D835489F241ECFF0D4B1A4E5BB309AFF"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c/evidence-manifest.json",
+        "bytes": 4270,
+        "sha256": "284E1034D840D123DF17D3D9A15E84B7A5BDE54FCBE3879C1ACBAF740D0DD53F"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c/followup-groups.json",
+        "bytes": 1623,
+        "sha256": "A05575844990CF6134744E2FB2EF56DFEABC9EAE6302404A8F113094505ACB3A"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c/frozen-build.json",
+        "bytes": 2590,
+        "sha256": "DD2F25B2F2002E85AA17A094882650AE0A53B412BB35E0BB11DFFB5DC2374DB5"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c/historical-coverage.json",
+        "bytes": 2768,
+        "sha256": "518C8E7B3AEDF72A0205892F7F5AB8114E4D38EB304CEE3470EC5B5BE3B8E9CB"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c/historical-input-hashes.json",
+        "bytes": 2643,
+        "sha256": "35FB9E1C03009B6C11E4F6F83A13401DF3839D4BE5F7856D7AB72493F5E82F01"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c/historical-replays.json",
+        "bytes": 4511,
+        "sha256": "2A66DD5F330937B2BD4BB58280261337662C2EF3F1D2EBF890CB3F1B3EBCE19C"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c/interaction-contract.json",
+        "bytes": 1679,
+        "sha256": "E416DC5FBD667F377C70F94981FCD71DEB2CCE595399F5567C45CCB6832ACE7B"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c/map-input-probe.json",
+        "bytes": 869,
+        "sha256": "DC69AD7B116598B037DB906F2EF441C918CBF8BDF597405F5C0AB74283020190"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c/map-lifecycle-ledger.md",
+        "bytes": 14554,
+        "sha256": "B91CC804CA4A3E927376A7F956AC353E7EFA0A9910177CDDCBDAA8ACA1B7C5CE"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c/map-suite.json",
+        "bytes": 22531,
+        "sha256": "DA8D41034AFED8EA0C6EB632019E336CFAA0CAB1AE4161C4B6849300E54CF2D6"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c/native-recovery-procedure.md",
+        "bytes": 4094,
+        "sha256": "B71EBAA44EE5F6016EA545D67C0CCBC88DEB9422577A8CCFC809AF04A2829287"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c/negative-replay-proof.json",
+        "bytes": 741,
+        "sha256": "D960D75C568A396014D7AED364594E6F2408314A7531E6BDC965A1264ED94FBF"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c/performance-analysis.md",
+        "bytes": 4743,
+        "sha256": "DD25B1162C803E9387F859522F7D255C660FD7E55420A8F023ECBB50B39F46CA"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c/performance-comparison.json",
+        "bytes": 2631,
+        "sha256": "5CAEECE376F1499F21AF40D8A936C728B916F1DED08E17690CDFB9AA8F51FE47"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c/r3-preservation.json",
+        "bytes": 127,
+        "sha256": "5F746D90EAE5A9F2175F252717AF74D94A02A4192090FDA37794586A1B6B4A10"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c/recovery-guard.json",
+        "bytes": 4131,
+        "sha256": "0655139B6A58EB20517C3D5B66639AA4E2E1CC46EE25AC983150CD2DD37BFB9F"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c/recovery-ledger.md",
+        "bytes": 14208,
+        "sha256": "2D4DC80D6FACB3D1CD460BB44525A4C9AE1037DE2CB76E4DE3D2099BB39B81AE"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c/renderer-default.json",
+        "bytes": 167,
+        "sha256": "1E98391C4293A8DDD23989A1FDE9F1B3963863658B0B4E217D0D0037827E38F0"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c/restoration-checks.json",
+        "bytes": 18250,
+        "sha256": "762E76B4BD1AFF28D9137A6EE4C47840938B44D533DDE2CAEEAE11BACEE2F875"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c/restoration-hidden-resources.json",
+        "bytes": 1460,
+        "sha256": "31478EAB643DB045090DD9B1667BA1D9C3689434F034301368C4C04D4096BE87"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c/restoration-timing-summary.json",
+        "bytes": 320,
+        "sha256": "4CA23F0F7417B28D64B5D2588D206B9C6F227554D51ED7A542C595C6ACD5ED82"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c/review-findings.md",
+        "bytes": 7573,
+        "sha256": "EB743A7A22D0ED58EFA96C1D22537B60AB0DB09F1BC0C563324610B63FD91858"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/7.24c/summary.json",
+        "bytes": 6673,
+        "sha256": "56E5035CB085796628A9F195A45A1B832028E40F02577BD8F77F8AF8A2633D00"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/historical-20260923-24/detail-schemas.json",
+        "bytes": 16934,
+        "sha256": "3775277BD319E4C840A031C0977D664E9F069824CFB714E8977A53E2E77AFBF6"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/historical-20260923-24/evidence-sha256.json",
+        "bytes": 447,
+        "sha256": "38D85C4CB1D080482D4FAF670B66217C4070ABA049A35E519913C331815138DD"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/historical-20260923-24/source-sha256.json",
+        "bytes": 1091,
+        "sha256": "C13475C3B98A6471A6F7829D2CF37D842E16A87160486542B3B4B2C9633C5C14"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/historical-20260923-24/summary.json",
+        "bytes": 113156,
+        "sha256": "4E65154124641CD7C7435F7EE65A41789EBEF7B2D5DFD5D63C9CCDEA8970DA2A"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/jst776-20260928/audit-checks.json",
+        "bytes": 6234,
+        "sha256": "9926D1FDB689F6838B70C1ED61432439857FA45D6C9B6BE7BA526022F8F12B21"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/jst776-20260928/event-timeline.csv",
+        "bytes": 10628,
+        "sha256": "E664B2ABEFDDF5AC2E7475666E24FD8C9ECE122A08B0B9BCB4250431DFD05F55"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/jst776-20260928/evidence-sha256.json",
+        "bytes": 2285,
+        "sha256": "B333C1864CC8E3B557455704B8C50A7826164F3CF3A7BC2801012601EC54D0DB"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/jst776-20260928/flight-findings.json",
+        "bytes": 56971,
+        "sha256": "50108BE1059881A1378F19438641FCC67C113162703AD20AC02BCAD20B539457"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/jst776-20260928/persistence.json",
+        "bytes": 1453,
+        "sha256": "0EFB3FC44853B9CC18E9E2272D7A915718D8C0E815EF7EB24C42D44DEAF3FDB0"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/jst776-20260928/provenance.json",
+        "bytes": 4236,
+        "sha256": "E4D6F11F73099DC5AD6CDE9AE4D5990CA781B718C6E28354CA83258B45F5568D"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/jst776-20260928/replay-summary.json",
+        "bytes": 3453,
+        "sha256": "816960D38721002C6DF0312A7440E549BB961A8D3ADD5C324AF2FDDE6A4F48A0"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/jst776-20260928/source-manifest.json",
+        "bytes": 2850,
+        "sha256": "BC4F723D1AC6A0B168BF3523F3D5C6FA5C6ED7ACADAD7F89A33EC2CCA5D949D7"
+      },
+      {
+        "path": "docs/flight-tracking/evidence/jst776-20260928/telemetry-summary.json",
+        "bytes": 28505,
+        "sha256": "50E78DF3D0EE76CCF6700391BC7F64264EB8FC54DC7475319F723DDC5ED78CCB"
+      },
+      {
+        "path": "docs/flight-tracking/historical-reference-20260923-24.md",
+        "bytes": 16391,
+        "sha256": "05C26B6DDE53BE6FC947DD1D090B2710424EFCC28FAE2E1B7780100E8F726DE2"
+      },
+      {
+        "path": "docs/flight-tracking/jst776-post-migration-validation-20260928.md",
+        "bytes": 45102,
+        "sha256": "7EFBC16505BECFCD8A120754D4E6AC68C453F3BC3F456A8CFB50E6067694DD11"
+      },
+      {
+        "path": "docs/map-v2/checkpoint-7.24a-globe-readiness.md",
+        "bytes": 5187,
+        "sha256": "7FE57FAF23F7DB99E5AB33B050DD219529E4F4D5F496F25BA1B6BD18C6814F37"
+      },
+      {
+        "path": "docs/map-v2/checkpoint-7.24a-spec.txt",
+        "bytes": 18215,
+        "sha256": "E1266D5D18200BC95D754BE765E905D20A6DD586187122CE654FB4572A54E9CF"
+      },
+      {
+        "path": "docs/map-v2/checkpoint-7.24a.1-policy.json",
+        "bytes": 736,
+        "sha256": "A01563BF7783F357E68700CB834C526D694DC4FFD3B6FE4BACE5922D9DF9CB65"
+      },
+      {
+        "path": "docs/map-v2/checkpoint-7.24a.1-policy.md",
+        "bytes": 11681,
+        "sha256": "6E1A418F8B7FAB3FA9604DF1F4702C639044719D8743BE167C4BD81A51427064"
+      },
+      {
+        "path": "docs/map-v2/checkpoint-7.24a.1-spec.txt",
+        "bytes": 7422,
+        "sha256": "6378D0F117E6AC3A532871F6688385682E6F576E2D02AD05411EDB649AC43685"
+      },
+      {
+        "path": "docs/map-v2/checkpoint-7.24a.2-spec.txt",
+        "bytes": 21495,
+        "sha256": "700DFC1FC024857F0AF2BD7094122C56E77C468721883066291CFE5FB151F558"
+      },
+      {
+        "path": "docs/map-v2/checkpoint-7.24b-first-paint.md",
+        "bytes": 12724,
+        "sha256": "297DDFCF94DFA36B196A471F957E2F702B890793BABD3918C6EAF781C38FADCB"
+      },
+      {
+        "path": "docs/map-v2/checkpoint-7.24b-flight-r3.md",
+        "bytes": 3408,
+        "sha256": "1F9A28007B6165DC08B0A7750C8182B9B3C7DC9DD48B4BABB83F7B21A871228E"
+      },
+      {
+        "path": "docs/map-v2/checkpoint-7.24b-input-correction.md",
+        "bytes": 8945,
+        "sha256": "91C7E34D8E1FDDC6F304AFA04D24B56F06F56E98EAD826F4E7876E3603111405"
+      },
+      {
+        "path": "docs/map-v2/checkpoint-7.24b-input-r1-installed.md",
+        "bytes": 2641,
+        "sha256": "DA40A5AC51BA8069A87E6511251259280431808139957B129A37478934DF90CD"
+      },
+      {
+        "path": "docs/map-v2/checkpoint-7.24b-input-r1-retest.md",
+        "bytes": 3992,
+        "sha256": "9EB35B5B910074DB0090A3B108C471A56D0659D71698434D408FE17D82071FFB"
+      },
+      {
+        "path": "docs/map-v2/checkpoint-7.24b-installation-gate.md",
+        "bytes": 7239,
+        "sha256": "DE4E74AC08E772645CE2BE9995B6E21C46782151F6EBF3BF0301BDB40BD1ECB2"
+      },
+      {
+        "path": "docs/map-v2/checkpoint-7.24b-installed-baseline.md",
+        "bytes": 4995,
+        "sha256": "FF55CEA8E7716B512CD6BF0B3175777C7C708FAC5548382994E0C932F284D96A"
+      },
+      {
+        "path": "docs/map-v2/checkpoint-7.24b-installed-pilot.md",
+        "bytes": 6995,
+        "sha256": "9B7612D828E03A8B0BF2392B7907E5A08DD87C4AC0B3CFF1BF0CF9768693C251"
+      },
+      {
+        "path": "docs/map-v2/checkpoint-7.24b-layout-oscillation.md",
+        "bytes": 10709,
+        "sha256": "611E79D561D4775CE6E2DBD2265B586F64BB9C2D80E1E49DECB670A6B76459DF"
+      },
+      {
+        "path": "docs/map-v2/checkpoint-7.24b-layout-r3-installed.md",
+        "bytes": 2904,
+        "sha256": "2C836DE9B9A0EDCF3A05968E56EC8DB12100ED78331341E9AB07910EBA8C3379"
+      },
+      {
+        "path": "docs/map-v2/checkpoint-7.24b-layout-r3-physical.md",
+        "bytes": 3966,
+        "sha256": "4F0507E2EF39F422D7A5EC87A686B344F1D3AE9E691F59E29781C48A8B22D46D"
+      },
+      {
+        "path": "docs/map-v2/checkpoint-7.24b-layout-r3-retest.md",
+        "bytes": 2767,
+        "sha256": "5A802B28C2A162A5AFB97CE1CBCAC3A0BEFC316A98E43FB8BE19EC1E5079BF16"
+      },
+      {
+        "path": "docs/map-v2/checkpoint-7.24b-native-connection-r2a.md",
+        "bytes": 4028,
+        "sha256": "E5687FB23D5E77E60A860C80DF99643EC11C3FE3414FBCC28D59297DA6506779"
+      },
+      {
+        "path": "docs/map-v2/checkpoint-7.24b-native-connection-r3.md",
+        "bytes": 2915,
+        "sha256": "169624EA2C3CEBAE1095D929A755AE79D9334AEC6A9D46EF04B23FC2511D6321"
+      },
+      {
+        "path": "docs/map-v2/checkpoint-7.24b-native-r3-results.md",
+        "bytes": 5132,
+        "sha256": "8E32ECA896C74619E0B4A7AC920E00E7F4575FCA155863022DFE31125C09A161"
+      },
+      {
+        "path": "docs/map-v2/checkpoint-7.24b-physical-input.md",
+        "bytes": 9997,
+        "sha256": "3BC994476198CBDECA08204EFF3A218F6A3545072AA0F154EFE1B5BC1426A695"
+      },
+      {
+        "path": "docs/map-v2/checkpoint-7.24b-pilot-checklist.md",
+        "bytes": 5725,
+        "sha256": "BA1C3C1937A9B08912885BBA8228280ACDC52B413C16745E9B7BA35133228D56"
+      },
+      {
+        "path": "docs/map-v2/checkpoint-7.24b-spec.txt",
+        "bytes": 18747,
+        "sha256": "6C5944AC5F7D26E7BBBB84F6BE5C17D5D02076D8CB8276AB7A537C926F5EF0D1"
+      },
+      {
+        "path": "docs/map-v2/checkpoint-7.24b-visual-r2a-installed.md",
+        "bytes": 2490,
+        "sha256": "15794EB07688EED6BD8393C939B6163D2CCA6992E6772898BD1CE81A64E86525"
+      },
+      {
+        "path": "docs/map-v2/checkpoint-7.24b-visual-r2a-physical.md",
+        "bytes": 3121,
+        "sha256": "4223080F96FF154164AC77A814880DF910B7028FFC4F98DF6977A001C540CBDD"
+      },
+      {
+        "path": "docs/map-v2/checkpoint-7.24b-visual-r2a-retest.md",
+        "bytes": 4627,
+        "sha256": "30DDC59FB767A53D415F355496927144F49C5805C1A5A2313D63B83395ED9D51"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a.1/README.md",
+        "bytes": 5953,
+        "sha256": "E202788BB3E7289FEB0B17A6ECCBA13D3CDB49D5BA73C622FE10D881FA438DF6"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a.1/artifact-manifest.json",
+        "bytes": 32299,
+        "sha256": "107FF695FCCE59E84B2F99C256554487546E539CA3891AA6E1BE879974428B00"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a.1/characterization.json",
+        "bytes": 27828,
+        "sha256": "D6EB882EFCC4B19E05F71EE327F22834B7395EDDF615459ACE3071609A2D1D6D"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a.1/existing-profiles.json",
+        "bytes": 23323,
+        "sha256": "DB967BAE2281D2DAC50BB5D903FAD08B3DB879929460263B63B8B9897FABDB68"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a.1/final-assessment.json",
+        "bytes": 8587,
+        "sha256": "C87887A55E20D18D0D55C5806D2DE6AAE29334747884BAD0A1AED32624B44270"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a.1/final-stall-analysis.json",
+        "bytes": 2139,
+        "sha256": "8BCF4442E71773BDA6304B729E4695B79DFA6E23880B475237F807DE1B9A6841"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a.1/original-window-analysis.md",
+        "bytes": 3998,
+        "sha256": "F347339C8F431A330AF1998D54B74372EBA068803FE3A8F84F725682D24890C8"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a.1/original-window.json",
+        "bytes": 5578,
+        "sha256": "FB3F65746780D16DD8FA554CF8C720118789980BCC58BCADA91D088E4F2DEB0E"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a.1/passive-comparison.json",
+        "bytes": 47476,
+        "sha256": "C466782B852DDB5A8D87DBC47A4E4C469B673B3AAE206C6FEB23F77FDA1892CA"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a.1/policy-freeze-initial-superseded.json",
+        "bytes": 1527,
+        "sha256": "EA610CA5BDC25E13F81DCFEFA7F31939E3370B6D9E9B893DE5291959EB0C5CBD"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a.1/policy-freeze-viewport-superseded.json",
+        "bytes": 1782,
+        "sha256": "4F11DA512E163F4CA339A17538EB891369E76CD1891D67E792A8F51757E5B2B5"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a.1/policy-freeze.json",
+        "bytes": 1869,
+        "sha256": "23707E8030473F981C0B4ED2FAF8F70A8E0EAE11FB4C1F9370E76BC172F7FD6F"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a.1/source-audit.json",
+        "bytes": 633,
+        "sha256": "820E46511BD562477F62DE583CDE5EEFF5F952F24B118440A6AE11045F1C1424"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a.1/verification-summary.json",
+        "bytes": 9130,
+        "sha256": "F325253AB7332C36A57DA8CE87DEDEB72ACB6558B6F2A2234BA6845A21B89251"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a.2/README.md",
+        "bytes": 4769,
+        "sha256": "E799BC0B56ACECB492503B831C61BD8DC78A0E6CDCAEC18442F396BB6B5B3463"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a.2/artifact-manifest.json",
+        "bytes": 96843,
+        "sha256": "0A323D038C2D3BA42E5C3637671E090969BA7AFB93D2E0E201D0444C162CD0D0"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a.2/boundary-checks.json",
+        "bytes": 1002,
+        "sha256": "A4C8BFD6FD5142778A65763302D104AB820320396E4FFC791720222CBDCC98BE"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a.2/contention.json",
+        "bytes": 4141,
+        "sha256": "C1CC04A1F710AEC5F089E24D7CE7E9E7049F790B2CF5009FB3BAB26AD4CCFDA3"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a.2/final-assessment.json",
+        "bytes": 8535,
+        "sha256": "C0534EA3319477B945288458E8727A55EF628C799C931C196C079C7D72EDD1BC"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a.2/final-primary-comparison.json",
+        "bytes": 994,
+        "sha256": "5CDDCD7084932F0B385C9D39DCC4A3545FD77DCEF0A31EFBB9AE43A06AB67615"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a.2/injected-trace-checks.json",
+        "bytes": 832,
+        "sha256": "9747B9DD49FBB39E52811A8EAB59D2D10D62E86636CA00DB7FDA0190E72D26C5"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a.2/investigation-notes.md",
+        "bytes": 8324,
+        "sha256": "8AE4E0B7CFF398E1B8C3544380A988883BD9AEFF102A0975B353F037EFFE1A46"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a.2/legacy-analysis.json",
+        "bytes": 199940,
+        "sha256": "956273A7AD3AE4EB2BE2C13E04D9983D129723605C9C91DAAD2DEA63DF8C3859"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a.2/legacy-comparison.json",
+        "bytes": 3683,
+        "sha256": "1F36BBE631197B8A0C9FA7C8A2DC6FF5B837CB304A6E41B694009239E4F373AD"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a.2/map-checks.json",
+        "bytes": 13955,
+        "sha256": "3873282EE23D4CD9A9E4AC01A9663AF6B11DF21928A27E8C3F033045C323A8E7"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a.2/matrix-analysis.json",
+        "bytes": 408876,
+        "sha256": "F7BC738CE8C9D51CC37F472C84C6EABEA618BC0C245A16AE2040EB425E5EA3E9"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a.2/matrix-table.md",
+        "bytes": 1005,
+        "sha256": "F6E3A0373E6BA6457C8C1D182AD9B23C5015F3678677917E17EBF5A617BB131E"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a.2/policy-contracts.json",
+        "bytes": 6009,
+        "sha256": "D62BD4FF1D18DCF8AA95BF64E75C73ACE5EAA879ED89DC7A34E2CDF91EBC7854"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a.2/policy-freeze.json",
+        "bytes": 3053,
+        "sha256": "1D193CE451DC85802C391B558462C5B367D11BF2CD8D02C3AB3BA35E08C43387"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a.2/recovery-checks.json",
+        "bytes": 4130,
+        "sha256": "8C2EC93ED4D1783E02D84E7FB2808F3ED56EB57405F3773CD2499543F5A50F9D"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a.2/review.md",
+        "bytes": 1181,
+        "sha256": "3A6991A9D9DFA12ED02441AE8DC174DF1C84FEEC76FDD93003F0FE59D025BFB2"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a.2/source-audit.json",
+        "bytes": 3357,
+        "sha256": "B0462D1202409A7882C93F0FA902E4774D39E6858FCC2A2A749A21B943EF19BC"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a.2/summary-contracts.json",
+        "bytes": 845,
+        "sha256": "37A00721319ED0F08064ACE7187C05787869E8819D16A29268002AFFD38AA44D"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a.2/tested-build-archive.json",
+        "bytes": 800,
+        "sha256": "89305CD6E45E70E0B3D418D8B44B398E750963BBE2E5CA644191376F2726AA4B"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a.2/trace-contracts.json",
+        "bytes": 21034,
+        "sha256": "54E7107B264E2A6B5C414C0E640E2674296DC18D1698FDAE8E458949489457FF"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a.2/unexpected-report-audit.json",
+        "bytes": 8709,
+        "sha256": "B16EE5D3F10D95C3ABA3D10D43A5A9F01F1CAC9A4AB2258A45A32DA0E84D306A"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a.2/verification-summary.json",
+        "bytes": 10310,
+        "sha256": "1698B78FAC935EFFDE4510B10C116AD8C48E3F6E4865CD693948A8FD4307E180"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/README.md",
+        "bytes": 6297,
+        "sha256": "DD8EBCA6D47E4CE760154F6840171E357824D74E0D0C1C5E5BF9F021256B26DE"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/accepted-suite-summary.json",
+        "bytes": 1456,
+        "sha256": "EAEDCC2DE59160B143B4AF7A42086E19D7237B45B11989CD7FC5FE319FEE2C63"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/after/final-resources.json",
+        "bytes": 78,
+        "sha256": "82A3664EB864B3D05F4CE0E420F0C043D454ED52668907DC89AA2686FD774870"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/after/profiles.json",
+        "bytes": 10260,
+        "sha256": "2D591807D58C86A9BF7AC1EC3B7BAB07392424C74BA6781AC2B9C9E74466482E"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/after/summary.json",
+        "bytes": 2360,
+        "sha256": "003D9B51E0D25596F2B7DF0BFF4C27F2D4DE1C30CDC44451C25731D818CCE527"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/baseline-summary.json",
+        "bytes": 3202,
+        "sha256": "9120785172840A764CC2CC56FD9E5D5B61F6E70222EE1E8ED2EE710671D06193"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/before/constrained.json",
+        "bytes": 13388,
+        "sha256": "563728EB4929B249DF219E104EF88A5ABB6A900145B45B7459206AE8D6E20141"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/before/final-resources.json",
+        "bytes": 64,
+        "sha256": "C07E4F7A90C7692E3814F989C272FAD36D195DC6DF1A43A9924857FC890CC702"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/before/loads.json",
+        "bytes": 344236,
+        "sha256": "A74EEC3ACFBA1A5F9788505893530257FA90F4F9EDB49FE7CFA40E4E89663E4E"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/before/profiles.json",
+        "bytes": 7656,
+        "sha256": "918387E0EA3224DB7872998ECB094F374A54D4179AE2E4635F7DC1EE6B03E2C6"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/before/summary.json",
+        "bytes": 2034,
+        "sha256": "7CF25F43A95236D95D0A4642AC6023E3F136D0A0D173505A623EC0D80CC15462"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/contracts-final/final-resources.json",
+        "bytes": 89,
+        "sha256": "9D5C367F6DE1B4EA35F242D0E20719BBA7C604CA4D61FC7D5735741539A3B4DF"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/contracts-final/reduced-motion.json",
+        "bytes": 95,
+        "sha256": "5A9CFC1676A88DA9B75FFBFEF3E3CBF0CB94E0BB5F42822F94B42DC326D6DCD8"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/contracts-final/scale-100.png",
+        "bytes": 109943,
+        "sha256": "14F68E7619B250DAECEDB2EF23D5C2529CA51AB4B9F2EA497CBD8A73FF0408A6"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/contracts-final/scale-125.png",
+        "bytes": 173992,
+        "sha256": "C2298DE6B79B81EA740151EEBDD223F9108D9D0BC9132BC9F6E27AB6439ABA3A"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/contracts-final/scale-150.png",
+        "bytes": 169391,
+        "sha256": "3183A78D8590F91DB1ACFAF78A1B342BB6CCF52D0067EA2387F44AD39EA758D0"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/contracts-final/scale-175.png",
+        "bytes": 150341,
+        "sha256": "178CA38A985D220C93DCDEDD7646137DE6D692CC39475DF11E2C4A6FC9E75ECA"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/contracts-final/scale-200.png",
+        "bytes": 142909,
+        "sha256": "96C716CFB577AAA6A38B5031D62DC521E38F7FE3AF42A0155008509DFE70D4E2"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/contracts-final/scaling.json",
+        "bytes": 1859,
+        "sha256": "7D44E668F9D8E099B54A3E2B18F0A6180837300F83E7258EE642C1C5D004744D"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/contracts-final/summary.json",
+        "bytes": 2104,
+        "sha256": "5528BB9FA5934A426AFC4D1E41283303A4E0EE05586EF051C81839277FE3F67B"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/contracts-final/unexpected-report-guard.json",
+        "bytes": 76,
+        "sha256": "1ADABB03D5BD2363AB2266E775A5868150D5A7B20B210EA6672429841655A942"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/contracts-owned-handles/final-resources.json",
+        "bytes": 88,
+        "sha256": "B992AE7A44843685C1E7CEF4358C0A318E657429FB273E9C6D2F50C9252ECC5B"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/contracts-owned-handles/summary.json",
+        "bytes": 2462,
+        "sha256": "DDD5B0C5209923A88480ED485440EC986FD710382351F7635DD5B6A60606FFAC"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/contracts-owned-handles/unexpected-report-guard.json",
+        "bytes": 76,
+        "sha256": "1ADABB03D5BD2363AB2266E775A5868150D5A7B20B210EA6672429841655A942"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/contracts-red/reduced-motion.json",
+        "bytes": 96,
+        "sha256": "A4609E25F39F0BB79DE695FE5578F179CA5A9491B85ED5E103084BF02F225FCD"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/contracts-red/summary.json",
+        "bytes": 2109,
+        "sha256": "5D5A59F0B9BDA5D6AB01386C732C48F3BEE96A2367470704A0623B9848A4CA0A"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/hardware.json",
+        "bytes": 730,
+        "sha256": "71E4B4FF04F56D2DE0C173D36AA47806016B522E6D2DCD980BA7718166C27FA6"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/map-post-reduced/contention.json",
+        "bytes": 4078,
+        "sha256": "FA0AC3DEA0E0A456ADBB0477E5E20C7EC55066DAA59360A5D28E628F393A4694"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/map-post-reduced/failures.json",
+        "bytes": 1614,
+        "sha256": "06C06076FB6F10E323655E0A7C0EDD4290F15604E81FC0F85FF3E4F86E6016B6"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/map-post-reduced/keyboard.json",
+        "bytes": 114,
+        "sha256": "60C2EA16C62720DC2B4343CCFCE4B33E566D82476F07E285B2C0099D9E083A4D"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/map-post-reduced/lifecycle.json",
+        "bytes": 1827,
+        "sha256": "CEBC16BDE290DEFBB6F93B77B561C7E0E2EAD4E93C257313A8B5C8AF3A08F880"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/map-post-reduced/summary.json",
+        "bytes": 13955,
+        "sha256": "4647D1345D76EBE933D216A240879139D6C4F794919505EA123E82866B4E8D33"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/post-run-build-hashes.json",
+        "bytes": 628,
+        "sha256": "3D367B00C218940D5A1E95A7486512B3FB5DD5B416538DD336881B6EB2673583"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/recovery-final/summary.json",
+        "bytes": 4127,
+        "sha256": "BC6FCD82BB48D3065D2AC61F48C032B9385D8E792C3E4025FEF0CB00BD6E8BF5"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/soak-complete/performance-gates.json",
+        "bytes": 2726,
+        "sha256": "7B73B2EC911C51E22F62FBBEB833CFFDCFC2970F3C3336A45A7001CA9E36A520"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/soak-complete/soak-compact.json",
+        "bytes": 338695,
+        "sha256": "C448E32F3866CE2A78ADFCA8E4EBB878BF81E98761248AEFF447FB7BADCB05D7"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/soak-complete/summary.json",
+        "bytes": 4391,
+        "sha256": "D8928C495D63129A02E1D4C1E3F894906BAB5F8B5677FE40BE49AEF44C4F0641"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/soak-complete/unexpected-report-guard.json",
+        "bytes": 76,
+        "sha256": "1ADABB03D5BD2363AB2266E775A5868150D5A7B20B210EA6672429841655A942"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/soak-final/summary.json",
+        "bytes": 1912,
+        "sha256": "D059F1F8EB05B180A497AE1E8E3DC694BA20780BBE344600794D9B087C92E6D1"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/soak-final/unexpected-report-guard.json",
+        "bytes": 76,
+        "sha256": "1ADABB03D5BD2363AB2266E775A5868150D5A7B20B210EA6672429841655A942"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/soak-verified/final-resources.json",
+        "bytes": 90,
+        "sha256": "5E1C1ADDE830D7953E7293E3A62A941EB5BC7DD3FFBB91EBB3F4231110902DCB"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/soak-verified/post-exit-process-audit.json",
+        "bytes": 100,
+        "sha256": "14ACD19EC20CC42DD1E10C3E6F4C970FD65F3C6EC837E4D9BB31ECE1E44E106D"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/soak-verified/readiness-metrics.json",
+        "bytes": 3395,
+        "sha256": "1EC9BD5B3994EB62A73615DCB7CB383AAD40D7DD63ECBABC3B77BB0F3E779BEE"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/soak-verified/resource-samples.json",
+        "bytes": 191312,
+        "sha256": "B64F15264FFB045280FFB1BE56C4475D43D23F78E44BACB3DE691EAF13064194"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/soak-verified/soak-compact.json",
+        "bytes": 350924,
+        "sha256": "BED5EBE7E675274BD3DE763014E9DF1ACB5440DFAD5D9FBD3294103F1FF932B0"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/soak-verified/summary.json",
+        "bytes": 4282,
+        "sha256": "7974CC72EE776C61497FCDC8E9F73D4CCAAD285131F9171B8068CA6C57EE9DCD"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/soak-verified/unexpected-report-guard.json",
+        "bytes": 76,
+        "sha256": "1ADABB03D5BD2363AB2266E775A5868150D5A7B20B210EA6672429841655A942"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/soak-verified/view-lifecycle.json",
+        "bytes": 13773,
+        "sha256": "22C8170BB1B79CC6E8465C523365D10883BBC99D35B24DD902D88013E5EDEA73"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/summary-contracts-final/summary.json",
+        "bytes": 847,
+        "sha256": "613B131BA25E5D57DC530610F05B2633C24A17744053D2038BB5E5B5CC3D419B"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/verification-final/constrained.json",
+        "bytes": 24199,
+        "sha256": "323E7AE30DC61FB51D95B2E7AE0E6952FB0C1BB62A11A8824D25E36234ACC840"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/verification-final/final-resources.json",
+        "bytes": 90,
+        "sha256": "E9818911AC641B4273B5884E234C34A89D6F8EEBBDCF863596508950B6CF2C70"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/verification-final/loads.json",
+        "bytes": 411143,
+        "sha256": "C0BA917DF025B80210FB6CF51ABB11E30571F6E528D06F1451269866F8681CD2"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/verification-final/profiles.json",
+        "bytes": 20871,
+        "sha256": "49B4881148461316AEDFA1D565F60C43BD5FD246460893F6906C66744AE5246B"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/verification-final/summary.json",
+        "bytes": 4016,
+        "sha256": "32056353CE9523CC70E6702E17F05B097F8DF9BA402E9C8590B9C58CCD64D242"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/verification-final/unexpected-report-guard.json",
+        "bytes": 76,
+        "sha256": "1ADABB03D5BD2363AB2266E775A5868150D5A7B20B210EA6672429841655A942"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/verification-owned-handles/constrained.json",
+        "bytes": 24403,
+        "sha256": "12EFC0653A0787E1105F80164FE51AA6DFDCC9B602EEF1CF643A25837844F12D"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/verification-owned-handles/final-resources.json",
+        "bytes": 89,
+        "sha256": "3A9DAEAC99BE9D54506CFD1F516C1130D9C3658774D1B5C6FBFED7D956F1E69C"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/verification-owned-handles/input.json",
+        "bytes": 29645,
+        "sha256": "7533CCE397717DFA3F58CF92AF2FA16EEA9BDD7672F86BC990D71FC7D866A629"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/verification-owned-handles/loads.json",
+        "bytes": 413291,
+        "sha256": "5037D4E360B6E41DEA067FB4B30DDC08798D0BB144C4B3412218E6665C0FBA08"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/verification-owned-handles/profiles.json",
+        "bytes": 22900,
+        "sha256": "2A2D412DE6B0C79126A28E56C4349146B4A9D2DFB22DC1E0C15729BBD967146A"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/verification-owned-handles/reduced-motion.json",
+        "bytes": 95,
+        "sha256": "5A9CFC1676A88DA9B75FFBFEF3E3CBF0CB94E0BB5F42822F94B42DC326D6DCD8"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/verification-owned-handles/scale-100.png",
+        "bytes": 110131,
+        "sha256": "1AA7F4C9EBF6384BE038AF9A5EE9CE2EDDE4E9553F7FC7A7AA2FBBB2B64F99FA"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/verification-owned-handles/scale-125.png",
+        "bytes": 174650,
+        "sha256": "A40505D8207E5F3A18DCB66E99FA13CAFD98329807CB05F194FCCFD871595D15"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/verification-owned-handles/scale-150.png",
+        "bytes": 169426,
+        "sha256": "C4621DEC5517A03195D8F579A8315B56A60229EA66D4F73359AE0FAEF90A2F5B"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/verification-owned-handles/scale-175.png",
+        "bytes": 150140,
+        "sha256": "105B3B507F192187EE7BB28153B9C059BABD8911F8679512174C610B72E44E0F"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/verification-owned-handles/scale-200.png",
+        "bytes": 142454,
+        "sha256": "CDF85D131CCC5D3A876101CAD05441AA0FC26C793A0329050E81A254DB762111"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/verification-owned-handles/scaling.json",
+        "bytes": 1859,
+        "sha256": "7D44E668F9D8E099B54A3E2B18F0A6180837300F83E7258EE642C1C5D004744D"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/verification-owned-handles/summary.json",
+        "bytes": 5797,
+        "sha256": "3B8E77349B77DB7F7B46B5ECD6031BB63E03811F6844C2CDD6B9779D9B2BEB95"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/verification-owned-handles/unexpected-report-guard.json",
+        "bytes": 76,
+        "sha256": "1ADABB03D5BD2363AB2266E775A5868150D5A7B20B210EA6672429841655A942"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24a/verified-build-hashes.json",
+        "bytes": 612,
+        "sha256": "1F96F2E954AA6C9EA1BFBA03CED5F81AC05F701AF905ADD3A6155A6748B697E1"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-first-paint/installed-r1-identity.json",
+        "bytes": 547,
+        "sha256": "8ECE3B997745D33508592B0F99DE2657B351087385E912B7AED64039338C4AAC"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-first-paint/screenshots.json",
+        "bytes": 701,
+        "sha256": "A9AA72E059F6D1A1B2965D1E2FC89878B82E8BEAC073B629F2A59F3E9480679C"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-first-paint/user-state-1.png",
+        "bytes": 378148,
+        "sha256": "630CAEEE7A1F76F18C0E2DE242D91F840762917F2148B0C8054DAFF6DA16F1E5"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-first-paint/user-state-2.png",
+        "bytes": 302113,
+        "sha256": "30EFBB0F0C3BB4C2A5373446A21DB4211AF681C1FC9D0FDAF844B5EF84313C0C"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-input-r1-installed/installed-identity.json",
+        "bytes": 547,
+        "sha256": "02172C451DED076585E423DE203C31EA04600F6E930F8EA074A44884508133F7"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-input-r1-installed/pre-physical-state.json",
+        "bytes": 379,
+        "sha256": "17B18091D292BE500CEB59C7AD98B25EED9608A66D96CB9FF32887C20E51E618"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-input-r1-installed/report-inventory.json",
+        "bytes": 4997,
+        "sha256": "B20BCBCA192E37D1CF212B678C12DC257801FA408B593FFE4DCC3AD4EDAE9074"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-input-r1-installed/saved-data-difference-analysis.json",
+        "bytes": 821,
+        "sha256": "E9B68571D31E6C3B7F0B5ACA3EF806483A70BA082C806B3AF52C933C32840454"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-input-r1-installed/saved-data-verification.json",
+        "bytes": 357,
+        "sha256": "88A82442E85BF2F24661F9EECDAD383AF09427A68FA2FD1B5CF4B67F16007B2B"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-input-r1/baseline-summary.json",
+        "bytes": 3254,
+        "sha256": "AAB65B662604AD9A5F9547CC2D4E930661E156FAEE79677EE1B92B6D4944CBF0"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-input-r1/correction-only.patch",
+        "bytes": 8352,
+        "sha256": "1FD16D494E12DC6275DD133D4396AFD398592ACE63EB91213FB92AB493C97AD6"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-input-r1/final-verification.json",
+        "bytes": 1336,
+        "sha256": "A3D0C52760E0FABBA67E7B3E32576B900D572375D920FE4B323B5ED16EAF1996"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-input-r1/focused-green-summary.json",
+        "bytes": 1647,
+        "sha256": "903474BD277B23CFCAAB4E37CE3B54135E24C3BD00FF724C0B00F20C98BB1B4E"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-input-r1/focused-red-summary.json",
+        "bytes": 1650,
+        "sha256": "C8939FDFE2BFEB45EE46A5BA12068C2413AB269942BE224A5176AB2C7C5D4EA0"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-input-r1/frozen-build.json",
+        "bytes": 4831,
+        "sha256": "02DA71661C39B14D570E7DD9F2878EAD4FCBBD8F134DE5CDBA52FD0AAF0959A4"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-input-r1/handoff-sha256.json",
+        "bytes": 2261,
+        "sha256": "52682E04B59E1132E14ADF2B1102B5D67F489C8D516548D9B7EA87E31763B120"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-input-r1/independent-review.md",
+        "bytes": 942,
+        "sha256": "08CBBA96583BB250EA6A21123885CAB2D7982FA46F5BAF7CC87B0A7DC6ADD474"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-input-r1/input-contracts-summary.json",
+        "bytes": 2459,
+        "sha256": "D1D8E643A6DD7C93E12505F01AD843213FBAAC9BA8CE81ED08F325EFD4C193CE"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-input-r1/installer-extraction.json",
+        "bytes": 493,
+        "sha256": "151D0810281472FBF2F73BBA3A7A0BA04F05C4B9464490240A25E9B8885E4084"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-input-r1/map-lifecycle.json",
+        "bytes": 1832,
+        "sha256": "4E282E2902184567A906DAF3A7150B36666C9DC5DFE870AD7568A68EDED47CCF"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-input-r1/map-summary.json",
+        "bytes": 15675,
+        "sha256": "1ABE1A1E08C730A961E7E7C229A8FA0B8862C056F8EAEBA1ABE1348A90FC26EE"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-input-r1/original-installed-identity.json",
+        "bytes": 538,
+        "sha256": "FD2A1018B2ED0463C13FED68D1FDFAA6D2C792A7D350E204C8D731D0BF541390"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-input-r1/payload-verification.json",
+        "bytes": 1133,
+        "sha256": "4F94EEC4A67E06CDC8738A0E69CB767F413DC1E5C112D770881E3663A02C72FB"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-input-r1/recovery-summary.json",
+        "bytes": 4128,
+        "sha256": "99CA723AC99608A0932A3626F9E03527A77A663B5F8C32EB0565E239C9F7E184"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-input-r1/replay-coverage.json",
+        "bytes": 2768,
+        "sha256": "518C8E7B3AEDF72A0205892F7F5AB8114E4D38EB304CEE3470EC5B5BE3B8E9CB"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-input-r1/report-guard.json",
+        "bytes": 876,
+        "sha256": "A3ED974D7D0B954835E45E8A0157658630C3E47B91EBE071EC6F9906C03DEBE7"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-input-r1/report-policy.json",
+        "bytes": 1469,
+        "sha256": "01C9BFBC10BA65CDE5EF9F33EEF6AECFC187F534F10826426453607AF5328F07"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-input-r1/routed-input.json",
+        "bytes": 457,
+        "sha256": "15F161F26D08F4C75A062B6CA9087271A4F7BFF24C9B837327393B9274C7304A"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-input-r1/source-identity.json",
+        "bytes": 1056,
+        "sha256": "DEB90F7576143658393D2B21645B3976997BF50393AA16725246F9935692122F"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-installation-gate/ReadOnlySetupProbe.cs",
+        "bytes": 1658,
+        "sha256": "769555992E0CA41A2D6016E58DA0B830BE563920EE8E9306EA02A545F8F37364"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-installation-gate/evidence-sha256.json",
+        "bytes": 1068,
+        "sha256": "7929D1FA13ED4B581315654CEDB18FBB9D88ED92E68A0EB816FAFB5F56A526E2"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-installation-gate/installation-error.png",
+        "bytes": 59890,
+        "sha256": "EB153FFCD97916FB78306B90C4EF7B892BD948724EC4772EF2B629561E57FEA6"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-installation-gate/installed-registration-entry.json",
+        "bytes": 290,
+        "sha256": "424BB04E8BBF03DBFF7021C17A956571C23381002A068CAD3CC5C9321D5D942C"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-installation-gate/post-restart-20260925-134803/evidence-sha256.json",
+        "bytes": 593,
+        "sha256": "172BF7AF17423743A74BC366675BFB72E5B94D7417677737AA063B21580AA119"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-installation-gate/post-restart-20260925-134803/handoff-status.json",
+        "bytes": 271,
+        "sha256": "31260EDBF9E52333C14E15E8910104C13E23B4C8BC62A77C9C01B570F71B9276"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-installation-gate/post-restart-20260925-134803/process-state.json",
+        "bytes": 167,
+        "sha256": "24DE5E92097E04C8A383BF277AA028EB1C097CA761B64B3AD91BAD987F94636F"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-installation-gate/post-restart-20260925-134803/result.json",
+        "bytes": 1774,
+        "sha256": "A3955DA8D1C8720028F814B10A56884F974E9F429C7F08F0CB6700B5F99D9FB4"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-installation-gate/preservation-verification.json",
+        "bytes": 928,
+        "sha256": "46CC767D8218A1907CE3EF4553C7183FF8392420B0575E60B185293D24EC65B6"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-installation-gate/processes-entry.json",
+        "bytes": 167,
+        "sha256": "AF909B5EC454DEBFE907F699963DEB60D7DCC7FC304A9238CD781CFF20A4558C"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-installation-gate/status.json",
+        "bytes": 662,
+        "sha256": "AB2D52E7162208FBC2C51708CA77FD7361A1FB91BCCB411082369207596A7156"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-installed-baseline/classic-resource-baseline.json",
+        "bytes": 961,
+        "sha256": "6B8CC085CD67FB651116F8AE6354C3E6B7A112DF1BD9CCDFCBD706C61CE3212D"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-installed-baseline/evidence-sha256.json",
+        "bytes": 2018,
+        "sha256": "CDBC8C2D198710260BDB2ED07DD64934F37B2FF7E88692CD83BC2832D928EFAE"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-installed-baseline/gate-file-readability.json",
+        "bytes": 181,
+        "sha256": "F0F53588F207A64D5BEBB9A89A5E6A529181E0A134D0F61072993528BDAA7E1E"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-installed-baseline/installed-identity.json",
+        "bytes": 538,
+        "sha256": "89EE0F01EEDEB93B5A2117D75C7CB498570D71B6665104D7776B7DEC3B5B8595"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-installed-baseline/installed-registration.json",
+        "bytes": 290,
+        "sha256": "424BB04E8BBF03DBFF7021C17A956571C23381002A068CAD3CC5C9321D5D942C"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-installed-baseline/launch-observation.json",
+        "bytes": 540,
+        "sha256": "121E67750D186C7B2DE43015F4CE9A6E57235306B6A9375BAB953AB605C9E29A"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-installed-baseline/map-overrides-before-startup.json",
+        "bytes": 62,
+        "sha256": "E5679A08D1A452F07F70531B5600F47B3FD534B04E43BB49CCA0C26354E59296"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-installed-baseline/processes-before-startup.json",
+        "bytes": 4,
+        "sha256": "A5338D955B09046EC0B16F3A9625B7955C763AAE07DC722E474E6078745F932F"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-installed-baseline/profile-after-upgrade.json",
+        "bytes": 240,
+        "sha256": "1EFD461088E9A900B2C99015ADB6BF855CFD10965DF6F5A086B02FDED8BE4DE2"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-installed-baseline/settings-file-readability.json",
+        "bytes": 130,
+        "sha256": "987A3DBFF35E90E497767B38615F1C69001DDFF43724CE6D45D0B2750BCDF53D"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-installed-baseline/startup-report-audit.json",
+        "bytes": 282,
+        "sha256": "6E36B53FE8F875960F68C16C470810DC871771326C1A0061327580C95273E7F8"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-installed-baseline/status.json",
+        "bytes": 736,
+        "sha256": "136072B515181F0F5E92A5A16506881902EE3884B59C55F81CAAEC291E378677"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-installed-baseline/upgrade-complete.png",
+        "bytes": 60156,
+        "sha256": "BD482D260E419A6FDC94CD5A118909064F0EFC55F37E793F14F9FF660A451703"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-installed-baseline/webview2-runtime-registration.json",
+        "bytes": 172,
+        "sha256": "3D245E5AFA37794F7F81B8024E14F322B3612739D2E4BBB4375C45A6D2AA4E7C"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-layout-r3-installed/evidence-sha256.json",
+        "bytes": 450,
+        "sha256": "8DCFAA6F303D3C5B074876763D552D5EAA9ACB3853013C54C05B9E990CAF459E"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-layout-r3-installed/installed-identity.json",
+        "bytes": 548,
+        "sha256": "EF7DCA0B2E8BD3328D66C3BBBD4598C01F856567CE77DFDD4F4B1ED9FCB9B9F7"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-layout-r3-installed/summary.json",
+        "bytes": 1977,
+        "sha256": "A9D84C1EF5E424880950371CAA01772F86066D2545EE6C08A475ABBCBC0F26AC"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-layout-r3-installed/upgrade-complete.png",
+        "bytes": 60413,
+        "sha256": "D422ABF053DD713E776400698FEE8488F55429CAA316B22039FCE8BFB9F08E1D"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-layout-r3-physical/captured-files.json",
+        "bytes": 1002,
+        "sha256": "148F366FFDFEC6F96A2C03A6E08B432662C6442CE3268AA63446E9E9C7DEC517"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-layout-r3-physical/evidence-sha256.json",
+        "bytes": 739,
+        "sha256": "1CAA69266C5DBD03E9B1EE9FFFFF43D411B589610E55BED19A98D0EB8C79F8DC"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-layout-r3-physical/installed-identity.json",
+        "bytes": 548,
+        "sha256": "843C2B928F054BB8E31130D388D7DB9ADB8C76DB5986D8AA9F26B2E677E07627"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-layout-r3-physical/processes.json",
+        "bytes": 285,
+        "sha256": "DD929C939E9A1304BFB75A4A680C3E1C72E66947EBB422FDB2F58A45B5184876"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-layout-r3-physical/program-status.json",
+        "bytes": 545,
+        "sha256": "5D8CEBD206DE84618982388935F34E8523B3C0B19208A26C693D5F9C59064B04"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-layout-r3-physical/summary.json",
+        "bytes": 3870,
+        "sha256": "489028D4C953E2466BE9833B72DB32E9ADC1F12C1B02A733DEC95B2AD58835FE"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-layout-r3/baseline-summary.json",
+        "bytes": 3256,
+        "sha256": "006C49EC6474EE8DFDB55F770707560A8917CA39092DFB3F8996E86482A976C4"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-layout-r3/correction-only.patch",
+        "bytes": 10567,
+        "sha256": "A4A06F10FF7357D4320B42C2FF05968459C0773BBA0DD56D279F7E54EBD7FBA9"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-layout-r3/entry.json",
+        "bytes": 1055,
+        "sha256": "7BE5DF8A035CDACD7BBAF32F99B26D0C1A50D638F64EDB377E6C681276E37C42"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-layout-r3/final-verification.json",
+        "bytes": 3447,
+        "sha256": "031E2F48E07A08406C267DC783D3CB441B552AE230012A4E9A7239490D2A8806"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-layout-r3/first-paint-lifecycle.json",
+        "bytes": 8772,
+        "sha256": "F355311F981FB276D0A8D110D7CFC42A12E07F86AACC4FD8239C36D38FE858CF"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-layout-r3/first-paint.json",
+        "bytes": 10765,
+        "sha256": "DB494D5F7F1C2331851DAC4FEAC2FC95B6EED1D510A9B93637CC69E7F1BD97E1"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-layout-r3/frozen-build.json",
+        "bytes": 4842,
+        "sha256": "FED321E1184754D0BCBDAD654A32199A6D22FC08664C1E54BBB7C3D50F16460F"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-layout-r3/handoff-sha256.json",
+        "bytes": 2266,
+        "sha256": "E0CF3A7739ADE263DD821EEFDBF57AB5E76999A51BC4C08AC2DF23A196012B95"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-layout-r3/independent-review.md",
+        "bytes": 1019,
+        "sha256": "7DC09BBBFF1A874CC8B371AD110671C2946DFE01600D1B7FE478BA42110D1D6B"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-layout-r3/input-contracts-summary.json",
+        "bytes": 2459,
+        "sha256": "D1D8E643A6DD7C93E12505F01AD843213FBAAC9BA8CE81ED08F325EFD4C193CE"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-layout-r3/installed-r2a-entry.json",
+        "bytes": 549,
+        "sha256": "AA691AA0807550310B1F7490F9604D9DF273FCEE9A293CF4BE0D90C4453CEC02"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-layout-r3/installer-extraction.json",
+        "bytes": 315,
+        "sha256": "81B01A12A49E1AB2956CBF67DDE5662B49AA02652D7610021A39E80AB2FF3F7F"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-layout-r3/layout-comparison.json",
+        "bytes": 3738,
+        "sha256": "74D94471A37957F54DEE135604C62DA36AA3A3BCCCEDAA9C7E190E9FFA02E0CE"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-layout-r3/layout-traces-and-runner.zip",
+        "bytes": 179255,
+        "sha256": "691B93845C7EEA58A32C8503024C495D0E1DF37C9F92D9EBA88130C86662C390"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-layout-r3/map-lifecycle.json",
+        "bytes": 1831,
+        "sha256": "71C39E6D8C9BDFE1618E7AB02E7AC158BF7C73D23FAC6BB62897845D7B753736"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-layout-r3/map-summary.json",
+        "bytes": 18784,
+        "sha256": "D6AE1667D427CDBAB274212366D7841C5D227ECBDFC110FA2C917DE390303A84"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-layout-r3/payload-verification.json",
+        "bytes": 1196,
+        "sha256": "A2049BE96BB21A3DB8FA91414350F2AE2F2EFAD40B894AF8F7DA2D9CAFB6D683"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-layout-r3/recovery-summary.json",
+        "bytes": 4129,
+        "sha256": "88FE125B1CA27FB88EB5715EECE4F5FD493FFDBEBEB7ADA59799D3396EDD2FE6"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-layout-r3/regression-red.json",
+        "bytes": 899,
+        "sha256": "FAAFD67884561BCFEE0061B858342BBFB4DB75D012C3861118C07BFDDE9C4074"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-layout-r3/regression-reviewed.json",
+        "bytes": 895,
+        "sha256": "C41348E8B45CA3CE351B447421B578F660B52E226C088B9B89E6CC3FF299687A"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-layout-r3/replay-coverage.json",
+        "bytes": 2768,
+        "sha256": "518C8E7B3AEDF72A0205892F7F5AB8114E4D38EB304CEE3470EC5B5BE3B8E9CB"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-layout-r3/report-guard.json",
+        "bytes": 876,
+        "sha256": "A3ED974D7D0B954835E45E8A0157658630C3E47B91EBE071EC6F9906C03DEBE7"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-layout-r3/report-policy.json",
+        "bytes": 1577,
+        "sha256": "DD0C8B6CB90011D0E027D52B897651CC2524603D8AD6070D42FE57DE88B4B634"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-layout-r3/retained-archives.json",
+        "bytes": 649,
+        "sha256": "2EB336843094A5D41D20E14939FA5856CDDD5FF6DF5C22551CA7BE72D646E959"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-layout-r3/routed-input.json",
+        "bytes": 457,
+        "sha256": "15F161F26D08F4C75A062B6CA9087271A4F7BFF24C9B837327393B9274C7304A"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-layout-r3/source-identity.json",
+        "bytes": 1116,
+        "sha256": "FD5AB2004AD801AC8177C4135F6AD667CC8C6FAE110740505F3D65AD7E18B0E0"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-native-r3/captured-files.json",
+        "bytes": 2739,
+        "sha256": "442C91A12550FFF85B98D0D81F1744E726D84D9598FD0B4BB50AB663C153CCA8"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-native-r3/evidence-sha256.json",
+        "bytes": 1043,
+        "sha256": "60D91E593F5664FA8364BE3C088DCE46425791E956B4D5ECB2376850A9CB75AC"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-native-r3/installed-identity.json",
+        "bytes": 548,
+        "sha256": "5A5466621FECC57BE120C45B1EE01EE607ACCD03E793230C848FEB81A24674FA"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-native-r3/processes.json",
+        "bytes": 285,
+        "sha256": "DD929C939E9A1304BFB75A4A680C3E1C72E66947EBB422FDB2F58A45B5184876"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-native-r3/program-status.json",
+        "bytes": 546,
+        "sha256": "FEC13C5A4B1577664B58A7F0D95EB7356749640591A74F92868557ED43BDC993"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-native-r3/report-manifest.json",
+        "bytes": 5517,
+        "sha256": "FF552AB6451D7B7DD32FEFF9215CF1AA80C60DE0840934F504AE180FD0D0BD95"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-native-r3/source-corroboration.json",
+        "bytes": 555,
+        "sha256": "C36C0536D78C988D717F52EA8D3D2D257AE9A471285E2B52AE46FE5538A07C12"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-native-r3/summary.json",
+        "bytes": 9879,
+        "sha256": "1565CC50F3B0F072A339C9A62FC91E32032F3C921DB9A37CA66C94BE6AFBD4B7"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-physical-input/SHA256.json",
+        "bytes": 2411,
+        "sha256": "C0A94DB1C7CF113FE5ED21673D2F40A6A4BD9D70867F3C87D40ADF3C249F1893"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-physical-input/analyze.mjs",
+        "bytes": 2642,
+        "sha256": "47F9F0084A71EF70E47E5D027B9FBA40B2890DEF3BC0CD11F05B7F0068F1F1FF"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-physical-input/frozen-package-final.json",
+        "bytes": 343,
+        "sha256": "D5524A9B5FCCD7C6AD9697DCD03273D8C5985A21EE041D915303642EC23AAED0"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-physical-input/initial-git-index-comparison.json",
+        "bytes": 175,
+        "sha256": "0C2D32549615834020946C0486757EE89E932B6292E7795AE4D1384561C9178D"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-physical-input/installed-identity-final.json",
+        "bytes": 538,
+        "sha256": "0BF8587400F8FA2CFD3D7B5B9EE3A8DAE65E097A7A72C4DC6CF1C9075B86351C"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-physical-input/installed-identity.json",
+        "bytes": 538,
+        "sha256": "59E049C41EA0B2E7564FDF6273CC2CE07CB38EFE6615E90B365229B52DF352E0"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-physical-input/mouse-settings.json",
+        "bytes": 84,
+        "sha256": "24E502F543F15EC3B6A386AFD6884CCB6935ADD97E3D1EF0E009CD56DE117921"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-physical-input/pointer-trace.jsonl",
+        "bytes": 102833,
+        "sha256": "2D873E4B8BFE4BF2C74AD0514B8550EB0AA0D5A92A83CA9F70CB09D15A499376"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-physical-input/probe-Program.cs.txt",
+        "bytes": 6144,
+        "sha256": "E186D9C8E3390F4CDABA57C7FDA98318B805DCC204D2CA8B43C91091271FD903"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-physical-input/probe-launch.json",
+        "bytes": 342,
+        "sha256": "3218A129E9C8F44419E46F88AE62200C1F9D07047BAE90F692DFE098CA008E5E"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-physical-input/probe-summary.json",
+        "bytes": 13115,
+        "sha256": "1C08FF0AB08E072FD8FC935209B8F6D76938F1F210EFAE59D001BE070CF22F4A"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-physical-input/probe.csproj.txt",
+        "bytes": 371,
+        "sha256": "DF15C4BCCE65B8BAA6246D8F8ADB26935299BF0D046D4249099ABDA6B65AB206"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-physical-input/processes-final.json",
+        "bytes": 262,
+        "sha256": "7B79256057100748608F89A008ABD1A6F3D272386758DEED02CD8A8F82CB601F"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-physical-input/production-source-unchanged.json",
+        "bytes": 453,
+        "sha256": "10B01F0360A1DCE384BF1492EAC48CDA6441EA1DFD3D2F6C2610AF46DB7BF918"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-physical-input/report-audit.json",
+        "bytes": 124,
+        "sha256": "2666CF7DD7D13EA29CCD3A7837EC44C8CB41B421C171BB4DD32F28A4251D99B6"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-physical-input/user-observations.json",
+        "bytes": 518,
+        "sha256": "06663D77A7F4067D3C05179E528976C68EC9482D0439B59C789E547D20D4D408"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-visual-r2a-installed/evidence-sha256.json",
+        "bytes": 650,
+        "sha256": "5A0EAF8F75FF51A883F9FB9E0703006DD0215B26F2E0D9CFB17F1C1965F6F3A7"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-visual-r2a-installed/installed-identity.json",
+        "bytes": 549,
+        "sha256": "9EC1EBA018AD4F46A54EC2FE9436E1BA4FE56B460AA50088C732F0B4866689D9"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-visual-r2a-installed/preflight.json",
+        "bytes": 465,
+        "sha256": "DB9BF687C7ABD2E4E3103BC8D127BD18529BE91F41B0368E08EF954F73FB460C"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-visual-r2a-installed/profile-comparison.json",
+        "bytes": 284,
+        "sha256": "7C415466EC5E91C22EB357935CAFED9E334D01647B3E0FEB3184F8B99FB1C958"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-visual-r2a-installed/screenshot.json",
+        "bytes": 370,
+        "sha256": "E27E30993F4634D0DF00AA886EDCE7C73F1C6EEAECA3F45B137C661D0669D1D6"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-visual-r2a-installed/upgrade-complete.png",
+        "bytes": 66180,
+        "sha256": "9EE07EE4B7B94ED5BEC086AE6A4B50FE7B6975BA8E091B4B0EDDD15EF5E6387A"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-visual-r2a-physical/audit.json",
+        "bytes": 911,
+        "sha256": "E37ECF4F0A4C11DE50A48B38968B8D6BB786ABA1079DC40FFFD3D115A209BA97"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-visual-r2a-physical/bookkeeping-analysis.json",
+        "bytes": 701,
+        "sha256": "C352201E22AC858991AB484F63EB55000E542CFC2418035BF7AC3DF0DB467B24"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-visual-r2a-physical/evidence-sha256.json",
+        "bytes": 670,
+        "sha256": "936073BC4B29E6923A11EE024416F03212EA4A6B43CB6730D8055133EE9A974F"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-visual-r2a-physical/installed-identity.json",
+        "bytes": 549,
+        "sha256": "8AB36ADF97F3C5D384069C2E5277D767B0C3653AFB324CBB440AED9CF3913F3D"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-visual-r2a-physical/new-index-row-verification.json",
+        "bytes": 340,
+        "sha256": "3D276D6F1397A1F2A248F8F5C69E74FD9E4BEC4C09C16B7E2B8CDD5CC1B57EDE"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-visual-r2a-physical/user-physical-results.json",
+        "bytes": 1877,
+        "sha256": "2E4D7FC1FCC80651A4184D4A6E5F1EF8ED203BB993D29FC8489BBCC12832B04C"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-visual-r2a/barrier-focused-summary.json",
+        "bytes": 1857,
+        "sha256": "2A46BF2086DFFAFF0AC035A0141591D00DA81555A2694CF77E0662816FAA3205"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-visual-r2a/baseline-summary.json",
+        "bytes": 3253,
+        "sha256": "A69C49722D48D78788642E6765278611749767BFD2F8A1AFDFF7ED6A648EC65B"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-visual-r2a/correction-only.patch",
+        "bytes": 19958,
+        "sha256": "15FBED7F46FFE8B25279D9C4EA797BC9550A1F703055B82E773172F597BFD1C5"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-visual-r2a/final-verification.json",
+        "bytes": 2420,
+        "sha256": "1F2091162ED96A9F667D68F7869ABBF644A86F942C61DFEC589666BE3E3DB4A4"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-visual-r2a/first-paint-lifecycle.json",
+        "bytes": 8682,
+        "sha256": "F3051CCE4D450378255452403E4AB9DCA780CD6B94F85AE0CBD1DEB07E7E90AE"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-visual-r2a/first-paint.json",
+        "bytes": 21745,
+        "sha256": "DC98F74086EA3D5DBEA51B4A311750BDC69DD795D3542FAC73E0D9C53FA6B6BE"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-visual-r2a/focused-green-summary.json",
+        "bytes": 1857,
+        "sha256": "2A46BF2086DFFAFF0AC035A0141591D00DA81555A2694CF77E0662816FAA3205"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-visual-r2a/focused-lifecycle-summary.json",
+        "bytes": 1330,
+        "sha256": "B4F1C1C707F7E156E80F849758505337E615CEC8537C56C031895F0B3A952C75"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-visual-r2a/focused-red-summary.json",
+        "bytes": 1870,
+        "sha256": "D7DFC0E5A44B8EBCB45A089C29CFBA10C07A0937E23B73BCB16D06BD94A6B8EB"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-visual-r2a/frozen-build.json",
+        "bytes": 4853,
+        "sha256": "D2978C984CE0A17932376AF2E01EC1F3A5F45480439D13F189EFCA7E8CB6FE08"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-visual-r2a/handoff-sha256.json",
+        "bytes": 2268,
+        "sha256": "BA9F20E21519A2D1050E09A3713F1789D9BAE057A77B0AA8A355EA29DAAFE2A4"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-visual-r2a/independent-review.md",
+        "bytes": 2145,
+        "sha256": "FAB93D3042D7C5A31CDAC77DDAD88F8656F86731F3BC25AFB0ADC2CE94B78E09"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-visual-r2a/input-contracts-summary.json",
+        "bytes": 2459,
+        "sha256": "D1D8E643A6DD7C93E12505F01AD843213FBAAC9BA8CE81ED08F325EFD4C193CE"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-visual-r2a/installed-r1-resume-identity.json",
+        "bytes": 547,
+        "sha256": "293E742FBCA7C65E7CA8C4D88DBCC46FA16D2F5BAB4BFA1FBF28B55A64F3CFB4"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-visual-r2a/installer-extraction.json",
+        "bytes": 562,
+        "sha256": "A9BBD27AC4A754DB777474FA5DE79D3ECFBA5BB4988F9FFC74CBBD17247195AD"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-visual-r2a/map-lifecycle.json",
+        "bytes": 1824,
+        "sha256": "234F589B5A40CFA2FAAD3FD67AF3E827DA4B080A067DE1E04F705B61F078947F"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-visual-r2a/map-summary.json",
+        "bytes": 18784,
+        "sha256": "D6AE1667D427CDBAB274212366D7841C5D227ECBDFC110FA2C917DE390303A84"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-visual-r2a/payload-verification.json",
+        "bytes": 1299,
+        "sha256": "0A33E49D4C60DFD1761A565B96B20698AB0D194ECA3C04C3537D62CA4A0E5EFD"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-visual-r2a/recovery-summary.json",
+        "bytes": 4132,
+        "sha256": "5285A5F8D056FAEDF54460B828CA887CF7C598B765293DE4D69E9011D6582440"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-visual-r2a/replay-coverage.json",
+        "bytes": 2768,
+        "sha256": "518C8E7B3AEDF72A0205892F7F5AB8114E4D38EB304CEE3470EC5B5BE3B8E9CB"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-visual-r2a/report-guard.json",
+        "bytes": 876,
+        "sha256": "A3ED974D7D0B954835E45E8A0157658630C3E47B91EBE071EC6F9906C03DEBE7"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-visual-r2a/report-policy.json",
+        "bytes": 1469,
+        "sha256": "A2D63E3454A97C192AC8509AD7E9814333CE2BB143D4D167D48EFAD43A9850A9"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-visual-r2a/retained-r2-map-summary.json",
+        "bytes": 18787,
+        "sha256": "EA823949FB13467C7B76072ABE7C89AFDE580C92B3A24E0867586BEB57BF0830"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-visual-r2a/retained-timing-diagnosis.json",
+        "bytes": 770,
+        "sha256": "EF71A6E09983CC32DA146BA0721C9085FD1E5059A118503B213F99834296525D"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-visual-r2a/routed-input.json",
+        "bytes": 457,
+        "sha256": "15F161F26D08F4C75A062B6CA9087271A4F7BFF24C9B837327393B9274C7304A"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b-visual-r2a/source-identity.json",
+        "bytes": 1232,
+        "sha256": "2804CC590595A1D0B5A86041BBD0E4CCA91718FCC09DAF6F11FCFE3CEA4A21BB"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b/baseline-adaptation.patch",
+        "bytes": 4280,
+        "sha256": "BB3BA0D296BAD0837FC37D611AC2BE2F8A943672679AA2B8CD28E48D4343B1A1"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b/baseline-summary.json",
+        "bytes": 3237,
+        "sha256": "C424EFC65F46D4C5282E2AD8574349AD7CD43702CAF6606BF0D2F74CB5F9BA87"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b/configuration.json",
+        "bytes": 417,
+        "sha256": "6CA494BC1DEC544CFC8628B47463EFE94200AC97CF4591A234018B76E410505C"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b/evidence-sha256.json",
+        "bytes": 5620,
+        "sha256": "FC4459B5B5A8A5BCBB4771482E99F1C3D5A47E2CA90598B5609773F5452C4795"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b/execution-provenance.json",
+        "bytes": 1964,
+        "sha256": "86ACF67989F3DE6067CB4B4B35183C1F3A93C8CA0779E43328A32AB33C1D03A9"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b/frozen-build.json",
+        "bytes": 4732,
+        "sha256": "1411400C18C84917CD22CA32EADACD53C0B6774B533A20CBD47835BE054DE558"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b/identity-verifier-selfcheck.json",
+        "bytes": 601,
+        "sha256": "C4A63484EF9FDFF80406BD5F531B2A304301058E13DCFC0B1AA74C5131E5B2EC"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b/independent-review.md",
+        "bytes": 1310,
+        "sha256": "05CFACE47A90E169361A88B85DBB7D99477E79E7BAB5C2F97BEF9908F36B6F32"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b/installer-extraction.json",
+        "bytes": 202,
+        "sha256": "C1C203373041B210D51A231DF6733427AE6B234E939259C1D0A39FE668BEC5F3"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b/map-contention.json",
+        "bytes": 4119,
+        "sha256": "93301336236AC4B4B2330F60B4C739D57A815E5D4338D6008744092CF6D4966A"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b/map-process-provenance.json",
+        "bytes": 675,
+        "sha256": "509742139F82F2925A74057061F3D6C0CCCDCCB81163FF25B33339A6F0711D1B"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b/map-summary.json",
+        "bytes": 13953,
+        "sha256": "F9EE734286CC2D25542C8642832E7D0E8EBC0B0971E2166D1044A86260471301"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b/migration-checks.json",
+        "bytes": 6718,
+        "sha256": "B91A7C23B2F41A2D44E3EC80E7B7B92640F9C8C5198BABC2B9F66AB0DB2658D0"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b/payload-manifest.json",
+        "bytes": 107867,
+        "sha256": "99E5C8A1A943E65EFD428607F802796DC376F3A2FE3F4DAAF8AA4D4762BDE72D"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b/payload-verification.json",
+        "bytes": 984,
+        "sha256": "4B2FA6FB8314C9A75D1A87702465D421124EBBFC7EE16587A6E8423C36F0BBE3"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b/prebuild-preservation.json",
+        "bytes": 2173,
+        "sha256": "8B043A89238FCAE9EAABE79E9E107222833A4B8F92254769EC8874287B503023"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b/prebuild-retention-check.json",
+        "bytes": 917,
+        "sha256": "741BA8418E09CD37CF2E1CAC3CC67CAF4507774CFF6E529A3143689F31FCE8F6"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b/preinstall-summary.json",
+        "bytes": 907,
+        "sha256": "5D0628F95C934F3EE245BB44D6653ACF22A74DBE14A2D2BE2D7DA6E996D3230A"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b/recovery-adaptation.patch",
+        "bytes": 3062,
+        "sha256": "77CA41335BCEFBF70A0209D2709D136864699DAE1679C5A85B6FC54220F57918"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b/recovery-invalid-launch-summary.json",
+        "bytes": 6787,
+        "sha256": "555B0031CFB59F5A3F4068D586891846F356AC7D30C0AA44DCDBB85256C8017C"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b/recovery-loaded-assemblies.json",
+        "bytes": 538,
+        "sha256": "F24DA4E3C96F5BAC231236B9F9A66D8576A2CD9DF73B9D2A347CC9AE06FE248E"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b/recovery-summary.json",
+        "bytes": 4128,
+        "sha256": "9E8C3FEF184E0CDC160F6285EB6BADE5E7B07A7BA4BC4C573CE91D9A7CE2623B"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b/replay-coverage.json",
+        "bytes": 2768,
+        "sha256": "518C8E7B3AEDF72A0205892F7F5AB8114E4D38EB304CEE3470EC5B5BE3B8E9CB"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b/report-guard.json",
+        "bytes": 1735,
+        "sha256": "71E79BA0146677412F90953D3291176492EDB81EE1B062082F0CA4D5150C6D1D"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b/report-policy.json",
+        "bytes": 1300,
+        "sha256": "A46FBE0BC02DB6FBEE62119FE5B4E6F7B5D7AB978FE69521B7FE695711E1BD7C"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b/source-archive-hashes.json",
+        "bytes": 684,
+        "sha256": "FC4C28B7E0036BBD70E881F5D5A3AF716EBAAFB7CB313E4F2146C972AFA18358"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b/source-identity.json",
+        "bytes": 847,
+        "sha256": "C2CE27D3305B9E261E210CF5AFCC8A4950BFA684B054FB537A0D4F5B61F1835B"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b/validation-source-manifest.json",
+        "bytes": 38399,
+        "sha256": "5E9C7CB3F1A09F8E056600C9710F30CDD24E3F2390B70345764AB96D9EF5BB54"
+      },
+      {
+        "path": "docs/map-v2/evidence/7.24b/verify-installed-build.ps1",
+        "bytes": 1832,
+        "sha256": "B33C7F20E2E35A63B27E024BBB5ED066B79D8AD94ADFA758EC6EBF06C654FDF1"
+      },
+      {
+        "path": "docs/superpowers/plans/2026-09-24-checkpoint-7.24a.md",
+        "bytes": 9296,
+        "sha256": "E78B64B77768DEA5650E1C78FA9ECDFFF5A09433A384C7A2EC6FFD76D08A1D85"
+      },
+      {
+        "path": "docs/superpowers/plans/2026-09-25-checkpoint-7.24a.1.md",
+        "bytes": 6418,
+        "sha256": "D7CE38D631402924EFCA3BDFF245E2DD14B6BD13FA0EBE2AD4F80877B0333DA3"
+      },
+      {
+        "path": "docs/superpowers/plans/2026-09-25-checkpoint-7.24a.2.md",
+        "bytes": 9494,
+        "sha256": "7143DE4A1C8985EB51FDE59FB2F8E3821BC9C63A528372D9C7F3B427F346C003"
+      },
+      {
+        "path": "docs/superpowers/plans/2026-09-25-checkpoint-7.24b-input-correction.md",
+        "bytes": 3483,
+        "sha256": "1EAC420CC437AB2D6EF69A3470DC3DC1A407278C183646275EDDDA2916093788"
+      },
+      {
+        "path": "docs/superpowers/plans/2026-09-25-checkpoint-7.24b.md",
+        "bytes": 10754,
+        "sha256": "64AC37E25689B7CF303ED2B0910BDF94CB3636516DABBB33C538DA022F0A74CE"
+      },
+      {
+        "path": "docs/superpowers/plans/2026-09-27-checkpoint-7.24b-layout-oscillation.md",
+        "bytes": 1477,
+        "sha256": "BD6CC6D18853BE85E07B59B2A6459F66212EB3775F1C51AF8AFCE963B8F0FACB"
+      },
+      {
+        "path": "docs/superpowers/plans/2026-09-28-checkpoint-7.24c-native-flight-validation.md",
+        "bytes": 21081,
+        "sha256": "8F3A948D7BDF31F44F5D5330B0D6AFDEACD1972751F68DCA4EB2B4D4F49A6138"
+      },
+      {
+        "path": "docs/superpowers/plans/2026-09-28-checkpoint-7.24c-scheduling-continuation.md",
+        "bytes": 7493,
+        "sha256": "9C7A1E4A69F34BA75BE10D70DA92F013D1C03EFDCFE5CB49896F46D6721368CE"
+      },
+      {
+        "path": "docs/superpowers/plans/2026-09-28-checkpoint-7.24c-terminal-implementation.md",
+        "bytes": 5108,
+        "sha256": "DB317BDF3EB7B27E6DEF8831762FF2D20D88E3BB1DD4E52BC3607C66FF52CB85"
+      },
+      {
+        "path": "docs/superpowers/plans/2026-09-28-checkpoint-7.24c.md",
+        "bytes": 14559,
+        "sha256": "F4C21E54246E9C672F1B6A2890F65D8E7275E334E4C9CEE24CD295CE1DD9FF69"
+      },
+      {
+        "path": "docs/superpowers/plans/2026-09-29-checkpoint-7.24c-direct-responsiveness.md",
+        "bytes": 5074,
+        "sha256": "FB384113B66EFA0B9B674550DF4D9A4493F8AC3CBED174F876773401227760C7"
+      },
+      {
+        "path": "docs/superpowers/plans/2026-09-29-checkpoint-7.24c-jst771.md",
+        "bytes": 3664,
+        "sha256": "D86DAAEB54FB6347EF3D43C5C7FCAA5DFCDE9FAC8E6D212B426867342E95DD6D"
+      },
+      {
+        "path": "docs/superpowers/plans/2026-09-30-checkpoint-7.25.md",
+        "bytes": 24133,
+        "sha256": "01FF6D191F1A5CBE10CEACCBE24E6E7A63E8D3D51E355FEFF90EDD50C51F7CBB"
+      },
+      {
+        "path": "docs/superpowers/plans/2026-10-01-checkpoint-7.25a.md",
+        "bytes": 2488,
+        "sha256": "12998C07D3CD9478C99E841C0DC099E1AF871EB90EA347F76BCAD8B1312474FE"
+      },
+      {
+        "path": "outputs/Alpha6OPS-v0.16.0-checkpoint-7.11.bundle",
+        "bytes": 27217925,
+        "sha256": "41746135DA6B3F05501EC23A46B8BD9D872EBE90B0AE434481E4FC7B54C104C0"
+      },
+      {
+        "path": "outputs/S4-Fenix-Shutdown-Capture-7.24C-20260928/README.md",
+        "bytes": 2950,
+        "sha256": "FCE1F0B6131A4259BADDC80FBBC4C95632BE351E9CFA45963815143396DEC55C"
+      },
+      {
+        "path": "outputs/S4-Fenix-Shutdown-Capture-7.24C-20260928/Start Capture.cmd",
+        "bytes": 1298,
+        "sha256": "6C8F4FBD7314C0BBD63D40CAD76A293436C0B8E254B229062999E065BD1AB967"
+      },
+      {
+        "path": "outputs/S4-Fenix-Shutdown-Capture-7.24C-20260928/bundle-manifest.json",
+        "bytes": 707,
+        "sha256": "AF359AE76BDDFA7EF1BA40EEA42D99FC5D54EE2DDA19721186919732708CEFD6"
+      },
+      {
+        "path": "outputs/S4-Fenix-Shutdown-Capture-7.24C-20260928/capture_fenix_shutdown.py",
+        "bytes": 11824,
+        "sha256": "678DEE4C8EB3B64735A4F1EC4055AEC55743E7B913942C75E7E798756F4BB520"
+      },
+      {
+        "path": "scripts/MapResponsivenessPolicy.psm1",
+        "bytes": 7863,
+        "sha256": "AAEE9EDAA392BD02A599919ABE72AB5CC6079AE7B1E2C9C528CC2CB1865ED866"
+      },
+      {
+        "path": "scripts/SchedulingTraceAnalysis.psm1",
+        "bytes": 5885,
+        "sha256": "D19B3876E7F12034B80597CCC80E3271415AD491AB4018B7F97E8E105F6B6410"
+      },
+      {
+        "path": "scripts/capture_fenix_shutdown.py",
+        "bytes": 11824,
+        "sha256": "678DEE4C8EB3B64735A4F1EC4055AEC55743E7B913942C75E7E798756F4BB520"
+      },
+      {
+        "path": "scripts/direct_responsiveness.py",
+        "bytes": 2727,
+        "sha256": "CA210CC5F8DD3C1897681A9F00B74D3DD0833118E2399547C8E513D486FE0F7C"
+      },
+      {
+        "path": "scripts/summarize-map-performance.ps1",
+        "bytes": 5703,
+        "sha256": "019D947ACF0372FCE94169B269779B9F6B1D5184BF29DFEBF324FCA8423AA422"
+      },
+      {
+        "path": "scripts/summarize-map-responsiveness.ps1",
+        "bytes": 6548,
+        "sha256": "4E1A602BE11A6C3D8EA5A392BC237183A840AA63087ED57CD0C68D75DAF2FBDC"
+      },
+      {
+        "path": "scripts/summarize-map-scheduling.ps1",
+        "bytes": 3458,
+        "sha256": "88F827620E4985FABE4DFD88F6078D668D74BB35FBEED840CD864B179BAFEF36"
+      },
+      {
+        "path": "scripts/test-jst771-evidence.py",
+        "bytes": 22657,
+        "sha256": "AB69C00001B18B782ED29F03C5BE4332453C8E2A3CED84D8A4F92E7BC1247696"
+      },
+      {
+        "path": "scripts/test-map-performance-summary.ps1",
+        "bytes": 2616,
+        "sha256": "2F5CACBF6C42987B4E62C74EF361B9030CFEE0AA26EADE4A754462C6C19A5A6D"
+      },
+      {
+        "path": "scripts/test-map-responsiveness-policy.ps1",
+        "bytes": 5402,
+        "sha256": "C47F1A2D00396ADA232D1F45A60E31F848E5AB147D824F303AD2551B7921D2BA"
+      },
+      {
+        "path": "scripts/test-scheduling-trace.ps1",
+        "bytes": 3661,
+        "sha256": "F9A7489674287F531558626E8AFE2483664882B417B466CC13721A937DE40014"
+      },
+      {
+        "path": "scripts/verify-checkpoint-7.25.ps1",
+        "bytes": 19137,
+        "sha256": "09E42D0348D0267830C0FE743B41668A7B81BB866838065533FA27A361A58471"
+      },
+      {
+        "path": "scripts/verify-checkpoint-7.25a.ps1",
+        "bytes": 6641,
+        "sha256": "E55A9016E04698A5F9F75880EAD200FF178E36B98F67C2AE9515EB2A939B474F"
+      },
+      {
+        "path": "scripts/verify-map-performance.ps1",
+        "bytes": 2240,
+        "sha256": "2162B849A59BE220998ABB9977560F519BE8D8A55A079BE25C9779C6D3F5BCA7"
+      },
+      {
+        "path": "scripts/verify-map-scheduling.ps1",
+        "bytes": 2032,
+        "sha256": "24F9357007F68319B40CED2D5C4410305346CC5658CE8364B77CAB524943BF08"
+      },
+      {
+        "path": "src/Alpha6Ops.Core/TerminalShutdown.cs",
+        "bytes": 5689,
+        "sha256": "21BF4329705A7E7EECFAC8D8E20A2A4FD71310C42D41284F583398EE0B9CF041"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/FenixShutdownCapabilities.cs",
+        "bytes": 13161,
+        "sha256": "76EF49F9DED0EC38C35CC5E0BE098B2D40945A10FD9D87B8D446E4B9BD4B54AD"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/FlightSessionCoordinator.TerminalShutdown.cs",
+        "bytes": 3035,
+        "sha256": "71C0C629933E45E3322F808DD83A09A88D415E81D0CB3E1B1BB02D00F40A7D31"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/MapV2/DispatcherSchedulingTrace.cs",
+        "bytes": 9354,
+        "sha256": "046FBCC63CE467DD313365C08B299DB266A8C1FDE319F679AA328731B37244EC"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/MapV2/FlightTrackPresentationChecks.cs",
+        "bytes": 6434,
+        "sha256": "CF64DD84A8CA71426196BDACF59A41284D580D428E216F987AD061EF421A44BB"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/MapV2/FlightTrackPresentationHistory.cs",
+        "bytes": 7063,
+        "sha256": "71F9EA426E5C9DF969F35A69249BFA1FAEBB2620E4A538A5B6BEFC5C9FAB8DE7"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/MapV2/HeartbeatContextChecks.cs",
+        "bytes": 3359,
+        "sha256": "F9100558EB87B1B90D92EB826BE93F7C223CF8D538D4B997EFC382509C1AF135"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/MapV2/HeartbeatNativeObserver.cs",
+        "bytes": 3323,
+        "sha256": "08EE72E2046857E4CBB52C3B355F3C613E1337774F9E89CA06F2F182659F55B8"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/MapV2/MapDirectResponsivenessChecks.cs",
+        "bytes": 21500,
+        "sha256": "70B507298F902498695E20D41DED0C7D81A93981B54A187762C160C7579AFE9D"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/MapV2/MapInteractionChecks.cs",
+        "bytes": 12225,
+        "sha256": "80E88267F5E805D2BB339B945164713FD9F24F9D2DC6DF690A55CC3CBE22165A"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/MapV2/MapPerformanceChecks.Restoration.cs",
+        "bytes": 13861,
+        "sha256": "214D67F924A39BE2D8FC073169E8ED16DC58A1852E1475CB58EC720DE5750E39"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/MapV2/MapPerformanceChecks.cs",
+        "bytes": 45308,
+        "sha256": "5BCC85F0FFAA92C6D99F672DE7FDC8EEC2038F805CE997C47058FC002A112ECE"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/MapV2/MapResponsivenessChecks.cs",
+        "bytes": 11511,
+        "sha256": "896028CA05C2B3C958DB5214C711BAAA3C2B02D40853590AC726024CADB457A4"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/MapV2/MapSchedulingChecks.cs",
+        "bytes": 11408,
+        "sha256": "D26D586103D9CAD3B104CAD72D7C46EB021B05F2FB940A61A8041E4A86370308"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/MapV2/MapV2Checks.Delivery.cs",
+        "bytes": 3954,
+        "sha256": "D9121CB04688B3B7D92A509C21FF27473C8112E2111E945B02BE974587EA0C19"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/MapV2/MapV2Checks.FirstPaint.cs",
+        "bytes": 10129,
+        "sha256": "8FCDF7F524D97667C665DD8F88E2822E5612A6AA431FBE9192DB26C7385A8FC0"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/MapV2/MapV2Checks.Restoration.cs",
+        "bytes": 3631,
+        "sha256": "79591874D448C71CF5558468965132029498A5B3608B3553B7FF5962861C328B"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/MapV2/NativeMapInputTrace.cs",
+        "bytes": 4832,
+        "sha256": "2101A32CE1F79FC71EE8C12E366371CC311AB0426A33CDF7ABE59A1EAB02724A"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/MapV2/SyntheticMapPointer.cs",
+        "bytes": 1899,
+        "sha256": "95E457E7EBA5D28497C7469D1DB23E48E8EDEF8A27D0CCBD4A77AC8A74DC64E6"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/ObservedCruiseNativeProfileChecks.cs",
+        "bytes": 8753,
+        "sha256": "CE1AFAB3C0D46E94F634161A5315BF782A5BE008553BFE6FD1FFAEF94BD24DF3"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/ObservedCruiseTracker.cs",
+        "bytes": 10180,
+        "sha256": "CC242E45420AFD10A1DBB4F1C7564D058656D9F76FD0F474ED25ED3C6D19D82A"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/OperationsLayoutChecks.cs",
+        "bytes": 4861,
+        "sha256": "D44F3B520E199B5464DF5BAFE24F3099FE7B32F9D2ACD2C2E703F0C65E8E0F35"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/PilotLogbookOperationalTimes.cs",
+        "bytes": 3477,
+        "sha256": "B9B9E4691300612C78FF223B4D9377E345BE05CCC0AEF01C35CC2FD2041E7E9B"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/ProgramStatusStore.cs",
+        "bytes": 3135,
+        "sha256": "2F5721B6C12E4EDE6DDE5D090A7B3566A3AA1FC86CF24A526C7E400D78EA37B5"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/ShutdownIntentAdapters.cs",
+        "bytes": 2981,
+        "sha256": "08E8F371C39F22C342D4CD483D99D7C23744B96A4E798D9E81C9C3D3375E3154"
+      },
+      {
+        "path": "src/Alpha6Ops.Desktop/SimConnectSource.TerminalShutdown.cs",
+        "bytes": 4096,
+        "sha256": "B9FFC2C8D878DDD5636C6A2F810FC0B94077C34716DBD0E17036FEE0C5740A3B"
+      },
+      {
+        "path": "tests/Alpha6Ops.RecoveryChecks/ActiveFlightRecoveryChecks.cs",
+        "bytes": 40850,
+        "sha256": "5CD91CD958F1CF4BDF6FB4FEDDDA7FFD5061CBB0A34AEDB2A7497015F34F510A"
+      },
+      {
+        "path": "tests/Alpha6Ops.RecoveryChecks/FenixShutdownCapabilityChecks.cs",
+        "bytes": 14551,
+        "sha256": "75E314520C0058FD3B6EFE3C69A2909F92425E14F334512A64FE4D83EDD7CDC4"
+      },
+      {
+        "path": "tests/Alpha6Ops.RecoveryChecks/LogbookChecks.cs",
+        "bytes": 14476,
+        "sha256": "B179181F023346EF271F4EE720CB364A14D8A8FEFB73A863C82453F066A0E8D9"
+      },
+      {
+        "path": "tests/Alpha6Ops.RecoveryChecks/TerminalShutdownChecks.Family.cs",
+        "bytes": 9935,
+        "sha256": "AAFF08C4F1FD9D4279A0566B69343088105E8681B8916C1AD16F1E58998A8FAE"
+      },
+      {
+        "path": "tests/Alpha6Ops.RecoveryChecks/TerminalShutdownChecks.cs",
+        "bytes": 16841,
+        "sha256": "DCC8C0D7F378EB186D9AB849A96BA0ADBD06CFB29D51A363C71C847FD3E7F3FD"
+      },
+      {
+        "path": "tests/Alpha6Ops.Tests/TerminalShutdownTests.cs",
+        "bytes": 7235,
+        "sha256": "A62D511336348258FDA3F1820154AEC19E0E31A72E2FC9E75164075D10DDCE90"
+      },
+      {
+        "path": "tests/test_direct_responsiveness.py",
+        "bytes": 4386,
+        "sha256": "22980E28CB63242424C18FB4C134B0562DD2B0672A81BAFD2B05910B44404392"
+      },
+      {
+        "path": "tests/test_fenix_shutdown_capture.py",
+        "bytes": 2391,
+        "sha256": "BCAE66191DD443B819621807F5AEE0F99D36A38D2321AA46777998525E526613"
+      }
+    ]
+  },
+  "frozenCandidate": {
+    "identity": "S4-7.25A-A350-20261001-6020896a402b",
+    "directory": "F:\\Sierra4-Development\\outputs\\Alpha6OPS-Desktop-S4-7.25A-A350-20261001-6020896a402b",
+    "installerSha256": "2920F198578FA7792D8703BAA8817DFE5E367DF53F55DCDFD51929591DDDA709",
+    "portableSha256": "5EF952567F3571E7AB91BBF8F8DA21C26067DB0FEBDC9AAF63669F0BD97FD5A3",
+    "manifestDeclared": 531,
+    "manifestVerified": 531,
+    "manifestFailures": []
+  },
+  "workspace": {
+    "bytes": 46318826425,
+    "files": 308864,
+    "directories": 95778,
+    "derivation": "Verified 7.26 baseline plus sole added audit report",
+    "auditBaselineBytes": 46318789447,
+    "auditReportBytes": 36978,
+    "topLevelAuditBaseline": [
+      {
+        "path": "work",
+        "bytes": 31034196782,
+        "files": 274500,
+        "directories": 91671
+      },
+      {
+        "path": "outputs",
+        "bytes": 10753118000,
+        "files": 11241,
+        "directories": 689
+      },
+      {
+        "path": ".work",
+        "bytes": 3378642036,
+        "files": 12266,
+        "directories": 1423
+      },
+      {
+        "path": ".git",
+        "bytes": 145496476,
+        "files": 2963,
+        "directories": 339
+      },
+      {
+        "path": "src",
+        "bytes": 691803808,
+        "files": 6057,
+        "directories": 1264
+      },
+      {
+        "path": "tests",
+        "bytes": 146228013,
+        "files": 268,
+        "directories": 79
+      },
+      {
+        "path": "docs",
+        "bytes": 100799910,
+        "files": 908,
+        "directories": 91
+      }
+    ]
+  },
+  "archiveDestination": {
+    "path": "F:\\Sierra4-Archive",
+    "exists": false,
+    "driveFreeBytes": 508064755712,
+    "driveUsedBytes": 492121554944,
+    "available": true
+  },
+  "authority": {
+    "audit": "docs/checkpoint-7.26-release-architecture-storage-legacy-audit.md",
+    "guideline": "CHECKPOINT 7.26B — ARCHIVE, CLEANUP, IDENTITY FOUNDATION & PRE-UI BASELINE",
+    "rule": "Retain anything ambiguous; no destructive scope beyond audit classifications."
+  }
+}

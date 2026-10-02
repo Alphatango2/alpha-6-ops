@@ -1,0 +1,43 @@
+{
+  "badHandoffMs": 4280.8266,
+  "badHandoffRejected": true,
+  "correctedNativeHandoffMs": 1.3469999999979336,
+  "correctedNativeHandoffAccepted": true,
+  "cachedCoordinateRejected": true,
+  "trustedInBoundsAccepted": true,
+  "latePositiveRejected": true,
+  "injectedUiStallDetected": true,
+  "injectedBrowserStallDetected": true,
+  "nativeC1Input": {
+    "userObservation": "User: I did not notice any hitching and did not press F9.",
+    "messageAge": {
+      "count": 73492,
+      "p50": 0,
+      "p95": 0,
+      "p99": 16,
+      "max": 16
+    }
+  },
+  "nativeT1Input": {
+    "userObservation": {
+      "hitchingOrFlickering": "None observed",
+      "F9": "Not pressed",
+      "shutdownOrder": [
+        1,
+        2
+      ],
+      "scrollbarInitial": "User observed a right-side Operations scrollbar during the test.",
+      "scrollbarFollowUp": "User reports no right-side scrollbar in the build just started; suggests it might have been in the test environment.",
+      "scrollbarDisposition": "Transient observation, cause unconfirmed. No layout changes made."
+    },
+    "messageAge": {
+      "count": 9015,
+      "p50": 0,
+      "p95": 0,
+      "p99": 16,
+      "max": 16
+    }
+  },
+  "nativeT1Integrity": true,
+  "boundary": "250ms existing controlled queue guard within750ms Render pressure, not a new universal pixel/native SLA. Native handoff classification is only the measured queue component; C1 remains a handoff failure despite smooth panning."
+}

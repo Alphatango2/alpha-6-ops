@@ -1,0 +1,50 @@
+{
+  "validationBuildId": "S4-7.24C-T2-20260929-f421af15530c",
+  "version": "0.22.0",
+  "label": "7.24C TERMINAL T2",
+  "sourceCommit": "020bda9f7d1dd7e16c6ecfeec67c4e4e007c6215",
+  "sourceIsDirty": true,
+  "sourceContentManifestSha256": "F421AF15530C13412A204D4EB02AE3CD1B2762792F3C421945E94947F9647BEB",
+  "sourceSnapshotSha256": "2FFCA792F9D071656EC0FC8C98888607CA2F7EF7EF7143D041D0C36A186B3C45",
+  "frozenAtUtc": "2026-09-29T15:41:40.4129732+00:00",
+  "packageDirectory": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\outputs\\Alpha6OPS-Desktop-S4-7.24C-T2-20260929-f421af15530c",
+  "installerPath": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\outputs\\Alpha6OPS-Desktop-S4-7.24C-T2-20260929-f421af15530c\\Alpha6OPS-Setup-0.22.0-7.24C-T2.exe",
+  "portableZipPath": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\outputs\\Alpha6OPS-Desktop-S4-7.24C-T2-20260929-f421af15530c\\Alpha6OPS-Desktop-0.22.0-7.24C-T2-win-x64.zip",
+  "primaryBinaries": [
+    {
+      "path": "Alpha6Ops.Core.dll",
+      "bytes": 114688,
+      "sha256": "281B6074D3E3BF6FAC19B326025678074BC610C12FB94872E038E7F9E487A3AD"
+    },
+    {
+      "path": "Alpha6OPS.dll",
+      "bytes": 26508288,
+      "sha256": "ACF8718A7046FF48F5F495D1AC917E6C42FA72AF3FCFFD5D88A9B2CFEFC830BE"
+    },
+    {
+      "path": "Alpha6OPS.exe",
+      "bytes": 305664,
+      "sha256": "766046B7277B30E53E93A545A282366DC5F60A720EC0A8C3D8B83355CD6B3D9E"
+    }
+  ],
+  "packageHashes": [
+    {
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\outputs\\Alpha6OPS-Desktop-S4-7.24C-T2-20260929-f421af15530c\\Alpha6OPS-Setup-0.22.0-7.24C-T2.exe",
+      "sha256": "D74CA60E611E3EBF0061F327D405645B0968276669A9670C085FB13F61469F2D",
+      "bytes": 107812352
+    },
+    {
+      "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\outputs\\Alpha6OPS-Desktop-S4-7.24C-T2-20260929-f421af15530c\\Alpha6OPS-Desktop-0.22.0-7.24C-T2-win-x64.zip",
+      "sha256": "21E8225F5CDE24A9D03A25673119CE6CF729CB23C736DA7B3814050978CF1CF2",
+      "bytes": 106876165
+    }
+  ],
+  "payloadFileCount": 514,
+  "portableZipFilesVerified": 514,
+  "embeddedPayloadSha256": "21E8225F5CDE24A9D03A25673119CE6CF729CB23C736DA7B3814050978CF1CF2",
+  "payloadManifestSha256": "83A97C0F5F614C7894E64DB1FA865ED7E74A888D367B5AEE11DFEF89F9B46400",
+  "defaultRenderer": "classic",
+  "mapV2": "session opt-in",
+  "installed": false,
+  "closure": "NO-GO: corrected A320 native capability and final cold-start evidence pending; original JST771 recovery passed, automatic T1 shutdown failed"
+}

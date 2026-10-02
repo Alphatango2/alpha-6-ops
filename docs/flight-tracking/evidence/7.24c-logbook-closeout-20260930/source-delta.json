@@ -1,0 +1,28 @@
+{
+  "modified": [
+    {
+      "path": "packaging\\PreviewSetup.cs",
+      "before": "33BE4511C5767EA783158D7B31E5F689D5F5486232F3EC8661A50CB5CD97D639",
+      "after": "8BEA81648A6E0510E43A7E9C7D5148E296170F850FAC19C9468E1E0296EA29B3"
+    },
+    {
+      "path": "packaging\\Desktop-Quick-Start.txt",
+      "before": "A8BAD6BA1BA6D4890D077C1262851268622001FB6E0A6F7215B8AA5C573001B5",
+      "after": "AB4C98B57DADDA577D63005EAABE89F6EE8C1F33B09983A51776FF200ED2D384"
+    },
+    {
+      "path": "tests\\Alpha6Ops.RecoveryChecks\\Program.cs",
+      "before": "9525BA96F72E563F560FC4BC3745F917771F2FABB4115B3DA902C8BB6473DD80",
+      "after": "81A88A4611AC9713A3CB45E2A8FF543E809A65702F66E28BED4C7CE35FFDDBC6"
+    },
+    {
+      "path": "src\\Alpha6Ops.Desktop\\PilotLogbookWorkspace.xaml.cs",
+      "before": "AF04D56F11EB7E41FA8E22F15D4E84251131E17E7D3AE4E1FE4F50830229CA18",
+      "after": "244208BCD028DADF40DD5370B8D52F6CA4B02DED39EEB45D19B9F853E5648C69"
+    }
+  ],
+  "added": [
+    "src/Alpha6Ops.Desktop/PilotLogbookOperationalTimes.cs",
+    "tests/Alpha6Ops.RecoveryChecks/LogbookChecks.cs"
+  ]
+}

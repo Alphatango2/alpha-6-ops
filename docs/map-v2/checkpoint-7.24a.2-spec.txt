@@ -1,0 +1,738 @@
+CHECKPOINT 7.24A.2 — COMPOSITION SCHEDULING ROOT-CAUSE ISOLATION & TARGETED REMEDIATION
+
+BASELINE
+
+Checkpoint 7.24A.1 is complete.
+
+Historical 7.24A remains NOT READY FOR 7.24B.
+
+7.24A.1 also concluded:
+
+NOT READY FOR 7.24B.
+
+The frozen responsiveness policy must remain authoritative unless this checkpoint identifies and documents a measurement defect that requires correction.
+
+DO NOT relax responsiveness thresholds merely to obtain a pass.
+
+7.24A.1 evidence:
+
+- Build passed with zero warnings/errors.
+- 701 / 702 regression/integrity checks passed in the diagnostic scope.
+- One intermittent accelerated contention timing failure was retained.
+- Final responsiveness assessment FAILED.
+- 1,089 / 1,089 final flight inputs were retained.
+- Recovery passed.
+- PIREP passed.
+- Lifecycle/disposal passed.
+- Unexpected-report guards were clean.
+- Map V2 remains opt-in.
+- Classic map remains default/fallback.
+- 7.24B has not started.
+
+FINAL FROZEN-POLICY FAILURE
+
+The final-light readiness trial recorded:
+
+- window p50: 33.0599 ms
+- window p95: 55.8087 ms
+- window p99: 87.6779 ms
+- maximum heartbeat gap: 996.3762 ms
+
+The frozen maximum-gap requirement is:
+
+< 500 ms
+
+Therefore the readiness gate correctly failed.
+
+The retained trace places the gap approximately between:
+
+315.4455 s and 316.4419 s
+
+during required final Input drain.
+
+The last flight input had already been consumed at approximately 314.5720 s.
+
+The last independent probe completed at approximately 315.4456 s.
+
+The normal application clock and Map V2 remained active.
+
+That window also recorded approximately:
+
+- presentation maximum: 25.46 ms
+- recovery maximum: 7.87 ms
+- resource-call maximum: 13.31 ms
+- independent queue maximum: 60.08 ms
+
+No root cause was established.
+
+A separate intermittent accelerated contention timing test also failed once at approximately:
+
+537.70 ms
+
+against the existing <500 ms timing gate.
+
+Repeats passed, but the failure remains retained evidence.
+
+IMPORTANT COMPARISON
+
+Previous diagnostic evidence also showed a major difference between WebView host paths under one problematic workload:
+
+Composition host:
+- Dispatcher queue p95 approximately 1.24–1.63 seconds
+
+Standard native WebView host diagnostic control:
+- Dispatcher queue p95 approximately 0.135 ms
+
+The standard host is NOT currently an acceptable production replacement because of WPF airspace/overlay behavior.
+
+This comparison is evidence for investigation, not authorization to replace the production host.
+
+
+OBJECTIVE
+
+Identify the root cause, or the smallest defensible set of root contributors, behind the intermittent long WPF/CompositionControl scheduling gaps.
+
+Then:
+
+A. if a real production issue is identified and a small safe remediation exists, implement and verify it;
+
+or
+
+B. if the issue is proven to originate from diagnostic/final-drain behavior rather than representative production scheduling, correct the measurement architecture with evidence and rerun the frozen readiness policy;
+
+or
+
+C. if the cause cannot be isolated sufficiently, leave production unchanged and return NOT READY FOR 7.24B.
+
+This is a ROOT-CAUSE checkpoint.
+
+Do not begin with speculative production optimization.
+
+First reproduce, instrument and isolate.
+
+
+============================================================
+PART 1 — PRESERVE ALL HISTORICAL EVIDENCE
+============================================================
+
+Do not modify, delete, overwrite or reinterpret the accepted/failed evidence from:
+
+- Checkpoint 7.24A
+- Checkpoint 7.24A.1
+
+The historical results remain:
+
+7.24A:
+NOT READY
+
+7.24A.1:
+NOT READY
+
+The original 100.0243 ms result remains failed under its original policy.
+
+The 996.3762 ms result remains failed under the frozen 7.24A.1 policy.
+
+Any new result from 7.24A.2 is a NEW readiness assessment.
+
+Do not retroactively convert either earlier checkpoint into a pass.
+
+
+============================================================
+PART 2 — BUILD A REPRESENTATIVE REPRODUCTION
+============================================================
+
+Create the smallest representative reproduction that can exercise the scheduling behavior while retaining the production CompositionControl path.
+
+The reproduction should include enough of the real production environment to preserve:
+
+- Sierra 4 WPF Dispatcher
+- Operations workspace
+- WebView2CompositionControl
+- MapLibre renderer
+- dashboard clock where relevant
+- production presentation handler
+- map snapshot bridge
+- normal Map V2 ACK path
+- representative authoritative input cadence
+
+Avoid unrelated diagnostic workload unless explicitly being tested.
+
+The objective is to reproduce or characterize long scheduling gaps in a controlled environment.
+
+Do not use the standard WebView host as the primary reproduction.
+
+It may be used only as an ablation/control.
+
+
+============================================================
+PART 3 — HIGH-RESOLUTION DISPATCHER TRACE
+============================================================
+
+Instrument the representative Composition path with sufficiently precise event timing to explain long gaps.
+
+Capture timestamps and durations for relevant events such as:
+
+- heartbeat scheduled
+- heartbeat callback begins
+- heartbeat callback ends
+
+- independent queue probe scheduled
+- probe begins
+- probe ends
+
+- Dispatcher operation queued
+- Dispatcher priority
+- Dispatcher operation begins
+- Dispatcher operation ends
+
+- presentation refresh begins/ends
+- dashboard clock update begins/ends
+- OperationsOverview refresh begins/ends
+- WPF layout-related callbacks where measurable
+- render/composition callbacks where measurable
+- MapProjectionService work
+- map serialization
+- Dispatcher bridge post
+- WebView message send
+- WebView ACK receive
+- map status callbacks
+- resource sampling
+- recovery save
+- navigation
+- resize
+- renderer recreation
+- final-drain operations
+
+Do not log raw telemetry payloads unnecessarily.
+
+The trace must make it possible to determine:
+
+WHAT WAS EXECUTING OR WAITING
+
+during a long heartbeat gap.
+
+
+============================================================
+PART 4 — DISPATCHER PRIORITY ANALYSIS
+============================================================
+
+Analyze Dispatcher priorities used by:
+
+- heartbeat
+- map posts
+- dashboard refresh
+- presentation updates
+- layout/render
+- diagnostic probes
+- final drain
+- clock updates
+- other relevant operations
+
+Determine whether:
+
+- lower-priority work is starving Input work
+- higher/equal-priority work is monopolizing the queue
+- synchronous work is blocking the Dispatcher
+- repeated layout invalidation is causing scheduling pressure
+- CompositionControl integration changes scheduling behavior
+- final-drain logic introduces an artificial scheduling gap
+- diagnostic producer/probe shutdown changes queue ordering
+
+Do not infer starvation solely from elapsed time.
+
+Use trace evidence.
+
+
+============================================================
+PART 5 — COMPOSITION VS STANDARD HOST ABLATION
+============================================================
+
+Repeat the same representative workload using:
+
+A. production WebView2CompositionControl
+
+B. standard WebView2 host diagnostic control
+
+Keep all other practical workload conditions identical.
+
+Compare:
+
+- heartbeat distribution
+- Dispatcher queue delay
+- presentation timing
+- bridge post timing
+- ACK timing
+- layout activity
+- CPU
+- resource behavior
+
+The purpose is to determine which scheduling behavior is host-specific.
+
+DO NOT replace the production CompositionControl during this part.
+
+The standard host remains a diagnostic control only.
+
+
+============================================================
+PART 6 — MAP ACTIVE VS MAP QUIESCENT
+============================================================
+
+Within the Composition host compare equivalent workloads with:
+
+A. normal Map V2 updates
+
+B. renderer present but visual snapshot updates intentionally quiescent
+
+C. renderer hidden/disposed where useful as a control
+
+Preserve authoritative flight processing in every case.
+
+Determine whether long scheduling gaps require:
+
+- active map updates
+- merely having CompositionControl present
+- surrounding Operations presentation
+- neither
+
+
+============================================================
+PART 7 — DASHBOARD / CLOCK / PRESENTATION ABLATION
+============================================================
+
+The earlier evidence suggested surrounding presentation work affects scheduling.
+
+Perform controlled ablations of:
+
+- dashboard clock
+- Operations metric/card refresh
+- activity/alert refresh
+- presentation handler
+- map status UI updates
+- other identified periodic presentation work
+
+Disable only ONE controlled category at a time where practical.
+
+Do not permanently remove production functionality.
+
+Measure whether the scheduling tail materially changes.
+
+Restore normal behavior after each experiment.
+
+
+============================================================
+PART 8 — LAYOUT / RENDER COST INVESTIGATION
+============================================================
+
+7.24A and 7.24A.1 recorded high LayoutUpdated counts but correctly did not treat event count as cost.
+
+Improve this evidence.
+
+Determine whether actual expensive layout/render work correlates with long scheduling gaps.
+
+Where supported, measure or approximate:
+
+- layout pass duration
+- measure/arrange duration
+- render/composition duration
+- visual tree invalidations
+- repeated size/layout changes
+- WebView composition resize/update activity
+
+Do not conclude that LayoutUpdated frequency itself is the cause.
+
+If precise WPF layout cost cannot be measured directly, document the limitation and use controlled ablation evidence instead.
+
+
+============================================================
+PART 9 — FINAL-DRAIN INVESTIGATION
+============================================================
+
+The 996.3762 ms failure occurred during required final Input drain after the source/probe producers had completed.
+
+Investigate this path separately.
+
+Determine exactly what happens between:
+
+- final producer completion
+- final probe completion
+- drain request
+- pending Dispatcher operations
+- heartbeat scheduling
+- timing snapshot
+- test termination
+
+Test whether the final-drain sequence can create a long measurement gap that would not occur during continued normal application operation.
+
+If so:
+
+DO NOT simply exclude the gap.
+
+Prove the mechanism.
+
+Then redesign the diagnostic shutdown/drain procedure so it measures pending work correctly without creating artificial idle/scheduling gaps.
+
+A measurement correction is allowed only with evidence.
+
+Any correction must retain the ability to detect a deliberately injected >500 ms UI stall.
+
+
+============================================================
+PART 10 — CLOCK / FEED / WAKEUP CADENCE MATRIX
+============================================================
+
+7.24A.1 identified meaningful differences between diagnostic sequences.
+
+Run a bounded matrix varying:
+
+- dashboard clock active/inactive
+- independent authoritative feed vs UI-paced feed
+- heartbeat monitoring cadence
+- independent queue-probe cadence
+- resource sampling cadence
+- final-drain enabled/normal continuous operation
+
+Do not create an enormous combinatorial test.
+
+Choose the smallest matrix capable of isolating the main effects.
+
+Record exact conditions for every arm.
+
+Do not compare runs with materially different conditions as if they were identical.
+
+
+============================================================
+PART 11 — OPERATING SYSTEM / THREAD SCHEDULING EVIDENCE
+============================================================
+
+Where practical and safe, collect additional Windows/.NET evidence such as:
+
+- process/thread CPU usage
+- UI-thread CPU usage
+- thread state during long waits
+- context switches where accessible
+- GC activity
+- managed allocation pressure
+- GC pauses
+- browser process CPU
+- composition process CPU
+
+Do not introduce heavyweight profiling that materially changes the workload without clearly labeling that evidence as instrumented.
+
+Determine whether long gaps correlate with:
+
+- GC
+- CPU saturation
+- browser process activity
+- UI-thread execution
+- thread descheduling
+- another measurable system event
+
+
+============================================================
+PART 12 — GARBAGE COLLECTION / ALLOCATION CHECK
+============================================================
+
+Explicitly investigate whether Map V2 or Operations presentation creates allocation bursts that can cause GC-related pauses.
+
+Measure where practical:
+
+- allocation rate
+- Gen 0 collections
+- Gen 1 collections
+- Gen 2 collections
+- pause timing
+- large object heap activity
+
+Correlate collection events with long heartbeat gaps where evidence allows.
+
+Do not optimize allocations unless they are demonstrated contributors.
+
+
+============================================================
+PART 13 — REPRODUCTION STANDARD
+============================================================
+
+Before making a production fix, establish a repeatable or sufficiently characterized reproduction.
+
+Preferred evidence:
+
+- repeated long-tail gaps under the same controlled workload
+
+or
+
+- deterministic injected condition that reproduces the same scheduling mechanism
+
+A one-off unexplained gap is insufficient evidence for a broad production rewrite.
+
+If the symptom cannot be reproduced reliably, report that limitation.
+
+
+============================================================
+PART 14 — TARGETED PRODUCTION REMEDIATION
+============================================================
+
+ONLY if a specific production contributor is established:
+
+implement the smallest safe remediation.
+
+Examples MAY include:
+
+- reducing unnecessary presentation refresh
+- correcting Dispatcher priority
+- eliminating synchronous UI-thread work
+- avoiding redundant layout invalidation
+- moving safe presentation preparation off the Dispatcher
+- batching non-authoritative visual status updates
+- fixing a CompositionControl lifecycle/update misuse
+
+These are examples only.
+
+Do not implement them without evidence.
+
+DO NOT:
+
+- change FlightSessionCoordinator ordering
+- coalesce authoritative flight input
+- weaken recovery durability
+- change flight algorithms
+- change MapLibre renderer technology
+- replace CompositionControl solely because the standard host benchmarks faster
+- remove required WPF overlays
+- alter operational semantics
+
+
+============================================================
+PART 15 — MEASUREMENT REMEDIATION
+============================================================
+
+If the established root cause is diagnostic rather than production:
+
+correct only the diagnostic architecture required to remove the artifact.
+
+Requirements:
+
+- retain detection of real Dispatcher stalls
+- retain pending-callback detection
+- retain frozen latency thresholds
+- preserve raw timing evidence
+- deliberately inject a >500 ms UI stall and prove the corrected measurement still fails
+
+Do not change numerical thresholds as part of a measurement correction.
+
+
+============================================================
+PART 16 — FROZEN ACCEPTANCE POLICY
+============================================================
+
+The final 7.24A.1 policy remains frozen unless a measurement-mechanism defect requires a non-numerical procedural correction.
+
+Numerical limits remain:
+
+PRIMARY TRIALS
+
+- at least 20 complete 30-second windows
+- median window p95 <80 ms per mode
+- pooled nearest-rank p95 of window p95 <100 ms
+- at most 5% isolated windows >100 ms
+- no consecutive >100 ms windows
+- no window p95 >120 ms
+- every window p99 <250 ms
+- heartbeat maximum <500 ms
+- pending-boundary maximum <500 ms
+- queue p95 <100 ms
+- queue maximum <500 ms
+- bridge ACK p95 <500 ms
+- startup <5 seconds
+
+LIFECYCLE
+
+- complete authoritative input
+- recovery retry
+- minimize/restore
+- browser stall
+- OUT/OFF/ON/IN
+- durable PIREP
+- clean disposal
+- clean report guard
+- supplemental steady-window safeguards
+
+Do NOT alter these numerical thresholds during 7.24A.2.
+
+
+============================================================
+PART 17 — FINAL READINESS VERIFICATION
+============================================================
+
+After root-cause work and any justified remediation:
+
+run fresh readiness trials against the unchanged frozen numerical policy.
+
+Do not rerun until lucky.
+
+Predeclare the final run count/order.
+
+Retain every accepted final run, including failures.
+
+If a final run fails:
+
+record the failure.
+
+Do not discard it.
+
+If production code changes, run sufficient repeated verification to demonstrate the remediation rather than a favorable single run.
+
+
+============================================================
+PART 18 — OPERATIONAL INTEGRITY
+============================================================
+
+Throughout investigation and final verification confirm:
+
+- authoritative input retained
+- phase correct
+- OUT/OFF/ON/IN correct
+- ETA/progress correct
+- operational events complete
+- recovery correct
+- history correct
+- PIREP eligibility correct
+- PIREP persistence correct
+- connection generation unchanged by map behavior
+- no stale callback acceptance
+- map remains presentation-only
+
+The scheduling investigation must not compromise flight truth.
+
+
+============================================================
+PART 19 — REGRESSION REQUIREMENTS
+============================================================
+
+If production source changes:
+
+run the COMPLETE Sierra 4 regression suite, including:
+
+- Core
+- Desktop
+- Dashboard
+- Refresh
+- Identity
+- Tracking
+- Recovery
+- Map V2
+- lifecycle
+- compatibility
+- all 9 recorded-flight replays
+- all 91,366 replay telemetry samples
+
+If only diagnostic tooling changes:
+
+run all affected Map/performance/recovery/Core checks and source-hash audit, as in 7.24A.1.
+
+Clearly state which case applies.
+
+Unexpected-report guards remain enabled.
+
+
+============================================================
+PART 20 — READINESS DECISION
+============================================================
+
+At completion classify:
+
+READY FOR 7.24B
+
+or
+
+NOT READY FOR 7.24B
+
+READY requires:
+
+1. The long-tail scheduling behavior has either:
+   - an evidence-based production cause that has been safely remediated, OR
+   - an evidence-based diagnostic cause that has been correctly repaired.
+
+2. No unresolved repeatable production scheduling defect remains.
+
+3. Final fresh trials satisfy the unchanged frozen numerical policy.
+
+4. Authoritative flight processing remains complete.
+
+5. Recovery remains clean.
+
+6. Lifecycle/disposal remains clean.
+
+7. Unexpected-report guards remain clean.
+
+8. No critical new regression exists.
+
+Do not enable Map V2 by default.
+
+7.24B remains installed/native/manual MSFS validation.
+
+
+============================================================
+PART 21 — DO NOT DO IN 7.24A.2
+============================================================
+
+Do NOT:
+
+- begin 7.24B
+- enable Map V2 by default
+- implement globe projection
+- add city lights
+- replace MapLibre
+- replace CompositionControl without explicit authorization
+- migrate Flight Tracking
+- migrate Dispatch
+- redesign Operations
+- begin broad visual polish
+- build persistent airline-world simulation
+- integrate authentication/profile work
+- rebrand installer/storage paths
+- change flight algorithms
+- weaken recovery
+- change the frozen numerical responsiveness thresholds
+
+
+============================================================
+PART 22 — COMPLETION REPORT
+============================================================
+
+At completion provide:
+
+1. Root-cause investigation summary
+2. Representative reproduction design
+3. Whether the 996.3762 ms behavior reproduced
+4. High-resolution Dispatcher trace findings
+5. Dispatcher priority findings
+6. Composition vs standard-host comparison
+7. Active-map vs quiescent-map comparison
+8. Dashboard/clock/presentation ablation results
+9. Layout/render findings
+10. Final-drain findings
+11. Clock/feed/wakeup cadence findings
+12. OS/thread scheduling findings
+13. GC/allocation findings
+14. Production defect identified: YES / NO
+15. Diagnostic defect identified: YES / NO
+16. Exact remediation, if any
+17. Why that remediation is justified
+18. Deliberate >500 ms stall detection result
+19. Frozen-policy final trial results
+20. Operational-integrity results
+21. Files created/modified
+22. Build result
+23. Regression counts
+24. Replay/telemetry result if full suite required
+25. Unexpected-report guard result
+26. Known remaining risks
+27. READY or NOT READY for 7.24B
+28. Exact evidence supporting the decision
+29. Recommended next action
+
+STOP AFTER CHECKPOINT 7.24A.2.
+
+Do not begin 7.24B automatically.
+Do not enable Map V2 by default.
+Do not begin globe implementation.

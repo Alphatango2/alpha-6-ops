@@ -1,0 +1,11 @@
+{
+  "existingChanged": [
+    "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\src\\Alpha6Ops.Desktop\\MapV2\\MapContentionChecks.cs",
+    "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\src\\Alpha6Ops.Desktop\\MapV2\\MapV2Checks.cs"
+  ],
+  "newSource": [
+    "src/Alpha6Ops.Desktop/MapV2/HeartbeatContextChecks.cs",
+    "src/Alpha6Ops.Desktop/MapV2/HeartbeatNativeObserver.cs"
+  ],
+  "productionBehaviorChanged": false
+}

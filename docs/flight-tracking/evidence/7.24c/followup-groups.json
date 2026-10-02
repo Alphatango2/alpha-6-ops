@@ -1,0 +1,44 @@
+[
+  {
+    "name": "contracts",
+    "executed": 22,
+    "passed": 22,
+    "failed": 0,
+    "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\final-followup-20260928-121238\\contracts\\summary.json"
+  },
+  {
+    "name": "interaction-contract",
+    "executed": 13,
+    "passed": 13,
+    "failed": 0,
+    "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\final-followup-20260928-121238\\interaction-contract\\summary.json"
+  },
+  {
+    "name": "restoration-verify",
+    "executed": 157,
+    "passed": 157,
+    "failed": 0,
+    "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\final-followup-20260928-121238\\restoration-verify\\summary.json"
+  },
+  {
+    "name": "JST776 current replay",
+    "executed": 1,
+    "passed": 1,
+    "failed": 0,
+    "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\final-followup-20260928-121238\\jst776\\summary.json"
+  },
+  {
+    "name": "recovery persistence guard",
+    "executed": 21,
+    "passed": 21,
+    "failed": 0,
+    "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\final-followup-20260928-121238\\recovery-guard\\summary.json"
+  },
+  {
+    "name": "active flight restart",
+    "executed": 69,
+    "passed": 69,
+    "failed": 0,
+    "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\final-followup-20260928-121238\\active-restart\\summary.json"
+  }
+]

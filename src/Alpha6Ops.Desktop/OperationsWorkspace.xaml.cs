@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -17,12 +19,14 @@ public partial class OperationsWorkspace : UserControl
         InitializeComponent();SizeChanged+=(_,_)=>Reflow();Loaded+=(_,_)=>Reflow();
         MapHost.ContextChanged+=text=>MapContextText.Text=text;
         MapHost.LayoutRequested+=Reflow;
-        IsVisibleChanged+=(_,_)=>{if(IsVisible && Overview is {} model)MapHost.Present(model);else if(!IsVisible)MapHost.EndVisibleTrail();};
+        IsVisibleChanged+=(_,_)=>{if(IsVisible && Overview is {} model)MapHost.Present(model);};
     }
     internal void Present(OperationsOverview overview)
     {
-        Overview=overview;Metrics.ItemsSource=overview.Metrics;AlertsList.ItemsSource=overview.Alerts;
-        AirportsList.ItemsSource=overview.Airports;ActivityList.ItemsSource=overview.Activity;
+        // These rows are immutable value records. Retain WPF containers when a new
+        // telemetry projection has the same visible values; changed rows still bind normally.
+        Overview=overview;PresentRows(Metrics,overview.Metrics);PresentRows(AlertsList,overview.Alerts);
+        PresentRows(AirportsList,overview.Airports);PresentRows(ActivityList,overview.Activity);
         ContextText.Text=overview.Context;FreshnessText.Text=overview.Freshness;
         ScopeText.Text=overview.Source==OperationsProvenance.Demo?"REPLAY SCENARIO":overview.Source==OperationsProvenance.Stale?"LAST OBSERVED":"LOCAL OPERATIONS";
         CurrentFlightBody.Visibility=overview.Source==OperationsProvenance.Unavailable?Visibility.Collapsed:Visibility.Visible;
@@ -33,8 +37,14 @@ public partial class OperationsWorkspace : UserControl
         AirportsEmpty.Visibility=overview.Airports.Count==0?Visibility.Visible:Visibility.Collapsed;
         ActivityEmpty.Visibility=overview.Activity.Count==0?Visibility.Visible:Visibility.Collapsed;
         ActivityEmpty.Message=overview.Source==OperationsProvenance.Demo ? "Sample rotation preview. Run a recorded scenario from Flight tools to inspect its milestones." : "Recorded milestones appear here as the session progresses. No automated OCC decisions are generated.";
-        if(IsVisible)MapHost.Present(overview);
+        // Hidden maps retain only the newest immutable overview; the host owns
+        // suspension and never projects this background stream into the browser.
+        if(IsVisible||MapHost.UseV2)MapHost.Present(overview);
         Reflow();
+    }
+    private static void PresentRows<T>(ItemsControl control,IReadOnlyList<T> rows)
+    {
+        if(control.ItemsSource is not IEnumerable<T> existing || !existing.SequenceEqual(rows))control.ItemsSource=rows;
     }
     private void Reflow()
     {

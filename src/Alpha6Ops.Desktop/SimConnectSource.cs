@@ -10,11 +10,11 @@ using Alpha6Ops.Core;
 namespace Alpha6Ops.Desktop;
 
 public record LiveReading(string Aircraft, Telemetry Telemetry, FlightEvidence? Evidence = null,
-    string Source = "MSFS 2024", double? RouteProgress=null);
+    string Source = "MSFS 2024", double? RouteProgress=null, DateTimeOffset? ReceivedUtc=null);
 
 // Native ABI taken from MSFS 2024 SDK 1.7.3 SimConnect.h (packed receive records).
 // All calls and dispatch reads stay on one dedicated worker. No simulator writes.
-internal static class SimConnectSource
+internal static partial class SimConnectSource
 {
     static SimConnectSource()
     {
@@ -67,6 +67,8 @@ internal static class SimConnectSource
             Check(Request(handle, 1, 1, 0, 4, 0, 0, 0, 0), "Telemetry request");
             var context = new SimConnectContext(handle);
             var optional=new OptionalSensors(handle);
+            var terminal=new TerminalSensors(FenixShutdownCapabilities.Read(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),"Microsoft Flight Simulator 2024","UserCfg.opt")));
+            terminal.Register(handle);
             var engineTracker=new EngineEvidenceTracker();
             bool paused = true; // fail closed until initial Pause_EX1 state arrives
             bool opened = false;
@@ -79,6 +81,7 @@ internal static class SimConnectSource
                 {
                     if (length < 12) throw new InvalidDataException("Truncated SimConnect packet.");
                     var id = Marshal.ReadInt32(data, 8);
+                    if (terminal.Dispatch(id,data,length))continue;
                     if (optional.Dispatch(id,data,length))continue;
                     if (context.Dispatch(id, data, length)) continue;
                     if (id == 2)
@@ -98,6 +101,7 @@ internal static class SimConnectSource
                         if (!double.IsFinite(values[0]) || values[0] <= 0 || values[0] > 315537897599d) throw new InvalidDataException("Invalid simulator UTC time.");
                         var at = DateTimeOffset.MinValue.AddSeconds(values[0]);
                         var title = Marshal.PtrToStringAnsi(IntPtr.Add(data, 216), 256)?.TrimEnd('\0') ?? "Unknown aircraft";
+                        if (new[]{values[1],values[3],values[8]}.Any(value=>value is not (0 or 1))) throw new InvalidDataException("Invalid ground/brake/slew telemetry.");
                         var sample = new Telemetry(at, values[1] != 0, values[2], values[3] != 0,
                             values[4] != 0 || values[5] != 0 || values[6] != 0 || values[7] != 0, paused, values[8] != 0,
                             values[9],values[10],values[11],values[12],values[13],values[14],NormalizeGear(values[15]),values[16],
@@ -105,8 +109,10 @@ internal static class SimConnectSource
                             (values[4]!=0?1:0)|(values[5]!=0?2:0)|(values[6]!=0?4:0)|(values[7]!=0?8:0),values[21]);
                         if (!double.IsFinite(sample.GroundSpeedKnots) || sample.GroundSpeedKnots < 0 || !sample.HasPosition || !double.IsFinite(sample.AltitudeFeet) || !double.IsFinite(sample.HeadingDegrees) || !double.IsFinite(sample.IndicatedAirspeedKnots) || sample.IndicatedAirspeedKnots<0 || !double.IsFinite(sample.VerticalSpeedFeetPerMinute) || !double.IsFinite(sample.GearExtendedRatio) || sample.GearExtendedRatio is <0 or >1.1 || !double.IsFinite(sample.AltitudeAboveGroundFeet) || !double.IsFinite(sample.FlapsExtendedRatio) || sample.FlapsExtendedRatio is <0 or >1.1 || !double.IsFinite(sample.PitchDegrees) || !double.IsFinite(sample.BankDegrees) || !double.IsFinite(sample.FuelTotalWeightPounds) || sample.FuelTotalWeightPounds<0) throw new InvalidDataException("Invalid simulator aircraft telemetry.");
                         sample=optional.Enrich(sample,engineTracker);
+                        var receivedUtc=DateTimeOffset.UtcNow;
+                        sample=sample with{TerminalShutdown=terminal.Observe(title,sample,receivedUtc,optional.Value(0),values.Skip(4).Take(4).ToArray(),Enumerable.Range(0,4).Select(i=>optional.Value(8+i*5)).ToArray())};
                         lastPacket = DateTime.UtcNow;
-                        received(new(title, sample, context.Evidence()));
+                        received(new(title, sample, context.Evidence(),ReceivedUtc:receivedUtc));
                     }
                 }
                 if (DateTime.UtcNow - lastPacket > TimeSpan.FromSeconds(30))
@@ -139,7 +145,7 @@ internal static class SimConnectSource
             if(kind!=8||length<48)return false;var id=Marshal.ReadInt32(data,12);if(id<200||id>=227)return false;
             if(Marshal.ReadInt32(data,36)==1){var buffer=new double[1];Marshal.Copy(IntPtr.Add(data,40),buffer,0,1);readings[id-200]=(buffer[0],DateTime.UtcNow);}return true;
         }
-        private double? Value(int index)=>readings.TryGetValue(index,out var r)&&DateTime.UtcNow-r.At<TimeSpan.FromSeconds(3)&&double.IsFinite(r.Value)&&r.Value>=0?r.Value:null;
+        internal double? Value(int index)=>readings.TryGetValue(index,out var r)&&DateTime.UtcNow-r.At<TimeSpan.FromSeconds(3)&&double.IsFinite(r.Value)&&r.Value>=0?r.Value:null;
         internal Telemetry Enrich(Telemetry sample,EngineEvidenceTracker tracker)
         {
             var count=Value(0) is {} n&&n>=1&&n<=4?(int)n:0;

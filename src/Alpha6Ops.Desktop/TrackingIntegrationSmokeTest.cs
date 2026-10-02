@@ -51,6 +51,17 @@ internal static class TrackingIntegrationSmokeTest
             var order=new[]{new TrackingEventEntry(at.AddSeconds(2),"Later","",""),new TrackingEventEntry(at,"Earlier","","")};
             window.FlightTrackingView.Render(plan,null,"CLIMB","",null,null,null,40,order,true);
             Check(((TrackingEventEntry)window.FlightTrackingView.EventList.Items[0]).Title=="Later","backdated milestones display in timestamp order");
+            var shortPlan=plan with{RoutePoints=[new("START",0,0),new("END",0,.1)]};
+            var shortTelemetry=new Telemetry(at,false,140,false,true,LatitudeDegrees:0,LongitudeDegrees:.4);
+            window.FlightTrackingView.Render(shortPlan,null,"AIRBORNE","",null,null,null,0,[],true,shortTelemetry,0);
+            Check(window.FlightTrackingView.DistanceRemainingText.Text=="18 NM","tracking footer preserves distance beyond filed length after a short-route overshoot");
+            shortTelemetry=shortTelemetry with{LongitudeDegrees=.09999};
+            window.FlightTrackingView.Render(shortPlan,null,"FINAL","",null,null,null,99.99,[],true,shortTelemetry,.9999);
+            Check(window.FlightTrackingView.ProgressText.Text=="99.9%"&&window.FlightTrackingView.DistanceRemainingText.Text=="<0.1 NM","short final cannot round geographical progress to 100 percent or positive distance to zero");
+            window.FlightTrackingView.Render(shortPlan,null,"AIRBORNE","",null,null,null,100,[],true,shortTelemetry,1,routeReliable:false);
+            Check(window.FlightTrackingView.ProgressText.Text=="—"&&window.FlightTrackingView.DistanceRemainingText.Text=="— NM","unreliable route position withdraws current progress and distance labels");
+            window.FlightTrackingView.Render(shortPlan,null,"COMPLETE","",at,at.AddHours(1),null,100,[],true,shortTelemetry,1,complete:true);
+            Check(window.FlightTrackingView.ProgressText.Text=="100%"&&window.FlightTrackingView.DistanceRemainingText.Text=="0 NM","confirmed block-in closes route progress and distance independently of airport reference-point offset");
             window.ShowFlightTracking();
             Check(!window.FlightTrackingView.ScheduledOutText.Text.Contains('\n') && window.FlightTrackingView.ScheduledOutText.Text.EndsWith("Z"),"tracking schedule displays concise UTC only");
             foreach(var width in new[]{1920,1366,1280,1100})
@@ -89,10 +100,14 @@ internal static class TrackingIntegrationSmokeTest
             // Test landing/completion without using a position teleport through ObserveLive.
             var destination=new GeoPosition(-42.836111,147.510278);
             Set("liveLast",at.AddHours(2));Set("currentLiveReading",null);
+            // This fixture installs a landed state, not a teleport. Recovery now
+            // also checks the saved telemetry position when no live reading exists.
+            Set("liveTelemetry",new Telemetry(at.AddHours(2),true,8,false,false,
+                LatitudeDegrees:destination.Latitude,LongitudeDegrees:destination.Longitude,EngineDataValid:false));
             Set("liveRecorder",new TimelineRecorder(new PhaseDetector(initialPhase:FlightPhase.TaxiIn),new[]{new FlightEvent(FlightPhase.TaxiOut,at.AddSeconds(1)),new FlightEvent(FlightPhase.Airborne,at.AddSeconds(6)),new FlightEvent(FlightPhase.TaxiIn,at.AddHours(2))}));
             for(var i=7201;i<=7214;i++)Sample(i,true,0,true,destination.Latitude,destination.Longitude);
             Check(window.FlightTrackingView.ConfirmBlockInButton.Visibility==Visibility.Visible,"unknown engine data offers parked confirmation after sustained stop");
-            Set("pilotConfirmedBlockIn",true);
+            FlightSessionDiagnosticAccess.Invoke(window,"ConfirmBlockIn");
             for(var i=7215;i<=7220;i++)Sample(i,true,0,true,destination.Latitude,destination.Longitude);
             Check(window.FlightTrackingView.ArrivalText.Text!="—"&&!window.FlightTrackingView.ScheduleVarianceText.Text.Contains("WAITING"),"confirmed block-in exposes actual IN with unavailable engines");
             Check((double?)typeof(MainWindow).GetProperty("LiveRemainingDistance",flags)!.GetValue(window)==0&&window.FlightTrackingView.DistanceRemainingText.Text=="0 NM","completion publishes zero remaining distance to both journal state and footer");

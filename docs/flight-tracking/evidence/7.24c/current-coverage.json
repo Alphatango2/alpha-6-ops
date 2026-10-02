@@ -1,0 +1,21 @@
+{
+  "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\jst776-review\\entry-20260928-154645\\package\\JST776 - S4 TF - 9-28\\Alpha6OPS-20260928-135604-e35f29af4dec42b2b0e0d46be26c22c8.jsonl",
+  "zipEntry": "JST776 - S4 TF - 9-28/Alpha6OPS-20260928-135604-e35f29af4dec42b2b0e0d46be26c22c8.jsonl",
+  "sha256": "58C53BC645BEB098E991FE4AC42DE3A3A748CA83F7091658191A9BF0CCEE7D8A",
+  "matchesOriginalZip": true,
+  "records": 12349,
+  "counts": {
+    "session_started": 1,
+    "flight_assignment": 1,
+    "connection_opened": 1,
+    "telemetry": 6145,
+    "flight_identification": 1,
+    "monitor_armed": 1,
+    "tracking_event": 48,
+    "tracking_state": 6145,
+    "flight_milestone": 4,
+    "pirep_closeout_complete": 1,
+    "session_ended": 1
+  },
+  "processed": 6145
+}

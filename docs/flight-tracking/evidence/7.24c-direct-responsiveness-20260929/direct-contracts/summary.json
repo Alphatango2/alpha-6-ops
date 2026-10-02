@@ -1,0 +1,181 @@
+{
+  "passed": true,
+  "executed": 43,
+  "failed": 0,
+  "mode": "direct-contracts",
+  "requestedMinutes": 0,
+  "checks": [
+    {
+      "passed": true,
+      "name": "Owned original process handle reports live child"
+    },
+    {
+      "passed": true,
+      "name": "Original process handle reports termination after child exit"
+    },
+    {
+      "passed": true,
+      "name": "Repeated exit checks retain original identity without reopening stale process IDs"
+    },
+    {
+      "passed": true,
+      "name": "Direct dashboard: real timer renders current time and newest Operations state"
+    },
+    {
+      "passed": true,
+      "name": "Direct dashboard: real timer renders current time and newest Operations state"
+    },
+    {
+      "passed": true,
+      "name": "Direct map: receipt, source and actual MapLibre render observers installed"
+    },
+    {
+      "passed": true,
+      "name": "Direct dashboard: real timer renders current time and newest Operations state"
+    },
+    {
+      "passed": true,
+      "name": "Direct dashboard: real timer renders current time and newest Operations state"
+    },
+    {
+      "passed": true,
+      "name": "Direct dashboard: real timer renders current time and newest Operations state"
+    },
+    {
+      "passed": true,
+      "name": "Direct dashboard: real timer renders current time and newest Operations state"
+    },
+    {
+      "passed": true,
+      "name": "Direct input: cached out-of-bounds press is rejected by input contract"
+    },
+    {
+      "passed": true,
+      "name": "Direct input: coordinate-bearing WPF press reaches trusted in-bounds browser handler"
+    },
+    {
+      "passed": true,
+      "name": "Direct dashboard: real timer renders current time and newest Operations state"
+    },
+    {
+      "passed": true,
+      "name": "Direct input: browser pointer drag changes camera while telemetry runs"
+    },
+    {
+      "passed": true,
+      "name": "Direct input: click selects observed aircraft through browser hit testing"
+    },
+    {
+      "passed": true,
+      "name": "Direct dashboard: real timer renders current time and newest Operations state"
+    },
+    {
+      "passed": true,
+      "name": "Direct dashboard: real timer renders current time and newest Operations state"
+    },
+    {
+      "passed": true,
+      "name": "Direct liveness: authoritative work progresses during actual input exercise"
+    },
+    {
+      "passed": true,
+      "name": "Direct dashboard: real timer renders current time and newest Operations state"
+    },
+    {
+      "passed": true,
+      "name": "Direct dashboard: real timer renders current time and newest Operations state"
+    },
+    {
+      "passed": true,
+      "name": "Direct dashboard: real timer renders current time and newest Operations state"
+    },
+    {
+      "passed": true,
+      "name": "Direct restoration: navigation retains one renderer/source and resumes usable current map"
+    },
+    {
+      "passed": true,
+      "name": "Direct telemetry: navigation does not reconnect authoritative source"
+    },
+    {
+      "passed": true,
+      "name": "Direct dashboard: real timer renders current time and newest Operations state"
+    },
+    {
+      "passed": true,
+      "name": "Direct dashboard: real timer renders current time and newest Operations state"
+    },
+    {
+      "passed": true,
+      "name": "Direct dashboard: real timer renders current time and newest Operations state"
+    },
+    {
+      "passed": true,
+      "name": "Direct telemetry: single explicit reconnect preserves assignment and resumes processing"
+    },
+    {
+      "passed": true,
+      "name": "Direct dashboard: real timer renders current time and newest Operations state"
+    },
+    {
+      "passed": true,
+      "name": "Direct dashboard: real timer renders current time and newest Operations state"
+    },
+    {
+      "passed": true,
+      "name": "Direct dashboard: real timer renders current time and newest Operations state"
+    },
+    {
+      "passed": true,
+      "name": "Direct dashboard: real timer renders current time and newest Operations state"
+    },
+    {
+      "passed": true,
+      "name": "Direct dashboard: periodic refresh alone never mutates flight snapshot or records telemetry"
+    },
+    {
+      "passed": true,
+      "name": "Direct dashboard: delayed refresh samples latest state instead of replaying an old capture"
+    },
+    {
+      "passed": true,
+      "name": "Direct map: latest authoritative aircraft timestamp reaches browser receipt and matching sequence acknowledgment"
+    },
+    {
+      "passed": true,
+      "name": "Direct map: loaded MapLibre render matches current sequence, geometry, rendered aircraft and loaded solar state"
+    },
+    {
+      "passed": true,
+      "name": "Direct map: browser observation remains uncensored"
+    },
+    {
+      "passed": true,
+      "name": "Direct liveness: input, browser and authoritative endpoints all make meaningful progress"
+    },
+    {
+      "passed": true,
+      "name": "Direct telemetry: each independently paced sample is processed before the next one-second source emission"
+    },
+    {
+      "passed": true,
+      "name": "Direct integrity: emission, ingestion and processing cover exactly the same samples"
+    },
+    {
+      "passed": true,
+      "name": "Direct integrity: authoritative processing preserves exact source order without duplicates"
+    },
+    {
+      "passed": true,
+      "name": "Direct integrity: recorder retains every sample through navigation and reconnect"
+    },
+    {
+      "passed": true,
+      "name": "Direct restoration: no unexpected restart, fallback or renderer error"
+    },
+    {
+      "passed": true,
+      "name": "No owned browser processes after final renderer disposal"
+    }
+  ]
+}

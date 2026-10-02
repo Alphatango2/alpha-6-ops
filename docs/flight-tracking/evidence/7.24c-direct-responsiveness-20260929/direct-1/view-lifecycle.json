@@ -1,0 +1,38 @@
+[
+  {
+    "utc": "2026-09-29T20:46:26.8379066+00:00",
+    "reason": "window-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": false,
+    "width": 0,
+    "height": 0
+  },
+  {
+    "utc": "2026-09-29T20:46:26.9262743+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": true,
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "utc": "2026-09-29T20:46:37.2820392+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": false,
+    "width": 3440,
+    "height": 1400
+  },
+  {
+    "utc": "2026-09-29T20:46:38.5926714+00:00",
+    "reason": "workspace-visibility",
+    "windowState": "Normal",
+    "visible": true,
+    "operationsVisible": true,
+    "width": 3440,
+    "height": 1400
+  }
+]

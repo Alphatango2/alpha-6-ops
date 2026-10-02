@@ -1,0 +1,347 @@
+{
+  "passed": true,
+  "executed": 85,
+  "failed": 0,
+  "checks": [
+    {
+      "passed": true,
+      "name": "Free flight renders observed position without inventing route."
+    },
+    {
+      "passed": true,
+      "name": "Nonfinite optional input becomes unavailable without mutating telemetry."
+    },
+    {
+      "passed": true,
+      "name": "Consecutive observations create observed segment."
+    },
+    {
+      "passed": true,
+      "name": "Retained snapshots own immutable trail copies."
+    },
+    {
+      "passed": true,
+      "name": "Closed session suppression clears retained observed track."
+    },
+    {
+      "passed": true,
+      "name": "Pause freezes interpolation."
+    },
+    {
+      "passed": true,
+      "name": "Resume does not join unobserved pause interval."
+    },
+    {
+      "passed": true,
+      "name": "Hidden/reset discards trail continuity."
+    },
+    {
+      "passed": true,
+      "name": "Reconnect discards previous trail."
+    },
+    {
+      "passed": true,
+      "name": "Aircraft identity change discards previous trail."
+    },
+    {
+      "passed": true,
+      "name": "Unknown position does not fabricate aircraft."
+    },
+    {
+      "passed": true,
+      "name": "Replay preview cannot reclassify the live aircraft as simulated traffic."
+    },
+    {
+      "passed": true,
+      "name": "Validator rejects malformed or over-budget snapshot."
+    },
+    {
+      "passed": true,
+      "name": "Validator rejects malformed or over-budget snapshot."
+    },
+    {
+      "passed": true,
+      "name": "Validator rejects malformed or over-budget snapshot."
+    },
+    {
+      "passed": true,
+      "name": "Validator rejects malformed or over-budget snapshot."
+    },
+    {
+      "passed": true,
+      "name": "Validator rejects malformed or over-budget snapshot."
+    },
+    {
+      "passed": true,
+      "name": "Validator rejects malformed or over-budget snapshot."
+    },
+    {
+      "passed": true,
+      "name": "Geometry point budget is enforced."
+    },
+    {
+      "passed": true,
+      "name": "Actual UTF8 payload byte budget is enforced."
+    },
+    {
+      "passed": true,
+      "name": "Dateline great circle splits into geographic segments."
+    },
+    {
+      "passed": true,
+      "name": "High latitude path follows great circle."
+    },
+    {
+      "passed": true,
+      "name": "Candidate plan has geography and truthful endpoint roles."
+    },
+    {
+      "passed": true,
+      "name": "Authoritative progress splits completed and planned geography."
+    },
+    {
+      "passed": true,
+      "name": "Unreliable progress cannot imply completion."
+    },
+    {
+      "passed": true,
+      "name": "Known airports without supplied route do not invent a direct flight path."
+    },
+    {
+      "passed": true,
+      "name": "Stale/slew/menu/time reversal/time jump/teleport freezes interpolation."
+    },
+    {
+      "passed": true,
+      "name": "Discontinuity never bridges an unobserved gap."
+    },
+    {
+      "passed": true,
+      "name": "Stale/slew/menu/time reversal/time jump/teleport freezes interpolation."
+    },
+    {
+      "passed": true,
+      "name": "Discontinuity never bridges an unobserved gap."
+    },
+    {
+      "passed": true,
+      "name": "Stale/slew/menu/time reversal/time jump/teleport freezes interpolation."
+    },
+    {
+      "passed": true,
+      "name": "Discontinuity never bridges an unobserved gap."
+    },
+    {
+      "passed": true,
+      "name": "Stale/slew/menu/time reversal/time jump/teleport freezes interpolation."
+    },
+    {
+      "passed": true,
+      "name": "Discontinuity never bridges an unobserved gap."
+    },
+    {
+      "passed": true,
+      "name": "Stale/slew/menu/time reversal/time jump/teleport freezes interpolation."
+    },
+    {
+      "passed": true,
+      "name": "Discontinuity never bridges an unobserved gap."
+    },
+    {
+      "passed": true,
+      "name": "Stale/slew/menu/time reversal/time jump/teleport freezes interpolation."
+    },
+    {
+      "passed": true,
+      "name": "Discontinuity never bridges an unobserved gap."
+    },
+    {
+      "passed": true,
+      "name": "Visual trail remains bounded."
+    },
+    {
+      "passed": true,
+      "name": "Independent seasonal/leap-year reference: 2024-03-20T12:00:00Z"
+    },
+    {
+      "passed": true,
+      "name": "Sun vector is normalized."
+    },
+    {
+      "passed": true,
+      "name": "Independent seasonal/leap-year reference: 2024-06-21T12:00:00Z"
+    },
+    {
+      "passed": true,
+      "name": "Sun vector is normalized."
+    },
+    {
+      "passed": true,
+      "name": "Independent seasonal/leap-year reference: 2024-09-22T12:00:00Z"
+    },
+    {
+      "passed": true,
+      "name": "Sun vector is normalized."
+    },
+    {
+      "passed": true,
+      "name": "Independent seasonal/leap-year reference: 2024-12-21T12:00:00Z"
+    },
+    {
+      "passed": true,
+      "name": "Sun vector is normalized."
+    },
+    {
+      "passed": true,
+      "name": "Independent seasonal/leap-year reference: 2024-02-29T12:00:00Z"
+    },
+    {
+      "passed": true,
+      "name": "Sun vector is normalized."
+    },
+    {
+      "passed": true,
+      "name": "Independent USNO subsolar latitude/longitude within one degree: 2024-03-20T12:00:00Z"
+    },
+    {
+      "passed": true,
+      "name": "Independent USNO subsolar latitude/longitude within one degree: 2024-06-21T12:00:00Z"
+    },
+    {
+      "passed": true,
+      "name": "Independent USNO subsolar latitude/longitude within one degree: 2024-09-22T12:00:00Z"
+    },
+    {
+      "passed": true,
+      "name": "Independent USNO subsolar latitude/longitude within one degree: 2024-12-21T12:00:00Z"
+    },
+    {
+      "passed": true,
+      "name": "Independent USNO subsolar latitude/longitude within one degree: 2024-02-29T12:00:00Z"
+    },
+    {
+      "passed": true,
+      "name": "Independent USNO subsolar latitude/longitude within one degree: 2024-06-21T00:00:00Z"
+    },
+    {
+      "passed": true,
+      "name": "North and south polar seasons reverse."
+    },
+    {
+      "passed": true,
+      "name": "UTC midnight shifts illumination toward dateline."
+    },
+    {
+      "passed": true,
+      "name": "Solar time uses UTC independent of caller offset."
+    },
+    {
+      "passed": true,
+      "name": "Valid snapshot serializes inside payload budget."
+    },
+    {
+      "passed": true,
+      "name": "Coalesced pause/resume cannot create false observed continuity"
+    },
+    {
+      "passed": true,
+      "name": "Hidden map pump does not project telemetry"
+    },
+    {
+      "passed": true,
+      "name": "Resumed pump preserves sequence and begins fresh observation continuity"
+    },
+    {
+      "passed": true,
+      "name": "Resumed pump preserves the previously observed trail without joining the hidden interval"
+    },
+    {
+      "passed": true,
+      "name": "Post-return observations form a separate segment after the retained trail"
+    },
+    {
+      "passed": true,
+      "name": "Projection completed after hide and return cannot publish into the new visibility interval"
+    },
+    {
+      "passed": true,
+      "name": "Map left press cannot trigger parent focus (view 1)"
+    },
+    {
+      "passed": true,
+      "name": "Map Right press routing remains unchanged (view 1)"
+    },
+    {
+      "passed": true,
+      "name": "Map Middle press routing remains unchanged (view 1)"
+    },
+    {
+      "passed": true,
+      "name": "Map wheel routing remains unchanged (view 1)"
+    },
+    {
+      "passed": true,
+      "name": "Outside-map parent focus and wheel remain reachable (view 1)"
+    },
+    {
+      "passed": true,
+      "name": "Map left press cannot trigger parent focus (view 2)"
+    },
+    {
+      "passed": true,
+      "name": "Map Right press routing remains unchanged (view 2)"
+    },
+    {
+      "passed": true,
+      "name": "Map Middle press routing remains unchanged (view 2)"
+    },
+    {
+      "passed": true,
+      "name": "Map wheel routing remains unchanged (view 2)"
+    },
+    {
+      "passed": true,
+      "name": "Outside-map parent focus and wheel remain reachable (view 2)"
+    },
+    {
+      "passed": true,
+      "name": "Map left press cannot trigger parent focus (view 3)"
+    },
+    {
+      "passed": true,
+      "name": "Map Right press routing remains unchanged (view 3)"
+    },
+    {
+      "passed": true,
+      "name": "Map Middle press routing remains unchanged (view 3)"
+    },
+    {
+      "passed": true,
+      "name": "Map wheel routing remains unchanged (view 3)"
+    },
+    {
+      "passed": true,
+      "name": "Outside-map parent focus and wheel remain reachable (view 3)"
+    },
+    {
+      "passed": true,
+      "name": "Bridge origin rejects lookalikes, insecure and unexpected ports"
+    },
+    {
+      "passed": true,
+      "name": "Delivery: sustained render work was exercised without blocking a single callback"
+    },
+    {
+      "passed": true,
+      "name": "Delivery: current map data reaches WebView during sustained render work instead of waiting for render idle"
+    },
+    {
+      "passed": true,
+      "name": "Delivery: newest snapshot is acknowledged before render pressure ends, including worker/serialization time"
+    },
+    {
+      "passed": true,
+      "name": "Delivery: browser receives the newest offered snapshot after render pressure"
+    }
+  ]
+}

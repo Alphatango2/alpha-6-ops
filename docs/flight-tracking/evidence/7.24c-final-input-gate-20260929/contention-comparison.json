@@ -1,0 +1,62 @@
+[
+  {
+    "exitCode": 0,
+    "stressed": 200.5083,
+    "executed": 98,
+    "directory": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\input-gate-20260929\\contention-0-T1",
+    "failed": 0,
+    "passed": true,
+    "build": "T1",
+    "baseline": 450.8502
+  },
+  {
+    "exitCode": 0,
+    "stressed": 387.7588,
+    "executed": 98,
+    "directory": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\input-gate-20260929\\contention-1-T2",
+    "failed": 0,
+    "passed": true,
+    "build": "T2",
+    "baseline": 325.6709
+  },
+  {
+    "exitCode": 0,
+    "stressed": 400.1605,
+    "executed": 98,
+    "directory": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\input-gate-20260929\\contention-2-T2",
+    "failed": 1,
+    "passed": false,
+    "build": "T2",
+    "baseline": 245.4435
+  },
+  {
+    "exitCode": 0,
+    "stressed": 284.7424,
+    "executed": 98,
+    "directory": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\input-gate-20260929\\contention-3-T1",
+    "failed": 0,
+    "passed": true,
+    "build": "T1",
+    "baseline": 324.4734
+  },
+  {
+    "exitCode": 0,
+    "stressed": 267.1484,
+    "executed": 98,
+    "directory": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\input-gate-20260929\\contention-4-T1",
+    "failed": 0,
+    "passed": true,
+    "build": "T1",
+    "baseline": 266.9534
+  },
+  {
+    "exitCode": 0,
+    "stressed": 345.8824,
+    "executed": 98,
+    "directory": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\input-gate-20260929\\contention-5-T2",
+    "failed": 0,
+    "passed": true,
+    "build": "T2",
+    "baseline": 329.1395
+  }
+]

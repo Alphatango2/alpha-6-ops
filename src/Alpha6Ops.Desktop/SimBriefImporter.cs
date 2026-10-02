@@ -19,7 +19,7 @@ internal record SimBriefImport(ActiveFlightPlan Plan, DateTimeOffset GeneratedUt
 internal static class SimBriefImporter
 {
     private static readonly HttpClient Client = new() { Timeout = TimeSpan.FromSeconds(20) };
-    private static string CacheDirectory => Path.Combine(CrashReporter.RootDirectory, "SimBrief");
+    private static string CacheDirectory => Path.Combine(CrashReporter.DiagnosticMode ? CrashReporter.RootDirectory : ProductStorage.Current.Cache, "SimBrief");
     private static string CachePath => Path.Combine(CacheDirectory, "latest-ofp.json");
     private static string UsernamePath => Path.Combine(CacheDirectory, "username.txt");
 

@@ -18,7 +18,9 @@ internal sealed record FlightTrackingMonitorState(IReadOnlyList<string> Fired,do
     int PreviousEngineMask,int ReportedFlaps,double PreviousGear,string? AssignedDestination,int ReportedCruiseLevel,
     double LastAirborneVerticalSpeed=double.NaN,double LastAirborneSpeed=double.NaN,
     IReadOnlyList<int>? EngineStartCounts=null,int PendingEngineMask=-1,int PendingEngineMaskSamples=0,
-    bool EngineSignalUnsupported=false,int AirborneEngineOffSamples=0);
+    bool EngineSignalUnsupported=false,int AirborneEngineOffSamples=0,
+    IReadOnlyDictionary<int,EngineCondition>? ObservedEngineStates=null,
+    ObservedCruiseTrackerState? ObservedCruise=null);
 
 internal sealed class FlightTrackingEventMonitor
 {
@@ -37,12 +39,13 @@ internal sealed class FlightTrackingEventMonitor
     private double previousGear=double.NaN;
     private double lastAirborneVerticalSpeed=double.NaN,lastAirborneSpeed=double.NaN;
     private string? assignedDestination;
+    private readonly ObservedCruiseTracker observedCruise;
     internal string AirbornePhase { get; private set; } = "Climb";
     private bool gearWasExtended;
 
     internal FlightTrackingEventMonitor(FlightTrackingMonitorState? restored=null)
     {
-        if(restored is null)return;
+        if(restored is null){observedCruise=new();return;}
         fired.UnionWith(restored.Fired);previousAltitude=restored.PreviousAltitude;initialFuelPounds=restored.InitialFuelPounds;
         wasPaused=restored.WasPaused;wasSlewing=restored.WasSlewing;previousEngines=restored.PreviousEngines;previousBrake=restored.PreviousBrake;
         hasSample=restored.HasSample;hasTouchedDown=restored.HasTouchedDown;previousEngineMask=restored.PreviousEngineMask;
@@ -50,15 +53,22 @@ internal sealed class FlightTrackingEventMonitor
         lastAirborneVerticalSpeed=restored.LastAirborneVerticalSpeed;lastAirborneSpeed=restored.LastAirborneSpeed;
         pendingEngineMask=restored.PendingEngineMask;pendingEngineMaskSamples=restored.PendingEngineMaskSamples;
         engineSignalUnsupported=restored.EngineSignalUnsupported;airborneEngineOffSamples=restored.AirborneEngineOffSamples;
+        if(restored.ObservedEngineStates is not null)foreach(var state in restored.ObservedEngineStates)observedEngineStates[state.Key]=state.Value;
         if(restored.EngineStartCounts is not null)for(var index=0;index<Math.Min(engineStartCounts.Length,restored.EngineStartCounts.Count);index++)engineStartCounts[index]=restored.EngineStartCounts[index];
+        var cruiseState=restored.ObservedCruise;
+        if(cruiseState is null&&fired.Contains("cruise")&&reportedCruiseLevel>=18000)
+            cruiseState=new ObservedCruiseTrackerState(ObservedAirborneStage.Cruise,reportedCruiseLevel,DateTimeOffset.UnixEpoch,null,null,0,null,true,0,false,null,0,0,false);
+        observedCruise=new(cruiseState);
     }
 
     internal FlightTrackingMonitorState CaptureState()=>new(fired.ToArray(),previousAltitude,initialFuelPounds,wasPaused,wasSlewing,
-        previousEngines,previousBrake,hasSample,hasTouchedDown,previousEngineMask,reportedFlaps,previousGear,assignedDestination,reportedCruiseLevel,lastAirborneVerticalSpeed,lastAirborneSpeed,engineStartCounts.ToArray(),pendingEngineMask,pendingEngineMaskSamples,engineSignalUnsupported,airborneEngineOffSamples);
+        previousEngines,previousBrake,hasSample,hasTouchedDown,previousEngineMask,reportedFlaps,previousGear,assignedDestination,reportedCruiseLevel,lastAirborneVerticalSpeed,lastAirborneSpeed,engineStartCounts.ToArray(),pendingEngineMask,pendingEngineMaskSamples,engineSignalUnsupported,airborneEngineOffSamples,new Dictionary<int,EngineCondition>(observedEngineStates),observedCruise.CaptureState());
 
     internal IReadOnlyList<TrackingEventEntry> Observe(Telemetry sample,FlightPhase phase,FlightEvent? milestone,double progress,ActiveFlightPlan? plan,string? scenarioEvent,DateTimeOffset? estimatedIn=null)
     {
         var events=new List<TrackingEventEntry>();
+        var goAround=milestone?.Phase==FlightPhase.Airborne&&hasTouchedDown;
+        var cruiseObservation=observedCruise.Observe(sample,plan?.CruiseAltitudeFeet,goAround);
         if(sample.Paused||sample.Slewing)
         {
             candidates.Clear();pendingEngineMaskSamples=0;flapCandidateSamples=0;
@@ -88,19 +98,29 @@ internal sealed class FlightTrackingEventMonitor
         if(previousAltitude is <10000&&sample.AltitudeFeet>=10000)AddOnce("ten-up","10,000 feet crossed","Climbing through 10,000 ft");
         var operationalAltitude=double.IsFinite(sample.PressureAltitudeFeet)?sample.PressureAltitudeFeet:sample.AltitudeFeet;
         var plannedCruise=plan?.CruiseAltitudeFeet;
-        var observedLevel=plannedCruise is{} planned&&Math.Abs(operationalAltitude-planned)<=600?planned:(int)Math.Round(operationalAltitude/1000,MidpointRounding.AwayFromZero)*1000;
-        var cruiseCandidate=!sample.OnGround&&operationalAltitude>=18000&&Math.Abs(sample.VerticalSpeedFeetPerMinute)<300&&
-            (plannedCruise is null||Math.Abs(operationalAltitude-plannedCruise.Value)<=600);
-        AddStable("cruise",cruiseCandidate,plannedCruise is null?"Sustained level flight":"Top of climb / cruise established",
-            plannedCruise is null?$"Level near {operationalAltitude:0} ft • planned cruise altitude unavailable":$"Established at FL{observedLevel/100:000}",plannedCruise is null?120:30);
-        if(fired.Contains("cruise")&&cruiseCandidate)
+        var transition=cruiseObservation.Transition;
+        if(cruiseObservation.ObservedLevelFeet is { } currentObserved)reportedCruiseLevel=currentObserved;
+        switch(transition.Kind)
         {
-            var level=observedLevel;
-            if(reportedCruiseLevel==0)reportedCruiseLevel=level;
-            else if(Math.Abs(operationalAltitude-reportedCruiseLevel)>=750){reportedCruiseLevel=level;AddOnce($"cruise-level-{level}","Cruise altitude changed",$"Established at FL{level/100:000}");}
+            case ObservedCruiseTransitionKind.CruiseEstablished:
+            {
+                var level=transition.ObservedLevelFeet!.Value;var summary=plannedCruise is null
+                    ?$"Observed cruise established at FL{level/100:000} • filed cruise unavailable"
+                    :Math.Abs(level-plannedCruise.Value)>600
+                        ?$"Observed cruise established at FL{level/100:000} • filed FL{plannedCruise.Value/100:000}"
+                        :$"Established at FL{level/100:000}";
+                AddOnce("cruise","Top of climb / cruise established",summary);break;
+            }
+            case ObservedCruiseTransitionKind.StepClimbStarted:
+                AddOnce($"step-climb-{atKey(sample.At)}","Step climb started",$"Climbing through {operationalAltitude:0} ft at {Speed(sample):0} kt");break;
+            case ObservedCruiseTransitionKind.CruiseLevelChanged:
+            {
+                var level=transition.ObservedLevelFeet!.Value;
+                AddOnce($"cruise-level-{level}","Cruise altitude changed",$"Observed cruise established at FL{level/100:000} after step climb");break;
+            }
+            case ObservedCruiseTransitionKind.TopOfDescent:
+                AddOnce("descent","Top of descent",$"Descending from observed FL{transition.ObservedLevelFeet!.Value/100:000} at {sample.VerticalSpeedFeetPerMinute:0} ft/min");break;
         }
-        AddStable("step-climb",fired.Contains("cruise")&&reportedCruiseLevel>0&&!sample.OnGround&&progress>=.45&&operationalAltitude>reportedCruiseLevel+750&&sample.VerticalSpeedFeetPerMinute>=500,"Step climb started",$"Climbing through {operationalAltitude:0} ft at {Speed(sample):0} kt",30);
-        AddStable("descent",fired.Contains("cruise")&&!sample.OnGround&&sample.VerticalSpeedFeetPerMinute<=-500,"Top of descent",$"Descending at {sample.VerticalSpeedFeetPerMinute:0} ft/min",30);
         if(previousAltitude is >10000&&sample.AltitudeFeet<=10000&&sample.VerticalSpeedFeetPerMinute<0)AddOnce("ten-down","10,000 feet crossed","Descending through 10,000 ft");
         var agl=double.IsFinite(sample.AltitudeAboveGroundFeet)?sample.AltitudeAboveGroundFeet:sample.AltitudeFeet;
         var destination=plan?.RoutePoints?.LastOrDefault();
@@ -111,7 +131,7 @@ internal sealed class FlightTrackingEventMonitor
         AddStable("approach",arrivalContext&&!sample.OnGround&&agl is >0 and <=6000&&sample.VerticalSpeedFeetPerMinute<=-150,"Approach started",$"Descending through {agl:0} ft AGL",10);
         AddStable("gear-down",fired.Contains("gear-up")&&!sample.OnGround&&sample.GearExtendedRatio>=.9,"Landing gear extended","Gear indicates down",2);
         AddStable("final",fired.Contains("approach")&&!sample.OnGround&&agl is >0 and <=2500&&sample.VerticalSpeedFeetPerMinute<0,"Final approach",$"{agl:0} ft AGL • {Speed(sample):0} kt",5);
-        if(!sample.OnGround)AirbornePhase=fired.Contains("final")?"Final approach":fired.Contains("approach")?"Approach":fired.Contains("descent")?"Descent":cruiseCandidate&&fired.Contains("cruise")?(plannedCruise is null?"Level flight":"Cruise"):"Climb";
+        if(!sample.OnGround)AirbornePhase=fired.Contains("final")?"Final approach":fired.Contains("approach")?"Approach":cruiseObservation.Stage switch{ObservedAirborneStage.Cruise=>plannedCruise is null?"Level flight":"Cruise",ObservedAirborneStage.Descent=>"Descent",_=>"Climb"};
 
         if(!sample.OnGround&&sample.GroundSpeedKnots>=80&&sample.RunningEngineCount==0)
         {
@@ -200,7 +220,7 @@ internal sealed class FlightTrackingEventMonitor
                         landing+=$" • fuel burn {Math.Abs(difference):0} lb {(difference<0?"below":"above")} plan";
                     }
                     AddOnce("touchdown","Touchdown",landing);break;
-                case FlightPhase.Complete:AddOnce("block-in","Block-in / flight complete",(engineSignalUnsupported||!sample.EngineDataValid)?"Stopped at gate with parking brake set • engine data unavailable":"Stopped at gate with parking brake set"+(sample.EnginesRunning?"":" and engines shut down"));break;
+                case FlightPhase.Complete:AddOnce("block-in","Block-in / flight complete",CompletionSummary(sample,engineSignalUnsupported));break;
             }
         }
         AddStable("runway-vacated",hasTouchedDown&&sample.OnGround&&sample.GroundSpeedKnots<35,"Landing rollout slowed",$"Groundspeed reduced to {sample.GroundSpeedKnots:0} kt");
@@ -232,7 +252,8 @@ internal sealed class FlightTrackingEventMonitor
         {
             parts.Add($"GS {sample.GroundSpeedKnots:0} KT");
             if(title.Contains("brake",StringComparison.OrdinalIgnoreCase)||title.Contains("block",StringComparison.OrdinalIgnoreCase)||title.Contains("pushback",StringComparison.OrdinalIgnoreCase)||title.Contains("preflight",StringComparison.OrdinalIgnoreCase))parts.Add(sample.ParkingBrake?"BRAKE SET":"BRAKE RELEASED");
-            if(!title.StartsWith("Engine ",StringComparison.OrdinalIgnoreCase))parts.Add(EngineStatus(sample,engineSignalUnsupported));
+            if(title=="Block-in / flight complete")parts.AddRange(CompletionStatus(sample,engineSignalUnsupported));
+            else if(!title.StartsWith("Engine ",StringComparison.OrdinalIgnoreCase))parts.Add(EngineStatus(sample,engineSignalUnsupported));
         }
         else
         {
@@ -245,7 +266,7 @@ internal sealed class FlightTrackingEventMonitor
             if(double.IsFinite(sample.BankDegrees))parts.Add($"BANK {sample.BankDegrees:0}°");
         }
         if(sample.HasPosition&&title.Contains("Route",StringComparison.OrdinalIgnoreCase))parts.Add($"POS {sample.LatitudeDegrees:0.0000}, {sample.LongitudeDegrees:0.0000}");
-        var remaining=FlightMetrics.RemainingDistanceNm(plan?.RoutePoints,progress);
+        var remaining=FlightMetrics.RemainingDistanceNm(plan?.RoutePoints,progress,sample);
         if(double.IsFinite(remaining)&&(title.Contains("approach",StringComparison.OrdinalIgnoreCase)||title.Contains("final",StringComparison.OrdinalIgnoreCase)))parts.Add($"{remaining:0} NM TO GO");
         if(double.IsFinite(sample.FuelTotalWeightPounds)&&(title.Contains("engine",StringComparison.OrdinalIgnoreCase)||title.Contains("preflight",StringComparison.OrdinalIgnoreCase)||title.Contains("block",StringComparison.OrdinalIgnoreCase)||title.Contains("Touchdown",StringComparison.OrdinalIgnoreCase)))parts.Add($"FUEL {sample.FuelTotalWeightPounds:0} LB");
         if(estimatedIn is not null&&!sample.OnGround&&plan is not null&&FlightClock.ScheduleIsPlausible(plan,sample.At)&&
@@ -270,6 +291,37 @@ internal sealed class FlightTrackingEventMonitor
             return "ENGINE DATA UNAVAILABLE";
         }
         return !sample.EngineDataValid?"ENGINE DATA UNAVAILABLE":sample.EnginesRunning?"ENGINES RUNNING":"ENGINES OFF";
+    }
+
+    private static bool EnhancedCompletion(Telemetry sample)=>sample.TerminalBlockInEligible==true
+        &&sample.TerminalShutdown is {Support:ShutdownIntentSupport.Enhanced,Qualified:true};
+    private static bool ManualCompletion(Telemetry sample)=>sample.TerminalBlockInEligible==true&&sample.PilotConfirmedBlockIn
+        &&sample.TerminalShutdown?.Support==ShutdownIntentSupport.Limited;
+    private static string CompletionSummary(Telemetry sample,bool unsupported)
+    {
+        const string parked="Stopped at gate with parking brake set";
+        if(EnhancedCompletion(sample))return parked+" • terminal shutdown confirmed";
+        if(ManualCompletion(sample))return parked+" • pilot-confirmed Block In";
+        return (unsupported||!sample.EngineDataValid)?parked+" • engine data unavailable":parked+(sample.EnginesRunning?"":" and engines shut down");
+    }
+    private static IEnumerable<string> CompletionStatus(Telemetry sample,bool unsupported)
+    {
+        if(EnhancedCompletion(sample))
+        {
+            yield return "TERMINAL SHUTDOWN CONFIRMED";
+            var states=sample.EngineStates;
+            if(states?.Any(x=>x.Condition==EngineCondition.Stopping)==true)yield return "MECHANICAL SPOOL-DOWN CONTINUES";
+            if(!sample.EngineDataValid||states is null||states.Any(x=>x.Condition==EngineCondition.Unknown))yield return "PARTIAL MECHANICAL ENGINE DATA";
+            else if(states.Count>0&&states.All(x=>x.Condition==EngineCondition.Off))yield return "MECHANICAL ENGINES OFF";
+            yield break;
+        }
+        if(ManualCompletion(sample))
+        {
+            yield return "PILOT-CONFIRMED BLOCK IN";
+            yield return "AUTOMATIC SHUTDOWN INTENT UNAVAILABLE";
+            yield break;
+        }
+        yield return EngineStatus(sample,unsupported);
     }
 
     private static bool Airbus(string? aircraft)=>aircraft?.Contains("A3",StringComparison.OrdinalIgnoreCase)==true||aircraft?.Contains("A380",StringComparison.OrdinalIgnoreCase)==true||aircraft?.Contains("AIRBUS",StringComparison.OrdinalIgnoreCase)==true||aircraft?.Contains("FENIX",StringComparison.OrdinalIgnoreCase)==true;
@@ -299,9 +351,17 @@ internal static class FlightMetrics
         if(route is null||route.Count<2)return double.NaN;
         double total=0;for(var index=1;index<route.Count;index++)total+=Distance(route[index-1].Latitude,route[index-1].Longitude,route[index].Latitude,route[index].Longitude);return total;
     }
-    internal static double RemainingDistanceNm(IReadOnlyList<FlightRoutePoint>? route,double progress)
+    // Progress is geographical, not a lifecycle percentage. Reapply the direct
+    // distance floor when reconstructing from a fraction, including short routes
+    // where remaining distance can exceed the filed length and fraction is zero.
+    internal static double RemainingDistanceNm(IReadOnlyList<FlightRoutePoint>? route,double progress,Telemetry? sample=null,bool complete=false)
     {
-        var total=RouteDistanceNm(route);return double.IsFinite(total)?total*(1-Math.Clamp(progress,0,1)):double.NaN;
+        if(complete)return 0;
+        var total=RouteDistanceNm(route);
+        if(!double.IsFinite(total)||!double.IsFinite(progress))return double.NaN;
+        var remaining=total*(1-Math.Clamp(progress,0,1));
+        return sample is {HasPosition:true}&&route is {Count:>0}
+            ?Math.Max(remaining,Distance(sample.LatitudeDegrees,sample.LongitudeDegrees,route[^1].Latitude,route[^1].Longitude)):remaining;
     }
     internal static string? NearestWaypoint(IReadOnlyList<FlightRoutePoint>? route,Telemetry sample)
     {

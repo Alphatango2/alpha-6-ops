@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Alpha6OPS-flights.sqlite",
+    "unchanged": true
+  },
+  {
+    "name": "Alpha6OPS-flights.sqlite.before-flyvirtual-20260911-115925.bak",
+    "unchanged": true
+  },
+  {
+    "name": "Alpha6OPS-logs.sqlite",
+    "unchanged": true
+  },
+  {
+    "name": "dashboard-state.json",
+    "unchanged": true
+  },
+  {
+    "name": "gate-history.json",
+    "unchanged": true
+  },
+  {
+    "name": "general-settings.json",
+    "unchanged": true
+  },
+  {
+    "name": "ofp-viewer-state.json",
+    "unchanged": true
+  },
+  {
+    "name": "preferences.json",
+    "unchanged": true
+  }
+]

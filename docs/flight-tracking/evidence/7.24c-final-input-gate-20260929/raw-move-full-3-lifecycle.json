@@ -1,0 +1,81 @@
+{
+  "seconds": 6.932259,
+  "cycles": 12,
+  "memory": [
+    {
+      "cycle": 0,
+      "readyMs": 408.9083,
+      "hostWorkingSetMiB": 329.46875,
+      "browserProcesses": 5
+    },
+    {
+      "cycle": 1,
+      "readyMs": 408.9083,
+      "hostWorkingSetMiB": 321.96484375,
+      "browserProcesses": 5
+    },
+    {
+      "cycle": 2,
+      "readyMs": 408.9083,
+      "hostWorkingSetMiB": 322.37890625,
+      "browserProcesses": 5
+    },
+    {
+      "cycle": 3,
+      "readyMs": 408.9083,
+      "hostWorkingSetMiB": 322.77734375,
+      "browserProcesses": 5
+    },
+    {
+      "cycle": 4,
+      "readyMs": 408.9083,
+      "hostWorkingSetMiB": 323.3125,
+      "browserProcesses": 5
+    },
+    {
+      "cycle": 5,
+      "readyMs": 408.9083,
+      "hostWorkingSetMiB": 325.1953125,
+      "browserProcesses": 5
+    },
+    {
+      "cycle": 6,
+      "readyMs": 408.9083,
+      "hostWorkingSetMiB": 325.76953125,
+      "browserProcesses": 5
+    },
+    {
+      "cycle": 7,
+      "readyMs": 408.9083,
+      "hostWorkingSetMiB": 326.53515625,
+      "browserProcesses": 5
+    },
+    {
+      "cycle": 8,
+      "readyMs": 408.9083,
+      "hostWorkingSetMiB": 327.609375,
+      "browserProcesses": 5
+    },
+    {
+      "cycle": 9,
+      "readyMs": 408.9083,
+      "hostWorkingSetMiB": 328.30859375,
+      "browserProcesses": 5
+    },
+    {
+      "cycle": 10,
+      "readyMs": 408.9083,
+      "hostWorkingSetMiB": 328.72265625,
+      "browserProcesses": 5
+    },
+    {
+      "cycle": 11,
+      "readyMs": 408.9083,
+      "hostWorkingSetMiB": 329.50390625,
+      "browserProcesses": 5
+    }
+  ],
+  "remainingBrowserPids": [],
+  "recreations": 8,
+  "limitation": "Bounded lifecycle sampling, not proof of leak freedom; shared browser pages can affect working-set totals."
+}

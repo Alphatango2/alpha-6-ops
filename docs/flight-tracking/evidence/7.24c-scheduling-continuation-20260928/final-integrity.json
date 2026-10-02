@@ -1,0 +1,14 @@
+{
+  "checkedUtc": "2026-09-28T21:00:21.2474329Z",
+  "changedExistingSource": [
+    "src\\Alpha6Ops.Desktop\\MapV2\\WebMapRenderer.cs",
+    "src\\Alpha6Ops.Desktop\\App.xaml.cs",
+    "src\\Alpha6Ops.Desktop\\MapV2\\MapContentionChecks.cs",
+    "src\\Alpha6Ops.Desktop\\MapV2\\MapV2Checks.cs"
+  ],
+  "unexpectedSourceChanges": 0,
+  "originalFrozenC1HashesMatch": true,
+  "captureBundleHashesVerified": true,
+  "nativeCaptureStarted": false,
+  "evidenceFiles": 23
+}

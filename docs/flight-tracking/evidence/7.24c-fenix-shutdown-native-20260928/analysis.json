@@ -1,0 +1,547 @@
+{
+  "captureIdentity": "docs\\flight-tracking\\evidence\\7.24c-fenix-shutdown-native-20260928\\raw",
+  "providedHashesMatch": true,
+  "kindCounts": {
+    "registration": 55,
+    "instruction": 4,
+    "opened": 1,
+    "pause": 1,
+    "signal": 4860,
+    "capture-end": 1
+  },
+  "elapsedDurationSeconds": 180.10999999998603,
+  "signalObservations": 4860,
+  "fields": 27,
+  "observationsPerField": 180,
+  "aircraftTitles": [
+    "FenixA321 IAE WF SC"
+  ],
+  "packageVersions": [
+    "2.4.0.4720",
+    "2.4.0.4720"
+  ],
+  "perField": {
+    "GENERAL ENG FUEL VALVE:2": {
+      "count": 180,
+      "min": 0.0,
+      "max": 1.0,
+      "firstReceiptUtc": "2026-09-28T21:15:12.858319+00:00",
+      "lastReceiptUtc": "2026-09-28T21:18:11.860032+00:00",
+      "maxReceiptGapSeconds": 1.0160000000032596,
+      "allFinite": true
+    },
+    "L:S_ENG_MASTER_1": {
+      "count": 180,
+      "min": 0.0,
+      "max": 1.0,
+      "firstReceiptUtc": "2026-09-28T21:15:12.858319+00:00",
+      "lastReceiptUtc": "2026-09-28T21:18:11.860032+00:00",
+      "maxReceiptGapSeconds": 1.0160000000032596,
+      "allFinite": true
+    },
+    "GENERAL ENG FUEL VALVE:1": {
+      "count": 180,
+      "min": 0.0,
+      "max": 1.0,
+      "firstReceiptUtc": "2026-09-28T21:15:12.858319+00:00",
+      "lastReceiptUtc": "2026-09-28T21:18:11.860032+00:00",
+      "maxReceiptGapSeconds": 1.0160000000032596,
+      "allFinite": true
+    },
+    "GENERAL ENG FAILED:1": {
+      "count": 180,
+      "min": 0.0,
+      "max": 0.0,
+      "firstReceiptUtc": "2026-09-28T21:15:12.858319+00:00",
+      "lastReceiptUtc": "2026-09-28T21:18:11.860032+00:00",
+      "maxReceiptGapSeconds": 1.0160000000032596,
+      "allFinite": true
+    },
+    "GENERAL ENG FAILED:2": {
+      "count": 180,
+      "min": 0.0,
+      "max": 0.0,
+      "firstReceiptUtc": "2026-09-28T21:15:12.858319+00:00",
+      "lastReceiptUtc": "2026-09-28T21:18:11.860032+00:00",
+      "maxReceiptGapSeconds": 1.0160000000032596,
+      "allFinite": true
+    },
+    "TURB ENG N1:2": {
+      "count": 180,
+      "min": 1.185592217703736e-06,
+      "max": 34.00681553952007,
+      "firstReceiptUtc": "2026-09-28T21:15:12.858319+00:00",
+      "lastReceiptUtc": "2026-09-28T21:18:11.860032+00:00",
+      "maxReceiptGapSeconds": 1.0160000000032596,
+      "allFinite": true
+    },
+    "GENERAL ENG STARTER:2": {
+      "count": 180,
+      "min": 0.0,
+      "max": 0.0,
+      "firstReceiptUtc": "2026-09-28T21:15:12.858319+00:00",
+      "lastReceiptUtc": "2026-09-28T21:18:11.860032+00:00",
+      "maxReceiptGapSeconds": 1.0160000000032596,
+      "allFinite": true
+    },
+    "GENERAL ENG STARTER:1": {
+      "count": 180,
+      "min": 0.0,
+      "max": 0.0,
+      "firstReceiptUtc": "2026-09-28T21:15:12.858319+00:00",
+      "lastReceiptUtc": "2026-09-28T21:18:11.860032+00:00",
+      "maxReceiptGapSeconds": 1.0160000000032596,
+      "allFinite": true
+    },
+    "L:S_ENG_MASTER_2": {
+      "count": 180,
+      "min": 0.0,
+      "max": 1.0,
+      "firstReceiptUtc": "2026-09-28T21:15:12.858319+00:00",
+      "lastReceiptUtc": "2026-09-28T21:18:11.860032+00:00",
+      "maxReceiptGapSeconds": 1.0160000000032596,
+      "allFinite": true
+    },
+    "TURB ENG N2:1": {
+      "count": 180,
+      "min": 5.896478555136501e-05,
+      "max": 75.07100887716277,
+      "firstReceiptUtc": "2026-09-28T21:15:12.858319+00:00",
+      "lastReceiptUtc": "2026-09-28T21:18:11.860032+00:00",
+      "maxReceiptGapSeconds": 1.0160000000032596,
+      "allFinite": true
+    },
+    "GENERAL ENG OIL PRESSURE:2": {
+      "count": 180,
+      "min": 0.0008215712987839929,
+      "max": 11025.360635277375,
+      "firstReceiptUtc": "2026-09-28T21:15:12.858319+00:00",
+      "lastReceiptUtc": "2026-09-28T21:18:11.860032+00:00",
+      "maxReceiptGapSeconds": 1.0160000000032596,
+      "allFinite": true
+    },
+    "GENERAL ENG OIL PRESSURE:1": {
+      "count": 180,
+      "min": 0.0045185999348016535,
+      "max": 11025.379300342787,
+      "firstReceiptUtc": "2026-09-28T21:15:12.858319+00:00",
+      "lastReceiptUtc": "2026-09-28T21:18:11.860032+00:00",
+      "maxReceiptGapSeconds": 1.0160000000032596,
+      "allFinite": true
+    },
+    "TURB ENG N2:2": {
+      "count": 180,
+      "min": 1.0720970244532394e-05,
+      "max": 75.44968749026835,
+      "firstReceiptUtc": "2026-09-28T21:15:12.858319+00:00",
+      "lastReceiptUtc": "2026-09-28T21:18:11.860032+00:00",
+      "maxReceiptGapSeconds": 1.0160000000032596,
+      "allFinite": true
+    },
+    "NUMBER OF ENGINES": {
+      "count": 180,
+      "min": 2.0,
+      "max": 2.0,
+      "firstReceiptUtc": "2026-09-28T21:15:12.858319+00:00",
+      "lastReceiptUtc": "2026-09-28T21:18:11.860032+00:00",
+      "maxReceiptGapSeconds": 1.0160000000032596,
+      "allFinite": true
+    },
+    "TURB ENG N1:1": {
+      "count": 180,
+      "min": 6.5206962871593285e-06,
+      "max": 33.761916076560496,
+      "firstReceiptUtc": "2026-09-28T21:15:12.858319+00:00",
+      "lastReceiptUtc": "2026-09-28T21:18:11.860032+00:00",
+      "maxReceiptGapSeconds": 1.0160000000032596,
+      "allFinite": true
+    },
+    "TITLE": {
+      "count": 180,
+      "min": "FenixA321 IAE WF SC",
+      "max": "FenixA321 IAE WF SC",
+      "firstReceiptUtc": "2026-09-28T21:15:12.858319+00:00",
+      "lastReceiptUtc": "2026-09-28T21:18:11.860032+00:00",
+      "maxReceiptGapSeconds": 1.0160000000032596,
+      "allFinite": true
+    },
+    "GENERAL ENG COMBUSTION:2": {
+      "count": 180,
+      "min": 0.0,
+      "max": 1.0,
+      "firstReceiptUtc": "2026-09-28T21:15:12.858822+00:00",
+      "lastReceiptUtc": "2026-09-28T21:18:11.860032+00:00",
+      "maxReceiptGapSeconds": 1.0160000000032596,
+      "allFinite": true
+    },
+    "TURB ENG FUEL FLOW PPH:2": {
+      "count": 180,
+      "min": 0.0,
+      "max": 1146.6527120454716,
+      "firstReceiptUtc": "2026-09-28T21:15:12.858822+00:00",
+      "lastReceiptUtc": "2026-09-28T21:18:11.860032+00:00",
+      "maxReceiptGapSeconds": 1.0160000000032596,
+      "allFinite": true
+    },
+    "TURB ENG FUEL FLOW PPH:1": {
+      "count": 180,
+      "min": 0.0,
+      "max": 1148.0462391680178,
+      "firstReceiptUtc": "2026-09-28T21:15:12.858822+00:00",
+      "lastReceiptUtc": "2026-09-28T21:18:11.860032+00:00",
+      "maxReceiptGapSeconds": 1.0160000000032596,
+      "allFinite": true
+    },
+    "PLANE LATITUDE": {
+      "count": 180,
+      "min": -34.941416790065084,
+      "max": -34.94141678375575,
+      "firstReceiptUtc": "2026-09-28T21:15:12.858822+00:00",
+      "lastReceiptUtc": "2026-09-28T21:18:11.860032+00:00",
+      "maxReceiptGapSeconds": 1.0160000000032596,
+      "allFinite": true
+    },
+    "IS SLEW ACTIVE": {
+      "count": 180,
+      "min": 0.0,
+      "max": 0.0,
+      "firstReceiptUtc": "2026-09-28T21:15:12.858822+00:00",
+      "lastReceiptUtc": "2026-09-28T21:18:11.860032+00:00",
+      "maxReceiptGapSeconds": 1.0160000000032596,
+      "allFinite": true
+    },
+    "SIM ON GROUND": {
+      "count": 180,
+      "min": 1.0,
+      "max": 1.0,
+      "firstReceiptUtc": "2026-09-28T21:15:12.858822+00:00",
+      "lastReceiptUtc": "2026-09-28T21:18:11.860032+00:00",
+      "maxReceiptGapSeconds": 1.0160000000032596,
+      "allFinite": true
+    },
+    "BRAKE PARKING POSITION": {
+      "count": 180,
+      "min": 1.0,
+      "max": 1.0,
+      "firstReceiptUtc": "2026-09-28T21:15:12.858822+00:00",
+      "lastReceiptUtc": "2026-09-28T21:18:11.860032+00:00",
+      "maxReceiptGapSeconds": 1.0160000000032596,
+      "allFinite": true
+    },
+    "GROUND VELOCITY": {
+      "count": 180,
+      "min": 3.568397120075751e-08,
+      "max": 0.0004392742149365947,
+      "firstReceiptUtc": "2026-09-28T21:15:12.858822+00:00",
+      "lastReceiptUtc": "2026-09-28T21:18:11.860032+00:00",
+      "maxReceiptGapSeconds": 1.0160000000032596,
+      "allFinite": true
+    },
+    "GENERAL ENG COMBUSTION:1": {
+      "count": 180,
+      "min": 0.0,
+      "max": 1.0,
+      "firstReceiptUtc": "2026-09-28T21:15:12.858822+00:00",
+      "lastReceiptUtc": "2026-09-28T21:18:11.860032+00:00",
+      "maxReceiptGapSeconds": 1.0160000000032596,
+      "allFinite": true
+    },
+    "ABSOLUTE TIME": {
+      "count": 180,
+      "min": 63926226912.84598,
+      "max": 63926227091.84764,
+      "firstReceiptUtc": "2026-09-28T21:15:12.858822+00:00",
+      "lastReceiptUtc": "2026-09-28T21:18:11.860032+00:00",
+      "maxReceiptGapSeconds": 1.0160000000032596,
+      "allFinite": true
+    },
+    "PLANE LONGITUDE": {
+      "count": 180,
+      "min": 138.5301610156812,
+      "max": 138.53016102341408,
+      "firstReceiptUtc": "2026-09-28T21:15:12.858822+00:00",
+      "lastReceiptUtc": "2026-09-28T21:18:11.860032+00:00",
+      "maxReceiptGapSeconds": 1.0160000000032596,
+      "allFinite": true
+    }
+  },
+  "booleanTransitions": {
+    "GENERAL ENG FUEL VALVE:2": [
+      {
+        "utc": "2026-09-28T21:15:12.858319+00:00",
+        "elapsedSeconds": 0.2029999999795109,
+        "value": 1.0
+      },
+      {
+        "utc": "2026-09-28T21:15:34.860369+00:00",
+        "elapsedSeconds": 22.20299999997951,
+        "value": 0.0
+      }
+    ],
+    "L:S_ENG_MASTER_1": [
+      {
+        "utc": "2026-09-28T21:15:12.858319+00:00",
+        "elapsedSeconds": 0.2029999999795109,
+        "value": 1.0
+      },
+      {
+        "utc": "2026-09-28T21:15:50.857610+00:00",
+        "elapsedSeconds": 38.18799999996554,
+        "value": 0.0
+      }
+    ],
+    "GENERAL ENG FUEL VALVE:1": [
+      {
+        "utc": "2026-09-28T21:15:12.858319+00:00",
+        "elapsedSeconds": 0.2029999999795109,
+        "value": 1.0
+      },
+      {
+        "utc": "2026-09-28T21:15:51.863941+00:00",
+        "elapsedSeconds": 39.20299999997951,
+        "value": 0.0
+      }
+    ],
+    "GENERAL ENG FAILED:1": [
+      {
+        "utc": "2026-09-28T21:15:12.858319+00:00",
+        "elapsedSeconds": 0.2029999999795109,
+        "value": 0.0
+      }
+    ],
+    "GENERAL ENG FAILED:2": [
+      {
+        "utc": "2026-09-28T21:15:12.858319+00:00",
+        "elapsedSeconds": 0.2029999999795109,
+        "value": 0.0
+      }
+    ],
+    "GENERAL ENG STARTER:2": [
+      {
+        "utc": "2026-09-28T21:15:12.858319+00:00",
+        "elapsedSeconds": 0.2029999999795109,
+        "value": 0.0
+      }
+    ],
+    "GENERAL ENG STARTER:1": [
+      {
+        "utc": "2026-09-28T21:15:12.858319+00:00",
+        "elapsedSeconds": 0.2029999999795109,
+        "value": 0.0
+      }
+    ],
+    "L:S_ENG_MASTER_2": [
+      {
+        "utc": "2026-09-28T21:15:12.858319+00:00",
+        "elapsedSeconds": 0.2029999999795109,
+        "value": 1.0
+      },
+      {
+        "utc": "2026-09-28T21:15:33.868113+00:00",
+        "elapsedSeconds": 21.20299999997951,
+        "value": 0.0
+      }
+    ],
+    "GENERAL ENG COMBUSTION:2": [
+      {
+        "utc": "2026-09-28T21:15:12.858822+00:00",
+        "elapsedSeconds": 0.2029999999795109,
+        "value": 1.0
+      },
+      {
+        "utc": "2026-09-28T21:15:34.860872+00:00",
+        "elapsedSeconds": 22.20299999997951,
+        "value": 0.0
+      }
+    ],
+    "GENERAL ENG COMBUSTION:1": [
+      {
+        "utc": "2026-09-28T21:15:12.858822+00:00",
+        "elapsedSeconds": 0.2029999999795109,
+        "value": 1.0
+      },
+      {
+        "utc": "2026-09-28T21:15:51.863941+00:00",
+        "elapsedSeconds": 39.20299999997951,
+        "value": 0.0
+      }
+    ]
+  },
+  "engines": {
+    "2": {
+      "promptElapsedSeconds": 15,
+      "previousMasterOn": {
+        "utc": "2026-09-28T21:15:32.859772+00:00",
+        "elapsedSeconds": 20.20299999997951,
+        "value": 1.0
+      },
+      "masterOffObservedAfterPromptSeconds": 6.202999999979511,
+      "milestones": {
+        "masterOff": {
+          "utc": "2026-09-28T21:15:33.868113+00:00",
+          "elapsedSeconds": 21.20299999997951,
+          "value": 0.0,
+          "secondsSinceObservedMasterOff": 0.0
+        },
+        "combustionAbsent": {
+          "utc": "2026-09-28T21:15:34.860872+00:00",
+          "elapsedSeconds": 22.20299999997951,
+          "value": 0.0,
+          "secondsSinceObservedMasterOff": 1.0
+        },
+        "fuelValveClosed": {
+          "utc": "2026-09-28T21:15:34.860369+00:00",
+          "elapsedSeconds": 22.20299999997951,
+          "value": 0.0,
+          "secondsSinceObservedMasterOff": 1.0
+        },
+        "n1Below3": {
+          "utc": "2026-09-28T21:15:47.861740+00:00",
+          "elapsedSeconds": 35.20299999997951,
+          "value": 2.5920633353384805,
+          "secondsSinceObservedMasterOff": 14.0
+        },
+        "n2Below5": {
+          "utc": "2026-09-28T21:16:01.862405+00:00",
+          "elapsedSeconds": 49.20299999997951,
+          "value": 4.769379239427848,
+          "secondsSinceObservedMasterOff": 28.0
+        },
+        "fuelFlowAtMost1Pph": {
+          "utc": "2026-09-28T21:16:23.855910+00:00",
+          "elapsedSeconds": 71.18799999996554,
+          "value": 0.9186333361634589,
+          "secondsSinceObservedMasterOff": 49.98499999998603
+        },
+        "fuelFlowZero": {
+          "utc": "2026-09-28T21:16:33.864930+00:00",
+          "elapsedSeconds": 81.20299999997951,
+          "value": 0.0,
+          "secondsSinceObservedMasterOff": 60.0
+        }
+      },
+      "valuesAtFirstCombustionAbsent": {
+        "TURB ENG N1": {
+          "utc": "2026-09-28T21:15:34.860369+00:00",
+          "elapsedSeconds": 22.20299999997951,
+          "value": 29.740803000003623
+        },
+        "TURB ENG N2": {
+          "utc": "2026-09-28T21:15:34.860369+00:00",
+          "elapsedSeconds": 22.20299999997951,
+          "value": 71.12369915055811
+        },
+        "TURB ENG FUEL FLOW PPH": {
+          "utc": "2026-09-28T21:15:34.860872+00:00",
+          "elapsedSeconds": 22.20299999997951,
+          "value": 961.6377493646044
+        },
+        "GENERAL ENG OIL PRESSURE": {
+          "utc": "2026-09-28T21:15:34.860369+00:00",
+          "elapsedSeconds": 22.20299999997951,
+          "value": 11021.434744735692
+        }
+      }
+    },
+    "1": {
+      "promptElapsedSeconds": 35,
+      "previousMasterOn": {
+        "utc": "2026-09-28T21:15:49.860830+00:00",
+        "elapsedSeconds": 37.20299999997951,
+        "value": 1.0
+      },
+      "masterOffObservedAfterPromptSeconds": 3.187999999965541,
+      "milestones": {
+        "masterOff": {
+          "utc": "2026-09-28T21:15:50.857610+00:00",
+          "elapsedSeconds": 38.18799999996554,
+          "value": 0.0,
+          "secondsSinceObservedMasterOff": 0.0
+        },
+        "combustionAbsent": {
+          "utc": "2026-09-28T21:15:51.863941+00:00",
+          "elapsedSeconds": 39.20299999997951,
+          "value": 0.0,
+          "secondsSinceObservedMasterOff": 1.0150000000139698
+        },
+        "fuelValveClosed": {
+          "utc": "2026-09-28T21:15:51.863941+00:00",
+          "elapsedSeconds": 39.20299999997951,
+          "value": 0.0,
+          "secondsSinceObservedMasterOff": 1.0150000000139698
+        },
+        "n1Below3": {
+          "utc": "2026-09-28T21:16:04.870339+00:00",
+          "elapsedSeconds": 52.20299999997951,
+          "value": 2.6060442682135223,
+          "secondsSinceObservedMasterOff": 14.01500000001397
+        },
+        "n2Below5": {
+          "utc": "2026-09-28T21:16:18.868993+00:00",
+          "elapsedSeconds": 66.20299999997951,
+          "value": 4.788458675987638,
+          "secondsSinceObservedMasterOff": 28.01500000001397
+        },
+        "fuelFlowAtMost1Pph": {
+          "utc": "2026-09-28T21:16:41.867823+00:00",
+          "elapsedSeconds": 89.20299999997951,
+          "value": 0.904169523121016,
+          "secondsSinceObservedMasterOff": 51.01500000001397
+        },
+        "fuelFlowZero": {
+          "utc": "2026-09-28T21:16:50.861464+00:00",
+          "elapsedSeconds": 98.20299999997951,
+          "value": 0.0,
+          "secondsSinceObservedMasterOff": 60.01500000001397
+        }
+      },
+      "valuesAtFirstCombustionAbsent": {
+        "TURB ENG N1": {
+          "utc": "2026-09-28T21:15:51.863941+00:00",
+          "elapsedSeconds": 39.20299999997951,
+          "value": 30.01606172444514
+        },
+        "TURB ENG N2": {
+          "utc": "2026-09-28T21:15:51.863941+00:00",
+          "elapsedSeconds": 39.20299999997951,
+          "value": 71.36589075792432
+        },
+        "TURB ENG FUEL FLOW PPH": {
+          "utc": "2026-09-28T21:15:51.863941+00:00",
+          "elapsedSeconds": 39.20299999997951,
+          "value": 976.7590424813783
+        },
+        "GENERAL ENG OIL PRESSURE": {
+          "utc": "2026-09-28T21:15:51.863941+00:00",
+          "elapsedSeconds": 39.20299999997951,
+          "value": 11019.987298446895
+        }
+      }
+    }
+  },
+  "independentMasterIntervalSeconds": 16.98499999998603,
+  "allMastersOffAndCombustionAbsentElapsedSeconds": 39.20299999997951,
+  "allFuelFlowAtMost1PphElapsedSeconds": 89.20299999997951,
+  "extraFuelFlowWaitSeconds": 50.0,
+  "pauseEvents": [
+    {
+      "utc": "2026-09-28T21:15:12.696462+00:00",
+      "elapsedSeconds": 0.030999999959021807,
+      "kind": "pause",
+      "flags": 0
+    }
+  ],
+  "simTimeProgression": {
+    "firstAbsoluteSeconds": 63926226912.84598,
+    "lastAbsoluteSeconds": 63926227091.84764,
+    "minStepSeconds": 0.9776535034179688,
+    "maxStepSeconds": 1.0205307006835938
+  },
+  "limits": [
+    "One native nominal shutdown for this title/package, not all Fenix aircraft.",
+    "Prompt/user action times are not independently timestamped cockpit commands. Raw transitions occur later.",
+    "No startup/restart/relight, injected failure, unsupported-signal or reconnect validation.",
+    "No Sierra ON/IN/PIREP state is recorded. No measured improvement in PIREP eligibility.",
+    "Separate 1 Hz fields; timestamps are receipts, not atomic cockpit command timestamps."
+  ]
+}

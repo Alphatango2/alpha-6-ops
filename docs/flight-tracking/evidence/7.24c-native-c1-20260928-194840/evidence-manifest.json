@@ -1,0 +1,47 @@
+[
+  {
+    "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\native-input-20260928-144838-4a0d6019\\native-analysis-v2.json",
+    "bytes": 14674,
+    "sha256": "961A4FBA23594FD12498E9A8C2D6EF9CCE1B36B1E9E0F2FD24BB754494037299"
+  },
+  {
+    "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\native-input-20260928-144838-4a0d6019\\native-analysis.json",
+    "bytes": 12044,
+    "sha256": "077F9D6506DCF3D2F9D7A618752E94BD878A18277902D6C4B5F6814A89A55F2E"
+  },
+  {
+    "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\native-input-20260928-144838-4a0d6019\\physical-observation.txt",
+    "bytes": 59,
+    "sha256": "2C0D8AA7CD6EE878C30C9BAFEF44944E38FA2FF73012FE7BE29AE5114ACF1850"
+  },
+  {
+    "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\native-input-20260928-144838-4a0d6019\\record.json",
+    "bytes": 298,
+    "sha256": "992BAE95CA07852FE6048BD0A41588E407268882CC25BAC03B552E771A6FFBA0"
+  },
+  {
+    "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\native-input-20260928-144838-4a0d6019\\trace.json",
+    "bytes": 52525582,
+    "sha256": "72C004A0CD2BB52A586ACB577A8541351AC97809EBB11E85279CF8854B261297"
+  },
+  {
+    "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\native-input-20260928-144838-4a0d6019\\closed-session-evidence\\Alpha6OPS-20260928-194850-14852ef746a646468e2267ec3264e807.json",
+    "bytes": 436792,
+    "sha256": "419862AD6EC3EEB261941506D040C6697190BFBF7F4989E5551153E33FBA3617"
+  },
+  {
+    "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\native-input-20260928-144838-4a0d6019\\closed-session-evidence\\Alpha6OPS-20260928-194850-14852ef746a646468e2267ec3264e807.jsonl",
+    "bytes": 280935,
+    "sha256": "1675A2A1FC9779FF19712271A425999774F13FA949B7D8B47BB3D3B8F7160750"
+  },
+  {
+    "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\analyze-native-c1-capture.py",
+    "bytes": 8021,
+    "sha256": "F7AA1CC15A698BEF0FC422C3881235EE62C26F883A795A4B96F4694B8313EC7D"
+  },
+  {
+    "path": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\docs\\flight-tracking\\7.24c-c1-installed-native-input-20260928.md",
+    "bytes": 7410,
+    "sha256": "E098D55402C893E4DA9C6DA5EBFBDAA0AD4D0B3DE2CF5EBF83B3E110F9E6760E"
+  }
+]

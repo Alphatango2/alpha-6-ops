@@ -1,0 +1,97 @@
+{
+  "expectedSamples": 91366,
+  "processedSamples": 91366,
+  "rawSamples": 91366,
+  "flights": [
+    {
+      "flight": "JST221",
+      "sha256": "20839580DE1D3FE3E3CB1C27B632845F31CB816150CCEBCB2255745A0F875AB4",
+      "rawTelemetry": 11965,
+      "eligibleTelemetry": 11965,
+      "processed": 11965,
+      "beforeAssignment": 0,
+      "passed": true,
+      "unchanged": true
+    },
+    {
+      "flight": "QFA124",
+      "sha256": "A3CDA3E402272B4B4A1959A93C5385C8F7F718D38133CF2509210128E5499292",
+      "rawTelemetry": 11535,
+      "eligibleTelemetry": 11535,
+      "processed": 11535,
+      "beforeAssignment": 0,
+      "passed": true,
+      "unchanged": true
+    },
+    {
+      "flight": "JST786",
+      "sha256": "4DF187F832843F341E24E3362E6E4CC386AA3D8304405E5C10FC13FE397A47C9",
+      "rawTelemetry": 6952,
+      "eligibleTelemetry": 6952,
+      "processed": 6952,
+      "beforeAssignment": 0,
+      "passed": true,
+      "unchanged": true
+    },
+    {
+      "flight": "QLK1579",
+      "sha256": "F1ACEF79F3B0421CF2480B284E19EB0C0C24276DB04461436D6EC1D027271FDB",
+      "rawTelemetry": 9040,
+      "eligibleTelemetry": 9040,
+      "processed": 9040,
+      "beforeAssignment": 0,
+      "passed": true,
+      "unchanged": true
+    },
+    {
+      "flight": "JST721",
+      "sha256": "B4BA957717FC60B2511CABCDA76AC2190ED7EF2120D8D601F010ED11AF848C5B",
+      "rawTelemetry": 7650,
+      "eligibleTelemetry": 7650,
+      "processed": 7650,
+      "beforeAssignment": 0,
+      "passed": true,
+      "unchanged": true
+    },
+    {
+      "flight": "JST724",
+      "sha256": "D1BF2A095A2CD4921998283ACCCDC9A8CDF4C21B2F062BB52512F24A2D2ADD9F",
+      "rawTelemetry": 7459,
+      "eligibleTelemetry": 7459,
+      "processed": 7459,
+      "beforeAssignment": 0,
+      "passed": true,
+      "unchanged": true
+    },
+    {
+      "flight": "JST760",
+      "sha256": "CC69C1482964D635BC92DB56AD0E395740820208DABA99F67BB5666BA11EE51B",
+      "rawTelemetry": 10552,
+      "eligibleTelemetry": 10552,
+      "processed": 10552,
+      "beforeAssignment": 0,
+      "passed": true,
+      "unchanged": true
+    },
+    {
+      "flight": "QLK1274",
+      "sha256": "94F954F0ED45A96EE8C6C94256B3874FBE39D22C8132BA1299B13D133A98CF6F",
+      "rawTelemetry": 10519,
+      "eligibleTelemetry": 10519,
+      "processed": 10519,
+      "beforeAssignment": 0,
+      "passed": true,
+      "unchanged": true
+    },
+    {
+      "flight": "ANG2",
+      "sha256": "2AA85C50BBEEFAEB636F87B1A83B743D4DAC8F9AF9BC27DC39F57ADA772F20BA",
+      "rawTelemetry": 15694,
+      "eligibleTelemetry": 15694,
+      "processed": 15694,
+      "beforeAssignment": 0,
+      "passed": true,
+      "unchanged": true
+    }
+  ]
+}

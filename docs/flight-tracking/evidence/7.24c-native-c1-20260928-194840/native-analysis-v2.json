@@ -1,0 +1,430 @@
+{
+  "build": "S4-7.24C-C1-20260928-64e864462ace",
+  "physicalObservation": "User: I did not notice any hitching and did not press F9.",
+  "physicalResult": "PASS for this bounded parked connected Map V2 drag observation; no root-cause proof or full-checkpoint closure.",
+  "traceEvents": 352134,
+  "dropped": 0,
+  "osSamples": 472,
+  "traceEndMs": 120798.0808,
+  "hookCostMs": 220.591,
+  "eventKinds": {
+    "posted": 108868,
+    "native-trace-start": 1,
+    "begin": 30826,
+    "end": 30825,
+    "layout-notification": 28356,
+    "aborted": 78058,
+    "priority": 83,
+    "physical-button": 9,
+    "physical-drag": 74331,
+    "gc": 334,
+    "activity-begin": 112,
+    "activity-end": 112,
+    "native-telemetry-arrival": 109,
+    "native-telemetry-processed": 109,
+    "native-trace-end": 1
+  },
+  "liveWindowMs": [
+    11876.6518,
+    119828.9708
+  ],
+  "telemetryArrived": 109,
+  "telemetryProcessed": 109,
+  "arrivalProcessedTimestampsMatch": true,
+  "traceTelemetryAllFoundInJournal": true,
+  "sourceArrivalIntervalMs": {
+    "count": 108,
+    "p50": 1000.3004999999976,
+    "p95": 1002.2189999999973,
+    "p99": 1100.2706999999991,
+    "max": 1101.3199999999997
+  },
+  "arrivalToProcessedMs": {
+    "count": 109,
+    "p50": 0.5322,
+    "p95": 0.9165,
+    "p99": 0.9961,
+    "max": 41.5599
+  },
+  "arrivalToProcessedAfterFirstMs": {
+    "count": 108,
+    "p50": 0.5307,
+    "p95": 0.8241,
+    "p99": 0.9904,
+    "max": 1.2734
+  },
+  "liveDragNotifications": 73492,
+  "liveDragWpfMessageAgeMs": {
+    "count": 73492,
+    "p50": 0,
+    "p95": 0,
+    "p99": 16,
+    "max": 16
+  },
+  "userStallMarkers": 0,
+  "liveDispatcherPostedToStartIncludingIntentionalTimerWaitMs": {
+    "count": 28167,
+    "p50": 0.2485999999989872,
+    "p95": 14.296300000001793,
+    "p99": 233.73229999999603,
+    "max": 18986.4171
+  },
+  "liveNonTimerDispatcherQueueMs": {
+    "count": 28098,
+    "p50": 0.24809999999706633,
+    "p95": 13.955800000001545,
+    "p99": 124.56370000001334,
+    "max": 4280.8266
+  },
+  "longestLiveNonTimerQueuedOperations": [
+    {
+      "id": 42076,
+      "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+      "priority": 4,
+      "postedMs": 60001.6423,
+      "startedMs": 64282.4689,
+      "delayMs": 4280.8266
+    },
+    {
+      "id": 10432,
+      "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+      "priority": 4,
+      "postedMs": 30992.0414,
+      "startedMs": 35189.9149,
+      "delayMs": 4197.873500000005
+    },
+    {
+      "id": 104707,
+      "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+      "priority": 4,
+      "postedMs": 117621.5639,
+      "startedMs": 121358.2587,
+      "delayMs": 3736.694800000012
+    },
+    {
+      "id": 55854,
+      "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+      "priority": 4,
+      "postedMs": 72005.2534,
+      "startedMs": 75735.7178,
+      "delayMs": 3730.464399999997
+    },
+    {
+      "id": 42214,
+      "name": "System.Windows.Input.InputManager.ContinueProcessingStagingArea",
+      "priority": 5,
+      "postedMs": 60109.812,
+      "startedMs": 63799.1971,
+      "delayMs": 3689.3850999999995
+    },
+    {
+      "id": 16660,
+      "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+      "priority": 4,
+      "postedMs": 36994.367,
+      "startedMs": 40624.2981,
+      "delayMs": 3629.9311000000016
+    },
+    {
+      "id": 80659,
+      "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+      "priority": 4,
+      "postedMs": 95022.159,
+      "startedMs": 98610.89,
+      "delayMs": 3588.7309999999998
+    },
+    {
+      "id": 61301,
+      "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+      "priority": 4,
+      "postedMs": 76763.2826,
+      "startedMs": 80108.4636,
+      "delayMs": 3345.180999999997
+    }
+  ],
+  "longestLiveQueuedOperations": [
+    {
+      "id": 26075,
+      "name": "System.Windows.Threading.DispatcherTimer+<>c.<Restart>b__21_0/timer-15000ms",
+      "priority": 4,
+      "postedMs": 45187.3068,
+      "startedMs": 64173.7239,
+      "delayMs": 18986.4171
+    },
+    {
+      "id": 64869,
+      "name": "System.Windows.Threading.DispatcherTimer+<>c.<Restart>b__21_0/timer-15000ms",
+      "priority": 4,
+      "postedMs": 79921.6732,
+      "startedMs": 98486.3298,
+      "delayMs": 18564.656600000002
+    },
+    {
+      "id": 46756,
+      "name": "System.Windows.Threading.DispatcherTimer+<>c.<Restart>b__21_0/timer-15000ms",
+      "priority": 4,
+      "postedMs": 64173.7578,
+      "startedMs": 79921.6284,
+      "delayMs": 15747.870600000002
+    },
+    {
+      "id": 9424,
+      "name": "System.Windows.Threading.DispatcherTimer+<>c.<Restart>b__21_0/timer-15000ms",
+      "priority": 4,
+      "postedMs": 29564.4998,
+      "startedMs": 45187.2723,
+      "delayMs": 15622.772499999995
+    },
+    {
+      "id": 5011,
+      "name": "System.Windows.Threading.DispatcherTimer+<>c.<Restart>b__21_0/timer-15000ms",
+      "priority": 4,
+      "postedMs": 14375.3194,
+      "startedMs": 29564.3985,
+      "delayMs": 15189.079099999999
+    },
+    {
+      "id": 84041,
+      "name": "System.Windows.Threading.DispatcherTimer+<>c.<Restart>b__21_0/timer-15000ms",
+      "priority": 4,
+      "postedMs": 98486.3641,
+      "startedMs": 113546.0709,
+      "delayMs": 15059.7068
+    },
+    {
+      "id": 53898,
+      "name": "System.Windows.Threading.DispatcherTimer+<>c.<Restart>b__21_0/dashboard-clock",
+      "priority": 4,
+      "postedMs": 70297.6018,
+      "startedMs": 75548.8122,
+      "delayMs": 5251.210399999996
+    },
+    {
+      "id": 42076,
+      "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+      "priority": 4,
+      "postedMs": 60001.6423,
+      "startedMs": 64282.4689,
+      "delayMs": 4280.8266
+    },
+    {
+      "id": 10432,
+      "name": "Alpha6Ops.Desktop.MapV2.WebMapRenderer+<>c__DisplayClass62_0.<ApplyAsync>b__0",
+      "priority": 4,
+      "postedMs": 30992.0414,
+      "startedMs": 35189.9149,
+      "delayMs": 4197.873500000005
+    },
+    {
+      "id": 42211,
+      "name": "System.Windows.Threading.DispatcherTimer+<>c.<Restart>b__21_0/dashboard-clock",
+      "priority": 4,
+      "postedMs": 60109.3914,
+      "startedMs": 64298.3073,
+      "delayMs": 4188.9159
+    },
+    {
+      "id": 80400,
+      "name": "System.Windows.Threading.DispatcherTimer+<>c.<Restart>b__21_0/dashboard-clock",
+      "priority": 4,
+      "postedMs": 94609.0287,
+      "startedMs": 98486.3848,
+      "delayMs": 3877.3561000000045
+    },
+    {
+      "id": 15809,
+      "name": "System.Windows.Threading.DispatcherTimer+<>c.<Restart>b__21_0/dashboard-clock",
+      "priority": 4,
+      "postedMs": 36202.8401,
+      "startedMs": 40062.1598,
+      "delayMs": 3859.3197
+    }
+  ],
+  "liveDispatcherEnvelopeMs": {
+    "count": 28169,
+    "p50": 0.06040000000211876,
+    "p95": 0.14319999999861466,
+    "p99": 0.30940000000191503,
+    "max": 41.41699999999946
+  },
+  "longestLiveOperationEnvelopes": [
+    {
+      "id": 3483,
+      "name": "Alpha6Ops.Desktop.FlightSessionCoordinator+<>c__DisplayClass10_4.<ConnectSimulatorAsync>b__4",
+      "priority": 9,
+      "startedMs": 11876.7034,
+      "endedMs": 11918.1204,
+      "durationMs": 41.41699999999946
+    },
+    {
+      "id": 4082,
+      "name": "System.Windows.Media.MediaContext.RenderMessageHandler",
+      "priority": 7,
+      "startedMs": 12778.335,
+      "endedMs": 12816.1451,
+      "durationMs": 37.8101000000006
+    },
+    {
+      "id": 3485,
+      "name": "System.Windows.Media.MediaContext.RenderMessageHandler",
+      "priority": 7,
+      "startedMs": 11918.1556,
+      "endedMs": 11933.8793,
+      "durationMs": 15.723700000000463
+    },
+    {
+      "id": 80576,
+      "name": "System.Windows.Media.MediaContext.RenderMessageHandler",
+      "priority": 7,
+      "startedMs": 94941.9483,
+      "endedMs": 94955.8763,
+      "durationMs": 13.927999999999884
+    },
+    {
+      "id": 75327,
+      "name": "System.Windows.Media.MediaContext.RenderMessageHandler",
+      "priority": 7,
+      "startedMs": 89266.7085,
+      "endedMs": 89279.4854,
+      "durationMs": 12.776900000011665
+    },
+    {
+      "id": 50463,
+      "name": "System.Windows.Media.MediaContext.RenderMessageHandler",
+      "priority": 7,
+      "startedMs": 67328.7899,
+      "endedMs": 67336.8518,
+      "durationMs": 8.061900000000605
+    },
+    {
+      "id": 86582,
+      "name": "System.Windows.Media.MediaContext.RenderMessageHandler",
+      "priority": 7,
+      "startedMs": 100823.8631,
+      "endedMs": 100826.5688,
+      "durationMs": 2.7056999999913387
+    },
+    {
+      "id": 41828,
+      "name": "System.Windows.Media.MediaContext.RenderMessageHandler",
+      "priority": 7,
+      "startedMs": 59800.685,
+      "endedMs": 59803.1122,
+      "durationMs": 2.4272000000055414
+    },
+    {
+      "id": 72871,
+      "name": "System.Windows.Media.MediaContext.RenderMessageHandler",
+      "priority": 7,
+      "startedMs": 86820.0578,
+      "endedMs": 86822.332,
+      "durationMs": 2.274199999999837
+    },
+    {
+      "id": 14275,
+      "name": "System.Windows.Media.MediaContext.RenderMessageHandler",
+      "priority": 7,
+      "startedMs": 34793.2805,
+      "endedMs": 34795.5302,
+      "durationMs": 2.2497000000003027
+    },
+    {
+      "id": 31757,
+      "name": "System.Windows.Media.MediaContext.RenderMessageHandler",
+      "priority": 7,
+      "startedMs": 50797.9691,
+      "endedMs": 50800.1065,
+      "durationMs": 2.137399999999616
+    },
+    {
+      "id": 77814,
+      "name": "System.Windows.Media.MediaContext.RenderMessageHandler",
+      "priority": 7,
+      "startedMs": 91821.3619,
+      "endedMs": 91823.3901,
+      "durationMs": 2.028200000000652
+    }
+  ],
+  "liveMediaContextEnvelopeMs": {
+    "count": 25970,
+    "p50": 0.06079999999201391,
+    "p95": 0.12930000000051223,
+    "p99": 0.22370000000228174,
+    "max": 37.8101000000006
+  },
+  "liveRuntimeChangedMs": {
+    "count": 108,
+    "p50": 0.2293,
+    "p95": 0.4119,
+    "p99": 0.4818,
+    "max": 6.7156
+  },
+  "closedJournalKinds": {
+    "session_started": 1,
+    "connection_opened": 1,
+    "telemetry": 156,
+    "monitor_armed": 1,
+    "tracking_event": 3,
+    "tracking_state": 156,
+    "session_ended": 1
+  },
+  "closedJournalStart": {
+    "sequence": 1,
+    "kind": "session_started",
+    "recordedAtUtc": "2026-09-28T19:48:50.8801815+00:00",
+    "simulatorUtc": null,
+    "detail": {
+      "appVersion": "0.22.0",
+      "mode": "live_simconnect",
+      "schemaVersion": 1,
+      "timing": "simulatorUtc is the in-sim clock; recordedAtUtc is the computer UTC clock"
+    }
+  },
+  "closedJournalEnd": {
+    "sequence": 319,
+    "kind": "session_ended",
+    "recordedAtUtc": "2026-09-28T19:51:27.96832+00:00",
+    "simulatorUtc": null,
+    "detail": {
+      "reason": "connection_closed"
+    }
+  },
+  "journalTrackingPhases": {
+    "AtGate": 156
+  },
+  "evidence": [
+    {
+      "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\native-input-20260928-144838-4a0d6019\\record.json",
+      "preservedPath": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\native-input-20260928-144838-4a0d6019\\record.json",
+      "bytes": 298,
+      "sha256": "992BAE95CA07852FE6048BD0A41588E407268882CC25BAC03B552E771A6FFBA0"
+    },
+    {
+      "source": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\native-input-20260928-144838-4a0d6019\\trace.json",
+      "preservedPath": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\native-input-20260928-144838-4a0d6019\\trace.json",
+      "bytes": 52525582,
+      "sha256": "72C004A0CD2BB52A586ACB577A8541351AC97809EBB11E85279CF8854B261297"
+    },
+    {
+      "source": "C:\\Users\\DanniBaLs\\AppData\\Local\\Alpha6Designs\\Alpha6OPS\\TestLogs\\Alpha6OPS-20260928-194850-14852ef746a646468e2267ec3264e807.jsonl",
+      "preservedPath": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\native-input-20260928-144838-4a0d6019\\closed-session-evidence\\Alpha6OPS-20260928-194850-14852ef746a646468e2267ec3264e807.jsonl",
+      "bytes": 280935,
+      "sha256": "1675A2A1FC9779FF19712271A425999774F13FA949B7D8B47BB3D3B8F7160750"
+    },
+    {
+      "source": "C:\\Users\\DanniBaLs\\AppData\\Local\\Alpha6Designs\\Alpha6OPS\\TestLogs\\Alpha6OPS-20260928-194850-14852ef746a646468e2267ec3264e807.json",
+      "preservedPath": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\work\\checkpoint-7.24c\\native-input-20260928-144838-4a0d6019\\closed-session-evidence\\Alpha6OPS-20260928-194850-14852ef746a646468e2267ec3264e807.json",
+      "bytes": 436792,
+      "sha256": "419862AD6EC3EEB261941506D040C6697190BFBF7F4989E5551153E33FBA3617"
+    }
+  ],
+  "limitations": [
+    "Instrumented diagnostic workload. Dispatcher callback envelopes include nested work; union intervals avoid double counting. Rendering/LayoutUpdated notifications are not GPU/layout cost. CPU/state snapshots every250ms cannot prove context-switch causality. Allocation totals include this bounded trace. GC events and latest-pause data are correlated, not assumed causal.",
+    "WPF drag notifications and message age are not browser/GPU presentation latency. No browser frame ACK capture exists in this native trace.",
+    "No independent raw SimConnect source sequence counter is available; received-sample coverage does not prove every possible simulator update arrived.",
+    "The normal journal continues beyond the two-minute trace; its sample count is a separate coverage window.",
+    "No native heartbeat sentinel was recorded; this physical observation cannot replace the existing failed automated contention gate.",
+    "Timer posted-to-start durations include intentionally inactive waits and are not scheduling latency. Non-timer operations are reported separately.",
+    "Analysis v2 normalizes only UTC fractional trailing zeroes when matching timestamps; the initial raw-string comparison in native-analysis.json was a formatting false negative. Raw evidence is unchanged."
+  ]
+}

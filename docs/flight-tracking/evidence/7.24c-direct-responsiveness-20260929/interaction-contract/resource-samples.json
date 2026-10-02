@@ -1,0 +1,38 @@
+[
+  {
+    "utc": "2026-09-29T20:59:15.5575484+00:00",
+    "stage": "interaction-start",
+    "browserProcesses": 5,
+    "hostMiB": 267.15234375,
+    "browserMiB": 390.703125,
+    "totalMiB": 657.85546875,
+    "cpuPercentMachine": 0
+  },
+  {
+    "utc": "2026-09-29T20:59:29.6676772+00:00",
+    "stage": "interaction-end",
+    "browserProcesses": 5,
+    "hostMiB": 316,
+    "browserMiB": 486.60546875,
+    "totalMiB": 802.60546875,
+    "cpuPercentMachine": 0
+  },
+  {
+    "utc": "2026-09-29T20:59:29.7801946+00:00",
+    "stage": "before-final-disposal",
+    "browserProcesses": 5,
+    "hostMiB": 335.70703125,
+    "browserMiB": 486.60546875,
+    "totalMiB": 822.3125,
+    "cpuPercentMachine": 0.07393664408385558
+  },
+  {
+    "utc": "2026-09-29T20:59:30.0129627+00:00",
+    "stage": "disposed",
+    "browserProcesses": 0,
+    "hostMiB": 338.04296875,
+    "browserMiB": 0,
+    "totalMiB": 338.04296875,
+    "cpuPercentMachine": 0.1017186925981074
+  }
+]

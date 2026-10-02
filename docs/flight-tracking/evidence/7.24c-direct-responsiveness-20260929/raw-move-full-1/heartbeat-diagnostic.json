@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "role": "diagnostic",
+  "releaseBlocking": false,
+  "thresholdsChanged": false,
+  "baselineMaxMs": 330.0657,
+  "stressedMaxMs": 362.6237,
+  "absoluteLimitMs": 500,
+  "relativeAllowanceMs": 100,
+  "floorMs": 150,
+  "relativeLimitMs": 430.0657,
+  "condition": "maximum \u003C500ms and \u003C=max(150ms, baseline maximum\u002B100ms)",
+  "disposition": "Historical predicate passed"
+}

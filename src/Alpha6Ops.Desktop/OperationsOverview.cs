@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Alpha6Ops.Core;
+using Alpha6Ops.Desktop.MapV2;
 
 namespace Alpha6Ops.Desktop;
 
@@ -23,6 +24,7 @@ internal sealed record OperationsOverview(
     string MapSessionKey, string FlightsSource)
 {
     internal FlightSessionSnapshot? MapState { get; init; }
+    internal FlightTrackPresentation? MapTrack { get; init; }
     internal bool MapDemo { get; init; }
 }
 

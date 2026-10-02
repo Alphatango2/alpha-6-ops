@@ -1,0 +1,77 @@
+{
+  "groups": [
+    {
+      "name": "after-full-map",
+      "executed": 196,
+      "passed": 196,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "review-final-delivery",
+      "executed": 85,
+      "passed": 85,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "contracts",
+      "executed": 22,
+      "passed": 22,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "interaction-contract",
+      "executed": 13,
+      "passed": 13,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "restoration-verify",
+      "executed": 157,
+      "passed": 157,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "baseline",
+      "executed": 1908,
+      "passed": 1908,
+      "failed": 0,
+      "skipped": 2
+    },
+    {
+      "name": "mailbox",
+      "executed": 7,
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "browser/math",
+      "executed": 7,
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "name": "JST776 replay",
+      "executed": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    }
+  ],
+  "counts": {
+    "executed": 2396,
+    "passed": 2396,
+    "failed": 0,
+    "skipped": 2
+  },
+  "countConvention": "Assertion executions; repeated setup checks in focused delivery verification counted. Matched traced97/97 is supplementary and excluded; RED/mutation/development attempts excluded. FullMap196 precedes one additional pressure-overlap assertion, covered by focused85/85.",
+  "nativeAfterFix": false,
+  "historicalSamples": 91366,
+  "jst776Samples": 6145
+}

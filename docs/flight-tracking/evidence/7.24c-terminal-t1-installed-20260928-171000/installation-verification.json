@@ -1,0 +1,18 @@
+{
+  "checkedAtUtc": "2026-09-28T22:10:00.7335566+00:00",
+  "validationBuildId": "S4-7.24C-T1-20260928-00e3f628b90e",
+  "installDirectory": "C:\\Users\\DanniBaLs\\AppData\\Local\\Alpha6Designs\\Alpha6OPSPreview",
+  "expectedFiles": 514,
+  "matchedFiles": 514,
+  "failedFiles": 0,
+  "frozenManifestSha256": "97DA34669F4F8B063C5E5B024D388CA10DA7546AE2636E6DDBC2548E19340085",
+  "screenshotSha256": "8323757BC002CAC873500AB088802DAE9A8C9CFD5A3DF5311DBB5691E7462F37",
+  "userEvidence": "Screenshot: 0.22.0 / 7.24C TERMINAL T1; upgrade complete; installer reports existing logs and settings preserved.",
+  "nativeShutdownResult": "NOT RUN",
+  "physicalMapResult": "NOT RUN on installed T1",
+  "applicationLaunched": false,
+  "profileModified": false,
+  "frozenBuildModified": false,
+  "remainingGate": "Parked native qualification/shutdown evidence and physical map scheduling retest; no airborne validation",
+  "evidenceDirectory": "C:\\Users\\DanniBaLs\\Documents\\Codex\\2026-09-02\\alpha-6-ops\\docs\\flight-tracking\\evidence\\7.24c-terminal-t1-installed-20260928-171000"
+}

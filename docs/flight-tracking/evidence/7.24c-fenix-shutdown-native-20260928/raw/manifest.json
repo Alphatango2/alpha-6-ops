@@ -1,0 +1,198 @@
+{
+  "schema": 1,
+  "purpose": "Unvalidated raw Fenix shutdown-intent candidates; never completion authority",
+  "startedUtc": "2026-09-28T21:15:12.654741+00:00",
+  "seconds": 180,
+  "simconnect": "M:\\SimConnect SDK\\lib\\SimConnect.dll",
+  "simconnectSha256": "b10de7adf4c62e5f66c89dd6d01b64091bbbcec83411cfe191d6b85fbee61d15",
+  "scriptSha256": "678dee4c8eb3b64735a4f1ec4055aec55743e7b913942c75e7e798756f4bb520",
+  "fields": {
+    "101": [
+      "ABSOLUTE TIME",
+      "seconds",
+      false
+    ],
+    "102": [
+      "SIM ON GROUND",
+      "Bool",
+      false
+    ],
+    "103": [
+      "GROUND VELOCITY",
+      "knots",
+      false
+    ],
+    "104": [
+      "BRAKE PARKING POSITION",
+      "Bool",
+      false
+    ],
+    "105": [
+      "IS SLEW ACTIVE",
+      "Bool",
+      false
+    ],
+    "106": [
+      "NUMBER OF ENGINES",
+      "number",
+      false
+    ],
+    "107": [
+      "PLANE LATITUDE",
+      "degrees",
+      false
+    ],
+    "108": [
+      "PLANE LONGITUDE",
+      "degrees",
+      false
+    ],
+    "109": [
+      "TITLE",
+      null,
+      true
+    ],
+    "110": [
+      "L:S_ENG_MASTER_1",
+      "number",
+      false
+    ],
+    "111": [
+      "GENERAL ENG FUEL VALVE:1",
+      "Bool",
+      false
+    ],
+    "112": [
+      "GENERAL ENG COMBUSTION:1",
+      "Bool",
+      false
+    ],
+    "113": [
+      "TURB ENG FUEL FLOW PPH:1",
+      "pounds per hour",
+      false
+    ],
+    "114": [
+      "TURB ENG N1:1",
+      "percent",
+      false
+    ],
+    "115": [
+      "TURB ENG N2:1",
+      "percent",
+      false
+    ],
+    "116": [
+      "GENERAL ENG STARTER:1",
+      "Bool",
+      false
+    ],
+    "117": [
+      "GENERAL ENG OIL PRESSURE:1",
+      "psf",
+      false
+    ],
+    "118": [
+      "GENERAL ENG FAILED:1",
+      "Bool",
+      false
+    ],
+    "119": [
+      "L:S_ENG_MASTER_2",
+      "number",
+      false
+    ],
+    "120": [
+      "GENERAL ENG FUEL VALVE:2",
+      "Bool",
+      false
+    ],
+    "121": [
+      "GENERAL ENG COMBUSTION:2",
+      "Bool",
+      false
+    ],
+    "122": [
+      "TURB ENG FUEL FLOW PPH:2",
+      "pounds per hour",
+      false
+    ],
+    "123": [
+      "TURB ENG N1:2",
+      "percent",
+      false
+    ],
+    "124": [
+      "TURB ENG N2:2",
+      "percent",
+      false
+    ],
+    "125": [
+      "GENERAL ENG STARTER:2",
+      "Bool",
+      false
+    ],
+    "126": [
+      "GENERAL ENG OIL PRESSURE:2",
+      "psf",
+      false
+    ],
+    "127": [
+      "GENERAL ENG FAILED:2",
+      "Bool",
+      false
+    ]
+  },
+  "packages": [
+    {
+      "path": "M:\\Users\\DanniBaLs\\App Data\\Roaming\\Microsoft Flight Simulator 2024\\Packages\\Community\\fnx-aircraft-320\\manifest.json",
+      "sha256": "66d82d714b1377f2b266f98062021a206326de6f65d896e09ea49a47502f23a4",
+      "manifest": {
+        "dependencies": [],
+        "content_type": "AIRCRAFT",
+        "title": "Fenix Airbus A320",
+        "manufacturer": "Fenix Simulations",
+        "creator": "Fenix Simulations",
+        "package_version": "2.4.0.4720",
+        "minimum_game_version": "1.6.34",
+        "minimum_compatibility_version": "6.34.0.169",
+        "export_type": "Community",
+        "builder": "Microsoft Flight Simulator 2024",
+        "package_order_hint": "CUSTOM_SIMOBJECTS",
+        "release_notes": {
+          "neutral": {
+            "LastUpdate": "",
+            "OlderHistory": ""
+          }
+        },
+        "total_package_size": "6412895854"
+      }
+    },
+    {
+      "path": "M:\\Users\\DanniBaLs\\App Data\\Roaming\\Microsoft Flight Simulator 2024\\Packages\\Community\\fnx-aircraft-319-321\\manifest.json",
+      "sha256": "eed6312c94de423431081ff060efcbd6563471c43b417f27e2c61a573ab77fed",
+      "manifest": {
+        "dependencies": [],
+        "content_type": "AIRCRAFT",
+        "title": "Fenix Airbus A319 & A321",
+        "manufacturer": "Fenix Simulations",
+        "creator": "Fenix Simulations",
+        "package_version": "2.4.0.4720",
+        "minimum_game_version": "1.6.34",
+        "minimum_compatibility_version": "6.34.0.169",
+        "export_type": "Community",
+        "builder": "Microsoft Flight Simulator 2024",
+        "package_order_hint": "CUSTOM_SIMOBJECTS",
+        "release_notes": {
+          "neutral": {
+            "LastUpdate": "",
+            "OlderHistory": ""
+          }
+        },
+        "total_package_size": "6412895854"
+      }
+    }
+  ],
+  "period": "SECOND (1 Hz), separate definitions; preserve each signal arrival time",
+  "limitations": "No native support is inferred from zero or successful registration. Simulator command time lies between samples. No automatic reconnect or simulator writes."
+}

@@ -1,0 +1,162 @@
+[
+  {
+    "path": "work\\checkpoint-7.24a.1\\map-regression\\contention.json",
+    "baseline": 325.2277,
+    "stress": 537.7024,
+    "limit": 425.2277,
+    "traceAvailable": false,
+    "sameTimeline": true,
+    "sameEvents": true,
+    "sampleCounts": [
+      395,
+      395
+    ],
+    "bridge": {
+      "produced": 40,
+      "offered": 40,
+      "coalesced": 4,
+      "acknowledged": 36,
+      "pending": false,
+      "rejected": 0,
+      "lastPayloadBytes": 2112,
+      "readyMs": 647.5125,
+      "projectionQueue": {
+        "offered": 395,
+        "coalesced": 355,
+        "consumed": 40,
+        "pending": false
+      },
+      "projectionMs": {
+        "count": 40,
+        "mean": 0.0449175,
+        "p50": 0.0412,
+        "p95": 0.071,
+        "p99": 0.0861,
+        "max": 0.0992
+      },
+      "serializationMs": {
+        "count": 36,
+        "mean": 0.05350277777777778,
+        "p50": 0.0522,
+        "p95": 0.0695,
+        "p99": 0.0697,
+        "max": 0.0723
+      },
+      "dispatcherQueueMs": {
+        "count": 36,
+        "mean": 72.29501111111111,
+        "p50": 52.5407,
+        "p95": 242.8504,
+        "p99": 269.8755,
+        "max": 414.5516
+      },
+      "postMs": {
+        "count": 36,
+        "mean": 0.103225,
+        "p50": 0.0986,
+        "p95": 0.1374,
+        "p99": 0.142,
+        "max": 0.3037
+      },
+      "acknowledgmentMs": {
+        "count": 36,
+        "mean": 95.2535611111111,
+        "p50": 56.6571,
+        "p95": 270.5782,
+        "p99": 415.0172,
+        "max": 809.3285
+      },
+      "postToAcknowledgmentMs": {
+        "count": 36,
+        "mean": 22.958725,
+        "p50": 0.5625,
+        "p95": 16.8946,
+        "p99": 17.7578,
+        "max": 756.7881
+      }
+    },
+    "relativeExceedances": 1,
+    "absoluteExceedances": 1,
+    "limitation": "Earlier checkpoint under its original host/scheduling/harness state; no native-message trace means exact per-gap cause cannot be recovered. Not counted in current controlled series."
+  },
+  {
+    "path": "work\\checkpoint-7.24a.2\\map-regression\\contention.json",
+    "baseline": 304.5679,
+    "stress": 515.8971,
+    "limit": 404.5679,
+    "traceAvailable": false,
+    "sameTimeline": true,
+    "sameEvents": true,
+    "sampleCounts": [
+      395,
+      395
+    ],
+    "bridge": {
+      "produced": 41,
+      "offered": 41,
+      "coalesced": 4,
+      "acknowledged": 37,
+      "pending": false,
+      "rejected": 0,
+      "lastPayloadBytes": 2112,
+      "readyMs": 650.1696,
+      "projectionQueue": {
+        "offered": 395,
+        "coalesced": 354,
+        "consumed": 41,
+        "pending": false
+      },
+      "projectionMs": {
+        "count": 41,
+        "mean": 0.03924390243902438,
+        "p50": 0.0345,
+        "p95": 0.0676,
+        "p99": 0.0896,
+        "max": 0.0982
+      },
+      "serializationMs": {
+        "count": 37,
+        "mean": 0.05141621621621622,
+        "p50": 0.0465,
+        "p95": 0.0895,
+        "p99": 0.1283,
+        "max": 0.1342
+      },
+      "dispatcherQueueMs": {
+        "count": 37,
+        "mean": 61.718970270270276,
+        "p50": 22.0283,
+        "p95": 238.9635,
+        "p99": 289.0679,
+        "max": 429.176
+      },
+      "postMs": {
+        "count": 37,
+        "mean": 0.09273783783783786,
+        "p50": 0.0928,
+        "p95": 0.128,
+        "p99": 0.1445,
+        "max": 0.165
+      },
+      "acknowledgmentMs": {
+        "count": 37,
+        "mean": 84.00618648648648,
+        "p50": 22.5401,
+        "p95": 289.4694,
+        "p99": 429.6831,
+        "max": 809.0673
+      },
+      "postToAcknowledgmentMs": {
+        "count": 37,
+        "mean": 22.2874027027027,
+        "p50": 0.4382,
+        "p95": 1.2074,
+        "p99": 9.4644,
+        "max": 797.973
+      }
+    },
+    "relativeExceedances": 1,
+    "absoluteExceedances": 1,
+    "limitation": "Earlier checkpoint under its original host/scheduling/harness state; no native-message trace means exact per-gap cause cannot be recovered. Not counted in current controlled series."
+  }
+]

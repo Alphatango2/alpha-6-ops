@@ -1,0 +1,127 @@
+{
+  "101": [
+    "ABSOLUTE TIME",
+    "seconds",
+    false
+  ],
+  "102": [
+    "SIM ON GROUND",
+    "Bool",
+    false
+  ],
+  "103": [
+    "GROUND VELOCITY",
+    "knots",
+    false
+  ],
+  "104": [
+    "BRAKE PARKING POSITION",
+    "Bool",
+    false
+  ],
+  "105": [
+    "IS SLEW ACTIVE",
+    "Bool",
+    false
+  ],
+  "106": [
+    "NUMBER OF ENGINES",
+    "number",
+    false
+  ],
+  "107": [
+    "TITLE",
+    null,
+    true
+  ],
+  "108": [
+    "L:S_ENG_MASTER_1",
+    "number",
+    false
+  ],
+  "109": [
+    "GENERAL ENG FUEL VALVE:1",
+    "Bool",
+    false
+  ],
+  "110": [
+    "GENERAL ENG COMBUSTION:1",
+    "Bool",
+    false
+  ],
+  "111": [
+    "TURB ENG FUEL FLOW PPH:1",
+    "pounds per hour",
+    false
+  ],
+  "112": [
+    "TURB ENG N1:1",
+    "percent",
+    false
+  ],
+  "113": [
+    "TURB ENG N2:1",
+    "percent",
+    false
+  ],
+  "114": [
+    "GENERAL ENG STARTER:1",
+    "Bool",
+    false
+  ],
+  "115": [
+    "GENERAL ENG OIL PRESSURE:1",
+    "psf",
+    false
+  ],
+  "116": [
+    "GENERAL ENG FAILED:1",
+    "Bool",
+    false
+  ],
+  "117": [
+    "L:S_ENG_MASTER_2",
+    "number",
+    false
+  ],
+  "118": [
+    "GENERAL ENG FUEL VALVE:2",
+    "Bool",
+    false
+  ],
+  "119": [
+    "GENERAL ENG COMBUSTION:2",
+    "Bool",
+    false
+  ],
+  "120": [
+    "TURB ENG FUEL FLOW PPH:2",
+    "pounds per hour",
+    false
+  ],
+  "121": [
+    "TURB ENG N1:2",
+    "percent",
+    false
+  ],
+  "122": [
+    "TURB ENG N2:2",
+    "percent",
+    false
+  ],
+  "123": [
+    "GENERAL ENG STARTER:2",
+    "Bool",
+    false
+  ],
+  "124": [
+    "GENERAL ENG OIL PRESSURE:2",
+    "psf",
+    false
+  ],
+  "125": [
+    "GENERAL ENG FAILED:2",
+    "Bool",
+    false
+  ]
+}

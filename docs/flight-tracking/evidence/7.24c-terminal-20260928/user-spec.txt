@@ -1,0 +1,457 @@
+CONTINUE SIERRA 4 CHECKPOINT 7.24C
+IMPLEMENT TERMINAL SHUTDOWN EVIDENCE + HARDEN BLOCK-IN
+
+The native Fenix shutdown capture is complete and valid.
+
+Reference:
+
+docs/flight-tracking/7.24c-fenix-shutdown-native-20260928.md
+
+The capture established:
+
+- 27/27 signals returned complete 180-reading datasets.
+- No recorded signal errors or missing fields.
+- Fenix engine master variables changed independently 1 → 0.
+- Engine 2:
+  Master OFF 21.20s
+  Combustion OFF 22.20s
+  Fuel flow <=1 lb/h 71.19s
+- Engine 1:
+  Master OFF 38.19s
+  Combustion OFF 39.20s
+  Fuel flow <=1 lb/h 89.20s
+
+By 39.20s BOTH engines had:
+- master OFF
+- combustion OFF
+
+but the existing generic mechanical classifier could not classify both Off
+until approximately another 50 seconds of fuel-flow decay.
+
+This independently supports the shutdown-delay diagnosis from JST776.
+
+7.24C remains open.
+Airborne validation remains paused.
+
+============================================================
+OBJECTIVE
+============================================================
+
+Implement a safe completion-specific terminal-shutdown architecture that
+separates:
+
+1. PILOT INTENT / OPERATIONAL TERMINAL SHUTDOWN
+
+from
+
+2. MECHANICAL ENGINE SPOOL-DOWN STATE
+
+Do NOT weaken or replace the existing generic mechanical engine classifier.
+
+The existing Running / Stopping / Off classification remains authoritative
+for mechanical engine state, telemetry, event recording and other systems.
+
+TerminalShutdownEvidence is a separate concept used only where appropriate
+for determining terminal flight completion.
+
+============================================================
+PART 1 — AIRCRAFT-CAPABILITY ARCHITECTURE
+============================================================
+
+Do NOT hard-code Fenix-specific conditions throughout
+FlightSessionCoordinator or generic lifecycle code.
+
+Create an extensible aircraft shutdown-intent capability boundary.
+
+The architecture should allow S4 to ask conceptually:
+
+“Can this aircraft integration positively establish intentional terminal
+shutdown for all required engines?”
+
+Normalize aircraft-specific evidence into a generic result such as:
+
+TerminalShutdownEvidence
+
+with information equivalent to:
+
+- capability/support level
+- expected engine count
+- observed engine coverage
+- per-engine shutdown intent
+- per-engine combustion state
+- signal freshness
+- signal validity
+- contradictory evidence
+- overall terminal-shutdown status
+
+Exact names/types are an implementation decision.
+
+The lifecycle coordinator should consume normalized evidence rather than
+know Fenix LVar names.
+
+============================================================
+PART 2 — CAPABILITY LEVELS
+============================================================
+
+Support an extensible model equivalent to:
+
+FULL / ENHANCED
+
+Positive shutdown intent can be established for all required engines.
+Automatic terminal completion may use this evidence.
+
+LIMITED / UNSUPPORTED
+
+Shutdown intent cannot be positively established.
+Do not use combustion OFF alone as automatic authority.
+Use guarded manual Block In fallback.
+
+INVALID / CONTRADICTORY
+
+Required evidence is missing, stale or contradictory.
+Neither automatic completion nor unsafe manual completion should occur
+until sufficient valid evidence exists.
+
+Do not overfit the names if the existing architecture suggests better
+terminology.
+
+============================================================
+PART 3 — FIRST ADAPTER: FENIX A321 IAE
+============================================================
+
+Implement the Fenix A321 IAE as the first validated enhanced shutdown-intent
+integration using the evidence from the native capture.
+
+The validated candidate master signals are:
+
+L:S_ENG_MASTER_1
+L:S_ENG_MASTER_2
+
+Use the native capture to establish polarity and expected behavior.
+
+Combine shutdown intent with combustion evidence.
+
+Do NOT use master OFF alone.
+
+For automatic terminal-shutdown evidence, require all expected engines to
+have:
+
+- positively verified master/cutoff OFF intent
+- combustion absent
+- fresh/valid evidence
+- no contradictory operating evidence
+
+Mechanical N1/N2/fuel-flow decay may continue after terminal shutdown has
+been established.
+
+Do NOT alter the generic engine classifier's fuel-flow/N1/N2 thresholds.
+
+============================================================
+PART 4 — TERMINAL COMPLETION ELIGIBILITY
+============================================================
+
+Automatic terminal shutdown must NOT by itself produce IN.
+
+The flight must also satisfy the complete terminal-arrival predicate.
+
+At minimum evaluate:
+
+- ON milestone already recorded
+- aircraft on ground
+- correct destination proximity
+- stationary / valid low-groundspeed condition
+- parking brake SET
+- complete expected engine coverage
+- valid terminal shutdown evidence
+- fresh/noncontradictory telemetry
+- no active pause/slew/disconnect invalidation
+- stable confirmation interval
+
+Use existing lifecycle semantics where appropriate.
+
+Do not create a second conflicting definition of destination arrival.
+
+Preserve exactly-once IN behavior.
+
+============================================================
+PART 5 — INTERRUPTION / RESET RULES
+============================================================
+
+Pending terminal completion must reset or become invalid when appropriate,
+including:
+
+- aircraft movement
+- parking brake release
+- engine master returned ON
+- combustion relight
+- go-around/repositioning where applicable
+- pause/slew invalidation
+- simulator disconnect
+- stale telemetry
+- missing engine coverage
+- contradictory engine evidence
+
+Reconnect/recovery must require fresh valid evidence before terminal
+completion resumes.
+
+Do not allow stale pre-disconnect shutdown evidence to immediately complete
+a recovered flight.
+
+============================================================
+PART 6 — HARDEN MANUAL BLOCK IN
+============================================================
+
+The prior analysis found that the current manual Block In behavior:
+
+- can permit an off-destination override
+- does not recheck the complete eligibility predicate
+
+Correct this.
+
+Create or consolidate a shared authoritative Block-In eligibility policy so
+automatic terminal completion and manual confirmation agree on the safety
+requirements that should be common.
+
+Manual Block In exists as a fallback for aircraft where positive shutdown
+intent is unavailable.
+
+It must still require appropriate evidence such as:
+
+- ON recorded
+- on ground
+- valid destination proximity
+- stationary
+- parking condition / required stable interval
+- valid current session
+- fresh enough telemetry
+
+Do NOT permit manual Block In to become a generic bypass for lifecycle
+requirements.
+
+If there is a legitimate existing recovery/emergency use case for an
+off-destination override, preserve it only as a separately explicit and
+appropriately guarded mechanism rather than silently treating it as normal
+Block In.
+
+============================================================
+PART 7 — EXPECTED USER EXPERIENCE
+============================================================
+
+For an enhanced-supported aircraft such as the validated Fenix:
+
+ON
+→ taxi to destination parking
+→ stop
+→ parking brake SET
+→ all required engine masters OFF
+→ combustion OFF
+→ short stable confirmation
+→ IN / Complete
+→ PIREP eligible
+
+S4 should NOT wait for residual turbine fuel flow to fall <=1 lb/hour merely
+to establish operational terminal shutdown.
+
+The mechanical engine state may continue to report Stopping while the flight
+is operationally Complete.
+
+This is intentional.
+
+For unsupported aircraft:
+
+ON
+→ destination parking conditions satisfied
+→ automatic shutdown intent unavailable
+→ guarded Confirm Block In becomes available
+
+Do not implement premium UI styling for this fallback during 7.24C.
+
+============================================================
+PART 8 — CROSS-AIRCRAFT EXTENSIBILITY
+============================================================
+
+Fenix is the FIRST validated adapter, not the definition of the feature.
+
+Do not attempt to implement every aircraft now.
+
+The architecture must allow future integrations for aircraft such as:
+
+- PMDG
+- iniBuilds
+- other advanced third-party aircraft
+- generic MSFS aircraft where reliable standard signals exist
+
+without modifying the core completion state machine for each aircraft.
+
+Document how another aircraft shutdown-intent adapter would be added and
+what native evidence would be required to promote it to enhanced/full
+support.
+
+Consider maintaining an aircraft capability/compatibility matrix in future,
+but do not build unnecessary UI for it now.
+
+============================================================
+PART 9 — TESTS
+============================================================
+
+Add targeted automated coverage for at least:
+
+1. Fenix two-engine intentional shutdown
+2. residual N1/N2/fuel flow after verified intentional shutdown
+3. one engine master OFF / second engine still operating
+4. both masters OFF but combustion contradictory
+5. combustion OFF without master OFF
+6. simulated engine failure
+7. fuel starvation
+8. single-engine taxi
+9. parking brake SET with engines operating
+10. temporary taxi stop
+11. wrong destination
+12. destination outside allowed proximity
+13. missing ON
+14. missing engine coverage
+15. stale shutdown signals
+16. invalid signals
+17. movement during confirmation
+18. brake release during confirmation
+19. engine relight during confirmation
+20. pause/slew
+21. disconnect/reconnect
+22. restart during pending confirmation
+23. exactly one IN
+24. exactly one completed history row
+25. exactly one PIREP
+26. unsupported-aircraft manual Block In
+27. manual Block In off-destination rejection
+28. generic engine classifier remains mechanically correct during spool-down
+
+Where practical, replay the native Fenix shutdown capture through the new
+adapter/parser.
+
+============================================================
+PART 10 — VALIDATION
+============================================================
+
+After implementation:
+
+- build Release
+- run targeted shutdown tests
+- run lifecycle tests
+- run recovery tests
+- run full regression suite
+- run historical 9/9 replay
+- run JST776 replay
+- run map scheduling/responsiveness tests
+- run map restoration/resource tests
+- run telemetry validation
+
+Do not regress the scheduling correction already established in 7.24C.
+
+Do not perform airborne testing yet.
+
+If a short parked native validation of the IMPLEMENTED shutdown behavior is
+required, package the candidate and provide exact instructions.
+
+Prefer a parked validation before requesting another full flight.
+
+============================================================
+DOCUMENTATION
+============================================================
+
+Update the 7.24C documentation with:
+
+- terminal-shutdown architecture
+- capability model
+- Fenix adapter
+- signal provenance
+- shared Block-In eligibility
+- manual fallback behavior
+- interruption/reset semantics
+- files changed
+- tests added
+- replay results
+- regression results
+- remaining aircraft compatibility limitations
+- instructions for adding future aircraft adapters
+
+Do not claim generic cross-aircraft automatic shutdown compatibility unless
+it has actually been validated.
+
+============================================================
+RETURN FORMAT
+============================================================
+
+7.24C — TERMINAL SHUTDOWN IMPLEMENTATION
+
+Architecture:
+[summary]
+
+Generic mechanical classifier preserved:
+YES / NO
+
+Fenix A321 IAE adapter:
+[status]
+
+Validated shutdown signals:
+[list]
+
+Automatic terminal completion:
+[semantics]
+
+Expected Fenix shutdown-to-IN latency:
+[value/expected range]
+
+Manual Block In:
+[semantics]
+
+Off-destination bypass:
+[status]
+
+Unsupported aircraft behavior:
+[status]
+
+Cross-aircraft extensibility:
+[summary]
+
+Production files changed:
+[list]
+
+Tests added/changed:
+[list]
+
+Targeted shutdown tests:
+[result]
+
+Full regression:
+[result]
+
+Historical replay:
+[result]
+
+JST776 replay:
+[result]
+
+Map scheduling regression:
+[result]
+
+Map restoration regression:
+[result]
+
+Recovery regression:
+[result]
+
+Remaining limitations:
+[list]
+
+Native parked validation required:
+YES / NO
+
+7.24C:
+GO / NO-GO
+
+Remaining gates:
+[list]
+
+Do NOT begin airborne validation.
+Do NOT begin premium UI work.
+Do NOT begin the next checkpoint automatically.

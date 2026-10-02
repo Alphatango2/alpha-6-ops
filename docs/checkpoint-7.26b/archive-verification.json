@@ -1,0 +1,2596 @@
+{
+  "schema": "sierra4.checkpoint-7.26b.archive-verification.v1",
+  "verifiedAt": "2026-10-02T09:17:01.2225053-05:00",
+  "archiveRoot": "F:\\Sierra4-Archive\\checkpoint-7.26b-20261002",
+  "passed": true,
+  "manifestPath": "F:\\Sierra4-Archive\\checkpoint-7.26b-20261002\\archive-manifest.json",
+  "manifestSha256": "8951D5D4EB76530DF6A8F0F2837959E7206A57D266FBDF9FA2E57797965F148D",
+  "totals": {
+    "units": 258,
+    "files": 271806,
+    "bytes": 37822194622,
+    "criticalHashes": 65047
+  },
+  "units": [
+    {
+      "source": "work/activation-smoke-e1647150ab4e473eae2cac829a1ef152",
+      "destination": "checkpoints/work/activation-smoke-e1647150ab4e473eae2cac829a1ef152",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 5,
+      "bytes": 41605,
+      "inventorySha256": "062B7C38042CBDE50D67396AD776C3F6BC5DEA3919F55AEB590E92C83C0CAAB7",
+      "criticalHashes": 2
+    },
+    {
+      "source": "work/activation-smoke-eab2e8a4fc5f4168b3f4492112392210",
+      "destination": "checkpoints/work/activation-smoke-eab2e8a4fc5f4168b3f4492112392210",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 5,
+      "bytes": 41605,
+      "inventorySha256": "062B7C38042CBDE50D67396AD776C3F6BC5DEA3919F55AEB590E92C83C0CAAB7",
+      "criticalHashes": 2
+    },
+    {
+      "source": "work/ANG2-review-20260919-210735",
+      "destination": "checkpoints/work/ANG2-review-20260919-210735",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 23,
+      "bytes": 44737518,
+      "inventorySha256": "BF789CBA6733223129A998E1381973A34035ABE4F122D3CEA3B2FBD166955888",
+      "criticalHashes": 2
+    },
+    {
+      "source": "work/checkpoint-7.18a",
+      "destination": "checkpoints/work/checkpoint-7.18a",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 19546,
+      "bytes": 388193386,
+      "inventorySha256": "0E34969AD9C77709D0B9BA480734AB78F73E5BCE6BD668613D82581D3FA97C67",
+      "criticalHashes": 17215
+    },
+    {
+      "source": "work/checkpoint-7.18b",
+      "destination": "checkpoints/work/checkpoint-7.18b",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 8720,
+      "bytes": 12822513,
+      "inventorySha256": "FF024B024433ADF7CDEFD7888DDB66E6E949D8257F0553C41FF3A84DCDA5F4F4",
+      "criticalHashes": 8378
+    },
+    {
+      "source": "work/checkpoint-7.19",
+      "destination": "checkpoints/work/checkpoint-7.19",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 2457,
+      "bytes": 83491454,
+      "inventorySha256": "D509F53F7A4AC066F34E27F83ED6BF570CE2A472C8814185ABD9A3045771CE5C",
+      "criticalHashes": 2168
+    },
+    {
+      "source": "work/checkpoint-7.20",
+      "destination": "checkpoints/work/checkpoint-7.20",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 303,
+      "bytes": 34923317,
+      "inventorySha256": "70AC1E57021F6E33D45A05E3A1AA5BE9FA37932663D94C94655BB68DE038FDD6",
+      "criticalHashes": 66
+    },
+    {
+      "source": "work/checkpoint-7.21",
+      "destination": "checkpoints/work/checkpoint-7.21",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 2102,
+      "bytes": 143683694,
+      "inventorySha256": "13F78A56284893DB556FBC3D93568AB4015EF1FF3D46FCEAD5769065825F048B",
+      "criticalHashes": 98
+    },
+    {
+      "source": "work/checkpoint-7.22",
+      "destination": "checkpoints/work/checkpoint-7.22",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 7800,
+      "bytes": 748743736,
+      "inventorySha256": "3B74780DAFC49062ADF92C65475988B8E7F778067023DEDB36B7AEF7BDA77971",
+      "criticalHashes": 633
+    },
+    {
+      "source": "work/checkpoint-7.23",
+      "destination": "checkpoints/work/checkpoint-7.23",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1898,
+      "bytes": 168536705,
+      "inventorySha256": "29E68EBBB83A141CD8701A10BA4C8428C83F9BC1B1770A757FBE900AAEF88363",
+      "criticalHashes": 156
+    },
+    {
+      "source": "work/checkpoint-7.24a",
+      "destination": "checkpoints/work/checkpoint-7.24a",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 9960,
+      "bytes": 1371046705,
+      "inventorySha256": "B0FD685F9E6CF95DC2E3D3127D7B1FDFAA1CF574C830B392C4AA1DD4A1377B77",
+      "criticalHashes": 778
+    },
+    {
+      "source": "work/checkpoint-7.24a.1",
+      "destination": "checkpoints/work/checkpoint-7.24a.1",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 7081,
+      "bytes": 729347099,
+      "inventorySha256": "3A67FD6410693FEB64041534A5FD979FD251F8E667C0FFB9EA37E5C076EEB033",
+      "criticalHashes": 632
+    },
+    {
+      "source": "work/checkpoint-7.24a.2",
+      "destination": "checkpoints/work/checkpoint-7.24a.2",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 7746,
+      "bytes": 1323285766,
+      "inventorySha256": "57BD136ECD7E41951E8B229C931D7BF9A7DFA791DF1C4900F8D03E61A0BC65E9",
+      "criticalHashes": 720
+    },
+    {
+      "source": "work/checkpoint-7.24b",
+      "destination": "checkpoints/work/checkpoint-7.24b",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 3558,
+      "bytes": 743178323,
+      "inventorySha256": "DD8E40B6AF730035226BD34FAAEE2AE616928CAD41BC4F1EC8B7FF53A77470C4",
+      "criticalHashes": 1252
+    },
+    {
+      "source": "work/checkpoint-7.24b-first-paint",
+      "destination": "checkpoints/work/checkpoint-7.24b-first-paint",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 4784,
+      "bytes": 643527463,
+      "inventorySha256": "573C396F64CA45DD19EA925E4AB37ACEC184A6A69E22C707C578B3DE81C9007C",
+      "criticalHashes": 1355
+    },
+    {
+      "source": "work/checkpoint-7.24b-first-paint-r2a",
+      "destination": "checkpoints/work/checkpoint-7.24b-first-paint-r2a",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 4317,
+      "bytes": 972185102,
+      "inventorySha256": "1AA9270F6E022DD7D3251AD9EA7F9D294211CA99E2B0647077C908E3F5BF315C",
+      "criticalHashes": 1377
+    },
+    {
+      "source": "work/checkpoint-7.24b-input-correction",
+      "destination": "checkpoints/work/checkpoint-7.24b-input-correction",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 4055,
+      "bytes": 997791024,
+      "inventorySha256": "6DA01D3637D0E7637D560462D580AC6C29722AA872965176536BDE287D3A51FF",
+      "criticalHashes": 1355
+    },
+    {
+      "source": "work/checkpoint-7.24b-installation-gate",
+      "destination": "checkpoints/work/checkpoint-7.24b-installation-gate",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 721,
+      "bytes": 651964297,
+      "inventorySha256": "94AF789109043AF83B756CC59652F99BF83A40844B30EB0D91EC6962435B7C9D",
+      "criticalHashes": 88
+    },
+    {
+      "source": "work/checkpoint-7.24b-installed-baseline",
+      "destination": "checkpoints/work/checkpoint-7.24b-installed-baseline",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 15,
+      "bytes": 90146,
+      "inventorySha256": "D56A0D5341DEE2DDF469DC0EA385526840B32A2ABC7D52D07D17E3B518390DDB",
+      "criticalHashes": 2
+    },
+    {
+      "source": "work/checkpoint-7.24b-layout-oscillation",
+      "destination": "checkpoints/work/checkpoint-7.24b-layout-oscillation",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 4473,
+      "bytes": 1044653112,
+      "inventorySha256": "28FA955362BAAE87B4511C24E5B631B8C354AB071693AF37272BAF90FECA171E",
+      "criticalHashes": 1427
+    },
+    {
+      "source": "work/checkpoint-7.24b-physical-input",
+      "destination": "checkpoints/work/checkpoint-7.24b-physical-input",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 360,
+      "bytes": 67201289,
+      "inventorySha256": "12F7CE67DC78FFABEE77B5AEC0823B021405B6D156BA615E42944CC6D3DB7725",
+      "criticalHashes": 30
+    },
+    {
+      "source": "work/checkpoint-7.24c",
+      "destination": "checkpoints/work/checkpoint-7.24c",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 104880,
+      "bytes": 8309661380,
+      "inventorySha256": "96A8510D2F1E97C8B603CCB308BC6793F95A8EC0B76A29C0EF83424F014C6C2F",
+      "criticalHashes": 16856
+    },
+    {
+      "source": "work/checkpoint-7.25",
+      "destination": "checkpoints/work/checkpoint-7.25",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 27423,
+      "bytes": 1973526996,
+      "inventorySha256": "B788FF95A44CF72C8D71B3D0FA4CBB36A2A5E2B2260FD58475DC9638D4D280B3",
+      "criticalHashes": 5374
+    },
+    {
+      "source": "work/checkpoint-7.25a",
+      "destination": "checkpoints/work/checkpoint-7.25a",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 24540,
+      "bytes": 2507879203,
+      "inventorySha256": "C2C82B334B44121E19A873E2B205D23BA3AB70F31224397AA01F4E54857FD137",
+      "criticalHashes": 3765
+    },
+    {
+      "source": "work/checkpoint1-20260909-145012",
+      "destination": "checkpoints/work/checkpoint1-20260909-145012",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 49,
+      "bytes": 16971692,
+      "inventorySha256": "D272B2C7A0F035488EA46325E5A7DF856495D30E345D2A1903C4DA5327C78CB3",
+      "criticalHashes": 4
+    },
+    {
+      "source": "work/checkpoint1-extract-20260909-145341",
+      "destination": "checkpoints/work/checkpoint1-extract-20260909-145341",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 0,
+      "bytes": 0,
+      "inventorySha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint1-extract-ok-20260909-145450",
+      "destination": "checkpoints/work/checkpoint1-extract-ok-20260909-145450",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 494,
+      "bytes": 200647042,
+      "inventorySha256": "D8F6A2218B8E4CCCE4F19D04B7D4DC4C62904BE315F1ABEE1382710CCFCA971C",
+      "criticalHashes": 6
+    },
+    {
+      "source": "work/checkpoint1-extract-verified-20260909-145426",
+      "destination": "checkpoints/work/checkpoint1-extract-verified-20260909-145426",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 0,
+      "bytes": 0,
+      "inventorySha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint1-final-20260909-145142",
+      "destination": "checkpoints/work/checkpoint1-final-20260909-145142",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 50,
+      "bytes": 17128335,
+      "inventorySha256": "C833FFB715989D8EAFC05871451A3E4F3497C0EECABBAAABC7E8FC31784B2D21",
+      "criticalHashes": 4
+    },
+    {
+      "source": "work/checkpoint1-package-20260909-145324",
+      "destination": "checkpoints/work/checkpoint1-package-20260909-145324",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 50,
+      "bytes": 17137739,
+      "inventorySha256": "E4C2F443669CD6461D5CB35F64494C207FC40C2D9FC7659B88B140AA132F45B8",
+      "criticalHashes": 4
+    },
+    {
+      "source": "work/checkpoint1-resolution-20260909-145603",
+      "destination": "checkpoints/work/checkpoint1-resolution-20260909-145603",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 52,
+      "bytes": 17948038,
+      "inventorySha256": "4BAB0B1BF31FF3F55FB25011EB865BA34186BB66B3382DC5969B52F224E27937",
+      "criticalHashes": 4
+    },
+    {
+      "source": "work/desktop-03-test",
+      "destination": "checkpoints/work/desktop-03-test",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 2,
+      "bytes": 44631,
+      "inventorySha256": "047FA67407930EEF4AF06250088F3F5DE157E51A0BD85B4FF0AE000BEF33F81D",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/desktop-04-final",
+      "destination": "checkpoints/work/desktop-04-final",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 3,
+      "bytes": 97235,
+      "inventorySha256": "362817B1D543F514FDB0EFFDD7CB1D82ED478289AB96AFBC87C5739FFAF07D85",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/desktop-04-test",
+      "destination": "checkpoints/work/desktop-04-test",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 3,
+      "bytes": 94107,
+      "inventorySha256": "A281E410566EF22AA744E86B73FD2AB0AAED55B529AA34910AC2E499D4C85414",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/desktop-05-final",
+      "destination": "checkpoints/work/desktop-05-final",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 3,
+      "bytes": 94818,
+      "inventorySha256": "097CFBC51762284E2F97B38312B8F007DD73CE5514A0429EAC9C34FDB9534E58",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/desktop-05-test",
+      "destination": "checkpoints/work/desktop-05-test",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 3,
+      "bytes": 94603,
+      "inventorySha256": "C5A7FB1992F9FC9287110299153531206C7D0059FA79867ACAC9660A01F4C988",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/desktop-06-test",
+      "destination": "checkpoints/work/desktop-06-test",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 3,
+      "bytes": 97407,
+      "inventorySha256": "CF0C065C9284C46E53D06101566970EF52C8B9C712C554B74B454F1080E5740F",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/desktop-test",
+      "destination": "checkpoints/work/desktop-test",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 2,
+      "bytes": 45413,
+      "inventorySha256": "E32BEEE698D7F0614EDA1C50924E797D63E5A855AC738BB4184B88BFA87D0E82",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/flight-lab-package-20260908-120915",
+      "destination": "checkpoints/work/flight-lab-package-20260908-120915",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 2,
+      "bytes": 76973,
+      "inventorySha256": "10D37CF6A7788AE0337B3ED1DC75761C537C8A14A52ECE46BDB53467A9541FBD",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/flight-lab-packaged-20260908-123326",
+      "destination": "checkpoints/work/flight-lab-packaged-20260908-123326",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 2,
+      "bytes": 80620,
+      "inventorySha256": "82BF603AF45D869BD52EA8238F251F2EE22D61B25ECE274F3928D7A584453F60",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/flight-lab-packaged-20260908-123354",
+      "destination": "checkpoints/work/flight-lab-packaged-20260908-123354",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 2,
+      "bytes": 80412,
+      "inventorySha256": "C6F957D54652C63BAC08B249007F82735956375ED19D9B433706016C0F556056",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/flight-lab-review-20260908-120137",
+      "destination": "checkpoints/work/flight-lab-review-20260908-120137",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 2,
+      "bytes": 76908,
+      "inventorySha256": "A24A87371A6BA35FC5197B5FEC152819D903841E051FE594E527CE71D54B70E7",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/flight-lab-review-20260908-120605",
+      "destination": "checkpoints/work/flight-lab-review-20260908-120605",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 2,
+      "bytes": 77028,
+      "inventorySha256": "B76C617E1A8DF4CDD0FA6418A32FBC7042FCEA834A3ACC72DA1CFC0A2C3629F3",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/flight-lab-review-20260908-123225",
+      "destination": "checkpoints/work/flight-lab-review-20260908-123225",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 2,
+      "bytes": 80501,
+      "inventorySha256": "8993D9080B8C5FF0B7AC35122A94F6A9B41C4D79F78D5801016A5B7B6164CAD0",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/flight-lab-review-current",
+      "destination": "checkpoints/work/flight-lab-review-current",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 2,
+      "bytes": 79844,
+      "inventorySha256": "6877A39A34B9052384134FED9E03935774B1E391211D19C6F6D43C637F723541",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/flight-lab-stop-review-20260908-132554",
+      "destination": "checkpoints/work/flight-lab-stop-review-20260908-132554",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 2,
+      "bytes": 80548,
+      "inventorySha256": "C5B4BA10F19485612B1537BCA48DE0B5B974E34782343EADE540FE520D93221A",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/flight-test-JST221-20260915",
+      "destination": "checkpoints/work/flight-test-JST221-20260915",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 12,
+      "bytes": 23489966,
+      "inventorySha256": "E0DF085CD62B67896216F97936069755B78270FE3C8C0A4583F78FF62344071E",
+      "criticalHashes": 1
+    },
+    {
+      "source": "work/flight-test-JST786-20260916-review",
+      "destination": "checkpoints/work/flight-test-JST786-20260916-review",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 24,
+      "bytes": 15661996,
+      "inventorySha256": "C67A767B9AF9F728A065DB2933D6BF6537E1674D0CB0E17D0AA445792250FE9B",
+      "criticalHashes": 1
+    },
+    {
+      "source": "work/flight-test-QFA124-20260916-review",
+      "destination": "checkpoints/work/flight-test-QFA124-20260916-review",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 18,
+      "bytes": 23442079,
+      "inventorySha256": "95E1D3789870E1E96D186266C18380C703329F2BD04FA31A6DD172BD742DBB18",
+      "criticalHashes": 1
+    },
+    {
+      "source": "work/flight-test-QLK1579-20260917-review-2",
+      "destination": "checkpoints/work/flight-test-QLK1579-20260917-review-2",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 15,
+      "bytes": 19141332,
+      "inventorySha256": "D4C0D57EEFB95EAD823CE7D6DD42E07FEF655A7D23B0B6E8CFEF38E6D1D0DBCF",
+      "criticalHashes": 1
+    },
+    {
+      "source": "work/git-auth",
+      "destination": "checkpoints/work/git-auth",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 0,
+      "bytes": 0,
+      "inventorySha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/git-publish-20260916",
+      "destination": "checkpoints/work/git-publish-20260916",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1050,
+      "bytes": 29468066,
+      "inventorySha256": "AACCA2B3D62F80CB2F574F272DDDFB8DCBA9260DB154B1E093EF7B690B0887B3",
+      "criticalHashes": 1
+    },
+    {
+      "source": "work/historical-flight-reference-20260923-24",
+      "destination": "checkpoints/work/historical-flight-reference-20260923-24",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 8018,
+      "inventorySha256": "ACB2F0174062A5CCEC499BCCD2F97B245EDAA77605F688194CF42D4CA7D88A93",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/icon-smoke-28e3400a19154c93955c4fcd79694b8a",
+      "destination": "checkpoints/work/icon-smoke-28e3400a19154c93955c4fcd79694b8a",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 8,
+      "bytes": 138284,
+      "inventorySha256": "9390C3C9C5D46E7161D4163569BB958228C10111E3927AD65E51D7F28A1F2FFA",
+      "criticalHashes": 2
+    },
+    {
+      "source": "work/import",
+      "destination": "checkpoints/work/import",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 4,
+      "bytes": 38822,
+      "inventorySha256": "084FC8B208A36AE1315742B75109099214C7E84A0F163F1347261EABC5BBE2B4",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/install-7.14-check",
+      "destination": "checkpoints/work/install-7.14-check",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 489,
+      "bytes": 205606393,
+      "inventorySha256": "23FE16022903CD835FD430B066871ADA1CF55A6CE6F25921B2E85B5CBD21C5A4",
+      "criticalHashes": 5
+    },
+    {
+      "source": "work/installer-7.15-extract",
+      "destination": "checkpoints/work/installer-7.15-extract",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 489,
+      "bytes": 205659143,
+      "inventorySha256": "6DF8545EE9D54F85E84B53F8CCE8EBB7BD016168E600BAF26D7DF021A695245F",
+      "criticalHashes": 5
+    },
+    {
+      "source": "work/installer-check-f4a77a8624404b7e9cdd28a254e1c1bd",
+      "destination": "checkpoints/work/installer-check-f4a77a8624404b7e9cdd28a254e1c1bd",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 486,
+      "bytes": 179488984,
+      "inventorySha256": "7C0A5341DF9B14E4C2B27A0903D0AC2713C890549C37631847EEBADD6C78C73D",
+      "criticalHashes": 3
+    },
+    {
+      "source": "work/installer-checkpoint2-20260909-151724",
+      "destination": "checkpoints/work/installer-checkpoint2-20260909-151724",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 0,
+      "bytes": 0,
+      "inventorySha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/installer-checkpoint2-20260909-151746",
+      "destination": "checkpoints/work/installer-checkpoint2-20260909-151746",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 494,
+      "bytes": 200663938,
+      "inventorySha256": "1D2542CCE34E1CB6CB52AA1A9ECA7FA800FDE33C86150E02A2091EE2D99F406F",
+      "criticalHashes": 6
+    },
+    {
+      "source": "work/installer-checkpoint2-20260909-151802",
+      "destination": "checkpoints/work/installer-checkpoint2-20260909-151802",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 494,
+      "bytes": 200663938,
+      "inventorySha256": "1D2542CCE34E1CB6CB52AA1A9ECA7FA800FDE33C86150E02A2091EE2D99F406F",
+      "criticalHashes": 6
+    },
+    {
+      "source": "work/installer-checkpoint3-20260910-085721",
+      "destination": "checkpoints/work/installer-checkpoint3-20260910-085721",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 494,
+      "bytes": 200865154,
+      "inventorySha256": "3BC290823D797814D54F72F1208564ED21000727F650B83880DC55611CB1B658",
+      "criticalHashes": 6
+    },
+    {
+      "source": "work/installer-checkpoint3-final-20260910-085901",
+      "destination": "checkpoints/work/installer-checkpoint3-final-20260910-085901",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 494,
+      "bytes": 200865154,
+      "inventorySha256": "3BC290823D797814D54F72F1208564ED21000727F650B83880DC55611CB1B658",
+      "criticalHashes": 6
+    },
+    {
+      "source": "work/installer-globe-20260909-153552",
+      "destination": "checkpoints/work/installer-globe-20260909-153552",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 494,
+      "bytes": 200807298,
+      "inventorySha256": "BED0327613656D5F8F3F7D078DC7F55AC1AE81887A228B91E5F8DD95A684B39F",
+      "criticalHashes": 6
+    },
+    {
+      "source": "work/installer-raster-globe-20260909-160109",
+      "destination": "checkpoints/work/installer-raster-globe-20260909-160109",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 494,
+      "bytes": 200851330,
+      "inventorySha256": "528C5A1FB89A2D2913F87038B3470F0E2661471A5E8AA79E8D6956D5C82B35A2",
+      "criticalHashes": 6
+    },
+    {
+      "source": "work/installer-test",
+      "destination": "checkpoints/work/installer-test",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 978,
+      "bytes": 394962034,
+      "inventorySha256": "D95CA02D0CCE81996CC8F07BF32B2CB46C5D4DF1164AE8623764017BA851F002",
+      "criticalHashes": 10
+    },
+    {
+      "source": "work/JST721-review",
+      "destination": "checkpoints/work/JST721-review",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 19,
+      "bytes": 17384399,
+      "inventorySha256": "711F68AD41915F362A96A710DC44B8B23157D79038A30611077514F12E98635E",
+      "criticalHashes": 1
+    },
+    {
+      "source": "work/JST724-review",
+      "destination": "checkpoints/work/JST724-review",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 17,
+      "bytes": 21718493,
+      "inventorySha256": "3A9C08D7A02567579D9D7F45902AD22CB6962D4C2A0515C99B54367AFF342255",
+      "criticalHashes": 1
+    },
+    {
+      "source": "work/jst776-review",
+      "destination": "checkpoints/work/jst776-review",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 56,
+      "bytes": 37748280,
+      "inventorySha256": "A7D3DCFB0AA7C0E710AD87574A6756B51584108C7DF4D39D2EBF013C5E4E0455",
+      "criticalHashes": 11
+    },
+    {
+      "source": "work/log-tests",
+      "destination": "checkpoints/work/log-tests",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 540,
+      "bytes": 336918,
+      "inventorySha256": "EB90B6C9E2B165F9792EE6AB030690A0C54D4C751DC210D681F22ED9873012E2",
+      "criticalHashes": 270
+    },
+    {
+      "source": "work/mingit-2.55",
+      "destination": "checkpoints/work/mingit-2.55",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 0,
+      "bytes": 0,
+      "inventorySha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/package-0.10-f998ab275b9247ae8c91ebcf967a189e",
+      "destination": "checkpoints/work/package-0.10-f998ab275b9247ae8c91ebcf967a189e",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 496,
+      "bytes": 180088123,
+      "inventorySha256": "08E60E43A448E2CBC4C1CCA1FE786715871509DA18A9D655FBDF12111337B7B6",
+      "criticalHashes": 6
+    },
+    {
+      "source": "work/package-0.18.2-hotfix",
+      "destination": "checkpoints/work/package-0.18.2-hotfix",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 489,
+      "bytes": 205601066,
+      "inventorySha256": "BE7EDF2678F7CA9182D5EB2E5E8F607CD88E3D00D4F125E1CD32E83513919C7A",
+      "criticalHashes": 5
+    },
+    {
+      "source": "work/package-0.8-c592efb85b554f64a2e922a5e021bc52",
+      "destination": "checkpoints/work/package-0.8-c592efb85b554f64a2e922a5e021bc52",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 494,
+      "bytes": 180037975,
+      "inventorySha256": "D88335718467F6A3A40C1B5654B3936E5AD794866277AC51B0EDCD448467D790",
+      "criticalHashes": 6
+    },
+    {
+      "source": "work/package-0.9-c1e5acbd59b74d1d9520fe46a9600586",
+      "destination": "checkpoints/work/package-0.9-c1e5acbd59b74d1d9520fe46a9600586",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 496,
+      "bytes": 180070005,
+      "inventorySha256": "0A99226B803CCC728BC7F0F6C3B2756040E172A1B8B28E0BB387B012E6C36D04",
+      "criticalHashes": 6
+    },
+    {
+      "source": "work/package-7.13-final",
+      "destination": "checkpoints/work/package-7.13-final",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 493,
+      "bytes": 206040567,
+      "inventorySha256": "1E52D49BB9E5339EAE0BCA75220ED1C0D94E6787CDF29453CC090D604F16B96A",
+      "criticalHashes": 6
+    },
+    {
+      "source": "work/package-final-0.8-d0d2f1fd8d3140eb88977231e500ab14",
+      "destination": "checkpoints/work/package-final-0.8-d0d2f1fd8d3140eb88977231e500ab14",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 495,
+      "bytes": 180039801,
+      "inventorySha256": "755761EEC2D80E0F927F51E2BEC95C0F80A5C8DC4045FB4C1BC3FD7D9DAC91F6",
+      "criticalHashes": 6
+    },
+    {
+      "source": "work/packaged-desktop-test",
+      "destination": "checkpoints/work/packaged-desktop-test",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 2,
+      "bytes": 45471,
+      "inventorySha256": "BC147FF81DFD023C5A0DB74093903804A4F201B446005DE8FCFB59C9C6BAF33D",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/packaged-smoke-7.14",
+      "destination": "checkpoints/work/packaged-smoke-7.14",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 122,
+      "bytes": 38111260,
+      "inventorySha256": "DE36B6E6010340F337DE117207FFA56C8E23BCB695E76EB49E13E958CD4ADAFD",
+      "criticalHashes": 31
+    },
+    {
+      "source": "work/release-0.12.0-8185fe90",
+      "destination": "checkpoints/work/release-0.12.0-8185fe90",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 420,
+      "inventorySha256": "D1188910C14671922B04641C44AAF9F67F7C74E9161FB3F6B2892E0C02F294B2",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/replay-0.18.1-packaged",
+      "destination": "checkpoints/work/replay-0.18.1-packaged",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 6,
+      "bytes": 274953,
+      "inventorySha256": "2ADC5A8168FF62686CF55B82BB5D0939BC966F84173FCE937A841CE714B30E7E",
+      "criticalHashes": 1
+    },
+    {
+      "source": "work/replay-0.18.2-packaged",
+      "destination": "checkpoints/work/replay-0.18.2-packaged",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 6,
+      "bytes": 274953,
+      "inventorySha256": "2ADC5A8168FF62686CF55B82BB5D0939BC966F84173FCE937A841CE714B30E7E",
+      "criticalHashes": 1
+    },
+    {
+      "source": "work/replay-7.13",
+      "destination": "checkpoints/work/replay-7.13",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 6,
+      "bytes": 275792,
+      "inventorySha256": "784BAB6E53AFFBAE493F7B3CD383CCFF8F32C45F887E549E0DADD699E497CF9B",
+      "criticalHashes": 1
+    },
+    {
+      "source": "work/replay-7.13-final",
+      "destination": "checkpoints/work/replay-7.13-final",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 6,
+      "bytes": 274953,
+      "inventorySha256": "2ADC5A8168FF62686CF55B82BB5D0939BC966F84173FCE937A841CE714B30E7E",
+      "criticalHashes": 1
+    },
+    {
+      "source": "work/replay-7.13-packaged",
+      "destination": "checkpoints/work/replay-7.13-packaged",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 6,
+      "bytes": 274953,
+      "inventorySha256": "2ADC5A8168FF62686CF55B82BB5D0939BC966F84173FCE937A841CE714B30E7E",
+      "criticalHashes": 1
+    },
+    {
+      "source": "work/replay-7.14",
+      "destination": "checkpoints/work/replay-7.14",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 7,
+      "bytes": 321047,
+      "inventorySha256": "5770164C0F9277D7577534C651C5E4CF85897C6A7E9F9D875D2466C369A60D06",
+      "criticalHashes": 1
+    },
+    {
+      "source": "work/replay-7.15",
+      "destination": "checkpoints/work/replay-7.15",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 8,
+      "bytes": 393382,
+      "inventorySha256": "2B0376D904B1800896AD8C414CF099D4C51685758E73BC07056F5412A1E958F5",
+      "criticalHashes": 1
+    },
+    {
+      "source": "work/replay-7.15-release",
+      "destination": "checkpoints/work/replay-7.15-release",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 8,
+      "bytes": 401134,
+      "inventorySha256": "2E63F6CE875DE4273173CDD81A7A7AB9D6EDB0622D1BACC048DB337BDC20E532",
+      "criticalHashes": 1
+    },
+    {
+      "source": "work/setup-regression",
+      "destination": "checkpoints/work/setup-regression",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 3,
+      "bytes": 898,
+      "inventorySha256": "D4170AAD4F3F32B5E3A87DAAA66EEE7C4CB68BAC8B703A0EB1D031EF9E5C7F34",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/simbrief-smoke-cd272d889f204c5ab0917bca4926caca",
+      "destination": "checkpoints/work/simbrief-smoke-cd272d889f204c5ab0917bca4926caca",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 8,
+      "bytes": 137545,
+      "inventorySha256": "84135E002CCF4B678069C49C65D16A5AC895BFD8BAA7DAEC55D7A5ACB0E49552",
+      "criticalHashes": 2
+    },
+    {
+      "source": "work/smoke-0.18.1-packaged",
+      "destination": "checkpoints/work/smoke-0.18.1-packaged",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 121,
+      "bytes": 37995893,
+      "inventorySha256": "8C527AF6AEA58A3188A4351551ED9E60EF6E029C29E90ED900B3CD160D0A2305",
+      "criticalHashes": 31
+    },
+    {
+      "source": "work/smoke-0.18.2-dev",
+      "destination": "checkpoints/work/smoke-0.18.2-dev",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 6,
+      "bytes": 42191,
+      "inventorySha256": "7B80D3E2D64F84449DEDDA1553AC48AD80BA0B3973CD56FD89DA157044ED1EB9",
+      "criticalHashes": 2
+    },
+    {
+      "source": "work/smoke-0.18.2-dev2",
+      "destination": "checkpoints/work/smoke-0.18.2-dev2",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 125,
+      "bytes": 38064399,
+      "inventorySha256": "8FEBB0AB2C8FF81396B80218BF3179AD0A37AF1913FD9B37EE5C9274F9994045",
+      "criticalHashes": 31
+    },
+    {
+      "source": "work/smoke-0.18.2-packaged",
+      "destination": "checkpoints/work/smoke-0.18.2-packaged",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 126,
+      "bytes": 38046622,
+      "inventorySha256": "674113628AE54F774604949C3922DFE87CC2CE877CC472B71B3123B4ACC18918",
+      "criticalHashes": 31
+    },
+    {
+      "source": "work/smoke-0.8-cf038e69f25d497884ab9e2ff07c451f",
+      "destination": "checkpoints/work/smoke-0.8-cf038e69f25d497884ab9e2ff07c451f",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 6,
+      "bytes": 114665,
+      "inventorySha256": "24C463B0445D9021A32C16AEEB0FA3E26BE42D369869277ADC91B4435345467A",
+      "criticalHashes": 2
+    },
+    {
+      "source": "work/smoke-7.12",
+      "destination": "checkpoints/work/smoke-7.12",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 25,
+      "bytes": 12823084,
+      "inventorySha256": "DE58BA8FEEF58022641C092D322DB1446D16E3BA1DC3480C22C9BD3DA69EDF5D",
+      "criticalHashes": 2
+    },
+    {
+      "source": "work/smoke-7.12b",
+      "destination": "checkpoints/work/smoke-7.12b",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 112,
+      "bytes": 37407180,
+      "inventorySha256": "E780AE72798B7ED0D3C366AF8485EDF73BAE52C51DF012FDC7D1B0B413BE3553",
+      "criticalHashes": 31
+    },
+    {
+      "source": "work/smoke-7.13-final",
+      "destination": "checkpoints/work/smoke-7.13-final",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 117,
+      "bytes": 38043396,
+      "inventorySha256": "67823C54B8483080686ADFDF9FB752D07817D62085B3316410201217EE627106",
+      "criticalHashes": 31
+    },
+    {
+      "source": "work/smoke-7.13-initial",
+      "destination": "checkpoints/work/smoke-7.13-initial",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 28,
+      "bytes": 14182264,
+      "inventorySha256": "045E5913E7AB38BF673F4F81FFEB57B5E5AA67F0E78230331B49DEFDBF2CD328",
+      "criticalHashes": 2
+    },
+    {
+      "source": "work/smoke-7.13-integrated",
+      "destination": "checkpoints/work/smoke-7.13-integrated",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 120,
+      "bytes": 38047932,
+      "inventorySha256": "DB47DAB27197C086D71CCD0B414DBB4F0052D8F44C83655806CB94E1C7CCA1C6",
+      "criticalHashes": 31
+    },
+    {
+      "source": "work/smoke-7.13-packaged",
+      "destination": "checkpoints/work/smoke-7.13-packaged",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 119,
+      "bytes": 38068821,
+      "inventorySha256": "CCF22E850A0B8C84A226F8F5C4658AE0F90A12D9C2F3E10D44589D6CE437147C",
+      "criticalHashes": 31
+    },
+    {
+      "source": "work/smoke-7.13-second",
+      "destination": "checkpoints/work/smoke-7.13-second",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 116,
+      "bytes": 37003248,
+      "inventorySha256": "FC7BEE3ABBDD7718D29C28EE211C766B5D7288A284F9DBA6F8AD7BF71F0CAAA3",
+      "criticalHashes": 31
+    },
+    {
+      "source": "work/smoke-7.14",
+      "destination": "checkpoints/work/smoke-7.14",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 120,
+      "bytes": 38114401,
+      "inventorySha256": "E804F292BB2196830CAD425F43D9B29B6802BD4E02232E6D259832273C712D0C",
+      "criticalHashes": 31
+    },
+    {
+      "source": "work/smoke-7.15-a",
+      "destination": "checkpoints/work/smoke-7.15-a",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 76,
+      "bytes": 27846850,
+      "inventorySha256": "1A1E613E9B3CC1157B0A238E9EB35C743668E23A39E2E72C4C0CA5931AC994E1",
+      "criticalHashes": 6
+    },
+    {
+      "source": "work/smoke-7.15-b",
+      "destination": "checkpoints/work/smoke-7.15-b",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 80,
+      "bytes": 32757073,
+      "inventorySha256": "A4AB429A8EB4105CAB7BF6FD2D3D834767952387966E89281B8CD3512DA2C81F",
+      "criticalHashes": 6
+    },
+    {
+      "source": "work/smoke-7.15-c",
+      "destination": "checkpoints/work/smoke-7.15-c",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 125,
+      "bytes": 38541890,
+      "inventorySha256": "EC86FEAC727E69A853B38CE87FE21EA721D8073D9B9B955F664F10930FCF1D5A",
+      "criticalHashes": 31
+    },
+    {
+      "source": "work/smoke-7.15-d",
+      "destination": "checkpoints/work/smoke-7.15-d",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 125,
+      "bytes": 38531660,
+      "inventorySha256": "BF50E2FD142695B49DF7CA7528FF3EB19F5DDE68488DD2CCF2954987E5760BE5",
+      "criticalHashes": 31
+    },
+    {
+      "source": "work/smoke-7.15-release",
+      "destination": "checkpoints/work/smoke-7.15-release",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 124,
+      "bytes": 38555027,
+      "inventorySha256": "2AF3DA164F8E4C243786951D031C56CAC191108D25CF8C08CD311A0BE1B8E786",
+      "criticalHashes": 31
+    },
+    {
+      "source": "work/smoke-final-ffd8ca17a746485d8391b6b02b550144",
+      "destination": "checkpoints/work/smoke-final-ffd8ca17a746485d8391b6b02b550144",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 7,
+      "bytes": 115492,
+      "inventorySha256": "A31ACBC5ACAA9569C2EC5338CBB0E02960C7DE758C8D930427BC4DE1C8D27646",
+      "criticalHashes": 2
+    },
+    {
+      "source": "work/tracker-final-37d971c000794cf68844d8fca2249cd2",
+      "destination": "checkpoints/work/tracker-final-37d971c000794cf68844d8fca2249cd2",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 8,
+      "bytes": 132688,
+      "inventorySha256": "32A01CAC5CB38EE11F004CEF83B3B11D35FEB86ECBA36CDA7D61DA9CEB7B70B3",
+      "criticalHashes": 2
+    },
+    {
+      "source": "work/tracker-smoke-c02441e6fccb46e6a3b1f0f0f6af1e28",
+      "destination": "checkpoints/work/tracker-smoke-c02441e6fccb46e6a3b1f0f0f6af1e28",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 7,
+      "bytes": 116597,
+      "inventorySha256": "35D80D51299EE3D277709DFEAF03D2D652A25B8C0DB3480A2E5EB13F85DD1E9F",
+      "criticalHashes": 2
+    },
+    {
+      "source": "work/upgrade-0.18.1",
+      "destination": "checkpoints/work/upgrade-0.18.1",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 490,
+      "bytes": 205599035,
+      "inventorySha256": "AF2A20294224B727750B19F9FC80E281D76BEA321DC25250060F649D0F6FA1E3",
+      "criticalHashes": 5
+    },
+    {
+      "source": "work/upgrade-0.18.2",
+      "destination": "checkpoints/work/upgrade-0.18.2",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 490,
+      "bytes": 205601098,
+      "inventorySha256": "3D5B7829A98833F94E4CE152EB07AC7E967A763F909A6F1A5706BA4C39C33C06",
+      "criticalHashes": 5
+    },
+    {
+      "source": "work/upgrade-debug-b962e53fc24c49409d534e3ffe8853b7",
+      "destination": "checkpoints/work/upgrade-debug-b962e53fc24c49409d534e3ffe8853b7",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 3,
+      "bytes": 630,
+      "inventorySha256": "EA5479A6BA58CECA76AC9DF9441BF838BAC14DF0445DDE82BD8C06FE3B22595E",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/upgrade-tests-0f7be9355cea4c178f767c8d4eb1daf0",
+      "destination": "checkpoints/work/upgrade-tests-0f7be9355cea4c178f767c8d4eb1daf0",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 3,
+      "bytes": 41,
+      "inventorySha256": "57CE3C156A6AC1CB3811444A57A2D96193FB619987B671A976D97C9E0C7F2043",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/workspace-relocation",
+      "destination": "checkpoints/work/workspace-relocation",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 509,
+      "bytes": 136793176,
+      "inventorySha256": "0402EB9AAF17A008E0654B9935C84B3CC95D1EB38E8F30CCB93D1F9EE96BBE2B",
+      "criticalHashes": 87
+    },
+    {
+      "source": "work/analyze_jst724_metrics.py",
+      "destination": "checkpoints/work/analyze_jst724_metrics.py",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 3374,
+      "inventorySha256": "664CD72639751CED3F1338D6821898D803029241A2475FF1FDB55A6DA75E2C63",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/analyze_jst724_schema.py",
+      "destination": "checkpoints/work/analyze_jst724_schema.py",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 786,
+      "inventorySha256": "316D0C48EC402EE5036D4407116CF310DFA9986D1726E0642102DB21D23E9D40",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/analyze_logs.py",
+      "destination": "checkpoints/work/analyze_logs.py",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 2885,
+      "inventorySha256": "05E1E6F359C3341B9723EE80FF9C904AEC019E9ABFACB7EFD2AEEFD5CB4AD472",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint-7.18b-attachment-build.log",
+      "destination": "checkpoints/work/checkpoint-7.18b-attachment-build.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 627,
+      "inventorySha256": "A98A54D729B018AC4C27AE95C7C5C721E1D70B3F347560D43FC577E690826152",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint-7.18b-attachment-green.log",
+      "destination": "checkpoints/work/checkpoint-7.18b-attachment-green.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 4042,
+      "inventorySha256": "2256573E658D37B693BE0433AAC0780F7A7C13CA67D22291E28D9E224C82AC7D",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint-7.18b-build.log",
+      "destination": "checkpoints/work/checkpoint-7.18b-build.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 863,
+      "inventorySha256": "1A028EFABCD295EE07A7D3E82EDEDF12258D96792B0DA4BB76A954C77F00B359",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint-7.18b-complete.log",
+      "destination": "checkpoints/work/checkpoint-7.18b-complete.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 3790,
+      "inventorySha256": "36CDFBEB43BD281188691CE5371BE35B7D284D6DE0480D0F787FDCF0680C2C19",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint-7.18b-core.log",
+      "destination": "checkpoints/work/checkpoint-7.18b-core.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 6961,
+      "inventorySha256": "8CD77191FE54F5696B3775660D3F0801E848ADB9969EB0F2D838780C568C96E2",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint-7.18b-first.log",
+      "destination": "checkpoints/work/checkpoint-7.18b-first.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 3689,
+      "inventorySha256": "3383D3AFBB0BBE18B81844F7D8BDFEC9890240262B5FA67BB5B03DC67655CF56",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint-7.18b-full-final.log",
+      "destination": "checkpoints/work/checkpoint-7.18b-full-final.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 3790,
+      "inventorySha256": "78DD6CABE417DB7B24FD0DDF368137B6EC8C91EE429A1E38FF73DAB8501EB0F4",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint-7.18b-full-first.log",
+      "destination": "checkpoints/work/checkpoint-7.18b-full-first.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 98,
+      "inventorySha256": "E204DD1DB31A33AA7F7730A913E50F33BB24AF30AF3AE9F4FB285BD04C963611",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint-7.18b-full-second.log",
+      "destination": "checkpoints/work/checkpoint-7.18b-full-second.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 3790,
+      "inventorySha256": "32FCB2585B74354041E351857AAD98B52A10A5BE314A377304B4C55BEB16CC0E",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint-7.18b-palette-build.log",
+      "destination": "checkpoints/work/checkpoint-7.18b-palette-build.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 627,
+      "inventorySha256": "52CED7953A05C2CD207AA9542215D9743036BE1D8D7312DF713B1BB7E9DA483B",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint-7.18b-palette-green.log",
+      "destination": "checkpoints/work/checkpoint-7.18b-palette-green.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 4042,
+      "inventorySha256": "C3C40FC48E9B514EC733AC0B1E7D6733A0BC1055FE9DD9BB35AB0D428E018A35",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint-7.18b-pending-green-build.log",
+      "destination": "checkpoints/work/checkpoint-7.18b-pending-green-build.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 627,
+      "inventorySha256": "AEDA67221F43CF89524F4BC18249B3B1394001EE5EFE9D9F1B262F7B76AF094A",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint-7.18b-pending-green.log",
+      "destination": "checkpoints/work/checkpoint-7.18b-pending-green.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 4042,
+      "inventorySha256": "4AD7216A999EFC386D7A07E62CAFB17F6844BF9DBB61DF5F786FAE702E9C36E0",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint-7.18b-pending-red-build.log",
+      "destination": "checkpoints/work/checkpoint-7.18b-pending-red-build.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 627,
+      "inventorySha256": "52C3629AF25F55FA7DE5ADC1DFC1787A9CFA0DB9BB03EC0FEC68264D67CCAB99",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint-7.18b-pending-red.log",
+      "destination": "checkpoints/work/checkpoint-7.18b-pending-red.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 4042,
+      "inventorySha256": "1512D1480E108E49122DE77DFBF6DDD327D6F8F56C50FF97A13A937F6828FC7D",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint-7.18b-reattach-green.log",
+      "destination": "checkpoints/work/checkpoint-7.18b-reattach-green.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 3885,
+      "inventorySha256": "EAD319D880945AB1CCA310FDD6907895B6AE685B8DA991CB34FAB9C950C2F8EA",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint-7.18b-reattach-red.log",
+      "destination": "checkpoints/work/checkpoint-7.18b-reattach-red.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 3885,
+      "inventorySha256": "F50C5587EC561084A53F05F36B80226708A9F456ACCB82759C8E72B85D7660AF",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint-7.18b-red.log",
+      "destination": "checkpoints/work/checkpoint-7.18b-red.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 3541,
+      "inventorySha256": "2C6F5EA45597A7FFB7E4092EF52D4AD2C6A3C5E547AB4C8CB774101F4BB5B34C",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint-7.18b-reviewed-final.log",
+      "destination": "checkpoints/work/checkpoint-7.18b-reviewed-final.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 98,
+      "inventorySha256": "196F749C7C8D75C22573F059A26033FF11A5CDD08D6C272C45B49E3D73EC34A7",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint-7.18b-verified.log",
+      "destination": "checkpoints/work/checkpoint-7.18b-verified.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 98,
+      "inventorySha256": "37DC795B6251FF3872FB9BE3484CA94BDD00BB7A06142AE64E6D566B31E21C8C",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint-7.19-final-suite.log",
+      "destination": "checkpoints/work/checkpoint-7.19-final-suite.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 467,
+      "inventorySha256": "5AF93C6806CA204275539DA802370D1904987FD90E623BCBC1DB328B1C72B5C5",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint-7.19-full-suite.log",
+      "destination": "checkpoints/work/checkpoint-7.19-full-suite.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 98,
+      "inventorySha256": "671CF13E6A0C628D99F1B852828DAB0C55855C9B3911325B8FECEF5BBF30D8D0",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint-7.19-migration-build.log",
+      "destination": "checkpoints/work/checkpoint-7.19-migration-build.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 545,
+      "inventorySha256": "08FDA3555D21753EBF9363F5CCEFB4875C16BF03893EE643C333C49305CF1BA8",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint-7.19-migration-final.log",
+      "destination": "checkpoints/work/checkpoint-7.19-migration-final.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 4301,
+      "inventorySha256": "8F476AB20799FF85A200355320B9F4FDCC51C47DD7F9EBA2F4BBAAEBD25E4B6B",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint-7.19-red-build.log",
+      "destination": "checkpoints/work/checkpoint-7.19-red-build.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 627,
+      "inventorySha256": "48AB8928D3109496E14829EAA53D5026D67E80AA87708E32BEA2633A4E4A0FA2",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint-7.19-red.log",
+      "destination": "checkpoints/work/checkpoint-7.19-red.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 4158,
+      "inventorySha256": "8E27F09D448707F5826826D01082A6C9412A9223A4727CC7C22675B9E67C344C",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint-7.19-resume-build.log",
+      "destination": "checkpoints/work/checkpoint-7.19-resume-build.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 627,
+      "inventorySha256": "C29BABAD4B622C0931E49162EDB3A9B57B65E1B06D4A69F6F809172FD139BE5A",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint-7.19-shell-build.log",
+      "destination": "checkpoints/work/checkpoint-7.19-shell-build.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 545,
+      "inventorySha256": "C298A50B5DB619A1994FAFC4ACC7403F233216ACE61B81ADE1043DBDA188E605",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint-7.19-smoke-1.log",
+      "destination": "checkpoints/work/checkpoint-7.19-smoke-1.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 0,
+      "inventorySha256": "123C697FB11B6133C0A93D4BC0435121A532BCE13C732B1D7BB67EB7878FAB3A",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint-7.19-verified-suite.log",
+      "destination": "checkpoints/work/checkpoint-7.19-verified-suite.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 3863,
+      "inventorySha256": "8741961B2069E5282AB2E9C15A203734242C027F83A439FC97534D7CA5B23466",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint-7.20-build-1.log",
+      "destination": "checkpoints/work/checkpoint-7.20-build-1.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 21981,
+      "inventorySha256": "5606D5CD5D6503EB3006E1DDDB4B5DCCCFC07994BCBC81C495ACE307528425CE",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint-7.20-build-2.log",
+      "destination": "checkpoints/work/checkpoint-7.20-build-2.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 863,
+      "inventorySha256": "A905BEC9E8B69F1032E70CE1565EEB8C1B636B5578FCC0D95E7A27F9FD2B9DA3",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint-7.20-build-3.log",
+      "destination": "checkpoints/work/checkpoint-7.20-build-3.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 863,
+      "inventorySha256": "6A923D7D98917963C5144869FB8AEF4F5A79E403EB7F99EE21EB9776454540F2",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint-7.20-build-final.log",
+      "destination": "checkpoints/work/checkpoint-7.20-build-final.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 863,
+      "inventorySha256": "844C615582AD1791EC7824A2B496AA8A2CAB31D524C0DCD7B709F5244C50DF31",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint-7.20-final-suite.log",
+      "destination": "checkpoints/work/checkpoint-7.20-final-suite.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 3863,
+      "inventorySha256": "FCE10B49F9D2F25873E0CC98188A24EB5802EB0D2A944A7A050827B69D71A641",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint-7.20-full-suite.log",
+      "destination": "checkpoints/work/checkpoint-7.20-full-suite.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 3863,
+      "inventorySha256": "BB3B19E9645D3B0A135730825D6EB209DBD477EFA2EF05917F86B7E90556156B",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint-7.20-integrate.py",
+      "destination": "checkpoints/work/checkpoint-7.20-integrate.py",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 5533,
+      "inventorySha256": "3A1B42A4560C3784BC8E37026D75F64CB3EE813D8266E6E4B2AD4BDE996DA716",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint-7.20-polish-2-build.log",
+      "destination": "checkpoints/work/checkpoint-7.20-polish-2-build.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 1358,
+      "inventorySha256": "E81F0C89B6AC760C250793A38E368F460962E99B5BD145A8ED8E6D62BD692D95",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint-7.20-polish-build.log",
+      "destination": "checkpoints/work/checkpoint-7.20-polish-build.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 863,
+      "inventorySha256": "BF301967730688250D9BB57B49B70B21180C514C72B32C085A3FF545D5CD7EB5",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint-7.20-red-build.log",
+      "destination": "checkpoints/work/checkpoint-7.20-red-build.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 863,
+      "inventorySha256": "7FF4DAF49DB652180B27FD1237AC1F80F950C5F0B81B279FA80B6175008803D2",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint-7.20-tests.py",
+      "destination": "checkpoints/work/checkpoint-7.20-tests.py",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 4883,
+      "inventorySha256": "10026D0EF9DA3093B8D295833DEDABABE945F5200265A669B468B94700FA4B4B",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint-7.20-verified-suite.log",
+      "destination": "checkpoints/work/checkpoint-7.20-verified-suite.log",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 3863,
+      "inventorySha256": "58B12C35160894017F8B8A156547651902CFEE0BCE0B21871AE53AC80D1D1F9E",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint1-extract-20260909-145341.setup-error.txt",
+      "destination": "checkpoints/work/checkpoint1-extract-20260909-145341.setup-error.txt",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 169,
+      "inventorySha256": "BF04E64BD8E4F3A8945D819A7D81193BD315015D4E76A51FADFB9A6462DC1BB0",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/checkpoint1-extract-verified-20260909-145426.setup-error.txt",
+      "destination": "checkpoints/work/checkpoint1-extract-verified-20260909-145426.setup-error.txt",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 169,
+      "inventorySha256": "CFEECB3CA9B80A2D7D10EC13B1B10A62197C2B39E0A9B415EBCDBDA27C9A6F33",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/compiled-a6-icon.png",
+      "destination": "checkpoints/work/compiled-a6-icon.png",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 1811,
+      "inventorySha256": "2927A4DF9BD666AE13F8F83FE9B85BDAF3559FA156F38AB5860D665198AB9ADB",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/compose-sierra-shell.py",
+      "destination": "checkpoints/work/compose-sierra-shell.py",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 2543,
+      "inventorySha256": "22F772A604D10F27C025D0BE7DA364FA93806B47DBE33FC297611C17B2E2EE23",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/dotnet-install.ps1",
+      "destination": "checkpoints/work/dotnet-install.ps1",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 76676,
+      "inventorySha256": "C5BC745A98DA04E336262C924934F0D75EB6900F802D0DB30AC621F28BF550CC",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/dump_jst724_events.py",
+      "destination": "checkpoints/work/dump_jst724_events.py",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 485,
+      "inventorySha256": "6B1FAEDDA35E8EC8494B143DDB35B1D17E11AFA5671689D2BC38560277F72999",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/dump_jst724_states.py",
+      "destination": "checkpoints/work/dump_jst724_states.py",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 345,
+      "inventorySha256": "E0DF1914CD4988D8B7FDDE024BAE303F4038AE61C15EF374890180BD633058D9",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/engines715.py",
+      "destination": "checkpoints/work/engines715.py",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 6607,
+      "inventorySha256": "3EB2462F721E02C8D72C8216D24F31017519A94DB29962C15DD79BE4EC630FD2",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/extract-718b.py",
+      "destination": "checkpoints/work/extract-718b.py",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 13650,
+      "inventorySha256": "7C85B40BF950090A5925C18744EB2980086B8C9DF266D5C390A7D19BC3419AD9",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/finish715.py",
+      "destination": "checkpoints/work/finish715.py",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 6146,
+      "inventorySha256": "3F9900F254FD5F1B6318459A840DBEB72627BC96A33390A12BD453E4D1D4A294",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/finish715b.py",
+      "destination": "checkpoints/work/finish715b.py",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 2565,
+      "inventorySha256": "EB69CA63B6201A74B8B8740AAB38B1F3BF43884E1529400CB27858EBF6CC98EB",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/gates715.py",
+      "destination": "checkpoints/work/gates715.py",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 3474,
+      "inventorySha256": "A0E36B05F74397F6C1D307C9D9B872F8D2BF64E6A7D0B0A2D4C4E1906CF3BD6D",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/icon-layer-0.png",
+      "destination": "checkpoints/work/icon-layer-0.png",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 40634,
+      "inventorySha256": "44B4DE03838F3A1D936A3AAA8C8E795B8B2C77FF967FF5E467959E808E719195",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/icon-layer-1.png",
+      "destination": "checkpoints/work/icon-layer-1.png",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 12491,
+      "inventorySha256": "671961D33128079BC41650BAD64745177B66DAEA210312601C1A34FA8645BD10",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/icon-layer-2.png",
+      "destination": "checkpoints/work/icon-layer-2.png",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 4651,
+      "inventorySha256": "68AA7B671F10658BCAC43D15D27684D1CF5A83F7FC83299B20028323D27968CA",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/icon-layer-3.png",
+      "destination": "checkpoints/work/icon-layer-3.png",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 3193,
+      "inventorySha256": "D68E5B9FAA937260FDFC0A7E298A3B6FBAA18457B13AEEBB22F096AFBB18A813",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/icon-layer-4.png",
+      "destination": "checkpoints/work/icon-layer-4.png",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 1980,
+      "inventorySha256": "8EAB602B689F275DC8912E7F41BD511AE425776D2623445A7843D0AC7D5F5622",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/icon-layer-5.png",
+      "destination": "checkpoints/work/icon-layer-5.png",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 1466,
+      "inventorySha256": "8C5AFB66AD282998A2E66ADC0B7956793F589B04639FA6BBF869AA8E04D1556C",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/icon-layer-6.png",
+      "destination": "checkpoints/work/icon-layer-6.png",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 930,
+      "inventorySha256": "16B6DFDAEFE9371E393F970C19D703791B7CD381800B0769FEC950BE8E0F7A95",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/implement715.py",
+      "destination": "checkpoints/work/implement715.py",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 4613,
+      "inventorySha256": "602F5F0FAD0B6AA31B9D2709C83322891331FF8491D98A3C503986052FC53B95",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/installer-checkpoint2-20260909-151724.setup-error.txt",
+      "destination": "checkpoints/work/installer-checkpoint2-20260909-151724.setup-error.txt",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 169,
+      "inventorySha256": "872355F13BCD0F0C6470AA098236FC3934E86D50FF1C6F0357E60FA85332856F",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/jst724_eta_timeline.py",
+      "destination": "checkpoints/work/jst724_eta_timeline.py",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 703,
+      "inventorySha256": "1565F9D98B5B72FD04C83BF33EADC23B729FF1FDA9071E84733AB28783EE8ED9",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/make_jst724_sheets.py",
+      "destination": "checkpoints/work/make_jst724_sheets.py",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 889,
+      "inventorySha256": "84C00B0BA8D0F86CE45C229080528E43FCD271A2A3E3962578118055F519D86A",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/package-0.18.2-hotfix-probe.json",
+      "destination": "checkpoints/work/package-0.18.2-hotfix-probe.json",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 5920,
+      "inventorySha256": "17655783DEDBE3ADB67629793B38D3CDF4E69A27CAD0150A5771EAF299E20676",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/probe-7.15",
+      "destination": "checkpoints/work/probe-7.15",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 149,
+      "inventorySha256": "E69784AC429752AEEC17DF1A7232C54C5258B17D2E671BD242DA36628B6E925C",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/replay-7.13-input.json",
+      "destination": "checkpoints/work/replay-7.13-input.json",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 1000,
+      "inventorySha256": "677388595F2C2441545A6DA0871152927C1350957D53795E04C4EBCBA70A408D",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/replay-7.14-input.json",
+      "destination": "checkpoints/work/replay-7.14-input.json",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 1182,
+      "inventorySha256": "3C7730AEEDCDF82D23FE268122F33C29F314A256CF3791BD8BCAC1B2F2CFDB2E",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/replay-7.15-input.json",
+      "destination": "checkpoints/work/replay-7.15-input.json",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 1350,
+      "inventorySha256": "F2F3C0F57E59738B9641EA5FD1A6C49C749F68DB09E42A45BD6A785E6D93AFF4",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/review_ang2.py",
+      "destination": "checkpoints/work/review_ang2.py",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 3631,
+      "inventorySha256": "F592FBF5D7A443FBFAD49961E80681889DDC8B2B924027BF3BB55A6C61E13648",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/simconnect-7.14.json",
+      "destination": "checkpoints/work/simconnect-7.14.json",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 149,
+      "inventorySha256": "80EFF114954A44E033B28CF5EF57199E8A71C92892783BF0EC67E9E6285D73EB",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/simconnect-probe.json",
+      "destination": "checkpoints/work/simconnect-probe.json",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 149,
+      "inventorySha256": "55F62B3B52802B1EE2EF8C51A898D9755ED4A85014E98F4C4D129BD8E8B16A01",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/tests715.py",
+      "destination": "checkpoints/work/tests715.py",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 5217,
+      "inventorySha256": "1B49800B0114CDB670C6E81455C30EC97A716AA827DE5A95C4106BB14535BD63",
+      "criticalHashes": 0
+    },
+    {
+      "source": "work/dashboard-review/20260930-141916-6cd35877",
+      "destination": "historical-traces/dashboard-review/20260930-141916-6cd35877",
+      "auditClass": "I-representative",
+      "disposition": "archive-copy",
+      "files": 136,
+      "bytes": 13257411,
+      "inventorySha256": "538A036B6C6A961CF4637510050EEBDA62AADC73BA780F7FB38FAE5AE2624660",
+      "criticalHashes": 33
+    },
+    {
+      "source": ".work/jst760-7.16",
+      "destination": "native-evidence/jst760-7.16",
+      "auditClass": "D/E",
+      "disposition": "archive-copy",
+      "files": 27,
+      "bytes": 50013757,
+      "inventorySha256": "15A665FA7824FDC88C13BA5DBE83E96A935DB92765415BFADE78184DC37A5902",
+      "criticalHashes": 2
+    },
+    {
+      "source": ".work/qlk1274-review-20260922",
+      "destination": "native-evidence/qlk1274-review-20260922",
+      "auditClass": "D/E",
+      "disposition": "archive-copy",
+      "files": 26,
+      "bytes": 48559001,
+      "inventorySha256": "77466041A9C6803CC363EE8D11F121936EA428567D9BAF1D70A1DEE77337F2D2",
+      "criticalHashes": 4
+    },
+    {
+      "source": ".work/replay-7.17-manifest.json",
+      "destination": "native-evidence/replay-7.17-manifest.json",
+      "auditClass": "D/E",
+      "disposition": "archive-copy",
+      "files": 1,
+      "bytes": 1734,
+      "inventorySha256": "7C69E0D0BB023F3DE9D4DBD9C215E85B28214187A43701AB3C7EAB5C15884E6D",
+      "criticalHashes": 1
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop",
+      "destination": "frozen-releases/Alpha6OPS-Desktop",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 494,
+      "bytes": 206015362,
+      "inventorySha256": "6FDA467B64221B0861A39A2ADB892DAB1A782B65B7F8BAC4379902B936E9E76C",
+      "criticalHashes": 6
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.18.0",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.18.0",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 493,
+      "bytes": 206040567,
+      "inventorySha256": "1E52D49BB9E5339EAE0BCA75220ED1C0D94E6787CDF29453CC090D604F16B96A",
+      "criticalHashes": 6
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.18.1",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.18.1",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 488,
+      "bytes": 205598982,
+      "inventorySha256": "28BD1DF611D2C6EA8868C0DDB0077CB25023F3F0F7E614A3A12B82569E3055FE",
+      "criticalHashes": 5
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.18.2",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.18.2",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 489,
+      "bytes": 205601066,
+      "inventorySha256": "BE7EDF2678F7CA9182D5EB2E5E8F607CD88E3D00D4F125E1CD32E83513919C7A",
+      "criticalHashes": 5
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.19.0",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.19.0",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 489,
+      "bytes": 205606393,
+      "inventorySha256": "23FE16022903CD835FD430B066871ADA1CF55A6CE6F25921B2E85B5CBD21C5A4",
+      "criticalHashes": 5
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.20.0",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.20.0",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 489,
+      "bytes": 205659425,
+      "inventorySha256": "281B74303946843535B31FD845B8F10ADEEF82C3576D8060E946DB86A4AA4800",
+      "criticalHashes": 5
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.20.1",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.20.1",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 489,
+      "bytes": 205659941,
+      "inventorySha256": "AAE79B6C54068CBF21BD1D34F31589F3F3E1A663DB5CFF85A4F7907697C9CFB2",
+      "criticalHashes": 5
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.20.2",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.20.2",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 489,
+      "bytes": 205664549,
+      "inventorySha256": "879B9F7B5746C4DBD87EC5CA2121BF6913ADFD76EF008323052529C4A4F0A532",
+      "criticalHashes": 5
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.20.3",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.20.3",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 489,
+      "bytes": 205664549,
+      "inventorySha256": "879B9F7B5746C4DBD87EC5CA2121BF6913ADFD76EF008323052529C4A4F0A532",
+      "criticalHashes": 5
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.21.0",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.21.0",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 489,
+      "bytes": 205682123,
+      "inventorySha256": "D82C786D35E23FE1AD8E52F195ECAF4716BF9CA69D449EF962B0DCD37C04D0BD",
+      "criticalHashes": 5
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-S4-7.24B-20260925-46a1b304c3d6",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-S4-7.24B-20260925-46a1b304c3d6",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 523,
+      "bytes": 451638511,
+      "inventorySha256": "FE3791867777AED09935424B2AFB8A1B8F75642907CA2273A76EE4658EF1CA86",
+      "criticalHashes": 13
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-S4-7.24B-INPUT-R1-20260925-62b8c871dd05",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-S4-7.24B-INPUT-R1-20260925-62b8c871dd05",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 529,
+      "bytes": 507184624,
+      "inventorySha256": "A7B885050FD3B2190B6A3BD12354F166E9A0AF8DD6A5B5579F5F28B137197A5A",
+      "criticalHashes": 17
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-S4-7.24B-LAYOUT-R3-20260927-666f495dce7e",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-S4-7.24B-LAYOUT-R3-20260927-666f495dce7e",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 529,
+      "bytes": 507242486,
+      "inventorySha256": "264B1ACBD2B64D4825F640CAFDEB47A861B0DC8ECB28944360AEDFF13844AF33",
+      "criticalHashes": 17
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-S4-7.24B-VISUAL-R2-20260925-acc4f98f3a08",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-S4-7.24B-VISUAL-R2-20260925-acc4f98f3a08",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 518,
+      "bytes": 451649984,
+      "inventorySha256": "93AF93268E64307C68F2032F8BFC71ED4EBBA4160BF5C9F25CC0DA29D6E56EFA",
+      "criticalHashes": 10
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-S4-7.24B-VISUAL-R2A-20260927-87fa792a7c29",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-S4-7.24B-VISUAL-R2A-20260927-87fa792a7c29",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 529,
+      "bytes": 507237079,
+      "inventorySha256": "C41325E6C9E3A34D4CFCED77ACA60B2B94B77D1271DD983F380491C4DE3F1DBA",
+      "criticalHashes": 17
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-S4-7.24C-C1-20260928-64e864462ace",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-S4-7.24C-C1-20260928-64e864462ace",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 520,
+      "bytes": 473567625,
+      "inventorySha256": "9CCA513B3DF3A1EB2D56B8D8814FED43D790140C3DF7F6900C13FE51FCAB94E2",
+      "criticalHashes": 12
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-S4-7.24C-FINAL-L1-20260930-318659425b88",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-S4-7.24C-FINAL-L1-20260930-318659425b88",
+      "auditClass": "F",
+      "disposition": "archive-then-remove",
+      "files": 525,
+      "bytes": 473996936,
+      "inventorySha256": "595E6EC78FDD0FBAA6F52C54E8D68D2DF39016ED465B67BBAAC04E18BCAB0204",
+      "criticalHashes": 15
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-S4-7.24C-T1-20260928-00e3f628b90e",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-S4-7.24C-T1-20260928-00e3f628b90e",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 526,
+      "bytes": 498332474,
+      "inventorySha256": "7F90A4BD09F24D2426F073670873443DC79FD121C9CDF2194A99DCCCD9FEC0AF",
+      "criticalHashes": 15
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-S4-7.24C-T2-20260929-f421af15530c",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-S4-7.24C-T2-20260929-f421af15530c",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 524,
+      "bytes": 473735425,
+      "inventorySha256": "87C376C09816E8235788D2B1B0A79E795FA454F83FE8A40DA13C5BCFBB8D9524",
+      "criticalHashes": 13
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-S4-7.25-TRACKING-20260930-e7ee5c18d8ae",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-S4-7.25-TRACKING-20260930-e7ee5c18d8ae",
+      "auditClass": "F",
+      "disposition": "archive-then-remove",
+      "files": 525,
+      "bytes": 474126031,
+      "inventorySha256": "AC6AA7E30483E2203BF51320102E35AE9BA1725EB4320C3AAB64A4234D900E8F",
+      "criticalHashes": 16
+    },
+    {
+      "source": "outputs/S4-Fenix-Shutdown-Capture-7.24C-20260928",
+      "destination": "frozen-releases/S4-Fenix-Shutdown-Capture-7.24C-20260928",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 4,
+      "bytes": 16779,
+      "inventorySha256": "F054CC108A54320B610D8243E38BA19B1533DB1591EF571BAAB9FF2A6ABA6875",
+      "criticalHashes": 1
+    },
+    {
+      "source": "outputs/Alpha6OPS-0.12.1-SHA256.txt",
+      "destination": "frozen-releases/Alpha6OPS-0.12.1-SHA256.txt",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 198,
+      "inventorySha256": "9A3E2A1C9FC9EED9304E0266D928C23F5E0D889C793D60AEBFEC4B9F9DAD4432",
+      "criticalHashes": 1
+    },
+    {
+      "source": "outputs/Alpha6OPS-0.13.0-SHA256.txt",
+      "destination": "frozen-releases/Alpha6OPS-0.13.0-SHA256.txt",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 198,
+      "inventorySha256": "3073FDED058CF40BD1B1C06D10FCF1D8A6C7187C2BF5FB80B3FDC3C19712A7FA",
+      "criticalHashes": 1
+    },
+    {
+      "source": "outputs/Alpha6OPS-0.18.0-SHA256.txt",
+      "destination": "frozen-releases/Alpha6OPS-0.18.0-SHA256.txt",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 198,
+      "inventorySha256": "52CC512BEB69C5F82BE6E7D49E3537E87C07E623A752CE6A606969A40C3DE75A",
+      "criticalHashes": 1
+    },
+    {
+      "source": "outputs/Alpha6OPS-0.18.1-SHA256.txt",
+      "destination": "frozen-releases/Alpha6OPS-0.18.1-SHA256.txt",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 198,
+      "inventorySha256": "3CE095E66CE95205E44658B8F89C78E82CBA905B05E4B4BF4BB8A7FC16552A71",
+      "criticalHashes": 1
+    },
+    {
+      "source": "outputs/Alpha6OPS-0.18.2-SHA256.txt",
+      "destination": "frozen-releases/Alpha6OPS-0.18.2-SHA256.txt",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 198,
+      "inventorySha256": "8A0C1AED0195F76F26FC479593D9B34150E8E6195E5D742486C57CDEB9DCD134",
+      "criticalHashes": 1
+    },
+    {
+      "source": "outputs/Alpha6OPS-0.19.0-SHA256.txt",
+      "destination": "frozen-releases/Alpha6OPS-0.19.0-SHA256.txt",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 198,
+      "inventorySha256": "E8EDF7BF170B6E7C9251970BD1C7D122EAF073A1599D3FFF1600350193562958",
+      "criticalHashes": 1
+    },
+    {
+      "source": "outputs/Alpha6OPS-0.20.0-SHA256.txt",
+      "destination": "frozen-releases/Alpha6OPS-0.20.0-SHA256.txt",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 198,
+      "inventorySha256": "6520AEF43E1AE7E2677FD1A8477178D5D141AC072CB59BBF1CFC1ABDD95E8349",
+      "criticalHashes": 1
+    },
+    {
+      "source": "outputs/Alpha6OPS-0.22.0-SHA256.txt",
+      "destination": "frozen-releases/Alpha6OPS-0.22.0-SHA256.txt",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 198,
+      "inventorySha256": "E399704E379D3E0FACF096DF85C80626068EC3826EF8A6412C90E124D0832876",
+      "criticalHashes": 1
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.12.1-win-x64.zip",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.12.1-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 94637688,
+      "inventorySha256": "D641905ACD0D088C91FD02A5983F4AA63143B8ABB6F29BA97E043DCDE91E9476",
+      "criticalHashes": 1
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.13.0-win-x64.zip",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.13.0-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 94955758,
+      "inventorySha256": "60B9B08154730C9FE853F6D0121D67282291300AF6E1148ED15A0D0506D6C971",
+      "criticalHashes": 1
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.14.0-win-x64.zip",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.14.0-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 95532751,
+      "inventorySha256": "D9E92A1B7A3B635DE8F64ACB864C383CDD8C88ABBA5B6E2E01D35DB2A70AA738",
+      "criticalHashes": 1
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.15.0-win-x64.zip",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.15.0-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 95534744,
+      "inventorySha256": "5197487E7C4F5FC821DA854A88614651CA517DFC2C2C6EB85A02DEAADF90341A",
+      "criticalHashes": 1
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.16.0-win-x64.zip",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.16.0-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 97923598,
+      "inventorySha256": "3F30A43650B614107A44543CFF04937BDE85A88874C0E130BF57ED804E7A4379",
+      "criticalHashes": 1
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.17.0-win-x64.zip",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.17.0-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 97926480,
+      "inventorySha256": "AC040499F91DD2CDB963F666D172DFA648D511850A6B8971563D0C894CEFA6BF",
+      "criticalHashes": 1
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.18.0-win-x64.zip",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.18.0-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 97936295,
+      "inventorySha256": "6399CFE7AC31AEE5BA3750DC832FC081E50943042DADEF981F179F4A402E8674",
+      "criticalHashes": 1
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.18.1-win-x64.zip",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.18.1-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 97793576,
+      "inventorySha256": "3DE7BCA5E646230856C6FA2DE3B28CA629C451A0ABEDA7F43188457F875BB97B",
+      "criticalHashes": 1
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.18.2-win-x64.zip",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.18.2-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 97794347,
+      "inventorySha256": "7B81796941463FA03E066B68A0559D455962F392C0F87695F0C3A7040F6D0264",
+      "criticalHashes": 1
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.19.0-win-x64.zip",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.19.0-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 97796873,
+      "inventorySha256": "BC641DD7E68491244902BCA3D50596C9424D938354AF4AA9F5CC3B7F00A8A60C",
+      "criticalHashes": 1
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.20.0-win-x64.zip",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.20.0-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 95432598,
+      "inventorySha256": "9BAAC8F37EEE44222AC09D7C0C8D11599944EE49015AF6630B9D2E3B4F0C2555",
+      "criticalHashes": 1
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.20.1-win-x64.zip",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.20.1-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 97815176,
+      "inventorySha256": "76A35B104508B0ED20A874F3646E81525D1ED53756F03BC4F68E30F6C103AB1B",
+      "criticalHashes": 1
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.20.2-win-x64.zip",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.20.2-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 97816168,
+      "inventorySha256": "7E073B78F6B8AC2F5104853B903372D75E247862ED92519D029A19B5531E7909",
+      "criticalHashes": 1
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.20.3-win-x64.zip",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.20.3-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 97816155,
+      "inventorySha256": "91709C856E0CCCEBD9854F06FA74028DDD4C362D1AE6E0D1584CD95D4E96177A",
+      "criticalHashes": 1
+    },
+    {
+      "source": "outputs/Alpha6OPS-Desktop-0.21.0-win-x64.zip",
+      "destination": "frozen-releases/Alpha6OPS-Desktop-0.21.0-win-x64.zip",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 97822471,
+      "inventorySha256": "6D6A882385C316FA1B986A080A247058EEBFA07232443A1F1283114DB9F4A602",
+      "criticalHashes": 1
+    },
+    {
+      "source": "outputs/Alpha6OPS-Setup-0.12.1.exe",
+      "destination": "frozen-releases/Alpha6OPS-Setup-0.12.1.exe",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 95574016,
+      "inventorySha256": "8FC1470EE26840A3BAC24ECA56216F84AD2D97A7269AB99245C374D7983B2D94",
+      "criticalHashes": 1
+    },
+    {
+      "source": "outputs/Alpha6OPS-Setup-0.13.0.exe",
+      "destination": "frozen-releases/Alpha6OPS-Setup-0.13.0.exe",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 95891968,
+      "inventorySha256": "09E6CCD3AA901AC91E3C7C9CBC1E7442A6D6B0098DA7BACDBE62208D59E259B9",
+      "criticalHashes": 1
+    },
+    {
+      "source": "outputs/Alpha6OPS-Setup-0.14.0.exe",
+      "destination": "frozen-releases/Alpha6OPS-Setup-0.14.0.exe",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 96468992,
+      "inventorySha256": "16D37B5DC1825707700D132976B93B8FEFD367EF2B776236D2093701AB2B6F5F",
+      "criticalHashes": 1
+    },
+    {
+      "source": "outputs/Alpha6OPS-Setup-0.15.0.exe",
+      "destination": "frozen-releases/Alpha6OPS-Setup-0.15.0.exe",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 96471040,
+      "inventorySha256": "2084878C9299639B60D6FD1808A682ECCFF00F9504D95D569A9EC1BAC1824A8D",
+      "criticalHashes": 1
+    },
+    {
+      "source": "outputs/Alpha6OPS-Setup-0.16.0.exe",
+      "destination": "frozen-releases/Alpha6OPS-Setup-0.16.0.exe",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 98860032,
+      "inventorySha256": "2A4373398FA7E50A9A96AEFD0E49C24F2B1DC505F04F90D6E08714422CC17852",
+      "criticalHashes": 1
+    },
+    {
+      "source": "outputs/Alpha6OPS-Setup-0.17.0.exe",
+      "destination": "frozen-releases/Alpha6OPS-Setup-0.17.0.exe",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 98862592,
+      "inventorySha256": "AE9EB9E794A2CA5B47EE9F9E3A9701780C59B4850647047B0AFBD511886024E0",
+      "criticalHashes": 1
+    },
+    {
+      "source": "outputs/Alpha6OPS-Setup-0.18.0.exe",
+      "destination": "frozen-releases/Alpha6OPS-Setup-0.18.0.exe",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 98872832,
+      "inventorySha256": "1C28F6DE1795538C32DD6FB098987CBAEE74C179C0718B3E111A6D340823D30C",
+      "criticalHashes": 1
+    },
+    {
+      "source": "outputs/Alpha6OPS-Setup-0.18.1.exe",
+      "destination": "frozen-releases/Alpha6OPS-Setup-0.18.1.exe",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 98729472,
+      "inventorySha256": "14882E1C5EBE629ACBF4D2EE0FE864213427760B8F42BC833B3325D2BBD8B95C",
+      "criticalHashes": 1
+    },
+    {
+      "source": "outputs/Alpha6OPS-Setup-0.18.2.exe",
+      "destination": "frozen-releases/Alpha6OPS-Setup-0.18.2.exe",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 98730496,
+      "inventorySha256": "3FB941FEBE9E3893ACF891CD992D7070D7933AD4E043F2F7397750054C15391E",
+      "criticalHashes": 1
+    },
+    {
+      "source": "outputs/Alpha6OPS-Setup-0.19.0.exe",
+      "destination": "frozen-releases/Alpha6OPS-Setup-0.19.0.exe",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 98733056,
+      "inventorySha256": "44E2B0565A49A1D624625D08DB77C6A6AE84EBDA7E7F680FAA7B48729897D3E3",
+      "criticalHashes": 1
+    },
+    {
+      "source": "outputs/Alpha6OPS-Setup-0.20.0.exe",
+      "destination": "frozen-releases/Alpha6OPS-Setup-0.20.0.exe",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 96368640,
+      "inventorySha256": "6C398ED21C80CA7D01596508B9864E0AC7AFF6322EA22A6C4ADE27F50ACC97BB",
+      "criticalHashes": 1
+    },
+    {
+      "source": "outputs/Alpha6OPS-Setup-0.20.1.exe",
+      "destination": "frozen-releases/Alpha6OPS-Setup-0.20.1.exe",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 98751488,
+      "inventorySha256": "301370EDF75F4E55794134122042589C9F93B1289AC66A04D849E41796D13264",
+      "criticalHashes": 1
+    },
+    {
+      "source": "outputs/Alpha6OPS-Setup-0.20.2.exe",
+      "destination": "frozen-releases/Alpha6OPS-Setup-0.20.2.exe",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 98752512,
+      "inventorySha256": "049B709FE129EDA9C742A8587B6285FC4CD39A18DD5092AFE7139A4E3BEDE4EE",
+      "criticalHashes": 1
+    },
+    {
+      "source": "outputs/Alpha6OPS-Setup-0.20.3.exe",
+      "destination": "frozen-releases/Alpha6OPS-Setup-0.20.3.exe",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 98752512,
+      "inventorySha256": "E55BF0C9A2CA58B3B49CE3D98FFF6EA6DAB9A892F7D054A912913F4FFBDD6BEB",
+      "criticalHashes": 1
+    },
+    {
+      "source": "outputs/Alpha6OPS-Setup-0.21.0.exe",
+      "destination": "frozen-releases/Alpha6OPS-Setup-0.21.0.exe",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 98758656,
+      "inventorySha256": "45BB7D97038DA3CBDE07E2A55AC5893DBF5D0826E737351907FAFF7E42230108",
+      "criticalHashes": 1
+    },
+    {
+      "source": "outputs/Alpha6OPS-v0.16.0-checkpoint-7.11.bundle",
+      "destination": "frozen-releases/Alpha6OPS-v0.16.0-checkpoint-7.11.bundle",
+      "auditClass": "G",
+      "disposition": "archive-then-remove",
+      "files": 1,
+      "bytes": 27217925,
+      "inventorySha256": "39A0CA6FE31DC699943B019EC127A75CDFF9FFE5DB2D796AD992FB94ACDEFF57",
+      "criticalHashes": 1
+    },
+    {
+      "source": "docs/map-v2/evidence",
+      "destination": "checkpoints/documentation/map-v2-evidence",
+      "auditClass": "E",
+      "disposition": "archive-then-remove",
+      "files": 338,
+      "bytes": 7972110,
+      "inventorySha256": "6F48245BBA955E9C652517F644CFE2638932E6140BBEF556DDB81CEA2424E1D6",
+      "criticalHashes": 97
+    }
+  ]
+}

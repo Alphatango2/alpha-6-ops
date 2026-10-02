@@ -14,8 +14,9 @@ internal static class CrashReporter
 {
     private static int writing;
     private static string? diagnosticRoot;
-    internal static string RootDirectory => diagnosticRoot ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Alpha6Designs", "Alpha6OPS");
-    internal static string CrashDirectory => Path.Combine(RootDirectory, "CrashReports");
+    internal static bool DiagnosticMode => diagnosticRoot is not null;
+    internal static string RootDirectory => diagnosticRoot ?? ProductStorage.Current.Data;
+    internal static string CrashDirectory => diagnosticRoot is not null ? Path.Combine(diagnosticRoot, "CrashReports") : Path.Combine(ProductStorage.Current.Diagnostics, "CrashReports");
     internal static string? LastReportPath { get; private set; }
 
     internal static void Install(Application app, string? diagnosticDirectory = null)

@@ -1,4 +1,5 @@
 work/
+.work/
 .superpowers/
 **/bin/
 **/obj/
@@ -15,5 +16,13 @@ outputs/Alpha6OPS-Desktop-*/
 outputs/Alpha6OPS-Setup-*.exe
 outputs/Alpha6OPS-Desktop-*.zip
 outputs/Alpha6OPS-*-SHA256.txt
+outputs/Sierra4-Desktop-*/
+outputs/Sierra4-Desktop-*.zip
+outputs/Sierra4-Setup-*.exe
+outputs/Sierra4-*-SHA256.txt
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.cache
 __pycache__/
 *.pyc

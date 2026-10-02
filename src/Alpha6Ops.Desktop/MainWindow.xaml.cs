@@ -35,7 +35,7 @@ public partial class MainWindow : Window
     // Single-leg rotation for the live-tracked assignment. Actuals are applied through the same
     // RotationPlanner.ApplyMilestone/Project path the fixture-replay session uses, so a live flight
     // and a replayed one compute delay/ETA identically instead of the tracker hand-rolling its own math.
-    private static string LogDirectory => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Alpha6Designs", "Alpha6OPS", "TestLogs");
+    private static string LogDirectory => Path.Combine(CrashReporter.DiagnosticMode ? CrashReporter.RootDirectory : ProductStorage.Current.Diagnostics, "TestLogs");
     internal bool IsRunning => running;
     internal bool TrayVisible => tray.Visible;
     internal IReadOnlyList<LegProjection> Projection => RotationPlanner.Project(session.Rotation);

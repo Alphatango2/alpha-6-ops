@@ -1,0 +1,29 @@
+[
+  {
+    "intendedInside": false,
+    "actualInside": false,
+    "x": 648,
+    "y": 396,
+    "ActualWidth": 1297,
+    "ActualHeight": 316,
+    "browserAcknowledged": true
+  },
+  {
+    "intendedInside": true,
+    "actualInside": true,
+    "x": 648,
+    "y": 158,
+    "ActualWidth": 1297,
+    "ActualHeight": 316,
+    "browserAcknowledged": true
+  },
+  {
+    "intendedInside": false,
+    "actualInside": false,
+    "x": 648,
+    "y": 396,
+    "ActualWidth": 1297,
+    "ActualHeight": 316,
+    "browserAcknowledged": true
+  }
+]

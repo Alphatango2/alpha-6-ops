@@ -1,0 +1,28 @@
+import json, pathlib, hashlib
+root=pathlib.Path(__file__).resolve().parent
+rows=[]
+for p in sorted(root.glob('contention-*/contention-*/**/scheduling-trace.json')):
+    d=json.loads(p.read_text()); ev=d['events']; h=max((x for x in ev if x['kind']=='heartbeat'), key=lambda x:x['value']); start=h['t']-h['value']; end=h['t']
+    begins={x['id']:x for x in ev if x['kind']=='begin'}
+    intervals=[(max(start,begins[x['id']]['t']),min(end,x['t']),begins[x['id']]['name']) for x in ev if x['kind']=='end' and x['id'] in begins and x['t']>start and begins[x['id']]['t']<end]
+    at=start;covered=0
+    for a,b,n in sorted(intervals):
+        if b>at:covered+=b-max(a,at);at=b
+    timer=[x for x in ev if start<=x['t']<=end and 'timer-20' in x['name']]
+    ready=[x for x in timer if x['kind']=='priority']
+    gc=[x for x in ev if x['kind']=='gc' and start<=x['t']<=end]
+    longest=max((b-a,n) for a,b,n in intervals)
+    rows.append(dict(run=p.parts[-4],arm=p.parent.name,trace=str(p.relative_to(root)),heartbeatMs=h['value'],beginMs=start,endMs=end,readyQueueMs=end-ready[-1]['t'] if ready else None,completedCallbackUnionMs=covered,longestCallbackMs=longest[0],longestCallback=longest[1],callbackCount=len(intervals),gcMarks=gc,dropped=d['dropped'],os=[x for x in d['os'] if start-250<=x['t']<=end+250]))
+(root/'heartbeat-attribution.json').write_text(json.dumps(dict(rows=rows,limitations='Dispatcher callback envelopes are not CPU durations. Remaining time includes unhooked native/COM dispatch and OS scheduling; this does not identify the particular Win32 message stream. Original 513.2116ms run had no detailed trace and cannot be retrospectively attributed to one exact message.'),indent=2))
+print('Attributed',len(rows),'arm maxima')
+# All frozen files, not just installer/ZIP; detect additions as well as edits.
+before=json.loads((root/'frozen-t2-before.json').read_text(encoding='utf-8-sig'))
+frozen=pathlib.Path('outputs/Alpha6OPS-Desktop-S4-7.24C-T2-20260929-f421af15530c').resolve()
+now={str(p) for p in frozen.rglob('*') if p.is_file()}
+original={x['path'] for x in before}
+changed=[x['path'] for x in before if not pathlib.Path(x['path']).exists() or hashlib.sha256(pathlib.Path(x['path']).read_bytes()).hexdigest().upper()!=x['sha256']]
+(root/'frozen-preservation.json').write_text(json.dumps(dict(unchanged=not changed and now==original,files=len(before),changed=changed,added=sorted(now-original),removed=sorted(original-now)),indent=2))
+entry=json.loads((root/'entry-source-hashes.json').read_text(encoding='utf-8-sig'))
+changed=[x['path'] for x in entry if pathlib.Path(x['path']).exists() and hashlib.sha256(pathlib.Path(x['path']).read_bytes()).hexdigest().upper()!=x['sha256']]
+(root/'turn-source-scope.json').write_text(json.dumps(dict(existingFilesChanged=changed,newDiagnosticHelper='src/Alpha6Ops.Desktop/MapV2/SyntheticMapPointer.cs',productionBehaviorChanged=False),indent=2))
+print('Frozen preservation:',(root/'frozen-preservation.json').read_text())

@@ -1,0 +1,139 @@
+{
+  "conditions": {
+    "arm": "baseline",
+    "traceRevision": 2,
+    "renderObserver": false,
+    "compositionHost": true,
+    "dashboardClock": true,
+    "feed": "independent",
+    "targetHz": 1,
+    "heartbeatMs": 20,
+    "probeMs": 0,
+    "pollMs": 0,
+    "resourcesMs": 30000,
+    "warmupSeconds": 5,
+    "measuredSeconds": 30,
+    "tailSeconds": 6,
+    "finalDrain": false,
+    "width": 3440,
+    "height": 1400,
+    "presentationAblation": "none"
+  },
+  "timing": {
+    "heartbeatMs": {
+      "count": 465,
+      "mean": 64.51422967741935,
+      "p50": 45.8151,
+      "p95": 172.795,
+      "p99": 291.6639,
+      "max": 419.2426
+    },
+    "pendingHeartbeatMs": 4.8717,
+    "recoverySaveMs": {
+      "count": 30,
+      "mean": 2.3527433333333336,
+      "p50": 2.2838,
+      "p95": 2.6399,
+      "p99": 2.7155,
+      "max": 2.9947
+    },
+    "presentationMs": {
+      "count": 30,
+      "mean": 22.84434,
+      "p50": 22.3498,
+      "p95": 23.8125,
+      "p99": 24.1139,
+      "max": 34.5321
+    },
+    "layoutEvents": 12976
+  },
+  "resources": {
+    "cpuPercentMachine": 0,
+    "samplingMs": {
+      "count": 1,
+      "mean": 14.7123,
+      "p50": 14.7123,
+      "p95": 14.7123,
+      "p99": 14.7123,
+      "max": 14.7123
+    },
+    "last": {
+      "utc": "2026-09-29T21:01:06.4739856+00:00",
+      "stage": "baseline",
+      "browserProcesses": 5,
+      "hostMiB": 292.48046875,
+      "browserMiB": 493.74609375,
+      "totalMiB": 786.2265625,
+      "cpuPercentMachine": 0
+    },
+    "logicalProcessors": 16,
+    "workingSetsMayDoubleCountSharedPages": true,
+    "trackedProcessHandles": 5,
+    "exitedBeforeTracking": 0,
+    "samplingErrors": 0
+  },
+  "bridge": {
+    "produced": 59,
+    "offered": 59,
+    "coalesced": 0,
+    "acknowledged": 59,
+    "pending": false,
+    "rejected": 0,
+    "lastPayloadBytes": 4265,
+    "readyMs": 881.743,
+    "projectionQueue": {
+      "offered": 105,
+      "coalesced": 46,
+      "consumed": 59,
+      "pending": false
+    },
+    "projectionMs": {
+      "count": 59,
+      "mean": 0.3399796610169491,
+      "p50": 0.0747,
+      "p95": 0.2299,
+      "p99": 1.1289,
+      "max": 14.1992
+    },
+    "serializationMs": {
+      "count": 59,
+      "mean": 0.6674813559322034,
+      "p50": 0.0956,
+      "p95": 0.1806,
+      "p99": 0.3056,
+      "max": 33.1369
+    },
+    "dispatcherQueueMs": {
+      "count": 59,
+      "mean": 0.26064915254237286,
+      "p50": 0.0406,
+      "p95": 0.1967,
+      "p99": 5.8531,
+      "max": 6.6718
+    },
+    "postMs": {
+      "count": 59,
+      "mean": 0.1288050847457627,
+      "p50": 0.1282,
+      "p95": 0.1569,
+      "p99": 0.1654,
+      "max": 0.2741
+    },
+    "acknowledgmentMs": {
+      "count": 59,
+      "mean": 12.146957627118644,
+      "p50": 0.5211,
+      "p95": 9.6289,
+      "p99": 10.7112,
+      "max": 633.7061
+    },
+    "postToAcknowledgmentMs": {
+      "count": 59,
+      "mean": 11.886301694915254,
+      "p50": 0.4637,
+      "p95": 9.588,
+      "p99": 10.6661,
+      "max": 633.5087
+    }
+  }
+}

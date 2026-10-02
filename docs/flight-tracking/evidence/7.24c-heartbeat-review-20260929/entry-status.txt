@@ -1,0 +1,133 @@
+ M packaging/Desktop-Quick-Start.txt
+ M packaging/PreviewSetup.cs
+ M src/Alpha6Ops.Core/ArrivalEstimator.cs
+ M src/Alpha6Ops.Core/Operations.cs
+ M src/Alpha6Ops.Core/RouteProgressTracker.cs
+ M src/Alpha6Ops.Core/Timeline.cs
+ M src/Alpha6Ops.Desktop/App.xaml.cs
+ M src/Alpha6Ops.Desktop/FlightHistoryDatabase.cs
+ M src/Alpha6Ops.Desktop/FlightRecovery.cs
+ M src/Alpha6Ops.Desktop/FlightSessionCoordinator.Commands.cs
+ M src/Alpha6Ops.Desktop/FlightSessionCoordinator.Connection.cs
+ M src/Alpha6Ops.Desktop/FlightSessionCoordinator.Identity.cs
+ M src/Alpha6Ops.Desktop/FlightSessionCoordinator.Tracking.cs
+ M src/Alpha6Ops.Desktop/FlightSessionCoordinator.cs
+ M src/Alpha6Ops.Desktop/FlightSessionDiagnosticAccess.cs
+ M src/Alpha6Ops.Desktop/FlightTrackingEvents.cs
+ M src/Alpha6Ops.Desktop/FlightTrackingWorkspace.xaml.cs
+ M src/Alpha6Ops.Desktop/MainWindow.Dashboard.cs
+ M src/Alpha6Ops.Desktop/MainWindow.FlightSession.cs
+ M src/Alpha6Ops.Desktop/MapV2/MapBridgeMetrics.cs
+ M src/Alpha6Ops.Desktop/MapV2/MapContentionChecks.cs
+ M src/Alpha6Ops.Desktop/MapV2/MapProjectionPump.cs
+ M src/Alpha6Ops.Desktop/MapV2/MapProjectionService.cs
+ M src/Alpha6Ops.Desktop/MapV2/MapV2Checks.cs
+ M src/Alpha6Ops.Desktop/MapV2/Web/map.mjs
+ M src/Alpha6Ops.Desktop/MapV2/WebMapRenderer.cs
+ M src/Alpha6Ops.Desktop/OperationsMapHost.cs
+ M src/Alpha6Ops.Desktop/OperationsSmokeTest.cs
+ M src/Alpha6Ops.Desktop/OperationsWorkspace.xaml.cs
+ M src/Alpha6Ops.Desktop/RecordedFlightReplay.cs
+ M src/Alpha6Ops.Desktop/RefreshSmokeTest.cs
+ M src/Alpha6Ops.Desktop/SimConnectSource.cs
+ M src/Alpha6Ops.Desktop/TrackingIntegrationSmokeTest.cs
+ M tests/Alpha6Ops.RecoveryChecks/Program.cs
+ M tests/Alpha6Ops.Tests/Program.cs
+ M tests/Alpha6Ops.Tests/TrackingTests.cs
+?? docs/checkpoint-7.24a.1.md
+?? docs/checkpoint-7.24a.2.md
+?? docs/checkpoint-7.24a.md
+?? docs/checkpoint-7.24b.md
+?? docs/flight-tracking/
+?? docs/map-v2/checkpoint-7.24a-globe-readiness.md
+?? docs/map-v2/checkpoint-7.24a-spec.txt
+?? docs/map-v2/checkpoint-7.24a.1-policy.json
+?? docs/map-v2/checkpoint-7.24a.1-policy.md
+?? docs/map-v2/checkpoint-7.24a.1-spec.txt
+?? docs/map-v2/checkpoint-7.24a.2-spec.txt
+?? docs/map-v2/checkpoint-7.24b-first-paint.md
+?? docs/map-v2/checkpoint-7.24b-flight-r3.md
+?? docs/map-v2/checkpoint-7.24b-input-correction.md
+?? docs/map-v2/checkpoint-7.24b-input-r1-installed.md
+?? docs/map-v2/checkpoint-7.24b-input-r1-retest.md
+?? docs/map-v2/checkpoint-7.24b-installation-gate.md
+?? docs/map-v2/checkpoint-7.24b-installed-baseline.md
+?? docs/map-v2/checkpoint-7.24b-installed-pilot.md
+?? docs/map-v2/checkpoint-7.24b-layout-oscillation.md
+?? docs/map-v2/checkpoint-7.24b-layout-r3-installed.md
+?? docs/map-v2/checkpoint-7.24b-layout-r3-physical.md
+?? docs/map-v2/checkpoint-7.24b-layout-r3-retest.md
+?? docs/map-v2/checkpoint-7.24b-native-connection-r2a.md
+?? docs/map-v2/checkpoint-7.24b-native-connection-r3.md
+?? docs/map-v2/checkpoint-7.24b-native-r3-results.md
+?? docs/map-v2/checkpoint-7.24b-physical-input.md
+?? docs/map-v2/checkpoint-7.24b-pilot-checklist.md
+?? docs/map-v2/checkpoint-7.24b-spec.txt
+?? docs/map-v2/checkpoint-7.24b-visual-r2a-installed.md
+?? docs/map-v2/checkpoint-7.24b-visual-r2a-physical.md
+?? docs/map-v2/checkpoint-7.24b-visual-r2a-retest.md
+?? docs/map-v2/evidence/7.24a.1/
+?? docs/map-v2/evidence/7.24a.2/
+?? docs/map-v2/evidence/7.24a/
+?? docs/map-v2/evidence/7.24b-first-paint/
+?? docs/map-v2/evidence/7.24b-input-r1-installed/
+?? docs/map-v2/evidence/7.24b-input-r1/
+?? docs/map-v2/evidence/7.24b-installation-gate/
+?? docs/map-v2/evidence/7.24b-installed-baseline/
+?? docs/map-v2/evidence/7.24b-layout-r3-installed/
+?? docs/map-v2/evidence/7.24b-layout-r3-physical/
+?? docs/map-v2/evidence/7.24b-layout-r3/
+?? docs/map-v2/evidence/7.24b-native-r3/
+?? docs/map-v2/evidence/7.24b-physical-input/
+?? docs/map-v2/evidence/7.24b-visual-r2a-installed/
+?? docs/map-v2/evidence/7.24b-visual-r2a-physical/
+?? docs/map-v2/evidence/7.24b-visual-r2a/
+?? docs/map-v2/evidence/7.24b/
+?? docs/superpowers/plans/2026-09-24-checkpoint-7.24a.md
+?? docs/superpowers/plans/2026-09-25-checkpoint-7.24a.1.md
+?? docs/superpowers/plans/2026-09-25-checkpoint-7.24a.2.md
+?? docs/superpowers/plans/2026-09-25-checkpoint-7.24b-input-correction.md
+?? docs/superpowers/plans/2026-09-25-checkpoint-7.24b.md
+?? docs/superpowers/plans/2026-09-27-checkpoint-7.24b-layout-oscillation.md
+?? docs/superpowers/plans/2026-09-28-checkpoint-7.24c-native-flight-validation.md
+?? docs/superpowers/plans/2026-09-28-checkpoint-7.24c-scheduling-continuation.md
+?? docs/superpowers/plans/2026-09-28-checkpoint-7.24c-terminal-implementation.md
+?? docs/superpowers/plans/2026-09-28-checkpoint-7.24c.md
+?? docs/superpowers/plans/2026-09-29-checkpoint-7.24c-jst771.md
+?? outputs/Alpha6OPS-v0.16.0-checkpoint-7.11.bundle
+?? outputs/S4-Fenix-Shutdown-Capture-7.24C-20260928/
+?? scripts/MapResponsivenessPolicy.psm1
+?? scripts/SchedulingTraceAnalysis.psm1
+?? scripts/capture_fenix_shutdown.py
+?? scripts/summarize-map-performance.ps1
+?? scripts/summarize-map-responsiveness.ps1
+?? scripts/summarize-map-scheduling.ps1
+?? scripts/test-jst771-evidence.py
+?? scripts/test-map-performance-summary.ps1
+?? scripts/test-map-responsiveness-policy.ps1
+?? scripts/test-scheduling-trace.ps1
+?? scripts/verify-map-performance.ps1
+?? scripts/verify-map-scheduling.ps1
+?? src/Alpha6Ops.Core/TerminalShutdown.cs
+?? src/Alpha6Ops.Desktop/FenixShutdownCapabilities.cs
+?? src/Alpha6Ops.Desktop/FlightSessionCoordinator.TerminalShutdown.cs
+?? src/Alpha6Ops.Desktop/MapV2/DispatcherSchedulingTrace.cs
+?? src/Alpha6Ops.Desktop/MapV2/MapInteractionChecks.cs
+?? src/Alpha6Ops.Desktop/MapV2/MapPerformanceChecks.Restoration.cs
+?? src/Alpha6Ops.Desktop/MapV2/MapPerformanceChecks.cs
+?? src/Alpha6Ops.Desktop/MapV2/MapResponsivenessChecks.cs
+?? src/Alpha6Ops.Desktop/MapV2/MapSchedulingChecks.cs
+?? src/Alpha6Ops.Desktop/MapV2/MapV2Checks.Delivery.cs
+?? src/Alpha6Ops.Desktop/MapV2/MapV2Checks.FirstPaint.cs
+?? src/Alpha6Ops.Desktop/MapV2/MapV2Checks.Restoration.cs
+?? src/Alpha6Ops.Desktop/MapV2/NativeMapInputTrace.cs
+?? src/Alpha6Ops.Desktop/MapV2/SyntheticMapPointer.cs
+?? src/Alpha6Ops.Desktop/OperationsLayoutChecks.cs
+?? src/Alpha6Ops.Desktop/ShutdownIntentAdapters.cs
+?? src/Alpha6Ops.Desktop/SimConnectSource.TerminalShutdown.cs
+?? tests/Alpha6Ops.RecoveryChecks/ActiveFlightRecoveryChecks.cs
+?? tests/Alpha6Ops.RecoveryChecks/FenixShutdownCapabilityChecks.cs
+?? tests/Alpha6Ops.RecoveryChecks/TerminalShutdownChecks.Family.cs
+?? tests/Alpha6Ops.RecoveryChecks/TerminalShutdownChecks.cs
+?? tests/Alpha6Ops.Tests/TerminalShutdownTests.cs
+?? tests/test_fenix_shutdown_capture.py

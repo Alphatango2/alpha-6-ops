@@ -1,0 +1,132 @@
+{
+  "archive": "t2-native-evidence.zip",
+  "archiveSha256": "A54E9089BBA9786E3C175ECA49F17F8F0E6B00209E3EB9409E85ACF886ED2A5C",
+  "entries": [
+    {
+      "path": "analysis.json",
+      "bytes": 49439,
+      "sha256": "6B190E9660D763E2470B294252B79EAA4A35A9C4474BF33CB3853D4B52D6945E",
+      "matchesPreservedCopy": true
+    },
+    {
+      "path": "analyze.py",
+      "bytes": 11006,
+      "sha256": "BBD2C25A69C9F56474FEE4627C5306F4213B44BDD6C1CD8DF5D4881B46C01DF5",
+      "matchesPreservedCopy": true
+    },
+    {
+      "path": "final-preservation-recheck.json",
+      "bytes": 10880,
+      "sha256": "833E49D1EF266F4F3173503ADE6CFB9097C3363FEBDFA14D336B69E9618F9E8E",
+      "matchesPreservedCopy": true
+    },
+    {
+      "path": "frozen-identification/payload-manifest.json",
+      "bytes": 107868,
+      "sha256": "83A97C0F5F614C7894E64DB1FA865ED7E74A888D367B5AEE11DFEF89F9B46400",
+      "matchesPreservedCopy": true
+    },
+    {
+      "path": "frozen-identification/source-manifest.json",
+      "bytes": 40346,
+      "sha256": "98A98D1F2FF4C3450D05A93A42F687DD8C2B0A3A1D750E192ADE3EF3F5B14BF1",
+      "matchesPreservedCopy": true
+    },
+    {
+      "path": "frozen-identification/validation-build.json",
+      "bytes": 2652,
+      "sha256": "295F20A504A67B1DEE9FBD419F01CC9336560479D1246EB14C06ACEBD68E1617",
+      "matchesPreservedCopy": true
+    },
+    {
+      "path": "frozen-package-verification.json",
+      "bytes": 767,
+      "sha256": "EB11083594D836E10FC5E0ED421A82B3DAF104FF64D2F6D1754BF8E31D93E028",
+      "matchesPreservedCopy": true
+    },
+    {
+      "path": "installed-payload-verification.json",
+      "bytes": 150834,
+      "sha256": "28747632B664804BB12A48249B9F6FF261DC1FC858E94E8EFD649B4EB75E2CF5",
+      "matchesPreservedCopy": true
+    },
+    {
+      "path": "preservation-manifest.json",
+      "bytes": 19578,
+      "sha256": "139B2B3EF4B2E136B85A778ED75BFD18E7EB21A60B65048E244841A903B80B3E",
+      "matchesPreservedCopy": true
+    },
+    {
+      "path": "profile-presence.json",
+      "bytes": 231,
+      "sha256": "532312C88F6ADD66A3237CF2853B14F0E8FD53901ECAA6EE16BAFCCE616CD97C",
+      "matchesPreservedCopy": true
+    },
+    {
+      "path": "supplied/Alpha6OPS-20260930-002533-5c4a5425f12d4497b116bb4048696e3e.json",
+      "bytes": 121400,
+      "sha256": "EF7DA2EAED3E4EB63CE6B933FF1DDBE771FFA0133C582EE46639F086C6742583",
+      "matchesPreservedCopy": true
+    },
+    {
+      "path": "supplied/Alpha6OPS-20260930-002533-5c4a5425f12d4497b116bb4048696e3e.jsonl",
+      "bytes": 76638,
+      "sha256": "2F4571A81A6BA11CA116711C2C85EA73C1DCF7A2BD5B0C8097B909AE8A84F1F5",
+      "matchesPreservedCopy": true
+    },
+    {
+      "path": "supplied/Alpha6OPS-20260930-002608-44a0731c4737448498a33b1b57b6e304.json",
+      "bytes": 147587,
+      "sha256": "CC44FB637928E51686B7CFC230512B3CE9965B7CE4F5AF36FDD0D4E16DD8748B",
+      "matchesPreservedCopy": true
+    },
+    {
+      "path": "supplied/Alpha6OPS-20260930-002608-44a0731c4737448498a33b1b57b6e304.jsonl",
+      "bytes": 92885,
+      "sha256": "657DDA6FD796D40130F24209D390DACFB91E641721ABFAAF1484904C04717AA8",
+      "matchesPreservedCopy": true
+    },
+    {
+      "path": "supplied/Alpha6OPS-20260930-002700-18131311a5d745289686a8f1f6e9c622.json",
+      "bytes": 627925,
+      "sha256": "5F9DC573E5035B73C7E3CA5639A32DCA6F83ED4E2AB911A67265824B466602E4",
+      "matchesPreservedCopy": true
+    },
+    {
+      "path": "supplied/Alpha6OPS-20260930-002700-18131311a5d745289686a8f1f6e9c622.jsonl",
+      "bytes": 396567,
+      "sha256": "A527EB1E3C09BD686741737E61658A7A1243D8F3F596A99092B2F269AF015513",
+      "matchesPreservedCopy": true
+    },
+    {
+      "path": "supplied/S4PT 1.JPG",
+      "bytes": 287793,
+      "sha256": "A8DF2A3C9DCB1CA44CED05B86065C6DE1C746D7B37F8AF577C9A3B8CD66C2673",
+      "matchesPreservedCopy": true
+    },
+    {
+      "path": "supplied/S4PT 2.JPG",
+      "bytes": 185263,
+      "sha256": "2238FE02FE5A5B24C463E3129213825A40F06910A5F3D169DA64FD1621C5FA3E",
+      "matchesPreservedCopy": true
+    },
+    {
+      "path": "supplied/S4PT 3.JPG",
+      "bytes": 37986,
+      "sha256": "97AF5875E7B4AC2EB99DA6E1F4DE5EF7514353657DB65679AC397F94A0C9DC98",
+      "matchesPreservedCopy": true
+    },
+    {
+      "path": "terminal-timeline.csv",
+      "bytes": 50657,
+      "sha256": "8111EE897A50BB7E3B2ABB03F58B2C13CF4BEE75ED39512982E4CCB59C2EEF88",
+      "matchesPreservedCopy": true
+    },
+    {
+      "path": "verification-assertions.json",
+      "bytes": 1023,
+      "sha256": "A2FF21B0C890A7DFD81B80E633DE2C2EA72CA92B75509204FAF15386DE291B70",
+      "matchesPreservedCopy": true
+    }
+  ]
+}

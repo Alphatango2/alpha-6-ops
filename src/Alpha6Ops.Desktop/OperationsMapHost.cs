@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Automation;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Threading;
 using Alpha6Ops.Core;
 using Alpha6Ops.Desktop.MapV2;
 
@@ -44,6 +45,7 @@ internal sealed class OperationsMapHost : ContentControl
     private CancellationTokenSource? lifetime;
     private Task? activation;
     private Window? ownerWindow;
+    private readonly DispatcherTimer dormantExpiry=new(){Interval=TimeSpan.FromMinutes(5)};
     private long serial;
     private static long nextEpoch;
     private MapPresentationState viewState=new(new(new(15,20),1.1,0,0,null),null,
@@ -59,15 +61,16 @@ internal sealed class OperationsMapHost : ContentControl
         Grid.SetRow(footer,1);root.Children.Add(footer);Content=root;
         AutomationProperties.SetName(toggle,"Switch Operations map renderer");
         toggle.Click+=(_,_)=>SetRenderer(!UseV2);
+        dormantExpiry.Tick+=(_,_)=>{dormantExpiry.Stop();if(!PresentationVisible)DisposeRenderer();};
         Loaded+=(_,_)=>{ownerWindow=Window.GetWindow(this);if(ownerWindow is not null)ownerWindow.StateChanged+=WindowStateChanged;Activate();};
         IsVisibleChanged+=(_,_)=>{if(IsVisible)Activate();else EndVisibleTrail();};
-        Unloaded+=(_,_)=>{if(ownerWindow is not null)ownerWindow.StateChanged-=WindowStateChanged;ownerWindow=null;EndVisibleTrail();};UpdateFooter();
+        Unloaded+=(_,_)=>{if(ownerWindow is not null)ownerWindow.StateChanged-=WindowStateChanged;ownerWindow=null;DisposeRenderer();};UpdateFooter();
     }
     private void WindowStateChanged(object? sender,EventArgs e)
     {if(ownerWindow?.WindowState==WindowState.Minimized)EndVisibleTrail();else Activate();}
     internal void SetRenderer(bool v2)
     {
-        UseV2=v2;RestartCount=0;EndVisibleTrail();
+        UseV2=v2;RestartCount=0;DisposeRenderer();
         if(!v2&&latest is {} overview)PresentLegacy(overview);
         UpdateFooter();Activate();
     }
@@ -79,13 +82,33 @@ internal sealed class OperationsMapHost : ContentControl
     }
     private void Activate()
     {
-        if(!UseV2||!IsLoaded||!IsVisible||ownerWindow?.WindowState==WindowState.Minimized||V2 is not null||activation is {IsCompleted:false})return;
+        if(!UseV2||!PresentationVisible)return;
+        dormantExpiry.Stop();
+        if(V2 is {} retained)
+        {
+            if(retained.Paused)activation=ResumeAsync(retained,serial);
+            return;
+        }
+        if(activation is {IsCompleted:false})return;
         activation=ActivateAsync();
+    }
+    private bool PresentationVisible=>IsLoaded&&IsVisible&&ownerWindow?.WindowState!=WindowState.Minimized;
+    private async Task ResumeAsync(WebMapRenderer renderer,long ticket)
+    {
+        try
+        {
+            await renderer.SetVisibleAsync(true);
+            if(ticket!=serial||!PresentationVisible||renderer.Paused)return;
+            pump?.SetVisible(true);
+            if(latest?.MapState is {} state)pump?.Offer(state,latest.MapTrack,latest.MapDemo);
+            UpdateContext();
+        }
+        catch(Exception error){LastFailure=error.ToString();if(ticket==serial)await RecoverAsync(ticket);}
     }
     private async Task ActivateAsync()
     {
         var ticket=++serial;var tokenSource=lifetime=new();var epoch=Interlocked.Increment(ref nextEpoch);
-        var profile=DiagnosticProfile??Path.Combine(CrashReporter.RootDirectory,"MapCache");
+        var profile=DiagnosticProfile??Path.Combine(CrashReporter.DiagnosticMode?CrashReporter.RootDirectory:ProductStorage.Current.Cache,"MapCache");
         try
         {
         var renderer=DiagnosticRendererFactory?.Invoke()??new WebMapRenderer(epoch,profile,CompositionHost,DiagnosticAssets,DiagnosticRuntimeVersion);
@@ -93,21 +116,26 @@ internal sealed class OperationsMapHost : ContentControl
         renderer.SelectionChanged+=selection=>{if(ticket==serial)viewState=viewState with{Selection=selection};};
         renderer.CameraChanged+=camera=>{if(ticket==serial)viewState=viewState with{Camera=camera,RestoreCamera=true};};
         renderer.PreferencesChanged+=(layers,reduced)=>{if(ticket==serial)viewState=viewState with{EnabledLayers=layers,ReducedMotion=reduced};};
-        renderer.StatusChanged+=state=>{if(ticket==serial&&state.State==MapRendererState.Failed){LastFailure=state.ReasonCode+": "+state.Detail;_=RecoverAsync(ticket);}};
+        renderer.StatusChanged+=state=>
+        {
+            if(ticket!=serial)return;
+            if(state.State==MapRendererState.Failed){LastFailure=state.ReasonCode+": "+state.Detail;_=RecoverAsync(ticket);}
+            else if(state.State==MapRendererState.Ready){UpdateFooter();UpdateContext();}
+        };
             await renderer.InitializeAsync(tokenSource.Token);
             if(ticket!=serial)return;
             renderer.Present(viewState);
             pump=new(renderer,epoch,renderer.Metrics,error=>Dispatcher.BeginInvoke(()=>{if(ticket==serial)_=RecoverAsync(ticket);}));
-            if(latest?.MapState is {} state)pump.Offer(state,latest.MapDemo);
-            UpdateFooter();UpdateContext();
+            if(latest?.MapState is {} state)pump.Offer(state,latest.MapTrack,latest.MapDemo);
+            UpdateContext();
         }
         catch(Exception error) { LastFailure=error.ToString();if(ticket==serial)await RecoverAsync(ticket); }
     }
     private async Task RecoverAsync(long ticket)
     {
         if(ticket!=serial)return;
-        CrashReporter.Write("map_renderer",null,new{reason="presentation-renderer-unavailable",restartCount=RestartCount},Path.Combine(CrashReporter.RootDirectory,"MapDiagnostics"));
-        EndVisibleTrail();
+        CrashReporter.Write("map_renderer",null,new{reason="presentation-renderer-unavailable",restartCount=RestartCount},Path.Combine(CrashReporter.DiagnosticMode?CrashReporter.RootDirectory:ProductStorage.Current.Diagnostics,"MapDiagnostics"));
+        DisposeRenderer();
         if(UseV2&&RestartCount<1)
         {
             RestartCount++;
@@ -123,6 +151,22 @@ internal sealed class OperationsMapHost : ContentControl
     }
     internal void EndVisibleTrail()
     {
+        sessionKey=null;
+        pump?.SetVisible(false);
+        if(V2 is not {} renderer)return;
+        // There is no reusable presentation before initialization completes.
+        if(pump is null||!renderer.Ready.IsCompletedSuccessfully){DisposeRenderer();return;}
+        dormantExpiry.Stop();dormantExpiry.Start();
+        _=PauseAsync(renderer,serial);
+    }
+    private async Task PauseAsync(WebMapRenderer renderer,long ticket)
+    {
+        try{await renderer.SetVisibleAsync(false);}
+        catch(Exception error){LastFailure=error.ToString();if(ticket==serial)await RecoverAsync(ticket);}
+    }
+    private void DisposeRenderer()
+    {
+        dormantExpiry.Stop();
         sessionKey=null;serial++;lifetime?.Cancel();lifetime=null;
         var oldPump=pump;pump=null;if(oldPump is not null)_=oldPump.DisposeAsync();
         var old=V2;V2=null;if(old is not null)_=old.DisposeAsync();viewport.Content=Renderer;
@@ -138,7 +182,7 @@ internal sealed class OperationsMapHost : ContentControl
         latest=overview;
         if(UseV2)
         {
-            if(overview.MapState is {} state)pump?.Offer(state,overview.MapDemo);
+            if(PresentationVisible&&V2?.Paused!=true&&overview.MapState is {} state)pump?.Offer(state,overview.MapTrack,overview.MapDemo);
             Activate();UpdateContext();
         }
         else PresentLegacy(overview);
