@@ -43,6 +43,10 @@ SUPPLEMENTAL = {
     "Alpha6OPS-20260929-132028-8b82910e17c643edb0daaadcaf382fe3": (5630, 2800),
     "Alpha6OPS-20260929-140712-45a372128d6c48869b91cd6e6a66176e": (160, 77),
 }
+SUPPLEMENTAL_ALIASES = {
+    "supplemental-132028": "Alpha6OPS-20260929-132028-8b82910e17c643edb0daaadcaf382fe3",
+    "supplemental-140712": "Alpha6OPS-20260929-140712-45a372128d6c48869b91cd6e6a66176e",
+}
 OOOI = {
     "TaxiOut": ("2026-09-28T21:41:34.3206481+00:00", "Block-out / taxi out"),
     "Airborne": ("2026-09-28T21:52:01.3083724+00:00", "Liftoff"),
@@ -336,7 +340,7 @@ def main():
         combined = list(primary)
         seen = set()
         for path in args.supplemental_journal:
-            stem = path.stem
+            stem = SUPPLEMENTAL_ALIASES.get(path.stem, path.stem)
             if stem not in SUPPLEMENTAL or stem in seen:
                 raise ValueError("Supplemental journal must be one unique 132028 departure or 140712 reconnect JSONL: " + str(path))
             seen.add(stem)
