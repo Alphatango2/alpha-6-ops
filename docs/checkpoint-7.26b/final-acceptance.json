@@ -1,0 +1,92 @@
+{
+  "schema": "sierra4.checkpoint-7.26b.final-acceptance.v1",
+  "completedAt": "2026-10-02T10:41:01.8563589-05:00",
+  "passed": true,
+  "repository": {
+    "root": "F:\\Sierra4-Development",
+    "branch": "codex/checkpoint-7.24c",
+    "sourceCommit": "77e337c7c46911d0e86c576231131fd38cc5dfc5",
+    "sourceWasCleanAtFreeze": true
+  },
+  "archive": {
+    "location": "F:\\Sierra4-Archive\\checkpoint-7.26b-20261002",
+    "passed": true,
+    "units": 258,
+    "files": 271806,
+    "bytes": 37822194622,
+    "criticalHashes": 65047,
+    "manifestSha256": "8951D5D4EB76530DF6A8F0F2837959E7206A57D266FBDF9FA2E57797965F148D",
+    "uniqueEvidencePreserved": true
+  },
+  "cleanup": {
+    "beforeGiB": 43.137734,
+    "finalWorkspaceGiBIncludingNewAcceptanceEvidenceAndCandidates": 6.053043,
+    "netRecoveredGiB": 37.084691,
+    "ledgerTargets": 291,
+    "ledgerFiles": 302622,
+    "ledgerBytes": 44207965999,
+    "scopeLimitedToApprovedAuditClasses": true
+  },
+  "preservation": {
+    "replayFixtures": { "declared": 16, "verified": 16, "rawBytes": 248881010 },
+    "frozen725A": {
+      "candidateId": "S4-7.25A-A350-20261001-6020896a402b",
+      "manifestVerified": 531,
+      "manifestTotal": 531,
+      "installerSha256": "2920F198578FA7792D8703BAA8817DFE5E367DF53F55DCDFD51929591DDDA709",
+      "portableSha256": "5EF952567F3571E7AB91BBF8F8DA21C26067DB0FEBDC9AAF63669F0BD97FD5A3"
+    }
+  },
+  "foundation": {
+    "storageAndDualIdentity": { "executed": 9, "passed": 9, "failed": 0 },
+    "productionRetention": { "executed": 7, "passed": 7, "failed": 0 },
+    "recoveryPersistence": { "executed": 21, "passed": 21, "failed": 0 },
+    "terminalAndFenix": { "executed": 203, "passed": 203, "failed": 0 },
+    "activeFlightRecovery": { "executed": 74, "passed": 74, "failed": 0 },
+    "logbook": { "executed": 40, "passed": 40, "failed": 0 }
+  },
+  "fullRegression": {
+    "checkpoint": "7.25A",
+    "executed": 2876,
+    "passed": 2876,
+    "failed": 0,
+    "skipped": 2,
+    "historicalReplayCount": 11,
+    "historicalTelemetrySamples": 100632,
+    "dal40ReplayCount": 1,
+    "dal40TelemetrySamples": 54061,
+    "totalRecordedTelemetrySamples": 154693,
+    "observedCruiseNativeChecks": 19,
+    "dal40JournalSha256": "7377B5057546B9954D7792DFC47593AE1009E09A94FF29D5FB694839999A34D0"
+  },
+  "package": {
+    "passed": true,
+    "version": "0.23.0",
+    "payloadFiles": 514,
+    "payloadBytes": 236617544,
+    "payloadFingerprint": "701C468F8CCA73125344FC5C0B8A878DD20EE448BC7A84CC63EA7FAA5FA53821",
+    "installerSha256": "005E7D73D427560A687BF0866C6264315465F6AE756D71F65F073F39AEF5890D",
+    "portableSha256": "0856F126857171289F5A2981A31FCE9BB2384443FD736BE9D5D05A2F78C2E40F",
+    "productionDiagnosticCommandsAbsent": true,
+    "developmentHarnessesPresent": true,
+    "replacementPassed": true,
+    "installed": false
+  },
+  "candidate": {
+    "candidateId": "S4-7.26B-PRE-UI-20261002-77e337c7c469",
+    "path": "F:\\Sierra4-Development\\outputs\\Sierra4-Desktop-S4-7.26B-PRE-UI-20261002-77e337c7c469",
+    "sourceCommit": "77e337c7c46911d0e86c576231131fd38cc5dfc5",
+    "sourceSnapshotSha256": "C4740A6119E2869CF6881750FF36FA5F25C499DDB2A1DDD3D257EAC25BF31B71",
+    "manifestSha256": "A23ECB635310B2894A2EE9C23B22C59F1FA563F583878EFC6DB6213B876C14DC",
+    "manifestVerified": 527,
+    "manifestTotal": 527,
+    "installedFootprintFiles": 514,
+    "installedFootprintBytes": 236617544,
+    "installed": false
+  },
+  "handoff": {
+    "document": "docs/checkpoint-7.26b/pre-premium-ui-handoff.md",
+    "nextCheckpoint": "7.27 Premium UI Foundation",
+    "checkpoint727Started": false
+  }
+}

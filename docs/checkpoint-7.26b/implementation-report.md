@@ -71,13 +71,13 @@ The new uninstalled package is Sierra 4 v0.23.0:
 - Ownership marker: `.sierra4`
 - Registry identity: `HKCU\Software\Microsoft\Windows\CurrentVersion\Uninstall\Sierra4`
 - Start menu shortcut: `Sierra 4.lnk`
-- Production payload: 514 files, 236,616,520 bytes
-- Installer SHA-256: `335D1B227D13EC88F20FD9304939FF5929B423451319E44EB50E1EAA2EA6AC89`
-- Portable ZIP SHA-256: `E5624CFEDDA82689C2175EDC272FD56FF576CD5A9038A350395B0F617C545F60`
+- Production payload: 514 files, 236,617,544 bytes
+- Installer SHA-256: `005E7D73D427560A687BF0866C6264315465F6AE756D71F65F073F39AEF5890D`
+- Portable ZIP SHA-256: `0856F126857171289F5A2981A31FCE9BB2384443FD736BE9D5D05A2F78C2E40F`
 
 Production builds compile without command-driven smoke, replay, probe and map-check harnesses. Development builds retain those harnesses for the checkpoint gates. Installer extraction, portable extraction and clean publish inventories match exactly. Same-channel replacement removes an obsolete seeded payload file and leaves the external profile unchanged.
 
-## Verification completed before the full release gate
+## Verification
 
 | Suite | Result |
 | --- | ---: |
@@ -88,5 +88,10 @@ Production builds compile without command-driven smoke, replay, probe and map-ch
 | Active-flight restart | 74/74 |
 | Logbook authoritative times | 40/40 |
 | Package contract | PASS |
+| Complete 7.25 + 7.25A gate | 2,876/2,876; 2 expected skips |
+| Historical recorded telemetry | 11 replays; 100,632 samples |
+| DAL40 authoritative replay | 54,061 samples |
+| New frozen manifest | 527/527 |
+| Preserved 7.25A manifest | 531/531 |
 
-The complete 7.25 plus 7.25A gate and the final candidate freeze are recorded separately in `final-acceptance.json` after the source baseline commit.
+The frozen candidate is `S4-7.26B-PRE-UI-20261002-77e337c7c469`, bound to clean source commit `77e337c7c46911d0e86c576231131fd38cc5dfc5`. It was not installed. The complete machine-readable result is in `final-acceptance.json`.
