@@ -69,8 +69,8 @@ internal static class DiagnosticIndexSmokeTest
                 var added = Path.Combine(crashes, "Alpha6OPS-crash-new.json"); File.WriteAllText(added, "{}");
                 Check(database.Refresh(logs, crashes) == count + 1 && database.ReadRecent()[0].Status == "Crash", $"{count}: new crash classification");
                 File.Delete(added);
-                Check(database.Refresh(logs, crashes) == count + 1 && database.ReadRecent()[0].Path == added, $"{count}: deleted rows retained");
-                Check(database.Refresh(Path.Combine(root, "missing"), Path.Combine(root, "also-missing")) == count + 1, $"{count}: missing directories retain rows");
+                Check(database.Refresh(logs, crashes) == count && database.ReadRecent(1000).All(file => file.Path != added), $"{count}: deleted rows removed");
+                Check(database.Refresh(Path.Combine(root, "missing"), Path.Combine(root, "also-missing")) == 0 && database.ReadRecent().Count == 0, $"{count}: missing directories clear derived rows");
                 File.WriteAllText(added, "{}");
                 Query(handle, "CREATE TRIGGER fail_crash BEFORE INSERT ON diagnostic_file WHEN NEW.kind='crash_report' BEGIN SELECT RAISE(FAIL,'expected failure'); END;");
                 indexed = Query(handle, "SELECT min(indexed_utc) FROM diagnostic_file WHERE kind='flight_log';");
