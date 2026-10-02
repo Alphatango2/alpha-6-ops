@@ -88,10 +88,10 @@ public partial class App : Application
 #endif
         if (diagnosticOutput is null)
         {
+            if (!SingleInstance.TryAcquire()) { Shutdown(); return; }
             ProductStorage.Initialize();
             var retention=ProductionRetention.Apply(ProductStorage.Current,DateTimeOffset.UtcNow);
             if(retention.Errors.Count>0)CrashReporter.Write("production_retention",null,new{errors=retention.Errors});
-            if (!SingleInstance.TryAcquire()) { Shutdown(); return; }
         }
         var window = diagnosticOutput is not null ? new MainWindow(diagnosticOutput) : new MainWindow();
         MainWindow = window;
