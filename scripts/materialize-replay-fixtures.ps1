@@ -40,12 +40,12 @@ foreach($entry in $configuration.files){
         }finally{if(Test-Path -LiteralPath $temporary){Remove-Item -LiteralPath $temporary -Force}}
     }
 }
-function Write-Manifest([string]$Path,[object[]]$Entries,[bool]$Array){
+function Write-Manifest([string]$Path,[object[]]$Entries){
     $full=[IO.Path]::GetFullPath((Join-Path $repo $Path));New-Item -ItemType Directory -Path (Split-Path $full) -Force|Out-Null
-    $value=if($Array){@($Entries.path)}else{[string]$Entries[0].path}
+    [string[]]$value=@($Entries.path)
     ConvertTo-Json -InputObject $value|Set-Content -LiteralPath $full -Encoding utf8
 }
-Write-Manifest $configuration.baselineManifest @($configuration.files|Where-Object group -eq 'baseline') $true
-Write-Manifest $configuration.jst776Manifest @($configuration.files|Where-Object group -eq 'jst776') $false
-Write-Manifest $configuration.jst771Manifest @($configuration.files|Where-Object group -eq 'jst771') $false
+Write-Manifest $configuration.baselineManifest @($configuration.files|Where-Object group -eq 'baseline')
+Write-Manifest $configuration.jst776Manifest @($configuration.files|Where-Object group -eq 'jst776')
+Write-Manifest $configuration.jst771Manifest @($configuration.files|Where-Object group -eq 'jst771')
 [pscustomobject]@{files=$configuration.files.Count;bytes=[int64](($configuration.files|Measure-Object bytes -Sum).Sum);createdArchives=[bool]$CreateArchives}|ConvertTo-Json
